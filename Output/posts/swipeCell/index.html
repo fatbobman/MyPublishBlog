@@ -1,0 +1,100 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"/><meta name="og:site_name" content="Swift笔记本"/><link rel="canonical" href="http://www.fatbobman.com/posts/swipeCell"/><meta name="twitter:url" content="http://www.fatbobman.com/posts/swipeCell"/><meta name="og:url" content="http://www.fatbobman.com/posts/swipeCell"/><title>用SwiftUI实现iOS mail程序的侧滑菜单 | Swift笔记本</title><meta name="twitter:title" content="用SwiftUI实现iOS mail程序的侧滑菜单 | Swift笔记本"/><meta name="og:title" content="用SwiftUI实现iOS mail程序的侧滑菜单 | Swift笔记本"/><meta name="description" content="随着SwiftUI2.0的不断完善，我觉得是时候将我的app做一个较大的升级了。之前一直想在app中实现类似iOS 邮件程序那样优雅的侧滑菜单效果，在网上也找了一下，实现的较好的是适用于UIKit的，基本上没有能够很好的适配SwiftUI的项目库。最终自己在Xcode12实现了一个。"/><meta name="twitter:description" content="随着SwiftUI2.0的不断完善，我觉得是时候将我的app做一个较大的升级了。之前一直想在app中实现类似iOS 邮件程序那样优雅的侧滑菜单效果，在网上也找了一下，实现的较好的是适用于UIKit的，基本上没有能够很好的适配SwiftUI的项目库。最终自己在Xcode12实现了一个。"/><meta name="og:description" content="随着SwiftUI2.0的不断完善，我觉得是时候将我的app做一个较大的升级了。之前一直想在app中实现类似iOS 邮件程序那样优雅的侧滑菜单效果，在网上也找了一下，实现的较好的是适用于UIKit的，基本上没有能够很好的适配SwiftUI的项目库。最终自己在Xcode12实现了一个。"/><meta name="twitter:card" content="summary"/><link rel="stylesheet" href="/styles.css" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="/images/favicon.png" type="image/png"/><link rel="alternate" href="/feed.rss" type="application/rss+xml" title="Subscribe to Swift笔记本"/><meta name="twitter:image" content="http://www.fatbobman.com/images"/><meta name="og:image" content="http://www.fatbobman.com/images"/></head><body class="item-page"><header><div class="wrapper"><div class="logo"><a href="/"><h2>肘子的SWIFT记事本</h2></a></div><nav><ul><li><a href="/">首页</a></li><li><a class="selected" href="/posts">文章</a></li><li><a href="/project">我的APP</a></li><li><a href="/tags">标签</a></li><li><a href="/about">关于</a></li></ul></nav></div></header><div class="wrapper"><article><div><h1>用SwiftUI实现iOS mail程序的侧滑菜单</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag variant-4"><a href="/tags/project">Project</a></li><li class="tag tagdate">2020-08-12</li></ul><div class="content"><blockquote><p>随着SwiftUI2.0的不断完善，我觉得是时候将我的app做一个较大的升级了。之前一直想在app中实现类似iOS 邮件程序那样优雅的侧滑菜单效果，在网上也找了一下，实现的较好的是适用于UIKit的，基本上没有能够很好的适配SwiftUI的项目库。最终自己在Xcode12实现了一个。</p></blockquote><p>SwipeCell 是一个用Swift 5.3开发的 SwiftUI库.目标是为了实现类似iOS Mail程序实现的左右滑动菜单功能. SwipeCell 需要 XCode 12 ,iOS 14</p><p><a href="https://github.com/fatbobman/SwipeCell">SwipeCell GitHub</a></p><video src="http://cdn.fatbobman.com/SwipeCellDemoVideo.mp4" controls = "controls">你的浏览器不支持本视频</video><h2>配置Button</h2><pre data-language="swift"><code><span class="hljs-keyword">let</span> button1 = <span class="hljs-type">SwipeCellButton</span>(buttonStyle: .titleAndImage,
+                title: <span class="hljs-string">"Mark"</span>, 
+                systemImage: <span class="hljs-string">"bookmark"</span>,
+                titleColor: .white, 
+                imageColor: .white, 
+                view: <span class="hljs-literal">nil</span>,   
+                backgroundColor: .green,
+                action: {bookmark.toggle()},
+                feedback:<span class="hljs-literal">true</span>
+                )
+<span class="hljs-comment">//你可以将按钮设置成任意View从而实现更复杂的设计以及动态效果</span>
+<span class="hljs-keyword">let</span> button3 = <span class="hljs-type">SwipeCellButton</span>(buttonStyle: .view, title:<span class="hljs-string">""</span>,systemImage: <span class="hljs-string">""</span>, view: {
+    <span class="hljs-type">AnyView</span>(
+        <span class="hljs-type">Group</span>{
+            <span class="hljs-keyword">if</span> unread {
+                <span class="hljs-type">Image</span>(systemName: <span class="hljs-string">"envelope.badge"</span>)
+                    .foregroundColor(.white)
+                    .font(.title)
+            }
+            <span class="hljs-keyword">else</span> {
+                <span class="hljs-type">Image</span>(systemName: <span class="hljs-string">"envelope.open"</span>)
+                    .foregroundColor(.white)
+                    .font(.title)
+            }
+        }
+    )
+}, backgroundColor: .orange, action: {unread.toggle()}, feedback: <span class="hljs-literal">false</span>)
+</code></pre><h2>配置Slot</h2><pre data-language="swift"><code><span class="hljs-keyword">let</span> slot1 = <span class="hljs-type">SwipeCellSlot</span>(slots: [button2,button1])
+<span class="hljs-keyword">let</span> slot2 = <span class="hljs-type">SwipeCellSlot</span>(slots: [button4], slotStyle: .destructive, buttonWidth: <span class="hljs-number">60</span>) 
+<span class="hljs-keyword">let</span> slot3 = <span class="hljs-type">SwipeCellSlot</span>(slots: [button2,button1],slotStyle: .destructiveDelay)
+</code></pre><h2>装配</h2><pre data-language="swift"><code>cellView()
+    .swipeCell(cellPosition: .<span class="hljs-keyword">left</span>, leftSlot: slot4, rightSlot: <span class="hljs-literal">nil</span>)
+</code></pre><p>更多的配置选项</p><pre data-language="swift"><code>cellView()
+    .swipeCell(cellPosition: .both, 
+                leftSlot: slot1, 
+                rightSlot: slot1 ,
+                swipeCellStyle: <span class="hljs-type">SwipeCellStyle</span>(
+                            alignment: .leading,
+                            dismissWidth: <span class="hljs-number">20</span>,
+                            appearWidth: <span class="hljs-number">20</span>,
+                            destructiveWidth: <span class="hljs-number">240</span>, 
+                            vibrationForButton: .error, 
+                            vibrationForDestructive: .heavy, 
+                            autoResetTime: <span class="hljs-number">3</span>)
+                            )
+</code></pre><h2>滚动列表自动消除</h2><p>For List</p><pre data-language="swift"><code><span class="hljs-type">List</span>{
+    ...
+    }
+    .dismissSwipeCell()
+}
+</code></pre><p>For single cell in ScrollView</p><pre data-language="swift"><code><span class="hljs-type">ScrollView</span>{
+    <span class="hljs-type">VStack</span>{
+        <span class="hljs-type">Text</span>(<span class="hljs-string">"Mail Title"</span>)
+            .dismissSwipeCellForScrollView() 
+        <span class="hljs-type">Text</span>(<span class="hljs-string">"Mail Content"</span>)
+        ....
+    }
+    .frame(maxWidth:.infinity,maxHeight: .infinity)
+}
+.swipeCell(cellPosition: .both, leftSlot: leftSlot, rightSlot: rightSlot,clip: <span class="hljs-literal">false</span>)
+</code></pre><p>For LazyVStack in ScrollView</p><pre data-language="swift"><code><span class="hljs-type">ScrollView</span>{
+    <span class="hljs-type">LazyVStack</span>{
+    <span class="hljs-type">ForEach</span>(lists,id:\.<span class="hljs-keyword">self</span>){ item <span class="hljs-keyword">in</span>
+       <span class="hljs-type">Text</span>(<span class="hljs-string">"Swipe in scrollView:\(item)"</span>)
+        .frame(height:<span class="hljs-number">80</span>)
+        .swipeCell(cellPosition: .both, leftSlot:slot, rightSlot: slot)
+        .dismissSwipeCellForScrollViewForLazyVStack()
+    }
+    }
+}
+</code></pre><ul><li>dismissSwipeCell 在editmode下支持选择</li><li>dismissSwipeCellForScrollView 用于ScrollView,通常用于只有一个Cell的场景,比如说Mail中的邮件内容显示.参看Demo中的演示</li><li>dismissSwipeCellForScrollViewForLazyVStack 用于ScrollView中使用LazyVStack场景.个别时候会打断滑动菜单出现动画.个人觉得如无特别需要还是使用List代替LazyVStack比较好.</li></ul><p>由于SwiftUI没有很好的方案能够获取滚动状态,所以采用了 <a href="https://github.com/siteline/SwiftUI-Introspect.git">Introspect</a>实现的上述功能.</p><p>destructiveDelay 形式的 button，需要在action中添加 dismissDestructiveDelayButton()已保证在alter执行后，Cell复位</p><h2>当前问题</h2><ul><li>动画细节仍然不足</li><li>EditMode模式下仍有不足</li></ul><h2>欢迎多提宝贵意见</h2><p>SwipeCell is available under the <a href="https://github.com/fatbobman/SwipeCell/blob/main/LICENSE.md">MIT license</a>.</p></div></div></article><div class="item-navigator"><table><tr><td class="previous-item"><a href="/posts/swifui-overlay">SwiftUIOverlayContainer ——可以实现各种自定义样式弹出视图的SwitUI库</a></td><td class="next-item"><a href="/posts/howto-swiftui-import-export">HowTo —— SwiftUI2.0 文件导入导出</a></td></tr></table></div><footer><p>Copyright &copy; 徐杨 2021 <a href="http://beian.miit.gov.cn">辽ICP备20006550</a></p><p>Generated using <a href="https://github.com/johnsundell/publish">Publish</a></p><ul><li><a href="https://twitter.com/fatbobman">Twitter</a></li><li><a href="https://github.com/fatbobman/">Github</a></li><li><a href="https://www.zhihu.com/people/fatbobman3000">知乎</a></li><li><a href="/feed.rss">RSS feed</a></li></ul><script>
+    // dynamic User by Hux
+    var _gaId = 'UA-165296388-1';
+    var _gaDomain = 'fatbobman.com';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '14e5d60a3ea6276655f9d14c58b1fcd0';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script></footer></div></body></html>

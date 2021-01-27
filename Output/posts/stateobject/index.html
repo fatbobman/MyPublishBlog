@@ -1,0 +1,163 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"/><meta name="og:site_name" content="Swift笔记本"/><link rel="canonical" href="http://www.fatbobman.com/posts/stateobject"/><meta name="twitter:url" content="http://www.fatbobman.com/posts/stateobject"/><meta name="og:url" content="http://www.fatbobman.com/posts/stateobject"/><title>SwiftUI 2.0 —— @StateObject 研究 | Swift笔记本</title><meta name="twitter:title" content="SwiftUI 2.0 —— @StateObject 研究 | Swift笔记本"/><meta name="og:title" content="SwiftUI 2.0 —— @StateObject 研究 | Swift笔记本"/><meta name="description" content="WWDC20刚刚结束，在过去的一周，苹果为开发者带来了巨大的惊喜。由于新特性实在太多，需要不少时间来消化，我首先选择自己最感兴趣的内容进行一些简单的研究和探讨。本文首先浅谈一下SwiftUI新提供的属性包装器@StateObject。"/><meta name="twitter:description" content="WWDC20刚刚结束，在过去的一周，苹果为开发者带来了巨大的惊喜。由于新特性实在太多，需要不少时间来消化，我首先选择自己最感兴趣的内容进行一些简单的研究和探讨。本文首先浅谈一下SwiftUI新提供的属性包装器@StateObject。"/><meta name="og:description" content="WWDC20刚刚结束，在过去的一周，苹果为开发者带来了巨大的惊喜。由于新特性实在太多，需要不少时间来消化，我首先选择自己最感兴趣的内容进行一些简单的研究和探讨。本文首先浅谈一下SwiftUI新提供的属性包装器@StateObject。"/><meta name="twitter:card" content="summary"/><link rel="stylesheet" href="/styles.css" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="/images/favicon.png" type="image/png"/><link rel="alternate" href="/feed.rss" type="application/rss+xml" title="Subscribe to Swift笔记本"/><meta name="twitter:image" content="http://www.fatbobman.com/images"/><meta name="og:image" content="http://www.fatbobman.com/images"/></head><body class="item-page"><header><div class="wrapper"><div class="logo"><a href="/"><h2>肘子的SWIFT记事本</h2></a></div><nav><ul><li><a href="/">首页</a></li><li><a class="selected" href="/posts">文章</a></li><li><a href="/project">我的APP</a></li><li><a href="/tags">标签</a></li><li><a href="/about">关于</a></li></ul></nav></div></header><div class="wrapper"><article><div><h1>SwiftUI 2.0 —— @StateObject 研究</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag tagdate">2020-06-26</li></ul><div class="content"><blockquote><p>WWDC20刚刚结束，在过去的一周，苹果为开发者带来了巨大的惊喜。由于新特性实在太多，需要不少时间来消化，我首先选择自己最感兴趣的内容进行一些简单的研究和探讨。本文首先浅谈一下SwiftUI新提供的属性包装器@StateObject。</p></blockquote><h2>为什么要新增@StateObject</h2><p>在我之前的文章<a href="https://zhuanlan.zhihu.com/p/141229504">@State研究</a>中我们探讨过@State，通过它，我们可以方便的将值类型数据作为View的Source of truth。在SwiftUI 1.0时代，如果想将引用类型作为source of truth,通常的方法是使用@EnvironmentObject或者 @ObservedObject。</p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">RootView</span>:<span class="hljs-title">View</span></span>{
+    <span class="hljs-keyword">var</span> body: some <span class="hljs-type">View</span>{
+        <span class="hljs-type">ContentView</span>()
+            .environmentObject(<span class="hljs-type">Store</span>())
+    }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">ContentView</span>: <span class="hljs-title">View</span> </span>{
+    @<span class="hljs-type">EnvironmentObject</span>  <span class="hljs-keyword">var</span> store1:<span class="hljs-type">Store</span>
+    <span class="hljs-keyword">var</span> body: some <span class="hljs-type">View</span> {
+        <span class="hljs-type">Text</span>(<span class="hljs-string">"count:\(store.count)"</span>)
+    }
+}
+</code></pre><p>对于使用@EnvironmentObject注入的数据，由于其通常是在SceneDelegate或着当前View的父辈、祖先View上创建的，所以其生命周期必然不短于当前View,因此在使用中并不会发生由于生命周期不可预测而导致的异常。</p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Test5</span>: <span class="hljs-title">View</span> </span>{
+    @<span class="hljs-type">ObservedObject</span> <span class="hljs-keyword">var</span> store = <span class="hljs-type">Store</span>()
+    <span class="hljs-keyword">var</span> body: some <span class="hljs-type">View</span> {
+        <span class="hljs-type">Text</span>(<span class="hljs-string">"count:\(store.count)"</span>)
+    }
+}
+</code></pre><p>对于上面的代码，乍看起来没有任何不妥，不过由于@ObservedObject的机制问题，其创建的实例并不被当前View所拥有（当前View无法管理其生命周期），因此在一些特殊的情况下会出现不可预料的结果。</p><p>为了能够让开发者更好的掌控代码，同时也保持对于上一版本良好的兼容性，苹果在SwiftUI2.0中添加了@StateObject。顾名思义，它是@State的引用类型版本。</p><p>在WWDC的视频中，苹果明确的表明@StateObject是被创建他的View所持有的，也就是说，实例的生命周期是完全可控的，是同创建它的View的生命周期一样的。</p><p><strong>@StateObject 和 @ObservedObject 的区别就是实例是否被创建其的View所持有，其生命周期是否完全可控。</strong></p><h2>通过代码了解不同</h2><p>我通过下面的代码来详细阐述一下 @StateObject 和 @ObservedObject的不同表现。</p><p><strong>准备工作：</strong></p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StateObjectClass</span>:<span class="hljs-title">ObservableObject</span></span>{
+    <span class="hljs-keyword">let</span> type:<span class="hljs-type">String</span>
+    <span class="hljs-keyword">let</span> id:<span class="hljs-type">Int</span>
+    @<span class="hljs-type">Published</span> <span class="hljs-keyword">var</span> <span class="hljs-built_in">count</span> = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">init</span>(type:<span class="hljs-type">String</span>){
+        <span class="hljs-keyword">self</span>.type = type
+        <span class="hljs-keyword">self</span>.id = <span class="hljs-type">Int</span>.random(<span class="hljs-keyword">in</span>: <span class="hljs-number">0</span>...<span class="hljs-number">1000</span>)
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">"type:\(type) id:\(id) init"</span>)
+    }
+    <span class="hljs-keyword">deinit</span> {
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">"type:\(type) id:\(id) deinit"</span>)
+    }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">CountViewState</span>:<span class="hljs-title">View</span></span>{
+    @<span class="hljs-type">StateObject</span> <span class="hljs-keyword">var</span> state = <span class="hljs-type">StateObjectClass</span>(type:<span class="hljs-string">"StateObject"</span>)
+    <span class="hljs-keyword">var</span> body: some <span class="hljs-type">View</span>{
+        <span class="hljs-type">VStack</span>{
+            <span class="hljs-type">Text</span>(<span class="hljs-string">"@StateObject count :\(state.count)"</span>)
+            <span class="hljs-type">Button</span>(<span class="hljs-string">"+1"</span>){
+                state.<span class="hljs-built_in">count</span> += <span class="hljs-number">1</span>
+            }
+        }
+    }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">CountViewObserved</span>:<span class="hljs-title">View</span></span>{
+    @<span class="hljs-type">ObservedObject</span> <span class="hljs-keyword">var</span> state = <span class="hljs-type">StateObjectClass</span>(type:<span class="hljs-string">"Observed"</span>)
+    <span class="hljs-keyword">var</span> body: some <span class="hljs-type">View</span>{
+        <span class="hljs-type">VStack</span>{
+            <span class="hljs-type">Text</span>(<span class="hljs-string">"@Observed count :\(state.count)"</span>)
+            <span class="hljs-type">Button</span>(<span class="hljs-string">"+1"</span>){
+                state.<span class="hljs-built_in">count</span> += <span class="hljs-number">1</span>
+            }
+        }
+    }
+}
+</code></pre><p>StateObjectClass将在其被创建和销毁时通过type 和 id 告知我们它是被那种方法创建的，以及具体哪个实例被销毁了。</p><p>CountViewState和CountViewObserved唯一的不同是创建实例使用的属性包装器不同。</p><p><strong>测试1：</strong></p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Test1</span>: <span class="hljs-title">View</span> </span>{
+    @<span class="hljs-type">State</span> <span class="hljs-keyword">var</span> <span class="hljs-built_in">count</span> = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">var</span> body: some <span class="hljs-type">View</span> {
+        <span class="hljs-type">VStack</span>{
+            <span class="hljs-type">Text</span>(<span class="hljs-string">"刷新CounterView计数 :\(count)"</span>)
+            <span class="hljs-type">Button</span>(<span class="hljs-string">"刷新"</span>){
+                <span class="hljs-built_in">count</span> += <span class="hljs-number">1</span>
+            }
+            
+            <span class="hljs-type">CountViewState</span>()
+                .padding()
+            
+            <span class="hljs-type">CountViewObserved</span>()
+                .padding()
+            
+        }
+    }
+}
+</code></pre><p>在测试1中，当进点击+1按钮时，无论是@StateObject或是@ObservedObject其都表现出一致的状态，两个View都可以正常的显示当前按钮的点击次数，不过当点击刷新按钮时，CountViewState中的数值仍然正常，不过CountViewObserved中的计数值被清零了。从调试信息可以看出，当点击刷新时，CountViewObserved中的实例被重新创建了，并销毁了之前的实例（CountViewObserved视图并没有被重新创建，仅是重新求了body的值）。</p><pre data-language="swift"><code>type:<span class="hljs-type">Observed</span> id:<span class="hljs-number">443</span> <span class="hljs-keyword">init</span>
+type:<span class="hljs-type">Observed</span> id:<span class="hljs-number">103</span> <span class="hljs-keyword">deinit</span>
+</code></pre><p>在这个测试中，@ObservedObject创建的实例的生命周期短于当前View。</p><p><strong>测试2:</strong></p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Test2</span>: <span class="hljs-title">View</span> </span>{
+    @<span class="hljs-type">State</span> <span class="hljs-keyword">var</span> <span class="hljs-built_in">count</span> = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">var</span> body: some <span class="hljs-type">View</span> {
+        <span class="hljs-type">NavigationView</span>{
+            <span class="hljs-type">List</span>{
+                <span class="hljs-type">NavigationLink</span>(<span class="hljs-string">"@StateObject"</span>, destination: <span class="hljs-type">CountViewState</span>())
+                <span class="hljs-type">NavigationLink</span>(<span class="hljs-string">"@ObservedObject"</span>, destination: <span class="hljs-type">CountViewObserved</span>())
+            }
+        }
+    }
+}
+</code></pre><p>测试2中，点击link进入对应的View后通过点击+1进行计数，然后返回父视图。当再次进入link后，@StateObject对应的视图中计数清零（由于返回父视图，再次进入时会重新创建视图，所以会重新创建实例），不过@ObservedObject对应的视图中计数是不清零的。</p><p>在这个测试中，@ObservedObject创建的实例生命周期长于当前的View。</p><p><strong>测试3:</strong></p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Test3</span>: <span class="hljs-title">View</span> </span>{
+    @<span class="hljs-type">State</span> <span class="hljs-keyword">private</span> <span class="hljs-keyword">var</span> showStateObjectSheet = <span class="hljs-literal">false</span>
+    @<span class="hljs-type">State</span> <span class="hljs-keyword">private</span> <span class="hljs-keyword">var</span> showObservedObjectSheet = <span class="hljs-literal">false</span>
+    <span class="hljs-keyword">var</span> body: some <span class="hljs-type">View</span> {
+        <span class="hljs-type">List</span>{
+            <span class="hljs-type">Button</span>(<span class="hljs-string">"Show StateObject Sheet"</span>){
+                showStateObjectSheet.toggle()
+            }
+            .sheet(isPresented: $showStateObjectSheet) {
+                <span class="hljs-type">CountViewState</span>()
+            }
+            <span class="hljs-type">Button</span>(<span class="hljs-string">"Show ObservedObject Sheet"</span>){
+                showObservedObjectSheet.toggle()
+            }
+            .sheet(isPresented: $showObservedObjectSheet) {
+                <span class="hljs-type">CountViewObserved</span>()
+            }   
+        }
+    }
+}
+</code></pre><p>测试3中点击按钮，在sheet中点击+1,当再次进入sheet后，无论是@StateObject还是@ObservedObject对应的View中的计数都被清零。</p><p>在这个测试中，@ObservedObject创建的实例生命周期和View是一致的。</p><p><strong>三段代码，三种结果，这也就是为什么苹果要新增@StateObject的原因——让开发者可以明确地了解并掌握实例的生命周期，消除不确定性！</strong></p><h2>ObservedObject是否还有存在的必要？</h2><p>对我个人而言，基本失去了使用其的理由（可用于绑定父视图传递的@StateObject）。</p><p>尽管或许上面例子的某种特性可能让你觉得ObservedObject可以完成某些特殊需求（比如测试2），但我们无法保证苹果在之后不改变ObservedObject的运行机理，从而改变当前的结果。</p><p>我个人还是更推荐将来都使用@StateObject来消除代码运行的不确定性。</p><p>通过下述代码，使用@StateObject同样可以得到测试2中ObservedObject的运行效果。</p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Test4</span>: <span class="hljs-title">View</span> </span>{
+    @<span class="hljs-type">State</span> <span class="hljs-keyword">private</span> <span class="hljs-keyword">var</span> showStateObjectSheet = <span class="hljs-literal">false</span>
+    @<span class="hljs-type">StateObject</span> <span class="hljs-keyword">var</span> state = <span class="hljs-type">StateObjectClass</span>(type: <span class="hljs-string">"stateObject"</span>)
+    <span class="hljs-keyword">var</span> body: some <span class="hljs-type">View</span> {
+        <span class="hljs-type">List</span>{
+            <span class="hljs-type">Button</span>(<span class="hljs-string">"Show StateObject1 Sheet"</span>){
+                showStateObjectSheet.toggle()
+            }
+            .sheet(isPresented: $showStateObjectSheet) {
+                <span class="hljs-type">CountViewState1</span>(state: state)
+            }
+        }
+    }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">CountViewState1</span>:<span class="hljs-title">View</span></span>{
+    @<span class="hljs-type">ObservedObject</span> <span class="hljs-keyword">var</span> state:<span class="hljs-type">StateObjectClass</span>
+    <span class="hljs-keyword">var</span> body: some <span class="hljs-type">View</span>{
+        <span class="hljs-type">VStack</span>{
+            <span class="hljs-type">Text</span>(<span class="hljs-string">"@StateObject count :\(state.count)"</span>)
+            <span class="hljs-type">Button</span>(<span class="hljs-string">"+1"</span>){
+                state.<span class="hljs-built_in">count</span> += <span class="hljs-number">1</span>
+            }
+        }
+    }
+}
+</code></pre><h2>Next</h2><p>苹果使用@StateObject一方面修复了之前的隐患，同时通过SwiftUI2.0众多新特性的引入，进一步完善了Data Flow的实现手段。在下一篇文章《SwiftUI2.0 —— 100% SwiftUI app》中，我们来进一步探讨。</p></div></div></article><div class="item-navigator"><table><tr><td class="previous-item"><a href="/posts/swiftUI2-commands">SwiftUI2.0 —— Commands（macOS菜单）</a></td><td class="next-item"><a href="/posts/observableObject-study">ObservableObject研究——想说爱你不容易</a></td></tr></table></div><footer><p>Copyright &copy; 徐杨 2021 <a href="http://beian.miit.gov.cn">辽ICP备20006550</a></p><p>Generated using <a href="https://github.com/johnsundell/publish">Publish</a></p><ul><li><a href="https://twitter.com/fatbobman">Twitter</a></li><li><a href="https://github.com/fatbobman/">Github</a></li><li><a href="https://www.zhihu.com/people/fatbobman3000">知乎</a></li><li><a href="/feed.rss">RSS feed</a></li></ul><script>
+    // dynamic User by Hux
+    var _gaId = 'UA-165296388-1';
+    var _gaDomain = 'fatbobman.com';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '14e5d60a3ea6276655f9d14c58b1fcd0';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script></footer></div></body></html>

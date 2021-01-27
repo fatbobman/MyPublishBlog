@@ -1,0 +1,141 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"/><meta name="og:site_name" content="Swift笔记本"/><link rel="canonical" href="http://www.fatbobman.com/posts/howto-swiftui-toolbar"/><meta name="twitter:url" content="http://www.fatbobman.com/posts/howto-swiftui-toolbar"/><meta name="og:url" content="http://www.fatbobman.com/posts/howto-swiftui-toolbar"/><title>HowTo —— SwiftUI2.0 使用ToolBar替代navigationbarItems | Swift笔记本</title><meta name="twitter:title" content="HowTo —— SwiftUI2.0 使用ToolBar替代navigationbarItems | Swift笔记本"/><meta name="og:title" content="HowTo —— SwiftUI2.0 使用ToolBar替代navigationbarItems | Swift笔记本"/><meta name="description" content="SwiftUI2.0为了实现更好的多平台支持同时需要兼顾1.0版本代码兼容性，提供了一些与已有控件功能上类似但名称和用法全新的控件。比如ToolBar, navigationTitle等。Toolbar可以实现navigationbarItems的全部功能，并新增了在多平台下的适配。采用了全新的语法，代码更易阅读。"/><meta name="twitter:description" content="SwiftUI2.0为了实现更好的多平台支持同时需要兼顾1.0版本代码兼容性，提供了一些与已有控件功能上类似但名称和用法全新的控件。比如ToolBar, navigationTitle等。Toolbar可以实现navigationbarItems的全部功能，并新增了在多平台下的适配。采用了全新的语法，代码更易阅读。"/><meta name="og:description" content="SwiftUI2.0为了实现更好的多平台支持同时需要兼顾1.0版本代码兼容性，提供了一些与已有控件功能上类似但名称和用法全新的控件。比如ToolBar, navigationTitle等。Toolbar可以实现navigationbarItems的全部功能，并新增了在多平台下的适配。采用了全新的语法，代码更易阅读。"/><meta name="twitter:card" content="summary"/><link rel="stylesheet" href="/styles.css" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="/images/favicon.png" type="image/png"/><link rel="alternate" href="/feed.rss" type="application/rss+xml" title="Subscribe to Swift笔记本"/><meta name="twitter:image" content="http://www.fatbobman.com/images"/><meta name="og:image" content="http://www.fatbobman.com/images"/></head><body class="item-page"><header><div class="wrapper"><div class="logo"><a href="/"><h2>肘子的SWIFT记事本</h2></a></div><nav><ul><li><a href="/">首页</a></li><li><a class="selected" href="/posts">文章</a></li><li><a href="/project">我的APP</a></li><li><a href="/tags">标签</a></li><li><a href="/about">关于</a></li></ul></nav></div></header><div class="wrapper"><article><div><h1>HowTo —— SwiftUI2.0 使用ToolBar替代navigationbarItems</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag variant-3"><a href="/tags/howto">HowTo</a></li><li class="tag tagdate">2020-07-10</li></ul><div class="content"><blockquote><p>SwiftUI2.0为了实现更好的多平台支持同时需要兼顾1.0版本代码兼容性，提供了一些与已有控件功能上类似但名称和用法全新的控件。比如ToolBar, navigationTitle等。Toolbar可以实现navigationbarItems的全部功能，并新增了在多平台下的适配。采用了全新的语法，代码更易阅读。 <strong>在当前的Xcode Version 12.0 beta 2 (12A6163b)版本下，ToolBar在macOS下仍然有非常多的问题。</strong></p></blockquote><h2>基本用法</h2><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">ToolBarTest</span>: <span class="hljs-title">View</span> </span>{
+    <span class="hljs-keyword">var</span> body: some <span class="hljs-type">View</span> {
+      <span class="hljs-type">NavigationView</span>{
+        <span class="hljs-type">Text</span>(<span class="hljs-string">"ToolBar 演示"</span>)
+            .toolbar{
+                <span class="hljs-type">ToolbarItem</span>(placement:.automatic){
+                    <span class="hljs-type">HStack</span>(spacing:<span class="hljs-number">20</span>){
+                        <span class="hljs-type">Button</span>(action:{<span class="hljs-built_in">print</span>(<span class="hljs-string">"wave"</span>)}){
+                            <span class="hljs-type">Image</span>(systemName: <span class="hljs-string">"waveform.path.badge.plus"</span>)
+                                .foregroundColor(.purple)
+                                .scaleEffect(<span class="hljs-number">1.5</span>, anchor: .center)
+                        }
+                        
+                    }
+                }
+                <span class="hljs-comment">//placement设置放置位置，ToolBarItem中的View解析不会完全和预期一致，不知道是特别限制还是bug.比如说无法显示多彩符号，无法使用Spacer等。</span>
+                <span class="hljs-type">ToolbarItem</span>(placement: .bottomBar){
+                    <span class="hljs-type">HStack</span>(spacing:<span class="hljs-number">100</span>){
+                        <span class="hljs-type">Button</span>(action:{<span class="hljs-built_in">print</span>(<span class="hljs-string">"lt"</span>)}){
+                            <span class="hljs-type">Image</span>(systemName: <span class="hljs-string">"lt.rectangle.roundedtop.fill"</span>)
+                                .foregroundColor(.purple)
+                                .scaleEffect(<span class="hljs-number">1.5</span>, anchor: .center)
+                        }
+                        
+                        <span class="hljs-type">Button</span>(action:{<span class="hljs-built_in">print</span>(<span class="hljs-string">"rt"</span>)}){
+                            <span class="hljs-type">Image</span>(systemName: <span class="hljs-string">"rt.rectangle.roundedtop.fill"</span>)
+                                .foregroundColor(.purple)
+                                .scaleEffect(<span class="hljs-number">1.5</span>, anchor: .center)
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+</code></pre><img src="http://cdn.fatbobman.com/howto-swiftui-toolbar-toolbar1.png" alt="截屏2020-07-10 上午9.01.52" width="300"/><h2>多平台适配</h2><p>为了能够更好的适配多平台，placment提供了automatic这样的多平台自适应选项。placement有些值全平台可用，有些只支持部分平台，还有一部分的可在多平台运行不过只能在部分平台正确显示。</p><pre data-language="swift"><code><span class="hljs-keyword">import</span> SwiftUI
+
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">ToolBarTest</span>: <span class="hljs-title">View</span> </span>{
+    @<span class="hljs-type">State</span> <span class="hljs-keyword">var</span> placementSelection:<span class="hljs-type">Placement</span> = .automatic
+    @<span class="hljs-type">State</span> <span class="hljs-keyword">var</span> placement:<span class="hljs-type">ToolbarItemPlacement</span> = .automatic
+    @<span class="hljs-type">State</span> <span class="hljs-keyword">var</span> show = <span class="hljs-literal">true</span>
+    <span class="hljs-keyword">var</span> body: some <span class="hljs-type">View</span> {
+        <span class="hljs-type">NavigationView</span>{
+            <span class="hljs-type">VStack</span>{
+                <span class="hljs-type">Picker</span>(<span class="hljs-string">"placement:"</span>,selection:$placementSelection){
+                    <span class="hljs-type">ForEach</span>(<span class="hljs-type">Placement</span>.allCases,id:\.<span class="hljs-keyword">self</span>){ placement <span class="hljs-keyword">in</span>
+                        <span class="hljs-type">Text</span>(placement.rawValue)
+                            .tag(placement)
+                    }
+                }
+                .labelsHidden()
+                .padding(.all, <span class="hljs-number">10</span>)
+                .onChange(of: placementSelection) { value <span class="hljs-keyword">in</span>
+                    <span class="hljs-keyword">switch</span> value{
+                    <span class="hljs-keyword">case</span> .automatic:
+                        placement = .automatic
+                    <span class="hljs-keyword">case</span> .principal:
+                        placement = .principal <span class="hljs-comment">//iOS不显示</span>
+                    <span class="hljs-keyword">case</span> .navigation:
+                        placement = .navigation
+                    <span class="hljs-keyword">case</span> .primaryAction:
+                        placement = .primaryAction
+                    <span class="hljs-keyword">case</span> .status:
+                        placement = .status <span class="hljs-comment">//iOS不显示</span>
+                    <span class="hljs-keyword">case</span> .confirmationAction:
+                        placement = .confirmationAction <span class="hljs-comment">//iOS不显示</span>
+                    <span class="hljs-keyword">case</span> .cancellationAction:
+                        placement = .cancellationAction <span class="hljs-comment">//iOS不显示</span>
+                    <span class="hljs-keyword">case</span> .destructiveAction:
+                        placement = .destructiveAction <span class="hljs-comment">//iOS不显示</span>
+                    #<span class="hljs-keyword">if</span> os(iOS)
+                    <span class="hljs-keyword">case</span> .bottomBar:
+                        placement = .bottomBar
+                    <span class="hljs-comment">//不知道为什么有bug,设置后不显示</span>
+                    <span class="hljs-comment">//ToolbarItem(placement:.bottomBar)可以显示</span>
+                    <span class="hljs-keyword">case</span> .navigationBarLeading:
+                        placement = .navigationBarLeading
+                    <span class="hljs-keyword">case</span> .navigationBarTrailing:
+                        placement = .navigationBarTrailing
+                    #endif
+                    }
+                }
+                <span class="hljs-comment">//在macOS下如果需要显式设置是否显示ToolBar,需要设置id,iOS下可以不用设置</span>
+                <span class="hljs-comment">//当前在macOS下,如果不显式关闭可能导致不同View的ToolBar混合到了一起,或者重复出现.不知道是否是bug还是设计逻辑</span>
+                .toolbar(id:<span class="hljs-string">"ToolBar"</span>) {
+                    <span class="hljs-type">ToolbarItem</span>(id:<span class="hljs-string">"1"</span>,placement:placement,showsByDefault:show) {
+                        <span class="hljs-type">Button</span>(<span class="hljs-string">"确定"</span>){
+                            
+                        }
+                    }
+                }
+                .navigationTitle(<span class="hljs-string">"Toolbar演示"</span>)
+                
+                #<span class="hljs-keyword">if</span> os(macOS)
+                <span class="hljs-type">Toggle</span>(<span class="hljs-string">"显示ToolBar"</span>,isOn:$show)
+                <span class="hljs-type">Spacer</span>()
+                #endif
+            } .frame(maxWidth:.infinity,maxHeight: .infinity)
+        }
+        
+    }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">Placement</span>:<span class="hljs-title">String</span>,<span class="hljs-title">CaseIterable</span></span>{
+    <span class="hljs-keyword">case</span> automatic,principal,navigation
+    <span class="hljs-keyword">case</span> primaryAction,status,confirmationAction
+    <span class="hljs-keyword">case</span> cancellationAction,destructiveAction
+    #<span class="hljs-keyword">if</span> os(iOS)
+    <span class="hljs-keyword">case</span> navigationBarLeading,navigationBarTrailing,bottomBar
+    #endif
+}
+</code></pre><video src="http://cdn.fatbobman.com/howto-swiftui-toolbar-video.mp4" controls = "controls">你的浏览器不支持本视频</video><blockquote><p>macOS下不同placement的演示</p></blockquote><p><strong>遗憾</strong></p><p>macOS目前bug较多，ToolBarItem对于View的解析还不完整，ToolBarContentBuilder不支持逻辑判断。</p></div></div></article><div class="item-navigator"><table><tr><td class="previous-item"><a href="/posts/howto-swiftui-onOpenUrl">HowTo —— 使用onOpenURL处理Universal Links</a></td><td class="next-item"><a href="/posts/howto-swiftui-link-openurl">HowTo —— SwiftUI2.0 使用Link或openURL打开URL scheme</a></td></tr></table></div><footer><p>Copyright &copy; 徐杨 2021 <a href="http://beian.miit.gov.cn">辽ICP备20006550</a></p><p>Generated using <a href="https://github.com/johnsundell/publish">Publish</a></p><ul><li><a href="https://twitter.com/fatbobman">Twitter</a></li><li><a href="https://github.com/fatbobman/">Github</a></li><li><a href="https://www.zhihu.com/people/fatbobman3000">知乎</a></li><li><a href="/feed.rss">RSS feed</a></li></ul><script>
+    // dynamic User by Hux
+    var _gaId = 'UA-165296388-1';
+    var _gaDomain = 'fatbobman.com';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '14e5d60a3ea6276655f9d14c58b1fcd0';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script></footer></div></body></html>

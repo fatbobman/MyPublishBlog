@@ -1,0 +1,276 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"/><meta name="og:site_name" content="Swift笔记本"/><link rel="canonical" href="http://www.fatbobman.com/posts/swiftUI2-commands"/><meta name="twitter:url" content="http://www.fatbobman.com/posts/swiftUI2-commands"/><meta name="og:url" content="http://www.fatbobman.com/posts/swiftUI2-commands"/><title>SwiftUI2.0 —— Commands（macOS菜单） | Swift笔记本</title><meta name="twitter:title" content="SwiftUI2.0 —— Commands（macOS菜单） | Swift笔记本"/><meta name="og:title" content="SwiftUI2.0 —— Commands（macOS菜单） | Swift笔记本"/><meta name="description" content="本文介绍了SwiftUI 2.0中，如何为macOS平台添加菜单。苹果在SwiftUI2.0中增加了Multiplatform项目模板，使得同一套代码，仅需少量的适配便可以同时满足iOS以及macOS的需要。对于macOS上运行的app,拥有自定义的菜单是一个十分重要的平台特征。对于没有macOS开发经验的我来说，学习如何设计开发菜单变得十分有趣且必要。"/><meta name="twitter:description" content="本文介绍了SwiftUI 2.0中，如何为macOS平台添加菜单。苹果在SwiftUI2.0中增加了Multiplatform项目模板，使得同一套代码，仅需少量的适配便可以同时满足iOS以及macOS的需要。对于macOS上运行的app,拥有自定义的菜单是一个十分重要的平台特征。对于没有macOS开发经验的我来说，学习如何设计开发菜单变得十分有趣且必要。"/><meta name="og:description" content="本文介绍了SwiftUI 2.0中，如何为macOS平台添加菜单。苹果在SwiftUI2.0中增加了Multiplatform项目模板，使得同一套代码，仅需少量的适配便可以同时满足iOS以及macOS的需要。对于macOS上运行的app,拥有自定义的菜单是一个十分重要的平台特征。对于没有macOS开发经验的我来说，学习如何设计开发菜单变得十分有趣且必要。"/><meta name="twitter:card" content="summary"/><link rel="stylesheet" href="/styles.css" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="/images/favicon.png" type="image/png"/><link rel="alternate" href="/feed.rss" type="application/rss+xml" title="Subscribe to Swift笔记本"/><meta name="twitter:image" content="http://www.fatbobman.com/images"/><meta name="og:image" content="http://www.fatbobman.com/images"/></head><body class="item-page"><header><div class="wrapper"><div class="logo"><a href="/"><h2>肘子的SWIFT记事本</h2></a></div><nav><ul><li><a href="/">首页</a></li><li><a class="selected" href="/posts">文章</a></li><li><a href="/project">我的APP</a></li><li><a href="/tags">标签</a></li><li><a href="/about">关于</a></li></ul></nav></div></header><div class="wrapper"><article><div><h1>SwiftUI2.0 —— Commands（macOS菜单）</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag tagdate">2020-06-27</li></ul><div class="content"><blockquote><p>本文介绍了SwiftUI 2.0中，如何为macOS平台添加菜单。 当前运行环境为 Xcode Version 12.0 beta (12A6159), macOS Big Sur 11.0 Beta版(20A4299v)。</p></blockquote><p>苹果在SwiftUI2.0中增加了Multiplatform项目模板，使得同一套代码，仅需少量的适配便可以同时满足iOS以及macOS的需要。对于macOS上运行的app,拥有自定义的菜单是一个十分重要的平台特征。对于没有macOS开发经验的我来说，学习如何设计开发菜单变得十分有趣且必要。</p><h2>基础</h2><p>在SwiftUI下为app添加菜单十分方便，下面的代码便可以为app添加一个最基础的菜单。</p><pre data-language="swift"><code>@main
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">CommandExampleApp</span>: <span class="hljs-title">App</span> </span>{
+    <span class="hljs-keyword">var</span> body: some <span class="hljs-type">Scene</span> {
+        <span class="hljs-type">WindowGroup</span> {
+           <span class="hljs-type">ContentView</span>()
+        }
+        .commands{
+           <span class="hljs-type">Menu</span>()
+        }
+    }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Menu</span>:<span class="hljs-title">Commands</span></span>{
+    <span class="hljs-keyword">var</span> body: some <span class="hljs-type">Commands</span>{
+        <span class="hljs-type">CommandMenu</span>(<span class="hljs-string">"My Menu"</span>){
+            <span class="hljs-type">Button</span>(<span class="hljs-string">"menu1"</span>){
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">"menu1"</span>)
+            }
+        }
+    }
+}
+</code></pre><p>通过创建一个符合Commands协议的结构来描述你要在app中添加的自定义菜单项</p><img src="http://cdn.fatbobman.com/swiftui2-commands-test1.png" alt="test1"/><h2>几个概念</h2><ul><li>@CommandBuilder</li></ul><p>SwiftUI2.0中，苹果为我来带来了很多新的function builder。Menu中的body，其实就是一个@CommandsBuilder。我们可以通过使用内置的语句通过DSL的方式，方便的定义自己所需的菜单。DSL的好处是简单明了，不过功能也有所限定，目前@CommandsBuilder支持的方法比较少，并不支持逻辑判断。</p><pre data-language="swift"><code>  <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">MyCommand</span>:<span class="hljs-title">Commands</span></span>{
+      <span class="hljs-comment">//如果需要多个菜单列，需在body前显式注明@CommandsBuilder，或者使用Group，这一方法，同样使用与其他functionBuilder的描述。</span>
+      @<span class="hljs-type">CommandsBuilder</span> <span class="hljs-keyword">var</span> body: some <span class="hljs-type">Commands</span>{
+          <span class="hljs-comment">//每个CommandMenu都是一个菜单列</span>
+          <span class="hljs-type">CommandMenu</span>(<span class="hljs-string">"Menu1"</span>){
+              <span class="hljs-type">Button</span>(<span class="hljs-string">"Test1"</span>){
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">"test2"</span>)
+              }
+                <span class="hljs-type">Button</span>(<span class="hljs-string">"Test2"</span>){
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">"test2"</span>)
+              }
+          }
+          
+          <span class="hljs-type">CommandMenu</span>(<span class="hljs-string">"Menu2"</span>){
+              <span class="hljs-type">Button</span>(action: test1{
+                  <span class="hljs-type">Text</span>(<span class="hljs-string">"😃Button"</span>)
+              }
+          }
+      }
+      
+      <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">test1</span><span class="hljs-params">()</span></span>{
+          <span class="hljs-built_in">print</span>(<span class="hljs-string">"test command"</span>)
+      }
+  
+  }
+  
+</code></pre><ul><li>CommandMenu</li></ul><p>CommandMenu是一个菜单列，在同一个CommandMenu中，你可以定义多个Button。CommandMenu中的Content是符合View协议的，也就是说，View中不少手段、控件都可以被用来描述菜单的具体呈现。我们可以像编写View一样来编写菜单（比如设置字体、颜色、循环、判断等等）。</p><pre data-language="swift"><code>  <span class="hljs-type">CommandMenu</span>(<span class="hljs-string">"Menu"</span>){
+    <span class="hljs-type">Button</span>(<span class="hljs-string">"test1"</span>){}
+    <span class="hljs-type">Divider</span>()
+    <span class="hljs-type">Button</span>(action:{}){<span class="hljs-type">Text</span>(<span class="hljs-string">"test2"</span>).foregroundColor(.red)}
+  }
+</code></pre><ul><li>Button</li></ul><p>菜单中单个选项的实现方法。</p><pre data-language="swift"><code>    <span class="hljs-type">Button</span>(action: {}){
+      <span class="hljs-type">HStack</span>{
+          <span class="hljs-type">Text</span>(<span class="hljs-string">"🎱"</span>).foregroundColor(.blue)
+          <span class="hljs-type">Divider</span>().padding(.leading,<span class="hljs-number">10</span>)
+          <span class="hljs-type">Text</span>(<span class="hljs-string">"Button"</span>)
+      }
+      }
+</code></pre><ul><li>MenuButton</li></ul><p>子菜单的实现方法。</p><pre data-language="swift"><code>  <span class="hljs-type">CommandMenu</span>(<span class="hljs-string">"Test"</span>){
+             <span class="hljs-type">Button</span>(action:{test1()}){
+                  <span class="hljs-type">Text</span>(<span class="hljs-string">"test1"</span>).foregroundColor(.black)
+             }
+              
+              #<span class="hljs-keyword">if</span> os(macOS)
+              <span class="hljs-type">MenuButton</span>(<span class="hljs-string">"Switch Selection"</span>){
+                  <span class="hljs-type">Button</span>(<span class="hljs-string">"one"</span>){
+                      store.changeState(.one)
+                  }
+                  <span class="hljs-type">Button</span>(<span class="hljs-string">"two"</span>){
+                      store.changeState(.two)
+                  }
+                  <span class="hljs-type">Button</span>(<span class="hljs-string">"three"</span>){
+                      store.changeState(.three)
+                  }
+              }
+              #endif
+          }
+</code></pre><ul><li>.commands</li></ul><p>Scene的方法，为场景添加菜单。commands中允许添加多个符合Commands协议的菜单定义。所有定义的菜单都会一并显示。</p><pre data-language="swift"><code>          <span class="hljs-type">WindowGroup</span> {
+              <span class="hljs-type">RootView</span>()
+                  .environmentObject(store)
+          }
+          .commands{
+              <span class="hljs-type">OtherMenu</span>()
+              <span class="hljs-type">Menu</span>()
+          }
+</code></pre><ul><li>keyboardShortcut</li></ul><p>为菜单上的选项添加快捷键。通过modifiers设置需要配合的按键，.help为选项添加悬停帮助</p><pre data-language="swift"><code>  <span class="hljs-type">Button</span>(action:{test1()})
+         {
+            <span class="hljs-type">Text</span>(<span class="hljs-string">"test1"</span>).foregroundColor(.black)
+          }
+           .keyboardShortcut(<span class="hljs-string">"1"</span>, modifiers: [.command,.shift])
+           .help(<span class="hljs-string">"help test1"</span>)
+                  
+  <span class="hljs-type">Button</span>(<span class="hljs-string">"test2"</span>, action: test2)
+           .keyboardShortcut(<span class="hljs-string">"2"</span>, modifiers: .command)
+</code></pre><ul><li>CommandGroup</li></ul><p>在系统提供的默认菜单选项上添加自定义功能。通过replacing,before,after来决定是替换原选项还是设置在指定选项位置之后或之前。</p><pre data-language="swift"><code>  <span class="hljs-comment">//在系统预置的帮助菜单栏下，添加一个自己的选项</span>
+  <span class="hljs-type">CommandGroup</span>(replacing: <span class="hljs-type">CommandGroupPlacement</span>.appInfo, addition: {<span class="hljs-type">Button</span>(<span class="hljs-string">"replace"</span>){}})
+  <span class="hljs-type">CommandGroup</span>(before: <span class="hljs-type">CommandGroupPlacement</span>.help, addition: {<span class="hljs-type">Button</span>(<span class="hljs-string">"before"</span>){}})
+  <span class="hljs-type">CommandGroup</span>(after: <span class="hljs-type">CommandGroupPlacement</span>.newItem, addition: {<span class="hljs-type">Button</span>(<span class="hljs-string">"after"</span>){}})
+</code></pre><h2>例子</h2><p>这里简单的例程展示了如何在menu如何通过调用store来影响app的行为。并做了简单的多平台适配。在macOS平台下，通过选择子菜单中不同的选项来影响显示文本。在iOS下通过picker来实现。</p><p><a href="https://github.com/fatbobman/CommandExample">可在此处下载完成代码</a></p><pre data-language="swift"><code>@main
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">CommandExampleApp</span>: <span class="hljs-title">App</span> </span>{
+    @<span class="hljs-type">StateObject</span> <span class="hljs-keyword">var</span> store = <span class="hljs-type">Store</span>()
+    <span class="hljs-keyword">var</span> body: some <span class="hljs-type">Scene</span> {
+        <span class="hljs-type">WindowGroup</span> {
+            <span class="hljs-type">RootView</span>()
+                .environmentObject(store)
+        }
+        .commands{
+          #<span class="hljs-keyword">if</span> os(macOS) 
+            <span class="hljs-type">MyCommand</span>(store: store)
+            <span class="hljs-type">OtherMenu</span>()
+          #endif
+        }
+    }
+}
+
+#<span class="hljs-keyword">if</span> os(macOS)
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">MyCommand</span>:<span class="hljs-title">Commands</span></span>{
+    @<span class="hljs-type">ObservedObject</span> <span class="hljs-keyword">var</span> store:<span class="hljs-type">Store</span>
+    @<span class="hljs-type">CommandsBuilder</span> <span class="hljs-keyword">var</span> body: some <span class="hljs-type">Commands</span>{
+        <span class="hljs-type">CommandMenu</span>(<span class="hljs-string">"Test"</span>){
+            <span class="hljs-type">Section</span>{
+                <span class="hljs-type">Button</span>(action:{test1()}){
+                    <span class="hljs-type">Text</span>(<span class="hljs-string">"test1"</span>).foregroundColor(.black)
+                }
+                .keyboardShortcut(<span class="hljs-string">"1"</span>, modifiers: [.command,.shift])
+                .help(<span class="hljs-string">"help test1"</span>)
+                
+                <span class="hljs-type">Button</span>(<span class="hljs-string">"test2"</span>, action: test2)
+                    .keyboardShortcut(<span class="hljs-string">"2"</span>, modifiers: .command)
+            }
+            
+            <span class="hljs-keyword">switch</span> store.selection{
+            <span class="hljs-keyword">case</span> .one:
+                <span class="hljs-type">Text</span>(<span class="hljs-string">"one"</span>)
+            <span class="hljs-keyword">case</span> .two:
+                <span class="hljs-type">Text</span>(<span class="hljs-string">"two"</span>)
+            <span class="hljs-keyword">case</span> .three:
+                <span class="hljs-type">Text</span>(<span class="hljs-string">"three"</span>)
+            }
+            
+            <span class="hljs-type">Divider</span>().padding(.horizontal, <span class="hljs-number">10</span>)
+            
+            <span class="hljs-type">Button</span>(<span class="hljs-string">"other"</span>){
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">"other command"</span>)
+            }
+            
+            
+            <span class="hljs-type">ForEach</span>(<span class="hljs-number">0</span>..&lt;<span class="hljs-number">3</span>){ i <span class="hljs-keyword">in</span>
+                <span class="hljs-type">Button</span>(<span class="hljs-string">"button\(i)"</span>){
+                    <span class="hljs-built_in">print</span>(<span class="hljs-string">"button\(i)"</span>)
+                }
+            }
+            
+            <span class="hljs-type">MenuButton</span>(<span class="hljs-string">"Switch Selection"</span>){
+                <span class="hljs-type">Button</span>(<span class="hljs-string">"one"</span>){
+                    store.changeState(.one)
+                }
+                <span class="hljs-type">Button</span>(<span class="hljs-string">"two"</span>){
+                    store.changeState(.two)
+                }
+                <span class="hljs-type">Button</span>(<span class="hljs-string">"three"</span>){
+                    store.changeState(.three)
+                }
+            }
+        }
+        
+        <span class="hljs-type">CommandMenu</span>(<span class="hljs-string">"Menu2"</span>){
+            <span class="hljs-type">Button</span>(action: {}){
+                <span class="hljs-type">Text</span>(<span class="hljs-string">"😃Button"</span>)
+            }
+        }
+        
+        <span class="hljs-comment">//向现有的菜单项中增加功能</span>
+        <span class="hljs-type">CommandGroup</span>(after: <span class="hljs-type">CommandGroupPlacement</span>.help, addition: {
+            <span class="hljs-type">Button</span>(<span class="hljs-string">"new help button"</span>){
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">"new help"</span>)
+            }
+        })
+        
+
+    }
+    
+    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">test1</span><span class="hljs-params">()</span></span>{
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">"test1 command"</span>)
+    }
+    
+    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">test2</span><span class="hljs-params">()</span></span>{
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">"test2 command"</span>)
+    }
+}
+#endif
+
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">OtherMenu</span>:<span class="hljs-title">Commands</span></span>{
+    <span class="hljs-keyword">var</span> body: some <span class="hljs-type">Commands</span>{
+        <span class="hljs-type">CommandMenu</span>(<span class="hljs-string">"otherMenu"</span>){
+            <span class="hljs-type">Button</span>(<span class="hljs-string">"abc"</span>){
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">"abc"</span>)
+            }
+        }
+    }
+}
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Store</span>:<span class="hljs-title">ObservableObject</span></span>{
+    <span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">Selection</span></span>{
+        <span class="hljs-keyword">case</span> one,two,three
+    }
+    @<span class="hljs-type">Published</span> <span class="hljs-keyword">var</span> selection:<span class="hljs-type">Selection</span> = .one
+    
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">changeState</span><span class="hljs-params">(<span class="hljs-number">_</span> selection:Selection)</span></span>{
+        <span class="hljs-keyword">self</span>.selection = selection
+    }
+}
+</code></pre><h2>补充（打开新窗口）</h2><p>我尝试在菜单按钮中打开新的View，不过并没有找到原生的SwiftUI式的方法。我更希望@SceneBuilder能够支持逻辑判断，这样可以任意在WindowGroup组织我想显示的View了。</p><pre data-language="swift"><code><span class="hljs-comment">//打开新的View</span>
+<span class="hljs-type">Button</span>(<span class="hljs-string">"other window"</span>){
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">"other command"</span>)
+    <span class="hljs-keyword">let</span> contentView =
+        <span class="hljs-type">VStack</span>{
+            <span class="hljs-type">Text</span>(<span class="hljs-string">"New Window"</span>).padding(.all, <span class="hljs-number">10</span>)
+        }.frame(minWidth: <span class="hljs-number">200</span>, minHeight: <span class="hljs-number">200</span>, alignment: .center)
+    
+
+    <span class="hljs-keyword">var</span> window: <span class="hljs-type">NSWindow!</span>
+    <span class="hljs-comment">// Create the window and set the content view.</span>
+    window = <span class="hljs-type">NSWindow</span>(
+        contentRect: <span class="hljs-type">NSRect</span>(x: <span class="hljs-number">0</span>, y: <span class="hljs-number">0</span>, width: <span class="hljs-number">480</span>, height: <span class="hljs-number">300</span>),
+        styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
+        backing: .buffered, <span class="hljs-keyword">defer</span>: <span class="hljs-literal">false</span>)
+    window.isReleasedWhenClosed = <span class="hljs-literal">false</span>
+    window.center()
+    window.setFrameAutosaveName(<span class="hljs-string">"Main Window"</span>)
+    window.contentView = <span class="hljs-type">NSHostingView</span>(rootView: contentView)
+    window.makeKeyAndOrderFront(<span class="hljs-literal">nil</span>)
+}
+
+<span class="hljs-comment">//打开系统文件选择面板</span>
+<span class="hljs-type">Button</span>(<span class="hljs-string">"open panel"</span>){
+    <span class="hljs-keyword">let</span> panel = <span class="hljs-type">NSOpenPanel</span>()
+          panel.nameFieldLabel = <span class="hljs-string">"open test:"</span>
+          panel.begin { response <span class="hljs-keyword">in</span>
+              <span class="hljs-keyword">if</span> response == <span class="hljs-type">NSApplication</span>.<span class="hljs-type">ModalResponse</span>.<span class="hljs-type">OK</span>, <span class="hljs-keyword">let</span> fileUrl = panel.url {
+                  <span class="hljs-built_in">print</span>(fileUrl)
+              }
+          }
+}
+</code></pre><h2>当前的问题</h2><p>由于目前还处在早期的测试阶段，菜单的实现和功能上还有些不足之处，以下是我现在比较在意的：</p><ul><li>Button文本的缺省颜色和系统的菜单选项颜色不同。需要手工设置</li><li>ShortCut的颜色和系统菜单的颜色不同</li><li>Divider的颜色和系统菜单不同</li><li>MenuButton在多平台开发时，必须添加编译注释。而其他比如创建Commands，.commands等都不需要</li><li>@CommandBuilder和@SceneBuilder目前都不支持判断。因此无法通过程序动态的添加或减少一个菜单列。不过从.command中可以添加多个Commands结构来看，后续应该是有这样的打算的。</li></ul></div></div></article><div class="item-navigator"><table><tr><td class="previous-item"><a href="/posts/focusedBinding">@FocusedBinding 浅谈</a></td><td class="next-item"><a href="/posts/stateobject">SwiftUI 2.0 —— @StateObject 研究</a></td></tr></table></div><footer><p>Copyright &copy; 徐杨 2021 <a href="http://beian.miit.gov.cn">辽ICP备20006550</a></p><p>Generated using <a href="https://github.com/johnsundell/publish">Publish</a></p><ul><li><a href="https://twitter.com/fatbobman">Twitter</a></li><li><a href="https://github.com/fatbobman/">Github</a></li><li><a href="https://www.zhihu.com/people/fatbobman3000">知乎</a></li><li><a href="/feed.rss">RSS feed</a></li></ul><script>
+    // dynamic User by Hux
+    var _gaId = 'UA-165296388-1';
+    var _gaDomain = 'fatbobman.com';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '14e5d60a3ea6276655f9d14c58b1fcd0';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script></footer></div></body></html>

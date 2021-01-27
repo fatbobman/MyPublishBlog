@@ -1,0 +1,120 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"/><meta name="og:site_name" content="Swift笔记本"/><link rel="canonical" href="http://www.fatbobman.com/posts/howto-swiftui-import-export"/><meta name="twitter:url" content="http://www.fatbobman.com/posts/howto-swiftui-import-export"/><meta name="og:url" content="http://www.fatbobman.com/posts/howto-swiftui-import-export"/><title>HowTo —— SwiftUI2.0 文件导入导出 | Swift笔记本</title><meta name="twitter:title" content="HowTo —— SwiftUI2.0 文件导入导出 | Swift笔记本"/><meta name="og:title" content="HowTo —— SwiftUI2.0 文件导入导出 | Swift笔记本"/><meta name="description" content="SwiftUI2.0中新增了原生的文件导入导出功能。需注意的是对于不同目录下文件的导出行为会有不同，不同平台下对于权限的处理也不同。"/><meta name="twitter:description" content="SwiftUI2.0中新增了原生的文件导入导出功能。需注意的是对于不同目录下文件的导出行为会有不同，不同平台下对于权限的处理也不同。"/><meta name="og:description" content="SwiftUI2.0中新增了原生的文件导入导出功能。需注意的是对于不同目录下文件的导出行为会有不同，不同平台下对于权限的处理也不同。"/><meta name="twitter:card" content="summary"/><link rel="stylesheet" href="/styles.css" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="/images/favicon.png" type="image/png"/><link rel="alternate" href="/feed.rss" type="application/rss+xml" title="Subscribe to Swift笔记本"/><meta name="twitter:image" content="http://www.fatbobman.com/images"/><meta name="og:image" content="http://www.fatbobman.com/images"/></head><body class="item-page"><header><div class="wrapper"><div class="logo"><a href="/"><h2>肘子的SWIFT记事本</h2></a></div><nav><ul><li><a href="/">首页</a></li><li><a class="selected" href="/posts">文章</a></li><li><a href="/project">我的APP</a></li><li><a href="/tags">标签</a></li><li><a href="/about">关于</a></li></ul></nav></div></header><div class="wrapper"><article><div><h1>HowTo —— SwiftUI2.0 文件导入导出</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag variant-3"><a href="/tags/howto">HowTo</a></li><li class="tag tagdate">2020-07-28</li></ul><div class="content"><blockquote><p>SwiftUI2.0中新增了原生的文件导入导出功能。需注意的是对于不同目录下文件的导出行为会有不同，不同平台下对于权限的处理也不同。</p></blockquote><h2>更新</h2><p>目前SwiftUI大幅度的修改了导入导出的用法.</p><p>fileImporter fileExporter fileMover 分别对应 导入、导出、移动</p><p>示例如下:</p><pre data-language="swift"><code>  .fileImporter(isPresented: showImport, allowedContentTypes: [.<span class="hljs-built_in">zip</span>], onCompletion: {
+            result <span class="hljs-keyword">in</span>
+            <span class="hljs-keyword">switch</span> result{
+            <span class="hljs-keyword">case</span> .success(<span class="hljs-keyword">let</span> url):
+                <span class="hljs-built_in">print</span>(store.dataHandler.importData(url))
+            <span class="hljs-keyword">case</span> .failure(<span class="hljs-keyword">let</span> error):
+                <span class="hljs-built_in">print</span>(error)
+            }
+            
+            showImport.wrappedValue = <span class="hljs-literal">false</span>
+  })
+</code></pre><p>系统会自动弹出一个sheet,目前的fileImporter有bug,如果使用手势取消sheet,会很难二次呼出.只能使用cancel来取消.</p><p>其实我更喜欢之前的用法,不过现在以前的用法已经被废弃了.</p><hr><h2>原文章</h2><hr><h2>importFiles</h2><pre data-language="swift"><code>@<span class="hljs-type">Environment</span>(\.importFiles) <span class="hljs-keyword">var</span> importFile
+
+importFile.callAsFunction(singleOfType: [.plainText]){ result <span class="hljs-keyword">in</span>}
+</code></pre><h2>exportFiles</h2><pre data-language="swift"><code>@<span class="hljs-type">Environment</span>(\.exportFiles) <span class="hljs-keyword">var</span> exportFile
+
+<span class="hljs-keyword">try</span>! exportFile.callAsFunction(<span class="hljs-type">FileWrapper</span>(url: <span class="hljs-type">URL</span>(fileURLWithPath:filePath), options: .immediate), contentType: .plainText){result <span class="hljs-keyword">in</span>}
+</code></pre><h2>示例代码</h2><pre data-language="swift"><code><span class="hljs-keyword">import</span> SwiftUI
+
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">ExportImportTest</span>: <span class="hljs-title">View</span> </span>{
+    @<span class="hljs-type">Environment</span>(\.importFiles) <span class="hljs-keyword">var</span> importFile
+    @<span class="hljs-type">Environment</span>(\.exportFiles) <span class="hljs-keyword">var</span> exportFile
+    @<span class="hljs-type">State</span> <span class="hljs-keyword">var</span> text:<span class="hljs-type">String</span> = <span class="hljs-string">""</span>
+    <span class="hljs-keyword">var</span> body: some <span class="hljs-type">View</span> {
+        <span class="hljs-type">List</span>{
+            <span class="hljs-type">Button</span>(<span class="hljs-string">"生成文件"</span>){
+                <span class="hljs-keyword">let</span> filePath = <span class="hljs-type">NSTemporaryDirectory</span>() + <span class="hljs-string">"test.txt"</span>
+                <span class="hljs-keyword">let</span> outputText = <span class="hljs-string">"Hello World!"</span>
+                <span class="hljs-keyword">do</span> {
+                    <span class="hljs-keyword">try</span> outputText.write(toFile: filePath, atomically: <span class="hljs-literal">true</span>, encoding: .utf8)
+                    <span class="hljs-built_in">print</span>(<span class="hljs-string">"测试文件已生成"</span>)
+                }
+                <span class="hljs-keyword">catch</span> <span class="hljs-keyword">let</span> error {
+                    <span class="hljs-built_in">print</span>(error)
+                }
+            }
+            
+            <span class="hljs-type">Button</span>(<span class="hljs-string">"导入文件importFiles"</span>){
+                importFile.callAsFunction(singleOfType: [.plainText]){ result <span class="hljs-keyword">in</span>
+                    <span class="hljs-keyword">switch</span> result{
+                    <span class="hljs-keyword">case</span> .success(<span class="hljs-keyword">let</span> url):
+                        <span class="hljs-built_in">print</span>(url)
+                        <span class="hljs-keyword">do</span> {
+                            <span class="hljs-comment">//iOS的沙盒机制保护需要我们申请临时调用url的权限</span>
+                            <span class="hljs-number">_</span> = url.startAccessingSecurityScopedResource()
+                            <span class="hljs-keyword">let</span> fileData = <span class="hljs-keyword">try</span> <span class="hljs-type">Data</span>(contentsOf: url)
+                            <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> text = <span class="hljs-type">String</span>(data:fileData,encoding: .utf8) {
+                                <span class="hljs-keyword">self</span>.text = text
+                                <span class="hljs-built_in">print</span>(text)
+                            }
+                            url.stopAccessingSecurityScopedResource()
+                        }
+                        <span class="hljs-keyword">catch</span> <span class="hljs-keyword">let</span> error {
+                            <span class="hljs-built_in">print</span>(error)
+                        }
+                    <span class="hljs-keyword">case</span> .failure(<span class="hljs-keyword">let</span> error):
+                        <span class="hljs-built_in">print</span>(error)
+                    <span class="hljs-keyword">case</span> .<span class="hljs-keyword">none</span>:
+                        <span class="hljs-keyword">break</span>
+                    }
+                }
+            }
+            
+            <span class="hljs-type">Button</span>(<span class="hljs-string">"导出文件exportFiles"</span>){
+                <span class="hljs-comment">//exportFile.callAsFunction(moving: URL, completion:  ) 移动文件,源文件会被删除</span>
+                <span class="hljs-comment">//move如果出错(比如没有找到源文件,程序会崩溃)</span>
+                <span class="hljs-comment">//从临时目录导出文件无论是否使用move,源文件都会被删除</span>
+                <span class="hljs-comment">//个人比较倾向于FileWrapper的调用方式</span>
+                <span class="hljs-keyword">let</span> filePath = <span class="hljs-type">NSTemporaryDirectory</span>() + <span class="hljs-string">"test.txt"</span>
+                <span class="hljs-keyword">do</span> {
+                    <span class="hljs-keyword">try</span> exportFile.callAsFunction(<span class="hljs-type">FileWrapper</span>(url: <span class="hljs-type">URL</span>(fileURLWithPath:filePath), options: .immediate), contentType: .plainText){result <span class="hljs-keyword">in</span>
+                        <span class="hljs-keyword">switch</span> result{
+                        <span class="hljs-keyword">case</span> .success(<span class="hljs-keyword">let</span> url):
+                            <span class="hljs-built_in">print</span>(<span class="hljs-string">"文件导出成功:\(url)"</span>)
+                        <span class="hljs-keyword">case</span> .failure(<span class="hljs-keyword">let</span> error):
+                            <span class="hljs-built_in">print</span>(error)
+                        <span class="hljs-keyword">case</span> .<span class="hljs-keyword">none</span>:
+                            <span class="hljs-keyword">break</span>
+                        }
+                    }
+                }
+                <span class="hljs-keyword">catch</span> <span class="hljs-keyword">let</span> error {
+                    <span class="hljs-built_in">print</span>(error)
+                }
+            }
+            
+            <span class="hljs-type">Text</span>(<span class="hljs-string">"导入文件内容:\(text)"</span>)
+        }
+    }
+}
+</code></pre><blockquote><p><strong>macOS下需要将项目配置中的 App Sandbox - User Selected File 设置为 读写</strong></p></blockquote><video src="http://cdn.fatbobman.com/howto-swiftui-import-export-video.mp4" controls = "controls">你的浏览器不支持本视频</video><h2>遗憾</h2><p>没有提供原生的activityViewController。</p></div></div></article><div class="item-navigator"><table><tr><td class="previous-item"><a href="/posts/swipeCell">用SwiftUI实现iOS mail程序的侧滑菜单</a></td><td class="next-item"><a href="/posts/howto-swiftui-scrollviewReader">HowTo —— SwiftUI2.0使用ScrollViewReader定位滚动位置</a></td></tr></table></div><footer><p>Copyright &copy; 徐杨 2021 <a href="http://beian.miit.gov.cn">辽ICP备20006550</a></p><p>Generated using <a href="https://github.com/johnsundell/publish">Publish</a></p><ul><li><a href="https://twitter.com/fatbobman">Twitter</a></li><li><a href="https://github.com/fatbobman/">Github</a></li><li><a href="https://www.zhihu.com/people/fatbobman3000">知乎</a></li><li><a href="/feed.rss">RSS feed</a></li></ul><script>
+    // dynamic User by Hux
+    var _gaId = 'UA-165296388-1';
+    var _gaDomain = 'fatbobman.com';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '14e5d60a3ea6276655f9d14c58b1fcd0';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script></footer></div></body></html>
