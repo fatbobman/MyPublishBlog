@@ -714,6 +714,7 @@ article hr {
     text-overflow: ellipsis;
     border:0px solid #0094ff;
     height: 15px;
+    vertical-align: top;
 }
 
 .item-navigator img{
@@ -793,6 +794,12 @@ article hr {
 @media(max-width: 600px) {
     .wrapper {
         padding: 40px 20px;
+    }
+
+    header nav li {
+        display: inline-block;
+        margin-left:3px;
+        margin-right:3px;
     }
 }
 
