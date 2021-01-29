@@ -32,9 +32,9 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                 .class("index"),
                 .header(for: context, selectedSection: FatbobmanBlog.SectionID.index as? Site.SectionID),
                 .wrapper(
-//                    .mainBar(context:context),
+//                    .gridBox(context:context),
                     .sectionheader(context:context),
-                    .recentItemList(for: index, context: context,recentPostNumber:3,words:300),
+                    .recentItemList(for: index, context: context,recentPostNumber:5,words:300),
                     .sectionheader(context:context,showTitle:false)
                 ),
                 .footer(for: context.site)
@@ -107,7 +107,7 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
         )
     }
 
-    //非section的item
+    //Pages,不属于Section
     func makePageHTML(
         for page: Page,
         context: PublishingContext<Site>
@@ -116,7 +116,7 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
             .lang(context.site.language),
             .head(for: page, on: context.site),
             .body(
-                //关于有Bug,需要特殊处理.在publish中是当做page来显示的.
+                //需要特殊处理.在publish中是当做page来显示的.为了nav的选中显示正常
                 .if(
                     page.path == Path("about"),
                     .header(
@@ -146,7 +146,6 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
             .body(
                 .header(for: context, selectedSection: nil),
                 .wrapper(
-//                    .class("all-tag-list"),
                     .h4(
                         .class("tags-title"),
                         .text("全部标签")
@@ -223,9 +222,7 @@ extension Node where Context == HTML.BodyContext {
                 .div(
                     .class("logo"),
                     .a(
-
                         .href("/"),
-//                        .img(.src(.init("images/swift.png")))
                         .h2("肘子的SWIFT记事本")
                     )
                 ),

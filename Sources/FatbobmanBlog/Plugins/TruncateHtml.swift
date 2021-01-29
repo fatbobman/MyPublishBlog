@@ -1,3 +1,51 @@
+//
+//  File.swift
+//  
+//
+//  Created by Yang Xu on 2021/1/26.
+//
+
+import Foundation
+import JavaScriptCore
+import Publish
+import Plot
+
+
+/*
+ 让首页的文章显示出更多的内容(比description更丰富),但又不想显示全部内容
+
+ truncate code written in javascripte from
+ https://github.com/huang47/nodejs-html-truncate/
+ 在模板中可以使用如下的调用方法:
+
+ .raw(
+     item.content.body.htmlDescription(
+         words: 800,
+         keepImageTag: true,
+         ellipsis: "..."
+     )
+ )
+*/
+
+extension Content.Body{
+    /// Get  a  HTML version description.
+    /// - Parameters:
+    ///   - words: how man words want to keep
+    ///   - keepImageTag: whether to keep <img>
+    ///   - ellipsis: ellipsis words
+    /// - Returns: String <HTML Code>
+    func htmlDescription(words:Int,keepImageTag:Bool = true,ellipsis:String = "...") -> String{
+        let jsContent = JSContext()
+        jsContent?.evaluateScript(jsForTruncate)
+        let testFunction = jsContent?.objectForKeyedSubscript("truncate")
+        let result = testFunction?.call(withArguments: [html,words,  ["keepImageTag":keepImageTag,"ellipsis":ellipsis]])
+        return result?.toString() ?? ""
+    }
+}
+
+
+let jsForTruncate =
+    #"""
 /**
  * Truncate HTML string and keep tag safe.
  *
@@ -231,3 +279,5 @@ function truncate(string, maxLength, options) {
 }
 
 module.exports = truncate;
+
+"""#

@@ -5,7 +5,7 @@ description: 关于
 tags: first, article
 ---
 
-![about](/images/about.svg width=400 align=center)
+![about](/images/about.svg)
 
 #### 关于这个网站 ####
 

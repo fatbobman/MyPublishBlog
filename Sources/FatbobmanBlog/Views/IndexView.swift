@@ -20,13 +20,13 @@ extension Node where Context == HTML.BodyContext {
         guard items.count > 1 else {
             return .empty
         }
-        let recentItems = items[0...min(items.count, recentPostNumber)]
+        
         return
             .div(
                 .class("index-list"),
                 .ul(
                     .class("indexul"),
-                    .forEach(recentItems) { item in
+                    .forEach(items.prefix(recentPostNumber)) { item in
                         .li(
                             .class("indexli"),
                             .div(
@@ -66,7 +66,7 @@ extension Node where Context == HTML.BodyContext {
 
     }
 
-    static func mainBar<Site: Website>(context: PublishingContext<Site>) -> Node {
+    static func gridBox<Site: Website>(context: PublishingContext<Site>) -> Node {
         return
             .ul(
                 .class("item-list feature grid compact"),
@@ -157,3 +157,5 @@ extension Node where Context == HTML.ListContext {
         )
     }
 }
+
+

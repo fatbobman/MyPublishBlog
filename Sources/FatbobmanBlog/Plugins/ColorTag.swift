@@ -4,6 +4,10 @@
 //
 //  Created by Zhijin Chen on 2020/01/16.
 //
+// 让tag多色彩的插件是由 Zhijin Chen 创作的
+// 可以在下面的地址获得
+// https://github.com/Ze0nC/ColorfulTagsPublishPlugin
+
 import Foundation
 import Publish
 

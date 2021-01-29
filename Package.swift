@@ -13,7 +13,6 @@ let package = Package(
     dependencies: [
         .package(name: "Publish", url: "https://github.com/johnsundell/publish.git", from: "0.6.0"),
         .package(name:"HighlightJSPublishPlugin", url: "https://github.com/alex-ross/highlightjspublishplugin", from: "1.0.0"),
-        .package(url: "https://github.com/alexaubry/HTMLString", from: "4.0.2"),
     ],
     targets: [
         .target(
@@ -21,7 +20,6 @@ let package = Package(
             dependencies: [
                 "Publish",
                 "HighlightJSPublishPlugin",
-                "HTMLString",
             ]
         )
     ]
