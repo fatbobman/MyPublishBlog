@@ -303,8 +303,6 @@ extension Node where Context == HTML.BodyContext {
                     .text(formatter.string(from: item.date))
                 )
             )
-
-
         )
     }
 
