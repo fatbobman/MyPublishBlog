@@ -35,6 +35,7 @@ try FatbobmanBlog().publish(
         .addModifier(modifier: bilibili), //bilibili视频
         .copyResources(),
         .addMarkdownFiles(),
+        .installPlugin(.test()),
         .setSctionTitle(), //修改section 标题
         .installPlugin(.setDateFormatter()), //设置时间显示格式
         .installPlugin(.countTag()), //计算tag的数量,tag必须在 addMarkDownFiles 之后,否则alltags没有值

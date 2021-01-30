@@ -1,10 +1,130 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content"><channel><title>肘子的Swift记事本</title><description>徐杨的个人博客,Core Data,Swift,Swift UI,Combine,健康笔记,iOS APP,Health Note,HealthNotes</description><link>http://www.fatbobman.com</link><language>zh</language><lastBuildDate>Fri, 29 Jan 2021 14:13:09 +0800</lastBuildDate><pubDate>Fri, 29 Jan 2021 14:13:09 +0800</pubDate><ttl>250</ttl><atom:link href="http://www.fatbobman.com/feed.rss" rel="self" type="application/rss+xml"/><item><guid isPermaLink="true">http://www.fatbobman.com/posts/test</guid><title>Test logo</title><description>Test</description><link>http://www.fatbobman.com/posts/test</link><pubDate>Thu, 12 Aug 2021 14:00:00 +0800</pubDate><content:encoded><![CDATA[<p>bilibili video</p><div style="position: relative; padding: 30% 45% ; margin-top:20px;margin-bottom:20px">
-<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="https://player.bilibili.com/player.html?aid=500064395&page=1&as_wide=1&high_quality=1&danmaku=1" frameborder="no" scrolling="no"></iframe>
-</div><p>code</p><pre data-language="swift"><code>    <span class="hljs-built_in">print</span>(<span class="hljs-string">"hello"</span>)
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>...<span class="hljs-number">100</span>{
-        <span class="hljs-built_in">print</span>(i)
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content"><channel><title>肘子的Swift记事本</title><description>徐杨的个人博客,Core Data,Swift,Swift UI,Combine,健康笔记,iOS APP,Health Note,HealthNotes</description><link>http://www.fatbobman.com</link><language>zh</language><lastBuildDate>Sat, 30 Jan 2021 21:54:40 +0800</lastBuildDate><pubDate>Sat, 30 Jan 2021 21:54:40 +0800</pubDate><ttl>250</ttl><atom:link href="http://www.fatbobman.com/feed.rss" rel="self" type="application/rss+xml"/><item><guid isPermaLink="true">http://www.fatbobman.com/posts/publish-1</guid><title>用Publish创建博客（一）——入门</title><description>Publish是一款专门为Swift开发者打造的静态网站生成器。它使用Swift构建整个网站，并支持主题、插件和其他大量的定制选项。 本文包含Publish的快速使用入门以及基本结构说明。</description><link>http://www.fatbobman.com/posts/publish-1</link><pubDate>Sat, 30 Jan 2021 21:00:00 +0800</pubDate><content:encoded><![CDATA[<blockquote><p><a href="https://github.com/JohnSundell/Publish">Publish</a>是一款专门为Swift开发者打造的静态网站生成器。它使用Swift构建整个网站，并支持主题、插件和其他大量的定制选项。 作为Swift开发者，通过Publish创建站点的开发过程和体验同开发其他程序很类似。</p></blockquote><h2>开篇</h2><h3>开发者John Sundell</h3><p>Publish的开发者John Sundell这些年一直致力于发表关于Swift的高质量文章、播客和视频。他的作品大多都发布在其独立运营的 <a href="https://swiftbysundell.com/">Swift by Sundell</a>上。他开发了<a href="https://github.com/JohnSundell/Publish">Publish</a>用以创建并管理自己的站点。</p><p>在开发Publish的过程中，他还开源了其他大量的基本库，比如<a href="https://github.com/JohnSundell/Ink">Ink</a>（高效的Markdown解析器）、<a href="https://github.com/JohnSundell/Plot">Plot</a>（创建HTML、XML、RSS的DSL）、<a href="https://github.com/JohnSundell/Sweep">Sweep</a>（高效的字符串扫描库）、<a href="https://github.com/JohnSundell/Codextended">Codextended</a>（Codable增强）等。它们不仅一起构建了强大的Publish，并且在各自的领域也是极为出色的开源库。</p><h3>我为什么使用Publish</h3><p>我在一年前恢复自己的这个博客时使用的是<code>Hexo</code>。Hexo在国内有非常好的群众基础，网上有大量优秀的教程，也有非常多的开发者贡献了自己创作的各种主题和插件。尽管Hexo让我相当满意，但由于我主要使用的语言是Swift，且对JavaScript非常不熟悉，因此想要对Hexo做更深入的定制或修改很困难。</p><p>作为开发者（即使是业余的），总希望对自己的项目有更全面的掌控，因此完全由Swift开发的Publish就成为了我的首选。</p><p>随着使用Publish对<a href="https://www.fatbobman.com">肘子的Swift记事本</a>重建过程的深入，我感觉自己做出了正确的选择。Publish让我可以用开发普通app的思路和逻辑来创建站点，高效地完成我想要的各种定制和改动。</p><h3>写本文的原因</h3><p>截至落笔时，Publish已经在Github上获得了3.1K的好评。但网络上对Publish的介绍并不多，尤其欠缺关于模板定制、插件开发方面的资料和交流。在Github上搜索相关的插件和模板的结果数量也非常有限。</p><p>造成上述的情况固然有Publish诞生时间较短、使用量不大，Swift圈子较小等原因，但我认为下面的情况也加剧了这一局面的形成：由于不同于其他的静态网站生成器，在Publish项目中，开发者可以用短小的代码实现各种功能。这种碎片化的代码其实是不利于分享且并不容易被搜索；另外，由于Publish中的模板和网站的功能具体实现绑定的较深，单独分享的模板的利用度也较低。</p><blockquote><p>但Publish的这种特质也恰恰是其吸引人之处。</p></blockquote><p>有鉴于此，我将用三篇文章（入门、如何写模板、如何写插件）完成对Publish的简绍，也希望国内的Swift开发者或爱好者们可以更多的了解和使用这个优秀的工具。</p><p>为了让大家能够快速上手，我已将本站点所用的代码（包括模板、自定义插件等）放置在<a href="https://github.com/fatbobman/PublishThemeForFatbobmanBlog">Github</a>上，方便大家通过代码更快的了解和掌握Publish。</p><h2>快速使用入门</h2><h3>如何安装Publish</h3><p>同大量的其他静态网站生成器一样，Publish提供了CLI。你可以通过命令行快速的完成创建模板、内容更新、远程发布等一系列操作。Publish目前可以运行在Mac和Linux上，由于其代码对操作系统的依存度极低，估计其后也出现在Windows平台上。</p><h4>Mac下通过brew安装</h4><pre data-language="bash"><code><span class="hljs-variable">$brew</span> install publish
+</code></pre><h4>源代码安装</h4><pre data-language="bash"><code><span class="hljs-variable">$git</span> <span class="hljs-built_in">clone</span> https://github.com/JohnSundell/Publish.git
+<span class="hljs-variable">$cd</span> Publish
+<span class="hljs-variable">$make</span>
+</code></pre><h3>创建你的第一个项目</h3><p>让我们来创建一个新的Blog项目</p><pre data-language="bash"><code><span class="hljs-variable">$mkdir</span> myblog
+<span class="hljs-variable">$cd</span> myblog
+<span class="hljs-variable">$publish</span> new
+</code></pre><p>Publish将在myblog目录中创建我们所需的项目模板。它的基本构成大概如下：</p><pre data-language="undefined"><code>
+|-- myblog
+|   |-- Content
+|           |–– posts
+|                 |–– first-post.md
+|                 |–– index.md
+|           |–– index.md
+|   |-- Resources
+|   |-- Sources
+|           |–– Myblog
+|                  |–– main.swift
+</code></pre><ul><li>Content</li></ul><p>在此放入你要在网站发布的文章、页面等使用markdown编写的文件。</p><ul><li>Resources</li></ul><p>项目主题需要的一些资源，比如css，图片等，目前为空。在你进行第一发布后，可以看到它包含了默认的FoundationTheme的styles.css文件。</p><ul><li>Source</li></ul><p>描述网站的代码。在<code>main.swift</code>中定义了网站的基本属性、创建工作流等。</p><h3>编译及运行</h3><p>Swift是编译型语言，因此你的站点的代码在每次修改之后，都需在本机编译并运行才能完成内容的生成工作，好在这一切都只需要一条命令。</p><p>我们让Publish完成上述工作并启动内置的Web Server供我们浏览新创建的项目。</p><pre data-language="bash"><code><span class="hljs-variable">$publish</span> run
+</code></pre><p>第一次运行，Publish会自动从Github上获取所需的其他库，请稍等几分钟。</p><pre data-language="bash"><code>$ publish run
+............
+Publishing Myblog (6 steps)
+[1/6] Copy <span class="hljs-string">'Resources'</span> files
+[2/6] Add Markdown files from <span class="hljs-string">'Content'</span> folder
+[3/6] Sort items
+[4/6] Generate HTML
+[5/6] Generate RSS feed
+[6/6] Generate site map
+✅ Successfully published Myblog
+🌍 Starting web server at http://localhost:8000
+
+Press ENTER to stop the server and <span class="hljs-built_in">exit</span>
+</code></pre><p>现在你就可以用浏览器访问 http://localhost:8000 来访问你的新站点了。</p><p>网站的全部内容都被生成并放置在了<code>Output</code>目录下。你只需要将其中的内容上传到你的服务器，或者通过简单的配置，比如：</p><pre data-language="swift"><code>.unwrap(.gitHub(<span class="hljs-string">"fatbobman/fatbobman.github.io"</span>, useSSH: <span class="hljs-literal">true</span>), <span class="hljs-type">PublishingStep</span>.deploy)
+</code></pre><p>然后使用</p><pre data-language="bash"><code><span class="hljs-variable">$publish</span> deploy
+</code></pre><p>便可将内容发布到你的github.io上（具体配置后面说明）。</p><p>此时你在<code>Content</code> - <code>posts</code>中添加如下文件<code>second-post.md</code></p><pre data-language="undefined"><code>
+---
+date: 2021-01-29 19:58
+description: 我的第二篇文章
+tags: publish,swift 
+---
+# Hello Wolrd
+</code></pre><p>再度执行 <code>publish run</code> 便可以看到新文章已经出现在页面上了。</p><h3>使用我提供的模板快速上手</h3><p>首先要确保已经安装了Publish CLI</p><pre data-language="bash"><code><span class="hljs-variable">$git</span> <span class="hljs-built_in">clone</span> https://github.com/fatbobman/PublishThemeForFatbobmanBlog.git
+<span class="hljs-variable">$cd</span> PublishThemeForFatbobmanBlog
+<span class="hljs-variable">$publish</span> run
+</code></pre><h2>更多关于Publish的知识</h2><p>本节的内容将介绍几个Publish中的概念，对于后面了解模板定制和功能扩展十分重要。</p><h3>Site</h3><p>当你使用Publish来创建项目时，Publish会自动生成一个<code>Swift Package</code>。网站的生成和部署配置都是通过该包完成的，使用的都是原生的且类型安全的Swift代码。</p><p>下面的代码便是使用<code>publish new myblog</code>生成的<code>main.swift</code>（包的入口文件）中内容。</p><pre data-language="swift"><code><span class="hljs-comment">//Site的定义</span>
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Myblog</span>: <span class="hljs-title">Website</span> </span>{
+    <span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">SectionID</span>: <span class="hljs-title">String</span>, <span class="hljs-title">WebsiteSectionID</span> </span>{
+        <span class="hljs-comment">// 添加你需要的Section</span>
+        <span class="hljs-keyword">case</span> posts
     }
-</code></pre><p>hello</p>]]></content:encoded></item><item><guid isPermaLink="true">http://www.fatbobman.com/posts/swiftui-ipad</guid><title>在SwiftUI下对iPad进行适配</title><description>SwiftUI创建初衷之一便是可以高效、可靠的适配多个苹果的硬件平台。在健康笔记2.0开发初始，适配iPad便是我本次的设计目标之一。本文并非教程，只是我在进行本次开发中，对于适配iPad的一些教训和心得。</description><link>http://www.fatbobman.com/posts/swiftui-ipad</link><pubDate>Thu, 29 Oct 2020 12:00:00 +0800</pubDate><content:encoded><![CDATA[<blockquote><p>SwiftUI创建初衷之一便是可以高效、可靠的适配多个苹果的硬件平台。在健康笔记2.0开发初始，适配iPad便是我本次的设计目标之一。本文并非教程，只是我在进行本次开发中，对于适配iPad的一些教训和心得。</p></blockquote><h2>我是谁</h2><p>app中的代码必须能高效、清晰的了解当前设备的状况，时刻搞清楚我是谁，我在哪，在干啥等等。因此在项目开始之初我便做了不少的准备并创建了一系列的代码。</p><p>比如，当前的运行设备：</p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">Device</span> </span>{
+
+    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">ItemMetadata</span>: <span class="hljs-title">WebsiteItemMetadata</span> </span>{
+        <span class="hljs-comment">// 在这里添加任何您想使用的特定站点元数据</span>
+    }
+
+    <span class="hljs-comment">// 你网站的一些配置xn'xi</span>
+    <span class="hljs-keyword">var</span> url = <span class="hljs-type">URL</span>(string: <span class="hljs-string">"https://your-website-url.com"</span>)!
+    <span class="hljs-keyword">var</span> name = <span class="hljs-string">"Myblog"</span>
+    <span class="hljs-keyword">var</span> description = <span class="hljs-string">"A description of Myblog"</span>
+    <span class="hljs-keyword">var</span> language: <span class="hljs-type">Language</span> { .english }
+    <span class="hljs-keyword">var</span> imagePath: <span class="hljs-type">Path?</span> { <span class="hljs-literal">nil</span> }
+}
+<span class="hljs-comment">//可以在模板或插件等位置访问Site中的属性信息</span>
+
+<span class="hljs-comment">// 执行入口。当前使用的是默认的模板，且使用的是Publish预置的生成、导出、发布流程。</span>
+<span class="hljs-comment">// 工作流的定义，更多内容见Step</span>
+<span class="hljs-keyword">try</span> <span class="hljs-type">Myblog</span>().publish(withTheme: .foundation)
+</code></pre><p><code>Site</code>不仅定义了网站项目的基础配置信息，而且定义了网站从生成到发布的工作流程。</p><h3>Section</h3><p>每个Section都会在<code>Output</code>下生成的一个子目录。在main.swift中，通过枚举的方式对<code>Section</code>进行定义。你可以把Section可以作为一组<code>Item</code>（文章）的容器，也可以仅指向某个<code>Page</code>（非Item的自有页面）。 当需要使用<code>Section</code>管理一组文章时，只需要在<code>Content</code>目录下创建同该<code>Section</code>名字相同的子目录即可，具体可以查看范例中<code>Content</code>下的<code>posts</code>和<code>project</code>。</p><p><code>Section</code>的定义</p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">SectionID</span>: <span class="hljs-title">String</span>, <span class="hljs-title">WebsiteSectionID</span> </span>{
+     <span class="hljs-keyword">case</span> posts <span class="hljs-comment">//新创建的项目缺省只有这个，对应content-posts目录</span>
+     <span class="hljs-keyword">case</span> links <span class="hljs-comment">//可以自己添加，将属于该section的文章放置到对应的目录即可</span>
+     <span class="hljs-keyword">case</span> about
+}
+</code></pre><p>在<a href="http://www.fatbobman.com">肘子的Swift记事本</a>中，每个Section同时也对应着上方导航区的一个选项。<code>Section</code>可以有多种用途，在模板定制章节会做更多探讨。</p><h3>Item</h3><p>保存在<code>Content--对应Sectioin</code>目录中的文章。每个<code>Item</code>都对应一个<code>Section</code>，无需特别设置，其保存在哪个<code>Section</code>的目录中，就属于哪个<code>Section</code>。如果该<code>Section</code>不需要作为文件容器，可以直接在<code>Content</code>中创建和<code>Section</code>同名的md文件。我提供的范例模板中，<code>about</code>就是这种形式。</p><h3>Page</h3><p>不归属于任何<code>Section</code>的文章。<code>Page</code>不会出现在<code>Section</code>的<code>item</code>列表中，通常也不会出现在index（首页）列表中。在<code>content</code>下的不属于任何<code>Section</code>的目录中按如下结构添加文件即可创建<code>Page</code>。注意<code>Page</code>的创建路径和访问路径的关系。</p><pre data-language="undefined"><code>
+| content -- 404
+|             | -- index.md
+</code></pre><p>你可以通过访问http://localhost:8000/404/index/查看</p><p>Page为我们提供一种构建自由页面的方法。比如你可以用它来创建不需要显示在列表中的文章，或者像范例模板的演示一样创建404😅。</p><h3>Content</h3><p>在此特指<code>Item</code>、<code>Page</code>中的<code>content</code>属性。作为内容集，其范围包括文本（如标题和描述）、所属标签（tag）、转换后HTML代码、音频、视频等各种元数据。元数据需要在Markdonw文章的头部注明。</p><p><code>Section</code>也有<code>Content</code>，它的内容对应着你在该<code>Section</code>对应的<code>Content</code>子目录中创建的index.md（如果有必要的话）。</p><p>在代码中将来还会碰到另一种<code>Content</code>,确切的说是<code>PublishingContext</code>。里面包含着整个项目的所有信息（Site、Sections、Items、Tags等），通过将它的实例传递给<code>Step</code>或者<code>Plugin</code>来完成修改或配置网站的各种工作。</p><h3>Metadata</h3><p>Markdown文件的元数据，在文章（Markdown）文件的头部做出标识。分为两类，一种是Publish预置的。另一种是通过在<code>Site</code>中<code>ItemMetadata</code>自定义的。</p><pre data-language="undefined"><code>
+---
+date: 2021-01-29 19:58
+description: A description of my first post.
+tags: first, article
+author: fat 
+image: /images/first-post.png
+---
+</code></pre><h4>预设</h4><ul><li><strong>title</strong> 文字标题</li></ul><p>如果没有设置，Publish会直接查找文章正文中第一个Top-level Head<code> # </code>作为标题</p><ul><li><strong>description</strong> 文章简介</li></ul><ul><li><strong>date</strong> 文章创作日期</li></ul><p>如果没设置则直接使用文件的modificationDate</p><ul><li><strong>tags</strong> 文章标签，每篇文章可以设置多个标签，为文章的组织多一个维度</li></ul><ul><li><strong>image</strong> 图片地址 比如可以用来在Item列表中显示一个文章的主题图片（需在模板中定义）</li></ul><ul><li><strong>audio</strong> 音频数据</li></ul><ul><li><strong>video</strong> 视频数据</li></ul><p>音视频的定义过于复杂，如果确实需要可以自行定义。</p><h4>自定义</h4><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">ItemMetadata</span>: <span class="hljs-title">WebsiteItemMetadata</span> </span>{
+    <span class="hljs-comment">// Add any site-specific metadata that you want to use here.</span>
+    <span class="hljs-keyword">var</span> author:<span class="hljs-type">String</span>
+}
+</code></pre><p>如果预置的<code>metadata</code>不足以满足你的需求，可以在<code>ItemMetadata</code>中自行定义。</p><h4>两种metadata的区别</h4><p>预设的<code>metadata</code>在Publish中是作为的属性存在的。</p><pre data-language="swift"><code><span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> content.allItems(sortedBy: \.date){
+         <span class="hljs-built_in">print</span>(item.title)
+ }
+</code></pre><p>自定义的<code>metadata</code>需通过如下方式获取</p><pre data-language="swift"><code><span class="hljs-keyword">let</span> author = (item.metadata <span class="hljs-keyword">as</span>! <span class="hljs-type">Myblog</span>.<span class="hljs-type">ItemMetadata</span>).author
+</code></pre><p>在模板中使用更方便</p><pre data-language="swift"><code>.text(item.metadata.author)
+</code></pre><p>Publish中预设的<code>metadata</code>，<code>Item</code>并不要求必须填写。但是对于自定义的<code>metadata</code>则必须在<code>markdown</code>文档中添加。<code>index.md</code>、 <code>Page</code> 可以没有<code>metadata</code>（无论是否为自定义）</p><h3>Theme</h3><p>Publish使用<a href="https://github.com/fatbobman/PublishThemeForFatbobmanBlog">Plot</a>作为其HTML主题的描述引擎，开发者可以用非常Swift的方式来定义页面。如果使用过DSL类型的开发方式，会感觉非常亲切。比如下面的代码定义了Section List的布局呈现</p><pre data-language="swift"><code><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">makeSectionHTML</span><span class="hljs-params">(
+        <span class="hljs-keyword">for</span> section: Section&lt;Site&gt;,
+        context: PublishingContext&lt;Site&gt;
+    )</span></span> <span class="hljs-keyword">throws</span> -&gt; <span class="hljs-type">HTML</span> {
+        <span class="hljs-type">HTML</span>(
+            .lang(context.site.language), <span class="hljs-comment">//网页语言</span>
+            .head(<span class="hljs-keyword">for</span>: section, on: context.site), <span class="hljs-comment">//头文件，metadata、css等</span>
+            .body(
+                .header(<span class="hljs-keyword">for</span>: context, selectedSection: section.id), <span class="hljs-comment">//网站的上部区域，范例中包括了Logo，以及导航条</span>
+                .wrapper(
+                    .itemList(<span class="hljs-keyword">for</span>: section.items, on: context.site) <span class="hljs-comment">// 文章列表</span>
+                ),
+                .footer(<span class="hljs-keyword">for</span>: context.site) <span class="hljs-comment">//最下方的版权区域</span>
+            )
+        )
+    }
+</code></pre><p>在Theme中定义的布局细节仍需要在css中进行进一步设置。</p><p>上面代码中 <code>header</code>、<code>wrapper</code>等在Plot中都被称作<code>Node</code>,除了使用Publish中预置的大量<code>Node</code>外，我们可以使用自己编写的<code>Node</code>。</p><p>更多关于Theme的内容，将在用Publish创建博客（二）中做详细介绍。</p><h3>Step</h3><p>Publish采用工作流（Pipeline）的方式来明确定义各个环节的操作过程。从文件读取、markdown解析、HTML生成、RSS导出等等。通过<code>publish new</code>生成的<code>main.swift</code>中，尽管只使用了一条语句</p><pre data-language="swift"><code><span class="hljs-keyword">try</span> <span class="hljs-type">Myblog</span>().publish(withTheme: .foundation)
+</code></pre><p>但其背后对应着下面一系列操作步骤：</p><pre data-language="swift"><code>using: [
+      .group(plugins.<span class="hljs-built_in">map</span>(<span class="hljs-type">PublishingStep</span>.installPlugin)),
+      .<span class="hljs-keyword">optional</span>(.copyResources()),
+      .addMarkdownFiles(),
+      .sortItems(by: \.date, order: .descending),
+      .group(additionalSteps),
+      .generateHTML(withTheme: theme, indentation: indentation),
+      .unwrap(rssFeedConfig) { config <span class="hljs-keyword">in</span>
+      .generateRSSFeed(
+               including: rssFeedSections,
+                      config: config
+                    )
+          },
+       .generateSiteMap(indentedBy: indentation),
+       .unwrap(deploymentMethod, <span class="hljs-type">PublishingStep</span>.deploy)
+         ]
+</code></pre><p>在多数的情况下，我们都会显式的将每一个操作步骤标明出来。每个步骤在Publish中被称为<code>Step</code>。Publish已经预置了不少<code>Step</code>供开发者使用。我么也可以将自己创建的<code>Step</code>注入到工作流中合适的位置以实现更多功能。</p><p>每个<code>Step</code>都会被传递一个<code>PublishContent</code>实例，该实例可用于更改网站中的各种元素（包括文件、文件夹、Item、Page等）。关于<code>PublishContent</code>同<code>Content</code>的不同，请见上文。</p><h3>Plugin</h3><pre data-language="swift"><code>.installPlugin(.highlightJS()), <span class="hljs-comment">//语法高亮</span>
+</code></pre><p>上面的代码在Publish工作流中通过名为<code>installPlugin</code>的<code>Step</code>来完成插件<code>highlightJS</code>的安装。</p><p><code>Plugin</code>的开发和<code>Step</code>非常类似，都会获得一个<code>PublishContent</code>实例，并通过其完成相关工作。</p><p>比如说，你可以用<code>Step</code>来完成某些具有副作用的操作；用<code>Plugin</code>来完成类如<code>Modifier</code>（markdown的定制化解析）注入的工作。</p><p>对于自定义代码，从功能角度讲，两者都能实现对方的工作。因此在创建功能扩展时，采用<code>Step</code>还是<code>Plugin</code>取决于个人的偏好。</p><p>关于如何定制<code>Step</code>和<code>Plugin</code>将在用Publish创建博客（三）中做详细说明。</p><h2>Publish适合什么人</h2><p>Publish同当前主流的静态网站生成器相比还略有不足，如社区活跃度较低、开发时间较短、Swift语言用户量较小等。当前Publish较适合符合如下状况的朋友：</p><ul><li>使用Swift语言的开发者或Swift的爱好者</li><li>欠缺Javascripte的经验，或者喜欢Javascripte free的风格</li><li>追求高效、简洁的网页呈现方式</li><li>希望能够完整掌握网站的各个环节并通过自己的双手逐步实现各项功能</li><li>善于尝鲜者</li></ul><h2>Next</h2><p>我将在用Publish创建博客（二）中探讨Theme的开发，在（三）中了解如何通过多种手段扩展Publish的功能。</p><p>如果你已经开始感兴趣，马上在Github上开通你的github.io站点，用Publish一键deploy属于自己的博客吧。</p>]]></content:encoded></item><item><guid isPermaLink="true">http://www.fatbobman.com/posts/swiftui-ipad</guid><title>在SwiftUI下对iPad进行适配</title><description>SwiftUI创建初衷之一便是可以高效、可靠的适配多个苹果的硬件平台。在健康笔记2.0开发初始，适配iPad便是我本次的设计目标之一。本文并非教程，只是我在进行本次开发中，对于适配iPad的一些教训和心得。</description><link>http://www.fatbobman.com/posts/swiftui-ipad</link><pubDate>Thu, 29 Oct 2020 12:00:00 +0800</pubDate><content:encoded><![CDATA[<blockquote><p>SwiftUI创建初衷之一便是可以高效、可靠的适配多个苹果的硬件平台。在健康笔记2.0开发初始，适配iPad便是我本次的设计目标之一。本文并非教程，只是我在进行本次开发中，对于适配iPad的一些教训和心得。</p></blockquote><h2>我是谁</h2><p>app中的代码必须能高效、清晰的了解当前设备的状况，时刻搞清楚我是谁，我在哪，在干啥等等。因此在项目开始之初我便做了不少的准备并创建了一系列的代码。</p><p>比如，当前的运行设备：</p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">Device</span> </span>{
     <span class="hljs-comment">//MARK:当前设备类型 iphone ipad mac</span>
     <span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">Devicetype</span></span>{
         <span class="hljs-keyword">case</span> iphone,ipad,mac
@@ -1397,7 +1517,7 @@ importFile.callAsFunction(singleOfType: [.plainText]){ result <span class="hljs-
         }
     }
 }
-</code></pre><img src="http://cdn.fatbobman.com/howto-swiftui-toolbar-toolbar1.png" alt="截屏2020-07-10 上午9.01.52" width="300"/><h2>多平台适配</h2><p>为了能够更好的适配多平台，placment提供了automatic这样的多平台自适应选项。placement有些值全平台可用，有些只支持部分平台，还有一部分的可在多平台运行不过只能在部分平台正确显示。</p><pre data-language="swift"><code><span class="hljs-keyword">import</span> SwiftUI
+</code></pre><img src="http://cdn.fatbobman.com/howto-swiftui-toolbar-toolbar1.png width=300" alt="截屏2020-07-10 上午9.01.52"/><h2>多平台适配</h2><p>为了能够更好的适配多平台，placment提供了automatic这样的多平台自适应选项。placement有些值全平台可用，有些只支持部分平台，还有一部分的可在多平台运行不过只能在部分平台正确显示。</p><pre data-language="swift"><code><span class="hljs-keyword">import</span> SwiftUI
 
 <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">ToolBarTest</span>: <span class="hljs-title">View</span> </span>{
     @<span class="hljs-type">State</span> <span class="hljs-keyword">var</span> placementSelection:<span class="hljs-type">Placement</span> = .automatic

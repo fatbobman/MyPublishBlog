@@ -150,14 +150,14 @@ h1 {
 h2 {
     margin-bottom: 15px;
     margin-top: 15px;
-    font-size: 1.7em;
+    font-size: 1.8em;
     text-align: left;
 }
 
 h3 {
-    margin-bottom: 10px;
-    margin-top: 10px;
-    font-size: 1.5em;
+    margin-bottom: 13px;
+    margin-top: 13px;
+    font-size: 1.6em;
     text-align: left;
 }
 
@@ -766,7 +766,7 @@ article hr {
 
     article p code{
         /* color:black; */
-        background-color: gray;
+        background-color: black;
     }
 
     .index-list li.indexli{
@@ -785,6 +785,7 @@ article hr {
     .tags-title{
         color: var(--section-header-title-color-dark);
     }
+
 
     .index-list blockquote p{
         background-color: var(--index-list-blockquote-dark);
