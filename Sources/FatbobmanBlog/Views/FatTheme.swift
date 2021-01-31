@@ -343,26 +343,40 @@ extension Node where Context == HTML.BodyContext {
                 )
             ),
             .ul(
+                .class("icon"),
                 .li(
                 .a(
-                    .text("Twitter"),
+//                    .text("Twitter"),
+                    .img(
+                        .class("twitter"),
+                        .src("/images/twitter.svg")
+                    ),
                     .href("https://twitter.com/fatbobman")
                 )),
                 .li(
                     .a(
-                        .text("Github"),
+                        //.text("Github"),
+                        .img(
+                            .src("/images/github.svg")
+                        ),
                         .href("https://github.com/fatbobman/")
                     )
                 ),
                 .li(
                     .a(
-                        .text("知乎"),
+//                        .text("知乎"),
+                        .img(
+                            .src("/images/zhihu.svg")
+                        ),
                         .href("https://www.zhihu.com/people/fatbobman3000")
                     )
                 ),
                 .li(
                 .a(
-                    .text("RSS"),
+//                    .text("RSS"),
+                    .img(
+                        .src("/images/rss.svg")
+                    ),
                     .href("/feed.rss")
                 )
                 )
