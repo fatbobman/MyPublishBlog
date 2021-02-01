@@ -1,4 +1,354 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content"><channel><title>肘子的Swift记事本</title><description>徐杨的个人博客,Core Data,Swift,Swift UI,Combine,健康笔记,iOS APP,Health Note,HealthNotes</description><link>http://www.fatbobman.com</link><language>zh</language><lastBuildDate>Sat, 30 Jan 2021 21:54:40 +0800</lastBuildDate><pubDate>Sat, 30 Jan 2021 21:54:40 +0800</pubDate><ttl>250</ttl><atom:link href="http://www.fatbobman.com/feed.rss" rel="self" type="application/rss+xml"/><item><guid isPermaLink="true">http://www.fatbobman.com/posts/publish-1</guid><title>用Publish创建博客（一）——入门</title><description>Publish是一款专门为Swift开发者打造的静态网站生成器。它使用Swift构建整个网站，并支持主题、插件和其他大量的定制选项。 本文包含Publish的快速使用入门以及基本结构说明。</description><link>http://www.fatbobman.com/posts/publish-1</link><pubDate>Sat, 30 Jan 2021 21:00:00 +0800</pubDate><content:encoded><![CDATA[<blockquote><p><a href="https://github.com/JohnSundell/Publish">Publish</a>是一款专门为Swift开发者打造的静态网站生成器。它使用Swift构建整个网站，并支持主题、插件和其他大量的定制选项。 作为Swift开发者，通过Publish创建站点的开发过程和体验同开发其他程序很类似。</p></blockquote><h2>开篇</h2><h3>开发者John Sundell</h3><p>Publish的开发者John Sundell这些年一直致力于发表关于Swift的高质量文章、播客和视频。他的作品大多都发布在其独立运营的 <a href="https://swiftbysundell.com/">Swift by Sundell</a>上。他开发了<a href="https://github.com/JohnSundell/Publish">Publish</a>用以创建并管理自己的站点。</p><p>在开发Publish的过程中，他还开源了其他大量的基本库，比如<a href="https://github.com/JohnSundell/Ink">Ink</a>（高效的Markdown解析器）、<a href="https://github.com/JohnSundell/Plot">Plot</a>（创建HTML、XML、RSS的DSL）、<a href="https://github.com/JohnSundell/Sweep">Sweep</a>（高效的字符串扫描库）、<a href="https://github.com/JohnSundell/Codextended">Codextended</a>（Codable增强）等。它们不仅一起构建了强大的Publish，并且在各自的领域也是极为出色的开源库。</p><h3>我为什么使用Publish</h3><p>我在一年前恢复自己的这个博客时使用的是<code>Hexo</code>。Hexo在国内有非常好的群众基础，网上有大量优秀的教程，也有非常多的开发者贡献了自己创作的各种主题和插件。尽管Hexo让我相当满意，但由于我主要使用的语言是Swift，且对JavaScript非常不熟悉，因此想要对Hexo做更深入的定制或修改很困难。</p><p>作为开发者（即使是业余的），总希望对自己的项目有更全面的掌控，因此完全由Swift开发的Publish就成为了我的首选。</p><p>随着使用Publish对<a href="https://www.fatbobman.com">肘子的Swift记事本</a>重建过程的深入，我感觉自己做出了正确的选择。Publish让我可以用开发普通app的思路和逻辑来创建站点，高效地完成我想要的各种定制和改动。</p><h3>写本文的原因</h3><p>截至落笔时，Publish已经在Github上获得了3.1K的好评。但网络上对Publish的介绍并不多，尤其欠缺关于模板定制、插件开发方面的资料和交流。在Github上搜索相关的插件和模板的结果数量也非常有限。</p><p>造成上述的情况固然有Publish诞生时间较短、使用量不大，Swift圈子较小等原因，但我认为下面的情况也加剧了这一局面的形成：由于不同于其他的静态网站生成器，在Publish项目中，开发者可以用短小的代码实现各种功能。这种碎片化的代码其实是不利于分享且并不容易被搜索；另外，由于Publish中的模板和网站的功能具体实现绑定的较深，单独分享的模板的利用度也较低。</p><blockquote><p>但Publish的这种特质也恰恰是其吸引人之处。</p></blockquote><p>有鉴于此，我将用三篇文章（入门、如何写模板、如何写插件）完成对Publish的简绍，也希望国内的Swift开发者或爱好者们可以更多的了解和使用这个优秀的工具。</p><p>为了让大家能够快速上手，我已将本站点所用的代码（包括模板、自定义插件等）放置在<a href="https://github.com/fatbobman/PublishThemeForFatbobmanBlog">Github</a>上，方便大家通过代码更快的了解和掌握Publish。</p><h2>快速使用入门</h2><h3>如何安装Publish</h3><p>同大量的其他静态网站生成器一样，Publish提供了CLI。你可以通过命令行快速的完成创建模板、内容更新、远程发布等一系列操作。Publish目前可以运行在Mac和Linux上，由于其代码对操作系统的依存度极低，估计其后也出现在Windows平台上。</p><h4>Mac下通过brew安装</h4><pre data-language="bash"><code><span class="hljs-variable">$brew</span> install publish
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content"><channel><title>肘子的Swift记事本</title><description>徐杨的个人博客,Core Data,Swift,Swift UI,Combine,健康笔记,iOS APP,Health Note,HealthNotes</description><link>http://www.fatbobman.com</link><language>zh</language><lastBuildDate>Mon, 1 Feb 2021 16:26:47 +0800</lastBuildDate><pubDate>Mon, 1 Feb 2021 16:26:47 +0800</pubDate><ttl>250</ttl><atom:link href="http://www.fatbobman.com/feed.rss" rel="self" type="application/rss+xml"/><item><guid isPermaLink="true">http://www.fatbobman.com/posts/publish-2</guid><title>用Publish创建博客（二）——主题开发</title><description>拥用强大的主题系统是一个静态网站生成器能否成功的重要原因之一。Publish采用Plot作为主题的开发工具，让开发者在高效编写主题的同时享受到了Swift的类型安全的优势。本文将从Plot开始介绍，让读者最终学会如何创建Publish主题。</description><link>http://www.fatbobman.com/posts/publish-2</link><pubDate>Mon, 1 Feb 2021 16:20:00 +0800</pubDate><content:encoded><![CDATA[<blockquote><p>拥用强大的主题系统是一个静态网站生成器能否成功的重要原因之一。<a href="https://github.com/JohnSundell/Publish">Publish</a>采用<a href="https://github.com/JohnSundell/Plot">Plot</a>作为主题的开发工具，让开发者在高效编写主题的同时享受到了Swift的类型安全的优势。本文将从Plot开始介绍，让读者最终学会如何创建Publish主题。</p></blockquote><h2>Plot</h2><h3>简介</h3><p>想要开发Publish的<code>Theme</code>主题，就不能不从Plot说起。</p><p>在Swift社区中，有不少优秀的项目致力于使用Swift生成HTML：比如Vapor的<a href="https://github.com/vapor/leaf">Leaf</a>，Point-Free的<a href="https://github.com/pointfreeco/swift-html">swift-html</a>等，Plot也是其中的一员。Plot最初是由<a href="https://swiftbysundell.com">John Sundell</a>编写的并作为Publish套件的一部分，它主要的关注点是Swift的静态网站HTML生成，以及创建建站所需的其他格式文档，包括<code>RSS</code>、<code>podcast</code>、<code>Sitemap</code>。它与Publish紧密集成但同时也作为一个独立项目存在。</p><p>Plot使用了一种被称作<code>Phantom Types</code>的技术，该技术将类型用作编译器的“标记”，从而能够通过泛型约束来强制类型安全。Plot使用了非常轻量级的API设计，最大限度的减少外部参数标签，从而减少渲染文档所需的语法量，使其呈现了具有“类似DSL”的代码表现。</p><h3>使用</h3><h4>基础</h4><ul><li>Node</li></ul><p>是任何Plot文档中所有元素和属性的核心构件。它可以表示元素和属性，以及文本内容和节点组。每个节点都被绑定到一个Context类型，它决定了它可以访问哪种DSL API（例如<code>HTML.BodyContext</code>用于放置在HTML页面<code>&lt;body&gt;</code>中的节点）。</p><ul><li>Element 代表一个元素，可以使用两个独立的标签打开和关闭（比如<code>&lt;body&gt;&lt;/body&gt;</code>），也可以自闭（比如<code>&lt;img/&gt;</code>）。当使用Plot时，你通常不需要与这个类型进行交互，基础Node中会创建它的实例。<ul></ul></li></ul><ul><li>Attribute</li></ul><p>表示附加在元素上的属性，例如<code> &lt;a&gt; </code>元素的 href，或者<code>&lt;img&gt;</code> 元素的 src。你可以通过它的初始化器来构造<code>Attribute</code>值，也可以通过DSL，使用<code>.attribute()</code>命令来构造。<br>* Document和DocumentFormat<br> 给定格式的文档，如HTML、RSS和PodcastFeed。这些都是最高级别的类型，你可以使用Plot的DSL来开始一个文档构建会话。</p><h4>类DSL语法</h4><pre data-language="swift"><code><span class="hljs-keyword">import</span> Plot
+
+<span class="hljs-keyword">let</span> html = <span class="hljs-type">HTML</span>(
+    .head(
+        .title(<span class="hljs-string">"My website"</span>),
+        .stylesheet(<span class="hljs-string">"styles.css"</span>)
+    ),
+    .body(
+        .div(
+            .h1(<span class="hljs-string">"My website"</span>),
+            .p(<span class="hljs-string">"Writing HTML in Swift is pretty great!"</span>)
+        )
+    )
+)
+</code></pre><p>上面的Swift代码将生成下面的HTML代码。代码形式同DSL非常类似，代码污染极少。</p><pre data-language="html"><code><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>My website<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"twitter:title"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"My website"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"og:title"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"My website"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"styles.css"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>My website<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Writing HTML in Swift is pretty great!<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre><p>有些时候，感觉上Plot只是将每个函数直接映射到一个等效的HTML元素上——至少上面的代码看起来如此，但其实Plot还会自动插入许多非常有价值的元数据，在后面我们还将看到Plot更多的功能。</p><h4>属性</h4><p>属性的应用方式也可以和添加子元素的方式完全一样，只需在元素的逗号分隔的内容列表中添加另一个条目即可。例如，下面是如何定义一个同时具有CSS类和URL的锚元素。属性、元素和内联文本都是以同样的方式定义的，这不仅使Plot的API更容易学习，也让输入体验非常流畅--因为你可以在任何上下文中简单地键入<code>.</code>来不断定义新的属性和元素。</p><pre data-language="swift"><code><span class="hljs-keyword">let</span> html = <span class="hljs-type">HTML</span>(
+    .body(
+        .a(<span class="hljs-class">.<span class="hljs-keyword">class</span>("<span class="hljs-title">link</span>"), .<span class="hljs-title">href</span>("<span class="hljs-title">https</span>://<span class="hljs-title">github</span>.<span class="hljs-title">com</span>"), "<span class="hljs-title">GitHub</span>")
+    )
+)</span>
+</code></pre><h4>类型安全</h4><p>Plot大量使用了Swift的高级泛型能力，不仅使采用原生代码编写HTML和XML成为可能，并在这一过程中实现了完全的类型安全。Plot的所有元素和属性都是作为上下文绑定的节点来实现的，这既能强制执行有效的HTML语义，也能让Xcode和其他IDE在使用Plot的DSL编写代码时提供丰富的自动补全信息。</p><pre data-language="swift"><code><span class="hljs-keyword">let</span> html = <span class="hljs-type">HTML</span>(.body(
+    .p(.href(<span class="hljs-string">"https://github.com"</span>))
+))
+</code></pre><p>比如，<code>&lt;herf&gt;</code>是不能直接被放置在<code>&lt;p&gt;</code>中的，当输入<code>.p</code>的时候自动补全是不会提示的（因为上下文不匹配），代码也将在编译时报错。</p><p>这种高度的类型安全既带来了非常愉快的开发体验，也使利用Plot创建的HTML和XML文档在语义上正确的几率大大增加--尤其是与使用原始字符串编写文档和标记相比。</p><p>对于笔者这种HTML知识极度匮乏的人来说，在Plot下我也没有办法写出下面的错误代码（无法通过）。</p><pre data-language="swift"><code><span class="hljs-keyword">let</span> html = <span class="hljs-type">HTML</span>(.body)
+    .ul(.p(<span class="hljs-string">"Not allowed"</span>))
+))
+</code></pre><h4>自定义组件</h4><p>同样的，上下文绑定的Node架构不仅赋予了Plot高度的类型安全，也使得可以定义更多更高层次的组件，然后将这些自定义组件与Plot本身定义的元素灵活地混合使用。</p><p>例如，我们要为网站添加一个advertising组件，该组件绑定在HTML文档的<code>&lt;body&gt;</code>上下文中。</p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">Node</span> <span class="hljs-title">where</span> <span class="hljs-title">Context</span>: <span class="hljs-title">HTML</span>.<span class="hljs-title">BodyContext</span> </span>{ <span class="hljs-comment">//严格的上下文绑定</span>
+    <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">advertising</span><span class="hljs-params">(<span class="hljs-number">_</span> slogan: String,herf:String)</span></span> -&gt; <span class="hljs-type">Self</span> {
+        .div(
+            <span class="hljs-class">.<span class="hljs-keyword">class</span>("<span class="hljs-title">avertising</span>"),
+            .<span class="hljs-title">a</span>(
+                .<span class="hljs-title">href</span>(<span class="hljs-title">herf</span>),
+                .<span class="hljs-title">text</span>(<span class="hljs-title">slogan</span>)
+            )
+        )
+    }
+}</span>
+</code></pre><p>现在可以使用与内置元素完全相同的语法来使用<code>advertising</code>。</p><pre data-language="swift"><code><span class="hljs-keyword">let</span> html = <span class="hljs-type">HTML</span>(
+    .body(
+        .div(
+            <span class="hljs-class">.<span class="hljs-keyword">class</span>("<span class="hljs-title">wrapper</span>"),
+            .<span class="hljs-title">article</span>(
+               .... 
+            ),
+            .<span class="hljs-title">advertising</span>("肘子的<span class="hljs-title">Swift</span>记事本", <span class="hljs-title">herf</span>: "<span class="hljs-title">https</span>://<span class="hljs-title">fatbobman</span>.<span class="hljs-title">com</span>")
+        )
+    ))</span>
+</code></pre><h4>控制流程</h4><p>尽管Plot专注于静态站点生成，但它还是附带了几种控制流机制，可让您使用其DSL的内联逻辑。 目前支持的控制命令有 <code>.if( )</code>，<code>.if(_,else:)</code>，<code>unwrap()</code>以及<code>forEach()</code>。</p><pre data-language="swift"><code><span class="hljs-keyword">var</span> books:[<span class="hljs-type">Book</span>] = getbooks()
+<span class="hljs-keyword">let</span> show:<span class="hljs-type">Bool</span> = <span class="hljs-literal">true</span>
+<span class="hljs-keyword">let</span> html = <span class="hljs-type">HTML</span>(.body(
+    .h2(<span class="hljs-string">"Books"</span>),
+    .<span class="hljs-keyword">if</span>(show,
+    .ul(.forEach(books) { book <span class="hljs-keyword">in</span>
+        .li(<span class="hljs-class">.<span class="hljs-keyword">class</span>("<span class="hljs-title">book</span>-<span class="hljs-title">title</span>"), .<span class="hljs-title">text</span>(<span class="hljs-title">book</span>.<span class="hljs-title">title</span>))
+    })
+    ,<span class="hljs-title">else</span>:
+        .<span class="hljs-title">text</span>("请添加书库")
+    )
+))</span>
+</code></pre><p>使用上述控制流机制，尤其是与自定义组件结合使用时，可以使你以类型安全的方式构建真正灵活的主题，创建所需的文档和HTML页面。</p><h4>自定义元素和属性</h4><p>尽管Plot旨在涵盖与其支持的文档格式相关的尽可能多的标准，但你仍可能会遇到Plot尚不具备的某种形式的元素或属性 。我们可以非常容易的在Plot中自定义元素和属性，这一点在生成XML的时候尤为有用。</p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">Node</span> <span class="hljs-title">where</span> <span class="hljs-title">Context</span> == <span class="hljs-title">XML</span>.<span class="hljs-title">ProductContext</span> </span>{
+    <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">name</span><span class="hljs-params">(<span class="hljs-number">_</span> name: String)</span></span> -&gt; <span class="hljs-type">Self</span> {
+        .element(named: <span class="hljs-string">"name"</span>, text: name)
+    }
+
+    <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">isAvailable</span><span class="hljs-params">(<span class="hljs-number">_</span> bool: Bool)</span></span> -&gt; <span class="hljs-type">Self</span> {
+        .attribute(named: <span class="hljs-string">"available"</span>, value: <span class="hljs-type">String</span>(bool))
+    }
+}
+</code></pre><h4>文档渲染</h4><pre data-language="swift"><code><span class="hljs-keyword">let</span> header = <span class="hljs-type">Node</span>.header(
+    .h1(<span class="hljs-string">"Title"</span>),
+    .span(<span class="hljs-string">"Description"</span>)
+)
+
+<span class="hljs-keyword">let</span> string = header.render()
+</code></pre><p>还可以对输出缩排进行控制</p><pre data-language="swift"><code>html.render(indentedBy: .tabs(<span class="hljs-number">4</span>))
+</code></pre><h4>其他支持</h4><p>Plot还支持生成RSS feeds，podcasting，site maps等。Publish中对应的部分同样由Plot实现。</p><h2>Publish 主题</h2><p>阅读下面内容前，最好已阅读<a href="https://www.fatbobman.com/posts/publish-1/">用Publish创建博客（一）——入门</a>，。</p><p>文中提到范例模板可以在<a href="https://github.com/fatbobman/PublishThemeForFatbobmanBlog">GIthub</a>处下载。</p><h3>自定义主题</h3><p>在Publish中，主题需要遵循<code>HTMLFactory</code>协议。如下代码可以定义一个新主题：</p><pre data-language="swift"><code><span class="hljs-keyword">import</span> Foundation
+<span class="hljs-keyword">import</span> Plot
+<span class="hljs-keyword">import</span> Publish
+
+<span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">Theme</span> </span>{ 
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">var</span> myTheme: <span class="hljs-type">Self</span> {
+        <span class="hljs-type">Theme</span>(
+            htmlFactory: <span class="hljs-type">MyThemeHTMLFactory</span>&lt;<span class="hljs-type">MyWebsite</span>&gt;(),
+            resourcePaths: [<span class="hljs-string">"Resources/MyTheme/styles.css"</span>]
+        )
+    }
+}
+
+<span class="hljs-keyword">private</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">MyThemeHTMLFactory</span>&lt;<span class="hljs-title">Site</span>: <span class="hljs-title">Website</span>&gt;: <span class="hljs-title">HTMLFactory</span> </span>{
+        <span class="hljs-comment">// ... 具体的页面,需实现六个方法</span>
+}
+
+<span class="hljs-keyword">private</span> <span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">Node</span> <span class="hljs-title">where</span> <span class="hljs-title">Context</span> == <span class="hljs-title">HTML</span>.<span class="hljs-title">BodyContext</span> </span>{
+        <span class="hljs-comment">// Node 的定义，比如header，footer等</span>
+}
+</code></pre><p>在pipeline中使用如下代码指定主题</p><pre data-language="swift"><code>.generateHTML(withTheme:.myTheme ), <span class="hljs-comment">//使用自定义主题      </span>
+</code></pre><p>HTMLFactory协议要求我们必须全部实现六个方法，对应着六种页面，分别是：</p><ul><li><code>makeIndexHTML(for index: Index,context: PublishingContext&lt;Site&gt;)</code></li></ul><p>网站首页，通常是最近文章、热点推荐等等，默认主题中是显式全部<code>Item</code>列表</p><ul><li><code>makeSectionHTML(for section: Section&lt;Site&gt;,context: PublishingContext&lt;Site&gt;)</code></li></ul><p>当<code>Section</code>作为<code>Item</code>容器时的页面。通常显示隶属于该<code>Section</code>的<code>Item</code>列表</p><ul><li><code>makeItemHTML(for item: Item&lt;Site&gt;, context: PublishingContext&lt;Site&gt;)</code></li></ul><p>单篇文章（<code>Item</code>）的显示页面</p><ul><li><code>makePageHTML(for page: Page,context: PublishingContext&lt;Site&gt;)</code></li></ul><p>自由文章（<code>Page</code>）的显示页面，当Section不作为容器时，它的index.md也是作为<code>Page</code>渲染的</p><ul><li><code>makeTagListHTML(for page: TagListPage,context: PublishingContext&lt;Site&gt;)</code></li></ul><p><code>Tag</code>列表的页面。通常会在此显示站点文章中出现过的全部<code>Tag</code></p><ul><li><code>makeTagDetailsHTML(for page: TagDetailsPage,context: PublishingContext&lt;Site&gt;)</code></li></ul><p>通常为拥有该<code>Tag</code>的<code>Item</code>列表</p><p>我们在MyThemeHTMLFactory每个方法中，按照上文介绍的Plot表述方式进行编写即可。比如：</p><pre data-language="swift"><code><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">makePageHTML</span><span class="hljs-params">(<span class="hljs-keyword">for</span> page: Page,
+                 context: PublishingContext&lt;Site&gt;)</span></span> <span class="hljs-keyword">throws</span> -&gt; <span class="hljs-type">HTML</span> {
+    <span class="hljs-type">HTML</span>(
+        .lang(context.site.language),
+        .head(<span class="hljs-keyword">for</span>: page, on: context.site),
+        .body(
+            .header(<span class="hljs-keyword">for</span>: context, selectedSection: <span class="hljs-literal">nil</span>), 
+            .wrapper(.contentBody(page.body)),
+            .footer(<span class="hljs-keyword">for</span>: context.site)
+            )
+        )
+    }
+</code></pre><p><code>header</code>、<code>wrapper</code>、<code>footer</code>都是自定义的<code>Node</code></p><h3>生成机制</h3><p>Publish采用工作流机制，通过<a href="https://github.com/fatbobman/PublishThemeForFatbobmanBlog">范例代码</a>来了解一下数据是如何在<code>Pipeline</code>中操作的。</p><pre data-language="swift"><code><span class="hljs-keyword">try</span> <span class="hljs-type">FatbobmanBlog</span>().publish(
+    using: [
+        .installPlugin(.highlightJS()), <span class="hljs-comment">//添加语法高亮插件。此插件在markdown解析时被调用</span>
+        .copyResources(), <span class="hljs-comment">//拷贝网站所需资源，Resource目录下的文件</span>
+        .addMarkdownFiles(), 
+        <span class="hljs-comment">/*逐个读取Content下的markdown文件，对markdown文件进行解析，
+        1：解析metadata，将元数据保存在对应的 Item
+        2：对文章中的markdown语段逐个解析并转换成HTML数据
+        3：当碰到 highlightJS 要求处理的(codeBlocks)文字块时调用该插件
+        4：所有的处理好的内容保存到 PublishingContext 中
+        */</span>
+        .setSctionTitle(), <span class="hljs-comment">//修改section 的显示标题</span>
+        .installPlugin(.setDateFormatter()), <span class="hljs-comment">//为HTML输出设置时间显示格式</span>
+        .installPlugin(.countTag()), <span class="hljs-comment">//通过注入，为tag增加tagCount属性，计算每个tag下有几篇文章</span>
+        .installPlugin(.colorfulTags(defaultClass: <span class="hljs-string">"tag"</span>, variantPrefix: <span class="hljs-string">"variant"</span>, numberOfVariants: <span class="hljs-number">8</span>)), <span class="hljs-comment">//通过注入，为每tag增加colorfiedClass属性，返回css文件中对应的色彩定义</span>
+        .sortItems(by: \.date, order: .descending), <span class="hljs-comment">//所有文章降序</span>
+        .generateHTML(withTheme: .fatTheme), <span class="hljs-comment">//指定自定义的主题,并在Output目录中生成HTML文件</span>
+        <span class="hljs-comment">/*
+        使用主题模板，逐个调用页面生成方法。
+        根据每个方法要求的参数不同，传递对应的 PublishingContext，Item，Scetion等
+        主题方法根据数据，使用Plot渲染成HTML
+        比如makePageHTML中，显示page文章的内容便是通过 page.body 来获取的
+        */</span>
+        .generateRSSFeed(
+            including: [.posts,.project],
+            itemPredicate: <span class="hljs-literal">nil</span>
+        ), <span class="hljs-comment">//使用Plot生成RSS</span>
+        .generateSiteMap(), <span class="hljs-comment">//使用Plot生成Sitemap</span>
+    ]
+)
+</code></pre><p>从上面的代码可以看出，使用主题模板生成HTML并保存是在整个Pipeline的末段，通常情况下，当主题方法调用给定的数据时，数据已经是准备好的。不过由于Publish的主题并非描述文件而是标准的程序代码，我们仍可以在最终<code>render</code>前，对数据再处理。</p><p>尽管Publish目前提供的页面种类并不多，但即使我们仅使用上述的种类仍可对不同的内容作出完全不同渲染结果。比如：</p><pre data-language="swift"><code><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">makeSectionHTML</span><span class="hljs-params">(<span class="hljs-keyword">for</span> section: Section&lt;Site&gt;,
+                         context: PublishingContext&lt;Site&gt;)</span></span> <span class="hljs-keyword">throws</span> -&gt; <span class="hljs-type">HTML</span> {
+    <span class="hljs-comment">//如果section是posts，则显示完全不同的页面</span>
+    <span class="hljs-keyword">if</span> section.id <span class="hljs-keyword">as</span>! <span class="hljs-type">Myblog</span>.<span class="hljs-type">SectionID</span> == .posts {
+            <span class="hljs-keyword">return</span> <span class="hljs-type">HTML</span>(
+                postSectionList(<span class="hljs-keyword">for</span> section: <span class="hljs-type">Section</span>&lt;<span class="hljs-type">Site</span>&gt;,
+                context: <span class="hljs-type">PublishingContext</span>&lt;<span class="hljs-type">Site</span>&gt;)
+            )
+    }
+    <span class="hljs-keyword">else</span> {
+           <span class="hljs-keyword">return</span> <span class="hljs-type">HTML</span>(
+                otherSctionList(<span class="hljs-keyword">for</span> section: <span class="hljs-type">Section</span>&lt;<span class="hljs-type">Site</span>&gt;,
+                context: <span class="hljs-type">PublishingContext</span>&lt;<span class="hljs-type">Site</span>&gt;)
+            )
+       }
+   }
+</code></pre><p>也可以使用Plot提供的控制命令来完成，下面的代码和上面是等效的</p><pre data-language="swift"><code><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">makeSectionHTML</span><span class="hljs-params">(<span class="hljs-keyword">for</span> section: Section&lt;Site&gt;,
+                         context: PublishingContext&lt;Site&gt;)</span></span> <span class="hljs-keyword">throws</span> -&gt; <span class="hljs-type">HTML</span> {
+      <span class="hljs-type">HTML</span>(
+        .<span class="hljs-keyword">if</span>(section.id <span class="hljs-keyword">as</span>! <span class="hljs-type">Myblog</span>.<span class="hljs-type">SectionID</span>  == .posts,
+              postSectionList(<span class="hljs-keyword">for</span> section: <span class="hljs-type">Section</span>&lt;<span class="hljs-type">Site</span>&gt;,
+                context: <span class="hljs-type">PublishingContext</span>&lt;<span class="hljs-type">Site</span>&gt;)
+            ,
+            <span class="hljs-keyword">else</span>:
+              otherSctionList(<span class="hljs-keyword">for</span> section: <span class="hljs-type">Section</span>&lt;<span class="hljs-type">Site</span>&gt;,
+                context: <span class="hljs-type">PublishingContext</span>&lt;<span class="hljs-type">Site</span>&gt;)
+           )
+        )
+    }
+</code></pre><p>总之在Publish中用着写普通程序的思路来处理网页即可，<strong>主题不仅仅是描述文件</strong>。</p><h3>和CSS的配合</h3><p>主题代码定义了对应页面的基本布局和逻辑，更具体的布局、尺寸、色彩、效果等都要在<code>CSS</code>文件中进行设定。<code>CSS</code>文件在定义主题时指定（可以有多个）。</p><p>如果你是一个有经验的CSS使用者，通常没有什么难度。但笔者几乎完全不会使用CSS，在此次用Publish重建Blog的过程中，在CSS上花费的时间最长、精力最多。</p><blockquote><p>请帮忙推荐一个能够整理css的工具或者vscode 插件，由于我在css上没有经验所以代码写的很乱，是否有可能将同一层级或类似的tag class自动调整到一起，便于查找。</p></blockquote><h3>实战</h3><p>接下来通过修改两个主题方法来体验一下的开发过程。</p><h4>准备工作</h4><p>一开始完全重建所有的主题代码是不太现实的，所以我推荐先从Publish自带的默认主题<code>foundation</code>入手。</p><p>完成<a href="https://www.fatbobman.com/posts/publish-1/">Publish创建博客（一）——入门</a>中的安装工作</p><p>修改<code>main.swift</code></p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">SectionID</span>: <span class="hljs-title">String</span>, <span class="hljs-title">WebsiteSectionID</span> </span>{
+        <span class="hljs-comment">// Add the sections that you want your website to contain here:</span>
+        <span class="hljs-keyword">case</span> posts
+        <span class="hljs-keyword">case</span> about <span class="hljs-comment">//添加一项，为了演示上方导航条</span>
+    }
+</code></pre><pre data-language="bash"><code><span class="hljs-variable">$http</span>://cdn myblog
+<span class="hljs-variable">$publish</span> run
+</code></pre><p>访问<code>http://localhost:8000</code>，页面差不多这样</p><img src="http://cdn.fatbobman.com/publis-2-defaultIndex.png" alt="publis-2-defaultIndex"/><p>在<code>Resource</code>目录中创建<code>MyTheme</code>目录。在XCode中将Publish库中的两个文件<code>styles.css</code>、<code>Theme+Foundation.swift</code>拷贝到 <code>MyTheme</code>目录，也可以在MyTheme目录中新创建文件后粘贴代码。</p><pre data-language="undefined"><code>
+Publish--Resources--FoundatioinTheme-- styles.css
+</code></pre><pre data-language="bash"><code>Publish--Sources--Publish--API-- Theme+Foundation.swift
+</code></pre><p>将 <code>Theme+Foundation.swift</code> 改名为 <code>MyTheme.swift</code>,并编辑内容</p><p>将：</p><pre data-language="swift"><code><span class="hljs-keyword">private</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">FoundationHTMLFactory</span>&lt;<span class="hljs-title">Site</span>: <span class="hljs-title">Website</span>&gt;: <span class="hljs-title">HTMLFactory</span> </span>{
+</code></pre><p>改成：</p><pre data-language="swift"><code><span class="hljs-keyword">private</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">MyThemeHTMLFactory</span>&lt;<span class="hljs-title">Site</span>: <span class="hljs-title">Website</span>&gt;: <span class="hljs-title">HTMLFactory</span> </span>{
+</code></pre><p>将</p><pre data-language="swift"><code> <span class="hljs-keyword">static</span> <span class="hljs-keyword">var</span> foundation: <span class="hljs-type">Self</span> {  
+        <span class="hljs-type">Theme</span>(
+            htmlFactory: <span class="hljs-type">FoundationHTMLFactory</span>(),
+            resourcePaths: [<span class="hljs-string">"Resources/FoundationTheme/styles.css"</span>]
+        )
+ }
+</code></pre><p>改为</p><pre data-language="swift"><code><span class="hljs-keyword">static</span> <span class="hljs-keyword">var</span> myTheme: <span class="hljs-type">Self</span> {  
+        <span class="hljs-type">Theme</span>(
+            htmlFactory: <span class="hljs-type">MyThemeHTMLFactory</span>(),
+            resourcePaths: [<span class="hljs-string">"Resources/MyTheme/styles.css"</span>]
+        )
+}
+</code></pre><p>在<code>main.swift</code>中</p><p>将</p><pre data-language="swift"><code><span class="hljs-keyword">try</span> <span class="hljs-type">Myblog</span>().publish(withTheme: .foundation)
+</code></pre><p>改为</p><pre data-language="swift"><code><span class="hljs-keyword">try</span> <span class="hljs-type">Myblog</span>().publish(withTheme: .myTheme)
+</code></pre><p>随便在 <code>Content</code>的<code>posts</code>目录下创建几个<code>.md</code>文件。比如</p><pre data-language="markdown"><code>---
+date: 2021-01-30 19:58
+description: 第二篇
+tags: second, article
+<span class="hljs-section">title: My second post
+---</span>
+
+hello world
+...
+</code></pre><p>至此准备完毕，页面看起来差不多是这个样子，创建当前显示页面的是<code>makeIndexHTML</code>方法。</p><img src="http://cdn.fatbobman.com/publish-2-defaultindex2.png" alt="publish-2-defaultindex2"/><h4>例子1：在makeIndexHTML中改变Item Row的显示内容</h4><p>当前的makeIndexHTML的代码如下：</p><pre data-language="swift"><code><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">makeIndexHTML</span><span class="hljs-params">(<span class="hljs-keyword">for</span> index: Index,
+                       context: PublishingContext&lt;Site&gt;)</span></span> <span class="hljs-keyword">throws</span> -&gt; <span class="hljs-type">HTML</span> {
+        <span class="hljs-type">HTML</span>(
+            .lang(context.site.language),  <span class="hljs-comment">//&lt;html lang="en"&gt; language 可以在main.swift中修改</span>
+            .head(<span class="hljs-keyword">for</span>: index, on: context.site), <span class="hljs-comment">//&lt;head&gt;内容，title及meta</span>
+            .body(
+                .header(<span class="hljs-keyword">for</span>: context, selectedSection: <span class="hljs-literal">nil</span>), <span class="hljs-comment">//上部网站名称Site.name及nav导航 SectionID</span>
+                .wrapper(
+                    .h1(.text(index.title)), <span class="hljs-comment">// Welcome to MyBlog! 对应Content--index.md的title</span>
+                    .p(
+                        <span class="hljs-class">.<span class="hljs-keyword">class</span>("<span class="hljs-title">description</span>"),  //在<span class="hljs-title">styels</span>.<span class="hljs-title">css</span> 对应 .<span class="hljs-title">description</span>
+                        .<span class="hljs-title">text</span>(<span class="hljs-title">context</span>.<span class="hljs-title">site</span>.<span class="hljs-title">description</span>) //对应<span class="hljs-title">main</span>.<span class="hljs-title">swift</span>中的<span class="hljs-title">Site</span>.<span class="hljs-title">description</span>
+                    ),
+                    .<span class="hljs-title">h2</span>("<span class="hljs-title">Latest</span> <span class="hljs-title">content</span>"),
+                    .<span class="hljs-title">itemList</span>(  //自定义<span class="hljs-title">Node</span>，显示<span class="hljs-title">Item</span>列表，目前<span class="hljs-title">makeIndex</span> <span class="hljs-title">makeSection</span> <span class="hljs-title">makeTagList</span>都使用这一个
+                        <span class="hljs-title">for</span>: <span class="hljs-title">context</span>.<span class="hljs-title">allItems</span>(
+                            <span class="hljs-title">sortedBy</span>: \.<span class="hljs-title">date</span>, //按创建时间降序，根据 <span class="hljs-title">metatdata</span> <span class="hljs-title">date</span>
+                            <span class="hljs-title">order</span>: .<span class="hljs-title">descending</span>
+                        ),
+                        <span class="hljs-title">on</span>: <span class="hljs-title">context</span>.<span class="hljs-title">site</span>
+                    )
+                ),
+                .<span class="hljs-title">footer</span>(<span class="hljs-title">for</span>: <span class="hljs-title">context</span>.<span class="hljs-title">site</span>) //自定义<span class="hljs-title">Node</span>，显示下部版权信息
+            )
+        )
+    }</span>
+</code></pre><p>在<code>makeIndexHTML</code>中做如下修改</p><pre data-language="swift"><code>.itemList(
+</code></pre><p>改为</p><pre data-language="swift"><code>.indexItemList(
+</code></pre><p>在后添加<code>.h2("Latesht content")</code>，变成如下代码</p><pre data-language="swift"><code>       .h2(<span class="hljs-string">"Latesht content"</span>),
+       .unwrap(context.sections.first{ $<span class="hljs-number">0</span>.id <span class="hljs-keyword">as</span>! <span class="hljs-type">Myblog</span>.<span class="hljs-type">SectionID</span> == .posts}){ posts <span class="hljs-keyword">in</span>
+              .a(
+                  .href(posts.path),
+                  .text(<span class="hljs-string">"显示全部文章"</span>)
+                 )
+              },
+</code></pre><p>在 <code>extension Node where Context == HTML.BodyContext</code>中进行添加：</p><pre data-language="swift"><code>    <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">indexItemList</span>&lt;T: Website&gt;<span class="hljs-params">(<span class="hljs-keyword">for</span> items: [Item&lt;T&gt;], on site: T)</span></span> -&gt; <span class="hljs-type">Node</span> {
+        <span class="hljs-keyword">let</span> limit:<span class="hljs-type">Int</span> = <span class="hljs-number">2</span> <span class="hljs-comment">//设置index页面最多显示的Item条目数</span>
+        <span class="hljs-keyword">let</span> items = items[<span class="hljs-number">0</span>...<span class="hljs-built_in">min</span>((limit - <span class="hljs-number">1</span>),items.<span class="hljs-built_in">count</span>)]
+        <span class="hljs-keyword">return</span> .ul(
+            <span class="hljs-class">.<span class="hljs-keyword">class</span>("<span class="hljs-title">item</span>-<span class="hljs-title">list</span>"),
+            .<span class="hljs-title">forEach</span>(<span class="hljs-title">items</span>) </span>{ item <span class="hljs-keyword">in</span>
+                .li(.article(
+                    .h1(.a(
+                        .href(item.path),
+                        .text(item.title)
+                    )),
+                    .tagList(<span class="hljs-keyword">for</span>: item, on: site),
+                    .p(.text(item.description)),
+                    .p(item.content.body.node) <span class="hljs-comment">//添加显示Item全文 </span>
+                ))
+            }
+        )
+    }
+</code></pre><p>现在Index变成如下状态：</p><img src="http://cdn.fatbobman.com/publish-2-index-finish.png" alt="image-20210201135111053"/><h4>例子2：为makeItemHTML添加临近文章的导航</h4><p>本例，我们将在makeItemHTML上添加文章导航功能，类似效果如下：</p><img src="http://cdn.fatbobman.com/publish-2-item-navigatore-demo.png" alt="image-20210201105104706"/><p>点击进入任意Item（文章）</p><pre data-language="swift"><code>    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">makeItemHTML</span><span class="hljs-params">(<span class="hljs-keyword">for</span> item: Item&lt;Site&gt;,
+                      context: PublishingContext&lt;Site&gt;)</span></span> <span class="hljs-keyword">throws</span> -&gt; <span class="hljs-type">HTML</span> {
+        <span class="hljs-type">HTML</span>(
+            .lang(context.site.language),
+            .head(<span class="hljs-keyword">for</span>: item, on: context.site),
+            .body(
+                <span class="hljs-class">.<span class="hljs-keyword">class</span>("<span class="hljs-title">item</span>-<span class="hljs-title">page</span>"),
+                .<span class="hljs-title">header</span>(<span class="hljs-title">for</span>: <span class="hljs-title">context</span>, <span class="hljs-title">selectedSection</span>: <span class="hljs-title">item</span>.<span class="hljs-title">sectionID</span>),
+                .<span class="hljs-title">wrapper</span>(
+                    .<span class="hljs-title">article</span>( //&lt;<span class="hljs-title">article</span>&gt;标签
+                        .<span class="hljs-title">div</span>(
+                            .<span class="hljs-title">class</span>("<span class="hljs-title">content</span>"), //<span class="hljs-title">css</span> .<span class="hljs-title">content</span>
+                            .<span class="hljs-title">contentBody</span>(<span class="hljs-title">item</span>.<span class="hljs-title">body</span>) //.<span class="hljs-title">raw</span>(<span class="hljs-title">body</span>.<span class="hljs-title">html</span>) 显示<span class="hljs-title">item</span>.<span class="hljs-title">body</span>.<span class="hljs-title">html</span> 文章正文
+                        ),
+                        .<span class="hljs-title">span</span>("<span class="hljs-title">Tagged</span> <span class="hljs-title">with</span>: "), 
+                        .<span class="hljs-title">tagList</span>(<span class="hljs-title">for</span>: <span class="hljs-title">item</span>, <span class="hljs-title">on</span>: <span class="hljs-title">context</span>.<span class="hljs-title">site</span>) //下方<span class="hljs-title">tag</span>列表，<span class="hljs-title">forEach</span>(<span class="hljs-title">item</span>.<span class="hljs-title">tags</span>) 
+                    )
+                ),
+                .<span class="hljs-title">footer</span>(<span class="hljs-title">for</span>: <span class="hljs-title">context</span>.<span class="hljs-title">site</span>)
+            )
+        )
+    }</span>
+</code></pre><p>在代码<code>HTML(</code>前添加如下内容：</p><pre data-language="swift"><code>        <span class="hljs-keyword">var</span> previous:<span class="hljs-type">Item</span>&lt;<span class="hljs-type">Site</span>&gt;? = <span class="hljs-literal">nil</span> <span class="hljs-comment">//前一篇Item</span>
+        <span class="hljs-keyword">var</span> next:<span class="hljs-type">Item</span>&lt;<span class="hljs-type">Site</span>&gt;? = <span class="hljs-literal">nil</span> <span class="hljs-comment">//下一篇Item</span>
+
+        <span class="hljs-keyword">let</span> items = context.allItems(sortedBy: \.date,order: .descending) <span class="hljs-comment">//获取全部Item</span>
+        <span class="hljs-comment">/*
+        我们当前是获取全部的Item，可以在获取时对范围进行限定,比如：
+        let items = context.allItems(sortedBy: \.date,order: .descending)
+                           .filter{$0.tags.contains(Tag("article"))}
+        */</span>
+        <span class="hljs-comment">//当前Item的index</span>
+        <span class="hljs-keyword">guard</span> <span class="hljs-keyword">let</span> index = items.firstIndex(<span class="hljs-keyword">where</span>: {$<span class="hljs-number">0</span> == item}) <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-type">HTML</span>()
+        }
+
+        <span class="hljs-keyword">if</span> index &gt; <span class="hljs-number">0</span> {
+            previous = items[index - <span class="hljs-number">1</span>]
+        }
+
+        <span class="hljs-keyword">if</span> index &lt; (items.<span class="hljs-built_in">count</span> - <span class="hljs-number">1</span>) {
+            next = items[index + <span class="hljs-number">1</span>]
+        }
+
+        <span class="hljs-keyword">return</span> <span class="hljs-type">HTML</span>( 
+          ....
+</code></pre><p>在<code>.footer</code>前添加</p><pre data-language="swift"><code>.itemNavigator(previousItem:previous,nextItem:next),
+.footer(<span class="hljs-keyword">for</span>: context.site)
+</code></pre><p>在<code>extension Node where Context == HTML.BodyContext</code>中添加自定义Node<code>itemNavigator</code></p><pre data-language="swift"><code>   <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">itemNavigator</span>&lt;Site: Website&gt;<span class="hljs-params">(previousItem: Item&lt;Site&gt;?, nextItem: Item&lt;Site&gt;?)</span></span> -&gt; <span class="hljs-type">Node</span>{
+        <span class="hljs-keyword">return</span>
+            .div(
+                <span class="hljs-class">.<span class="hljs-keyword">class</span>("<span class="hljs-title">item</span>-<span class="hljs-title">navigator</span>"),
+                .<span class="hljs-title">table</span>(
+                    .<span class="hljs-title">tr</span>(
+                        .<span class="hljs-title">td</span>(
+                            .<span class="hljs-title">unwrap</span>(<span class="hljs-title">previousItem</span>)</span>{ item <span class="hljs-keyword">in</span>
+                                .a(
+                                    .href(item.path),
+                                    .text(item.title)
+                                )
+                            }
+                        ),
+                        .td(
+                            .unwrap(nextItem){ item <span class="hljs-keyword">in</span>
+                                .a(
+                                    .href(item.path),
+                                    .text(item.title)
+                                )
+                            }
+                        )
+                    )
+                )
+            )
+    }
+</code></pre><p>在<code>styles.css</code>中添加</p><pre data-language="css"><code><span class="hljs-selector-class">.item-navigator</span> <span class="hljs-selector-tag">table</span>{
+    <span class="hljs-attribute">width</span>:<span class="hljs-number">100%</span>;
+}
+
+<span class="hljs-selector-class">.item-navigator</span> <span class="hljs-selector-tag">td</span>{
+    <span class="hljs-attribute">width</span>:<span class="hljs-number">50%</span>;
+}
+</code></pre><p>以上代码仅作为概念演示。结果如下：</p><img src="http://cdn.fatbobman.com/publish-2-makeitem-with-navigator.png" alt="publish-2-makeitem-with-navigator"/><h2>总结</h2><p>如果你有SwiftUI的开发经验，你会发现使用方式非常相似。在Publish主题中，你有充足的手段来组织、处理数据，并布局视图（把<code>Node</code>当做<code>View</code>）。</p><p>Publish的<code>FoundationHTMLFactory</code>目前仅定义了六个页面种类，如果想增加新的种类目前有两种方法：</p><ol><li>Fork Publish，直接扩展它的代码</li></ol><p>这种方式最彻底，但维护起来比较麻烦。</p><ol start="2"><li>在Pipeline执行过<code>.generateHTML</code>后，再执行自定义的generate Step</li></ol><p>无需改动核心代码。 可能会有冗余动作，并且需要在<code>FoundationHTMLFactory</code>内置方法中做一点处理以便和我们新定义的页面做连接。比如，目前<code>index</code>，<code>section list</code>都不支持分页（只会输出一个HTML文件），我们可以在内置的<code>makeIndex</code>之后，再重新生成一组分页的<code>index</code>，并覆盖掉原来的。</p><p>在本篇中，我们介绍了如何使用<a href="https://github.com/JohnSundell/Plot">Plot</a>，以及如何在<a href="https://github.com/JohnSundell/Publish">Publish</a>中定制自己的主题。在下一篇文章中，我们要探讨如何在不改动Publish核心代码的情况下，增加各种功能的手段（不仅仅是Plugin）。</p>]]></content:encoded></item><item><guid isPermaLink="true">http://www.fatbobman.com/posts/publish-1</guid><title>用Publish创建博客（一）——入门</title><description>Publish是一款专门为Swift开发者打造的静态网站生成器。它使用Swift构建整个网站，并支持主题、插件和其他大量的定制选项。 本文包含Publish的快速使用入门以及基本结构说明。</description><link>http://www.fatbobman.com/posts/publish-1</link><pubDate>Sat, 30 Jan 2021 21:00:00 +0800</pubDate><content:encoded><![CDATA[<blockquote><p><a href="https://github.com/JohnSundell/Publish">Publish</a>是一款专门为Swift开发者打造的静态网站生成器。它使用Swift构建整个网站，并支持主题、插件和其他大量的定制选项。 作为Swift开发者，通过Publish创建站点的开发过程和体验同开发其他程序很类似。</p></blockquote><h2>开篇</h2><h3>开发者John Sundell</h3><p>Publish的开发者John Sundell这些年一直致力于发表关于Swift的高质量文章、播客和视频。他的作品大多都发布在其独立运营的 <a href="https://swiftbysundell.com/">Swift by Sundell</a>上。他开发了<a href="https://github.com/JohnSundell/Publish">Publish</a>用以创建并管理自己的站点。</p><p>在开发Publish的过程中，他还开源了其他大量的基本库，比如<a href="https://github.com/JohnSundell/Ink">Ink</a>（高效的Markdown解析器）、<a href="https://github.com/JohnSundell/Plot">Plot</a>（创建HTML、XML、RSS的DSL）、<a href="https://github.com/JohnSundell/Sweep">Sweep</a>（高效的字符串扫描库）、<a href="https://github.com/JohnSundell/Codextended">Codextended</a>（Codable增强）等。它们不仅一起构建了强大的Publish，并且在各自的领域也是极为出色的开源库。</p><h3>我为什么使用Publish</h3><p>我在一年前恢复自己的这个博客时使用的是<code>Hexo</code>。Hexo在国内有非常好的群众基础，网上有大量优秀的教程，也有非常多的开发者贡献了自己创作的各种主题和插件。尽管Hexo让我相当满意，但由于我主要使用的语言是Swift，且对JavaScript非常不熟悉，因此想要对Hexo做更深入的定制或修改很困难。</p><p>作为开发者（即使是业余的），总希望对自己的项目有更全面的掌控，因此完全由Swift开发的Publish就成为了我的首选。</p><p>随着使用Publish对<a href="https://www.fatbobman.com">肘子的Swift记事本</a>重建过程的深入，我感觉自己做出了正确的选择。Publish让我可以用开发普通app的思路和逻辑来创建站点，高效地完成我想要的各种定制和改动。</p><h3>写本文的原因</h3><p>截至落笔时，Publish已经在Github上获得了3.1K的好评。但网络上对Publish的介绍并不多，尤其欠缺关于模板定制、插件开发方面的资料和交流。在Github上搜索相关的插件和模板的结果数量也非常有限。</p><p>造成上述的情况固然有Publish诞生时间较短、使用量不大，Swift圈子较小等原因，但我认为下面的情况也加剧了这一局面的形成：由于不同于其他的静态网站生成器，在Publish项目中，开发者可以用短小的代码实现各种功能。这种碎片化的代码其实是不利于分享且并不容易被搜索；另外，由于Publish中的模板和网站的功能具体实现绑定的较深，单独分享的模板的利用度也较低。</p><blockquote><p>但Publish的这种特质也恰恰是其吸引人之处。</p></blockquote><p>有鉴于此，我将用三篇文章（入门、如何写模板、如何写插件）完成对Publish的简绍，也希望国内的Swift开发者或爱好者们可以更多的了解和使用这个优秀的工具。</p><p>为了让大家能够快速上手，我已将本站点所用的代码（包括模板、自定义插件等）放置在<a href="https://github.com/fatbobman/PublishThemeForFatbobmanBlog">Github</a>上，方便大家通过代码更快的了解和掌握Publish。</p><h2>快速使用入门</h2><h3>如何安装Publish</h3><p>同大量的其他静态网站生成器一样，Publish提供了CLI。你可以通过命令行快速的完成创建模板、内容更新、远程发布等一系列操作。Publish目前可以运行在Mac和Linux上，由于其代码对操作系统的依存度极低，估计其后也出现在Windows平台上。</p><h4>Mac下通过brew安装</h4><pre data-language="bash"><code><span class="hljs-variable">$brew</span> install publish
 </code></pre><h4>源代码安装</h4><pre data-language="bash"><code><span class="hljs-variable">$git</span> <span class="hljs-built_in">clone</span> https://github.com/JohnSundell/Publish.git
 <span class="hljs-variable">$cd</span> Publish
 <span class="hljs-variable">$make</span>

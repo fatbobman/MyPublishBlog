@@ -112,7 +112,8 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
         for page: Page,
         context: PublishingContext<Site>
     ) throws -> HTML {
-        HTML(
+
+      return  HTML(
             .lang(context.site.language),
             .head(for: page, on: context.site),
             .body(

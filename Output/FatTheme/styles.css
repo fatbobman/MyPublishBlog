@@ -824,7 +824,7 @@ article hr {
     font-size: 12px;
     overflow-x: auto;
     white-space: pre;
-    font-family: SF Mono,Consolas,Courier New,monospace,Helvetica, Arial;
+    font-family: Menlo,Monaco,Consolas,Courier New,monospace,SF Mono,Consolas,Courier New,monospace,Helvetica, Arial;
     -webkit-overflow-scrolling: touch;
 }
 
