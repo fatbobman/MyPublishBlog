@@ -19,7 +19,7 @@ struct FatbobmanBlog: Website {
     }
 
     // Update these properties to configure your website:
-    var url = URL(string: "http://www.fatbobman.com")!
+    var url = URL(string: "https://www.fatbobman.com")!
     var name = "肘子的Swift记事本"
     var description = "徐杨的个人博客,Core Data,Swift,Swift UI,Combine,健康笔记,iOS APP,Health Note,HealthNotes"
     var language: Language { .chinese }
