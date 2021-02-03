@@ -12,7 +12,7 @@ import Ink
 import Sweep
 
 public extension Node where Context == HTML.DocumentContext {
-    static func head<T: Website>(
+    static func searchHead<T: Website>(
         for location: Location,
         on site: T,
         titleSeparator: String = " | ",
@@ -55,6 +55,7 @@ public extension Node where Context == HTML.DocumentContext {
             .script(
                 .src("//cdn.bootcss.com/jquery/3.2.1/jquery.min.js")
             )
+
 
         )
     }

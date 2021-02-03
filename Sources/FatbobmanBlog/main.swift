@@ -10,8 +10,8 @@ struct FatbobmanBlog: Website {
         case index
         case posts
         case project
-        case tags
         case about
+        case tags
     }
 
     struct ItemMetadata: WebsiteItemMetadata {
@@ -26,17 +26,31 @@ struct FatbobmanBlog: Website {
     var imagePath: Path? { Path("images") }
 }
 
+var command:String = ""
+
+if CommandLine.arguments.count > 1 {
+    command = CommandLine.arguments[1]
+}
+
+print(command)
+
 // This will generate your website using the built-in Foundation theme:
 try FatbobmanBlog().publish(
     using: [
         //使用ink modifier的plugins要在addMarkdonwFiles之前先加入.
         //需要注意modifier的添加顺序
         .installPlugin(.highlightJS()), //语法高亮
-        .addModifier(modifier: bilibili), //bilibili视频
+        .addModifier(modifier: bilibili,modifierName: "bilibili"), //bilibili视频
+
+
         .copyResources(),
         .setSctionTitle(), //修改section 标题
+
+
+
         .addMarkdownFiles(),
-        .installPlugin(.test()),
+        .makeDateArchive(),
+
 
         .installPlugin(.setDateFormatter()), //设置时间显示格式
         .installPlugin(.countTag()), //计算tag的数量,tag必须在 addMarkDownFiles 之后,否则alltags没有值
@@ -44,14 +58,17 @@ try FatbobmanBlog().publish(
         .sortItems(by: \.date, order: .descending), //对所有文章排序
         .generateHTML(withTheme: .fatTheme),
 //        .installPlugin(.rssSetting(including:[.posts,.project])),
+        .makeSearchIndex(includeCode: false),
         .generateRSSFeed(
             including: [.posts,.project],
             itemPredicate: nil
         ),
         .generateSiteMap(),
-        .unwrap(.gitHub("fatbobman/fatbobman.github.io", useSSH: true), PublishingStep.deploy)
+        .unwrap(.gitHub("fatbobman/fatbobman.github.io", useSSH: true), PublishingStep.deploy),
+        .if(command == "--upload", .uploadToServer())
     ]
 )
+
 
 
 

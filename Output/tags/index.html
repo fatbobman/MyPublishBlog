@@ -1,4 +1,112 @@
-<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"/><meta name="og:site_name" content="肘子的Swift记事本"/><link rel="canonical" href="https://www.fatbobman.com/tags"/><meta name="twitter:url" content="https://www.fatbobman.com/tags"/><meta name="og:url" content="https://www.fatbobman.com/tags"/><title>肘子的Swift记事本</title><meta name="twitter:title" content="肘子的Swift记事本"/><meta name="og:title" content="肘子的Swift记事本"/><meta name="description" content="徐杨的个人博客,Core Data,Swift,Swift UI,Combine,健康笔记,iOS APP,Health Note,HealthNotes"/><meta name="twitter:description" content="徐杨的个人博客,Core Data,Swift,Swift UI,Combine,健康笔记,iOS APP,Health Note,HealthNotes"/><meta name="og:description" content="徐杨的个人博客,Core Data,Swift,Swift UI,Combine,健康笔记,iOS APP,Health Note,HealthNotes"/><meta name="twitter:card" content="summary"/><link rel="stylesheet" href="/styles.css" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="/images/favicon.png" type="image/png"/><link rel="alternate" href="/feed.rss" type="application/rss+xml" title="Subscribe to 肘子的Swift记事本"/><meta name="twitter:image" content="https://www.fatbobman.com/images"/><meta name="og:image" content="https://www.fatbobman.com/images"/></head><body><header><div class="wrapper"><div class="logo"><a href="/"><h2>肘子的SWIFT记事本</h2></a></div><nav><ul><li><a href="/">首页</a></li><li><a href="/posts">关于</a></li><li><a href="/project">我的APP</a></li><li><a href="/tags">标签</a></li><li><a href="/about">关于</a></li></ul></nav></div></header><div class="wrapper"><h4 class="tags-title">全部标签</h4><ul class="all-tags"><li class="tag variant-0"><a href="/tags/blog">Blog (1)</a></li><li class="tag variant-0"><a href="/tags/core-data">Core Data (1)</a></li><li class="tag variant-1"><a href="/tags/healthnote">HealthNote (7)</a></li><li class="tag variant-1"><a href="/tags/howto">HowTo (10)</a></li><li class="tag variant-2"><a href="/tags/plot">Plot (1)</a></li><li class="tag variant-3"><a href="/tags/project">Project (3)</a></li><li class="tag variant-4"><a href="/tags/publish">Publish (2)</a></li><li class="tag variant-5"><a href="/tags/swift">Swift (2)</a></li><li class="tag variant-6"><a href="/tags/swiftui">SwiftUI (32)</a></li><li class="tag variant-7"><a href="/tags/vapor">Vapor (1)</a></li></ul></div><footer><p>Copyright &copy; 徐杨 2021 <a href="http://beian.miit.gov.cn">辽ICP备20006550</a></p><p>Generated using <a href="https://github.com/johnsundell/publish">Publish</a></p><ul class="icon"><li><a href="https://twitter.com/fatbobman"><img class="twitter" src="/images/twitter.svg"/></a></li><li><a href="https://github.com/fatbobman/"><img src="/images/github.svg"/></a></li><li><a href="https://www.zhihu.com/people/fatbobman3000"><img src="/images/zhihu.svg"/></a></li><li><a href="/feed.rss"><img src="/images/rss.svg"/></a></li></ul><script>
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"/><meta name="og:site_name" content="肘子的Swift记事本"/><link rel="canonical" href="https://www.fatbobman.com/tags"/><meta name="twitter:url" content="https://www.fatbobman.com/tags"/><meta name="og:url" content="https://www.fatbobman.com/tags"/><title>肘子的Swift记事本</title><meta name="twitter:title" content="肘子的Swift记事本"/><meta name="og:title" content="肘子的Swift记事本"/><meta name="description" content="徐杨的个人博客,Core Data,Swift,Swift UI,Combine,健康笔记,iOS APP,Health Note,HealthNotes"/><meta name="twitter:description" content="徐杨的个人博客,Core Data,Swift,Swift UI,Combine,健康笔记,iOS APP,Health Note,HealthNotes"/><meta name="og:description" content="徐杨的个人博客,Core Data,Swift,Swift UI,Combine,健康笔记,iOS APP,Health Note,HealthNotes"/><meta name="twitter:card" content="summary"/><link rel="stylesheet" href="/styles.css" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="/images/favicon.png" type="image/png"/><link rel="alternate" href="/feed.rss" type="application/rss+xml" title="Subscribe to 肘子的Swift记事本"/><meta name="twitter:image" content="https://www.fatbobman.com/images"/><meta name="og:image" content="https://www.fatbobman.com/images"/><script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script></head><body><header><div class="wrapper"><div class="logo"><a href="/"><h2>肘子的SWIFT记事本</h2></a></div><nav><ul><li><a href="/">首页</a></li><li><a href="/posts">文章</a></li><li><a href="/project">我的APP</a></li><li><a href="/about">关于</a></li><li><a href="/tags">搜索</a></li></ul></nav></div></header><div class="wrapper"><div><form class="site-search-form"><input class="st-search-input" type="text" id="local-search-input" required="true"/><a class="clearSearchInput" href="javascript:" onclick="document.getElementById('local-search-input').value = '';"></a></form><script id="local.search.active">var inputArea       = document.querySelector("#local-search-input");
+inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }</script><script>var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        success: function( xmlResponse ) {
+            // get the contents from search data
+                  
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+
+            var $input = document.getElementById(search_id);
+            if (!$input) return;
+            var $resultContent = document.getElementById(content_id);
+            if ($("#local-search-input").length > 0) {
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var content_index = [];
+                        if (!data.title || data.title.trim() === '') {
+                            data.title = "Untitled";
+                        }
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty contents
+                        if (data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i == 0) {
+                                        first_occur = index_content;
+                                    }
+                                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                                }
+                            });
+                        } else {
+                            isMatch = false;
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 60;
+                                var end = first_occur + 120;
+
+                                if (start < 0) {
+                                    start = 0;
+                                }
+
+                                if (start == 0) {
+                                    end = 180;
+                                }
+
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+
+                                var match_content = content.substring(start, end);
+
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        }
+    });
+}
+
+var getSearchFile = function(){
+    var path = "/search.xml";
+    searchFunc(path, 'local-search-input', 'local-search-result');
+}</script></div><ul class="all-tags"><li class="tag variant-0"><a href="/tags/blog">Blog (1)</a></li><li class="tag variant-0"><a href="/tags/core-data">Core Data (1)</a></li><li class="tag variant-1"><a href="/tags/healthnote">HealthNote (7)</a></li><li class="tag variant-1"><a href="/tags/howto">HowTo (10)</a></li><li class="tag variant-2"><a href="/tags/plot">Plot (1)</a></li><li class="tag variant-3"><a href="/tags/project">Project (3)</a></li><li class="tag variant-4"><a href="/tags/publish">Publish (3)</a></li><li class="tag variant-5"><a href="/tags/swift">Swift (3)</a></li><li class="tag variant-6"><a href="/tags/swiftui">SwiftUI (32)</a></li><li class="tag variant-7"><a href="/tags/vapor">Vapor (1)</a></li></ul><div id="local-search-result" class="local-search-result-cls"></div></div><footer><p>Copyright &copy; 徐杨 2021 <a href="http://beian.miit.gov.cn">辽ICP备20006550</a></p><p>Generated using <a href="https://github.com/johnsundell/publish">Publish</a></p><ul class="icon"><li><a href="https://twitter.com/fatbobman"><img class="twitter" src="/images/twitter.svg"/></a></li><li><a href="https://github.com/fatbobman/"><img src="/images/github.svg"/></a></li><li><a href="https://www.zhihu.com/people/fatbobman3000"><img src="/images/zhihu.svg"/></a></li><li><a href="/feed.rss"><img src="/images/rss.svg"/></a></li></ul><script>
     // dynamic User by Hux
     var _gaId = 'UA-165296388-1';
     var _gaDomain = 'fatbobman.com';

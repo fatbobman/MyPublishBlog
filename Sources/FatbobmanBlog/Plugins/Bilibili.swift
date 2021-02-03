@@ -19,7 +19,7 @@ danmu: true
 */
 
 var bilibili = Modifier(target: .codeBlocks) { html, markdown in
-    guard let content = markdown.substrings(between: "```bilibili\n", and: "\n```").first else {
+    guard let content = markdown.firstSubstring(between: .prefix("```bilibili\n"), and: "\n```") else {
         return html
     }
     var aid: String = ""

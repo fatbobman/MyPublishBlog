@@ -12,7 +12,7 @@ import Publish
 extension Plugin{
     static func countTag() -> Self{
         return Plugin(name: "countTag"){ content in
-            CountTag.count(content: content)
+            return CountTag.count(content: content)
         }
     }
 }

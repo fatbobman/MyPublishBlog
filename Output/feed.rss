@@ -1,4 +1,329 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content"><channel><title>肘子的Swift记事本</title><description>徐杨的个人博客,Core Data,Swift,Swift UI,Combine,健康笔记,iOS APP,Health Note,HealthNotes</description><link>https://www.fatbobman.com</link><language>zh</language><lastBuildDate>Mon, 1 Feb 2021 19:58:06 +0800</lastBuildDate><pubDate>Mon, 1 Feb 2021 19:58:06 +0800</pubDate><ttl>250</ttl><atom:link href="https://www.fatbobman.com/feed.rss" rel="self" type="application/rss+xml"/><item><guid isPermaLink="true">https://www.fatbobman.com/posts/publish-2</guid><title>用Publish创建博客（二）——主题开发</title><description>拥用强大的主题系统是一个静态网站生成器能否成功的重要原因之一。Publish采用Plot作为主题的开发工具，让开发者在高效编写主题的同时享受到了Swift的类型安全的优势。本文将从Plot开始介绍，让读者最终学会如何创建Publish主题。</description><link>https://www.fatbobman.com/posts/publish-2</link><pubDate>Mon, 1 Feb 2021 16:20:00 +0800</pubDate><content:encoded><![CDATA[<blockquote><p>拥用强大的主题系统是一个静态网站生成器能否成功的重要原因之一。<a href="https://github.com/JohnSundell/Publish">Publish</a>采用<a href="https://github.com/JohnSundell/Plot">Plot</a>作为主题的开发工具，让开发者在高效编写主题的同时享受到了Swift的类型安全的优势。本文将从Plot开始介绍，让读者最终学会如何创建Publish主题。</p></blockquote><h2>Plot</h2><h3>简介</h3><p>想要开发Publish的<code>Theme</code>主题，就不能不从Plot说起。</p><p>在Swift社区中，有不少优秀的项目致力于使用Swift生成HTML：比如Vapor的<a href="https://github.com/vapor/leaf">Leaf</a>，Point-Free的<a href="https://github.com/pointfreeco/swift-html">swift-html</a>等，Plot也是其中的一员。Plot最初是由<a href="https://swiftbysundell.com">John Sundell</a>编写的并作为Publish套件的一部分，它主要的关注点是Swift的静态网站HTML生成，以及创建建站所需的其他格式文档，包括<code>RSS</code>、<code>podcast</code>、<code>Sitemap</code>。它与Publish紧密集成但同时也作为一个独立项目存在。</p><p>Plot使用了一种被称作<code>Phantom Types</code>的技术，该技术将类型用作编译器的“标记”，从而能够通过泛型约束来强制类型安全。Plot使用了非常轻量级的API设计，最大限度的减少外部参数标签，从而减少渲染文档所需的语法量，使其呈现了具有“类似DSL”的代码表现。</p><h3>使用</h3><h4>基础</h4><ul><li>Node</li></ul><p>是任何Plot文档中所有元素和属性的核心构件。它可以表示元素和属性，以及文本内容和节点组。每个节点都被绑定到一个Context类型，它决定了它可以访问哪种DSL API（例如<code>HTML.BodyContext</code>用于放置在HTML页面<code>&lt;body&gt;</code>中的节点）。</p><ul><li>Element 代表一个元素，可以使用两个独立的标签打开和关闭（比如<code>&lt;body&gt;&lt;/body&gt;</code>），也可以自闭（比如<code>&lt;img/&gt;</code>）。当使用Plot时，你通常不需要与这个类型进行交互，基础Node中会创建它的实例。<ul></ul></li></ul><ul><li>Attribute</li></ul><p>表示附加在元素上的属性，例如<code> &lt;a&gt; </code>元素的 href，或者<code>&lt;img&gt;</code> 元素的 src。你可以通过它的初始化器来构造<code>Attribute</code>值，也可以通过DSL，使用<code>.attribute()</code>命令来构造。<br>* Document和DocumentFormat<br> 给定格式的文档，如HTML、RSS和PodcastFeed。这些都是最高级别的类型，你可以使用Plot的DSL来开始一个文档构建会话。</p><h4>类DSL语法</h4><pre data-language="swift"><code><span class="hljs-keyword">import</span> Plot
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content"><channel><title>肘子的Swift记事本</title><description>徐杨的个人博客,Core Data,Swift,Swift UI,Combine,健康笔记,iOS APP,Health Note,HealthNotes</description><link>https://www.fatbobman.com</link><language>zh</language><lastBuildDate>Wed, 3 Feb 2021 21:33:53 +0800</lastBuildDate><pubDate>Wed, 3 Feb 2021 21:33:53 +0800</pubDate><ttl>250</ttl><atom:link href="https://www.fatbobman.com/feed.rss" rel="self" type="application/rss+xml"/><item><guid isPermaLink="true">https://www.fatbobman.com/posts/publish-3</guid><title>用Publish创建博客（三）——插件开发</title><description>我们不仅可以利用Publish内置的接口来开发插件进行扩展，同时还可以使用Publish套件中其他的优秀库（Ink、Plot、Sweep、Files、ShellOut等）来完成更多的创意。本文将通过几个实例（添加标签、增加属性、用代码生成内容、全文搜索、命令行部署）在展示不同扩展手段的同时向大家介绍Publish套件中其他的优秀成员。</description><link>https://www.fatbobman.com/posts/publish-3</link><pubDate>Wed, 3 Feb 2021 19:58:00 +0800</pubDate><content:encoded><![CDATA[<blockquote><p>我们不仅可以利用Publish内置的接口来开发插件进行扩展，同时还可以使用Publish套件中其他的优秀库（Ink、Plot、Sweep、Files、ShellOut等）来完成更多的创意。本文将通过几个实例（添加标签、增加属性、用代码生成内容、全文搜索、命令行部署）在展示不同扩展手段的同时向大家介绍Publish套件中其他的优秀成员。在阅读本文前，最好能先阅读<a href="https://www.fatbobman.com/posts/publish-1/">用Publish创建博客（一）——入门</a>、<a href="https://www.fatbobman.com/posts/publish-2/">用Publish创建博客（二）——主题开发</a>。对Publish有个基本了解。本文篇幅较长，你可以选择自己感兴趣的实战内容阅读。</p></blockquote><h2>基础</h2><h3>PublishingContext</h3><p>在<a href="https://www.fatbobman.com/posts/publish-1/">用Publish创建博客（一）——入门</a>中我们介绍过Publish有两个Content概念。其中<code>PublishingContext</code>作为根容器包含了你网站项目的全部信息（<code>Site</code>、<code>Section</code>、<code>Item</code>、<code>Page</code>等）。在对Publish进行的大多数扩展开发时，都需要和<code>PublishingContext</code>打交道。不仅通过它来获取数据，而且如果要对现有数据进行改动或者添加新的<code>Item</code>、<code>Page</code>时(在<code>Content</code>中采用不创建<code>markdown</code>文件的方式)也必须要调用其提供的方法。比如<code>mutateAllSections</code>、<code>addItem</code>等。</p><h3>Pipeline中的顺序</h3><p>Publish会逐个执行Pipeline中的<code>Step</code>,因此必须要在正确的位置放置<code>Step</code>和<code>Plugin</code>。比如需要对网站的所有数据进行汇总，则该处理过程应该放置在<code>addMarkdownFiles</code>（数据都被添加进<code>Content</code>）之后；而如果想添加自己的部署（<code>Deploy</code>），则应放置在生成所有文件之后。下面会通过例子具体说明。</p><h2>热身</h2><blockquote><p>下面的代码，是以放置在<code>Myblog</code>（第一篇中创建，并在第二篇中进行了修改）项目里为例。</p></blockquote><h3>准备</h3><p>请将</p><pre data-language="swift"><code><span class="hljs-keyword">try</span> <span class="hljs-type">Myblog</span>().publish(withTheme: .foundation)
+</code></pre><p>换成</p><pre data-language="swift"><code><span class="hljs-keyword">try</span> <span class="hljs-type">Myblog</span>().publish(using: [
+    .addMarkdownFiles(), <span class="hljs-comment">//导入Content目录下的markdown文件，并解析添加到PublishingContent中</span>
+    .copyResources(), <span class="hljs-comment">//将Resource内容添加到Output中</span>
+    .generateHTML(withTheme:.foundation ), <span class="hljs-comment">//指定模板</span>
+    .generateRSSFeed(including: [.posts]), <span class="hljs-comment">//生成RSS</span>
+    .generateSiteMap() <span class="hljs-comment">//生成Site Map</span>
+])
+</code></pre><h3>创建Step</h3><p>我们先通过官方的一个例子了解一下<code>Step</code>的创建过程。当前导航菜单的初始状态：</p><img src="http://cdn.fatbobman.com/publish-3-changetitle-old.png" alt="image-20210203121214511"/><p>下面的代码将改变SectionID。</p><pre data-language="swift"><code><span class="hljs-comment">//当前的Section设置</span>
+<span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">SectionID</span>: <span class="hljs-title">String</span>, <span class="hljs-title">WebsiteSectionID</span> </span>{
+        <span class="hljs-comment">// Add the sections that you want your website to contain here:</span>
+        <span class="hljs-keyword">case</span> posts <span class="hljs-comment">//rawValue 将影响该Section对应的Content的目录名。当前的目录为posts</span>
+        <span class="hljs-keyword">case</span> about <span class="hljs-comment">//如果改成 case abot = "关于" 则目录名为“关于”，所以通常会采用下方更改title的方法</span>
+ }
+
+<span class="hljs-comment">//创建Step</span>
+<span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">PublishingStep</span> <span class="hljs-title">where</span> <span class="hljs-title">Site</span> == <span class="hljs-title">Myblog</span> </span>{
+    <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">addDefaultSectionTitles</span><span class="hljs-params">()</span></span> -&gt; <span class="hljs-type">Self</span> {
+      <span class="hljs-comment">//name为step名称，在执行该Step时在控制台显示</span>
+        .step(named: <span class="hljs-string">"Default section titles"</span>) { context <span class="hljs-keyword">in</span> <span class="hljs-comment">//PublishingContent实例</span>
+            context.mutateAllSections { section <span class="hljs-keyword">in</span> <span class="hljs-comment">//使用内置的修改方法</span>
+                <span class="hljs-keyword">switch</span> section.id {
+                <span class="hljs-keyword">case</span> .posts:
+                    section.title = <span class="hljs-string">"文章"</span>  <span class="hljs-comment">//修改后的title，将显示在上方的Nav中</span>
+                <span class="hljs-keyword">case</span> .about:
+                    section.title = <span class="hljs-string">"关于"</span> 
+                }
+            }
+        }
+    }
+}
+</code></pre><p>将<code>Step</code>添加到<code>main.swift</code>的<code>pipeline</code>中：</p><pre data-language="swift"><code>    .addMarkdownFiles(),
+    .addDefaultSectionTitles(), 
+    .copyResources(),
+</code></pre><p>添加该<code>Step</code>后的导航菜单:</p><img src="http://cdn.fatbobman.com/publish-3-title-new.png" alt="image-20210203123545306"/><h3>Pipeline中的位置</h3><p>如果将<code>addDefaultSectionTitles</code>放置在<code>addMarkdownFiles</code>的前面，会发现<code>posts</code>的title变成了</p><img src="http://cdn.fatbobman.com/publish-3-changetitle-wrong-position.png" alt="image-20210203123440066"/><p>这是因为，当前的<code>Content--posts</code>目录中有一个<code>index.md</code>文件。<code>addMarkdownFiles</code>会使用从该文件中解析的<code>title</code>来设置<code>posts</code>的<code>Section.title</code>。解决的方法有两种：</p><ol><li>向上面那样将<code>addDefaultSectionTitles</code>放置在<code>addMarkdownFiles</code>的后面</li><li>删除掉<code>index.md</code></li></ol><h3>等效的Plugin</h3><p>在<a href="https://www.fatbobman.com/posts/publish-1/">用Publish创建博客（一）——入门</a>中提过<code>Step</code>和<code>Plugin</code>在作用上是等效的。上面的代码用<code>Plugin</code>的方式编写是下面的样子：</p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">Plugin</span> <span class="hljs-title">where</span> <span class="hljs-title">Site</span> == <span class="hljs-title">Myblog</span></span>{
+    <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">addDefaultSectionTitles</span><span class="hljs-params">()</span></span> -&gt; <span class="hljs-type">Self</span>{
+        <span class="hljs-type">Plugin</span>(name:  <span class="hljs-string">"Default section titles"</span>){
+            context <span class="hljs-keyword">in</span>
+            context.mutateAllSections { section <span class="hljs-keyword">in</span>
+                <span class="hljs-keyword">switch</span> section.id {
+                <span class="hljs-keyword">case</span> .posts:
+                    section.title = <span class="hljs-string">"文章"</span>
+                <span class="hljs-keyword">case</span> .about:
+                    section.title = <span class="hljs-string">"关于"</span>
+                }
+            }
+        }
+    }
+}
+</code></pre><p>在<code>Pipeline中</code>使用下面的方式添加：</p><pre data-language="swift"><code>    .addMarkdownFiles(),
+    .copyResources(),
+    .installPlugin(.addDefaultSectionTitles()),
+</code></pre><p>它们的效果完全一样。</p><h2>实战1：添加Bilibili标签解析</h2><p>Publish使用<a href="https://github.com/JohnSundell/Ink">Ink</a>作为<code>markdown</code>的解析器。<code>Ink</code>作为Publish套件的一部分，着重点在<code>markdown</code>到<code>HTML</code>的高效转换。它让使用者可以通过添加<code>modifier</code>的方式，对<code>markdown</code>转换<code>HTML</code>的过程进行定制和扩展。<code>Ink</code>目前并不支持全部的<code>markdonw</code>语法，太复杂的它不支持（而且语法支持目前是锁死的，如想扩充必须<strong>fork</strong><code>Ink</code>代码，自行添加）。</p><p>在本例中我们尝试为如下<code>markdown</code>的<code>codeBlock</code>语法添加新的转义功能：</p><img src="http://cdn.fatbobman.com/publish-3-bilibili-mardown-code.png" alt="image-20210203142914881"/><p><code>aid</code>为B站视频的<code>aid</code>号码，<code>danmu</code>为<code>弹幕</code>开关</p><p>让我们首先创建一个<code>Ink</code>的<code>modifier</code></p><pre data-language="swift"><code><span class="hljs-comment">/*
+每个modifier对应一个markdown语法类型。
+目前支持的类型有: metadataKeys,metadataValues,blockquotes,codeBlocks,headings
+         horizontalLines,html,images,inlineCode,links,lists,paragraphs,tables
+*/</span>
+<span class="hljs-keyword">var</span> bilibili = <span class="hljs-type">Modifier</span>(target: .codeBlocks) { html, markdown <span class="hljs-keyword">in</span>
+     <span class="hljs-comment">// html为Ink默认的HTML转换结果，markdown为该target对应的原始内容</span>
+     <span class="hljs-comment">// firstSubstring是Publish套件中的Sweep提供的快速配对方法.</span>
+    <span class="hljs-keyword">guard</span> <span class="hljs-keyword">let</span> content = markdown.firstSubstring(between: .<span class="hljs-keyword">prefix</span>(<span class="hljs-string">"```bilibili\n"</span>), and: <span class="hljs-string">"\n```"</span>) <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">return</span> html
+    }
+    <span class="hljs-keyword">var</span> aid: <span class="hljs-type">String</span> = <span class="hljs-string">""</span>
+    <span class="hljs-keyword">var</span> danmu: <span class="hljs-type">Int</span> = <span class="hljs-number">1</span>
+    <span class="hljs-comment">// scan也是Sweep中提供另一种配对获取方式，下面的代码是获取aid:和换行之间的内容</span>
+    content.scan(using: [
+        <span class="hljs-type">Matcher</span>(identifier: <span class="hljs-string">"aid: "</span>, terminator: <span class="hljs-string">"\n"</span>, allowMultipleMatches: <span class="hljs-literal">false</span>) { match, <span class="hljs-number">_</span> <span class="hljs-keyword">in</span>
+            aid = <span class="hljs-type">String</span>(match)
+        },
+        <span class="hljs-type">Matcher</span>(identifiers: [<span class="hljs-string">"danmu: "</span>], terminators: [<span class="hljs-string">"\n"</span>, .end], allowMultipleMatches: <span class="hljs-literal">false</span>) {
+            match,
+            <span class="hljs-number">_</span> <span class="hljs-keyword">in</span>
+            danmu = match == <span class="hljs-string">"true"</span> ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span>
+        },
+    ])
+    <span class="hljs-comment">//modifier的返回值为HTML代码，本例中我们不需要使用Ink的默认转换，直接全部重写</span>
+    <span class="hljs-comment">//在很多的情况下，我们可能只是在默认转换的html结果上做出一定的修改即可</span>
+    <span class="hljs-keyword">return</span>
+        <span class="hljs-string">"""
+        &lt;div style="position: relative; padding: 30% 45% ; margin-top:20px;margin-bottom:20px"&gt;
+        &lt;iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="https://player.bilibili.com/player.html?aid=\(aid)&amp;page=1&amp;as_wide=1&amp;high_quality=1&amp;danmaku=\(danmu)" frameborder="no" scrolling="no"&gt;&lt;/iframe&gt;
+        &lt;/div&gt;
+        """</span>
+}
+</code></pre><p>通常情况下，我们会将上面的<code>modifier</code>包裹在一个<code>Plugin</code>中，通过<code>installPlugin</code>来注入，不过现在我们直接创建一个新的<code>Step</code>专门来加载<code>modifier</code></p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">PublishingStep</span></span>{
+    <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">addModifier</span><span class="hljs-params">(modifier:Modifier,modifierName name:String = <span class="hljs-string">""</span>)</span></span> -&gt; <span class="hljs-type">Self</span>{
+        .step(named: <span class="hljs-string">"addModifier \(name)"</span>){ context <span class="hljs-keyword">in</span>
+            context.markdownParser.addModifier(modifier)
+        }
+    }
+}
+</code></pre><p>现在就可以在<code>main.swift</code>的<code>Pipeline</code>中添加了</p><pre data-language="swift"><code>.addModifier(modifier: bilibili,modifierName: <span class="hljs-string">"bilibili"</span>), <span class="hljs-comment">//bilibili视频</span>
+.addMarkdownFiles(),
+</code></pre><p><code>modifier</code>在添加后并不会立即使用，当Pipeline执行到<code>addMarkdownFiles</code>对<code>markdown</code>文件进行解析时才会调用。因此<code>modifier</code>的位置一定要放在解析动作的前面。</p><p><code>Ink</code>允许我们添加多个<code>modifier</code>，即使是同一个<code>target</code>。因此尽管我们上面的代码是占用了对<code>markdown</code>的<code>codeBlocks</code>的解析，但只要我们注意顺序，就都可以和平共处。比如下面：</p><pre data-language="swift"><code> .installPlugin(.highlightJS()), <span class="hljs-comment">//语法高亮插件，也是采用modifier方式，对应的也是codeBlock</span>
+ .addModifier(modifier: bilibili), <span class="hljs-comment">//在这种状况下，bilibili必须在highlightJS下方。</span>
+</code></pre><p><code>Ink</code>将按照<code>modifier</code>的添加顺序来调用。添加该插件后的效果</p><img src="http://cdn.fatbobman.com/publish-3-bilibili-videodemo.png" alt="publish-3-bilibili-videodemo"/><p>可以直接在<a href="https://www.fatbobman.com/video/">https://www.fatbobman.com/video/</a>查看演示效果。</p><p>上面代码在我提供的<a href="https://github.com/fatbobman/PublishThemeForFatbobmanBlog">范例模板</a>中可以找到</p><p>通过<code>modifier</code>扩展<code>markdown</code>到<code>HTML</code>的转义是Publish中很常见的一种方式。几乎所有的语法高亮、<code>style</code>注入等都利用了这个手段。</p><h2>实战2：为Tag添加计数属性</h2><p>在Publish中，我们只能获取<code>allTags</code>或者每个<code>Item</code>的<code>tags</code>，但并不提供每个<code>tag</code>下到底有几个<code>Item</code>。本例我们便为<code>Tag</code>增加<code>count</code>属性。</p><pre data-language="swift"><code><span class="hljs-comment">//由于我们并不想在每次调用tag.count的时候进行计算，所以一次性将所有的tag都提前计算好</span>
+<span class="hljs-comment">//计算结果通过类属性或结构属性来保存，以便后面使用</span>
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">CountTag</span></span>{
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">var</span> <span class="hljs-built_in">count</span>:[<span class="hljs-type">Tag</span>:<span class="hljs-type">Int</span>] = [:]
+    <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">count</span>&lt;T:Website&gt;<span class="hljs-params">(content:PublishingContext&lt;T&gt;)</span></span>{
+        <span class="hljs-keyword">for</span> tag <span class="hljs-keyword">in</span> content.allTags{
+          <span class="hljs-comment">//将计算每个tag下对应的item,放置在count中</span>
+            <span class="hljs-built_in">count</span>[tag] =  content.items(taggedWith: tag).<span class="hljs-built_in">count</span>
+        }
+    }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">Tag</span></span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">var</span> <span class="hljs-built_in">count</span>:<span class="hljs-type">Int</span>{
+        <span class="hljs-type">CountTag</span>.<span class="hljs-built_in">count</span>[<span class="hljs-keyword">self</span>] ?? <span class="hljs-number">0</span>
+    }
+}
+</code></pre><p>创建一个调用在<code>Pipeline</code>中激活计算的<code>Plugin</code></p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">Plugin</span></span>{
+    <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">countTag</span><span class="hljs-params">()</span></span> -&gt; <span class="hljs-type">Self</span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-type">Plugin</span>(name: <span class="hljs-string">"countTag"</span>){ content <span class="hljs-keyword">in</span>
+            <span class="hljs-keyword">return</span> <span class="hljs-type">CountTag</span>.<span class="hljs-built_in">count</span>(content: content)
+        }
+    }
+}
+</code></pre><p>在<code>Pipeline</code>中加入</p><pre data-language="swift"><code>.installPlugin(.countTag()),
+</code></pre><p>现在我们就可在主题中直接通过<code>tag.count</code>来获取所需数据了，比如在主题方法<code>makeTagListHTML</code>中：</p><pre data-language="swift"><code>.forEach(page.tags.sorted()) { tag <span class="hljs-keyword">in</span>
+       .li(
+       <span class="hljs-class">.<span class="hljs-keyword">class</span>(<span class="hljs-title">tag</span>.<span class="hljs-title">colorfiedClass</span>), //<span class="hljs-title">tag</span>.<span class="hljs-title">colorfieldClass</span> 也是通过相同手段增加的属性，在文章最后会有该插件的获取地址
+              .<span class="hljs-title">a</span>(
+               .<span class="hljs-title">href</span>(<span class="hljs-title">context</span>.<span class="hljs-title">site</span>.<span class="hljs-title">path</span>(<span class="hljs-title">for</span>: <span class="hljs-title">tag</span>)),
+               .<span class="hljs-title">text</span>("\(<span class="hljs-title">tag</span>.<span class="hljs-title">string</span>) (\(<span class="hljs-title">tag</span>.<span class="hljs-title">count</span>))")
+               )
+          )
+  }</span>
+</code></pre><p>显示结果</p><img src="http://cdn.fatbobman.com/publish-3-tagCount.png" alt="image-20210203104002714"/><h2>实战3：将文章按月份汇总</h2><p>在<a href="https://www.fatbobman.com/posts/publish-2/">Publish创建博客（二）——主题开发</a>中我们讨论过目前Publish的主题支持的六种页面，其中有对<code>Item</code>以及<code>tag</code>的汇总页面。本例演示一下如何用代码创建主题不支持的其他页面类型。</p><p>本例结束时，我们将让Publish能够自动生成如下的页面：</p><img src="http://cdn.fatbobman.com/publish-3-dateAchive-2343299.png" alt="publish-3-dateAchive"/><pre data-language="swift"><code><span class="hljs-comment">//创建一个Step</span>
+<span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">PublishingStep</span> <span class="hljs-title">where</span> <span class="hljs-title">Site</span> == <span class="hljs-title">FatbobmanBlog</span></span>{
+    <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">makeDateArchive</span><span class="hljs-params">()</span></span> -&gt; <span class="hljs-type">Self</span>{
+        step(named: <span class="hljs-string">"Date Archive"</span>){ content <span class="hljs-keyword">in</span>
+            <span class="hljs-keyword">var</span> doc = <span class="hljs-type">Content</span>()
+             <span class="hljs-comment">/*创建一个Content，此处的Content是装载页面内容的，不是PublishingContext
+              Publish在使用addMarkdownFiles导入markdown文件时，会为每个Item或Page创建Content
+              由于我们是使用代码直接创建，所以不能使用markdown语法，必须直接使用HTML
+             */</span>
+            doc.title = <span class="hljs-string">"时间线"</span> 
+            <span class="hljs-keyword">let</span> archiveItems = dateArchive(items: content.allItems(sortedBy: \.date,order: .descending))
+             <span class="hljs-comment">//使用Plot生成HTML，第二篇文章有Plot的更多介绍</span>
+            <span class="hljs-keyword">let</span> html = <span class="hljs-type">Node</span>.div(
+                .forEach(archiveItems.keys.sorted(by: &gt;)){ absoluteMonth <span class="hljs-keyword">in</span>
+                    .group(
+                        .h3(.text(<span class="hljs-string">"\(absoluteMonth.monthAndYear.year)年\(absoluteMonth.monthAndYear.month)月"</span>)),
+                        .ul(
+                            .forEach(archiveItems[absoluteMonth]!){ item <span class="hljs-keyword">in</span>
+                                .li(
+                                    .a(
+                                        .href(item.path),
+                                        .text(item.title)
+                                    )
+                                )
+                            }
+                        )
+                    )
+                }
+            )
+            <span class="hljs-comment">//渲染成字符串</span>
+            doc.body.html = html.render()
+            <span class="hljs-comment">//本例中直接生成了Page，也可以生成Item，Item需在创建时指定SectionID以及Tags</span>
+            <span class="hljs-keyword">let</span> page = <span class="hljs-type">Page</span>(path: <span class="hljs-string">"archive"</span>, content:doc)
+            content.addPage(page)
+        }
+    }
+    <span class="hljs-comment">//对Item按月份汇总</span>
+    <span class="hljs-keyword">fileprivate</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">dateArchive</span><span class="hljs-params">(items:[Item&lt;Site&gt;])</span></span> -&gt; [<span class="hljs-type">Int</span>:[<span class="hljs-type">Item</span>&lt;<span class="hljs-type">Site</span>&gt;]]{
+        <span class="hljs-keyword">let</span> result = <span class="hljs-type">Dictionary</span>(grouping: items, by: {$<span class="hljs-number">0</span>.date.absoluteMonth})
+        <span class="hljs-keyword">return</span> result
+    }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">Date</span></span>{
+    <span class="hljs-keyword">var</span> absoluteMonth:<span class="hljs-type">Int</span>{
+        <span class="hljs-keyword">let</span> calendar = <span class="hljs-type">Calendar</span>.current
+        <span class="hljs-keyword">let</span> component = calendar.dateComponents([.year,.month], from: <span class="hljs-keyword">self</span>)
+        <span class="hljs-keyword">return</span> component.year! * <span class="hljs-number">12</span> + component.month!
+    }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">Int</span></span>{
+    <span class="hljs-keyword">var</span> monthAndYear:(year:<span class="hljs-type">Int</span>,month:<span class="hljs-type">Int</span>){
+        <span class="hljs-keyword">let</span> month = <span class="hljs-keyword">self</span> % <span class="hljs-number">12</span>
+        <span class="hljs-keyword">let</span> year = <span class="hljs-keyword">self</span> / <span class="hljs-number">12</span>
+        <span class="hljs-keyword">return</span> (year,month)
+    }
+}
+</code></pre><p>由于该<code>Step</code>需要对<code>PublishingContent</code>中的所有<code>Item</code>进行汇总，所以在<code>Pipeline</code>中应该在所有内容都装载后再执行</p><pre data-language="swift"><code>.addMarkdownFiles(),
+.makeDateArchive(),
+</code></pre><p>可以访问<a href="https://www.fatbobman.com/archive/">https://www.fatbobman.com/archive/</a>查看演示。上面的代码可以在<a href="https://github.com/fatbobman/Archive_Article_By_Month_Publish_Plugin">Github</a>下载。</p><h2>实战4：给Publish添加搜索功能</h2><p>谁不想让自己的Blog支持全文搜索呢？对于多数的静态页面来说（比如github.io），是很难依靠服务端来实现的。</p><p>下面的代码是在参照<a href="https://github.com/wzpan/hexo-generator-search">local-search-engine-in-Hexo</a>的方案实现的。<code>local-search-engin</code>提出的解决方式是，将网站的全部需检索文章内容生成一个<code>xml</code>或<code>json</code>文件。用户搜索前，自动从服务端下载该文件，通过javascript代码在本地完成搜索工作。<a href="https://github.com/wzpan/hexo-theme-freemind/blob/master/source/js/search.js">javascripte代码</a>使用的是<code>hexo-theme-freemind</code>创建的。另外 Liam Huang的这篇<a href="https://liam.page/2017/09/21/local-search-engine-in-Hexo-site/">博客</a>也给了我很大的帮助。</p><p>最后实现的效果是这样的：</p><video src="http://cdn.fatbobman.com/publish-3-search-video.mp4" controls>video</video><p>创建一个<code>Step</code>用来在<code>Pipeline</code>的末端生成用于检索的<code>xml</code>文件。</p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">PublishingStep</span></span>{
+    <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">makeSearchIndex</span><span class="hljs-params">(includeCode:Bool = <span class="hljs-literal">true</span>)</span></span> -&gt; <span class="hljs-type">PublishingStep</span>{
+        step(named: <span class="hljs-string">"make search index file"</span>){ content <span class="hljs-keyword">in</span>
+            <span class="hljs-keyword">let</span> xml = <span class="hljs-type">XML</span>(
+                .element(named: <span class="hljs-string">"search"</span>,nodes:[
+                    <span class="hljs-comment">//之所以将这个部分分开写，是因为有时候编译器对于复杂一点的DSL会TimeOut</span>
+                    <span class="hljs-comment">//提示编译时间过长。分开则完全没有问题。这种情况在SwiftUI中也会遇到</span>
+                    .entry(content:content,includeCode: includeCode)
+                ])
+            )
+            <span class="hljs-keyword">let</span> result = xml.render()
+            <span class="hljs-keyword">do</span> {
+                <span class="hljs-keyword">try</span> content.createFile(at: <span class="hljs-type">Path</span>(<span class="hljs-string">"/Output/search.xml"</span>)).write(result)
+            }
+            <span class="hljs-keyword">catch</span> {
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">"Failed to make search index file error:\(error)"</span>)
+            }
+        }
+    }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">Node</span> </span>{
+    <span class="hljs-comment">//这个xml文件的格式是local-search-engin确定的，这里使用Plot把网站内容转换成xml</span>
+    <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">entry</span>&lt;Site: Website&gt;<span class="hljs-params">(content:PublishingContext&lt;Site&gt;,includeCode:Bool)</span></span> -&gt; <span class="hljs-type">Node</span>{
+        <span class="hljs-keyword">let</span> items = content.allItems(sortedBy: \.date)
+        <span class="hljs-keyword">return</span>  .forEach(items.enumerated()){ index,item <span class="hljs-keyword">in</span>
+            .element(named: <span class="hljs-string">"entry"</span>,nodes: [
+                .element(named: <span class="hljs-string">"title"</span>, text: item.title),
+                .selfClosedElement(named: <span class="hljs-string">"link"</span>, attributes: [.<span class="hljs-keyword">init</span>(name: <span class="hljs-string">"href"</span>, value: <span class="hljs-string">"/"</span> + item.path.string)] ),
+                .element(named: <span class="hljs-string">"url"</span>, text: <span class="hljs-string">"/"</span> + item.path.string),
+                .element(named: <span class="hljs-string">"content"</span>, nodes: [
+                    .attribute(named: <span class="hljs-string">"type"</span>, value: <span class="hljs-string">"html"</span>),
+                    <span class="hljs-comment">//为Item增加了htmlForSearch方法</span>
+                    <span class="hljs-comment">//由于我的Blog的文章中包含不少代码范例，所以让使用者选择是否在检索文件中包含Code。</span>
+                    .raw(<span class="hljs-string">"&lt;![CDATA["</span> + item.htmlForSearch(includeCode: includeCode) + <span class="hljs-string">"]]&gt;"</span>)
+                ]),
+                .forEach(item.tags){ tag <span class="hljs-keyword">in</span>
+                    .element(named:<span class="hljs-string">"tag"</span>,text:tag.string)
+                }
+            ])
+        }
+    }
+}
+</code></pre><p>我需要再称赞一下<a href="https://github.com/JohnSundell/Plot">Plot</a>，它让我非常轻松地完成了<code>xml</code>的创建工作。</p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">Item</span></span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">htmlForSearch</span><span class="hljs-params">(includeCode:Bool = <span class="hljs-literal">true</span>)</span></span> -&gt; <span class="hljs-type">String</span>{
+        <span class="hljs-keyword">var</span> result = body.html
+        result = result.replacingOccurrences(of: <span class="hljs-string">"]]&gt;"</span>, with: <span class="hljs-string">"]&gt;"</span>)
+        <span class="hljs-keyword">if</span> !includeCode {
+        <span class="hljs-keyword">var</span> search = <span class="hljs-literal">true</span>
+        <span class="hljs-keyword">var</span> check = <span class="hljs-literal">false</span>
+        <span class="hljs-keyword">while</span> search{
+            check = <span class="hljs-literal">false</span>
+            <span class="hljs-comment">//使用Ink来获取配对内容</span>
+            result.scan(using: [.<span class="hljs-keyword">init</span>(identifier: <span class="hljs-string">"&lt;code&gt;"</span>, terminator: <span class="hljs-string">"&lt;/code&gt;"</span>, allowMultipleMatches: <span class="hljs-literal">false</span>, handler: { match,range <span class="hljs-keyword">in</span>
+                result.removeSubrange(range)
+                check = <span class="hljs-literal">true</span>
+            })])
+            <span class="hljs-keyword">if</span> !check {search = <span class="hljs-literal">false</span>}
+        }
+        }
+        <span class="hljs-keyword">return</span> result
+    }
+}
+</code></pre><p>创建<code>搜索框</code>和<code>搜索结果容器</code>:</p><pre data-language="swift"><code><span class="hljs-comment">//里面的id和class由于要和javascript配合，需保持现状</span>
+<span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">Node</span> <span class="hljs-title">where</span> <span class="hljs-title">Context</span> == <span class="hljs-title">HTML</span>.<span class="hljs-title">BodyContext</span> </span>{
+    <span class="hljs-comment">//显示搜索结果的Node</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">searchResult</span><span class="hljs-params">()</span></span> -&gt; <span class="hljs-type">Node</span>{
+        .div(
+            .id(<span class="hljs-string">"local-search-result"</span>),
+            <span class="hljs-class">.<span class="hljs-keyword">class</span>("<span class="hljs-title">local</span>-<span class="hljs-title">search</span>-<span class="hljs-title">result</span>-<span class="hljs-title">cls</span>")
+        )
+    }
+
+    //显示搜索框的<span class="hljs-title">Node</span>
+    <span class="hljs-title">public</span> <span class="hljs-title">static</span> <span class="hljs-title">func</span> <span class="hljs-title">searchInput</span>() -&gt; <span class="hljs-title">Node</span></span>{
+        .div(
+        .form(
+            <span class="hljs-class">.<span class="hljs-keyword">class</span>("<span class="hljs-title">site</span>-<span class="hljs-title">search</span>-<span class="hljs-title">form</span>"),
+            .<span class="hljs-title">input</span>(
+                .<span class="hljs-title">class</span>("<span class="hljs-title">st</span>-<span class="hljs-title">search</span>-<span class="hljs-title">input</span>"),
+                .<span class="hljs-title">attribute</span>(<span class="hljs-title">named</span>: "<span class="hljs-title">type</span>", <span class="hljs-title">value</span>: "<span class="hljs-title">text</span>"),
+                .<span class="hljs-title">id</span>("<span class="hljs-title">local</span>-<span class="hljs-title">search</span>-<span class="hljs-title">input</span>"),
+                .<span class="hljs-title">required</span>(<span class="hljs-title">true</span>)
+                ),
+            .<span class="hljs-title">a</span>(
+                .<span class="hljs-title">class</span>("<span class="hljs-title">clearSearchInput</span>"),
+                .<span class="hljs-title">href</span>("<span class="hljs-title">javascript</span>:"),
+                .<span class="hljs-title">onclick</span>("<span class="hljs-title">document</span>.<span class="hljs-title">getElementById</span>('<span class="hljs-title">local</span>-<span class="hljs-title">search</span>-<span class="hljs-title">input</span>').<span class="hljs-title">value</span> = '';")
+            )
+        ),
+        .<span class="hljs-title">script</span>(
+            .<span class="hljs-title">id</span>("<span class="hljs-title">local</span>.<span class="hljs-title">search</span>.<span class="hljs-title">active</span>"),
+            .<span class="hljs-title">raw</span>(
+            """
+            <span class="hljs-title">var</span> <span class="hljs-title">inputArea</span>       = <span class="hljs-title">document</span>.<span class="hljs-title">querySelector</span>("#<span class="hljs-title">local</span>-<span class="hljs-title">search</span>-<span class="hljs-title">input</span>");
+            <span class="hljs-title">inputArea</span>.<span class="hljs-title">onclick</span>   = <span class="hljs-title">function</span>()</span>{ getSearchFile(); this.onclick = null }
+            inputArea.onkeydown = function(){ <span class="hljs-keyword">if</span>(event.keyCode == <span class="hljs-number">13</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span> }
+            <span class="hljs-string">"""
+            )
+        ),
+            .script(
+                .raw(searchJS) //完整的代码后面可以下载
+            )
+        )
+    }
+}</span>
+</code></pre><p>本例中,我将搜索功能设置在标签列表的页面中（更多信息查看<a href="https://www.fatbobman.com/posts/publish-2/">主题开发</a>），因此在<code>makeTagListHTML</code>中将上面两个<code>Node</code>放到自己认为合适的地方。</p><p>由于搜索用的javascript需要用到<code>jQuery</code>，所以在<code>head</code>中添加了jQuery的引用（通过覆写了<code>head</code>，当前只为<code>makeTagListHTML</code>添加了引用）。</p><p>在Pipeline中加入</p><pre data-language="swift"><code>.makeSearchIndex(includeCode: <span class="hljs-literal">false</span>), <span class="hljs-comment">//根据自己需要决定是否索引文章中的代码</span>
+</code></pre><p>完整的代码可以在<a href="https://github.com/fatbobman/local-search-engine-for-Publish">Github</a>下载。</p><h2>实战5：部署</h2><p>最后这个实例略微有点牵强，主要是为了介绍Publish套件中的另外一员<a href="https://github.com/JohnSundell/ShellOut">ShellOut</a>。</p><p><code>ShellOut</code>是一个很轻量的库，它的作用是方便开发者从Swift代码中调用脚本或命令行工具。在Publish中，使用<code>publish deploy</code>进行Github部署的代码便使用了这个库。</p><pre data-language="swift"><code><span class="hljs-keyword">import</span> Foundation
+<span class="hljs-keyword">import</span> Publish
+<span class="hljs-keyword">import</span> ShellOut
+
+<span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">PublishingStep</span> <span class="hljs-title">where</span> <span class="hljs-title">Site</span> == <span class="hljs-title">FatbobmanBlog</span></span>{
+    <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">uploadToServer</span><span class="hljs-params">()</span></span> -&gt; <span class="hljs-type">Self</span>{
+        step(named: <span class="hljs-string">"update files to fatbobman.com"</span>){ content <span class="hljs-keyword">in</span>
+            <span class="hljs-built_in">print</span>(<span class="hljs-string">"uploading......"</span>)
+            <span class="hljs-keyword">do</span> {
+                <span class="hljs-keyword">try</span> shellOut(to: <span class="hljs-string">"scp -i ~/.ssh/id_rsa -r  ~/myBlog/Output web@112.239.210.139:/var/www"</span>) 
+                <span class="hljs-comment">//我是采用scp部署的,你可以用任何你习惯的方式</span>
+            }
+            <span class="hljs-keyword">catch</span> {
+                <span class="hljs-built_in">print</span>(error)
+            }
+        }
+    }
+}
+</code></pre><p>在<code>main.swift</code>添加：</p><pre data-language="swift"><code><span class="hljs-keyword">var</span> command:<span class="hljs-type">String</span> = <span class="hljs-string">""</span>
+<span class="hljs-keyword">if</span> <span class="hljs-type">CommandLine</span>.arguments.<span class="hljs-built_in">count</span> &gt; <span class="hljs-number">1</span> {
+    command = <span class="hljs-type">CommandLine</span>.arguments[<span class="hljs-number">1</span>]
+}
+
+<span class="hljs-keyword">try</span> <span class="hljs-type">MyBlog</span>().publish(
+  .addMarkdownFiles(),
+  ...
+  .<span class="hljs-keyword">if</span>(command == <span class="hljs-string">"--upload"</span>, .uploadToServer())
+]
+</code></pre><p>执行 <code>swift run MyBlog --upload</code> 即可完成网站生成+上传（MyBlog为你的项目名称）</p><h2>其他的插件资源</h2><p>目前Publish的插件和主题在互联网上能够找到的并不很多，主要集中在<a href="https://github.com/topics/publish-plugin?l=swift">Github的#publish-plugin</a>上。</p><p>其中使用量比较大的有：</p><ul><li><a href="https://github.com/JohnSundell/SplashPublishPlugin">SplashPublishPlugin</a> 代码高亮</li><li><a href="https://github.com/alex-ross/HighlightJSPublishPlugin">HighlightJSPublishPlugin</a> 代码高亮</li><li><a href="https://github.com/Ze0nC/ColorfulTagsPublishPlugin">ColorfulTagsPublishPlugin</a> 给Tag添加颜色</li></ul><p>如果想在Github上分享你制作的plugin，请务必打上<code>publish-plugin</code>标签以便于大家查找</p><h2>最后</h2><p>就在即将完成这篇稿件的时候，手机上收到了<code>赵英俊</code>因病过世的新闻。英年早逝，令人唏嘘。回想到自己这些年经历的治疗过程，由衷地感觉平静、幸福的生活真好。</p><p>在使用Publish的这些天，让我找到了装修房子的感觉。虽然不一定做的多好，但网站能按自己的想法逐步变化真是乐趣无穷。</p>]]></content:encoded></item><item><guid isPermaLink="true">https://www.fatbobman.com/posts/publish-2</guid><title>用Publish创建博客（二）——主题开发</title><description>拥用强大的主题系统是一个静态网站生成器能否成功的重要原因之一。Publish采用Plot作为主题的开发工具，让开发者在高效编写主题的同时享受到了Swift的类型安全的优势。本文将从Plot开始介绍，让读者最终学会如何创建Publish主题。</description><link>https://www.fatbobman.com/posts/publish-2</link><pubDate>Mon, 1 Feb 2021 16:20:00 +0800</pubDate><content:encoded><![CDATA[<blockquote><p>拥用强大的主题系统是一个静态网站生成器能否成功的重要原因之一。<a href="https://github.com/JohnSundell/Publish">Publish</a>采用<a href="https://github.com/JohnSundell/Plot">Plot</a>作为主题的开发工具，让开发者在高效编写主题的同时享受到了Swift的类型安全的优势。本文将从Plot开始介绍，让读者最终学会如何创建Publish主题。</p></blockquote><h2>Plot</h2><h3>简介</h3><p>想要开发Publish的<code>Theme</code>主题，就不能不从Plot说起。</p><p>在Swift社区中，有不少优秀的项目致力于使用Swift生成HTML：比如Vapor的<a href="https://github.com/vapor/leaf">Leaf</a>，Point-Free的<a href="https://github.com/pointfreeco/swift-html">swift-html</a>等，Plot也是其中的一员。Plot最初是由<a href="https://swiftbysundell.com">John Sundell</a>编写的并作为Publish套件的一部分，它主要的关注点是Swift的静态网站HTML生成，以及创建建站所需的其他格式文档，包括<code>RSS</code>、<code>podcast</code>、<code>Sitemap</code>。它与Publish紧密集成但同时也作为一个独立项目存在。</p><p>Plot使用了一种被称作<code>Phantom Types</code>的技术，该技术将类型用作编译器的“标记”，从而能够通过泛型约束来强制类型安全。Plot使用了非常轻量级的API设计，最大限度的减少外部参数标签，从而减少渲染文档所需的语法量，使其呈现了具有“类似DSL”的代码表现。</p><h3>使用</h3><h4>基础</h4><ul><li>Node</li></ul><p>是任何Plot文档中所有元素和属性的核心构件。它可以表示元素和属性，以及文本内容和节点组。每个节点都被绑定到一个Context类型，它决定了它可以访问哪种DSL API（例如<code>HTML.BodyContext</code>用于放置在HTML页面<code>&lt;body&gt;</code>中的节点）。</p><ul><li>Element 代表一个元素，可以使用两个独立的标签打开和关闭（比如<code>&lt;body&gt;&lt;/body&gt;</code>），也可以自闭（比如<code>&lt;img/&gt;</code>）。当使用Plot时，你通常不需要与这个类型进行交互，基础Node中会创建它的实例。<ul></ul></li></ul><ul><li>Attribute</li></ul><p>表示附加在元素上的属性，例如<code> &lt;a&gt; </code>元素的 href，或者<code>&lt;img&gt;</code> 元素的 src。你可以通过它的初始化器来构造<code>Attribute</code>值，也可以通过DSL，使用<code>.attribute()</code>命令来构造。<br>* Document和DocumentFormat<br> 给定格式的文档，如HTML、RSS和PodcastFeed。这些都是最高级别的类型，你可以使用Plot的DSL来开始一个文档构建会话。</p><h4>类DSL语法</h4><pre data-language="swift"><code><span class="hljs-keyword">import</span> Plot
 
 <span class="hljs-keyword">let</span> html = <span class="hljs-type">HTML</span>(
     .head(

@@ -141,16 +141,18 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
         for page: TagListPage,
         context: PublishingContext<Site>
     ) throws -> HTML? {
-        HTML(
+        
+        return HTML(
             .lang(context.site.language),
-            .head(for: page, on: context.site),
+            .searchHead(for: page, on: context.site),
             .body(
                 .header(for: context, selectedSection: nil),
                 .wrapper(
-                    .h4(
-                        .class("tags-title"),
-                        .text("全部标签")
-                    ),
+                    .searchInput(),
+//                    .h4(
+//                        .class("tags-title"),
+//                        .text("全部标签")
+//                    ),
                     .ul(
                         .class("all-tags"),
                         .forEach(page.tags.sorted()) { tag in
@@ -162,8 +164,10 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                                 )
                             )
                         }
-                    )
+                    ),
+                    .searchResult()
                 ),
+
                 .footer(for: context.site)
             )
         )
@@ -252,9 +256,13 @@ extension Node where Context == HTML.BodyContext {
                                 .if(section as! FatbobmanBlog.SectionID == FatbobmanBlog.SectionID.index,
                                     .href(context.index.path),
                                     else:.href(context.sections[section].path)),
+//                                .if(section as! FatbobmanBlog.SectionID == FatbobmanBlog.SectionID.tags,
+//                                    .img(
+//                                        .class("nav searchIcon"),
+//                                        .src("/images/search.svg")
+//                                    ),
+//                                    else:.text(context.sections[section].title))
                                 .text(context.sections[section].title)
-
-
                             )
                         )
                     }

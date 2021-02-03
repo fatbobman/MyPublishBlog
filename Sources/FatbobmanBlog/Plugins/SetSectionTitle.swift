@@ -25,7 +25,7 @@ extension PublishingStep where Site == FatbobmanBlog {
                 case .about:
                     section.title = "关于"
                 case .tags:
-                    section.title = "标签"
+                    section.title = "搜索"
                 }
             }
         }
