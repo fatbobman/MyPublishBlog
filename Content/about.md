@@ -21,4 +21,5 @@ tags: first, article
 
 #### 联系我 ####
 
-> Email: xuyang#me.com (请将#换成@)
+> Email: [xuyang@me.com](mailto:xuyang@me.com)
+

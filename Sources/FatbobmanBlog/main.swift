@@ -41,17 +41,10 @@ try FatbobmanBlog().publish(
         //需要注意modifier的添加顺序
         .installPlugin(.highlightJS()), //语法高亮
         .addModifier(modifier: bilibili,modifierName: "bilibili"), //bilibili视频
-
-
         .copyResources(),
         .setSctionTitle(), //修改section 标题
-
-
-
         .addMarkdownFiles(),
         .makeDateArchive(),
-
-
         .installPlugin(.setDateFormatter()), //设置时间显示格式
         .installPlugin(.countTag()), //计算tag的数量,tag必须在 addMarkDownFiles 之后,否则alltags没有值
         .installPlugin(.colorfulTags(defaultClass: "tag", variantPrefix: "variant", numberOfVariants: 8)), //给tag多种颜色
