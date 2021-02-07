@@ -61,9 +61,3 @@ try FatbobmanBlog().publish(
         .if(command == "--upload", .uploadToServer())
     ]
 )
-
-
-
-
-
-
