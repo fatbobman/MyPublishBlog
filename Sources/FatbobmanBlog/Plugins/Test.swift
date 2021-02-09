@@ -9,12 +9,12 @@ import Foundation
 import Publish
 
 extension Plugin {
-  static func test() -> Self {
-    Plugin(name: "test") { content in
-      for section in content.sections {
-        print(section.content)
-        //                section.items.first!.tag
-      }
+    static func test() -> Self {
+        Plugin(name: "test") { content in
+            for section in content.sections {
+                print(section.content)
+                //                section.items.first!.tag
+            }
+        }
     }
-  }
 }

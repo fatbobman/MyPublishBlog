@@ -9,11 +9,11 @@ import Foundation
 import Publish
 
 extension Plugin {
-  static func setDateFormatter() -> Self {
-    Plugin(name: "setDateFormatter") { context in
-      let formatter = DateFormatter()
-      formatter.dateStyle = .short
-      context.dateFormatter = formatter
+    static func setDateFormatter() -> Self {
+        Plugin(name: "setDateFormatter") { context in
+            let formatter = DateFormatter()
+            formatter.dateStyle = .short
+            context.dateFormatter = formatter
+        }
     }
-  }
 }
