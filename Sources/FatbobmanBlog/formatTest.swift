@@ -16,11 +16,6 @@ public class TEST {
 func aest13(
     fat: String,
     name: String,
-    age _: Int,
-    adfe: Int,
-    bdfe _: Int,
-    casdf _: Int,
-    dasdf _: Int,
     easdf: String?
 ) -> String {
     print(fat)
