@@ -17,7 +17,7 @@ func aest13(
     fat: String,
     name: String,
     age _: Int,
-    adfe _: Int,
+    adfe: Int,
     bdfe _: Int,
     casdf _: Int,
     dasdf _: Int,
@@ -38,10 +38,8 @@ func aest13(
     }
 
     return "abc"
-        .uppercased()
-        .lowercased()
+        .uppercased().lowercased()
 }
-
 
 extension String {
     func name() -> String {
