@@ -50,7 +50,7 @@ struct ToolBarTest: View {
 }
 ```
 
-![截屏2020-07-10 上午9.01.52](/images/howto-swiftui-toolbar-toolbar1.png width=300)
+![截屏2020-07-10 上午9.01.52](https://cdn.fatbobman.com/howto-swiftui-toolbar-toolbar1.png width=300)
 
 ## 多平台适配 ##
 
@@ -135,7 +135,7 @@ enum Placement:String,CaseIterable{
 }
 ```
 
-<video src="/images/howto-swiftui-toolbar-video.mp4" controls = "controls">你的浏览器不支持本视频</video>
+<video src="https://cdn.fatbobman.com/howto-swiftui-toolbar-video.mp4" controls = "controls">你的浏览器不支持本视频</video>
 
 > macOS下不同placement的演示
 

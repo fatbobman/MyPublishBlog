@@ -58,7 +58,7 @@ func checkAge() -> Bool {
 
 以下是目前开发中的画面：
 
-![demo](/images/swiftui-form-formDemo.gif)
+![demo](https://cdn.fatbobman.com/swiftui-form-formDemo.gif)
 
 ## 用MVVM的方式来编写Form ##
 
@@ -76,7 +76,7 @@ func checkAge() -> Bool {
 
 完成后的视频如下：
 
-![demo](/images/swiftui-form-studentDemo.gif)
+![demo](https://cdn.fatbobman.com/swiftui-form-studentDemo.gif)
 
 下载 (当前代码已和 [在SwiftUI中制作可以控制取消手势的Sheet](https://zhuanlan.zhihu.com/p/245663226) 合并)
 

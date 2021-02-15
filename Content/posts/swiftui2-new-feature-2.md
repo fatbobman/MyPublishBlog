@@ -82,7 +82,7 @@ struct ContentView:View{
 }
 ```
 
-![abc](/images/swiftui2-new-feature-2-sceneStorage.png)
+![abc](https://cdn.fatbobman.com/swiftui2-new-feature-2-sceneStorage.png)
 
 >***上述代码在PadOS下运行正常，不过在macOS下程序会报错。估计应该是bug***
 
@@ -92,7 +92,7 @@ struct ContentView:View{
 
 苹果在SwiftUI2.0中添加了@AppStorage @SceneStorage @StateObject 等新的属性包装器，我根据自己的理解对目前SwiftUI提供的部分属性包装器做了如下总结：
 
-![propertyWrapperSheet](/images/swiftui2-new-feature-2-propertyWrapperSheet.png)
+![propertyWrapperSheet](https://cdn.fatbobman.com/swiftui2-new-feature-2-propertyWrapperSheet.png)
 
 经过此次升级后，SwiftUI已经大大的完善了各个层级数据的生命周期管理，对不同的类型、不同的场合、不同的用途都提供了解决方案，为编写符合SwiftUI的Data Flow提供了便利，我们可以根据自己的需要选择适合的Source of truth手段。
 

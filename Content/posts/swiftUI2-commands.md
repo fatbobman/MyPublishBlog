@@ -42,7 +42,7 @@ struct Menu:Commands{
 
 通过创建一个符合Commands协议的结构来描述你要在app中添加的自定义菜单项
 
-![test1](/images/swiftui2-commands-test1.png)
+![test1](https://cdn.fatbobman.com/swiftui2-commands-test1.png)
 
 ## 几个概念 ##
 

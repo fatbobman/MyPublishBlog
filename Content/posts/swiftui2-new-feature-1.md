@@ -151,7 +151,7 @@ struct ContentView:View{
 
   最开始的代码在三个平台下的状态：
 
-  ![windowGroup](/images/swiftui2-new-feature-1-windowGroup.png)
+  ![windowGroup](https://cdn.fatbobman.com/swiftui2-new-feature-1-windowGroup.png)
   如果在一个WindowGroup里加入多个View,呈现状态有点类似VStack。
 
   在一个Scene中加入多个WindowGroup，只有最前面的可以被显示。
@@ -251,7 +251,7 @@ struct ContentView:View{
   #endif
 ```
 
-![DocumentGroup](/images/swiftui2-new-feature-1-documentGroup.png)
+![DocumentGroup](https://cdn.fatbobman.com/swiftui2-new-feature-1-documentGroup.png)
   可以将多个DocumentGroup放入Scene中，程序将会一并支持每个DocumentGroup所定义的文件类型。上述代码使程序可以创建、编辑纯文本文件，并且可以浏览图片文件。
 
   在macOS上，需要在macOS.entitlements中设置com.apple.security.files.user-selected.read-write为真才能完成写入。
@@ -274,7 +274,7 @@ struct ContentView:View{
   #endif
 ```
 
-  ![Settings](/images/swiftui2-new-feature-1-settings.jpg)
+  ![Settings](https://cdn.fatbobman.com/swiftui2-new-feature-1-settings.jpg)
 
 ## 其他 ##
 

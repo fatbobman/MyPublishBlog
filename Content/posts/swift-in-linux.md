@@ -51,7 +51,7 @@ Swift在5.3版本后开始正式支持Linux平台，所以本文选择在Ubuntu 
 
 在[swift.org](https://swift.org/download/)上查找对应发行版的Swift Toolchain下载地址
 
-![image-20210214092353715](/images/swift_toolchain_download.png)
+![image-20210214092353715](https://cdn.fatbobman.com/swift_toolchain_download.png)
 
 ```bash
 $cd ~
@@ -148,7 +148,7 @@ Hello, world!
 ~/MyProject$code .
 ```
 
-![image-20210214144908318](/images/swift_in_linux_vscode_overview.png)
+![image-20210214144908318](https://cdn.fatbobman.com/swift_in_linux_vscode_overview.png)
 
 vscode对于Swift已经内置支持了代码高亮。
 
@@ -175,7 +175,7 @@ $cd sourcekit-lsp/Editors/vscode/
 $npm run createDevPackage 
 ```
 
-![image-20210214151421778](/images/swift_in_linux_complie_vscode_lsp.png)
+![image-20210214151421778](https://cdn.fatbobman.com/swift_in_linux_complie_vscode_lsp.png)
 
 编译成功的插件被放置在 `~/sourcekit-lsp/Editors/vscode/out`目录中。
 
@@ -190,11 +190,11 @@ $code --install-extension sourcekit-lsp-vscode-dev.vsix
 
 或者在vscode中选择该插件进行安装
 
-![image-20210214151923560](/images/swift_in_linux_vscode_install_lsp.png)
+![image-20210214151923560](https://cdn.fatbobman.com/swift_in_linux_vscode_install_lsp.png)
 
 配置`Settings`
 
-![image-20210214154131957](/images/swift_in_linux_lsp_setting_1.png)
+![image-20210214154131957](https://cdn.fatbobman.com/swift_in_linux_lsp_setting_1.png)
 
 由于`lsp`已经集成到了swift toolchain中，因此在我们安装toolchain时，它已经被安装到了`/usr/share/swift/usr/bin`的目录中，并且该目录也已经设置在环境的PATH中，因此通常无需指定绝对路径，vscode便可以使用swift的lsp功能。如果你自己单独下载了新版本的lsp，可以在`settings.json`中设置对应的路径。
 
@@ -204,7 +204,7 @@ $code --install-extension sourcekit-lsp-vscode-dev.vsix
 
 安装完成后，vscode便可支持代码自动补全、定义跳转等功能。
 
-![swift_in_linux_lsp_demo](/images/swift_in_linux_lsp_demo.gif)
+![swift_in_linux_lsp_demo](https://cdn.fatbobman.com/swift_in_linux_lsp_demo.gif)
 
 ## LLDB ##
 
@@ -218,7 +218,7 @@ $code --install-extension sourcekit-lsp-vscode-dev.vsix
 
 在vscode的插件市场中，安装`CodeLLDB`
 
-![image-20210214160313240](/images/swift_in_linst_install_lldb_in_market.png)
+![image-20210214160313240](https://cdn.fatbobman.com/swift_in_linst_install_lldb_in_market.png)
 
 在`settings.json`中指定`lldb`的位置
 
@@ -228,7 +228,7 @@ $code --install-extension sourcekit-lsp-vscode-dev.vsix
 
 也可以在`settings UI`中设定
 
-![image-20210214170242254](/images/swift_in_linux_setting_lldb_path.png)
+![image-20210214170242254](https://cdn.fatbobman.com/swift_in_linux_setting_lldb_path.png)
 
 ### 调试配置文件 ###
 
@@ -243,7 +243,7 @@ $code .
 
 在第一次点击左侧的`run`按钮时，vscode会提示创建`launch.json`文件，我们也可以自己手动在`.vscode`目录中创建该文件。
 
-![image-20210214172254927](/images/swift_in_linx_create_lanchjson.png)
+![image-20210214172254927](https://cdn.fatbobman.com/swift_in_linx_create_lanchjson.png)
 
 #### launch.json ####
 
@@ -365,7 +365,7 @@ print("Hello, world!\(Int.random(in: 0...100))")
 print("a:\(a)")
 ```
 
-![swift-in-linux-lldb-demo](/images/swift-in-linux-lldb-demo.gif)
+![swift-in-linux-lldb-demo](https://cdn.fatbobman.com/swift-in-linux-lldb-demo.gif)
 
 ## SwiftFormat ##
 
@@ -393,7 +393,7 @@ $swiftformat --version
 
 在插件商店选择swiftformat对应的插件（注意不要选错）。
 
-![image-20210214211153478](/images/swift-in-linux-swiftformat-plugin-install.png)
+![image-20210214211153478](https://cdn.fatbobman.com/swift-in-linux-swiftformat-plugin-install.png)
 
 在`settings.json`中添加
 
@@ -407,7 +407,7 @@ $swiftformat --version
 
 `swiftformat`将从`Swiftformat.configSearchPaths`设定的路径中尝试查找用户自己创建的配置文件（`.swiftformat`），上面的配置为，如果当前目录没有，则从用户根目录上查找。如果都没有则使用默认配置和规则。
 
-![swift-in-linux-format-demo](/images/swift-in-linux-format-demo.gif)
+![swift-in-linux-format-demo](https://cdn.fatbobman.com/swift-in-linux-format-demo.gif)
 
 `swiftformat`目前包含50多个规则，它的文档做的很好，可以在[Rules.md](https://github.com/nicklockwood/SwiftFormat/blob/master/Rules.md)中找到最新的规则列表及演示。需要注意的是，vscode目前无法正确的响应`swiftformat`自定义配置中的`--indent`，需要在vscode中对`indent`做单独的设定（我目前采用的是通过`EditorConfig for VS Code`做统一设置）。另外，如果通过`swift.options:["--config","~/rules/.swiftformat"]`指定的规则文件的优先级高于`swiftformat.path`中的规则文件。
 
@@ -436,7 +436,7 @@ $swiftlint --version
 
 在vscode插件市场中安装swiftlint插件
 
-![image-20210215073043096](/images/swift-in-linux-swiftlint-plugin.png)
+![image-20210215073043096](https://cdn.fatbobman.com/swift-in-linux-swiftlint-plugin.png)
 
 在`settings.json`中添加
 
@@ -451,7 +451,7 @@ $swiftlint --version
 
 `configSearchPath`的设置同`swiftformat`类似，如果不需要自定义配置，则无需填写。
 
-![swift-in-linux-lint-demo](/images/swift-in-linux-lint-demo.gif)
+![swift-in-linux-lint-demo](https://cdn.fatbobman.com/swift-in-linux-lint-demo.gif)
 
 ## 跨平台配置 ##
 
@@ -465,7 +465,7 @@ $swiftlint --version
 
 安装`platform-settins`插件
 
-![image-20210215091440441](/images/swift-in-linux-platform-settings.png)
+![image-20210215091440441](https://cdn.fatbobman.com/swift-in-linux-platform-settings.png)
 
 修改`settings.json`
 
@@ -539,7 +539,7 @@ $swiftlint --version
         },
 ```
 
-![image-20210215092656451](/images/swift-in-linux-launch-multiform.png)
+![image-20210215092656451](https://cdn.fatbobman.com/swift-in-linux-launch-multiform.png)
 
 在不同的平台上，选择对应的target即可。
 

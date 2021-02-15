@@ -249,7 +249,7 @@ date: 2021-01-29 19:58
 description: A description of my first post.
 tags: first, article
 author: fat 
-image: /images/first-post.png
+image: https://cdn.fatbobman.com/first-post.png
 ---
 ```
 

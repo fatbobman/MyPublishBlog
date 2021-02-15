@@ -19,7 +19,7 @@
         }
     }
 }
-</code></pre><p>通过创建一个符合Commands协议的结构来描述你要在app中添加的自定义菜单项</p><img src="/images/swiftui2-commands-test1.png" alt="test1"/><h2>几个概念</h2><ul><li>@CommandBuilder</li></ul><p>SwiftUI2.0中，苹果为我来带来了很多新的function builder。Menu中的body，其实就是一个@CommandsBuilder。我们可以通过使用内置的语句通过DSL的方式，方便的定义自己所需的菜单。DSL的好处是简单明了，不过功能也有所限定，目前@CommandsBuilder支持的方法比较少，并不支持逻辑判断。</p><pre data-language="swift"><code>  <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">MyCommand</span>:<span class="hljs-title">Commands</span></span>{
+</code></pre><p>通过创建一个符合Commands协议的结构来描述你要在app中添加的自定义菜单项</p><img src="https://cdn.fatbobman.com/swiftui2-commands-test1.png" alt="test1"/><h2>几个概念</h2><ul><li>@CommandBuilder</li></ul><p>SwiftUI2.0中，苹果为我来带来了很多新的function builder。Menu中的body，其实就是一个@CommandsBuilder。我们可以通过使用内置的语句通过DSL的方式，方便的定义自己所需的菜单。DSL的好处是简单明了，不过功能也有所限定，目前@CommandsBuilder支持的方法比较少，并不支持逻辑判断。</p><pre data-language="swift"><code>  <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">MyCommand</span>:<span class="hljs-title">Commands</span></span>{
       <span class="hljs-comment">//如果需要多个菜单列，需在body前显式注明@CommandsBuilder，或者使用Group，这一方法，同样使用与其他functionBuilder的描述。</span>
       @<span class="hljs-type">CommandsBuilder</span> <span class="hljs-keyword">var</span> body: some <span class="hljs-type">Commands</span>{
           <span class="hljs-comment">//每个CommandMenu都是一个菜单列</span>

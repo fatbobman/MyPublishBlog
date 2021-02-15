@@ -12,7 +12,7 @@ SwipeCell 是一个用Swift 5.3开发的 SwiftUI库.目标是为了实现类似i
 
 [SwipeCell GitHub](https://github.com/fatbobman/SwipeCell)
 
-<video src="/images/SwipeCellDemoVideo.mp4" controls = "controls">你的浏览器不支持本视频</video>
+<video src="https://cdn.fatbobman.com/SwipeCellDemoVideo.mp4" controls = "controls">你的浏览器不支持本视频</video>
 
 ## 配置Button ##
 

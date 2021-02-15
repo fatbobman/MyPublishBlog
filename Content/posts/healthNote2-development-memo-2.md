@@ -28,9 +28,9 @@ preview在Xcode12中得到了很大的加强,崩溃的机率明显下降很多.�
 
 这是我目前一部分View的设计稿
 
-![截屏2020-08-24 下午3.53.25](/images/healthnotes-develop-memo-2-1.jpg)
+![截屏2020-08-24 下午3.53.25](https://cdn.fatbobman.com/healthnotes-develop-memo-2-1.jpg)
 
-![截屏2020-08-24 下午3.54.24](/images/healthnotes-develop-memo-2-2.jpg)
+![截屏2020-08-24 下午3.54.24](https://cdn.fatbobman.com/healthnotes-develop-memo-2-2.jpg)
 
 目前已经针对完成的这一小部分开始编写代码了.之所以在没有完全完成设计的情况下便开始写代码,主要的原因是为了检查我在代码上对设计的还原度,同时也看一下当前的设计在实际运行状况下是否合理,以便总结经验完成下一步的全面设计.
 
@@ -38,7 +38,7 @@ preview在Xcode12中得到了很大的加强,崩溃的机率明显下降很多.�
 
 在编写代码的时候,还是能够明显感觉到和设计之间的差别的,有些地方要做取舍,有些地方在实机上的显示又不尽如人意.只有不断的磨合才能增长经验.
 
-![截屏2020-08-24 下午4.13.08](/images/healthnotes-develop-memo-2-3.jpg)
+![截屏2020-08-24 下午4.13.08](https://cdn.fatbobman.com/healthnotes-develop-memo-2-3.jpg)
 
 总体而言使用Figma或Sketch进行的设计在SwiftUI中的还原度还是很高的.开发难度也不大.
 

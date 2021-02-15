@@ -13,7 +13,7 @@ title: HowTo —— SwiftUI2.0如何使用Label
 Label("Hello World",systemImage:"person.badge.plus")
 ```
 
-![image-20200709174029886](/images/howto-swiftui-label1.png)
+![image-20200709174029886](https://cdn.fatbobman.com/howto-swiftui-label1.png)
 
 ## 支持自定义标签风格 ##
 
@@ -63,7 +63,7 @@ struct LabelItem:Identifiable{
 
 ```
 
-![image-20200709175339008](/images/howto-swiftui-label2.png)
+![image-20200709175339008](https://cdn.fatbobman.com/howto-swiftui-label2.png)
 
 ## 使用自己的Label控件，更多控制力 ##
 
@@ -126,4 +126,4 @@ struct MyLabel:View{
 
 ```
 
-![image-20200709180353538](/images/howto-swiftui-label3.png)
+![image-20200709180353538](https://cdn.fatbobman.com/howto-swiftui-label3.png)

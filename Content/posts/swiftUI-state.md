@@ -14,7 +14,7 @@ title: @state研究
 
 在SwiftUI中，视图是由数据（状态）驱动的。按照苹果的说法，视图是状态的函数，而不是事件的序列（The views are a function of state, not a sequence of events）。每当视图在创建或解析时，都会为该视图和与该视图中使用的状态数据之间创建一个依赖关系，每当状态的信息发生变化是，有依赖关系的视图则会马上反应出这些变化并重绘。SwiftUI中提供了诸如 @State ObservedObject EnvironmentObject等来创建应对不同类型、不同作用域的状态形式。
 
-![类型及作用域](/images/state-study-image.jpg)
+![类型及作用域](https://cdn.fatbobman.com/state-study-image.jpg)
 
 <center>图片来自于SwiftUI for Absoloute Beginners</center>
 

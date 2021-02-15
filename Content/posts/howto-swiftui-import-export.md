@@ -136,7 +136,7 @@ struct ExportImportTest: View {
 
 > **macOS下需要将项目配置中的 App Sandbox - User Selected File 设置为 读写**
 
-<video src="/images/howto-swiftui-import-export-video.mp4" controls = "controls">你的浏览器不支持本视频</video>
+<video src="https://cdn.fatbobman.com/howto-swiftui-import-export-video.mp4" controls = "controls">你的浏览器不支持本视频</video>
 
 
 

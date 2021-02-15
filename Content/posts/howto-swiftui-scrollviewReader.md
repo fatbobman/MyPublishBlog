@@ -110,7 +110,7 @@ struct ScrollItem:Identifiable{
 
 ```
 
-<video src="/images/howto-swiftui-scrollviewReader-video.mp4" controls="controls">你的浏览器不支持本视频</video>
+<video src="https://cdn.fatbobman.com/howto-swiftui-scrollviewReader-video.mp4" controls="controls">你的浏览器不支持本视频</video>
 
 ## 遗憾 ##
 

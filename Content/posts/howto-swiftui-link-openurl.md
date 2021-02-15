@@ -52,4 +52,4 @@ struct URLTest: View {
 > 模拟器仅支持极少数的URL，最好使用真机测试
 > [苹果官方提供的一些URL scheme](https://developer.apple.com/library/archive/featuredarticles/iPhoneURLScheme_Reference/PhoneLinks/PhoneLinks.html#//apple_ref/doc/uid/TP40007899-CH6-SW1)
 
-<video src="/images/howto-swiftui-openurl-video.mp4" controls = "controls">你的浏览器不支持本视频</video>
+<video src="https://cdn.fatbobman.com/howto-swiftui-openurl-video.mp4" controls = "controls">你的浏览器不支持本视频</video>

@@ -224,7 +224,7 @@ swift package generate-xcodeproj
 
 项目源文件存在Sources目录下。
 
-![目录结构](/images/vapor4-struct.png)
+![目录结构](https://cdn.fatbobman.com/vapor4-struct.png)
 
 **main.swift**作为程序的入口，创建了Vapor服务
 
