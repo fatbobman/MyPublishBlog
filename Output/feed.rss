@@ -1,4 +1,176 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content"><channel><title>肘子的Swift记事本</title><description>徐杨的个人博客,Core Data,Swift,Swift UI,Combine,健康笔记,iOS APP,Health Note,HealthNotes</description><link>https://www.fatbobman.com</link><language>zh</language><lastBuildDate>Thu, 4 Feb 2021 09:24:56 +0800</lastBuildDate><pubDate>Thu, 4 Feb 2021 09:24:56 +0800</pubDate><ttl>250</ttl><atom:link href="https://www.fatbobman.com/feed.rss" rel="self" type="application/rss+xml"/><item><guid isPermaLink="true">https://www.fatbobman.com/posts/publish-3</guid><title>用Publish创建博客（三）——插件开发</title><description>我们不仅可以利用Publish内置的接口来开发插件进行扩展，同时还可以使用Publish套件中其他的优秀库（Ink、Plot、Sweep、Files、ShellOut等）来完成更多的创意。本文将通过几个实例（添加标签、增加属性、用代码生成内容、全文搜索、命令行部署）在展示不同扩展手段的同时向大家介绍Publish套件中其他的优秀成员。</description><link>https://www.fatbobman.com/posts/publish-3</link><pubDate>Wed, 3 Feb 2021 19:58:00 +0800</pubDate><content:encoded><![CDATA[<blockquote><p>我们不仅可以利用Publish内置的接口来开发插件进行扩展，同时还可以使用Publish套件中其他的优秀库（Ink、Plot、Sweep、Files、ShellOut等）来完成更多的创意。本文将通过几个实例（添加标签、增加属性、用代码生成内容、全文搜索、命令行部署）在展示不同扩展手段的同时向大家介绍Publish套件中其他的优秀成员。在阅读本文前，最好能先阅读<a href="https://www.fatbobman.com/posts/publish-1/">用Publish创建博客（一）——入门</a>、<a href="https://www.fatbobman.com/posts/publish-2/">用Publish创建博客（二）——主题开发</a>。对Publish有个基本了解。本文篇幅较长，你可以选择自己感兴趣的实战内容阅读。</p></blockquote><h2>基础</h2><h3>PublishingContext</h3><p>在<a href="https://www.fatbobman.com/posts/publish-1/">用Publish创建博客（一）——入门</a>中我们介绍过Publish有两个Content概念。其中<code>PublishingContext</code>作为根容器包含了你网站项目的全部信息（<code>Site</code>、<code>Section</code>、<code>Item</code>、<code>Page</code>等）。在对Publish进行的大多数扩展开发时，都需要和<code>PublishingContext</code>打交道。不仅通过它来获取数据，而且如果要对现有数据进行改动或者添加新的<code>Item</code>、<code>Page</code>时(在<code>Content</code>中采用不创建<code>markdown</code>文件的方式)也必须要调用其提供的方法。比如<code>mutateAllSections</code>、<code>addItem</code>等。</p><h3>Pipeline中的顺序</h3><p>Publish会逐个执行Pipeline中的<code>Step</code>,因此必须要在正确的位置放置<code>Step</code>和<code>Plugin</code>。比如需要对网站的所有数据进行汇总，则该处理过程应该放置在<code>addMarkdownFiles</code>（数据都被添加进<code>Content</code>）之后；而如果想添加自己的部署（<code>Deploy</code>），则应放置在生成所有文件之后。下面会通过例子具体说明。</p><h2>热身</h2><blockquote><p>下面的代码，以放置在<code>Myblog</code>（第一篇中创建，并在第二篇中进行了修改）项目里为例。</p></blockquote><h3>准备</h3><p>请将</p><pre data-language="swift"><code><span class="hljs-keyword">try</span> <span class="hljs-type">Myblog</span>().publish(withTheme: .foundation)
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content"><channel><title>肘子的Swift记事本</title><description>徐杨的个人博客,Core Data,Swift,Swift UI,Combine,健康笔记,iOS APP,Health Note,HealthNotes</description><link>https://www.fatbobman.com</link><language>zh</language><lastBuildDate>Mon, 15 Feb 2021 15:11:01 +0800</lastBuildDate><pubDate>Mon, 15 Feb 2021 15:11:01 +0800</pubDate><ttl>250</ttl><atom:link href="https://www.fatbobman.com/feed.rss" rel="self" type="application/rss+xml"/><item><guid isPermaLink="true">https://www.fatbobman.com/posts/swift-in-linux</guid><title>在Linux系统上搭建Swift开发调试环境</title><description>本文的目标是在Linux上搭建一个可供生产标准的Swift开发调试环境。使用者将获得一个支持代码高亮、自动补全、定义跳转、断点调试、代码美化、代码静态扫描、跨操作系统平台配置的综合开发体验。</description><link>https://www.fatbobman.com/posts/swift-in-linux</link><pubDate>Mon, 15 Feb 2021 15:00:00 +0800</pubDate><content:encoded><![CDATA[<h2>Swift与Linux</h2><p>自2015年Swift宣布开源并支持Linux后，一晃已超过5年。在最初几年间尽管Swift发展迅速，但并未被Linux社区广泛接受。造成这种局面的原因较多，其中既有语言稳定性方面的问题，同时又有对Linux的支持不完善、缺乏具有吸引力的基础库和第三方库、热点项目不足等多方面原因。</p><p>最近两年，上述问题均得到显著改善。</p><ul><li>从Swift5开始Swift团队宣布ABI稳定了。自此，Swift为应用程序提供了二进制兼容性，有了ABI稳定性作为基础，Swift对其他平台的支持速度和力度将大大提高</li><li>2020年Swift团队推出了5.3版本，除了“重要的质量提升和性能增强”之外，Swift5.3的一个关键特性是正式支持Linux和Window平台。事实上，这也是Swift的发布流程首次为三个不同的平台分别设立了发布负责人。作为承诺将Swift引入Linux的第一份成果，Swift团队宣布新的Swift版本可用于一众Linux发行版上。</li><li>出现了大量优秀的官方和第三方的跨平台库。仅Apple公司，最近几年来已经为Swift社区贡献了大量的Swift代码，并保持着非常高的提交频率。</li><li>Swift在服务器端及深度学习领域取得了不错的应用成果。</li></ul><p>Swift已经准备在Linux有更多的表现。</p><h2>写本文的原因</h2><p>前些日子写了篇<a href="https://www.fatbobman.com/posts/publish-1/">用Publish创建博客（一）——入门</a>（一个用Swift编写的优秀的静态网站生成器）的介绍，期间有网友问我是否可以在Linux上使用，我回答不成问题。但转过头来思考，虽然<code>Publish</code>完美地支持Linux，但开发者能否像在mac上一样方便的进行开发调试呢？</p><p>之前使用<code>Vapor</code>的时候，曾通过<code>Docker</code>在Ubuntu上安装过Swift，不过代码是在mac上调试的。我也十分好奇，在2021年Swift到底在Linux下的开发环境如何？</p><p>本文的目标是在Linux上搭建一个可供生产标准的Swift开发调试环境。使用者将获得一个支持代码高亮、自动补全、定义跳转、断点调试、代码美化、代码静态扫描、跨操作系统平台配置的综合开发体验。</p><h2>准备</h2><p>由于每个人使用的Linux发行版本不同，因此在安装过程中，如遇到缺少必要依赖的情况，请自行按系统提示安装所需的依赖库即可。</p><p>本文在描述每一步该如何做的同时，还会做出必要的解释。即使你使用的是其他的Linux发行版，或者不同的编辑器，甚至在Swift或其他工具发生了重大的升级后，仍可按照下面安装思路进行环境搭建。</p><p>本文搭建的起点是建立在已经安装了Visual Studio Code 1.53.0的Ubuntu 20.04LTS（最小化安装）系统上的。选择安装的Swift Toolchain为5.3.3。</p><p>对于Ubuntu 20.04,需安装<code>python2.7</code>及<code>npm</code>以完成下面其他操作。</p><pre data-language="bash"><code>$ sudo apt install libpython2.7 libpython2.7-dev libz3-4 npm 
+</code></pre><h2>Swift Toolchain</h2><h3>工具链选择</h3><p>尽管你可以直接<a href="https://github.com/apple/swift/releases">下载Swift Toolchain的源码</a>自己编译，但目前最推荐的方式还是使用官方提供的已编译好的下载包进行安装。<a href="https://swift.org/download/#releases">swift.org</a>上提供了Ubuntu 16.04、Ubuntu 18.04、Ubuntu 20.04、CentOS 7、CentOS 8、Amazon Linux 2的下载包。其他的发行版本也多有自己的官方支持，比如Fodor、Red Hat Enterprise Linux8、Raspbian OSi等</p><p>Swift在5.3版本后开始正式支持Linux平台，所以本文选择在Ubuntu 20.04上安装<a href="https://swift.org/builds/swift-5.3.3-release/ubuntu2004/swift-5.3.3-RELEASE/swift-5.3.3-RELEASE-ubuntu20.04.tar.gz">Swift 5.3.3 Release</a>。</p><h3>安装</h3><p>在<a href="https://swift.org/download/">swift.org</a>上查找对应发行版的Swift Toolchain下载地址</p><img src="http://cdn.fatbobman.com/swift_toolchain_download.png" alt="image-20210214092353715"/><pre data-language="bash"><code><span class="hljs-variable">$cd</span> ~
+<span class="hljs-variable">$wget</span> https://swift.org/builds/swift-5.3.3-release/ubuntu2004/swift-5.3.3-RELEASE/swift-5.3.3-RELEASE-ubuntu20.04.tar.gz
+</code></pre><p>解压文件</p><pre data-language="bash"><code><span class="hljs-variable">$tar</span> -xzf swift-5.3.3-RELEASE-ubuntu20.04.tar.gz 
+</code></pre><p>swift工具链将被解压在 <code>~/swift-5.3.3-RELEASE-ubuntu20.04</code>目录中，将该目录移动到你习惯的路径，比如：</p><pre data-language="bash"><code><span class="hljs-variable">$sudo</span> mv swift-5.3.3-RELEASE-ubuntu20.04 /usr/share/swift
+</code></pre><p>请记住移动后的路径<code>/usr/share/swift</code>，该路径将在下面的配置中被多次使用到。</p><p>将swift bin的路径添加到环境中</p><pre data-language="bash"><code><span class="hljs-variable">$echo</span> <span class="hljs-string">"export PATH=/usr/share/swift/usr/bin:<span class="hljs-variable">$PATH</span>"</span> &gt;&gt; ~/.bash
+<span class="hljs-variable">$source</span> .bash
+</code></pre><p>至此，Swift已经在当前系统上安装好了</p><pre data-language="bash"><code><span class="hljs-variable">$swift</span> --version
+Swift version 5.3.3 (swift-5.3.3-RELEASE)
+Target: x86_64-unknown-linux-gnu
+</code></pre><h3>运行第一段代码</h3><p>创建<code>hello.swift</code>，内容为</p><pre data-language="swift"><code>#!/usr/bin/env swift
+<span class="hljs-built_in">print</span>(<span class="hljs-string">"My first swift code"</span>)
+</code></pre><pre data-language="bash"><code><span class="hljs-variable">$cd</span> ~
+<span class="hljs-variable">$swift</span> hello.swift
+My first swift code
+</code></pre><p>或者可以将swift代码当做script来执行</p><pre data-language="bash"><code><span class="hljs-variable">$chmod</span> +755 hello.swift
+$./hellow.swift
+My first swift code
+</code></pre><h3>创建第一个Swift项目</h3><p>Swift Package Manager (SPM) 是苹果推出的用于创建使用swift的库和可执行程序的工具。目前它已经是Swift Toolchain的一部分了。</p><p>创建可执行程序项目</p><pre data-language="bash"><code><span class="hljs-variable">$cd</span> ~
+<span class="hljs-variable">$mdkir</span> MyProject
+<span class="hljs-variable">$cd</span> MyProject
+<span class="hljs-variable">$swift</span> package init --<span class="hljs-built_in">type</span> executable
+Creating executable package: MyProject
+Creating Package.swift
+Creating README.md
+Creating .gitignore
+Creating Sources/
+Creating Sources/MyProject/main.swift
+Creating Tests/
+Creating Tests/LinuxMain.swift
+Creating Tests/MyProjectTests/
+Creating Tests/MyProjectTests/MyProjectTests.swift
+Creating Tests/MyProjectTests/XCTestManifests.swift
+</code></pre><p>编译并运行该项目</p><pre data-language="bash"><code>~/MyProject<span class="hljs-variable">$swift</span> run
+[4/4] Linking MyProject
+Hello, world!
+</code></pre><p>该项目在下面的配置中还将使用到。也可以直接使用vscode打开项目文件</p><pre data-language="bash"><code>~/MyProject<span class="hljs-variable">$code</span> .
+</code></pre><img src="http://cdn.fatbobman.com/swift_in_linux_vscode_overview.png" alt="image-20210214144908318"/><p>vscode对于Swift已经内置支持了代码高亮。</p><h2>SourceKit-LSP</h2><h3>什么是LSP</h3><p><code>LSP</code>的全程是<code>Language Sever Protocol</code>，是微软提出的一项标准化协议，旨在统一开发工具与<code>Lanuguage Server</code>之间的通信。<code>LSP</code>为支持的语言提供了一套通用的功能集，包括：语法高亮、自动补全、定义跳转、查找引用等等。苹果公司从2018年开始为Swift社区提供了<a href="https://github.com/apple/sourcekit-lsp">LSP的代码</a>及支持。目前<code>LSP</code>已经被集成到了Swift的工具链中。</p><h3>安装</h3><p>尽管Swift ToolChain中已经集成了<code>LSP</code>，但是我们还是需要为<code>vscode</code>安装对应的插件并进行配置，才能在vscode中使用Swift的LSP功能。</p><p>由于Swift LSP插件没有被放置在<code>vscode</code>的插件市场中，我们还是需要从苹果的<a href="https://github.com/apple/sourcekit-lsp">LSP Github</a>站点上下载</p><pre data-language="bash"><code><span class="hljs-variable">$git</span> <span class="hljs-built_in">clone</span> https://github.com/apple/sourcekit-lsp.git
+</code></pre><p>下载的文件包含全部LSP的代码和插件代码，我们只需安装插件代码。</p><pre data-language="bash"><code><span class="hljs-variable">$cd</span> sourcekit-lsp/Editors/vscode/
+<span class="hljs-variable">$npm</span> run createDevPackage 
+</code></pre><img src="http://cdn.fatbobman.com/swift_in_linux_complie_vscode_lsp.png" alt="image-20210214151421778"/><p>编译成功的插件被放置在 <code>~/sourcekit-lsp/Editors/vscode/out</code>目录中。</p><h3>配置vscode</h3><p>通过命令行将插件安装到vscode上</p><pre data-language="bash"><code><span class="hljs-variable">$cd</span> ~/sourcekit-lsp/Editors/vscode/out
+<span class="hljs-variable">$code</span> --install-extension sourcekit-lsp-vscode-dev.vsix
+</code></pre><p>或者在vscode中选择该插件进行安装</p><img src="http://cdn.fatbobman.com/swift_in_linux_vscode_install_lsp.png" alt="image-20210214151923560"/><p>配置<code>Settings</code></p><img src="http://cdn.fatbobman.com/swift_in_linux_lsp_setting_1.png" alt="image-20210214154131957"/><p>由于<code>lsp</code>已经集成到了swift toolchain中，因此在我们安装toolchain时，它已经被安装到了<code>/usr/share/swift/usr/bin</code>的目录中，并且该目录也已经设置在环境的PATH中，因此通常无需指定绝对路径，vscode便可以使用swift的lsp功能。如果你自己单独下载了新版本的lsp，可以在<code>settings.json</code>中设置对应的路径。</p><pre data-language="undefined"><code>"sourcekit-lsp.serverPath": "/usr/share/swift/usr/bin/sourcekit-lsp"
+</code></pre><p>安装完成后，vscode便可支持代码自动补全、定义跳转等功能。</p><img src="http://cdn.fatbobman.com/swift_in_linux_lsp_demo.gif" alt="swift<em>in</em>linux<em>lsp</em>demo"/><h2>LLDB</h2><h3>什么是LLDB</h3><p><code>LLDB</code>调试器是<code>LLVM</code>项目的调试器组件。它构建为一组可重用的组件，这些组件广泛使用<code>LLVM</code>中的现有库，例如<code>Clang</code>表达式解析器和<code>LLVM</code>反汇编程序。通过<code>LLDB</code>，让<code>vscode</code>拥有了对Swift代码进行调试的能力。</p><h3>安装</h3><p>由于Swift Toolchain当前已经集成了<code>LLDB</code>，因此我们无需对其进行安装，只需要安装vscode的lldb插件即可。</p><p>在vscode的插件市场中，安装<code>CodeLLDB</code></p><img src="http://cdn.fatbobman.com/swift_in_linst_install_lldb_in_market.png" alt="image-20210214160313240"/><p>在<code>settings.json</code>中指定<code>lldb</code>的位置</p><pre data-language="undefined"><code>"lldb.library": "/usr/share/swift/usr/lib/liblldb.so"
+</code></pre><p>也可以在<code>settings UI</code>中设定</p><img src="http://cdn.fatbobman.com/swift_in_linux_setting_lldb_path.png" alt="image-20210214170242254"/><h3>调试配置文件</h3><p>在vscode中用lldb对项目进行调试，需要在项目的<code>.vscode</code>目录中针对每个项目分别创建调试配置文件<code>launch.json</code>和<code>tasks.json</code>。</p><p><code>launch.json</code>是vscode用于调试的配置文件，比如指定调试语言环境，指定调试类型等等。其作用和<code>XCode</code>中的target类似。在swift项目中，我们通常会设置两个<code>configuration</code>，一个用于调试程序，一个用于进行<code>Unit testing</code>。</p><pre data-language="bash"><code><span class="hljs-variable">$cd</span> MyProject
+<span class="hljs-variable">$code</span> .
+</code></pre><p>在第一次点击左侧的<code>run</code>按钮时，vscode会提示创建<code>launch.json</code>文件，我们也可以自己手动在<code>.vscode</code>目录中创建该文件。</p><img src="http://cdn.fatbobman.com/swift_in_linx_create_lanchjson.png" alt="image-20210214172254927"/><h4>launch.json</h4><pre data-language="json"><code>{
+    <span class="hljs-attr">"version"</span>: <span class="hljs-string">"0.2.0"</span>,
+    <span class="hljs-attr">"configurations"</span>: [
+        {
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"lldb"</span>, 
+            <span class="hljs-attr">"request"</span>: <span class="hljs-string">"launch"</span>,
+            <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Debug"</span>,
+            <span class="hljs-attr">"program"</span>: <span class="hljs-string">"${workspaceFolder}/.build/debug/MyProject"</span>,
+            <span class="hljs-attr">"args"</span>: [],
+            <span class="hljs-attr">"cwd"</span>: <span class="hljs-string">"${workspaceFolder}"</span>，
+            <span class="hljs-string">"preLaunchTask"</span>: <span class="hljs-string">"swift-build"</span>
+        },
+        {
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"lldb"</span>,
+            <span class="hljs-attr">"request"</span>: <span class="hljs-string">"launch"</span>,
+            <span class="hljs-attr">"name"</span>: <span class="hljs-string">"unit testing on Linux"</span>,
+            <span class="hljs-attr">"program"</span>: <span class="hljs-string">"./.build/debug/MyProjectPackageTests.xctest"</span>,
+            <span class="hljs-attr">"preLaunchTask"</span>: <span class="hljs-string">"swift-build-tests"</span>
+        }
+    ]
+}
+</code></pre><ul><li>type</li></ul><p>用于此启动配置的调试器的类型，swift调试需设置成lldb</p><ul><li>request</li></ul><p>此启动配置的请求类型，swift调试需设置成launch，</p><ul><li>name</li></ul><p>在调试启动配置下拉列表中的显示名称</p><ul><li>program</li></ul><p>可执行文件的位置。使用<code>swift build</code>编译后（不加realase参数）的执行文件被放置在<code>项目目录${workspaceFolder}/.build/debug/</code>下，文件名通常为项目名称（本例为MyProject）；<code>swift build -c release</code>编译后的执行文件放置在<code>${workspaceFolder}/.build/release/</code>下，文件名为项目名称（本例为MyProject）;<code>unit testing</code>的可执行文件放置在<code>${workspaceFolder}/.build/debug/</code>，文件名通常为<code>项目名称PackageTests.xctest</code>（本例为MyProjectPackageTests.xctest）。请根据每个项目的名称、配置设定该项。</p><ul><li>args</li></ul><p>传递给程序的参数。比如你的项目支持启动参数设定<code>MyProject name hello</code>，则<code>args</code>为<code>["name","hello"]</code></p><ul><li>cwd</li></ul><p>当前工作目录，用于查找依赖关系和其他文件</p><ul><li>preLaunchTask</li></ul><p>要在调试会话开始之前启动的任务，每个任务都需要在<code>tasks.json</code>中有对应的设定。比如本例中，<code>swift-build</code>对应着tasks.json中的<code>label:swift-build</code>的task。对于swift项目，在调试前最常作的工作便是编译。</p><h4>tasks.json</h4><pre data-language="json"><code>{
+    <span class="hljs-attr">"version"</span>: <span class="hljs-string">"2.0.0"</span>,
+    <span class="hljs-attr">"tasks"</span>: [
+        {
+            <span class="hljs-attr">"label"</span>: <span class="hljs-string">"swift-build"</span>,
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"shell"</span>,
+            <span class="hljs-attr">"command"</span>:<span class="hljs-string">"swift build"</span>
+        },
+        {
+            <span class="hljs-attr">"label"</span>: <span class="hljs-string">"swift-build-tests"</span>,
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"process"</span>,
+            <span class="hljs-attr">"command"</span>: <span class="hljs-string">"swift"</span>,
+            <span class="hljs-attr">"args"</span>: [
+                <span class="hljs-string">"build"</span>,
+                <span class="hljs-string">"--build-tests"</span>
+            ]
+        }
+    ]
+}
+</code></pre><ul><li>lable</li></ul><p>同<code>launch.json</code>中的<code>preLaunchTask</code>对应</p><ul><li>type</li></ul><p><code>shell</code>或<code>process</code>，为了更好的演示，本例中两种形式都采用了。</p><ul><li>command</li></ul><p>如果<code>type</code>为<code>process</code>，<code>commnad</code>只能为需要执行命令的可执行文件名称（不可带参数），在本例中为<code>swift</code>,如果<code>type</code>为<code>shell</code>则可以在<code>command</code>中直接写上需要调用的参数，比如<code>swift build</code></p><ul><li>args</li></ul><p>对于<code>type</code>为<code>process</code>的情况，需要调用的参数在此填写。在本例中，<code>swift-build-tests</code>也可以写成</p><pre data-language="undefined"><code>"label": "swift-build-tests",
+"type": "shell",
+"command": "swift build --build-tests"
+</code></pre><p><code>launch.json</code>和<code>tasks.json</code>还有很多其他的选项，更多的用法请参阅<a href="https://code.visualstudio.com/docs/editor/debugging">vscode手册</a>以及<a href="https://docs.swift.org/package-manager/">SPM手册</a>。</p><p>现在我们就可以开始对Swift项目进行调试了</p><h3>第一次调试</h3><pre data-language="bash"><code><span class="hljs-variable">$cd</span> MyProject
+<span class="hljs-variable">$code</span> .
+</code></pre><p>随便给main.swift添加点内容，比如：</p><pre data-language="swift"><code><span class="hljs-keyword">import</span> Foundation
+<span class="hljs-keyword">let</span> a = <span class="hljs-number">100</span>
+<span class="hljs-built_in">print</span>(<span class="hljs-string">"Hello, world!\(Int.random(in: 0...100))"</span>)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">"a:\(a)"</span>)
+</code></pre><img src="http://cdn.fatbobman.com/swift-in-linux-lldb-demo.gif" alt="swift-in-linux-lldb-demo"/><h2>SwiftFormat</h2><h3>为什么要对代码Foramt</h3><p>许多项目都有固定的代码风格，统一的代码规范不仅有助于项目的迭代和维护，同时也让代码更加美观和易读。但并不是每个程序员都能够掌握并熟练使用项目风格约定。通过使用自动化工具完成上述工作是让人十分惬意的事情。</p><p>Swift社区中有多个Format项目，目前最活跃的有<code>nicklockwood</code>的<a href="https://github.com/nicklockwood/SwiftFormat">swiftformat</a>和<code>Apple</code>的<a href="https://github.com/apple/swift-format">swift-format</a>。本例中，我们选择安装<code>nicklockwood</code>的<a href="https://github.com/nicklockwood/SwiftFormat">swiftformat</a>。两者的安装方法类似，相对来说<code>swiftformat</code>支持的规则更多，另外同Swift 的版本也不像<code>swift-foramt</code>那样需要严格绑定。</p><h3>安装命令行工具</h3><pre data-language="bash"><code><span class="hljs-variable">$cd</span> ~
+<span class="hljs-variable">$git</span> <span class="hljs-built_in">clone</span> https://github.com/nicklockwood/SwiftFormat.git
+<span class="hljs-variable">$cd</span> SwiftFormat
+<span class="hljs-variable">$swift</span> build -c release
+<span class="hljs-variable">$sudo</span> cp ~/SwiftFormat/.build/release/swiftformat /usr/<span class="hljs-built_in">local</span>/bin
+<span class="hljs-variable">$swiftformat</span> --version
+0.47.11
+</code></pre><h3>安装vscode插件</h3><p><code>swiftformat</code>、<code>swift-format</code>以及<code>swiftlint</code>的vscode插件都是由<a href="https://github.com/vknabel">Valentin Kabel</a>开发的，他同时还管理、开发了其他及个vscode下的swift插件，为在vscode上更好的使用swift作出了不小的贡献。</p><p>在插件商店选择swiftformat对应的插件（注意不要选错）。</p><img src="http://cdn.fatbobman.com/swift-in-linux-swiftformat-plugin-install.png" alt="image-20210214211153478"/><p>在<code>settings.json</code>中添加</p><pre data-language="undefined"><code>"swiftformat.path": "/usr/local/bin/swiftformat",
+"swiftformat.configSearchPaths": [
+        "./swiftformat",
+        "~/.swiftformat"
+        ]
+</code></pre><p><code>swiftformat</code>将从<code>Swiftformat.configSearchPaths</code>设定的路径中尝试查找用户自己创建的配置文件（<code>.swiftformat</code>），上面的配置为，如果当前目录没有，则从用户根目录上查找。如果都没有则使用默认配置和规则。</p><img src="http://cdn.fatbobman.com/swift-in-linux-format-demo.gif" alt="swift-in-linux-format-demo"/><p><code>swiftformat</code>目前包含50多个规则，它的文档做的很好，可以在<a href="https://github.com/nicklockwood/SwiftFormat/blob/master/Rules.md">Rules.md</a>中找到最新的规则列表及演示。需要注意的是，vscode目前无法正确的响应<code>swiftformat</code>自定义配置中的<code>--indent</code>，需要在vscode中对<code>indent</code>做单独的设定（我目前采用的是通过<code>EditorConfig for VS Code</code>做统一设置）。另外，如果通过<code>swift.options:["--config","~/rules/.swiftformat"]</code>指定的规则文件的优先级高于<code>swiftformat.path</code>中的规则文件。</p><h2>SwiftLint</h2><h3>让代码更规范</h3><p>在计算机科学中，lint是一种工具程序的名称，它用来标记源代码中，某些可疑的、不具结构性的段落。它是一种静态程序分析工具，最早适用于C语言，在UNIX平台上开发出来。后来它成为通用术语，可用于描述在任何一种计算机程序语言中，用来标记源代码中有疑义段落的工具。swift社区中，被使用的最广泛的就是<code>realm</code>开发的<a href="https://github.com/realm/SwiftLint">SwiftLint</a>。</p><p>其实，上面的swiftformat、swift-format都具有lint的功能，并且和swiftlint在很多地方的规则都类似（都基于<a href="https://github.com/realm/SwiftLint">Github's Swift Style Guide</a>），但各自的特点还是略有不同。</p><p>swiftformat更多的表现在对代码的自动修改上，而swiftlint由于直接hook了Clang和Sourcekit，因此提供了swiftformat所不具备的，代码录入阶段的实时验证和提示功能（通常并不使用它的<code>autocorrect</code>）。</p><h3>安装命令行工具</h3><pre data-language="bash"><code><span class="hljs-variable">$git</span> <span class="hljs-built_in">clone</span> https://github.com/realm/SwiftLint.git
+<span class="hljs-variable">$cd</span> SwiftLint
+<span class="hljs-variable">$swift</span> build -c release
+<span class="hljs-variable">$sudo</span> cp ~/SwiftLint/.build/release/swiftlint /usr/<span class="hljs-built_in">local</span>/bin
+<span class="hljs-variable">$swiftlint</span> --version
+0.42.0
+</code></pre><h3>安装vscode插件</h3><p>在vscode插件市场中安装swiftlint插件</p><img src="http://cdn.fatbobman.com/swift-in-linux-swiftlint-plugin.png" alt="image-20210215073043096"/><p>在<code>settings.json</code>中添加</p><pre data-language="undefined"><code>"swiftlint.path": "/usr/local/bin/swiftlint"，
+"swiftlint.toolchainPath": "/usr/share/swift/usr/bin",
+"swiftlint.configSearchPaths": [
+        "./.swiftlint.yml",
+        "~/.swiftlint.yml"
+    ]
+</code></pre><p><code>configSearchPath</code>的设置同<code>swiftformat</code>类似，如果不需要自定义配置，则无需填写。</p><img src="http://cdn.fatbobman.com/swift-in-linux-lint-demo.gif" alt="swift-in-linux-lint-demo"/><h2>跨平台配置</h2><p>我们已经在Ubuntu 20.04上构建了一个较完整的Swift开发环境。</p><h3>settings</h3><p>如果你也像我一样使用了vscode的setting同步功能，那么在其他的平台（比如mac），上述的settings.json将无法正常使用。</p><p>为了让我们构建的开发环境适应多平台，需要启用配置的多平台支持，并且针对不同平台分别设定。</p><p>安装<code>platform-settins</code>插件</p><img src="http://cdn.fatbobman.com/swift-in-linux-platform-settings.png" alt="image-20210215091440441"/><p>修改<code>settings.json</code></p><p>当前为：</p><pre data-language="json"><code>{
+    <span class="hljs-attr">"sourcekit-lsp.serverPath"</span>: <span class="hljs-string">"/usr/share/swift/usr/bin/sourcekit-lsp"</span>,
+    <span class="hljs-attr">"lldb.library"</span>: <span class="hljs-string">"/usr/share/swift/usr/lib/liblldb.so"</span>,
+    <span class="hljs-attr">"swiftformat.path"</span>: <span class="hljs-string">"/usr/local/bin/swiftformat"</span>,
+    <span class="hljs-attr">"swiftformat.configSearchPaths"</span>: [
+        <span class="hljs-string">"./swiftformat"</span>,
+        <span class="hljs-string">"~/.swiftformat"</span>
+    ],
+    <span class="hljs-attr">"swiftlint.path"</span>: <span class="hljs-string">"/usr/local/bin/swiftlint"</span>,
+    <span class="hljs-attr">"swiftlint.toolchainPath"</span>: <span class="hljs-string">"/usr/share/swift/usr/bin"</span>,
+    <span class="hljs-attr">"swiftlint.configSearchPaths"</span>: [
+        <span class="hljs-string">"./.swiftlint.yml"</span>,
+        <span class="hljs-string">"~/.swiftlint.yml"</span>
+    ]
+}
+</code></pre><p>修改为：</p><pre data-language="json"><code>{
+    <span class="hljs-attr">"platformSettings.autoLoad"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">"platformSettings.platforms"</span>: {
+        <span class="hljs-attr">"linux"</span>:{
+            <span class="hljs-attr">"sourcekit-lsp.serverPath"</span>: <span class="hljs-string">"/usr/share/swift/usr/bin/sourcekit-lsp"</span>,
+            <span class="hljs-attr">"lldb.library"</span>: <span class="hljs-string">"/usr/share/swift/usr/lib/liblldb.so"</span>,
+            <span class="hljs-attr">"swiftformat.path"</span>: <span class="hljs-string">"/usr/local/bin/swiftformat"</span>,
+            <span class="hljs-attr">"swiftlint.path"</span>: <span class="hljs-string">"/usr/local/bin/swiftlint"</span>,
+            <span class="hljs-attr">"swiftlint.toolchainPath"</span>: <span class="hljs-string">"/usr/share/swift/usr/bin"</span>,
+        },
+        <span class="hljs-attr">"mac"</span>:{
+            <span class="hljs-attr">"sourcekit-lsp.serverPath"</span>: <span class="hljs-string">"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp"</span>,
+            <span class="hljs-attr">"lldb.library"</span>: <span class="hljs-string">"/Applications/Xcode.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB"</span>,
+            <span class="hljs-attr">"swiftformat.path"</span>: <span class="hljs-string">"/usr/local/bin/swiftformat"</span>, <span class="hljs-comment">//homebrew目前也恰巧安装在此</span>
+            <span class="hljs-attr">"swiftlint.path"</span>: <span class="hljs-string">"/usr/local/bin/swiftlint"</span>, <span class="hljs-comment">//指向工具的实际路径</span>
+            <span class="hljs-attr">"swiftlint.toolchainPath"</span>: <span class="hljs-string">"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin"</span>,
+        }
+    
+    },
+    <span class="hljs-attr">"swiftformat.configSearchPaths"</span>: [
+        <span class="hljs-string">"./swiftformat"</span>,
+        <span class="hljs-string">"~/.swiftformat"</span>
+    ],
+    <span class="hljs-attr">"swiftlint.configSearchPaths"</span>: [
+        <span class="hljs-string">"./.swiftlint.yml"</span>,
+        <span class="hljs-string">"~/.swiftlint.yml"</span>
+    ]
+}
+</code></pre><h3>launch.json</h3><p>在mac平台下，<code>unit testing</code>的调用方式也和linux下不同，因此需要在<code>launch.json</code>中添加一个<code>configuration</code>，由于使用同一个<code>preLauchchTask</code>，因此<code>tasks.json</code>不用改动。</p><pre data-language="undefined"><code>       {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug tests on macOS",
+            "program": "/Applications/Xcode.app/Contents/Developer/usr/bin/xctest", //For example /Applications/Xcode.app/Contents/Developer/usr/bin/xctest
+            "args": [
+                "${workspaceFolder}/.build/debug/MyProjectPackageTests.xctest"
+            ],
+            "preLaunchTask": "swift-build-tests"
+        },
+</code></pre><img src="http://cdn.fatbobman.com/swift-in-linux-launch-multiform.png" alt="image-20210215092656451"/><p>在不同的平台上，选择对应的target即可。</p><h2>结语</h2><p>希望本文能够帮助更多的朋友在Linux上使用Swift进行开发。</p>]]></content:encoded></item><item><guid isPermaLink="true">https://www.fatbobman.com/posts/publish-3</guid><title>用Publish创建博客（三）——插件开发</title><description>我们不仅可以利用Publish内置的接口来开发插件进行扩展，同时还可以使用Publish套件中其他的优秀库（Ink、Plot、Sweep、Files、ShellOut等）来完成更多的创意。本文将通过几个实例（添加标签、增加属性、用代码生成内容、全文搜索、命令行部署）在展示不同扩展手段的同时向大家介绍Publish套件中其他的优秀成员。</description><link>https://www.fatbobman.com/posts/publish-3</link><pubDate>Wed, 3 Feb 2021 19:58:00 +0800</pubDate><content:encoded><![CDATA[<blockquote><p>我们不仅可以利用Publish内置的接口来开发插件进行扩展，同时还可以使用Publish套件中其他的优秀库（Ink、Plot、Sweep、Files、ShellOut等）来完成更多的创意。本文将通过几个实例（添加标签、增加属性、用代码生成内容、全文搜索、命令行部署）在展示不同扩展手段的同时向大家介绍Publish套件中其他的优秀成员。在阅读本文前，最好能先阅读<a href="https://www.fatbobman.com/posts/publish-1/">用Publish创建博客（一）——入门</a>、<a href="https://www.fatbobman.com/posts/publish-2/">用Publish创建博客（二）——主题开发</a>。对Publish有个基本了解。本文篇幅较长，你可以选择自己感兴趣的实战内容阅读。</p></blockquote><h2>基础</h2><h3>PublishingContext</h3><p>在<a href="https://www.fatbobman.com/posts/publish-1/">用Publish创建博客（一）——入门</a>中我们介绍过Publish有两个Content概念。其中<code>PublishingContext</code>作为根容器包含了你网站项目的全部信息（<code>Site</code>、<code>Section</code>、<code>Item</code>、<code>Page</code>等）。在对Publish进行的大多数扩展开发时，都需要和<code>PublishingContext</code>打交道。不仅通过它来获取数据，而且如果要对现有数据进行改动或者添加新的<code>Item</code>、<code>Page</code>时(在<code>Content</code>中采用不创建<code>markdown</code>文件的方式)也必须要调用其提供的方法。比如<code>mutateAllSections</code>、<code>addItem</code>等。</p><h3>Pipeline中的顺序</h3><p>Publish会逐个执行Pipeline中的<code>Step</code>,因此必须要在正确的位置放置<code>Step</code>和<code>Plugin</code>。比如需要对网站的所有数据进行汇总，则该处理过程应该放置在<code>addMarkdownFiles</code>（数据都被添加进<code>Content</code>）之后；而如果想添加自己的部署（<code>Deploy</code>），则应放置在生成所有文件之后。下面会通过例子具体说明。</p><h2>热身</h2><blockquote><p>下面的代码，以放置在<code>Myblog</code>（第一篇中创建，并在第二篇中进行了修改）项目里为例。</p></blockquote><h3>准备</h3><p>请将</p><pre data-language="swift"><code><span class="hljs-keyword">try</span> <span class="hljs-type">Myblog</span>().publish(withTheme: .foundation)
 </code></pre><p>换成</p><pre data-language="swift"><code><span class="hljs-keyword">try</span> <span class="hljs-type">Myblog</span>().publish(using: [
     .addMarkdownFiles(), <span class="hljs-comment">//导入Content目录下的markdown文件，并解析添加到PublishingContent中</span>
     .copyResources(), <span class="hljs-comment">//将Resource内容添加到Output中</span>

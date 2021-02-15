@@ -36,11 +36,15 @@ extension Node where Context == HTML.DocumentContext {
         if description.isEmpty { description = site.description }
 
         return .head(
-            .encoding(.utf8), .siteName(site.name), .url(site.url(for: location)), .title(title),
+            .encoding(.utf8),
+            .siteName(site.name),
+            .url(site.url(for: location)),
+            .title(title),
             .description(description),
             .twitterCardType(location.imagePath == nil ? .summary : .summaryLargeImage),
             .meta(.name("twitter:site"), .content("fatbobman")),
             .meta(.name("twitter:creator"), .content("fatbobman")),
+            .meta(.name("referrer"), .content("no-referrer")),
             .forEach(stylesheetPaths) { .stylesheet($0) }, .viewport(.accordingToDevice),
             .unwrap(site.favicon) { .favicon($0) },
             .unwrap(
