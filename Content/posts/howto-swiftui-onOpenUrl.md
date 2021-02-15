@@ -23,7 +23,7 @@ VStack{
 
 首先在项目中设置URL
 
-![URL](http://cdn.fatbobman.com/howto-swiftui-onOpenURL-URL.png)
+![URL](/images/howto-swiftui-onOpenURL-URL.png)
 
 ```swift
 import SwiftUI
@@ -69,7 +69,7 @@ enum TabSelection:Hashable{
 
 > macOS目前暂不支持，应该会在正式版本提供。
 
-<video src="http://cdn.fatbobman.com/howto-swiftui-onOpenURL-video.mp4" controls = "controls">你的浏览器不支持本视频</video>
+<video src="/images/howto-swiftui-onOpenURL-video.mp4" controls = "controls">你的浏览器不支持本视频</video>
 
 ## 特别注意 ##
 

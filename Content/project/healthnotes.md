@@ -41,4 +41,4 @@ title: 健康笔记
   希望你们将更多的意见和建议更多的反馈给我，帮助健康笔记更好的成长。
 
 在这里可以下载
-[![pic](http://cdn.fatbobman.com/appStoreIcon.svg)](https://apps.apple.com/us/app/health-notes-2/id1534513553)
+[![pic](/images/appStoreIcon.svg)](https://apps.apple.com/us/app/health-notes-2/id1534513553)

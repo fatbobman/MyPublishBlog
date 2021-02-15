@@ -11,7 +11,7 @@ SwiftUIOverlayContainer本身并不提供任何预置的视图样式，不过通
 
 [SwiftUIOverlayContainer](https://github.com/fatbobman/SwiftUIOverlayContainer)
 
-<video src="http://cdn.fatbobman.com/swiftui-overlay-demo.mp4" controls = "controls">你的浏览器不支持本视频</video>
+<video src="/images/swiftui-overlay-demo.mp4" controls = "controls">你的浏览器不支持本视频</video>
 
 库代码已经修改可以直接在xcode11下使用
 

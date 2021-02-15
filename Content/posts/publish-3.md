@@ -44,7 +44,7 @@ try Myblog().publish(using: [
 
 我们先通过官方的一个例子了解一下`Step`的创建过程。当前导航菜单的初始状态：
 
-![image-20210203121214511](http://cdn.fatbobman.com/publish-3-changetitle-old.png)
+![image-20210203121214511](/images/publish-3-changetitle-old.png)
 
 下面的代码将改变SectionID。
 
@@ -84,13 +84,13 @@ extension PublishingStep where Site == Myblog {
 
 添加该`Step`后的导航菜单:
 
-![image-20210203123545306](http://cdn.fatbobman.com/publish-3-title-new.png)
+![image-20210203123545306](/images/publish-3-title-new.png)
 
 ### Pipeline中的位置 ###
 
 如果将`addDefaultSectionTitles`放置在`addMarkdownFiles`的前面，会发现`posts`的title变成了
 
-![image-20210203123440066](http://cdn.fatbobman.com/publish-3-changetitle-wrong-position.png)
+![image-20210203123440066](/images/publish-3-changetitle-wrong-position.png)
 
 这是因为，当前的`Content--posts`目录中有一个`index.md`文件。`addMarkdownFiles`会使用从该文件中解析的`title`来设置`posts`的`Section.title`。解决的方法有两种：
 
@@ -135,7 +135,7 @@ Publish使用[Ink](https://github.com/JohnSundell/Ink)作为`markdown`的解析�
 
 在本例中我们尝试为如下`markdown`的`codeBlock`语法添加新的转义功能：
 
-![image-20210203142914881](http://cdn.fatbobman.com/publish-3-bilibili-mardown-code.png)
+![image-20210203142914881](/images/publish-3-bilibili-mardown-code.png)
 
 `aid`为B站视频的`aid`号码，`danmu`为`弹幕`开关
 
@@ -207,7 +207,7 @@ extension PublishingStep{
 
 `Ink`将按照`modifier`的添加顺序来调用。添加该插件后的效果
 
-![publish-3-bilibili-videodemo](http://cdn.fatbobman.com/publish-3-bilibili-videodemo.png)
+![publish-3-bilibili-videodemo](/images/publish-3-bilibili-videodemo.png)
 
 可以直接在[https://www.fatbobman.com/video/](https://www.fatbobman.com/video/)查看演示效果。
 
@@ -273,7 +273,7 @@ extension Plugin{
 
 显示结果
 
-![image-20210203104002714](http://cdn.fatbobman.com/publish-3-tagCount.png)
+![image-20210203104002714](/images/publish-3-tagCount.png)
 
 ## 实战3：将文章按月份汇总 ##
 
@@ -281,7 +281,7 @@ extension Plugin{
 
 本例结束时，我们将让Publish能够自动生成如下的页面：
 
-![publish-3-dateAchive](http://cdn.fatbobman.com/publish-3-dateAchive-2343299.png)
+![publish-3-dateAchive](/images/publish-3-dateAchive-2343299.png)
 
 ```swift
 //创建一个Step
@@ -362,7 +362,7 @@ extension Int{
 
 最后实现的效果是这样的：
 
-<video src="http://cdn.fatbobman.com/publish-3-search-video.mp4" controls>video</video>
+<video src="/images/publish-3-search-video.mp4" controls>video</video>
 
 创建一个`Step`用来在`Pipeline`的末端生成用于检索的`xml`文件。
 

@@ -68,7 +68,7 @@ title: 聊一下SwiftUI中的List和ForEach
 
 通过下面的视频可以看到让我痛苦的app表现
 
-<video src="http://cdn.fatbobman.com/swiftui-list-foreach-10ForEach.mp4" controls = "controls"></video>
+<video src="/images/swiftui-list-foreach-10ForEach.mp4" controls = "controls"></video>
 
 只有十条记录时的状态.非常丝滑
 
@@ -82,7 +82,7 @@ title: 聊一下SwiftUI中的List和ForEach
     }
 ```
 
-<video src="http://cdn.fatbobman.com/swiftui-list-foreach-10000MyList.mp4" controls = "controls"></video>
+<video src="/images/swiftui-list-foreach-10000MyList.mp4" controls = "controls"></video>
 10000条记录的样子
 
 在10条记录时一切都很完美,但当记录设置为10000条时,完全卡成了ppt的状态.尤其是View初始化便占有了大量的时间.
@@ -140,7 +140,7 @@ title: 聊一下SwiftUI中的List和ForEach
     }
 ```
 
-<video src="http://cdn.fatbobman.com/swiftui-list-foreach-10000withoutForEach.mp4" controls = "controls"></video>
+<video src="/images/swiftui-list-foreach-10000withoutForEach.mp4" controls = "controls"></video>
 
 熟悉的丝滑又回来了.
 
@@ -159,7 +159,7 @@ title: 聊一下SwiftUI中的List和ForEach
        }.edgesIgnoringSafeArea(.all)
 ```
 
-<video src="http://cdn.fatbobman.com/swiftui-list-foreach-10000MyList.mp4" controls = "controls"></video>
+<video src="/images/swiftui-list-foreach-10000MyList.mp4" controls = "controls"></video>
 
 通过这次碰到的问题,我知道了可以在什么情况下使用ForEach.通过这篇文章记录下来,希望其他人少走这样的弯路.
 

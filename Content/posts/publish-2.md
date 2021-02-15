@@ -402,7 +402,7 @@ $publish run
 
 访问`http://localhost:8000`，页面差不多这样
 
-![publis-2-defaultIndex](http://cdn.fatbobman.com/publis-2-defaultIndex.png)
+![publis-2-defaultIndex](/images/publis-2-defaultIndex.png)
 
 在`Resource`目录中创建`MyTheme`目录。在XCode中将Publish库中的两个文件`styles.css`、`Theme+Foundation.swift`拷贝到 `MyTheme`目录，也可以在MyTheme目录中新创建文件后粘贴代码。
 
@@ -479,7 +479,7 @@ hello world
 
 至此准备完毕，页面看起来差不多是这个样子，创建当前显示页面的是`makeIndexHTML`方法。
 
-![publish-2-defaultindex2](http://cdn.fatbobman.com/publish-2-defaultindex2.png)
+![publish-2-defaultindex2](/images/publish-2-defaultindex2.png)
 
 #### 例子1：在makeIndexHTML中改变Item Row的显示内容 ####
 
@@ -563,13 +563,13 @@ func makeIndexHTML(for index: Index,
 
 现在Index变成如下状态：
 
-![image-20210201135111053](http://cdn.fatbobman.com/publish-2-index-finish.png)
+![image-20210201135111053](/images/publish-2-index-finish.png)
 
 #### 例子2：为makeItemHTML添加临近文章的导航 ####
 
 本例，我们将在makeItemHTML上添加文章导航功能，类似效果如下：
 
-![image-20210201105104706](http://cdn.fatbobman.com/publish-2-item-navigatore-demo.png)
+![image-20210201105104706](/images/publish-2-item-navigatore-demo.png)
 
 点击进入任意Item（文章）
 
@@ -679,7 +679,7 @@ func makeIndexHTML(for index: Index,
 
 以上代码仅作为概念演示。结果如下：
 
-![publish-2-makeitem-with-navigator](http://cdn.fatbobman.com/publish-2-makeitem-with-navigator.png)
+![publish-2-makeitem-with-navigator](/images/publish-2-makeitem-with-navigator.png)
 
 ## 总结 ##
 

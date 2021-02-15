@@ -122,7 +122,7 @@ struct RootView: View {
 }
 ```
 
-<video src="http://cdn.fatbobman.com/focusebinding-video.mov" controls="controls">您的浏览器不支持播放该视频！</video>
+<video src="/images/focusebinding-video.mov" controls="controls">您的浏览器不支持播放该视频！</video>
 
 目前在iOS下无法获取FocusedValueKey数值，文档中标识是支持iOS的，应该在未来会解决
 

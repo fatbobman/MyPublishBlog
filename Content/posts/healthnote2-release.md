@@ -13,4 +13,4 @@ title: 健康笔记2.0正式版完成了!
 无论从功能、性能、UI表现上,2.0版都比1.0版有了较大提高.
 
 在这里可以下载
-[![pic](http://cdn.fatbobman.com/appStoreIcon.svg)](https://apps.apple.com/us/app/health-notes-2/id1534513553)
+[![pic](/images/appStoreIcon.svg)](https://apps.apple.com/us/app/health-notes-2/id1534513553)

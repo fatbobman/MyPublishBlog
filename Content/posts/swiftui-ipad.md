@@ -84,11 +84,11 @@ VStack{
 
 因为健康笔记以列表被主要表现形式的app，最初所以我希望在iphone上始终保持Portrait，在ipad上保持Landscape的形式。不过最终还是决定让其在ipad上同时支持Portrait和Landscape。
 
-![ipadiphone](http://cdn.fatbobman.com/swiftui-ipad-ipadiPhone.png)
+![ipadiphone](/images/swiftui-ipad-ipadiPhone.png)
 
 为了更灵活的处理，我没有选择在info.plist中对其进行设定，而是通过在delegate中，针对不同的情况作出响应。
 
-![xcode](http://cdn.fatbobman.com/swiftui-ipad-xcode.png)
+![xcode](/images/swiftui-ipad-xcode.png)
 
 因为无需支持多窗口，所以关闭了multiple windows。另外需要激活Requires full screen才能让delegate作出响应
 

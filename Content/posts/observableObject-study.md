@@ -21,7 +21,7 @@ title: ObservableObject研究——想说爱你不容易
 
 * 用新的 State 替换 Store 中原有的状态，并用新状态来驱动更新界面。
 
-![Redux架构](http://cdn.fatbobman.com/observableObject-study-reduximage.gif)
+![Redux架构](/images/observableObject-study-reduximage.gif)
 
 在该书中结合作者之前Redux、RxSwift等开发经验，提供了一个SwiftUI化的范例程序。之后我也继续学习了一些有关的资料，并通过阅读Github上不少的开源范例，基本对这一方式有所掌握，并在[**健康笔记**](https://apps.apple.com/app/id1492861358)中得以应用。总的来说，当前在SwiftUI框架下，大家的实现手段主要的不同都体现在细节上，大的方向、模式、代码构成基本都差不多：
 

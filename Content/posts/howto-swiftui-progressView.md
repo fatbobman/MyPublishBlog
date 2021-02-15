@@ -13,7 +13,7 @@ title: HowTo —— SwiftUI2.0 使用ProgressView显示进度条
 ProgressView()
 ```
 
-![progress1](http://cdn.fatbobman.com/howto-swiftui-progressView-progress1.png)
+![progress1](/images/howto-swiftui-progressView-progress1.png)
 
 ## 线性进度条 ##
 
@@ -21,7 +21,7 @@ ProgressView()
 ProgressView("完成量", value: 50, total: 100)
 ```
 
-![截屏2020-07-11 下午4.09.34](http://cdn.fatbobman.com/howto-swiftui-progressView-progress2.png)
+![截屏2020-07-11 下午4.09.34](/images/howto-swiftui-progressView-progress2.png)
 
 ## 代码示例 ##
 
@@ -80,4 +80,4 @@ struct MyProgressViewStyle:ProgressViewStyle{
 
 ```
 
-<video src="http://cdn.fatbobman.com/howto-swiftui-progressView-video.mov" controls = "controls">你的浏览器不支持本视频</video>
+<video src="/images/howto-swiftui-progressView-video.mov" controls = "controls">你的浏览器不支持本视频</video>

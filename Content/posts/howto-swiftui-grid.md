@@ -44,7 +44,7 @@ struct GridTest1: View {
 
 ```
 
-![image-20200709202554829](http://cdn.fatbobman.com/howto-swiftui-grid1.png)
+![image-20200709202554829](/images/howto-swiftui-grid1.png)
 
 ## LazyVGrid和LazyHGrid混合使用 ##
 
@@ -84,7 +84,7 @@ struct CombineGrid: View {
 }
 ```
 
-![image-20200709205047655](http://cdn.fatbobman.com/howto-swiftui-grid2.png)
+![image-20200709205047655](/images/howto-swiftui-grid2.png)
 
 > **这段代码快速向上滚动时显示正常，如果向上滚动速度较慢，中部的LazyHGrid会显示异常。应该是bug。当前环境Xcode Version 12.0 beta 2 (12A6163b)**
 
@@ -185,6 +185,6 @@ struct CellView:View,Identifiable{
 
 > **由于是Lazy显式，所以如果没有将全部cell滚动显示出来便进行shuffle操作，没有创建的cell将不会以动画的方式进行移动。
 
-<video src="http://cdn.fatbobman.com/howto-swiftui-gridvideo.mov" controls = "controls" >你的浏览器不支持本视频</video>
+<video src="/images/howto-swiftui-gridvideo.mov" controls = "controls" >你的浏览器不支持本视频</video>
 
 目前LazyGrid没有自动避碰的能力，也无法实现Waterfall Grid的效果。
