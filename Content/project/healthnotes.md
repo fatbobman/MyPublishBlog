@@ -5,6 +5,8 @@ tags: Project
 title: 健康笔记
 ---
 
+![HealthNote2](https://cdn.fatbobman.com/healthnote2-demo1.jpg)
+
 ## 起因 ##
 
 之前由于身体原因，我有5年左右的时间基本上都待在家里极少外出。因为治疗的需要，每天都要记录大量的治疗数据以及用药情况。很幸运的是，我的妻子承担了其中大部分的工作，转眼之间便记录了好多个笔记本。
@@ -41,4 +43,4 @@ title: 健康笔记
   希望你们将更多的意见和建议更多的反馈给我，帮助健康笔记更好的成长。
 
 在这里可以下载
-[![pic](/images/appStoreIcon.svg)](https://apps.apple.com/us/app/health-notes-2/id1534513553)
+[![pic](/images/appStoreIcon.png)](https://apps.apple.com/us/app/health-notes-2/id1534513553)
