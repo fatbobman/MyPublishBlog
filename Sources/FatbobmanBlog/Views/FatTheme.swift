@@ -86,6 +86,7 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                         )
                     ),
                     .itemNavigator(previousItem: previous, nextItem: next),
+                    .gitment(topicID:item.title),
                     .footer(for: context.site)
                 )
             )
@@ -275,6 +276,27 @@ extension Node where Context == HTML.BodyContext {
         )
     }
 
+    static func gitment(topicID:String) -> Node{
+        .raw("""
+            <div id="gitment"></div>
+            <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+            <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+            <script>
+            var gitment = new Gitment({
+              id: '\(topicID)', // 可选。默认为 location.href
+              owner: 'fatbobman',
+              repo: 'blogComments',
+              oauth: {
+                client_id: 'fcf61195c7f73253dc8b',
+                client_secret: '0ac2907be08248a1fcb5312e27480ad535c682e5',
+              },
+            })
+            gitment.render('gitment')
+            </script>
+            """
+            )
+    }
+
     fileprivate static func footer<T: Website>(for _: T) -> Node {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy"
@@ -356,6 +378,7 @@ let googleAndBaidu: String = """
     })();
 </script>
 """
+
 
 var formatter: DateFormatter {
     let formatter = DateFormatter()
