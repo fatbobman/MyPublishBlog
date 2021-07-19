@@ -86,7 +86,7 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                         )
                     ),
                     .itemNavigator(previousItem: previous, nextItem: next),
-                    .gitment(topicID:item.title),
+                    .gitment(topicID: item.title),
                     .footer(for: context.site)
                 )
             )
@@ -276,7 +276,7 @@ extension Node where Context == HTML.BodyContext {
         )
     }
 
-    static func gitment(topicID:String) -> Node{
+    static func gitment(topicID: String) -> Node {
         .raw("""
             <div id="gitment"></div>
             <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
@@ -294,7 +294,7 @@ extension Node where Context == HTML.BodyContext {
             gitment.render('gitment')
             </script>
             """
-            )
+        )
     }
 
     fileprivate static func footer<T: Website>(for _: T) -> Node {
@@ -378,7 +378,6 @@ let googleAndBaidu: String = """
     })();
 </script>
 """
-
 
 var formatter: DateFormatter {
     let formatter = DateFormatter()
