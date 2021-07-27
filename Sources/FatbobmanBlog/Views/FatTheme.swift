@@ -277,24 +277,45 @@ extension Node where Context == HTML.BodyContext {
     }
 
     static func gitment(topicID: String) -> Node {
+        // .raw("""
+        //     <div id="gitment"></div>
+        //     <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+        //     <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+        //     <script>
+        //     var gitment = new Gitment({
+        //       id: '\(topicID)', // 可选。默认为 location.href
+        //       owner: 'fatbobman',
+        //       repo: 'blogComments',
+        //       oauth: {
+        //         client_id: 'fcf61195c7f73253dc8b',
+        //         client_secret: '0ac2907be08248a1fcb5312e27480ad535c682e5',
+        //       },
+        //     })
+        //     gitment.render('gitment')
+        //     </script>
+        //     """
+        // )
         .raw("""
-            <div id="gitment"></div>
-            <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-            <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-            <script>
-            var gitment = new Gitment({
-              id: '\(topicID)', // 可选。默认为 location.href
-              owner: 'fatbobman',
-              repo: 'blogComments',
-              oauth: {
-                client_id: 'fcf61195c7f73253dc8b',
-                client_secret: '0ac2907be08248a1fcb5312e27480ad535c682e5',
-              },
-            })
-            gitment.render('gitment')
-            </script>
-            """
-        )
+        <div id="gitalk-container"></div>
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+        <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+        <script type="text/javascript">
+        var gitalk = new Gitalk({
+        clientID: 'fcf61195c7f73253dc8b',
+        clientSecret: '0ac2907be08248a1fcb5312e27480ad535c682e5',
+        repo: 'blogComments',
+        owner: 'fatbobman',
+        admin: ['fatbobman'],
+        id: '\(topicID)',      // Ensure uniqueness and length less than 50
+        distractionFreeMode: true,  // Facebook-like distraction free mode
+        createIssueManually: true,
+        language: navigator.userLanguage
+        });
+
+        gitalk.render('gitalk-container');
+
+        </script>
+        """)
     }
 
     fileprivate static func footer<T: Website>(for _: T) -> Node {
