@@ -1,4 +1,321 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content"><channel><title>肘子的Swift记事本</title><description>徐杨的个人博客,Core Data,Swift,Swift UI,Combine,健康笔记,iOS APP,Health Note,HealthNotes</description><link>https://www.fatbobman.com</link><language>zh</language><lastBuildDate>Fri, 18 Jun 2021 20:21:19 +0800</lastBuildDate><pubDate>Fri, 18 Jun 2021 20:21:19 +0800</pubDate><ttl>250</ttl><atom:link href="https://www.fatbobman.com/feed.rss" rel="self" type="application/rss+xml"/><item><guid isPermaLink="true">https://www.fatbobman.com/posts/wwdc2021</guid><title>WWDC 2021 观后感</title><description>WWDC 2021转眼间已经结束一周了。本次WWDC苹果一如既往的带来了新的操作系统以及一大堆开发工具、软件架构、网络服务等方面的升级。由于疫情的原因，这两年的WWDC都是采用录播形式，不过从视频内容上看，反倒比以前传达地更加精准，对观看者也更加地友善。本文仅从我个人感兴趣的几个角度进行一点介绍，并结合这段时间的学习谈谈使用感受。</description><link>https://www.fatbobman.com/posts/wwdc2021</link><pubDate>Fri, 18 Jun 2021 20:00:00 +0800</pubDate><content:encoded><![CDATA[<p>WWDC 2021转眼间已经结束一周了。本次WWDC苹果一如既往的带来了新的操作系统以及一大堆开发工具、软件架构、网络服务等方面的升级。由于疫情的原因，这两年的WWDC都是采用录播形式，不过从视频内容上看，反倒比以前传达地更加精准，对观看者也更加地友善。本文仅从我个人感兴趣的几个角度进行一点介绍，并结合这段时间的学习谈谈使用感受。</p><h2>操作系统</h2><p>这几年苹果的系统一直保持一种渐进式的升级态势，即使是大版本号升级通常并不会给人特别大的惊喜和改变。不过也正是在这种逐步的变化中，苹果不断的将它多个系统的联系变得更加紧密，生态建设的愈发完善。网上已经有了大量关于系统新功能的文章，所以我仅从自己的使用上谈几点感受。</p><p>iOS 15在旧设备上的效率相当不错（我在一台iPhone7上进行了安装）。相较于iPhone，iPad上对于多任务、多窗口的交互提升观感更明显。在后期软件适配跟上的情况下，iPad应用或许会有一个新的爆发。Monterey第一个版本的稳定度明显好于去年的Big Sur，界面细节的统一性也不错。相较于去年的大规模UI改变，今年在UI上更多是完善和细节改进。watchOS 8我没有在实机上测试，我对它新的体能训练类型以及睡眠呼吸率比较感兴趣。</p><p>抛开表面功能，因为今年苹果在Swift语言以及系统框架的大规模提升，相信不久后适配了新框架和新服务的App在新系统上会有很不一样的表现。由于今年绝大多数的Swift语言层面、框架层面的新功能都不会下放到老版本的操作系统，所以估计苹果也会继续加大力度促使用户升级。好在，新系统对硬件的涵盖比较广，和最近几年的系统对硬件需求差不多，估计用户的系统更新速度应该会比较快。</p><h2>Swift</h2><p>Swift 5.5可以说是在5.0发布以后最重大的更新。在今年Swift重构了异步和多线程的解决方案，并提供了<code>结构式多线程</code>、<code>Actor</code>等重磅功能。</p><p>Swift 5.5目前提供的异步、多线程方式对于开发者来说非常友好，从最近的使用来看不仅上手容易，而且可以让自己的代码在极短的时间中受益。目前距离Swift 5.5正式发布还有一段时间，除了不可避免的Bug外，关键字、语法等也还在不断变化中。Xcode13 beta1中的Swift Toolchain关于异步调用语法已经和 最近的snapshot中有不小的改变。尽管如此，我还是推荐每一个Swift开发者都能够尽快地了解这些新的工具、模式，进而可以从另一个角度来思考编程的逻辑。关于异步、多线程的部分，我会在接下来一段时间写几篇文章做更多的介绍。</p><p>另一个让我非常有感的Swift增强是在<code>通用上下文中扩展了静态成员的查找</code>功能。这个看似不大的改动将极大地提高了<code>自动补全</code>的表现。官方框架已经对该功能做了充分适配，使用Xcode13你会感慨原来自动补全也可以这么好用。</p><p>相较于第一个重磅功能，其他的如<code>#if</code>表达式、<code>本地化的lazy</code>、<code>属性包装器可用于函数</code>、<code>枚举适配编码</code>、<code>Double—CGFloat相互转换</code>等只能说是正常提升了。</p><h2>SwiftUI</h2><p>学习和使用下来的总体感觉是继续补强和规范。</p><p>如果单看Keynote，你会感觉好像苹果为SwiftUI带来了好多新的能力，不过仔细分析后会发现其中绝大多数都已经有较成熟的第三方解决方案了，当然官方的方案确实设计的统一性较好且实现地很优雅，相信这也将影响不少的SwiftUI三方库作者。提几个我个人感触较大的改进：</p><ul><li><strong>输入的全面提升</strong>。从<code>Formatter绑定</code>到<code>focusedState</code>的添加，从<code>onsubmit</code>到<code>submitLable</code>以及Toolbar中的<code>keyboard placement</code>，总之全平台上的输入逻辑和设计都有了令人欣喜的提高。官方的方案如果单看某个平台的表现未必最好，不过它的多平台适配能力确实令人佩服。</li><li><strong>异步概念的全面导入</strong>。<code>task</code>、<code>refreshable</code>中都是直接可以执行异步代码的上下文。由于Swift 5.5异步编程的简化，苹果在各个框架上都会强力引导开发者采用异步、多线程的方式进行编程。</li><li><strong>富文本和符号的增强</strong>。Text中可以直接使用<code>Markdown</code>符号，尤其是新增的<code>AttributedString</code>，开发者可以自定义Markdown符号（使用效果非常好，有很高的想象空间）。Text + AttributedString解决了SwiftUI上富文本一个非常大的短板。<code>SF 3.0</code>近一步增加了符号种类，添加了更多的渲染方式，为我这样的个人开发者进一步减轻了美工压力。其他如文本动态尺寸限制、符号变体等也都比较有特点。</li><li><strong>样式化趋势明显</strong>。将一些之前需要定义颜色、尺寸等多个步骤的工作统一成style。同时也添加了<code>Material</code>样式。苹果在SwiftUI上喜欢为各个控件使用类似<code>xxxstyle</code>来定义它的样式，得益于Swift 5.5的静态成员查找能力，在代码中调用样式更加方便。这个也会很快在第三方控件上体现出来。</li><li><strong>列表的全面补强</strong>。List作为使用量巨大的控件一直以来在SwiftUI上都有诸多的不足。此次更新添加了诸多期待已久的功能并且调用的方式很SwiftUI化。<code>ForEach</code>可以使用绑定数据、<code>searchable</code>搜索解决方案、swipeAction的侧滑按钮等等，使得以前只能通过重新包装、数据注入才能解决的问题，多数可以直接使用官方提供的方案。另外值得一提的是，终于可以取消分割线了。<code>Section</code>的加入为数据的组织方式添加了更多的选项。</li><li><strong>按钮的全方位提升</strong>。此次SwiftUI为各类Button提供了非常好的扩展，比如<code>controlGroup</code>在各个不同平台的不同呈现，通过<code>buttonStyle</code>、<code>controlSize</code>、<code>controlProminece</code>、<code>role:</code>等等仅用几行代码便可以获得官方美工级别的按钮样式，<code>Menu</code>也支持了二级菜单，并且为mac平台添加了<code>.button</code>的style等等。总之在本次版本中按钮呈现的改进是当今任何第三方开发者都没能达到的高度。</li><li><strong>CoreData配合度近一步提高</strong>。@fetchRequest终于支持动态修改sortDescripte和predicate了，另外配合Section新增了<code>@SectionedFetchRequest</code>，极大的提升了List的表现能力。</li><li>其他比较有特点的还有：<code>Canvas</code>、<code>TimeLineView</code>、<code>confirmationDialog</code>等等众多的新功能。</li></ul><p>其中绝大多数的功能，我在之后会通过文章更详细的和大家分享。</p><blockquote><p>遗憾的是，NavigationView没有在此次升级中补强。</p></blockquote><p>另外，在本次WWDC上的<a href="https://developer.apple.com/videos/play/wwdc2021/10022/">Demystify SwiftUI</a>绝对不容错过，通过对身份、生命周期、依赖的详细讲述让开发者了解SwiftUI的开发哲学及核心原则，并掌握如何使用它们来保证应用程序的准确和性能。</p><h2>CoreData + Cloudkit</h2><p>CoreData在今年的改动不多，主要体现在对同步和多线程的支持上。在本次WWDC之前坊间传闻并期望的SwiftData并没有出现。不过Cloudkit今年还是给我带来了巨大的惊喜：<code>支持了本地化操作的Share数据库</code>。</p><p>在2019年，通过<code>NSPersistentCloudKitContainer</code>苹果打通了Coredata同cloudkit上的私有库，去年带来了公有库的本地化，今年终于将最后的短板补齐，让开发者可以轻松实现app用户同其他的icloud用户实时分享数据。为了实现这个功能，Cloudkit改善了它同本地数据的同步机制，响应不像去年的公共库同步那么迟钝。在今年WWDC众多的新功能中，<code>Share Data</code>是我一直最想要的功能！</p><h2>Xcode</h2><p>首先最直观的感觉很多的<code>图标</code>变得比以前精致了。<code>Xcode Cloud</code>看起来不错，但对于个人开发者的我来说还没有什么特别大的吸引力。如果你是Vim用户，一定会对<code>Vim模式</code>的到来感到兴奋。<code>版本控制</code>终于得到了提升，不仅在功能上，即使在界面布局上也看出了此次苹果对于版本控制重要性的认识有了提高。得益于Swift的改进，代码补全、错误提示比之前有了不小的进步（测试版中，错误提示还是有点诡异的）。最后，有两个并不完全属于Xcode的功能反倒值得特别注意：</p><ul><li>集成了<code>Swift Package Collection</code>。本次苹果推出了Swift Package Collection，为用户分享和组织第三方库提供了新的选择。Xcode已经全面集成了对此的支持。</li><li>全面集成<code>Docc</code>。我从2019年开始接触mac编程，当时的苹果的文档内容并不丰富，这两年有了不小的进步。在第一次看到SwiftUI的官方的交互式教程时我相当震惊，希望将来会有更多的类似文档资料。今年，苹果开发了Docc，一个可以直接从代码构建美丽、交互式和原生文档的新工具。使用它，很轻松地就可以开发出类似苹果官方文档质量的文档集合。苹果在今年内会将其开源，届时即使是其他平台的IDE 或者其他的开发语言都可以使用它进行文档工作。</li></ul><h2>其他</h2><p>WWDC涉及的领域实在是太多了，大多数的Session我都没有时间观看和学习。除了上面提到的变化外，我额外关注了Foundation在今年的变化。苹果着重介绍了<code>AttributedString</code>和<code>Formatter</code>。AttributedString绝对是接下来在苹果开发生态中富文本的主力，Formatter对国际化、本地化的支持也达到了空前的高度。另外，从SwiftUI的Text和TextField都可以直接使用Formatter的情况来看，苹果将来会在其官方框架中增加对开发人员的引导。</p><h2>关于WWDC的资料</h2><p>下面是我观看和学习WWDC中使用的一些资源：</p><ul><li>Developer (mac AppStore 和 iOS appStore都可以下载)。推荐使用这个app来观看视频，可以点击每个Session的旁白或代码片段快速跳转到对应视频片段</li><li><a href="https://developer.apple.com/sample-code/wwdc/2021/">WWDC 官方演示代码</a>在此网址可以查询视频中提及的演示项目的完整代码</li><li><a href="https://www.wwdcnotes.com">WWDC NOTES</a>各个Essential的图文整理</li><li><a href="https://www.hackingwithswift.com">HackingWithSwift</a>以及他的油管频道</li><li><a href="https://roblack.github.io/WWDC21Lounges">WWDC21Lounges</a>的QA汇总</li></ul>]]></content:encoded></item><item><guid isPermaLink="true">https://www.fatbobman.com/posts/swift-in-linux</guid><title>在Linux系统上搭建Swift开发调试环境</title><description>本文的目标是在Linux上搭建一个可供生产标准的Swift开发调试环境。使用者将获得一个支持代码高亮、自动补全、定义跳转、断点调试、代码美化、代码静态扫描、跨操作系统平台配置的综合开发体验。</description><link>https://www.fatbobman.com/posts/swift-in-linux</link><pubDate>Mon, 15 Feb 2021 15:00:00 +0800</pubDate><content:encoded><![CDATA[<h2>Swift与Linux</h2><p>自2015年Swift宣布开源并支持Linux后，一晃已超过5年。在最初几年间尽管Swift发展迅速，但并未被Linux社区广泛接受。造成这种局面的原因较多，其中既有语言稳定性方面的问题，同时又有对Linux的支持不完善、缺乏具有吸引力的基础库和第三方库、热点项目不足等多方面原因。</p><p>最近两年，上述问题均得到显著改善。</p><ul><li>从Swift5开始Swift团队宣布ABI稳定了。自此，Swift为应用程序提供了二进制兼容性，有了ABI稳定性作为基础，Swift对其他平台的支持速度和力度将大大提高</li><li>2020年Swift团队推出了5.3版本，除了“重要的质量提升和性能增强”之外，Swift5.3的一个关键特性是正式支持Linux和Window平台。事实上，这也是Swift的发布流程首次为三个不同的平台分别设立了发布负责人。作为承诺将Swift引入Linux的第一份成果，Swift团队宣布新的Swift版本可用于一众Linux发行版上。</li><li>出现了大量优秀的官方和第三方的跨平台库。仅Apple公司，最近几年来已经为Swift社区贡献了大量的Swift代码，并保持着非常高的提交频率。</li><li>Swift在服务器端及深度学习领域取得了不错的应用成果。</li></ul><p>Swift已经准备在Linux有更多的表现。</p><h2>写本文的原因</h2><p>前些日子写了篇<a href="https://www.fatbobman.com/posts/publish-1/">用Publish创建博客（一）——入门</a>（一个用Swift编写的优秀的静态网站生成器）的介绍，期间有网友问我是否可以在Linux上使用，我回答不成问题。但转过头来思考，虽然<code>Publish</code>完美地支持Linux，但开发者能否像在mac上一样方便的进行开发调试呢？</p><p>之前使用<code>Vapor</code>的时候，曾通过<code>Docker</code>在Ubuntu上安装过Swift，不过代码是在mac上调试的。我也十分好奇，在2021年Swift到底在Linux下的开发环境如何？</p><p>本文的目标是在Linux上搭建一个可供生产标准的Swift开发调试环境。使用者将获得一个支持代码高亮、自动补全、定义跳转、断点调试、代码美化、代码静态扫描、跨操作系统平台配置的综合开发体验。</p><h2>准备</h2><p>由于每个人使用的Linux发行版本不同，因此在安装过程中，如遇到缺少必要依赖的情况，请自行按系统提示安装所需的依赖库即可。</p><p>本文在描述每一步该如何做的同时，还会做出必要的解释。即使你使用的是其他的Linux发行版，或者不同的编辑器，甚至在Swift或其他工具发生了重大的升级后，仍可按照下面安装思路进行环境搭建。</p><p>本文搭建的起点是建立在已经安装了Visual Studio Code 1.53.0的Ubuntu 20.04LTS（最小化安装）系统上的。选择安装的Swift Toolchain为5.3.3。</p><p>对于Ubuntu 20.04,需安装<code>python2.7</code>及<code>npm</code>以完成下面其他操作。</p><pre data-language="bash"><code>$ sudo apt install libpython2.7 libpython2.7-dev libz3-4 npm 
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content"><channel><title>肘子的Swift记事本</title><description>徐杨的个人博客,Core Data,Swift,Swift UI,Combine,健康笔记,iOS APP,Health Note,HealthNotes</description><link>https://www.fatbobman.com</link><language>zh</language><lastBuildDate>Tue, 27 Jul 2021 11:35:20 +0800</lastBuildDate><pubDate>Tue, 27 Jul 2021 11:35:20 +0800</pubDate><ttl>250</ttl><atom:link href="https://www.fatbobman.com/feed.rss" rel="self" type="application/rss+xml"/><item><guid isPermaLink="true">https://www.fatbobman.com/posts/persistentHistoryTracking</guid><title>在CoreData中使用持久化历史跟踪</title><description>本文介绍了CoreData的Persistent History Tracking功能。详细讲解了从响应、提取、合并到清除的全过程处理方式，并提供了演示代码供读者使用。</description><link>https://www.fatbobman.com/posts/persistentHistoryTracking</link><pubDate>Tue, 27 Jul 2021 12:00:00 +0800</pubDate><content:encoded><![CDATA[<h2>前言</h2><p>知道持久化历史跟踪功能已经有一段时间了，之前简单地浏览过文档但没有太当回事。一方面关于它的资料不多，学习起来并不容易；另一方面也没有使用它的特别动力。</p><p>在计划中的<a href="https://www.fatbobman.com/project/healthnotes/">【健康笔记3】</a>中，我考虑为App添加Widget或者其他的Extentsion，另外我也打算将WWDC21上介绍的NSCoreDataCoreSpotlightDelegate用到App的新版本中。为此就不得不认真地了解该如何使用持久化历史跟踪功能了。</p><h2>什么是持久化历史跟踪（Persistent History Tracking）</h2><blockquote><p>使用持久化历史跟踪（Persistent History Tracking）来确定自启用该项功能以来，存储（Store）中发生了哪些更改。 —— 苹果官方文档</p></blockquote><p>在CoreData中，如果你的数据保存形式是Sqlite（绝大多数的开发者都采用此种方式）且启用了持久化历史跟踪功能，无论数据库中的数据有了何种变化（删除、添加、修改等），调用此数据库并注册了该通知的应用，都会收到一个数据库有变化的系统提醒。</p><h2>为什么要使用它</h2><p>持久化历史跟踪目前主要有以下几个应用的场景：</p><ul><li>在App中，将App的批处理（BatchInsert、BatchUpdate、BatchDelete）业务产生的数据变化合并到当前的视图上下文（ViewContext）中。</li></ul><p>批处理是直接通过协调器（PersistentStoreCoordinator）来操作的，由于该操作并不经过上下文（ManagedObejctContext），因此如果不对其做特别的处理，App并不会及时的将批处理导致的数据变化在当前的视图上下文中体现出来。在没有Persistent History Tracking之前，我们必须在每个批处理操作后，使用例如<code>mergeChanegs</code>将变化合并到上下文中。在使用了Persistent History Tracking之后，我们可以将所有的批处理变化统一到一个代码段中进行合并处理。</p><ul><li>在一个App Group中，当App和App Extension共享一个数据库文件，将某个成员在数据库中做出的修改及时地体现在另一个成员的视图上下文中。</li></ul><p>想象一个场景，你有一个汇总网页Clips的App，并且提供了一个Safari Extentsion用来在浏览网页的时候，将合适的剪辑保存下来。在Safari Extension将一个Clip保存到数据库中后，将你的App（Safari保存数据时，该App已经启动且切换到了后台）切换到前台，如果正在显示Clip列表，最新的（由Safari Extentsion添加）Clip并不会出现在列表中。一旦启用了Persistent History Tracking，你的App将及时得到数据库发生变化的通知、并做出响应，用户便可以在第一时间在列表中看到新添加的Clip。</p><ul><li>当使用PersistentCloudKitContainer将你的CoreData数据库同Cloudkit进行数据同步时。</li></ul><p>Persistent History Tracking是实现CoreData同CloudKit数据同步的重要保证。无需开发者自行设定，当你使用PersistentCloudKitContainer作为容器后，CoreData便已经为你的数据库启用了Persistent History Tracking功能。不过除非你在自己的代码中明确声明启用持久化历史跟踪，否则所有网络同步的数据变化都并不会通知到你的代码，CoreData会在后台默默地处理好一切。</p><ul><li>当使用NSCoreDataCoreSpotlightDelegate时。</li></ul><p>在今年的WWDC2021上，苹果推出了NSCoreDataCoreSpotlightDelegate，可以非常便捷的将CoreData中的数据同Spotlight集成到一起。为了使用该功能，必须为你的数据库开启Persistent History Tracking功能。</p><h2>Persistent History Tracking的工作原理</h2><p>Persistent History Tracking是通过Sqlite的触发器来实现的。它在指定的Entity上创建触发器，该触发器将记录所有的数据的变化。这也是持久化历史跟踪只能在Sqlite上启用的原因。</p><p>数据变化（Transaction）的记录是直接在Sqlite端完成的，因此无论该事务是由何种方式（通过上下文还是不经过上下文）产生的，由那个App或Extension产生，都可以事无巨细的记录下来。</p><p>所有的变化都会被保存在你的Sqlite数据库文件中，苹果在Sqlite中创建了几个表，用来记录了Transaction对应的各类信息。</p><img src="http://cdn.fatbobman.com/image-20210727092416404-7349058.png" alt="image-20210727092416404"/><p>苹果并没有公开这些表的具体结构，不过我们可以使用Persistent History Tracking提供的API来对其中的数据进行查询、清除等工作。</p><blockquote><p>如果有兴趣也可以自己看看这几个表的内容，苹果将数据组织的非常紧凑的。<code>ATRANSACTION</code>中是尚未消除的transaction，<code>ATRANSACTIONSTRING</code>中是author和contextName的字符串标识,<code>ACHANGE</code>是变化的数据，以上数据最终转换成对应的ManagedObjectID。</p></blockquote><p>Transaction将按照产生顺序被自动记录。我们可以检索特定时间后发生的所有更改。你可以通过多种表达方式来确定这个时间点：</p><ul><li>基于令牌（Token）</li><li>基于时间戳（Timestamp）</li><li>基于交易本身（Transaction）</li></ul><p>一个基本的Persistent History Tracking处理流程如下：</p><ol><li>响应Persistent History Tracking产生的NSPersistentStoreRemoteChange通知</li><li>检查从上次处理的时间戳后是否仍有需要处理的Transaction</li><li>将需要处理的Transaction合并到当前的视图上下文中</li><li>记录最后处理的Transaction时间戳</li><li>择机删除已经被合并的Transaction</li></ol><h2>App Groups</h2><p>在继续聊Persisten History Tracking之前，我们先介绍一下App Groups。</p><p>由于苹果对App采取了严格的沙盒机制，因此每个App，Extension都有其自己的存储空间。它们只能读取自己沙盒文件空间的内容。如果我们想让不同的App，或者在App和Extension之间共享数据的话，在App Groups出现之前只能通过一些第三方库来进行简单的数据交换。</p><p>为了解决这个问题，苹果推出了自己的解决方案App Groups。App Group让不同的App或者App&amp;App Extension之间可以通过两种方式来共享资料（必须是同一个开发者账户）：</p><ul><li>UserDefauls</li><li>Group URL（Group 中每个成员都可以访问的存储空间）</li></ul><p>绝大多数的Persistent History Tracking应用场合，都是发生在启用了App Group的情况下。因此了解如何创建App Grups、如何访问Group共享的UserDefaults、如何读取Group URL中的文件非常有必要。</p><h3>让App加入App Groups</h3><p>在项目导航栏中，选择需要加入Group的Target，在Signing&amp;Capabilities中，点击<code>+</code>，添加App Group功能。</p><img src="http://cdn.fatbobman.com/image-20210726193034435-7299035.png" alt="image-20210726193034435"/><p>在App Groups中选择或者创建group</p><img src="http://cdn.fatbobman.com/image-20210726193200091-7299122.png" alt="image-20210726193200091"/><p><em>只有在Team设定的情况下，Group才能被正确的添加。</em></p><p>App Group Container ID必须以<code>group.</code>开始，后面通常会使用逆向域名的方式。</p><p>如果你有开发者账号，可以在App ID下加入App Groups</p><img src="http://cdn.fatbobman.com/image-20210726193614636-7299375.png" alt="image-20210726193614636"/><p>其他的App或者App Extension也都按照同样的方式，指定到同一个App Group中。</p><h3>创建可在Group中共享的UserDefaults</h3><pre data-language="swift"><code><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">UserDefaults</span> </span>{
+    <span class="hljs-comment">/// 用于app group的userDefaults,在此处设定的内容可以被app group中的成员使用</span>
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">let</span> appGroup = <span class="hljs-type">UserDefaults</span>(suiteName: <span class="hljs-string">"group.com.fatbobman.healthnote"</span>)!
+}
+</code></pre><p><code>suitName</code>是你在前面创建的App Group Container ID</p><p>在Group中的App代码中，使用如下代码创建的UserDefaults数据，将被Group中所有的成员共享，每个成员都可以对其进行读写操作</p><pre data-language="swift"><code><span class="hljs-keyword">let</span> userDefaults = <span class="hljs-type">UserDefaults</span>.appGroup
+userDefaults.<span class="hljs-keyword">set</span>(<span class="hljs-string">"hello world"</span>, forKey: <span class="hljs-string">"shareString"</span>)
+</code></pre><h3>获取Group Container URL</h3><pre data-language="swift"><code> <span class="hljs-keyword">let</span> groupURL = <span class="hljs-type">FileManager</span>.<span class="hljs-keyword">default</span>.containerURL(forSecurityApplicationGroupIdentifier: <span class="hljs-string">"group.com.fatbobman.healthnote"</span>)!
+</code></pre><p>对这个URL进行操作和对于App自己沙盒中的URL操作完全一样。Group中的所有成员都可以在该文件夹中对文件进行读写。</p><blockquote><p>接下来的代码都假设App是在一个App Group中，并且通过UserDefaults和Container URL来进行数据共享。</p></blockquote><h2>启用持久化历史跟踪</h2><p>启用Persistent History Tracking功能非常简单，我们只需要对NSPersistentStoreDescription`进行设置即可。</p><p>以下是在Xcode生成的CoreData模版<code>Persistence.swift</code>中启用的例子：</p><pre data-language="swift"><code>   <span class="hljs-keyword">init</span>(inMemory: <span class="hljs-type">Bool</span> = <span class="hljs-literal">false</span>) {
+        container = <span class="hljs-type">NSPersistentContainer</span>(name: <span class="hljs-string">"PersistentTrackBlog"</span>)
+        <span class="hljs-keyword">if</span> inMemory {
+            container.persistentStoreDescriptions.first!.url = <span class="hljs-type">URL</span>(fileURLWithPath: <span class="hljs-string">"/dev/null"</span>)
+        }
+
+        <span class="hljs-comment">// 添加如下代码：</span>
+        <span class="hljs-keyword">let</span> desc = container.persistentStoreDescriptions.first!
+        <span class="hljs-comment">// 如果不指定 desc.url的话，默认的URL当前App的Application Support目录</span>
+        <span class="hljs-comment">// FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!</span>
+        <span class="hljs-comment">// 在该Description上启用Persistent History Tracking</span>
+        desc.setOption(<span class="hljs-literal">true</span> <span class="hljs-keyword">as</span> <span class="hljs-type">NSNumber</span>,
+                       forKey: <span class="hljs-type">NSPersistentHistoryTrackingKey</span>)
+        <span class="hljs-comment">// 接收有关的远程通知</span>
+        desc.setOption(<span class="hljs-literal">true</span> <span class="hljs-keyword">as</span> <span class="hljs-type">NSNumber</span>,
+                       forKey: <span class="hljs-type">NSPersistentStoreRemoteChangeNotificationPostOptionKey</span>)
+         <span class="hljs-comment">// 对description的设置必须在load之前完成，否则不起作用</span>
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) <span class="hljs-keyword">in</span>
+            <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> error = error <span class="hljs-keyword">as</span> <span class="hljs-type">NSError?</span> {
+                <span class="hljs-built_in">fatalError</span>(<span class="hljs-string">"Unresolved error \(error), \(error.userInfo)"</span>)
+            }
+        })
+    }
+</code></pre><p>如果创建自己的Description，类似的代码如下：</p><pre data-language="swift"><code>        <span class="hljs-keyword">let</span> defaultDesc: <span class="hljs-type">NSPersistentStoreDescription</span>
+        <span class="hljs-keyword">let</span> groupURL = <span class="hljs-type">FileManager</span>.<span class="hljs-keyword">default</span>.containerURL(forSecurityApplicationGroupIdentifier: <span class="hljs-string">"group.com.fatbobman.healthnote"</span>)!
+        <span class="hljs-comment">// 数据库保存在App Group Container中，其他的App或者App Extension也可以读取</span>
+        defaultDesc.url = groupURL
+        defaultDesc.configuration = <span class="hljs-string">"Local"</span>
+        defaultDesc.setOption(<span class="hljs-literal">true</span> <span class="hljs-keyword">as</span> <span class="hljs-type">NSNumber</span>, forKey: <span class="hljs-type">NSPersistentHistoryTrackingKey</span>)
+        defaultDesc.setOption(<span class="hljs-literal">true</span> <span class="hljs-keyword">as</span> <span class="hljs-type">NSNumber</span>, 
+                              forKey: <span class="hljs-type">NSPersistentStoreRemoteChangeNotificationPostOptionKey</span>)
+        container.persistentStoreDescriptions = [defaultDesc]
+
+        container.loadPersistentStores(completionHandler: { <span class="hljs-number">_</span>, error <span class="hljs-keyword">in</span>
+            <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> error = error <span class="hljs-keyword">as</span> <span class="hljs-type">NSError?</span> {
+            }
+        })
+</code></pre><p>Persistent History Tracking功能是在description上设置的，因此如果你的CoreData使用了多个<code>Configuration</code>的话，可以只为有需要的<code>configuration</code>启用该功能。</p><h2>响应持久化存储跟踪远程通知</h2><pre data-language="swift"><code><span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PersistentHistoryTrackingManager</span> </span>{
+    <span class="hljs-keyword">init</span>(container: <span class="hljs-type">NSPersistentContainer</span>, currentActor: <span class="hljs-type">AppActor</span>) {
+        <span class="hljs-keyword">self</span>.container = container
+        <span class="hljs-keyword">self</span>.currentActor = currentActor
+
+        <span class="hljs-comment">// 注册StoreRemoteChange的响应</span>
+        <span class="hljs-type">NotificationCenter</span>.<span class="hljs-keyword">default</span>.publisher(
+            <span class="hljs-keyword">for</span>: .<span class="hljs-type">NSPersistentStoreRemoteChange</span>,
+            object: container.persistentStoreCoordinator
+        )
+        .subscribe(on: queue, options: <span class="hljs-literal">nil</span>)
+        .sink { <span class="hljs-number">_</span> <span class="hljs-keyword">in</span>
+            <span class="hljs-comment">// notification的内容没有意义，仅起到提示需要处理的作用</span>
+            <span class="hljs-keyword">self</span>.processor()
+        }
+        .store(<span class="hljs-keyword">in</span>: &amp;cancellables)
+    }
+
+    <span class="hljs-keyword">var</span> container: <span class="hljs-type">NSPersistentContainer</span>
+    <span class="hljs-keyword">var</span> currentActor: <span class="hljs-type">AppActor</span>
+    <span class="hljs-keyword">let</span> userDefaults = <span class="hljs-type">UserDefaults</span>.appGroup
+
+    <span class="hljs-built_in">lazy</span> <span class="hljs-keyword">var</span> backgroundContext = { container.newBackgroundContext() }()
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">var</span> cancellables: <span class="hljs-type">Set</span>&lt;<span class="hljs-type">AnyCancellable</span>&gt; = []
+    <span class="hljs-keyword">private</span> <span class="hljs-built_in">lazy</span> <span class="hljs-keyword">var</span> queue = {
+        <span class="hljs-type">DispatchQueue</span>(label: <span class="hljs-string">"com.fatbobman.\(self.currentActor.rawValue).processPersistentHistory"</span>)
+    }()
+
+    <span class="hljs-comment">/// 处理persistent history</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">processor</span><span class="hljs-params">()</span></span> {
+        <span class="hljs-comment">// 在正确的上下文中进行操作，避免影响主线程</span>
+        backgroundContext.performAndWait {
+            <span class="hljs-comment">// fetcher用来获取需要处理的transaction</span>
+            <span class="hljs-keyword">guard</span> <span class="hljs-keyword">let</span> transactions = <span class="hljs-keyword">try</span>? fetcher() <span class="hljs-keyword">else</span> { <span class="hljs-keyword">return</span> }
+            <span class="hljs-comment">// merger将transaction合并当当前的视图上下文中</span>
+            merger(transaction: transactions)
+        }
+    }
+}
+</code></pre><p>我简单的解释一下上面的代码。</p><p>我们注册<code>processor</code>来响应<code>NSNotification.Name.NSPersistentStoreRemoteChange</code>。</p><p>每当你的数据库中启用Persistent History Tracking的Entity发生数据变动时，<code>processor</code>都将会被调用。在上面的代码中，我们完全忽视了<code>notification</code>，因为它本身的内容没有意义，只是告诉我们数据库发生了变化，需要processor来处理，具体发生了什么变化、是否有必要进行处理等都需要通过自己的代码来判断。</p><p>所有针对Persistent History Tracking的数据操作都放在 <code>backgroundContext</code>中进行，避免影响主线程。</p><p><code>PersistentHistoryTrackingManager</code>是我们处理Persistent History Tracking的核心。在CoreDataStack中（比如上面的persistent.swift），通过在init中添加如下代码来处理Persistent History Tracking事件</p><pre data-language="swift"><code><span class="hljs-keyword">let</span> persistentHistoryTrackingManager : <span class="hljs-type">PersistentHistoryTrackingManager</span>
+<span class="hljs-keyword">init</span>(inMemory: <span class="hljs-type">Bool</span> = <span class="hljs-literal">false</span>) {
+  ....
+  <span class="hljs-comment">// 标记当前上下文的author名称</span>
+  container.viewContext.transactionAuthor = <span class="hljs-type">AppActor</span>.mainApp.rawValue
+	persistentHistoryTrackingManager = <span class="hljs-type">PersistentHistoryTrackingManager</span>(
+                        container: container,
+                        currentActor: <span class="hljs-type">AppActor</span>.mainApp <span class="hljs-comment">//当前的成员</span>
+   )
+}
+</code></pre><p>因为App Group中的成员都可以读写我们的数据库，为了在接下来的处理中更好的分辨到底是由那个成员产生的Transaction，我们需要创建一个枚举类型来对每个成员进行标记。</p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">AppActor</span>:<span class="hljs-title">String</span>,<span class="hljs-title">CaseIterable</span></span>{
+    <span class="hljs-keyword">case</span> mainApp  <span class="hljs-comment">// iOS App</span>
+    <span class="hljs-keyword">case</span> safariExtension <span class="hljs-comment">//Safari Extension</span>
+}
+</code></pre><p>按照自己的需求来创建成员的标记。</p><h2>获取需要处理的Transaction</h2><p>在接收到<code>NSPersistentStoreRemoteChange</code>消息后，我们首先应该将需要处理的Transaction提取出来。就像在前面的工作原理中提到的一样，API为我们提供了3种不同的方法：</p><pre data-language="swift"><code><span class="hljs-keyword">open</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">func</span> <span class="hljs-title">fetchHistory</span>(<span class="hljs-title">after</span> <span class="hljs-title">date</span>: <span class="hljs-title">Date</span>) -&gt; <span class="hljs-title">Self</span>
+<span class="hljs-title">open</span> <span class="hljs-title">class</span> <span class="hljs-title">func</span> <span class="hljs-title">fetchHistory</span>(<span class="hljs-title">after</span> <span class="hljs-title">token</span>: <span class="hljs-title">NSPersistentHistoryToken</span>?) -&gt; <span class="hljs-title">Self</span>
+<span class="hljs-title">open</span> <span class="hljs-title">class</span> <span class="hljs-title">func</span> <span class="hljs-title">fetchHistory</span>(<span class="hljs-title">after</span> <span class="hljs-title">transaction</span>: <span class="hljs-title">NSPersistentHistoryTransaction</span>?) -&gt; <span class="hljs-title">Self</span></span>
+</code></pre><p>获取指定<strong>时间点之后</strong>且满足条件的Transaction</p><p>这里我更推荐使用<code>Timestamp</code>也就是<code>Date</code>来进行处理。主要有两个原因：</p><ul><li>当我们用UserDefaults来保存最后的记录时，<code>Date</code>是UserDefaults直接支持的结构，无需进行转换</li><li><code>Timestamp</code>已经被记录在Transaction中（表<code>ATRANSACTION</code>），可以直接查找，无需转换，而Token是需要再度计算的</li></ul><p>通过使用下面的代码，我们可以获取当前sqlite数据库中，所有的Transaction信息：</p><pre data-language="swift"><code><span class="hljs-type">NSPersistentHistoryChangeRequest</span>.fetchHistory(after: .distantPast)
+</code></pre><p>这些信息包括任意来源产生的<code>Transaction</code>，无论这些<code>Transaction</code>是否是当前App所需要的，是否已经被当前App处理过了。</p><p>在上面的处理流程中，我们已经介绍过需要通过时间戳来过滤不必要的信息，并保存最后处理的<code>Transaction</code>时间戳。我们这些信息保存在UserDefaults中，方便App Group的成员来共同处理。</p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">UserDefaults</span> </span>{
+    <span class="hljs-comment">/// 从全部的app actor的最后时间戳中获取最晚的时间戳</span>
+    <span class="hljs-comment">/// 只删除最晚的时间戳之前的transaction，这样可以保证其他的appActor</span>
+    <span class="hljs-comment">/// 都可以正常的获取未处理的transaction</span>
+    <span class="hljs-comment">/// 设置了一个7天的界限。即使有的appActor没有使用（没有创建userdefauls）</span>
+    <span class="hljs-comment">/// 也会至多只保留7天的transaction</span>
+    <span class="hljs-comment">/// - Parameter appActors: app角色，比如healthnote ,widget</span>
+    <span class="hljs-comment">/// - Returns: 日期（时间戳）, 返回值为nil时会处理全部未处理的transaction</span>
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">lastCommonTransactionTimestamp</span><span class="hljs-params">(<span class="hljs-keyword">in</span> appActors: [AppActor])</span></span> -&gt; <span class="hljs-type">Date?</span> {
+        <span class="hljs-comment">// 七天前</span>
+        <span class="hljs-keyword">let</span> sevenDaysAgo = <span class="hljs-type">Date</span>().addingTimeInterval(-<span class="hljs-number">604800</span>)
+        <span class="hljs-keyword">let</span> lasttimestamps = appActors
+            .compactMap {
+                lastHistoryTransactionTimestamp(<span class="hljs-keyword">for</span>: $<span class="hljs-number">0</span>)
+            }
+        <span class="hljs-comment">// 全部actor都没有设定值</span>
+        <span class="hljs-keyword">guard</span> !lasttimestamps.isEmpty <span class="hljs-keyword">else</span> {<span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>}
+        <span class="hljs-keyword">let</span> minTimestamp = lasttimestamps.<span class="hljs-built_in">min</span>()!
+        <span class="hljs-comment">// 检查是否全部的actor都设定了值</span>
+        <span class="hljs-keyword">guard</span> lasttimestamps.<span class="hljs-built_in">count</span> != appActors.<span class="hljs-built_in">count</span> <span class="hljs-keyword">else</span> {
+            <span class="hljs-comment">//返回最晚的时间戳</span>
+            <span class="hljs-keyword">return</span> minTimestamp
+        }
+        <span class="hljs-comment">// 如果超过7天还没有获得全部actor的值，则返回七天，防止有的actor永远不会被设定</span>
+        <span class="hljs-keyword">if</span> minTimestamp &lt; sevenDaysAgo {
+            <span class="hljs-keyword">return</span> sevenDaysAgo
+        }
+        <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+        }
+    } 
+
+    <span class="hljs-comment">/// 获取指定的appActor最后处理的transaction的时间戳</span>
+    <span class="hljs-comment">/// - Parameter appActore: app角色，比如healthnote ,widget</span>
+    <span class="hljs-comment">/// - Returns: 日期（时间戳）, 返回值为nil时会处理全部未处理的transaction</span>
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">lastHistoryTransactionTimestamp</span><span class="hljs-params">(<span class="hljs-keyword">for</span> appActor: AppActor)</span></span> -&gt; <span class="hljs-type">Date?</span> {
+        <span class="hljs-keyword">let</span> key = <span class="hljs-string">"PersistentHistoryTracker.lastToken.\(appActor.rawValue)"</span>
+        <span class="hljs-keyword">return</span> object(forKey: key) <span class="hljs-keyword">as</span>? <span class="hljs-type">Date</span>
+    }
+
+    <span class="hljs-comment">/// 给指定的appActor设置最新的transaction时间戳</span>
+    <span class="hljs-comment">/// - Parameters:</span>
+    <span class="hljs-comment">///   - appActor: app角色，比如healthnote ,widget</span>
+    <span class="hljs-comment">///   - newDate: 日期（时间戳）</span>
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">updateLastHistoryTransactionTimestamp</span><span class="hljs-params">(<span class="hljs-keyword">for</span> appActor: AppActor, to newDate: Date?)</span></span> {
+        <span class="hljs-keyword">let</span> key = <span class="hljs-string">"PersistentHistoryTracker.lastToken.\(appActor.rawValue)"</span>
+        <span class="hljs-keyword">set</span>(newDate, forKey: key)
+    }
+}
+</code></pre><p>由于App Group的成员每个都会保存自己的<code>lastHistoryTransactionTimestamp</code>，因此为了保证<code>Transaction</code>能够被所有成员都正确合并后，再被清除掉，<code>lastCommonTransactionTimestamp</code>将返回所有成员最晚的时间戳。<code>lastCommonTransactionTimestamp</code>在清除合并后的<code>Transaction</code>时，将被使用到。</p><p>有了这些基础，上面的代码变可以修改为：</p><pre data-language="swift"><code><span class="hljs-keyword">let</span> fromDate = userDefaults.lastHistoryTransactionTimestamp(<span class="hljs-keyword">for</span>: currentActor) ?? <span class="hljs-type">Date</span>.distantPast
+<span class="hljs-type">NSPersistentHistoryChangeRequest</span>.fetchHistory(after: fromDate)
+</code></pre><p>通过时间戳，我们已经过滤了大量不必关心的<code>Transaction</code>了，但在剩下的<code>Transaction</code>中都是我们需要的吗？答案是否定的，至少有两种情况的Transaction我们是不需要关心的：</p><ul><li>由当前App本身上下文产生的<code>Transaction</code></li></ul><p>通常App会对自身通过上下文产生的数据变化做出即时的反馈，如果改变化已经体现在了视图上下文中（主线程ManagedObjectContext），则我们可以无需理会这些Transaction。但如果数据是通过批量操作完成的，或者是在<code>backgroudContext</code>操作，且并没有被合并到视图上下文中，我们还是要处理这些Transaction的。</p><ul><li>由系统产生的Transaction</li></ul><p>比如当你使用了PersistentCloudKitContainer时，所有的网络同步数据都将会产生<code>Transaction</code>，这些<code>Transaction</code>会由CoreData来处理，我们无需理会。</p><p>基于以上两点，我们可以进一步缩小需要处理的<code>Transaction</code>范围。最终fetcher的代码如下：</p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">PersistentHistoryTrackerManager</span> </span>{
+    <span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">Error</span>: <span class="hljs-title">String</span>, <span class="hljs-title">Swift</span>.<span class="hljs-title">Error</span> </span>{
+        <span class="hljs-keyword">case</span> historyTransactionConvertionFailed
+    }
+    <span class="hljs-comment">// 获取过滤后的Transaction</span>
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">fetcher</span><span class="hljs-params">()</span></span> <span class="hljs-keyword">throws</span> -&gt; [<span class="hljs-type">NSPersistentHistoryTransaction</span>] {
+        <span class="hljs-keyword">let</span> fromDate = userDefaults.lastHistoryTransactionTimestamp(<span class="hljs-keyword">for</span>: currentActor) ?? <span class="hljs-type">Date</span>.distantPast
+        <span class="hljs-type">NSPersistentHistoryChangeRequest</span>.fetchHistory(after: fromDate)
+
+        <span class="hljs-keyword">let</span> historyFetchRequest = <span class="hljs-type">NSPersistentHistoryChangeRequest</span>.fetchHistory(after: fromDate)
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> fetchRequest = <span class="hljs-type">NSPersistentHistoryTransaction</span>.fetchRequest {
+            <span class="hljs-keyword">var</span> predicates: [<span class="hljs-type">NSPredicate</span>] = []
+
+            <span class="hljs-type">AppActor</span>.allCases.forEach { appActor <span class="hljs-keyword">in</span>
+                <span class="hljs-keyword">if</span> appActor == currentActor {
+                    <span class="hljs-comment">// 本代码假设在App中，即使通过backgroud进行的操作也已经被即时合并到了ViewContext中</span>
+                    <span class="hljs-comment">// 因此对于当前appActor，只处理名称为batchContext上下文产生的transaction</span>
+                    <span class="hljs-keyword">let</span> perdicate = <span class="hljs-type">NSPredicate</span>(format: <span class="hljs-string">"%K = %@ AND %K = %@"</span>,
+                                                #keyPath(<span class="hljs-type">NSPersistentHistoryTransaction</span>.author),
+                                                appActor.rawValue,
+                                                #keyPath(<span class="hljs-type">NSPersistentHistoryTransaction</span>.contextName),
+                                                <span class="hljs-string">"batchContext"</span>)
+                    predicates.append(perdicate)
+                } <span class="hljs-keyword">else</span> {
+                    <span class="hljs-comment">// 其他的appActor产生的transactions，全部都要进行处理</span>
+                    <span class="hljs-keyword">let</span> perdicate = <span class="hljs-type">NSPredicate</span>(format: <span class="hljs-string">"%K = %@"</span>,
+                                                #keyPath(<span class="hljs-type">NSPersistentHistoryTransaction</span>.author),
+                                                appActor.rawValue)
+                    predicates.append(perdicate)
+                }
+            }
+
+            <span class="hljs-keyword">let</span> compoundPredicate = <span class="hljs-type">NSCompoundPredicate</span>(type: .or, subpredicates: predicates)
+            fetchRequest.predicate = compoundPredicate
+            historyFetchRequest.fetchRequest = fetchRequest
+        }
+        <span class="hljs-keyword">guard</span> <span class="hljs-keyword">let</span> historyResult = <span class="hljs-keyword">try</span> backgroundContext.execute(historyFetchRequest) <span class="hljs-keyword">as</span>? <span class="hljs-type">NSPersistentHistoryResult</span>,
+              <span class="hljs-keyword">let</span> history = historyResult.result <span class="hljs-keyword">as</span>? [<span class="hljs-type">NSPersistentHistoryTransaction</span>]
+        <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">throw</span> <span class="hljs-type">Error</span>.historyTransactionConvertionFailed
+        }
+        <span class="hljs-keyword">return</span> history
+    }
+}
+</code></pre><blockquote><p>如果你的App比较单纯（比如没有使用PersistentCloudKitContainer），可以不需要上面更精细的<code>predicate</code>处理过程。总的来说，即使获取的<code>Transaction</code>超出了需要的范围，CoreData在合并时给系统造成的压力也并不大。</p></blockquote><p>由于fetcher是通过<code>NSPersistentHistoryTransaction.author</code>和<code>NSPersistentHistoryTransaction.contextName</code>来对<code>Transaction</code>进行进一步过滤的，因此请在你的代码中，明确的在<code>NSManagedObjectContext</code>中标记上身份：</p><pre data-language="swift"><code><span class="hljs-comment">// 标记代码中的上下文的author，例如</span>
+viewContext.transactionAuthor = <span class="hljs-type">AppActor</span>.mainApp.rawValue
+<span class="hljs-comment">// 如果用于批处理的操作，请标记name，例如</span>
+backgroundContext.name = <span class="hljs-string">"batchContext"</span>
+</code></pre><p><strong>清楚地标记Transaction信息，是使用Persistent History Tracking的基本要求</strong></p><h2>将Transaction合并到视图上下文中</h2><p>通过fetcher获取到了需要处理的Transaction后，我们需要将这些Transaction合并到视图上下文中。</p><p>合并的操作就很简单了，在合并后将最后的时间戳保存即可。</p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">PersistentHistoryTrackerManager</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">merger</span><span class="hljs-params">(transaction: [NSPersistentHistoryTransaction])</span></span> {
+        <span class="hljs-keyword">let</span> viewContext = container.viewContext
+        viewContext.perform {
+            transaction.forEach { transaction <span class="hljs-keyword">in</span>
+                <span class="hljs-keyword">let</span> userInfo = transaction.objectIDNotification().userInfo ?? [:]
+                <span class="hljs-type">NSManagedObjectContext</span>.mergeChanges(fromRemoteContextSave: userInfo, into: [viewContext])
+            }
+        }
+
+        <span class="hljs-comment">// 更新最后的transaction时间戳</span>
+        <span class="hljs-keyword">guard</span> <span class="hljs-keyword">let</span> lastTimestamp = transaction.last?.timestamp <span class="hljs-keyword">else</span> { <span class="hljs-keyword">return</span> }
+        userDefaults.updateLastHistoryTransactionTimestamp(<span class="hljs-keyword">for</span>: currentActor, to: lastTimestamp)
+    }
+}
+</code></pre><p>可以根据自己的习惯选用合并代码，下面的代码和上面的<code>NSManagedObjectContext.mergeChanges</code>是等效的：</p><pre data-language="swift"><code>viewContext.perform {
+   transaction.forEach { transaction <span class="hljs-keyword">in</span>
+      viewContext.mergeChanges(fromContextDidSave: transaction.objectIDNotification())
+   }
+}
+</code></pre><p>这些已经在数据库中发生但尚未反映在视图上下文中的Transaction，会在合并后立即体现在你的App UI上。</p><h2>清理合并后的Transaction</h2><p>所有的Transaction都被保存在Sqlite文件中，不仅会占用空间，而且随着记录的增多也会影响Sqlite的访问速度。我们需要制定明确的清理策略来删除已经处理过的Transaction。</p><p>同<code>fetcher</code>中使用<code>open class func fetchHistory(after date: Date) -&gt; Self</code>类似，Persistent History Tracking同样为我们准备了三个方法用来做清理工作：</p><pre data-language="swift"><code><span class="hljs-keyword">open</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">func</span> <span class="hljs-title">deleteHistory</span>(<span class="hljs-title">before</span> <span class="hljs-title">date</span>: <span class="hljs-title">Date</span>) -&gt; <span class="hljs-title">Self</span>
+<span class="hljs-title">open</span> <span class="hljs-title">class</span> <span class="hljs-title">func</span> <span class="hljs-title">deleteHistory</span>(<span class="hljs-title">before</span> <span class="hljs-title">token</span>: <span class="hljs-title">NSPersistentHistoryToken</span>?) -&gt; <span class="hljs-title">Self</span>
+<span class="hljs-title">open</span> <span class="hljs-title">class</span> <span class="hljs-title">func</span> <span class="hljs-title">deleteHistory</span>(<span class="hljs-title">before</span> <span class="hljs-title">transaction</span>: <span class="hljs-title">NSPersistentHistoryTransaction</span>?) -&gt; <span class="hljs-title">Self</span></span>
+</code></pre><p>删除指定<strong>时间点之前</strong>且满足条件的Transaction</p><p>清理策略可以粗旷的也可以很精细的，例如在苹果官方文档中便采取了一种比较粗旷的清理策略：</p><pre data-language="swift"><code><span class="hljs-keyword">let</span> sevenDaysAgo = <span class="hljs-type">Date</span>(timeIntervalSinceNow: <span class="hljs-type">TimeInterval</span>(exactly: -<span class="hljs-number">604_800</span>)!)
+<span class="hljs-keyword">let</span> purgeHistoryRequest =
+    <span class="hljs-type">NSPersistentHistoryChangeRequest</span>.deleteHistory(
+        before: sevenDaysAgo)
+
+<span class="hljs-keyword">do</span> {
+    <span class="hljs-keyword">try</span> persistentContainer.backgroundContext.execute(purgeHistoryRequest)
+} <span class="hljs-keyword">catch</span> {
+    <span class="hljs-built_in">fatalError</span>(<span class="hljs-string">"Could not purge history: \(error)"</span>)
+}
+</code></pre><p>删除一切7天前的Transaction，无论其author是谁。事实上，这个看似粗旷的策略在实际使用中几乎没有任何问题。</p><p>在本文中，我们将同fetcher一样，对清除策略做更精细的处理。</p><pre data-language="swift"><code><span class="hljs-keyword">import</span> CoreData
+<span class="hljs-keyword">import</span> Foundation
+
+<span class="hljs-comment">/// 删除已经处理过的transaction</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">PersistentHistoryCleaner</span> </span>{
+    <span class="hljs-comment">/// NSPersistentCloudkitContainer</span>
+    <span class="hljs-keyword">let</span> container: <span class="hljs-type">NSPersistentContainer</span>
+    <span class="hljs-comment">/// app group userDefaults</span>
+    <span class="hljs-keyword">let</span> userDefault = <span class="hljs-type">UserDefaults</span>.appGroup
+    <span class="hljs-comment">/// 全部的appActor</span>
+    <span class="hljs-keyword">let</span> appActors = <span class="hljs-type">AppActor</span>.allCases
+
+    <span class="hljs-comment">/// 清除已经处理过的persistent history transaction</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">clean</span><span class="hljs-params">()</span></span> {
+        <span class="hljs-keyword">guard</span> <span class="hljs-keyword">let</span> timestamp = userDefault.lastCommonTransactionTimestamp(<span class="hljs-keyword">in</span>: appActors) <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">return</span>
+        }
+
+        <span class="hljs-comment">// 获取可以删除的transaction的request</span>
+        <span class="hljs-keyword">let</span> deleteHistoryRequest = <span class="hljs-type">NSPersistentHistoryChangeRequest</span>.deleteHistory(before: timestamp)
+
+        <span class="hljs-comment">// 只删除由App Group的成员产生的Transaction</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> fetchRequest = <span class="hljs-type">NSPersistentHistoryTransaction</span>.fetchRequest {
+            <span class="hljs-keyword">var</span> predicates: [<span class="hljs-type">NSPredicate</span>] = []
+
+            appActors.forEach { appActor <span class="hljs-keyword">in</span>
+                <span class="hljs-comment">// 清理App Group成员创建的Transaction</span>
+                <span class="hljs-keyword">let</span> perdicate = <span class="hljs-type">NSPredicate</span>(format: <span class="hljs-string">"%K = %@"</span>,
+                                            #keyPath(<span class="hljs-type">NSPersistentHistoryTransaction</span>.author),
+                                            appActor.rawValue)
+                predicates.append(perdicate)
+            }
+
+            <span class="hljs-keyword">let</span> compoundPredicate = <span class="hljs-type">NSCompoundPredicate</span>(type: .or, subpredicates: predicates)
+            fetchRequest.predicate = compoundPredicate
+            deleteHistoryRequest.fetchRequest = fetchRequest
+        }
+
+        container.performBackgroundTask { context <span class="hljs-keyword">in</span>
+            <span class="hljs-keyword">do</span> {
+                <span class="hljs-keyword">try</span> context.execute(deleteHistoryRequest)
+                <span class="hljs-comment">// 重置全部appActor的时间戳</span>
+                appActors.forEach { actor <span class="hljs-keyword">in</span>
+                    userDefault.updateLastHistoryTransactionTimestamp(<span class="hljs-keyword">for</span>: actor, to: <span class="hljs-literal">nil</span>)
+                }
+            } <span class="hljs-keyword">catch</span> {
+                <span class="hljs-built_in">print</span>(error)
+            }
+        }
+    }
+}
+</code></pre><p>之所以在我在fetcher和cleaner中设置了如此详尽的predicate，是因为我自己是在<code>PersistentCloudKitContainer</code>中使用Persistent History Tracking功能的。Cloudkit同步会产生大量的Transaction，因此需要更精准的对操作对象进行过滤。</p><p><strong>CoreData会自动处理和清除CloudKit同步产生的Transaction，但是如果我们不小心删除了尚没被CoreData处理的CloudKit Transaction，可能会导致数据库同步错误，CoreData会清空当前的全部数据，尝试从远程重新加载数据。</strong></p><p><strong>因此，如果你是在<code>PersistentCloudKitContainer上</code>使用Persistent History Tracking，请务必仅对App Group成员产生的Transaction做清除操作。</strong></p><p>如果仅是在<code>PersistentContainer</code>上使用Persistent History Tracking，fetcher和cleaner中都可以不用过滤的如此彻底。</p><p>在创建了<code>PersistentHistoryCleaner</code>后，我们可以根据自己的实际情况选择调用时机。</p><p>如果采用<code>PersistentContainer</code>，可以尝试比较积极的清除策略。在<code>PersistentHistoryTrackingManager</code>中添加如下代码：</p><pre data-language="swift"><code>    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">processor</span><span class="hljs-params">()</span></span> {
+        backgroundContext.performAndWait {
+					...
+        }
+
+        <span class="hljs-keyword">let</span> cleaner = <span class="hljs-type">PersistentHistoryCleaner</span>(container: container)
+        cleaner.clean()
+    }
+</code></pre><p>这样在每次响应<code>NSPersistentStoreRemoteChange</code>通知后，都会尝试清除已经合并过的Transaction。</p><p>不过我个人更推荐使用不那么积极的清除策略。</p><pre data-language="swift"><code>@main
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">PersistentTrackBlogApp</span>: <span class="hljs-title">App</span> </span>{
+    <span class="hljs-keyword">let</span> persistenceController = <span class="hljs-type">PersistenceController</span>.shared
+    @<span class="hljs-type">Environment</span>(\.scenePhase) <span class="hljs-keyword">var</span> scenePhase
+    <span class="hljs-keyword">var</span> body: some <span class="hljs-type">Scene</span> {
+        <span class="hljs-type">WindowGroup</span> {
+            <span class="hljs-type">ContentView</span>()
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .onChange(of: scenePhase) { scenePhase <span class="hljs-keyword">in</span>
+                    <span class="hljs-keyword">switch</span> scenePhase {
+                    <span class="hljs-keyword">case</span> .active:
+                        <span class="hljs-keyword">break</span>
+                    <span class="hljs-keyword">case</span> .background:
+                        <span class="hljs-keyword">let</span> clean = <span class="hljs-type">PersistentHistoryCleaner</span>(container: persistenceController.container)
+                        clean.clean()
+                    <span class="hljs-keyword">case</span> .inactive:
+                        <span class="hljs-keyword">break</span>
+                    @unknown <span class="hljs-keyword">default</span>:
+                        <span class="hljs-keyword">break</span>
+                    }
+                }
+        }
+    }
+}
+</code></pre><p>比如当app退到后台时，进行清除工作。</p><h2>总结</h2><p>可以在<a href="https://github.com/fatbobman/PersistentHistoryTrackingDemo">Github</a>下载本文的全部代码。</p><p>以下资料对于本文有着至关重要的作用：</p><ul><li><a href="https://donnywals.gumroad.com/l/practical-core-data">Practical Core Data</a></li></ul><p>Donny Wals的这本书是我最近一段时间非常喜欢的一本CoreData的书籍。其中有关于Persistent History Tracking的章节。另外他的<a href="https://www.donnywals.com/the-blog/">Blog</a>也经常会有关于CoreData的文章</p><ul><li><a href="https://www.avanderlee.com">SwiftLee</a></li></ul><p>Avanderlee的博客也有大量关于CoreData的精彩文章，<a href="https://www.avanderlee.com/swift/persistent-history-tracking-core-data/">Persistent History Tracking in Core Data</a>这篇文章同样做了非常详细的说明。本文的代码结构也受其影响。</p><p>苹果构建了Persistent History Tracking，让多个成员可以共享单个数据库并保持UI的及时更新。无论你是构建一套应用程序，或者是想为你的App添加合适的Extension，亦或仅为了统一的响应批处理操作的数据，持久化历史跟踪都能为你提供良好的帮助。</p><p>Persistent History Tracking尽管可能会造成一点系统负担，不过和它带来的便利性相比是微不足道的。在实际使用中，我基本上感受不到因它而导致的性能损失。</p>]]></content:encoded></item><item><guid isPermaLink="true">https://www.fatbobman.com/posts/wwdc2021</guid><title>WWDC 2021 观后感</title><description>WWDC 2021转眼间已经结束一周了。本次WWDC苹果一如既往的带来了新的操作系统以及一大堆开发工具、软件架构、网络服务等方面的升级。由于疫情的原因，这两年的WWDC都是采用录播形式，不过从视频内容上看，反倒比以前传达地更加精准，对观看者也更加地友善。本文仅从我个人感兴趣的几个角度进行一点介绍，并结合这段时间的学习谈谈使用感受。</description><link>https://www.fatbobman.com/posts/wwdc2021</link><pubDate>Fri, 18 Jun 2021 20:00:00 +0800</pubDate><content:encoded><![CDATA[<p>WWDC 2021转眼间已经结束一周了。本次WWDC苹果一如既往的带来了新的操作系统以及一大堆开发工具、软件架构、网络服务等方面的升级。由于疫情的原因，这两年的WWDC都是采用录播形式，不过从视频内容上看，反倒比以前传达地更加精准，对观看者也更加地友善。本文仅从我个人感兴趣的几个角度进行一点介绍，并结合这段时间的学习谈谈使用感受。</p><h2>操作系统</h2><p>这几年苹果的系统一直保持一种渐进式的升级态势，即使是大版本号升级通常并不会给人特别大的惊喜和改变。不过也正是在这种逐步的变化中，苹果不断的将它多个系统的联系变得更加紧密，生态建设的愈发完善。网上已经有了大量关于系统新功能的文章，所以我仅从自己的使用上谈几点感受。</p><p>iOS 15在旧设备上的效率相当不错（我在一台iPhone7上进行了安装）。相较于iPhone，iPad上对于多任务、多窗口的交互提升观感更明显。在后期软件适配跟上的情况下，iPad应用或许会有一个新的爆发。Monterey第一个版本的稳定度明显好于去年的Big Sur，界面细节的统一性也不错。相较于去年的大规模UI改变，今年在UI上更多是完善和细节改进。watchOS 8我没有在实机上测试，我对它新的体能训练类型以及睡眠呼吸率比较感兴趣。</p><p>抛开表面功能，因为今年苹果在Swift语言以及系统框架的大规模提升，相信不久后适配了新框架和新服务的App在新系统上会有很不一样的表现。由于今年绝大多数的Swift语言层面、框架层面的新功能都不会下放到老版本的操作系统，所以估计苹果也会继续加大力度促使用户升级。好在，新系统对硬件的涵盖比较广，和最近几年的系统对硬件需求差不多，估计用户的系统更新速度应该会比较快。</p><h2>Swift</h2><p>Swift 5.5可以说是在5.0发布以后最重大的更新。在今年Swift重构了异步和多线程的解决方案，并提供了<code>结构式多线程</code>、<code>Actor</code>等重磅功能。</p><p>Swift 5.5目前提供的异步、多线程方式对于开发者来说非常友好，从最近的使用来看不仅上手容易，而且可以让自己的代码在极短的时间中受益。目前距离Swift 5.5正式发布还有一段时间，除了不可避免的Bug外，关键字、语法等也还在不断变化中。Xcode13 beta1中的Swift Toolchain关于异步调用语法已经和 最近的snapshot中有不小的改变。尽管如此，我还是推荐每一个Swift开发者都能够尽快地了解这些新的工具、模式，进而可以从另一个角度来思考编程的逻辑。关于异步、多线程的部分，我会在接下来一段时间写几篇文章做更多的介绍。</p><p>另一个让我非常有感的Swift增强是在<code>通用上下文中扩展了静态成员的查找</code>功能。这个看似不大的改动将极大地提高了<code>自动补全</code>的表现。官方框架已经对该功能做了充分适配，使用Xcode13你会感慨原来自动补全也可以这么好用。</p><p>相较于第一个重磅功能，其他的如<code>#if</code>表达式、<code>本地化的lazy</code>、<code>属性包装器可用于函数</code>、<code>枚举适配编码</code>、<code>Double—CGFloat相互转换</code>等只能说是正常提升了。</p><h2>SwiftUI</h2><p>学习和使用下来的总体感觉是继续补强和规范。</p><p>如果单看Keynote，你会感觉好像苹果为SwiftUI带来了好多新的能力，不过仔细分析后会发现其中绝大多数都已经有较成熟的第三方解决方案了，当然官方的方案确实设计的统一性较好且实现地很优雅，相信这也将影响不少的SwiftUI三方库作者。提几个我个人感触较大的改进：</p><ul><li><strong>输入的全面提升</strong>。从<code>Formatter绑定</code>到<code>focusedState</code>的添加，从<code>onsubmit</code>到<code>submitLable</code>以及Toolbar中的<code>keyboard placement</code>，总之全平台上的输入逻辑和设计都有了令人欣喜的提高。官方的方案如果单看某个平台的表现未必最好，不过它的多平台适配能力确实令人佩服。</li><li><strong>异步概念的全面导入</strong>。<code>task</code>、<code>refreshable</code>中都是直接可以执行异步代码的上下文。由于Swift 5.5异步编程的简化，苹果在各个框架上都会强力引导开发者采用异步、多线程的方式进行编程。</li><li><strong>富文本和符号的增强</strong>。Text中可以直接使用<code>Markdown</code>符号，尤其是新增的<code>AttributedString</code>，开发者可以自定义Markdown符号（使用效果非常好，有很高的想象空间）。Text + AttributedString解决了SwiftUI上富文本一个非常大的短板。<code>SF 3.0</code>近一步增加了符号种类，添加了更多的渲染方式，为我这样的个人开发者进一步减轻了美工压力。其他如文本动态尺寸限制、符号变体等也都比较有特点。</li><li><strong>样式化趋势明显</strong>。将一些之前需要定义颜色、尺寸等多个步骤的工作统一成style。同时也添加了<code>Material</code>样式。苹果在SwiftUI上喜欢为各个控件使用类似<code>xxxstyle</code>来定义它的样式，得益于Swift 5.5的静态成员查找能力，在代码中调用样式更加方便。这个也会很快在第三方控件上体现出来。</li><li><strong>列表的全面补强</strong>。List作为使用量巨大的控件一直以来在SwiftUI上都有诸多的不足。此次更新添加了诸多期待已久的功能并且调用的方式很SwiftUI化。<code>ForEach</code>可以使用绑定数据、<code>searchable</code>搜索解决方案、swipeAction的侧滑按钮等等，使得以前只能通过重新包装、数据注入才能解决的问题，多数可以直接使用官方提供的方案。另外值得一提的是，终于可以取消分割线了。<code>Section</code>的加入为数据的组织方式添加了更多的选项。</li><li><strong>按钮的全方位提升</strong>。此次SwiftUI为各类Button提供了非常好的扩展，比如<code>controlGroup</code>在各个不同平台的不同呈现，通过<code>buttonStyle</code>、<code>controlSize</code>、<code>controlProminece</code>、<code>role:</code>等等仅用几行代码便可以获得官方美工级别的按钮样式，<code>Menu</code>也支持了二级菜单，并且为mac平台添加了<code>.button</code>的style等等。总之在本次版本中按钮呈现的改进是当今任何第三方开发者都没能达到的高度。</li><li><strong>CoreData配合度近一步提高</strong>。@fetchRequest终于支持动态修改sortDescripte和predicate了，另外配合Section新增了<code>@SectionedFetchRequest</code>，极大的提升了List的表现能力。</li><li>其他比较有特点的还有：<code>Canvas</code>、<code>TimeLineView</code>、<code>confirmationDialog</code>等等众多的新功能。</li></ul><p>其中绝大多数的功能，我在之后会通过文章更详细的和大家分享。</p><blockquote><p>遗憾的是，NavigationView没有在此次升级中补强。</p></blockquote><p>另外，在本次WWDC上的<a href="https://developer.apple.com/videos/play/wwdc2021/10022/">Demystify SwiftUI</a>绝对不容错过，通过对身份、生命周期、依赖的详细讲述让开发者了解SwiftUI的开发哲学及核心原则，并掌握如何使用它们来保证应用程序的准确和性能。</p><h2>CoreData + Cloudkit</h2><p>CoreData在今年的改动不多，主要体现在对同步和多线程的支持上。在本次WWDC之前坊间传闻并期望的SwiftData并没有出现。不过Cloudkit今年还是给我带来了巨大的惊喜：<code>支持了本地化操作的Share数据库</code>。</p><p>在2019年，通过<code>NSPersistentCloudKitContainer</code>苹果打通了Coredata同cloudkit上的私有库，去年带来了公有库的本地化，今年终于将最后的短板补齐，让开发者可以轻松实现app用户同其他的icloud用户实时分享数据。为了实现这个功能，Cloudkit改善了它同本地数据的同步机制，响应不像去年的公共库同步那么迟钝。在今年WWDC众多的新功能中，<code>Share Data</code>是我一直最想要的功能！</p><h2>Xcode</h2><p>首先最直观的感觉很多的<code>图标</code>变得比以前精致了。<code>Xcode Cloud</code>看起来不错，但对于个人开发者的我来说还没有什么特别大的吸引力。如果你是Vim用户，一定会对<code>Vim模式</code>的到来感到兴奋。<code>版本控制</code>终于得到了提升，不仅在功能上，即使在界面布局上也看出了此次苹果对于版本控制重要性的认识有了提高。得益于Swift的改进，代码补全、错误提示比之前有了不小的进步（测试版中，错误提示还是有点诡异的）。最后，有两个并不完全属于Xcode的功能反倒值得特别注意：</p><ul><li>集成了<code>Swift Package Collection</code>。本次苹果推出了Swift Package Collection，为用户分享和组织第三方库提供了新的选择。Xcode已经全面集成了对此的支持。</li><li>全面集成<code>Docc</code>。我从2019年开始接触mac编程，当时的苹果的文档内容并不丰富，这两年有了不小的进步。在第一次看到SwiftUI的官方的交互式教程时我相当震惊，希望将来会有更多的类似文档资料。今年，苹果开发了Docc，一个可以直接从代码构建美丽、交互式和原生文档的新工具。使用它，很轻松地就可以开发出类似苹果官方文档质量的文档集合。苹果在今年内会将其开源，届时即使是其他平台的IDE 或者其他的开发语言都可以使用它进行文档工作。</li></ul><h2>其他</h2><p>WWDC涉及的领域实在是太多了，大多数的Session我都没有时间观看和学习。除了上面提到的变化外，我额外关注了Foundation在今年的变化。苹果着重介绍了<code>AttributedString</code>和<code>Formatter</code>。AttributedString绝对是接下来在苹果开发生态中富文本的主力，Formatter对国际化、本地化的支持也达到了空前的高度。另外，从SwiftUI的Text和TextField都可以直接使用Formatter的情况来看，苹果将来会在其官方框架中增加对开发人员的引导。</p><h2>关于WWDC的资料</h2><p>下面是我观看和学习WWDC中使用的一些资源：</p><ul><li>Developer (mac AppStore 和 iOS appStore都可以下载)。推荐使用这个app来观看视频，可以点击每个Session的旁白或代码片段快速跳转到对应视频片段</li><li><a href="https://developer.apple.com/sample-code/wwdc/2021/">WWDC 官方演示代码</a>在此网址可以查询视频中提及的演示项目的完整代码</li><li><a href="https://www.wwdcnotes.com">WWDC NOTES</a>各个Essential的图文整理</li><li><a href="https://www.hackingwithswift.com">HackingWithSwift</a>以及他的油管频道</li><li><a href="https://roblack.github.io/WWDC21Lounges">WWDC21Lounges</a>的QA汇总</li></ul>]]></content:encoded></item><item><guid isPermaLink="true">https://www.fatbobman.com/posts/swift-in-linux</guid><title>在Linux系统上搭建Swift开发调试环境</title><description>本文的目标是在Linux上搭建一个可供生产标准的Swift开发调试环境。使用者将获得一个支持代码高亮、自动补全、定义跳转、断点调试、代码美化、代码静态扫描、跨操作系统平台配置的综合开发体验。</description><link>https://www.fatbobman.com/posts/swift-in-linux</link><pubDate>Mon, 15 Feb 2021 15:00:00 +0800</pubDate><content:encoded><![CDATA[<h2>Swift与Linux</h2><p>自2015年Swift宣布开源并支持Linux后，一晃已超过5年。在最初几年间尽管Swift发展迅速，但并未被Linux社区广泛接受。造成这种局面的原因较多，其中既有语言稳定性方面的问题，同时又有对Linux的支持不完善、缺乏具有吸引力的基础库和第三方库、热点项目不足等多方面原因。</p><p>最近两年，上述问题均得到显著改善。</p><ul><li>从Swift5开始Swift团队宣布ABI稳定了。自此，Swift为应用程序提供了二进制兼容性，有了ABI稳定性作为基础，Swift对其他平台的支持速度和力度将大大提高</li><li>2020年Swift团队推出了5.3版本，除了“重要的质量提升和性能增强”之外，Swift5.3的一个关键特性是正式支持Linux和Window平台。事实上，这也是Swift的发布流程首次为三个不同的平台分别设立了发布负责人。作为承诺将Swift引入Linux的第一份成果，Swift团队宣布新的Swift版本可用于一众Linux发行版上。</li><li>出现了大量优秀的官方和第三方的跨平台库。仅Apple公司，最近几年来已经为Swift社区贡献了大量的Swift代码，并保持着非常高的提交频率。</li><li>Swift在服务器端及深度学习领域取得了不错的应用成果。</li></ul><p>Swift已经准备在Linux有更多的表现。</p><h2>写本文的原因</h2><p>前些日子写了篇<a href="https://www.fatbobman.com/posts/publish-1/">用Publish创建博客（一）——入门</a>（一个用Swift编写的优秀的静态网站生成器）的介绍，期间有网友问我是否可以在Linux上使用，我回答不成问题。但转过头来思考，虽然<code>Publish</code>完美地支持Linux，但开发者能否像在mac上一样方便的进行开发调试呢？</p><p>之前使用<code>Vapor</code>的时候，曾通过<code>Docker</code>在Ubuntu上安装过Swift，不过代码是在mac上调试的。我也十分好奇，在2021年Swift到底在Linux下的开发环境如何？</p><p>本文的目标是在Linux上搭建一个可供生产标准的Swift开发调试环境。使用者将获得一个支持代码高亮、自动补全、定义跳转、断点调试、代码美化、代码静态扫描、跨操作系统平台配置的综合开发体验。</p><h2>准备</h2><p>由于每个人使用的Linux发行版本不同，因此在安装过程中，如遇到缺少必要依赖的情况，请自行按系统提示安装所需的依赖库即可。</p><p>本文在描述每一步该如何做的同时，还会做出必要的解释。即使你使用的是其他的Linux发行版，或者不同的编辑器，甚至在Swift或其他工具发生了重大的升级后，仍可按照下面安装思路进行环境搭建。</p><p>本文搭建的起点是建立在已经安装了Visual Studio Code 1.53.0的Ubuntu 20.04LTS（最小化安装）系统上的。选择安装的Swift Toolchain为5.3.3。</p><p>对于Ubuntu 20.04,需安装<code>python2.7</code>及<code>npm</code>以完成下面其他操作。</p><pre data-language="bash"><code>$ sudo apt install libpython2.7 libpython2.7-dev libz3-4 npm 
 </code></pre><h2>Swift Toolchain</h2><h3>工具链选择</h3><p>尽管你可以直接<a href="https://github.com/apple/swift/releases">下载Swift Toolchain的源码</a>自己编译，但目前最推荐的方式还是使用官方提供的已编译好的下载包进行安装。<a href="https://swift.org/download/#releases">swift.org</a>上提供了Ubuntu 16.04、Ubuntu 18.04、Ubuntu 20.04、CentOS 7、CentOS 8、Amazon Linux 2的下载包。其他的发行版本也多有自己的官方支持，比如Fodor、Red Hat Enterprise Linux8、Raspbian OSi等</p><p>Swift在5.3版本后开始正式支持Linux平台，所以本文选择在Ubuntu 20.04上安装<a href="https://swift.org/builds/swift-5.3.3-release/ubuntu2004/swift-5.3.3-RELEASE/swift-5.3.3-RELEASE-ubuntu20.04.tar.gz">Swift 5.3.3 Release</a>。</p><h3>安装</h3><p>在<a href="https://swift.org/download/">swift.org</a>上查找对应发行版的Swift Toolchain下载地址</p><img src="https://cdn.fatbobman.com/swift_toolchain_download.png" alt="image-20210214092353715"/><pre data-language="bash"><code><span class="hljs-variable">$cd</span> ~
 <span class="hljs-variable">$wget</span> https://swift.org/builds/swift-5.3.3-release/ubuntu2004/swift-5.3.3-RELEASE/swift-5.3.3-RELEASE-ubuntu20.04.tar.gz
 </code></pre><p>解压文件</p><pre data-language="bash"><code><span class="hljs-variable">$tar</span> -xzf swift-5.3.3-RELEASE-ubuntu20.04.tar.gz 
