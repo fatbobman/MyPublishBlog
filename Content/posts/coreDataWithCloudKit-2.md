@@ -320,12 +320,8 @@ container.persistentStoreDescriptions = [cloudDesc,localDesc]
 
 * 在`localDesc`上开启`Persistent History Tracking`
 
-  ```swift
-  localDesc.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
-  localDesc.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
-  ```
-
 * 使用`localContainer`创建上下文写入`Movie`实例（实例将只保存到本地，而不进行网络同步）
+
 * 处理`NSPersistentStoreRemoteChange`通知，将从`localContainer`中写入的数据合并到`container`的`viewContext`中
 
 *我目前没有找到任何资料解释为什么协调器可以合并查询多个`Store`中的**同一个**`Entity`，但在实际使用中确实可以实现预期中的结果。*
