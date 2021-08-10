@@ -72,7 +72,7 @@ title: Core Data with CloudKit（三）——CloudKit仪表台
 
 在做任何操作之前，要首先确认是否处于正确的环境设定中。
 
-> 鉴于`CloudKit`的环境部署规则，**在采用`Core Data with CloudKit`的项目中设计`Core Data`数据模型时一定要特别小心！**。我个人的原则是**可加、可减、尽量不改**。我将在下篇文章详细讨论该如何对`Core Data with CloudKit`数据模型做版本迁移。
+> 鉴于`CloudKit`的环境部署规则，**在采用`Core Data with CloudKit`的项目中设计`Core Data`数据模型时一定要特别小心！**。我个人的原则是**可加、不减、不改**。我将在下篇文章详细讨论该如何对`Core Data with CloudKit`数据模型做版本迁移。
 
 ### 安全角色（Security Roles） ###
 
@@ -167,8 +167,6 @@ title: Core Data with CloudKit（三）——CloudKit仪表台
 `Record Type`部署到生产环境后，字段不可以删除，字段名称也不可以修改。因此一些`Core Data`中的操作在`Core Data with CloudKit`中是不允许的。
 
 **不要对已经上线的应用程序数据模型的`Entity`进行更名，也不要对`Attribute`更名，即使使用Mapping Model、Renaming ID都是不行的。在开发阶段如果需要更名的话，可能需要删除app重装并重置`CloudKit`的开发环境。**
-
-**即使已经在`Core Data`中删除了`Entity`的某个`Attribute`，该字段仍然会存在于`Record Type`中（并不会影响同步）。**
 
 ### Zones ###
 
