@@ -157,13 +157,14 @@ article h2{
 h1 {
     margin-top: 20px;
     margin-bottom: 20px;
-    font-size: 2em;
+    font-size: 28px;
+    font-weight: bold;
 }
 
 h2 {
     margin-bottom: 25px;
     margin-top: 25px;
-    font-size: 24px;
+    font-size: 22px;
     text-align: left;
     /* color:royalblue; */
     padding-bottom: 12px;
@@ -362,7 +363,7 @@ blockquote {
 }
 
 article p code, article li code, .discover .content code {
-    background-color: #fff5f5;
+    background-color: #f2f2f2;
     display: inline-block;
     padding: 0 5px;
     border-radius: 8px;
@@ -372,7 +373,8 @@ article p code, article li code, .discover .content code {
 }
 
 article p code,article li code{
-    color:#ff502c;
+    color:#c7254e;
+    display: inline;
 }
 
 /* index-list */
@@ -512,9 +514,10 @@ article p code,article li code{
 
 .item-list h1 {
     margin-bottom: 15px;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: normal;
     color: var(--item-title-color);
+    text-rendering:optimizeLegibility;
 }
 
 .item-list h1 a {
@@ -1073,7 +1076,7 @@ article hr {
   --content-background-color-dark:#333;
   --index-item-more-color-light: #8a8a8a;
   --index-item-more-color-dark: #7a7a7a;
-  --item-title-color: #ff8000;
+  --item-title-color: #333;
   --item-title-hover-color: #ff3300;
   --section-header-title-color-light:#333;
   --section-header-title-color-dark:#bbb;
