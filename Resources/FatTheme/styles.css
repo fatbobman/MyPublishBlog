@@ -218,7 +218,7 @@ p {
     margin-block-end: 1em;
     margin-inline-start: 0px;
     margin-inline-end: 0px; 
-    text-align: justify;
+    text-align: left;
 }
 
 
@@ -279,7 +279,7 @@ a.browse-all:hover {
 
 .content {
     margin-bottom: 40px;
-    text-align: justify;
+    /* text-align: justify; */
 }
 
 .content img{
