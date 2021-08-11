@@ -78,6 +78,7 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                 .class("item-page"),
                 .header(for: context, selectedSection: item.sectionID),
                 .wrapper(
+                    .twitterIntent(title: item.title, url: context.site.url.appendingPathComponent(item.path.string).absoluteString),
                     .article(
                         .div(.h1(.text(item.title))),
                         .div(
@@ -85,6 +86,7 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                             .div(.class("content"), .contentBody(item.body))
                         )
                     ),
+                    // .toc(),
                     .itemNavigator(previousItem: previous, nextItem: next),
                     .gitment(topicID: item.title),
                     .footer(for: context.site)
@@ -273,6 +275,31 @@ extension Node where Context == HTML.BodyContext {
         return .div(
             .class("publishDate"),
             .table(.tr(.td(tags), .td(.text(formatter.string(from: date)))))
+        )
+    }
+
+    static func twitterIntent(title: String, url: String) -> Node {
+        .div(
+            .class("post-actions"),
+            .a(.img(.class("twitterIntent"), .src("/images/twitter.svg")),
+               .href("https://twitter.com/intent/tweet?text=\(title)&url=\(url)&via=fatbobman"),
+               .target(.blank),
+               .rel(.nofollow),
+               .rel(.noopener),
+               .rel(.noreferrer))
+        )
+    }
+
+    static func toc() -> Node {
+        .group(
+            .div(
+                .class("sidebar")
+            ),
+
+            .raw("""
+                    <script src="http://localhost:8000/images/toc.js"></script>
+                """
+            )
         )
     }
 

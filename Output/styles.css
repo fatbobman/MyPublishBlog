@@ -369,7 +369,7 @@ article p code, article li code, .discover .content code {
     border-radius: 8px;
     font-size: 0.9em;
     margin: 1px;
-    line-break: anywhere;
+    line-break:auto;
 }
 
 article p code,article li code{
@@ -814,6 +814,14 @@ article hr {
         margin-left:3px;
         margin-right:3px;
     }
+    
+    .post-actions {
+        display: none;
+    }
+
+    .sidebar{
+        display: none;
+    }
 }
 
 
@@ -1252,3 +1260,106 @@ article hr {
     outline: none; 
 }
 
+.post-actions {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 100px;
+    display:block;
+    float:left;
+    margin: 20px 0 0 -70px;
+}
+.post-actions .twitterIntent {
+    width: 30px;
+    height: 30px;
+}
+
+/*.toc {*/
+/*    position: sticky;*/
+/*    position: -webkit-sticky;*/
+/*    top: 10px;*/
+/*    display:block;*/
+/*    float:right;*/
+/*    margin: -20px 0 0 0px;*/
+/*}*/
+
+.sidebar{
+    position:absolute;
+    top: 0;
+    right: 0;
+    padding-top: 260px;
+    padding-right: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-width: 200px;
+    float: right;
+}
+
+.menu-root { list-style:none; text-align:left }
+
+.menu-root .h1-link{
+    display:inline-block;
+    color:rgb(44, 62, 80);
+    font-family:"source sans pro", "helvetica neue", Arial, sans-serif;
+    font-size:14px;
+    font-weight:600;
+    height:22px;
+    line-height:22.5px;
+    list-style-type:none;
+    margin-block-end:11px;
+    margin-block-start:11px;
+}
+
+.menu-root .h2-link:hover {
+    border-bottom: 2px solid ${highlightColor};
+}
+
+.menu-root .h2-link.current+.menu-sub{
+    display:block;
+}
+
+.menu-root .h2-link{
+    color:rgb(127,140,141);
+    cursor:pointer;
+    font-family:"source sans pro", "helvetica neue", Arial, sans-serif;
+    font-size:13px;
+    height:auto;
+    line-height:22.5px;
+    list-style-type:none;
+    text-align:left;
+    text-decoration-color:rgb(127, 140, 141);
+    text-decoration-line:none;
+    text-decoration-style:solid;
+    margin-left:12.5px;
+}
+
+.menu-sub {
+    padding-left:25px;
+    list-style:none;
+    display:none;
+}
+
+.menu-sub .h3-link{
+    color:#333333;
+    cursor:pointer;
+    display:inline;
+    font-family:"source sans pro", "helvetica neue", Arial, sans-serif;
+    font-size:11px;
+    height:auto;
+    line-height:19.125px;
+    list-style-type:none;
+    text-align:left;
+    text-decoration-color:rgb(52, 73, 94);
+    text-decoration-line:none;
+    text-decoration-style:solid;
+}
+
+@media only screen and (max-width : 1300px){
+    .content-with-sidebar {
+        margin-right:310px !important;
+    }
+}
+
+.sidebar .active{
+    color:${highlightColor};
+    font-weight:700;
+}
