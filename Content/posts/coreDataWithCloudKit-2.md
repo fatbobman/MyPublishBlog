@@ -259,7 +259,7 @@ cloudStoreDescription.configuration = "Cloud"
 cloudStoreDescription.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: "your.containerID")
 ```
 
-即使不将`Model Editor`中的`Configuration`设置为`Used with CloudKit`，网络同步功能同样生效
+即使不将`Model Editor`中的`Configuration`设置为`Used with CloudKit`，网络同步功能同样生效。勾选`Used with CloudKit`的最大好处是：`Xcode`会帮你检查`Model`是否兼容`CloudKit`。
 
 ## 有选择的同步数据 ##
 
