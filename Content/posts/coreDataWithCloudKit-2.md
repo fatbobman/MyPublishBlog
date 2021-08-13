@@ -51,7 +51,7 @@ let container: NSPersistentCloudKitContainer
 
 ### 启用CloudKit ####
 
-点击项目中对应的`Target`，选择`Singing&Capabilitie`s。点击`+Capability`查找`icloud`添加`CloudKit`支持。
+点击项目中对应的`Target`，选择`Signing&Capabilities`。点击`+Capability`查找`icloud`添加`CloudKit`支持。
 
 ![image-20210806185136390](http://cdn.fatbobman.com/image-20210806185136390-8247097.png)
 
