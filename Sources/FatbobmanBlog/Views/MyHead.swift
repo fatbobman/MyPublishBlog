@@ -42,18 +42,18 @@ extension Node where Context == HTML.DocumentContext {
             .title(title),
             .description(description),
             .twitterCardType(location.imagePath == nil ? .summary : .summaryLargeImage),
-            .meta(.name("twitter:site"), .content("fatbobman")),
-            .meta(.name("twitter:creator"), .content("fatbobman")),
+            .meta(.name("twitter:site"), .content("@fatbobman")),
+            .meta(.name("twitter:creator"), .content("@fatbobman")),
             .meta(.name("referrer"), .content("no-referrer")),
             .forEach(stylesheetPaths) { .stylesheet($0) }, .viewport(.accordingToDevice),
             .unwrap(site.favicon) { .favicon($0) },
             .unwrap(
                 rssFeedPath) { path in let title = rssFeedTitle ?? "Subscribe to \(site.name)"
-                return .rssFeedLink(path.absoluteString, title: title)
+                    return .rssFeedLink(path.absoluteString, title: title)
             },
             .unwrap(
                 location.imagePath ?? site.imagePath) { path in let url = site.url(for: path)
-                return .socialImageLink(url)
+                    return .socialImageLink(url)
             }
         )
     }
