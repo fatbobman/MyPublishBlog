@@ -30,11 +30,17 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                     for: context,
                     selectedSection: FatbobmanBlog.SectionID.index as? Site.SectionID
                 ),
-                .wrapper(
-                    //                    .gridBox(context:context),
-                    .sectionheader(context: context),
-                    .recentItemList(for: index, context: context, recentPostNumber: 5, words: 300),
-                    .sectionheader(context: context, showTitle: false)
+                .container(
+                    .wrapper(
+                        .leftContext(
+                            .sectionheader(context: context),
+                            .recentItemList(for: index, context: context, recentPostNumber: 5, words: 300),
+                            .sectionheader(context: context, showTitle: false)
+                        ),
+                        .sideNav(
+                            .text("hello world")
+                        )
+                    )
                 ),
                 .footer(for: context.site)
             )
@@ -50,9 +56,13 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
             .head(for: section, on: context.site),
             .body(
                 .header(for: context, selectedSection: section.id),
-                .wrapper(
-                    //                    .h1(.text(section.title)),
-                    .itemList(for: section.items, on: context.site)
+                .container(
+                    .wrapper(
+                        .leftContext(
+                            .itemList(for: section.items, on: context.site)
+                        ),
+                        .sideNav(.text("fatbobman"))
+                    )
                 ),
                 .footer(for: context.site)
             )
@@ -77,18 +87,25 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
             .body(
                 .class("item-page"),
                 .header(for: context, selectedSection: item.sectionID),
-                .wrapper(
-                    .twitterIntent(title: item.title, url: context.site.url.appendingPathComponent(item.path.string).absoluteString),
-                    .article(
-                        .div(.h1(.text(item.title))),
-                        .div(
-                            .tagList(for: item, on: context.site, displayDate: true),
-                            .div(.class("content"), .contentBody(item.body))
+                .container(
+                    .wrapper(
+                        .leftContext(
+                            .twitterIntent(title: item.title, url: context.site.url.appendingPathComponent(item.path.string).absoluteString),
+                            .article(
+                                .div(.h1(.text(item.title))),
+                                .div(
+                                    .tagList(for: item, on: context.site, displayDate: true),
+                                    .div(.class("content"), .contentBody(item.body))
+                                )
+                            ),
+                            // .toc(),
+                            .itemNavigator(previousItem: previous, nextItem: next),
+                            .gitment(topicID: item.title)
+                        ),
+                        .sideNav(
+                            .text("links")
                         )
                     ),
-                    // .toc(),
-                    .itemNavigator(previousItem: previous, nextItem: next),
-                    .gitment(topicID: item.title),
                     .footer(for: context.site)
                 )
             )
@@ -110,7 +127,12 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                     ),
                     else: .header(for: context, selectedSection: nil)
                 ),
-                .div(.class("about"), .wrapper(.contentBody(page.body))),
+                .div(.class("about"),
+                     .container(
+                         .wrapper(
+                             .contentBody(page.body)
+                         )
+                     )),
                 .footer(for: context.site)
             )
         )
@@ -122,28 +144,25 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
             .searchHead(for: page, on: context.site),
             .body(
                 .header(for: context, selectedSection: nil),
-                .wrapper(
-                    .searchInput(),
-                    // asd;lgjkasd;gliu;lkajsd;lgkas;dlgkjasd;giuas;lkdjg;asldkgjas;dligua;sldkgja;sdlkjas;dliguasd;lkgjas;dlkxz.,cmbnzxl;kahs;doiasd;lkgjas;dlgkjasd;ogiuas;dlkgjasd;lkgjasd;oigu;qwlekj;asdlkjg;asdoiugas;dlkgja;sldkguaosdiuga;sdlkgjas;dlkguasoidgu;asldkjga;sdlguasodigas;dlkgjas;dlu;asldkjgasdliuf;asduf
-                    //                    .h4(
-                    //                        .class("tags-title"),
-                    //                        .text("全部标签")
-                    //                    ),
-                    .ul(
-                        .class("all-tags"),
-                        .forEach(page.tags.sorted()) { tag in
-                            .li(
-                                .class(tag.colorfiedClass),
-                                .a(
-                                    .href(context.site.path(for: tag)),
-                                    .text("\(tag.string) (\(tag.count))")
+                .container(
+                    .wrapper(
+                        .searchInput(),
+                        .ul(
+                            .class("all-tags"),
+                            .forEach(page.tags.sorted()) { tag in
+                                .li(
+                                    .class(tag.colorfiedClass),
+                                    .a(
+                                        .href(context.site.path(for: tag)),
+                                        .text("\(tag.string) (\(tag.count))")
+                                    )
                                 )
-                            )
-                        }
-                    ),
-                    .searchResult()
+                            }
+                        ),
+                        .searchResult()
+                    ) // ,
+                    // .spacer()
                 ),
-
                 .footer(for: context.site)
             )
         )
@@ -200,7 +219,8 @@ extension Node where Context == HTML.BodyContext {
         let sectionIDs = T.SectionID.allCases
         return .header(
             .wrapper(
-                .div(.class("logo"), .a(.href("/"), .h2("肘子的SWIFT记事本"))),
+                // .div(.class("logo"), .a(.href("/"), .h2("肘子的SWIFT记事本"))),
+                .div(.class("logo"), .a(.href("/"), .img(.src("/images/title.svg")))),
                 .if(sectionIDs.count > 1, nav(for: context, selectedSection: selectedSection))
             )
         )
@@ -300,6 +320,27 @@ extension Node where Context == HTML.BodyContext {
                     <script src="http://localhost:8000/images/toc.js"></script>
                 """
             )
+        )
+    }
+
+    static func container(_ nodes: Node...) -> Node {
+        .div(
+            .class("container"),
+            .group(nodes)
+        )
+    }
+
+    static func sideNav(_ nodes: Node...) -> Node {
+        .div(
+            .class("side-nav"),
+            .group(nodes)
+        )
+    }
+
+    static func leftContext(_ nodes: Node...) -> Node {
+        .div(
+            .class("leftContent"),
+            .group(nodes)
         )
     }
 

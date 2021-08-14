@@ -9,11 +9,12 @@
 * {
     margin: 0;
     padding: 0;
+    border: 0;
     box-sizing: border-box;
 }
 
 body {
-    background: #fff;
+    background: var(--header-background-color-light);
     color: #000;
     /*font-family: Helvetica, Arial;*/
     text-align: center;
@@ -24,18 +25,59 @@ body {
     font-feature-settings: "tnum";
     font-variant: tabular-nums;
     /* letter-spacing:2px; */
+    height: 100%;
+}
 
+.container {
+    background: #f4f5f5;
+    text-align: left;
+    position: relative;
+    /* min-height:1000px; */
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* 侧边栏 */
+.side-nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+}
+
+/* 填充空间 */
+.spacer {
+    height: 30px;
+    margin: -30px 0 0;
+    background-color: #00000000;
+    width: 100%;
 }
 
 .wrapper {
-    max-width: 900px;
+    background: #f4f5f5;
+    max-width: 960px;
     margin-left: auto;
     margin-right: auto;
-    padding: 30px 40px 40px 40px;
+    padding: 20px 40px 30px 40px;
     text-align: left;
+    /* height: 100%; */
+}
+/* 左侧内容 */
+.leftContent {
+    width: 700px;
+    max-width: 100%;
+    position: relative;
 }
 
+@media (max-width:960px) {
+    .side-nav {
+        display: none;
+    }
 
+    .leftContent{
+        width:100%;
+    }
+}
 
 div .publishDate {
     vertical-align: center;
@@ -46,8 +88,8 @@ div .publishDate {
 
 header {
     position: relative;
-    /* background-color: var(--header-background-color-light); */
-    background-image: url('/images/blogBackground.svg');
+    background-color: var(--header-background-color-light);
+    /* background-image: url('/images/blogBackground.svg'); */
     background-position: right;
     background-position-y: top;
     background-repeat: no-repeat;
@@ -62,8 +104,9 @@ header {
 }
 
 header .wrapper {
-    padding: 25px 0 20px 0;
+    padding: 0px 0 0px 0;
     text-align: center;
+    background-color: #00000000;
 }
 
 header a {
@@ -71,17 +114,37 @@ header a {
     text-decoration: none;
 }
 
-/*
+
 header .logo {
     max-width: 80%;
-    margin-top: 50px;
+    /* margin-top: 50px; */
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-} */
+} 
+
+header .logo img{
+    padding: 60px 0px 20px;
+}
+
+@media (max-width: 700px) {
+    header .logo img{
+        padding: 80px 0px 10px 0px;
+        width: 380px;
+    }
+}
+
+@media (max-width: 450px) {
+    header .logo img{
+        padding: 80px 0px 20px 0px;
+        width: 260px;
+    }
+}
 
 header h2{
-    margin-top: 80px;
+    /* margin-top: 80px; */
+    font-size: 65px;
+    color: #ffffff;
 }
 
 
@@ -110,7 +173,7 @@ header nav li {
 
 header nav a {
     display: block;
-    /* color: */
+    color: #cacaca;
     padding: 0 10px;
     line-height: 30px;
     text-decoration: none;
@@ -118,12 +181,12 @@ header nav a {
 
 header nav a:hover{
     color: #fff;
-    background-color:var(--healthnote-green);
+    /* background-color:var(--healthnote-green); */
 }
 
 header nav .selected {
     color: #fff;
-    background-color: var(--healthnote-green);
+    /* background-color: var(--healthnote-green); */
 }
 
 
@@ -146,9 +209,9 @@ header nav .search.selected a,
     background-image: url('data:image/svg+xml,%3Csvg width="38" height="38" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Crect fill="%23FFF" transform="rotate(-45 9 29.5)" x="-1" y="27" width="20" height="5" rx="2.5"/%3E%3Ccircle stroke="%23FFF" stroke-width="5" cx="23" cy="15" r="12"/%3E%3C/g%3E%3C/svg%3E');
 }
 
-header h2{
+/* header h2{
     color: black;
-}
+} */
 
 article h2{
     border-bottom: 1px solid #ececec;
@@ -333,6 +396,11 @@ a.browse-all:hover {
     margin-left: 10px;
 }
 
+article {
+    background-color: #fff;
+    padding: 20px;
+}
+
 article a{
     text-decoration: none;
     color: #0269c8;
@@ -365,11 +433,17 @@ blockquote {
 article p code, article li code, .discover .content code {
     background-color: #f2f2f2;
     display: inline-block;
-    padding: 0 5px;
-    border-radius: 8px;
+    padding: 0 5px 0px 5px;
+    border-radius: 3px;
     font-size: 0.9em;
     margin: 1px;
     line-break:auto;
+}
+/* `code`在手机safari中显示不换行 */
+@media (max-width:800px) {
+    article p code, article li code, .discover .content code {
+        line-break:anywhere
+    }
 }
 
 article p code,article li code{
@@ -380,6 +454,7 @@ article p code,article li code{
 /* index-list */
 .index-list {
     padding: 0px;
+    
 }
 
 .index-list blockquote p{
@@ -398,7 +473,7 @@ article p code,article li code{
     margin-bottom: 20px;
     list-style: none;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 0px;
 }
 
 
@@ -588,6 +663,7 @@ article p code,article li code{
 .section-header{
     margin-top: 15px;
     margin-bottom: 15px;
+    
 }
 
 .float-container::after {
@@ -662,6 +738,7 @@ article p code,article li code{
     display: flex;
     flex-wrap: wrap;
     text-align: justify;
+    padding-bottom: 20px;
 }
 
 .all-tags li {
@@ -674,13 +751,14 @@ article p code,article li code{
 footer {
     color: #8a8a8a;
     text-align:center;
-    margin-top: 20px;
-    margin-bottom: 30px;
+    /* margin-top: 20px; */
+    /* margin-bottom: 30px; */
     border-top: 1px var(--healthnote-green) solid;
     padding: 30px;
     margin-left: auto;
     margin-right: auto;
     font-size: 10px;
+    background-color: #2c2c2c;
 }
 
 
@@ -753,8 +831,9 @@ article hr {
     font-size: 13px;
     /* white-space: nowrap; */
     text-overflow: ellipsis;
-    height: 15px;
-    
+    /* height: 15px; */
+    padding-top: 20px;
+    padding-top: 20px;
 }
 
 .item-navigator a{
@@ -770,12 +849,13 @@ article hr {
     width: 50%;
     text-overflow: ellipsis;
     border:0px solid #0094ff;
-    height: 15px;
+    /* height: 15px; */
     vertical-align: top;
 }
 
 .item-navigator img{
     width: 13px;
+    
 }
 .item-navigator .previous-item{
     /* float: left; */
@@ -806,7 +886,8 @@ article hr {
 
 @media(max-width: 600px) {
     .wrapper {
-        padding: 40px 20px;
+        padding: 20px 0 30px 0;
+        background-color: var(--content-background-color-light);
     }
 
     header nav li {
@@ -822,6 +903,49 @@ article hr {
     .sidebar{
         display: none;
     }
+
+    .section-header {
+        display: none;
+    }
+
+    /* .leftContent {
+        padding: 20px 20px 20px 20px;
+    } */
+    .content article{
+        padding: 20px 0 20px 0;
+    }
+
+    .all-tags {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .site-search-form{
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .local-search-result-cls{
+        padding-left: 20px;
+        padding-right: 20px;
+        max-width: auto;
+        min-width: auto;
+    }
+
+    .item-navigator {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    .gt-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    /*
+    .content{
+        padding: 20px 0 20px 0;
+    } */
 }
 
 
@@ -1074,13 +1198,13 @@ article hr {
 /* Colors */
 
 :root {
-  --header-background-color-light : #009688;
+  --header-background-color-light : #ee4e3a;
   --header-background-color-dark : #009688;
   --footer-background-color-light : #009688;
   --footer-background-color-dark : #000;
   --header-bottom-line-color-light: ;
   --header-bottom-line-color-dark: ;
-  --content-background-color-light:#eee;
+  --content-background-color-light:#fff;
   --content-background-color-dark:#333;
   --index-item-more-color-light: #8a8a8a;
   --index-item-more-color-dark: #7a7a7a;
@@ -1092,6 +1216,7 @@ article hr {
   --healthnote-green:#01675D;
   --index-list-blockquote-dark:black;
   --index-list-blockquote-light:white;
+  --tint-color:#ee4e3a;
 }
 
 
@@ -1171,7 +1296,9 @@ article hr {
 .local-search-result-cls {
     margin-top: 30px;
     color: #404040;
-    min-height: 400px;
+    max-width: 960px;
+    /* min-width: 700px; */
+    /* min-height: 500px; */
 }
 
 .local-search-result-cls  .local-search-empty {
@@ -1193,12 +1320,14 @@ article hr {
 
   .local-search-result-cls li {
       text-align: left;
-      padding-bottom: 20px;
+      padding: 10px;
       margin-bottom: 20px;
       line-height: 30px;
       font-weight: normal;
       margin-left: auto;
       margin-right: auto;
+      background-color: #fff;
+      border-radius: 5px;
 }
 
 .local-search-result-cls li:last-child{
@@ -1219,7 +1348,7 @@ article hr {
 .local-search-result-cls  p {
         margin-top: 10px;
         font-size: 14px;
-        max-height: 124px;
+        /* max-height: 124px; */
         overflow: hidden;
       }
 

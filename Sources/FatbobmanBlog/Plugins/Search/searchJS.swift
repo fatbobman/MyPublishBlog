@@ -21,7 +21,8 @@ let searchJS =
     #"""
     var searchFunc = function(path, search_id, content_id) {
         'use strict';
-        $.ajax({
+
+    $.ajax({
             url: path,
             dataType: "xml",
             success: function( xmlResponse ) {
@@ -125,4 +126,5 @@ let searchJS =
         var path = "/search.xml";
         searchFunc(path, 'local-search-input', 'local-search-result');
     }
+
     """#
