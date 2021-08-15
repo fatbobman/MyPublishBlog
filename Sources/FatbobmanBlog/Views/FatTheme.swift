@@ -62,7 +62,8 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                             .itemList(for: section.items, on: context.site)
                         ),
                         .sideNav(.text("fatbobman"))
-                    )
+                    ),
+                    .itemListSpacer()
                 ),
                 .footer(for: context.site)
             )
@@ -130,7 +131,9 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                 .div(.class("about"),
                      .container(
                          .wrapper(
-                             .contentBody(page.body)
+                             .article(
+                                 .contentBody(page.body)
+                             )
                          )
                      )),
                 .footer(for: context.site)
@@ -177,27 +180,32 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
             .head(for: page, on: context.site),
             .body(
                 .header(for: context, selectedSection: nil),
-                .wrapper(
-                    .div(
-                        .class("float-container "),
+                .container(
+                    .wrapper(
                         .div(
-                            .class("tag-detail-header"),
-                            .text("标签: "),
-                            .span(.class(page.tag.colorfiedClass), .text(page.tag.string)),
-                            .a(
-                                .class("browse-all-tag"),
-                                .text("查看全部标签"),
-                                .href(context.site.tagListPath)
+                            .class("tag-detail-container"),
+                            .div(
+                                .class("float-container "),
+                                .div(
+                                    .class("tag-detail-header"),
+                                    // .text("标签: "),
+                                    .span(.class(page.tag.colorfiedClass), .text(page.tag.string)),
+                                    .a(
+                                        .class("browse-all-tag"),
+                                        .text("查看全部标签"),
+                                        .href(context.site.tagListPath)
+                                    )
+                                )
                             )
-                        )
-                    ),
-                    .itemList(
-                        for: context.items(
-                            taggedWith: page.tag,
-                            sortedBy: \.date,
-                            order: .descending
                         ),
-                        on: context.site
+                        .itemList(
+                            for: context.items(
+                                taggedWith: page.tag,
+                                sortedBy: \.date,
+                                order: .descending
+                            ),
+                            on: context.site
+                        )
                     )
                 ),
                 .footer(for: context.site)
@@ -221,6 +229,10 @@ extension Node where Context == HTML.BodyContext {
             .wrapper(
                 // .div(.class("logo"), .a(.href("/"), .h2("肘子的SWIFT记事本"))),
                 .div(.class("logo"), .a(.href("/"), .img(.src("/images/title.svg")))),
+                .div(
+                    .class("headIcon"),
+                    .headIcon()
+                ),
                 .if(sectionIDs.count > 1, nav(for: context, selectedSection: selectedSection))
             )
         )
@@ -470,6 +482,6 @@ let googleAndBaidu: String = """
 
 var formatter: DateFormatter {
     let formatter = DateFormatter()
-    formatter.dateFormat = "yyyy-MM-dd"
+    formatter.dateFormat = "发布于yyyy年MM月dd日"
     return formatter
 }

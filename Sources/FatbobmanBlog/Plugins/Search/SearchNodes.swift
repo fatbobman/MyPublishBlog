@@ -19,6 +19,7 @@ public extension Node where Context == HTML.BodyContext {
 
     static func searchInput() -> Node {
         .div(
+            .class("searchform"),
             .form(
                 .class("site-search-form"),
                 .input(
@@ -61,13 +62,13 @@ public extension Node where Context == HTML.BodyContext {
                         var resizeTimer = null;
 
                         $(window).resize(function(){
-                        if(resizeTimer){
-                            clearTimeout(resizeTimer);
-                        }
-                        resizeTimer = setTimeout(function(){
                             setHeight();
-                            // console.log("窗口改变")
-                        },100)
+                        // if(resizeTimer){
+                        //     clearTimeout(resizeTimer);
+                        // }
+                        // resizeTimer = setTimeout(function(){
+                        //     setHeight();
+                        // },100)
                         })
                     """
                 )

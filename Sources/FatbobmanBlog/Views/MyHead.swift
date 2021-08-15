@@ -54,7 +54,8 @@ extension Node where Context == HTML.DocumentContext {
             .unwrap(
                 location.imagePath ?? site.imagePath) { path in let url = site.url(for: path)
                     return .socialImageLink(url)
-            }
+            },
+            .script(.src("//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"))
         )
     }
 }
