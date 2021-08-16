@@ -364,7 +364,7 @@ extension Node where Context == HTML.BodyContext {
 
     static func tocScript() -> Node {
         .raw("""
-                <script src="http://localhost:8000/images/toc.js"></script>
+                <script src="https://fatbobman.com/images/toc.js"></script>
             """
         )
     }
