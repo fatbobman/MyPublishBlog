@@ -28,6 +28,12 @@ body {
     height: 100%;
 }
 
+.viewContainer {
+    width: 960px;
+    position:relative;
+    display: block;
+}
+
 .container {
     background: #f4f5f5;
     text-align: left;
@@ -43,6 +49,9 @@ body {
     top: 0;
     right: 0;
     width: 200px;
+    margin-right: 40px;
+    background-color: #fff;
+    display: block;
 }
 
 /* 填充空间 */
@@ -76,6 +85,10 @@ body {
 
     .leftContent{
         width:100%;
+    }
+
+    .viewContainer {
+        width:100%
     }
 }
 
@@ -1357,18 +1370,23 @@ article hr {
 /*}*/
 
 .sidebar{
-    position:absolute;
+    /* position:absolute;
     top: 0;
-    right: 0;
-    padding-top: 260px;
-    padding-right: 20px;
+    right: 0; */
+    /* padding-top: 260px;
+    padding-right: 20px; */
     overflow-x: hidden;
-    overflow-y: auto;
-    max-width: 200px;
-    float: right;
+    /*overflow-y: auto; */
+    width : 200px;
+    position:fixed;
+    /* float: right; */
+   
 }
 
-.menu-root { list-style:none; text-align:left }
+.menu-root { 
+    list-style:none; 
+    text-align:left
+ }
 
 .menu-root .h1-link{
     display:inline-block;
@@ -1427,14 +1445,14 @@ article hr {
     text-decoration-style:solid;
 }
 
-@media only screen and (max-width : 1300px){
+/* @media only screen and (max-width : 1300px){
     .content-with-sidebar {
         margin-right:310px !important;
     }
-}
+} */
 
 .sidebar .active{
-    color:${highlightColor};
+    color: #913e37;
     font-weight:700;
 }
 

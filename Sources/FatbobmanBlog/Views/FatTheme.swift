@@ -32,13 +32,15 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                 ),
                 .container(
                     .wrapper(
-                        .leftContext(
-                            .sectionheader(context: context),
-                            .recentItemList(for: index, context: context, recentPostNumber: 5, words: 300),
-                            .sectionheader(context: context, showTitle: false)
-                        ),
-                        .sideNav(
-                            .text("hello world")
+                        .viewContainer(
+                            .leftContext(
+                                .sectionheader(context: context),
+                                .recentItemList(for: index, context: context, recentPostNumber: 5, words: 300),
+                                .sectionheader(context: context, showTitle: false)
+                            ),
+                            .sideNav(
+                                .text("hello world")
+                            )
                         )
                     )
                 ),
@@ -58,10 +60,12 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                 .header(for: context, selectedSection: section.id),
                 .container(
                     .wrapper(
-                        .leftContext(
-                            .itemList(for: section.items, on: context.site)
-                        ),
-                        .sideNav(.text("fatbobman"))
+                        .viewContainer(
+                            .leftContext(
+                                .itemList(for: section.items, on: context.site)
+                            ),
+                            .sideNav(.text("fatbobman"))
+                        )
                     ),
                     .itemListSpacer()
                 ),
@@ -90,21 +94,22 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                 .header(for: context, selectedSection: item.sectionID),
                 .container(
                     .wrapper(
-                        .leftContext(
-                            .twitterIntent(title: item.title, url: context.site.url.appendingPathComponent(item.path.string).absoluteString),
-                            .article(
-                                .div(.h1(.text(item.title))),
-                                .div(
-                                    .tagList(for: item, on: context.site, displayDate: true),
-                                    .div(.class("content"), .contentBody(item.body))
-                                )
+                        .viewContainer(
+                            .leftContext(
+                                .twitterIntent(title: item.title, url: context.site.url.appendingPathComponent(item.path.string).absoluteString),
+                                .article(
+                                    .div(.h1(.text(item.title))),
+                                    .div(
+                                        .tagList(for: item, on: context.site, displayDate: true),
+                                        .div(.class("content"), .contentBody(item.body))
+                                    )
+                                ),
+                                .itemNavigator(previousItem: previous, nextItem: next),
+                                .gitment(topicID: item.title)
                             ),
-                            // .toc(),
-                            .itemNavigator(previousItem: previous, nextItem: next),
-                            .gitment(topicID: item.title)
-                        ),
-                        .sideNav(
-                            .text("links")
+                            .sideNav(
+                                .toc()
+                            )
                         )
                     ),
                     .footer(for: context.site)
@@ -146,7 +151,7 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
             .lang(context.site.language),
             .searchHead(for: page, on: context.site),
             .body(
-                .header(for: context, selectedSection: nil),
+                .header(for: context, selectedSection: FatbobmanBlog.SectionID.tags as? Site.SectionID),
                 .container(
                     .wrapper(
                         .searchInput(),
@@ -179,7 +184,7 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
             .lang(context.site.language),
             .head(for: page, on: context.site),
             .body(
-                .header(for: context, selectedSection: nil),
+                .header(for: context, selectedSection: FatbobmanBlog.SectionID.tags as? Site.SectionID),
                 .container(
                     .wrapper(
                         .div(
@@ -206,7 +211,8 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                             ),
                             on: context.site
                         )
-                    )
+                    ),
+                    .tagDetailSpacer()
                 ),
                 .footer(for: context.site)
             )
@@ -260,12 +266,6 @@ extension Node where Context == HTML.BodyContext {
                                 .href(context.index.path),
                                 else: .href(context.sections[section].path)
                             ),
-                            //                                .if(section as! FatbobmanBlog.SectionID == FatbobmanBlog.SectionID.tags,
-                            //                                    .img(
-                            //                                        .class("nav searchIcon"),
-                            //                                        .src("/images/search.svg")
-                            //                                    ),
-                            //                                    else:.text(context.sections[section].title))
                             .text(context.sections[section].title)
                         )
                     )
@@ -334,6 +334,10 @@ extension Node where Context == HTML.BodyContext {
             )
         )
     }
+
+    // static func toc(_ nodes: Node<HTML.BodyContext>...) -> Node {
+    //     .element(named: "sidebar", nodes: nodes)
+    // }
 
     static func container(_ nodes: Node...) -> Node {
         .div(

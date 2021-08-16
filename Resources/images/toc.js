@@ -89,32 +89,77 @@ function initSidebar(sidebarQuery, contentQuery) {
             scrollFlagTimer = setTimeout(() => scrollFlag = 0, 1500)
             setActive(e.target, sidebar)
             var target = document.getElementById(e.target.getAttribute('href').slice(1))
-            target.scrollIntoView({ behavior: 'smooth', block: "center" })
+            target.scrollIntoView({ behavior: 'smooth', block: "start" })
         }
     })
     //监听窗口的滚动和缩放事件
     window.addEventListener('scroll', updateSidebar)
-    window.addEventListener('resize', throttle(updateSidebar))
+    // window.addEventListener('resize', throttle(updateSidebar))
     function updateSidebar() {
+        var toplink
         if (scrollFlag)
             return
-        var doc = document.documentElement
-        var top = doc && doc.scrollTop || document.body.scrollTop
         if (!allHeaders.length) return
-        var last
         for (var i = 0; i < allHeaders.length; i++) {
             var link = allHeaders[i]
-            if (link.offsetTop > (top + document.body.clientHeight / 2 - 73)) {
-                if (!last) { last = link }
-                break
-            } else {
-                last = link
+            var linkTop = getElementViewTop(link)
+            if (!!toplink) {
+                if (linkTop > 0 && linkTop < getElementViewTop(toplink) && linkTop < window.innerHeight) {
+                    toplink = link
+                }
+            }
+            else {
+                if (linkTop > 0 && linkTop < window.innerHeight) {
+                    toplink = link
+                }
             }
         }
-        if (last) {
-            setActive(last.id, sidebar)
+        if (toplink) {
+            setActive(toplink.id, sidebar)
         }
     }
+
+    // function updateSidebar() {
+    //     if (scrollFlag)
+    //         return
+    //     var doc = document.documentElement
+    //     var top = doc && doc.scrollTop || document.body.scrollTop
+    //     if (!allHeaders.length) return
+    //     var last
+    //     for (var i = 0; i < allHeaders.length; i++) {
+    //         var link = allHeaders[i]
+    //         if (link.offsetTop > (top + document.body.clientHeight / 2 - 73)) {
+    //             if (!last) { last = link }
+    //             break
+    //         } else {
+    //             last = link
+    //         }
+    //     }
+    //     if (last) {
+    //         setActive(last.id, sidebar)
+    //     }
+    // }
+
+    //元素top视窗位置
+    function getElementViewTop(element) {
+        let actualTop = element.offsetTop;
+        let current = element.offsetParent;
+        let elementScrollTop;
+      
+        while (current !== null) {
+          actualTop += current.offsetTop;
+          current = current.offsetParent;
+        }
+      
+        if (document.compatMode == 'BackCompat') {
+          elementScrollTop = document.body.scrollTop;
+        } else {
+          elementScrollTop = document.documentElement.scrollTop;
+        }
+      
+        return actualTop - elementScrollTop;
+      }
+
 }
 
 /**
