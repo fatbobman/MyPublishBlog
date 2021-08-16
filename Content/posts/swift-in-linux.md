@@ -47,7 +47,7 @@ $ sudo apt install libpython2.7 libpython2.7-dev libz3-4 npm
 
 Swift在5.3版本后开始正式支持Linux平台，所以本文选择在Ubuntu 20.04上安装[Swift 5.3.3 Release](https://swift.org/builds/swift-5.3.3-release/ubuntu2004/swift-5.3.3-RELEASE/swift-5.3.3-RELEASE-ubuntu20.04.tar.gz)。
 
-### 安装 ###
+### 安装Toolchain ###
 
 在[swift.org](https://swift.org/download/)上查找对应发行版的Swift Toolchain下载地址
 
@@ -158,7 +158,7 @@ vscode对于Swift已经内置支持了代码高亮。
 
 `LSP`的全程是`Language Sever Protocol`，是微软提出的一项标准化协议，旨在统一开发工具与`Lanuguage Server`之间的通信。`LSP`为支持的语言提供了一套通用的功能集，包括：语法高亮、自动补全、定义跳转、查找引用等等。苹果公司从2018年开始为Swift社区提供了[LSP的代码](https://github.com/apple/sourcekit-lsp)及支持。目前`LSP`已经被集成到了Swift的工具链中。
 
-### 安装 ###
+### 安装LSP ###
 
 尽管Swift ToolChain中已经集成了`LSP`，但是我们还是需要为`vscode`安装对应的插件并进行配置，才能在vscode中使用Swift的LSP功能。
 
@@ -212,7 +212,7 @@ $code --install-extension sourcekit-lsp-vscode-dev.vsix
 
 `LLDB`调试器是`LLVM`项目的调试器组件。它构建为一组可重用的组件，这些组件广泛使用`LLVM`中的现有库，例如`Clang`表达式解析器和`LLVM`反汇编程序。通过`LLDB`，让`vscode`拥有了对Swift代码进行调试的能力。
 
-### 安装 ###
+### 安装LLDB ###
 
 由于Swift Toolchain当前已经集成了`LLDB`，因此我们无需对其进行安装，只需要安装vscode的lldb插件即可。
 
@@ -245,7 +245,7 @@ $code .
 
 ![image-20210214172254927](https://cdn.fatbobman.com/swift_in_linx_create_lanchjson.png)
 
-#### launch.json ####
+**launch.json**
 
 ```json
 {
@@ -299,7 +299,7 @@ $code .
 
   要在调试会话开始之前启动的任务，每个任务都需要在`tasks.json`中有对应的设定。比如本例中，`swift-build`对应着tasks.json中的`label:swift-build`的task。对于swift项目，在调试前最常作的工作便是编译。
 
-#### tasks.json ####
+**tasks.json**
 
 ```json
 {
@@ -421,7 +421,7 @@ $swiftformat --version
 
 swiftformat更多的表现在对代码的自动修改上，而swiftlint由于直接hook了Clang和Sourcekit，因此提供了swiftformat所不具备的，代码录入阶段的实时验证和提示功能（通常并不使用它的`autocorrect`）。
 
-### 安装命令行工具 ###
+### 安装SwiftLint ###
 
 ```bash
 $git clone https://github.com/realm/SwiftLint.git
@@ -432,7 +432,7 @@ $swiftlint --version
 0.42.0
 ```
 
-### 安装vscode插件 ###
+### 安装swiftlint vscode插件 ###
 
 在vscode插件市场中安装swiftlint插件
 
