@@ -1,7 +1,7 @@
 ---
 date: 2020-08-17 12:00
 description: 健康笔记从2020年1月上线以来，至今已经过了大半年的时间（可以从[老人新兵 —— 一款iOS app的开发手记](https://zhuanlan.zhihu.com/p/103822455)了解健康笔记app的由来）。在这段时间里，我对于Swift、SwiftUI、CoreData等都有了进一步的了解和认识。在开发1.0版本时所面对的问题和疑惑多数都得到了解决。
-tags: SwiftUI,HealthNote
+tags: SwiftUI,健康笔记
 title: 健康笔记2.0开发随笔（一）
 ---
 

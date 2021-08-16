@@ -45,13 +45,15 @@ body {
 
 /* 侧边栏 */
 .side-nav {
-    position: absolute;
-    top: 0;
-    right: 0;
+    position: sticky;
+    top: 30px;
+    /* right: 0; */
     width: 200px;
-    margin-right: 40px;
-    background-color: #fff;
+    /* margin: 0 0 0 720px; */
+    /* background-color: #fff; */
     display: block;
+    float:right;
+    margin: 0 40px 0 0;
 }
 
 /* 填充空间 */
@@ -1378,36 +1380,54 @@ article hr {
     overflow-x: hidden;
     /*overflow-y: auto; */
     width : 200px;
-    position:fixed;
+    /* position:fixed; */
     /* float: right; */
    
 }
 
-.menu-root { 
-    list-style:none; 
+.sideTags{
+    width: 200px;
+    overflow-x: hidden;
+}
+
+.menu-root {  
     text-align:left
  }
 
 .menu-root .h1-link{
-    display:inline-block;
+    display:block;
     color:rgb(44, 62, 80);
     font-family:"source sans pro", "helvetica neue", Arial, sans-serif;
     font-size:14px;
     font-weight:600;
-    height:22px;
+    height:auto;
     line-height:22.5px;
     list-style-type:none;
     margin-block-end:11px;
     margin-block-start:11px;
+    padding-left: 5px;
+    padding-right: 3px;
+    border-bottom: 2px solid #00000000;
+}
+.menu-root .h1-link:hover {
+    border-bottom: 2px solid #ff3300;
+    /* background-color: var(--header-background-color-light); */
 }
 
 .menu-root .h2-link:hover {
-    border-bottom: 2px solid ${highlightColor};
+    border-bottom: 2px solid #ff3300;
+    /* background-color: var(--header-background-color-light); */
+}
+
+.menu-root .h3-link:hover {
+    border-bottom: 2px solid #ff3300;
+    /* background-color: var(--header-background-color-light); */
 }
 
 .menu-root .h2-link.current+.menu-sub{
     display:block;
 }
+
 
 .menu-root .h2-link{
     color:rgb(127,140,141);
@@ -1416,17 +1436,22 @@ article hr {
     font-size:13px;
     height:auto;
     line-height:22.5px;
-    list-style-type:none;
+    list-style-type:disc;
     text-align:left;
     text-decoration-color:rgb(127, 140, 141);
     text-decoration-line:none;
     text-decoration-style:solid;
     margin-left:12.5px;
+    display: block;
+    padding-left: 5px;
+    padding-right: 3px;
+    border-bottom: 2px solid #00000000;
+    
 }
 
 .menu-sub {
     padding-left:25px;
-    list-style:none;
+    list-style-type: square;
     display:none;
 }
 
@@ -1438,7 +1463,7 @@ article hr {
     font-size:11px;
     height:auto;
     line-height:19.125px;
-    list-style-type:none;
+    list-style-type:square;
     text-align:left;
     text-decoration-color:rgb(52, 73, 94);
     text-decoration-line:none;
@@ -1452,8 +1477,12 @@ article hr {
 } */
 
 .sidebar .active{
-    color: #913e37;
+    color: #fff;
     font-weight:700;
+    background-color: var(--header-background-color-light);
+    border-radius: 5px;
+    padding-left: 5px;
+    padding-right: 3px;
 }
 
 

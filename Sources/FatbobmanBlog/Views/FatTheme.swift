@@ -33,13 +33,27 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                 .container(
                     .wrapper(
                         .viewContainer(
+                            .sideNav(
+                                .div(
+                                    .class("sideTags"),
+                                    .ul(
+                                        .class("all-tags"),
+                                        .forEach(context.allTags.sorted()) { tag in
+                                            .li(
+                                                .class(tag.colorfiedClass),
+                                                .a(
+                                                    .href(context.site.path(for: tag)),
+                                                    .text("\(tag.string) (\(tag.count))")
+                                                )
+                                            )
+                                        }
+                                    )
+                                )
+                            ),
                             .leftContext(
-                                .sectionheader(context: context),
+                                // .sectionheader(context: context),
                                 .recentItemList(for: index, context: context, recentPostNumber: 5, words: 300),
                                 .sectionheader(context: context, showTitle: false)
-                            ),
-                            .sideNav(
-                                .text("hello world")
                             )
                         )
                     )
@@ -61,10 +75,26 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                 .container(
                     .wrapper(
                         .viewContainer(
+                            .sideNav(
+                                .div(
+                                    .class("sideTags"),
+                                    .ul(
+                                        .class("all-tags"),
+                                        .forEach(context.allTags.sorted()) { tag in
+                                            .li(
+                                                .class(tag.colorfiedClass),
+                                                .a(
+                                                    .href(context.site.path(for: tag)),
+                                                    .text("\(tag.string) (\(tag.count))")
+                                                )
+                                            )
+                                        }
+                                    )
+                                )
+                            ),
                             .leftContext(
                                 .itemList(for: section.items, on: context.site)
-                            ),
-                            .sideNav(.text("fatbobman"))
+                            )
                         )
                     ),
                     .itemListSpacer()
@@ -95,6 +125,9 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                 .container(
                     .wrapper(
                         .viewContainer(
+                            .sideNav(
+                                .toc()
+                            ),
                             .leftContext(
                                 .twitterIntent(title: item.title, url: context.site.url.appendingPathComponent(item.path.string).absoluteString),
                                 .article(
@@ -107,9 +140,8 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                                 .itemNavigator(previousItem: previous, nextItem: next),
                                 .gitment(topicID: item.title)
                             ),
-                            .sideNav(
-                                .toc()
-                            )
+                            // 必须在 文档加载后，才能调用script
+                            .tocScript()
                         )
                     ),
                     .footer(for: context.site)
@@ -235,10 +267,10 @@ extension Node where Context == HTML.BodyContext {
             .wrapper(
                 // .div(.class("logo"), .a(.href("/"), .h2("肘子的SWIFT记事本"))),
                 .div(.class("logo"), .a(.href("/"), .img(.src("/images/title.svg")))),
-                .div(
-                    .class("headIcon"),
-                    .headIcon()
-                ),
+                // .div(
+                //     .class("headIcon"),
+                //     .headIcon()
+                // ),
                 .if(sectionIDs.count > 1, nav(for: context, selectedSection: selectedSection))
             )
         )
@@ -326,12 +358,14 @@ extension Node where Context == HTML.BodyContext {
         .group(
             .div(
                 .class("sidebar")
-            ),
-
-            .raw("""
-                    <script src="http://localhost:8000/images/toc.js"></script>
-                """
             )
+        )
+    }
+
+    static func tocScript() -> Node {
+        .raw("""
+                <script src="http://localhost:8000/images/toc.js"></script>
+            """
         )
     }
 

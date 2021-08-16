@@ -11,7 +11,7 @@
 
 (function () {
     'use strict';
-    initSidebar('.sidebar', 'article');
+    $(document).ready(initSidebar('.sidebar', 'article'));
 })();
 
 /**
@@ -92,9 +92,17 @@ function initSidebar(sidebarQuery, contentQuery) {
             target.scrollIntoView({ behavior: 'smooth', block: "start" })
         }
     })
+
+    // safari有兼容性问题，暂时屏蔽
+    var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
+
+
     //监听窗口的滚动和缩放事件
-    window.addEventListener('scroll', updateSidebar)
+    window.addEventListener('scroll', updateSidebar);
     // window.addEventListener('resize', throttle(updateSidebar))
+    //加载后先执行一次
+    updateSidebar();
+
     function updateSidebar() {
         var toplink
         if (scrollFlag)
@@ -145,20 +153,20 @@ function initSidebar(sidebarQuery, contentQuery) {
         let actualTop = element.offsetTop;
         let current = element.offsetParent;
         let elementScrollTop;
-      
+
         while (current !== null) {
-          actualTop += current.offsetTop;
-          current = current.offsetParent;
+            actualTop += current.offsetTop;
+            current = current.offsetParent;
         }
-      
+
         if (document.compatMode == 'BackCompat') {
-          elementScrollTop = document.body.scrollTop;
+            elementScrollTop = document.body.scrollTop;
         } else {
-          elementScrollTop = document.documentElement.scrollTop;
+            elementScrollTop = document.documentElement.scrollTop;
         }
-      
+
         return actualTop - elementScrollTop;
-      }
+    }
 
 }
 
@@ -270,8 +278,10 @@ function setActive(id, sidebar) {
         }
         parent.parentNode.querySelector('.h2-link').classList.add('current', 'active')
     }
+
+    // 这句会导致safari不兼容，而且在chrome下也会导致滚动无法立即停止的bug
     //左侧目录太长时的效果
-    currentActive.scrollIntoView({ behavior: 'smooth' })
+    //currentActive.scrollIntoView({ behavior: 'smooth' })
 }
 /**
 >增加 sidebar 需要的全部样式
@@ -298,78 +308,78 @@ function addAllStyle(highlightColor) {
     @param {string} str - css样式,也可以是@media
     */
     function addStyle(str) {
-        sheet.insertRule(str,position++);
+        sheet.insertRule(str, position++);
     }
-//    addStyle(`.sidebar{position:fixed;    z-index: 10;
-//        top: 61px;
-//        left: 0;
-//        bottom: 0;
-//        overflow-x: hidden;
-//        overflow-y: auto;
-//        padding: 40px 20px 60px 30px;
-//        max-width: 310px;
-//    }`)
-//    addStyle(`.menu-root { list-style:none; text-align:left }`)
-//    addStyle(`.menu-root .h1-link{
-//        display:inline-block;
-//        color:rgb(44, 62, 80);
-//        font-family:"source sans pro", "helvetica neue", Arial, sans-serif;
-//        font-size:17.55px;
-//        font-weight:600;
-//        height:22px;
-//        line-height:22.5px;
-//        list-style-type:none;
-//        margin-block-end:11px;
-//        margin-block-start:11px;
-//    }`)
-//    addStyle(`.menu-root .h2-link:hover {
-//        border-bottom: 2px solid ${highlightColor};
-//    }`)
-//    addStyle(`.menu-root .h2-link.current+.menu-sub{
-//        display:block;
-//    }`)
-//    addStyle(`.menu-root .h2-link{
-//        color:rgb(127,140,141);
-//        cursor:pointer;
-//        font-family:"source sans pro", "helvetica neue", Arial, sans-serif;
-//        font-size:15px;
-//        height:auto;
-//        line-height:22.5px;
-//        list-style-type:none;
-//        text-align:left;
-//        text-decoration-color:rgb(127, 140, 141);
-//        text-decoration-line:none;
-//        text-decoration-style:solid;
-//        margin-left:12.5px;
-//    }`)
-//    addStyle(`.menu-sub {
-//        padding-left:25px;
-//        list-style:none;
-//        display:none;
-//    }`)
-//    addStyle(`.menu-sub .h3-link{
-//        color:#333333;
-//        cursor:pointer;
-//        display:inline;
-//        font-family:"source sans pro", "helvetica neue", Arial, sans-serif;
-//        font-size:12.75px;
-//        height:auto;
-//        line-height:19.125px;
-//        list-style-type:none;
-//        text-align:left;
-//        text-decoration-color:rgb(52, 73, 94);
-//        text-decoration-line:none;
-//        text-decoration-style:solid;
-//    }`)
-//    addStyle(`@media only screen and (max-width : 1300px){
-//        .content-with-sidebar {
-//            margin-left:310px !important;
-//        }
-//    }`)
-//    addStyle(`.sidebar .active{
-//        color:${highlightColor};
-//        font-weight:700;
-//    }`)
+    //    addStyle(`.sidebar{position:fixed;    z-index: 10;
+    //        top: 61px;
+    //        left: 0;
+    //        bottom: 0;
+    //        overflow-x: hidden;
+    //        overflow-y: auto;
+    //        padding: 40px 20px 60px 30px;
+    //        max-width: 310px;
+    //    }`)
+    //    addStyle(`.menu-root { list-style:none; text-align:left }`)
+    //    addStyle(`.menu-root .h1-link{
+    //        display:inline-block;
+    //        color:rgb(44, 62, 80);
+    //        font-family:"source sans pro", "helvetica neue", Arial, sans-serif;
+    //        font-size:17.55px;
+    //        font-weight:600;
+    //        height:22px;
+    //        line-height:22.5px;
+    //        list-style-type:none;
+    //        margin-block-end:11px;
+    //        margin-block-start:11px;
+    //    }`)
+    //    addStyle(`.menu-root .h2-link:hover {
+    //        border-bottom: 2px solid ${highlightColor};
+    //    }`)
+    //    addStyle(`.menu-root .h2-link.current+.menu-sub{
+    //        display:block;
+    //    }`)
+    //    addStyle(`.menu-root .h2-link{
+    //        color:rgb(127,140,141);
+    //        cursor:pointer;
+    //        font-family:"source sans pro", "helvetica neue", Arial, sans-serif;
+    //        font-size:15px;
+    //        height:auto;
+    //        line-height:22.5px;
+    //        list-style-type:none;
+    //        text-align:left;
+    //        text-decoration-color:rgb(127, 140, 141);
+    //        text-decoration-line:none;
+    //        text-decoration-style:solid;
+    //        margin-left:12.5px;
+    //    }`)
+    //    addStyle(`.menu-sub {
+    //        padding-left:25px;
+    //        list-style:none;
+    //        display:none;
+    //    }`)
+    //    addStyle(`.menu-sub .h3-link{
+    //        color:#333333;
+    //        cursor:pointer;
+    //        display:inline;
+    //        font-family:"source sans pro", "helvetica neue", Arial, sans-serif;
+    //        font-size:12.75px;
+    //        height:auto;
+    //        line-height:19.125px;
+    //        list-style-type:none;
+    //        text-align:left;
+    //        text-decoration-color:rgb(52, 73, 94);
+    //        text-decoration-line:none;
+    //        text-decoration-style:solid;
+    //    }`)
+    //    addStyle(`@media only screen and (max-width : 1300px){
+    //        .content-with-sidebar {
+    //            margin-left:310px !important;
+    //        }
+    //    }`)
+    //    addStyle(`.sidebar .active{
+    //        color:${highlightColor};
+    //        font-weight:700;
+    //    }`)
 }
 /**
 >函数节流

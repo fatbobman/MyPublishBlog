@@ -14,7 +14,7 @@ extension Node where Context == HTML.BodyContext {
         for _: Index,
         context: PublishingContext<Site>,
         recentPostNumber: Int = 5,
-        words _: Int = 200
+        words: Int = 300
     ) -> Node {
         let items = context.allItems(sortedBy: \.date, order: .descending)
         guard items.count > 1 else {
@@ -44,7 +44,7 @@ extension Node where Context == HTML.BodyContext {
                                 .article(
                                     .raw(
                                         item.content.body.htmlDescription(
-                                            words: 800,
+                                            words: words,
                                             keepImageTag: true,
                                             ellipsis: "..."
                                         )
