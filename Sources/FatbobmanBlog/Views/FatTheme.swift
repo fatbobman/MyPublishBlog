@@ -129,7 +129,8 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                                 .toc()
                             ),
                             .leftContext(
-                                .twitterIntent(title: item.title, url: context.site.url.appendingPathComponent(item.path.string).absoluteString),
+                                .shareContainer(title: item.title, url: context.site.url.appendingPathComponent(item.path.string).absoluteString),
+                                // .twitterIntent(title: item.title, url: context.site.url.appendingPathComponent(item.path.string).absoluteString),
                                 .article(
                                     .div(.h1(.text(item.title))),
                                     .div(
@@ -267,10 +268,7 @@ extension Node where Context == HTML.BodyContext {
             .wrapper(
                 // .div(.class("logo"), .a(.href("/"), .h2("肘子的SWIFT记事本"))),
                 .div(.class("logo"), .a(.href("/"), .img(.src("/images/title.svg")))),
-                // .div(
-                //     .class("headIcon"),
-                //     .headIcon()
-                // ),
+                .headerIcons(),
                 .if(sectionIDs.count > 1, nav(for: context, selectedSection: selectedSection))
             )
         )
@@ -339,18 +337,6 @@ extension Node where Context == HTML.BodyContext {
         return .div(
             .class("publishDate"),
             .table(.tr(.td(tags), .td(.text(formatter.string(from: date)))))
-        )
-    }
-
-    static func twitterIntent(title: String, url: String) -> Node {
-        .div(
-            .class("post-actions"),
-            .a(.img(.class("twitterIntent"), .src("/images/twitter.svg")),
-               .href("https://twitter.com/intent/tweet?text=\(title)&url=\(url)&via=fatbobman"),
-               .target(.blank),
-               .rel(.nofollow),
-               .rel(.noopener),
-               .rel(.noreferrer))
         )
     }
 

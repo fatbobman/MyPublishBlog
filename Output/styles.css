@@ -114,7 +114,7 @@ header {
     /* color: #fff; */
     line-height: 1.5em;
     padding: 0 20px;
-    height: 250px;
+    height: 400px;
     /* border-bottom: 4px #ff8000 solid;  */
 }
 
@@ -136,10 +136,58 @@ header .logo {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+    padding: 50px 0 50px 0;
 } 
 
 header .logo img{
     padding: 60px 0px 20px;
+}
+
+/* Header 的社交图标*/
+.headerIcons {
+    display: block;
+    /* opacity: 0.6; */
+}
+
+.headerIcons a{
+    color: blue;
+}
+
+.headerIcons .icon{
+    padding: 0 18px 0 18px;
+    font-size: 30px;
+    width:24px;
+    height:24px;
+}
+
+.headIconTwitter{
+    background-image: url('/images/whiteTwitter.svg');
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+}
+
+.headIconEmail{
+    background-image: url('/images/whiteEmail.svg');
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+}
+
+.headIconGithub{
+    background-image: url('/images/whiteGithub.svg');
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+}
+
+.headIconZhihu{
+    background-image: url('/images/whiteZhihu.svg');
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+}
+
+.headIconRss{
+    background-image: url('/images/whiteRss.svg');
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
 }
 
 @media (max-width: 700px) {
@@ -170,7 +218,7 @@ nav {
     display: inline-block;
     /* background-color: #fff; */
     /* border-radius: 10px; */
-    margin-top: 50px;
+    margin-top: 80px;
     overflow: hidden;
     vertical-align: center;
 }
@@ -218,6 +266,11 @@ header nav .search a {
 
 header nav .search a:hover,
 header nav .search.selected a,
+
+
+.shareContainer {
+
+}
 
 
 .search .search-box input[type="submit"] {
@@ -1349,17 +1402,93 @@ article hr {
     outline: none; 
 }
 
+/* 分享按钮区域 */
+
 .post-actions {
     position: sticky;
-    position: -webkit-sticky;
-    top: 100px;
+    top: 200px;
     display:block;
     float:left;
-    margin: 20px 0 0 -70px;
+    margin: 50px 0 0 -50px;
+    column-count: 1;
+    width:40px;
+    height:auto;
 }
-.post-actions .twitterIntent {
-    width: 30px;
-    height: 30px;
+
+.actionButton {
+    position:relative;
+    width: 36px;
+    height: 36px;
+    background-color: #fff;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.04);
+    cursor:pointer;
+    margin: 0 0 10px 0;
+}
+
+.actionButton .twitter{
+    background-image: url("/images/buttonTwitterGray.svg"); 
+    background-size: 20px 20px;  
+}
+
+.actionButton .twitter:hover{
+    background-image: url("/images/buttonTwitterColor.svg");
+    background-size: 22px 22px; 
+}
+
+.actionButton .weibo{
+    background-image: url("/images/buttonWeiboGray.svg"); 
+    background-size: 20px 20px; 
+}
+
+.actionButton .weibo:hover{
+    background-image: url("/images/buttonWeiboColor.svg"); 
+    background-size: 22px 22px; 
+}
+
+.actionButton .weixin{
+    background-image: url("/images/buttonWeixinGray.svg"); 
+    background-size: 20px 20px; 
+}
+
+.actionButton .weixin:hover{
+    background-image: url("/images/buttonWeixinColor.svg"); 
+    background-size: 22px 22px; 
+}
+
+.actionButton .comment{
+    background-image: url("/images/buttonCommentGray.svg"); 
+    background-size: 17px 17px; 
+}
+
+.actionButton .comment:hover{
+    background-image: url("/images/buttonCommentColor.svg"); 
+    background-size: 20px 20px; 
+}
+
+.actionButton .donate{
+    background-image: url("/images/buttonDonateGray.svg"); 
+    background-size: 20px 20px; 
+    position:relative;
+}
+
+.actionButton .donate:hover{
+    background-image: url("/images/buttonDonateColor.svg"); 
+    background-size: 22px 22px; 
+    position: relative;
+}
+
+.actionButton .donateQcode{
+    position: fix;
+    width:400px;
+    height: 246px;
+    background-image: url("/images/donateCode.png");
+    margin: 0 0 0 50px;
+    display: none;
+    z-index: 9999;
+    border-radius: 0;
 }
 
 /*.toc {*/
