@@ -205,4 +205,13 @@ extension Node where Context == HTML.BodyContext {
                .rel(.noreferrer))
         )
     }
+
+    static func mobileToc(_ nodes: Node...) -> Node {
+        .div(
+            .class("mobileSidenav"),
+            .div(
+                .group(nodes)
+            )
+        )
+    }
 }
