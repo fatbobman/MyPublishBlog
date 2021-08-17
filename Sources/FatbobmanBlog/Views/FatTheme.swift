@@ -164,13 +164,24 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                         for: context,
                         selectedSection: FatbobmanBlog.SectionID.about as? Site.SectionID
                     ),
-                    else: .header(for: context, selectedSection: nil)
+                    else: .if(
+                        page.path == Path("healthnotes"),
+                        .header(
+                            for: context,
+                            selectedSection: FatbobmanBlog.SectionID.healthnotes as? Site.SectionID
+                        ),
+                        else: .header(for: context, selectedSection: nil)
+                    )
                 ),
+
                 .div(.class("about"),
                      .container(
                          .wrapper(
                              .article(
-                                 .contentBody(page.body)
+                                 .div(
+                                     .class("content"),
+                                     .contentBody(page.body)
+                                 )
                              )
                          )
                      )),

@@ -9,7 +9,7 @@ struct FatbobmanBlog: Website {
         // Add the sections that you want your website to contain here:
         case index
         case posts
-        case project
+        case healthnotes
         case about
         case tags
     }
@@ -40,27 +40,27 @@ try FatbobmanBlog().publish(
     using: [
         // 使用ink modifier的plugins要在addMarkdonwFiles之前先加入.
         // 需要注意modifier的添加顺序
-        .installPlugin(.highlightJS()),  // 语法高亮
-        .addModifier(modifier: bilibili, modifierName: "bilibili"),  // bilibili视频
+        .installPlugin(.highlightJS()), // 语法高亮
+        .addModifier(modifier: bilibili, modifierName: "bilibili"), // bilibili视频
         .copyResources(),
-        .setSctionTitle(),  // 修改section 标题
+        .setSctionTitle(), // 修改section 标题
         .addMarkdownFiles(),
         .makeDateArchive(),
-        .installPlugin(.setDateFormatter()),  // 设置时间显示格式
-        .installPlugin(.countTag()),  // 计算tag的数量,tag必须在 addMarkDownFiles 之后,否则alltags没有值
+        .installPlugin(.setDateFormatter()), // 设置时间显示格式
+        .installPlugin(.countTag()), // 计算tag的数量,tag必须在 addMarkDownFiles 之后,否则alltags没有值
         .installPlugin(
             .colorfulTags(defaultClass: "tag", variantPrefix: "variant", numberOfVariants: 8)
-        ),  // 给tag多种颜色
-        .sortItems(by: \.date, order: .descending),  // 对所有文章排序
+        ), // 给tag多种颜色
+        .sortItems(by: \.date, order: .descending), // 对所有文章排序
         .generateHTML(withTheme: .fatTheme),
         //        .installPlugin(.rssSetting(including:[.posts,.project])),
         .makeSearchIndex(includeCode: false),
         .generateRSSFeed(
-            including: [.posts, .project],
+            including: [.posts],
             itemPredicate: nil
         ),
         .generateSiteMap(),
         .unwrap(.gitHub("fatbobman/fatbobman.github.io", useSSH: true), PublishingStep.deploy),
-        .if(command == "--upload", .uploadToServer())
+        .if(command == "--upload", .uploadToServer()),
     ]
 )
