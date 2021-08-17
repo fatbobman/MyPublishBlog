@@ -175,6 +175,16 @@ $cd sourcekit-lsp/Editors/vscode/
 $npm run createDevPackage 
 ```
 
+> 2021年8月更新
+
+新的LSP版本更改了插件编译命令
+
+```bash
+$cd sourcekit-lsp/Editors/vscode/
+$npm install
+$npm run dev-package
+```
+
 ![image-20210214151421778](https://cdn.fatbobman.com/swift_in_linux_complie_vscode_lsp.png)
 
 编译成功的插件被放置在 `~/sourcekit-lsp/Editors/vscode/out`目录中。
