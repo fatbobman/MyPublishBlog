@@ -98,7 +98,7 @@ extension Node where Context == HTML.BodyContext {
             .class("headerIcons"),
             .a(
                 .class("icon headIconTwitter"),
-                .href("https://www.twitter.com")
+                .href("https://www.twitter.com/fatbobman")
             ),
             .a(
                 .class("icon headIconEmail"),
