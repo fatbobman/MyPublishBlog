@@ -97,6 +97,26 @@ extension Node where Context == HTML.BodyContext {
         .div(
             .class("headerIcons"),
             .a(
+                .class("icon headIconWeixin"),
+                .script(
+                    .raw(
+                        """
+                        var weixinHeadButton = $('.headIconWeixin');
+                        weixinHeadButton.hover(
+                        function(){
+                            $('.weixinHeadQcode').css('display','block');
+                        },
+                        function(){
+                            $('.weixinHeadQcode').css('display','none');
+                        })
+                        """
+                    )
+                ),
+                .div(
+                    .class("weixinHeadQcode")
+                )
+            ),
+            .a(
                 .class("icon headIconTwitter"),
                 .href("https://www.twitter.com/fatbobman")
             ),
@@ -149,19 +169,29 @@ extension Node where Context == HTML.BodyContext {
             //         )
             //     )
             // ),
-            // .div(
-            //     .class("actionButton"),
-            //     .div(
-            //         .class("actionButton weixin") // ,
-            //         // .script(
-            //         //     .raw(
-            //         //         """
-
-            //         //         """
-            //         //     )
-            //         // )
-            //     )
-            // ),
+            .div(
+                .class("actionButton"),
+                .div(
+                    .class("actionButton weixin"),
+                    .script(
+                        .raw(
+                            """
+                            var weixinButton = $('.actionButton .weixin');
+                            weixinButton.hover(
+                            function(){
+                                $('.actionButton .weixinQcode').css('display','block');
+                            },
+                            function(){
+                                $('.actionButton .weixinQcode').css('display','none');
+                            })
+                            """
+                        )
+                    ),
+                    .div(
+                        .class("actionButton weixinQcode")
+                    )
+                )
+            ),
             .div(
                 .class("actionButton"),
                 .div(

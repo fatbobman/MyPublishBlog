@@ -146,6 +146,25 @@ header .logo img{
     font-size: 30px;
     width:24px;
     height:24px;
+    position:relative;
+}
+
+.headIconWeixin{
+    background-image: url('/images/whiteWeixin.svg');
+    background-size: 26px 26px;
+    background-repeat: no-repeat;
+}
+/* 头部的微信公共号 */
+.weixinHeadQcode {
+    position: relative;
+    width:400px;
+    height: 246px;
+    background-image: url("/images/weixincode.png");
+    margin: 50px 0 0 -116px;
+    display: none;
+    z-index: 9999;
+    border-radius: 0;
+    background-color: transparent;
 }
 
 .headIconTwitter{
@@ -492,7 +511,7 @@ blockquote {
 }
 
 .article p.info, blockquote p, .sponsorship .content > ul, .services .content > ul {
-    position: relative;
+    /* position: relative; */
     background-color: #efefef;
     padding: 10px 10px 10px 15px;
     border-top-right-radius: 7px;
@@ -1491,7 +1510,23 @@ article hr {
     display: none;
     z-index: 9999;
     border-radius: 0;
+    background-color: transparent;
 }
+
+
+.actionButton .weixinQcode{
+    position: fix;
+    width:400px;
+    height: 246px;
+    background-image: url("/images/weixincode.png");
+    margin: 0 0 0 50px;
+    display: none;
+    z-index: 9999;
+    border-radius: 0;
+    background-color: transparent;
+}
+
+
 
 /*.toc {*/
 /*    position: sticky;*/
