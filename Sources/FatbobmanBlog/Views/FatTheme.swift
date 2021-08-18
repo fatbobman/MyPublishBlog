@@ -23,7 +23,7 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
     func makeIndexHTML(for index: Index, context: PublishingContext<Site>) throws -> HTML {
         HTML(
             .lang(context.site.language),
-            .head(for: index, on: context.site),
+            .myhead(for: index, on: context.site),
             .body(
                 .class("index"),
                 .header(
@@ -69,7 +69,7 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
     ) throws -> HTML {
         HTML(
             .lang(context.site.language),
-            .head(for: section, on: context.site),
+            .myhead(for: section, on: context.site),
             .body(
                 .header(for: context, selectedSection: section.id),
                 .container(
@@ -118,7 +118,7 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
 
         return HTML(
             .lang(context.site.language),
-            .head(for: item, on: context.site),
+            .myhead(for: item, on: context.site),
             .body(
                 .class("item-page"),
                 .header(for: context, selectedSection: item.sectionID),
@@ -155,7 +155,12 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
     func makePageHTML(for page: Page, context: PublishingContext<Site>) throws -> HTML {
         return HTML(
             .lang(context.site.language),
-            .head(for: page, on: context.site),
+            .if(
+                page.path == Path("healthnotes"),
+                .myhead(for: page, on: context.site, healthnotes: true),
+                else:
+                .myhead(for: page, on: context.site)
+            ),
             .body(
                 // 需要特殊处理.在publish中是当做page来显示的.为了nav的选中显示正常
                 .if(
@@ -226,7 +231,7 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
     ) throws -> HTML? {
         HTML(
             .lang(context.site.language),
-            .head(for: page, on: context.site),
+            .myhead(for: page, on: context.site),
             .body(
                 .header(for: context, selectedSection: FatbobmanBlog.SectionID.tags as? Site.SectionID),
                 .container(
