@@ -316,6 +316,14 @@ extension Node where Context == HTML.BodyContext {
                         )
                     )
                 }
+            ),
+            .div(
+                .class("weixinHeadQcode"),
+                .onclick(
+                    """
+                    $('.weixinHeadQcode').css('display','none');
+                    """
+                )
             )
         )
     }

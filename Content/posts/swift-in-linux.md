@@ -194,7 +194,7 @@ $npm run dev-package
 通过命令行将插件安装到vscode上
 
 ```bash
-$cd ~/sourcekit-lsp/Editors/vscode/out
+$cd ~/sourcekit-lsp/Editors/vscode
 $code --install-extension sourcekit-lsp-vscode-dev.vsix
 ```
 

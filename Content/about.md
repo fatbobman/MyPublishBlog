@@ -21,5 +21,8 @@ tags: first, article
 
 #### 联系我 ####
 
+> Twitter: [@fatbobman](https://twitter.com/fatbobman/)
+
 > Email: [xuyang@me.com](mailto:xuyang@me.com)
 
+> 微信公共号: 肘子的Swift记事本

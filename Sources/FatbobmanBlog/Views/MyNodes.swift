@@ -95,47 +95,74 @@ extension Node where Context == HTML.BodyContext {
 
     static func headerIcons() -> Node {
         .div(
-            .class("headerIcons"),
-            .a(
-                .class("icon headIconWeixin"),
-                .script(
-                    .raw(
-                        """
-                        var weixinHeadButton = $('.headIconWeixin');
-                        weixinHeadButton.hover(
-                        function(){
-                            $('.weixinHeadQcode').css('display','block');
-                        },
-                        function(){
-                            $('.weixinHeadQcode').css('display','none');
-                        })
-                        """
+            .div(
+                .class("headerIcons"),
+                .a(
+                    .class("icon headIconWeixin"),
+                    .script(
+                        .raw(
+                            """
+                                var weixinHeadButton = $('.headIconWeixin');
+                                weixinHeadButton.hover(
+                                function(){
+                                $('.weixinHeadQcode').css('display','block');
+                                },
+                                function(){
+                                $('.weixinHeadQcode').css('display','none');
+                                })
+                            """
+                        )
                     )
                 ),
-                .div(
-                    .class("weixinHeadQcode")
+                .a(
+                    .class("icon headIconTwitter"),
+                    .href("https://www.twitter.com/fatbobman"),
+                    .target(.blank),
+                    .rel(.nofollow),
+                    .rel(.noopener),
+                    .rel(.noreferrer)
+                ),
+                .a(
+                    .class("icon headIconEmail"),
+                    .href("mailto:xuyang@me.com"),
+                    .target(.blank),
+                    .rel(.nofollow),
+                    .rel(.noopener),
+                    .rel(.noreferrer)
+                ),
+                .a(
+                    .class("icon headIconGithub"),
+                    .href("https://github.com/fatbobman/"),
+                    .target(.blank),
+                    .rel(.nofollow),
+                    .rel(.noopener),
+                    .rel(.noreferrer)
+                ),
+                .a(
+                    .class("icon headIconZhihu"),
+                    .href("https://www.zhihu.com/people/fatbobman3000"),
+                    .target(.blank),
+                    .rel(.nofollow),
+                    .rel(.noopener),
+                    .rel(.noreferrer)
+                ),
+                .a(
+                    .class("icon headIconRss"),
+                    .href("/feed.rss"),
+                    .target(.blank),
+                    .rel(.nofollow),
+                    .rel(.noopener),
+                    .rel(.noreferrer)
                 )
-            ),
-            .a(
-                .class("icon headIconTwitter"),
-                .href("https://www.twitter.com/fatbobman")
-            ),
-            .a(
-                .class("icon headIconEmail"),
-                .href("mailto:xuyang@me.com")
-            ),
-            .a(
-                .class("icon headIconGithub"),
-                .href("https://github.com/fatbobman/")
-            ),
-            .a(
-                .class("icon headIconZhihu"),
-                .href("https://www.zhihu.com/people/fatbobman3000")
-            ),
-            .a(
-                .class("icon headIconRss"),
-                .href("/feed.rss")
             )
+            // .div(
+            //     .class("weixinHeadQcode"),
+            //     .onclick(
+            //         """
+            //         $('.weixinHeadQcode').css('display','none');
+            //         """
+            //     )
+            // )
         )
     }
 
