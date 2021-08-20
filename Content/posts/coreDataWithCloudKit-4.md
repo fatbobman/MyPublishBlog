@@ -8,7 +8,7 @@ title: Core Data with CloudKit（四）—— 调试、测试、迁移及其他
 
 ## 控制台日志信息 ##
 
-![log](http://cdn.fatbobman.com/log.gif)
+![log](https://cdn.fatbobman.com/log.gif)
 
 一个支持`Core Data with CloudKit`的项目，控制台输出将常态化地成为上图状态。
 
@@ -54,7 +54,7 @@ title: Core Data with CloudKit（四）—— 调试、测试、迁移及其他
 
 在确认同步功能代码已正常工作的情况下，如无法忍受控制台的信息轰炸，可尝试关闭`Core Data with CloudKit`的日志输出。调试任何使用`Core Data`的项目，我都推荐大家为项目添加如下的默认参数：
 
-![image-20210810152755744](http://cdn.fatbobman.com/image-20210810152755744-8580476.png)
+![image-20210810152755744](https://cdn.fatbobman.com/image-20210810152755744-8580476.png)
 
 * **-com.apple.CoreData.ConcurrencyDebug**
 
@@ -103,7 +103,7 @@ if allowCloudKitSync {
 
 因为`NSPersistentCloudKitContiner`会自动启用持久化历史跟踪的，如没有设置`NSPersistentCloudKitContainerOptions`，必须在代码中显式启用`Persistent History Tracking`，否则数据库会变成只读。
 
-![image-20210810155946312](http://cdn.fatbobman.com/image-20210810155946312-8582387.png)
+![image-20210810155946312](https://cdn.fatbobman.com/image-20210810155946312-8582387.png)
 
 设置为`0`将关闭网络同步。
 

@@ -33,7 +33,7 @@ title: Core Data with CloudKit（二）——同步本地数据库到iCloud私�
 
 创建新项目，在项目设置界面勾选`Use Core Data`及`Host in CloudKit`（早期版本为`Use CloudKit`），并设置开发团队（`Team`）
 
-![image-20210806180200853](http://cdn.fatbobman.com/image-20210806180200853-8244122.png)
+![image-20210806180200853](https://cdn.fatbobman.com/image-20210806180200853-8244122.png)
 
 设定保存地址后，Xcode将使用预置模版为你生成包含`Core Data with CloudKit`支持的项目文档。
 
@@ -53,13 +53,13 @@ let container: NSPersistentCloudKitContainer
 
 点击项目中对应的`Target`，选择`Signing&Capabilities`。点击`+Capability`查找`icloud`添加`CloudKit`支持。
 
-![image-20210806185136390](http://cdn.fatbobman.com/image-20210806185136390-8247097.png)
+![image-20210806185136390](https://cdn.fatbobman.com/image-20210806185136390-8247097.png)
 
-![image-20210806185247739](http://cdn.fatbobman.com/image-20210806185247739-8247169.png)
+![image-20210806185247739](https://cdn.fatbobman.com/image-20210806185247739-8247169.png)
 
 勾选`CloudKit`。点击`+`，输入`CloudKit container`名称。Xcode会在你`CloutKit container`名称的前面自动添加`iCloud.`。`container`的名称通常采用反向域名的方式，无需和项目或`BundleID`一致。*如果没有配置开发者团队，将无法创建`container`。*
 
-![image-20210808091434886](http://cdn.fatbobman.com/image-20210808091434886.png)
+![image-20210808091434886](https://cdn.fatbobman.com/image-20210808091434886.png)
 
 *在添加了`CloudKit`支持后，Xcode会自动为你添加`Push Notifications`功能，原因我们在上一篇聊过。*
 
@@ -67,7 +67,7 @@ let container: NSPersistentCloudKitContainer
 
 继续点击`+Capability`，搜索`backgroud`并添加，勾选`Remote notifications`
 
-![image-20210806190813361](http://cdn.fatbobman.com/image-20210806190813361-8248094.png)
+![image-20210806190813361](https://cdn.fatbobman.com/image-20210806190813361-8248094.png)
 
 此功能让你的应用程序能够响应云端数据内容变化时推送的**静默通知**。
 
@@ -75,7 +75,7 @@ let container: NSPersistentCloudKitContainer
 
 查看当前项目中的`.xcdatamodeld`文件，`CONFIGURATIONS`中只有一个默认配置`Default`，点击可以看到，右侧的`Used with CloudKit`已经被勾选上了。
 
-![image-20210806193028530](http://cdn.fatbobman.com/image-20210806193028530-8249430.png)
+![image-20210806193028530](https://cdn.fatbobman.com/image-20210806193028530-8249430.png)
 
 如果开发者没有在`Data Model Editor`中自定义`Configuration`，如果勾选了`Used with CloudKit`，`Core Data`会使用选定的`Cloudkit container`设置``cloudKitContainerOptions`。因此在当前的`Persistence.swift`代码中，我们无需对`NSPersistentStoreDescription`做任何额外设置（我们会在后面的章节介绍如何设置`NSPersistentStoreDescription`）。
 
@@ -130,7 +130,7 @@ do {
 
 模版项目的Data Model非常简单，只有一个`Entity`且只有一个`Attribute`，当下无需做调整。`Data Model`的同步适用规则会在下个章节详细介绍。
 
-![image-20210806204211377](http://cdn.fatbobman.com/image-20210806204211377-8253732.png)
+![image-20210806204211377](https://cdn.fatbobman.com/image-20210806204211377-8253732.png)
 
 ### 修改ContentView.swift ###
 
@@ -167,7 +167,7 @@ do {
 
 下面的动图，是在一台实机（`Airplay`投屏）和一个模拟器上的运行效果。
 
-![syncToPrivateDB](http://cdn.fatbobman.com/syncToPrivateDB-8292698.gif)
+![syncToPrivateDB](https://cdn.fatbobman.com/syncToPrivateDB-8292698.gif)
 
 *视频经过剪辑，数据的同步时间通常为15-20秒左右。*
 
@@ -193,18 +193,18 @@ do {
 CREATE UNIQUE INDEX Z_Movie_UNIQUE_color_colors ON ZMOVIE (ZCOLOR COLLATE BINARY ASC, ZCOLORS COLLATE BINARY ASC)
 ```
 
-![image-20210807090639166](http://cdn.fatbobman.com/image-20210807090639166-8298400.png)
+![image-20210807090639166](https://cdn.fatbobman.com/image-20210807090639166-8298400.png)
 
 ### Attributes ###
 
 * **不可以有即为`非可选值`又`没有默认值`的属性。允许：可选 、有默认值、可选 + 有默认值**
 
-![image-20210807091044353](http://cdn.fatbobman.com/image-20210807091044353-8298645.png)
+![image-20210807091044353](https://cdn.fatbobman.com/image-20210807091044353-8298645.png)
 
 上图中的属性 `非Optional` 且 `没有Default Value`是不兼容的形式，`Xcode`会报错。
 
 * **不支持`Undefined`类型**
-![image-20210808073123665](http://cdn.fatbobman.com/image-20210808073123665-8379084.png)
+![image-20210808073123665](https://cdn.fatbobman.com/image-20210808073123665-8379084.png)
 
 ### Relationships ###
 
@@ -222,7 +222,7 @@ CREATE UNIQUE INDEX Z_Movie_UNIQUE_color_colors ON ZMOVIE (ZCOLOR COLLATE BINARY
 
 官方文档中这个限制我比较困惑，因为即使不采用网络同步，开发者也通常不会为两个`Configuration`中的实体建立`relationship`。如果需要建立联系，通常会采用创建`Fetched Properties`。
 
-![image-20210807094550677](http://cdn.fatbobman.com/image-20210807094550677-8300752.png)
+![image-20210807094550677](https://cdn.fatbobman.com/image-20210807094550677-8300752.png)
 
 > 在启用`CloudKit`同步后，如果`Model`不满足同步兼容条件时`Xcode`会报错提醒开发者。在将已有项目更改为支持`Core Data with CloudKit`时，可能需要对代码做出一定的修改。
 
@@ -246,7 +246,7 @@ CoreData: error: CoreData+CloudKit: -[NSCloudKitMirroringDelegate recoverFromPar
 
 解决的方法为：登录开发者账户->`Certificates,Identifiers&Profiles`->`Identifiers App IDs`，选择对应的`BundleID`，配置`iCloud`，点击`Edit`，重新配置`container`。
 
-  ![image-20210807100856319](http://cdn.fatbobman.com/image-20210807100856319-8302137.png)
+  ![image-20210807100856319](https://cdn.fatbobman.com/image-20210807100856319-8302137.png)
 
 ### 使用自定义的`NSPersistentStoreDescription` ###
 

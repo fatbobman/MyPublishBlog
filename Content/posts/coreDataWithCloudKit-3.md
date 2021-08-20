@@ -10,7 +10,7 @@ title: Core Data with CloudKit（三）——CloudKit仪表台
 
 使用`CloudKit Dashboard`需要开发者拥有[Apple Developer Program](https://developer.apple.com/programs/)账号，访问[https://icloud.developer.apple.com](https://icloud.developer.apple.com)即可使用。
 
-![image-20210808161150623](http://cdn.fatbobman.com/image-20210808161150623-8410311.png)
+![image-20210808161150623](https://cdn.fatbobman.com/image-20210808161150623-8410311.png)
 
 最近两年苹果对`CloudKit仪表台`的布局做过较大的调整，上面的截图是2021年中时的样子。
 
@@ -32,7 +32,7 @@ title: Core Data with CloudKit（三）——CloudKit仪表台
 
 ## 数据库（CloudKit Database） ##
 
-![image-20210808163319683](http://cdn.fatbobman.com/image-20210808163319683-8411600.png)
+![image-20210808163319683](https://cdn.fatbobman.com/image-20210808163319683-8411600.png)
 
 在[Core Data with CloudKit (一) —— 基础](https://www.fatbobman.com/posts/coreDataWithCloudKit-1/)中已经对`CKContainer`、`CKDababase`、`CKZone`、`CKSubscription`、`CKRecord`等基础对象做了简单的说明，本文还将介绍`CloudKit`的其他一些对象和功能。
 
@@ -56,19 +56,19 @@ title: Core Data with CloudKit（三）——CloudKit仪表台
 
 在开发环境下，点击`Deploy Schema Changes`将开发环境的`Schema`部署到生产环境。
 
-![image-20210808180259192](http://cdn.fatbobman.com/image-20210808180259192-8416980.png)
+![image-20210808180259192](https://cdn.fatbobman.com/image-20210808180259192-8416980.png)
 
 部署时，会显示自上次部署后开发环境做出的修改。
 
 即使`Schema`已经部署到生产环境后，我们仍可继续改动开发环境并部署到生产环境，如果模型无法满足兼容条件，`CloudKit`仪表台将会禁止你的部署行为。
 
-![image-20210808175543219](http://cdn.fatbobman.com/image-20210808175543219-8416544.png)
+![image-20210808175543219](https://cdn.fatbobman.com/image-20210808175543219-8416544.png)
 
 在容器名称下方会显示`Schema`是否已经部署到生产环境。上图是尚未部署的状态，下图是已经部署的状态。
 
-![image-20210808180421055](http://cdn.fatbobman.com/image-20210808180421055-8417062.png)
+![image-20210808180421055](https://cdn.fatbobman.com/image-20210808180421055-8417062.png)
 
-![image-20210808180014216](http://cdn.fatbobman.com/image-20210808180014216-8416815.png)
+![image-20210808180014216](https://cdn.fatbobman.com/image-20210808180014216-8416815.png)
 
 在做任何操作之前，要首先确认是否处于正确的环境设定中。
 
@@ -84,11 +84,11 @@ title: Core Data with CloudKit（三）——CloudKit仪表台
 
 `CloudKit`包含3个预设角色，分别为World（`_world`）、Authenticated（`_icloud`）和 Creator（`_creator`）。World表示任何人，无论其是否为iCloud用户。Authenticated适用于任何经过验证的iCloud用户。Creator则是作为记录（`Record`）的创建者。
 
-![image-20210808210401070](http://cdn.fatbobman.com/image-20210808210401070-8427842.png)
+![image-20210808210401070](https://cdn.fatbobman.com/image-20210808210401070-8427842.png)
 
 默认的设置为，任何人都可以读取数据，只有经过验证的iCloud用户才可以创建新纪录，记录的创建者可以更新自己的记录。
 
-![image-20210809062640040](http://cdn.fatbobman.com/image-20210809062640040-8461601.png)
+![image-20210809062640040](https://cdn.fatbobman.com/image-20210809062640040-8461601.png)
 
 我们可以创建自定义安全角色，但是不能创建用户记录（`User Record`），当用户第一次对容器进行身份验证时时系统会为该用户创建用户记录。我们可以查找现有用户并将其分配给任意的自定义的角色。
 
@@ -106,13 +106,13 @@ title: Core Data with CloudKit（三）——CloudKit仪表台
 
 当我们通过`CloudKit`创建`Recored Type`后，可以根据需要为每个字段创建所需的索引（只有`NSString`支持可搜索）。索引类型选项是独立的，如果你希望该字段既可查询又可排序，则需要分别创建两个索引。
 
-![image-20210809064449042](http://cdn.fatbobman.com/image-20210809064449042-8462689.png)
+![image-20210809064449042](https://cdn.fatbobman.com/image-20210809064449042-8462689.png)
 
 **只有为`Record Type`的`recordName`创建了`queryable`索引后，才可以在`Records`中浏览该Type的数据。**
 
-![image-20210809065509228](http://cdn.fatbobman.com/image-20210809065509228-8463311.png)
+![image-20210809065509228](https://cdn.fatbobman.com/image-20210809065509228-8463311.png)
 
-![image-20210809064743215](http://cdn.fatbobman.com/image-20210809064743215-8462864.png)
+![image-20210809064743215](https://cdn.fatbobman.com/image-20210809064743215-8462864.png)
 
 > `Core Data with CloudKit`会自动为`Core Data`数据模型的每个属性在`CloudKit`上创建需要的索引（不包含`recordName`）。除非你需要在`CloudKit`仪表台上浏览数据，否则我们不需要对索引做任何添加。
 
@@ -120,11 +120,11 @@ title: Core Data with CloudKit（三）——CloudKit仪表台
 
 `Record Type`是开发人员为`CKRecord`指定的类型标识符。你可以直接在代码中创建它，也可以在`CloudKit`仪表盘上对其进行创建、修改。
 
-![image-20210809073043092](http://cdn.fatbobman.com/image-20210809073043092-8465444.png)
+![image-20210809073043092](https://cdn.fatbobman.com/image-20210809073043092-8465444.png)
 
 在[基础篇](https://www.fatbobman.com/posts/coreDataWithCloudKit-1/)中曾提到`Entity`相较`Record Type`拥有更多的配置信息，但`Record Type`也有一个`Enitity`没有的特性——元数据。
 
-![image-20210809075124786](http://cdn.fatbobman.com/image-20210809075124786-8466685.png)
+![image-20210809075124786](https://cdn.fatbobman.com/image-20210809075124786-8466685.png)
 
 `CloudKit`为每一个`Record Type`预设了若干元数据字段（即使开发者没有创建任何其他字段），每条数据记录（`CKRecord`）都会包含这些信息，其中绝大多数都是系统自动设定的。
 
@@ -156,9 +156,9 @@ title: Core Data with CloudKit（三）——CloudKit仪表台
 
 本文的主题为`Core Data with CloudKit`，因此让我们来看一下`NSPersistentCloudKitContainer`是如何将`Core Data`托管对象的属性转换成`CloudKit`的`Recore Type`字段的。
 
-![image-20210809104558352](http://cdn.fatbobman.com/image-20210809104558352-8477160.png)
+![image-20210809104558352](https://cdn.fatbobman.com/image-20210809104558352-8477160.png)
 
-![image-20210809104402659](http://cdn.fatbobman.com/image-20210809104402659-8477043.png)
+![image-20210809104402659](https://cdn.fatbobman.com/image-20210809104402659-8477043.png)
 
 > 上图是我们在[同步本地数据库到iCloud私有数据库](https://www.fatbobman.com/posts/coreDataWithCloudKit-2/)中模版项目`Item`在`CloudKit`对应的`Record Type`。`CloudKit`会自动为托管对象实体的每个属性创字段，将属性名称映射到了具有`CD_[attribute.name]`键名的字段。该字段的类型在`Core Data`和`CloudKit`之间可能也会有所不同。`Record Type`名称为`CD_[entity]`。一切的操作都是由系统自动完成的，我们无需干预。另外，还会为`Enitity`生成一个`CD_entityName`的字段，内容为`Entity`的类映射名。
 
@@ -172,7 +172,7 @@ title: Core Data with CloudKit（三）——CloudKit仪表台
 
 每个种类的数据库都有默认`Zone`，只有私有数据库可以自定义`Zone`。
 
-![image-20210809143010363](http://cdn.fatbobman.com/image-20210809143010363-8490611.png)
+![image-20210809143010363](https://cdn.fatbobman.com/image-20210809143010363-8490611.png)
 
 对于私有数据库中的数据，在创建`CKRecord`时可以为数据指定`Zone`。
 
@@ -186,7 +186,7 @@ let newStudent = CKRecord(recordType: "Student",
 
 `NSPersistentCloudKitContainer`在将托管对象转换成`CKRecord`时，将`ZoneID`统一设置为`com.apple.coredata.cloudkit.zone`。必须切换到正确的`Zone`才能浏览到数据。
 
-![image-20210809143648531](http://cdn.fatbobman.com/image-20210809143648531-8491011.png)
+![image-20210809143648531](https://cdn.fatbobman.com/image-20210809143648531-8491011.png)
 
 * OWNER RECORD NAME
 
@@ -204,7 +204,7 @@ let newStudent = CKRecord(recordType: "Student",
 
 用于数据记录的浏览、创建、删除、更改、查询。
 
-![image-20210809150327144](http://cdn.fatbobman.com/image-20210809150327144-8492609.png)
+![image-20210809150327144](https://cdn.fatbobman.com/image-20210809150327144-8492609.png)
 
 在浏览数据时，需注意以下几点：
 
@@ -262,17 +262,17 @@ CKSubscription是通过代码创建的，在仪表盘上只可以查看或删除
         }
 ```
 
-![image-20210809154503445](http://cdn.fatbobman.com/image-20210809154503445-8495104.png)
+![image-20210809154503445](https://cdn.fatbobman.com/image-20210809154503445-8495104.png)
 
 > `NSPersistentCloudKitContainer`会为`Core Data`镜像的私有数据库注册一个`CKDatabaseSubscription`。当`com.apple.coredata.cloudkit.zone`数据更新时，会推送远程通知。
 
-![image-20210809154946576](http://cdn.fatbobman.com/image-20210809154946576-8495387.png)
+![image-20210809154946576](https://cdn.fatbobman.com/image-20210809154946576-8495387.png)
 
 ### Tokens&Keys ###
 
 设置容器的API令牌。
 
-![image-20210809152554058](http://cdn.fatbobman.com/image-20210809152554058-8493955.png)
+![image-20210809152554058](https://cdn.fatbobman.com/image-20210809152554058-8493955.png)
 
 除了可以通过代码和`CloudKit`仪表台对数据进行操作外，苹果还提供了从网络或其他平台访问`iCloud`数据的手段。在获取令牌后，开发者还可以通过使用 [CloudKit JS](https://developer.apple.com/documentation/cloudkitjs)或 [CloudKit Web 服务](https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/)与数据进行交互。
 
@@ -286,13 +286,13 @@ CKSubscription是通过代码创建的，在仪表盘上只可以查看或删除
 
 ## 遥测（Telemetry） ##
 
-![image-20210809161022705](http://cdn.fatbobman.com/image-20210809161022705-8496624.png)
+![image-20210809161022705](https://cdn.fatbobman.com/image-20210809161022705-8496624.png)
 
 通过查看Telemetry的指标，方便你在开发或更新应用程序时可视化性能。包括请求数量、错误数量、推送数量、服务器延迟以及平均请求大小等等。通过设定范围，仅显示与你相关的数据，帮助你更好地了解应用程序的流量配置及使用趋势。
 
 ## 日志（Logs） ##
 
-![image-20210809162346212](http://cdn.fatbobman.com/image-20210809162346212-8497427.png)
+![image-20210809162346212](https://cdn.fatbobman.com/image-20210809162346212-8497427.png)
 
 在历史日志中，你可以查看包括时间、客户端平台版本、用户（匿名）、事件、组织、细节等信息。
 
