@@ -10,7 +10,7 @@ import Plot
 import Publish
 
 extension Node where Context == HTML.DocumentContext {
-    /// Add an HTML `<head>` tag within the current context, based
+    /// Add an HTML `<head>` tag within the current context, based 
     /// on inferred information from the current location and `Website`
     /// implementation.
     /// - parameter location: The location to generate a `<head>` tag for.
