@@ -238,8 +238,8 @@ let persistentHistoryTrackingManager : PersistentHistoryTrackingManager
 init(inMemory: Bool = false) {
   ....
   // 标记当前上下文的author名称
-  container.viewContext.transactionAuthor = AppActor.mainApp.rawValue
-	persistentHistoryTrackingManager = PersistentHistoryTrackingManager(
+    container.viewContext.transactionAuthor = AppActor.mainApp.rawValue
+    persistentHistoryTrackingManager = PersistentHistoryTrackingManager(
                         container: container,
                         currentActor: AppActor.mainApp //当前的成员
    )
@@ -555,7 +555,7 @@ public struct PersistentHistoryCleaner {
 ```swift
     private func processor() {
         backgroundContext.performAndWait {
-					...
+            ...
         }
 
         let cleaner = PersistentHistoryCleaner(container: container)
