@@ -1,4 +1,253 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content"><channel><title>肘子的Swift记事本</title><description>徐杨的个人博客,Core Data,Swift,Swift UI,Combine,健康笔记,iOS APP,Health Note,HealthNotes</description><link>https://www.fatbobman.com</link><language>zh</language><lastBuildDate>Fri, 20 Aug 2021 14:46:20 +0800</lastBuildDate><pubDate>Fri, 20 Aug 2021 14:46:20 +0800</pubDate><ttl>250</ttl><atom:link href="https://www.fatbobman.com/feed.rss" rel="self" type="application/rss+xml"/><item><guid isPermaLink="true">https://www.fatbobman.com/posts/blogUpgrade</guid><title>博客更新记</title><description>上个周末，我将博客进行了一番装修升级。我对本次更新的效果比较满意，并非博客变得多好，而是通过此次更新，让我对当今的Web技术有了一定的了解。同时在本次更新过程中，无论是调试Swift代码、CSS代码还是Markdown文档，都是在Visual Studio Code中进行的，这也让我对Visual Studio Code有了进一步的认识和掌握。</description><link>https://www.fatbobman.com/posts/blogUpgrade</link><pubDate>Tue, 17 Aug 2021 18:30:00 +0800</pubDate><content:encoded><![CDATA[<p>上个周末，我将本博客进行了一番装修升级。我对本次更新的效果比较满意，并非博客变得多好，而是通过此次更新，让我对当今的Web技术有了一定的了解。同时在本次更新过程中，无论是调试Swift代码、CSS代码还是Markdown文档，都是在Visual Studio Code中进行的，这也让我对Visual Studio Code有了进一步的认识和掌握。</p><p>通过本文将这几天更新过程记录下来。</p><blockquote><p>作为一个使用CSS、javascript仅几天的人来说，本文的内容可能并不正确或相当偏颇，望见谅。</p></blockquote><h2>本次更新目标</h2><p>在完全停止写博客和写代码超过15年后，2020年我重新创建了自己的个人博客。目的同之前的博客一样，记录并分享自己的编程学习心得、体会、经验和教训。</p><p>本博客的主题是记录有关Swift学习方面的内容，因此在使用了一段时间的WordPress、Hexo后，我找到了一个由Swift编写的静态站点生成器<a href="https://github.com/JohnSundell/Publish">Publish</a>，并用它完成了博客的第一次重大调整。</p><blockquote><p>如果对Publish感兴趣，可以阅读我写的几篇Publsih的介绍文章。用<a href="https://www.fatbobman.com/posts/publish-1/">Publish创建博客——入门</a>，<a href="https://www.fatbobman.com/posts/publish-2/">主题开发</a>，<a href="https://www.fatbobman.com/posts/publish-3/">插件开发</a>。</p></blockquote><p>当时我对Swift的掌握很一般（现在也很一般，不过比当时强些），因此上次博客的更新过程跌跌绊绊，很多预期的功能并没有实现。随着博文的增多，觉得有必要对博客进行再度更新了。</p><p>本次更有以下几个主要目标：</p><ul><li>添加评论功能</li><li>调整版式，提高对移动设备的适配</li><li>增加TOC（文章目录），方便长文章的阅读</li></ul><p>尽管最终的结果基本达到了预期，但我还是将本次更新的难度想的简单了。</p><h2>今时不同往日</h2><p>从2005年开始我就没有多余的精力投入编程这个业余爱好了。在此之前我自认对Web技术还有一定的了解，使用过HTML、PHP、Python（用了一段时间的Django），不过真当我进行此次更新时，才发现时代完全变了。</p><p>Publish虽然可以帮助我完成内容管理、Markdown转换、大的布局构建等工作，但如果没有CSS、Javascript的基础，想实现复杂版式、动态功能几乎寸步难行。</p><p>本着临时抱佛脚的态度，用了点时间大致接触了点CSS、Javascript的知识。很短的时间后我就清除地认识到，它们不是我短时间可以掌握的——已经发展的太庞大了。</p><p>CSS和Javascript就像两个雪球一样，随着互联网的高速发展极速膨胀。仅从我的初步观感来看，它们的技术基础已经不适应当今的需要了。有什么需求，就添加什么功能，难度不算高，但内容非常多，完全是两个大杂烩。</p><p>好在，如今网络上分享知识的朋友越来越多，多花点时间查找还是能找到所需的资料和解决方案。</p><h2>添加评论</h2><p>这个是最先解决也是最容易的。</p><p>作为静态站点，评论系统选择不是特别多。排除掉国内外商业机构提供的静态评论系统外，最终选择了基于Github Issue的解决方案。</p><p>一开始试用了<a href="https://github.com/imsun/gitment">gitment</a>，不过总是出现授权错误，无法加载评论区代码，最后采用了<a href="https://github.com/gitalk/gitalk">gitalk</a>，几天的使用下来，感觉还是不错的。唯一遗憾的是，官方的js没有汉化方案，有时间再调整吧。</p><p>gittalk的使用非常简单，在GitHub的OAuth Apps创建了ClientID后，经过简单配置就可以将其添加到博客代码中。</p><p>对于像gittalk这样只需要少量js代码的应用来说，在Publish中，可以直接使用.raw将其包装进Swift代码中。例如：</p><pre data-language="swift"><code>           .script(
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>肘子的Swift记事本</title><description>徐杨的个人博客,Core Data,Swift,Swift UI,Combine,健康笔记,iOS APP,Health Note,HealthNotes</description><link>https://www.fatbobman.com</link><language>zh</language><lastBuildDate>Mon, 23 Aug 2021 11:15:04 +0800</lastBuildDate><pubDate>Mon, 23 Aug 2021 11:15:04 +0800</pubDate><ttl>250</ttl><atom:link href="https://www.fatbobman.com/feed.rss" rel="self" type="application/rss+xml"/><item><guid isPermaLink="true">https://www.fatbobman.com/posts/uikitInSwiftUI</guid><title>在SwiftUI中使用UIKit视图</title><description>本文将通过对UITextField的包装来讲解如何在SwiftUI中使用UIKit视图、如何让你的UIKit包装视图具有SwiftUI风格、在SwiftUI使用UIKit视图需要注意的地方</description><link>https://www.fatbobman.com/posts/uikitInSwiftUI</link><pubDate>Mon, 23 Aug 2021 11:12:00 +0800</pubDate><content:encoded><![CDATA[<p>已迈入第三个年头的SwiftUI相较诞生初始已经提供了更多的原生功能，但仍有大量的事情是无法直接通过原生SwiftUI代码来完成的。在相当长的时间中开发者仍需在SwiftUI中依赖UIKit（AppKit）代码。好在，SwiftUI为开发者提供了便捷的方式将UIKit（AppKit）视图（或控制器）包装成SwiftUI视图。</p><p>本文将通过对UITextField的包装来讲解以下几点：</p><ul><li>如何在SwiftUI中使用UIKit视图</li><li>如何让你的UIKit包装视图具有SwiftUI风格</li><li>在SwiftUI使用UIKit视图需要注意的地方</li></ul><blockquote><p><strong>如果你已经对如何使用<code>UIViewRepresentable</code>有所掌握，可以直接从<code>SwiftUI风格化</code>部分阅读</strong></p></blockquote><h2>基础</h2><p>在具体演示包装代码之前，我们先介绍一些与在SwiftUI中使用UIKit视图有关的基础知识。</p><blockquote><p>无需担心是否能立即理解下述内容，在后续的演示中会有更多的内容帮助你掌握相关知识。</p></blockquote><h3>生命周期</h3><p>SwiftUI同UIKit和AppKit的主要区别之一是，SwiftUI的视图（View）是值类型，并不是对屏幕上绘制内容的具体引用。在SwiftUI中，开发者为视图创建描述，而并不实际渲染它们。</p><p>在UIKit（或AppKit）中，视图（或视图控制器）有明确的生命周期节点，比如<code>vidwDidload</code>、<code>loadView</code>、<code>viewWillAppear</code>、<code>didAddSubView</code>、<code>didMoveToSuperview</code>等方法，它们本质上充当了钩子的角色，让开发者能够通过执行一段逻辑来响应系统给定的事件。</p><p>SwiftUI的视图，本身没有清晰（可适当描述）的生命周期，它们是值、是声明。SwiftUI提供了几个修改器（modifier）来实现类似UIKit中钩子方法的行为。比如<code>onAppear</code>同<code>viewWillAppear</code>的表现很类似。同UIKit的钩子方法的位置有很大的不同，<code>onAppear</code>和<code>onDisappear</code>是在当前视图的父视图上声明的。</p><p>将UIKit视图包装成SwiftUI的视图时，我们需要了解两者生命周期之间的不同，不要强行试图找到完全对应的方法，要从SwiftUI的角度来思考如何调用UIKit视图。</p><h3>UIViewRepresentable协议</h3><p>在SwiftUI中包装UIView非常简单，只需要创建一个遵守<code>UIViewRepresentable</code>协议的结构体就行了。</p><blockquote><p><code>UIViewControllerRepresentable</code>对应<code>UIViewController</code>，<code>NSViewRepresentable</code>对应<code>NSView</code>，<code>NSViewControllerRepresentable</code>对应<code>NSViewController</code>。内部的结构和实现逻辑都一致。</p></blockquote><p><code>UIViewrepresentable</code>的协议并不复杂，只包含：<code>makeUIView</code>、<code>updateUIView</code>、<code>dismantleUIView</code>和<code>makeCoordinator</code>四个方法。<code>makeUIView</code>和<code>updateUIView</code>为必须提供实现的方法。</p><p><code>UIViewRepresentable</code>本身遵守<code>View</code>协议，因此SwiftUI会将任何符合该协议的结构体都当作一般的SwiftUI视图来对待。当由于<code>UIViewRepresentable</code>的特殊的用途，其内部的生命周期又同标准的SwiftUI视图有所不同。</p><img src="https://cdn.fatbobman.com/UIViewRepresentableLifeCycle-9614888.png" alt="UIViewRepresentableLifeCycle"/><ul><li>makeCoordinator</li></ul><p>如果我们声明了Coordinator（协调器）,<code>UIViewRepresentable</code>视图会在初始化后首先创建它的实例，以便在其他的方法中调用。Coordinator默认为<code>Void</code>，该方法在<code>UIViewRepresentable</code>的生命周期中只会调用一次，因此只会创建一个协调器实例。</p><ul><li>makeUIView</li></ul><p>创建一个用来包装的UIKit视图实例。该方法在<code>UIViewRepresentable</code>的生命周期中只会调用一次。</p><ul><li>updateUIView</li></ul><p>SwiftUI会在应用程序的状态（State）发生变化时更新受这些变化影响的界面部分。当<code>UIViewRepresentable</code>视图中的注入依赖发生变化时，SwiftUI会调用<code>updateUIView</code>。其调用时机同标准SwiftUI视图的<code>body</code>一致，最大的不同为，调用<code>body</code>为计算值，而调用<code>updateview</code>仅为通知<code>UIViewRepresentable</code>视图依赖有变化，至于是否需要根据这些变化来做反应，则由开发者来自行处理。</p><p>该方法在<code>UIViewRepresentable</code>的生命周期中会多次调用，直到视图被移出视图树（更准确地描述是切换到另一个不包含该视图的视图树分支）。</p><p><strong>在makeUIVIew执行后，updateUIVew必然会执行一次</strong></p><ul><li>dismantleUIView</li></ul><p>在<code>UIViewRepresentable</code>视图被移出视图树之前，SwiftUI会调用<code>dismantleUIView</code>，通常在此方法中可以执行u删除观察器等善后操作。<code>dismantleUIView</code>为类型方法。</p><p>下面的代码将创建一个同ProgressView一样的转圈菊花：</p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">MyProgrssView</span>: <span class="hljs-title">UIViewRepresentable</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">makeUIView</span><span class="hljs-params">(context: Context)</span></span> -&gt; <span class="hljs-type">UIActivityIndicatorView</span> {
+        <span class="hljs-keyword">let</span> view = <span class="hljs-type">UIActivityIndicatorView</span>()
+        view.startAnimating()
+        <span class="hljs-keyword">return</span> view
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">updateUIView</span><span class="hljs-params">(<span class="hljs-number">_</span> uiView: UIActivityIndicatorView, context: Context)</span></span> {}
+}
+
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Demo</span>: <span class="hljs-title">View</span> </span>{
+    <span class="hljs-keyword">var</span> body: some <span class="hljs-type">View</span> {
+            <span class="hljs-type">MyProgrssView</span>()
+    }
+}
+</code></pre><h3>黑匣子</h3><p>SwiftUI在绘制屏幕时，会从视图树的顶端开始对视图的<code>body</code>求值，如果其中还包含子视图则将递归求值，直到获得最终的结果。但SwiftUI无法真正进行无限量的调用来绘制视图，因此它必须以某种方式缩短递归。为了结束递归，SwiftUI包含了很多的原始类型（primitive types）。当SwiftUI递归到这些原始类型时，将结束递归，它将不再关心原始类型的<code>body</code>，而让原始类型自行对其管理的区域进行处理。</p><p>SwiftUI框架通过将<code>body</code>定义为<code>Never</code>来标记该<code>View</code>为原始类型。<code>UIViewRepresentable</code>恰巧也为其中之一（<code>Text</code>、<code>ZStack</code>、<code>Color</code>、<code>List</code>等也都是所谓的原始类型）。</p><pre data-language="swift"><code><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">protocol</span> <span class="hljs-title">UIViewRepresentable</span> : <span class="hljs-title">View</span> <span class="hljs-title">where</span> <span class="hljs-title">Self</span>.<span class="hljs-title">Body</span> == <span class="hljs-title">Never</span></span>
+</code></pre><p>事实上几乎所有的原始类型都是对UIKit或AppKit的底层包装。</p><p><code>UIViewRepresentable</code>作为原始类型，SwiftUI对其内部所知甚少（因为无需关心）。通常需要开发者在<code>UIViewRepresentable</code>视图的Coordinator（协调器）中做一些的工作，从而保证两个框架（SwiftUI同UIKit）代码之间的沟通和联系。</p><h3>协调器</h3><p>苹果框架很喜欢适用协调器（Coordinator）这个名词，UIKit开发中有协调器设计模式、Core Data中有持久化存储协调器。在<code>UIViewRepresentable</code>中协调器同它们的概念完全不同，主要起到以下几个方面的作用：</p><ul><li>实现UIKit视图的代理</li></ul><p>UIKit组件通常依赖代理（delegate）来实现一些功能，“代理”时响应其他地方发生的事件的对象。例如，UIKit让我们讲一个代理对象附加到<code>Text field</code>视图上，当用户输入任时，当用户按下<code>return</code>键时，该代理对象中对应的方法将被调用。通过将协调器声明为UIKit视图对应的代理对象，我们就可以在其中实现所需的代理方法。</p><ul><li>同SwiftUI框架保持沟通</li></ul><p>上文中，我们提到<code>UIViewRepresentable</code>作为原始类型，需要主动承担更多的同SwiftUI框架或其他视图之间的沟通工作。在协调器中，我们可以通过双向绑定（<code>Binding</code>），通知中心（<code>notificationCenter</code>）或其他例如<code>Redux</code>模式的单项数据流等方式，将UIKit视图内部的状态报告给SwiftUI框架或其他需要的模块。同样也可以通过注册观察器、订阅Publisher等方式获取所需的信息。</p><ul><li>处理UIKit视图中的复杂逻辑</li></ul><p>在UIKit开发中，通常会将业务逻辑放置在UIViewController中，SwiftUI没有Controller这个概念，视图仅是状态的呈现。对于一些实现复杂功能的UIKit模组，如果完全按照SwiftUI的模式将其业务逻辑彻底剥离是非常困难的。因此将无法剥离的业务逻辑的实现代码放入协调器中，靠近代理方法，便于相互之间的协调和管理。</p><h2>包装UITextField</h2><p>本节中我们将利用上面的知识实现一个具有简单功能的<code>UITextField</code>包装视图——<code>TextFieldWrapper</code>。</p><h3>版本1.0</h3><p>在第一个版本中，我们的要实现一个类似如下原生代码的功能：</p><pre data-language="swift"><code><span class="hljs-type">TextField</span>(<span class="hljs-string">"name:"</span>,text:$name)
+</code></pre><img src="https://cdn.fatbobman.com/image-20210822184949860-9629391.png" alt="image-20210822184949860"/><p>查看<a href="https://gist.github.com/733f3c8ef4c69a1e4ed4bd81bf4750e3.git">源代码</a></p><p>我们在<code>makeUIView</code>中创建了<code>UITextField</code>的实例，并对其placeholder和text进行了设定。在右侧的预览中，我们可以看到placeholder可以正常显示，如果你在其中输入文字，表现的状态也同<code>TextField</code>完全一致。</p><p>通过<code>.border</code>，我们看到TextFieldWrapper的视图尺寸没有符合预期，这是由于UITextField在不进行约束的情况下会默认占据全部可用空间。上文关于<code>UIActivityIndicatorView</code>的演示代码并没有出现这个情况。因此对于不同的UIKit组件，我们需要了解其默认设置，酌情对其进行约束设定。</p><p>在<code>makeUIView</code>中添加如下语句，此时文本输入框的尺寸就和预期一致了：</p><pre data-language="swift"><code>        textfield.setContentHuggingPriority(.defaultHigh, <span class="hljs-keyword">for</span>: .vertical)
+        textfield.setContentCompressionResistancePriority(.defaultLow, <span class="hljs-keyword">for</span>: .horizontal)
+</code></pre><p>稍微调整一下<code>Demo</code>视图，在<code>.padding()</code>下添加<code>Text("name:\(name)")</code>。如果按照<code>TextField</code>的正常行为，当我们在其中输入任何文本时，下方的<code>Text</code>中应该显示出对应的内容，不过在我们当前的代码版本中，并没有表现出预期的行为。</p><img src="https://cdn.fatbobman.com/image-20210822190605447-9630366.png" alt="image-20210822190605447"/><p>让我们再次来分析一下代码。</p><p>尽管我们声明了一个<code>Binding&lt;String&gt;</code>类型的<code>text</code>，并且在<code>makeUIView</code>中将其赋值给了<code>textfield</code>，不过<code>UITextField</code>并不会将我们录入的内容自动回传给<code>Binding&lt;String&gt;</code>的<code>text</code>，这导致<code>Demo</code>视图中的<code>name</code>并不会因为文字录入而发生改变。</p><p><code>UITextfield</code>在每次录入文字时，都会自动调用<code>func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -&gt; Bool</code>的代理方法。因此我们需要创建协调器，并在协调器中实现该方法，将录入的内容传递给<code>Demo</code>视图中的<code>name</code>变量。</p><p>创建协调器：</p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">TextFieldWrapper</span></span>{
+    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Coordinator</span>:<span class="hljs-title">NSObject</span>,<span class="hljs-title">UITextFieldDelegate</span></span>{
+        @<span class="hljs-type">Binding</span> <span class="hljs-keyword">var</span> text:<span class="hljs-type">String</span>
+        <span class="hljs-keyword">init</span>(text:<span class="hljs-type">Binding</span>&lt;<span class="hljs-type">String</span>&gt;){
+            <span class="hljs-keyword">self</span>._text = text
+        }
+
+        <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">textField</span><span class="hljs-params">(<span class="hljs-number">_</span> textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String)</span></span> -&gt; <span class="hljs-type">Bool</span> {
+            <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> text = textField.text <span class="hljs-keyword">as</span> <span class="hljs-type">NSString?</span> {
+                <span class="hljs-keyword">let</span> finaltext = text.replacingCharacters(<span class="hljs-keyword">in</span>: range, with: string)
+                <span class="hljs-keyword">self</span>.text = finaltext <span class="hljs-keyword">as</span> <span class="hljs-type">String</span>
+            }
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+        }
+    }
+}
+</code></pre><p>我们需要在<code>textField</code>方法中回传数据，因此在<code>Coordinator</code>中同样需要使用到<code>Binding&lt;String&gt;</code>，如此对<code>text</code>的操作即为对<code>Demo</code>视图中<code>name</code>的操作。</p><p>如果<code>UIViewRepresentable</code>视图中的<code>Coordinator</code>不为<code>Void</code>，则必须通过<code>makeCoordinator</code>来创建它的实例。在<code>TextFieldWrapper</code>中添加如下代码：</p><pre data-language="swift"><code>    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">makeCoordinator</span><span class="hljs-params">()</span></span> -&gt; <span class="hljs-type">Coordinator</span> {
+        .<span class="hljs-keyword">init</span>(text: $text)
+    }
+</code></pre><p>最后在<code>makeUIView</code>中添加：</p><pre data-language="swift"><code>    textfield.delegate = context.coordinator
+</code></pre><p>UITextField在发生特定事件后将在协调器中查找并调用对应的代理方法。</p><img src="https://cdn.fatbobman.com/image-20210822191834883-9631115.png" alt="image-20210822191834883"/><p>查看<a href="https://gist.github.com/cb34b4f96525ac49193a36cd1d5fc135.git">源代码</a></p><p>至此，我们创建的<code>UITextField</code>包装已经同原生的<code>TextField</code>的表现行为一致了。</p><p><strong>你确定？</strong></p><p>再度修改一下<code>Demo</code>视图，将其修改为：</p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Demo</span>: <span class="hljs-title">View</span> </span>{
+    @<span class="hljs-type">State</span> <span class="hljs-keyword">var</span> name: <span class="hljs-type">String</span> = <span class="hljs-string">""</span>
+    <span class="hljs-keyword">var</span> body: some <span class="hljs-type">View</span> {
+        <span class="hljs-type">VStack</span> {
+            <span class="hljs-type">TextFieldWrapper</span>(<span class="hljs-string">"name:"</span>, text: $name)
+                .border(.blue)
+                .padding()
+            <span class="hljs-type">Text</span>(<span class="hljs-string">"name:\(name)"</span>)
+            <span class="hljs-type">Button</span>(<span class="hljs-string">"Random Name"</span>){
+                name = <span class="hljs-type">String</span>(<span class="hljs-type">Int</span>.random(<span class="hljs-keyword">in</span>: <span class="hljs-number">0</span>...<span class="hljs-number">100</span>))
+            }
+        }
+    }
+}
+</code></pre><p>按照对原生<code>TextField</code>的表现预期，当我们按下<code>Random Name</code>按钮时，<code>Text</code>同<code>TextFieldWrapper</code>中的文字都应该变成由<code>String(Int.random(in: 0...100))</code>产生的随机数字，但是如果你使用上述代码进行测试，<code>TextFieldWrapper</code>中的文字并没有变化。</p><p>在<code>makeUIView</code>中，我们使用<code>textfield.text = text</code>获取了<code>Demo</code>视图中<code>name</code>的值，但<code>makeUIView</code>只会执行一次。当点击<code>Random Name</code>引起<code>name</code>变化时，SwiftUI将会调用<code>updateUIView</code>，而我们并没有在其中做任何的处理。只需要在<code>updateUIVIew</code>中添加如下代码即可：</p><pre data-language="swift"><code>    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">updateUIView</span><span class="hljs-params">(<span class="hljs-number">_</span> uiView: UIViewType, context: Context)</span></span> {
+        <span class="hljs-type">DispatchQueue</span>.main.async {
+            uiView.text = text
+        }
+    }
+</code></pre><blockquote><p><code>makeUIView</code>方法的参数中有一个<code>context: Context</code>，通过这个上下文，我们可以访问到<code>Coordinator</code>（自定义协调器）、<code>transaction</code>（如何处理状态更新，动画模式）以及<code>environment</code>（当前视图的环境值集合）。我们之后将通过实例演示其用法。该<code>context</code>同样可以在<code>updateUIVIew</code>和<code>dismantleUIView</code>中访问。<code>updataUIView</code>的参数<code>_ uiView:UIViewType</code>为我们在<code>makeUIVIew</code>中创建的UIKit视图实例。</p></blockquote><p>查看<a href="https://gist.github.com/69fb1ff4462192ed318048166aeb9eaf.git">源代码</a></p><p>现在，我们的<code>TextFieldWrapper</code>的表现已经确实同<code>TextField</code>一致了。</p><img src="https://cdn.fatbobman.com/textFieldWrappertest-9634034.gif" alt="textFieldWrappertest"/><h3>版本2.0——添加设定</h3><p>在第一个版本的基础上，我们将为<code>TextFieldWrapper</code>添加<code>color</code>、<code>font</code>、<code>clearButtonMode</code>、<code>onCommit</code>以及<code>onEditingChanged</code>的配置设定。</p><blockquote><p>考虑到尽量不将例程复杂化，我们使用<code>UIColor</code>、<code>UIFont</code>作为配置类型。将SwiftUI的<code>Color</code>和<code>Font</code>转换成UIKit版本将增加不小的代码量。</p></blockquote><p><code>color</code>、<code>font</code>以及我们新增加的<code>clearButtonMode</code>并不需要双向数据流，因此无需采用<code>Binding</code>方式，仅需在<code>updateView</code>中及时响应它们的变化既可。</p><p><code>onCommit</code>和<code>onEditingChanged</code>分别对应着UITextField代理的<code>textFieldShouldReturn</code>、<code>textFieldDidBeginEditing</code>以及<code>textFieldDidEndEditing</code>方法，我们需要在协调器中分别实现这些方法，并调用对应的<code>Block</code>。</p><p>首先修改协调器:</p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">TextFieldWrapper</span> </span>{
+    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Coordinator</span>: <span class="hljs-title">NSObject</span>, <span class="hljs-title">UITextFieldDelegate</span> </span>{
+        @<span class="hljs-type">Binding</span> <span class="hljs-keyword">var</span> text: <span class="hljs-type">String</span>
+        <span class="hljs-keyword">var</span> onCommit: () -&gt; <span class="hljs-type">Void</span>
+        <span class="hljs-keyword">var</span> onEditingChanged: (<span class="hljs-type">Bool</span>) -&gt; <span class="hljs-type">Void</span>
+        <span class="hljs-keyword">init</span>(text: <span class="hljs-type">Binding</span>&lt;<span class="hljs-type">String</span>&gt;,
+             onCommit: @escaping () -&gt; <span class="hljs-type">Void</span>,
+             onEditingChanged: @escaping (<span class="hljs-type">Bool</span>) -&gt; <span class="hljs-type">Void</span>) {
+            <span class="hljs-keyword">self</span>._text = text
+            <span class="hljs-keyword">self</span>.onCommit = onCommit
+            <span class="hljs-keyword">self</span>.onEditingChanged = onEditingChanged
+        }
+
+        <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">textField</span><span class="hljs-params">(<span class="hljs-number">_</span> textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String)</span></span> -&gt; <span class="hljs-type">Bool</span> {
+            <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> text = textField.text <span class="hljs-keyword">as</span> <span class="hljs-type">NSString?</span> {
+                <span class="hljs-keyword">let</span> finaltext = text.replacingCharacters(<span class="hljs-keyword">in</span>: range, with: string)
+                <span class="hljs-keyword">self</span>.text = finaltext <span class="hljs-keyword">as</span> <span class="hljs-type">String</span>
+            }
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+        }
+
+        <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">textFieldShouldReturn</span><span class="hljs-params">(<span class="hljs-number">_</span> textField: UITextField)</span></span> -&gt; <span class="hljs-type">Bool</span> {
+            onCommit()
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+        }
+
+        <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">textFieldDidBeginEditing</span><span class="hljs-params">(<span class="hljs-number">_</span> textField: UITextField)</span></span> {
+            onEditingChanged(<span class="hljs-literal">true</span>)
+        }
+
+        <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">textFieldDidEndEditing</span><span class="hljs-params">(<span class="hljs-number">_</span> textField: UITextField, reason: UITextField.DidEndEditingReason)</span></span> {
+            onEditingChanged(<span class="hljs-literal">false</span>)
+        }
+
+    }
+}
+</code></pre><p>对<code>TextFieldWrapper</code>进行修改：</p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">TextFieldWrapper</span>: <span class="hljs-title">UIViewRepresentable</span> </span>{
+    <span class="hljs-keyword">init</span>(<span class="hljs-number">_</span> placeholder: <span class="hljs-type">String</span>,
+         text: <span class="hljs-type">Binding</span>&lt;<span class="hljs-type">String</span>&gt;,
+         color: <span class="hljs-type">UIColor</span> = .label,
+         font: <span class="hljs-type">UIFont</span> = .preferredFont(forTextStyle: .body),
+         clearButtonMode:<span class="hljs-type">UITextField</span>.<span class="hljs-type">ViewMode</span> = .whileEditing,
+         onCommit: @escaping () -&gt; <span class="hljs-type">Void</span> = {},
+         onEditingChanged: @escaping (<span class="hljs-type">Bool</span>) -&gt; <span class="hljs-type">Void</span> = { <span class="hljs-number">_</span> <span class="hljs-keyword">in</span> }
+    )
+    {
+        <span class="hljs-keyword">self</span>.placeholder = placeholder
+        <span class="hljs-keyword">self</span>._text = text
+        <span class="hljs-keyword">self</span>.color = color
+        <span class="hljs-keyword">self</span>.font = font
+        <span class="hljs-keyword">self</span>.clearButtonMode = clearButtonMode
+        <span class="hljs-keyword">self</span>.onCommit = onCommit
+        <span class="hljs-keyword">self</span>.onEditingChanged = onEditingChanged
+    }
+
+    <span class="hljs-keyword">let</span> placeholder: <span class="hljs-type">String</span>
+    @<span class="hljs-type">Binding</span> <span class="hljs-keyword">var</span> text: <span class="hljs-type">String</span>
+    <span class="hljs-keyword">let</span> color: <span class="hljs-type">UIColor</span>
+    <span class="hljs-keyword">let</span> font: <span class="hljs-type">UIFont</span>
+    <span class="hljs-keyword">let</span> clearButtonMode: <span class="hljs-type">UITextField</span>.<span class="hljs-type">ViewMode</span>
+    <span class="hljs-keyword">var</span> onCommit: () -&gt; <span class="hljs-type">Void</span>
+    <span class="hljs-keyword">var</span> onEditingChanged: (<span class="hljs-type">Bool</span>) -&gt; <span class="hljs-type">Void</span>
+
+    <span class="hljs-keyword">typealias</span> <span class="hljs-type">UIViewType</span> = <span class="hljs-type">UITextField</span>
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">makeUIView</span><span class="hljs-params">(context: Context)</span></span> -&gt; <span class="hljs-type">UIViewType</span> {
+        <span class="hljs-keyword">let</span> textfield = <span class="hljs-type">UITextField</span>()
+        textfield.setContentHuggingPriority(.defaultHigh, <span class="hljs-keyword">for</span>: .vertical)
+        textfield.setContentCompressionResistancePriority(.defaultLow, <span class="hljs-keyword">for</span>: .horizontal)
+        textfield.placeholder = placeholder
+        textfield.delegate = context.coordinator
+        <span class="hljs-keyword">return</span> textfield
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">updateUIView</span><span class="hljs-params">(<span class="hljs-number">_</span> uiView: UIViewType, context: Context)</span></span> {
+        <span class="hljs-type">DispatchQueue</span>.main.async {
+            uiView.text = text
+            uiView.textColor = color
+            uiView.font = font
+            uiView.clearButtonMode = clearButtonMode
+        }
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">makeCoordinator</span><span class="hljs-params">()</span></span> -&gt; <span class="hljs-type">Coordinator</span> {
+        .<span class="hljs-keyword">init</span>(text: $text,onCommit: onCommit,onEditingChanged: onEditingChanged)
+    }
+}
+</code></pre><p>修改<code>Demo</code>视图：</p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Demo</span>: <span class="hljs-title">View</span> </span>{
+    @<span class="hljs-type">State</span> <span class="hljs-keyword">var</span> name: <span class="hljs-type">String</span> = <span class="hljs-string">""</span>
+    @<span class="hljs-type">State</span> <span class="hljs-keyword">var</span> color: <span class="hljs-type">UIColor</span> = .red
+    <span class="hljs-keyword">var</span> body: some <span class="hljs-type">View</span> {
+        <span class="hljs-type">VStack</span> {
+            <span class="hljs-type">TextFieldWrapper</span>(<span class="hljs-string">"name:"</span>,
+                             text: $name,
+                             color: color,
+                             font: .preferredFont(forTextStyle: .title1),
+                             clearButtonMode: .whileEditing,
+                             onCommit: { <span class="hljs-built_in">print</span>(<span class="hljs-string">"return"</span>) },
+                             onEditingChanged: { editing <span class="hljs-keyword">in</span> <span class="hljs-built_in">print</span>(<span class="hljs-string">"isEditing \(editing)"</span>) })
+                .border(.blue)
+                .padding()
+            <span class="hljs-type">Text</span>(<span class="hljs-string">"name:\(name)"</span>)
+            <span class="hljs-type">Button</span>(<span class="hljs-string">"Random Name"</span>) {
+                name = <span class="hljs-type">String</span>(<span class="hljs-type">Int</span>.random(<span class="hljs-keyword">in</span>: <span class="hljs-number">0</span>...<span class="hljs-number">100</span>))
+            }
+            <span class="hljs-type">Button</span>(<span class="hljs-string">"Change Color"</span>) {
+                color = color == .red ? .label : .red
+            }
+        }
+    }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">TextFieldWrapperPreview</span>: <span class="hljs-title">PreviewProvider</span> </span>{
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">var</span> previews: some <span class="hljs-type">View</span> {
+        <span class="hljs-type">Demo</span>()
+    }
+}
+</code></pre><p>查看<a href="https://gist.github.com/5604d7bee11a44c2cbdcba12cfe1eda0.git">源代码</a></p><img src="https://cdn.fatbobman.com/textfieldwrapperdemo2-9639150-9639151.gif" alt="textfieldwrapperdemo2"/><h2>SwiftUI 风格化</h2><p>我们不仅实现了对字体、色彩的设定，而且增加了原生<code>TextField</code>没有的<code>clearButtonMode</code>设置。按照上述的方法，可以逐步为其添加更多的设置，让<code>TextFieldWrapper</code>获得更多的功能。</p><p><strong>代码好像有点不太对劲？！</strong></p><p>随着功能配置的增加，上面代码在使用中会愈发的不方便。如何实现类似原生<code>TextFiled</code>的链式调用呢？譬如：</p><pre data-language="swift"><code>        <span class="hljs-type">TextFieldWrapper</span>(<span class="hljs-string">"name:"</span>,text:$name)
+            .clearMode(.whileEditing)
+            .onCommit{<span class="hljs-built_in">print</span>(<span class="hljs-string">"commit"</span>)}
+            .foregroundColor(.red)
+            .font(.title)
+            .disabled(allowEdit)
+</code></pre><p>本节中，我们将重写配置代码，实现UIKit包装风格SwiftUI化。</p><blockquote><p>本节以版本1.0结束时的代码为基础。</p></blockquote><p>所谓的SwfitUI风格化，更确切地说应该是函数式编程的链式调用。将多个操作通过点号（.）链接在一起，增加可读性。作为将函数视为一等公民的Swift，实现上述的链式调用非常方便。不过有以下几点需要注意：</p><ul><li>如何改变View内的的值（View是结构）</li><li>如何处理返回的类型（保证调用链继续有效）</li><li>如何利用SwiftUI框架现有的数据并与之交互逻辑</li></ul><blockquote><p>为了更全面的演示，下面的例子，采用了不同的处理方式。在实际使用中，可根据实际需求选择适当的方案。</p></blockquote><h3>foregroundColor</h3><p>我们在SwiftUI中经常会用到<code>foregroundColor</code>来设置前景色，比如下面的代码：</p><pre data-language="swift"><code>            <span class="hljs-type">VStack</span>{
+                <span class="hljs-type">Text</span>(<span class="hljs-string">"hello world"</span>)
+                    .foregroundColor(.red)
+            }
+            .foregroundColor(.blue)
+</code></pre><p>不知道大家是否知道上面的两个<code>foregroundColor</code>有什么不同。</p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">Text</span></span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">foregroundColor</span><span class="hljs-params">(<span class="hljs-number">_</span> color: Color?)</span></span> -&gt; <span class="hljs-type">Text</span>
+}
+
+<span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">View</span></span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">foregroundColor</span><span class="hljs-params">(<span class="hljs-number">_</span> color: Color?)</span></span> -&gt; some <span class="hljs-type">View</span>
+}
+</code></pre><p>方法名一样，但作用的对象不同。<code>Text</code>只有在针对本身的<code>foregroundColor</code>没有设置的时候，才会尝试从当前环境中获取<code>foregroundColor</code>（针对View）的设定。原生的<code>TextFiled</code>没有针对本身的<code>foregroundColor</code>，不过我们目前也没有办法获取到SwiftUI针对View的<code>foregroundColor</code>设定的环境值（估计是），因此我们可以使用<code>Text</code>的方式，为<code>TextFieldWrapper</code>创建一个专属的<code>foregroundColor</code>。</p><p>为<code>TextFieldWrapper</code>添加一个变量</p><pre data-language="swift"><code><span class="hljs-keyword">private</span> <span class="hljs-keyword">var</span> color:<span class="hljs-type">UIColor</span> = .label
+</code></pre><p>在<code>updateUIView</code>中增加</p><pre data-language="swift"><code>uiView.textColor = color
+</code></pre><p>设置配置方法：</p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">TextFieldWrapper</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">foregroundColor</span><span class="hljs-params">(<span class="hljs-number">_</span> color:UIColor)</span></span> -&gt; <span class="hljs-type">Self</span>{
+        <span class="hljs-keyword">var</span> view = <span class="hljs-keyword">self</span>
+        view.color = color
+        <span class="hljs-keyword">return</span> view
+    }
+}
+</code></pre><p>查看<a href="https://gist.github.com/56f426b29a551c6490062f6daf3e342a.git">源代码</a></p><p>就这么简单。现在我们就可以使用<code>.foreground(.red)</code>来设置<code>TextFieldWrapper</code>的文字颜色了。</p><p>这种写法是为特定视图类型添加扩展的常用写法。有以下两个优点：</p><ul><li>使用<code>private</code>，无需暴露配置变量</li><li>仍返回特定类型的视图，有利于维持链式稳定</li></ul><p>我们几乎可以使用这种方式完成全部的链式扩展。如果扩展较多时，可以采用下面的方式，进一步清晰、简化代码：</p><pre data-language="swift"><code>    <span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">View</span> </span>{
+        <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">then</span><span class="hljs-params">(<span class="hljs-number">_</span> body: <span class="hljs-params">(<span class="hljs-keyword">inout</span> <span class="hljs-keyword">Self</span>)</span></span></span> -&gt; <span class="hljs-type">Void</span>) -&gt; <span class="hljs-type">Self</span> {
+            <span class="hljs-keyword">var</span> result = <span class="hljs-keyword">self</span>
+            body(&amp;result)
+            <span class="hljs-keyword">return</span> result
+        }
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">foregroundColor</span><span class="hljs-params">(<span class="hljs-number">_</span> color:UIColor)</span></span> -&gt; <span class="hljs-type">Self</span>{
+        then{
+            $<span class="hljs-number">0</span>.color = color
+        }
+    }
+</code></pre><h3>disabled</h3><p>SwiftUI针对View预设了非常多的扩展，其中有相当的部分都是通过环境值<code>EnvironmentValue</code>来逐级传递的。通过直接响应该环境值的变化，我们可以在不编写特定<code>TextFieldWrapper</code>扩展的情况下，即可为其增加配置功能。</p><p>例如，<code>View</code>有一个扩展<code>.disabled</code>，通常我们会用它来控制交互控件的可操作性（<code>.disable</code>对应的<code>EnviromentValue</code>为<code>isEnabled</code>）。</p><p>在<code>TextFieldWrapper</code>中添加：</p><pre data-language="swift"><code>@<span class="hljs-type">Environment</span>(\.isEnabled) <span class="hljs-keyword">var</span> isEnabled
+</code></pre><p>在<code>updateUIView</code>中添加：</p><pre data-language="swift"><code>uiView.isEnabled = isEnabled
+</code></pre><p>只需要两条语句，<code>TextFieldWrapper</code>便可以直接使用<code>View</code>的<code>disable</code>扩展来控制其是否可以录入数据。</p><p>还记得上文中介绍的<code>context</code>吗？我们可以直接通过<code>context</code>获取上下文中的环境值。因此支持原生的<code>View</code>扩展将一步简化。</p><p><strong>无需</strong>添加<code>@Environemnt</code>，只需要在<code>updateUIView</code>中添加一条语句既可：</p><pre data-language="swift"><code>uiView.isEnabled = context.environment.isEnabled
+</code></pre><p>查看<a href="https://gist.github.com/e749322c1add66b2f9b8732c62463c89.git">源代码</a></p><blockquote><p>在写本文时，在iOS15 beta下运行该代码，会出现<code>AttributeGraph: cycle detected through attribute</code>的警告，这个应该是iOS15的Bug，请自行忽略。</p></blockquote><p>通过环境值来设置是一种十分便捷的方式，唯一需要注意的是，它会改变链式结构的返回值。因此，在该节点后的链式方法只能是针对<code>View</code>设置的，像之前我们创建的<code>foregroundColor</code>就只能放置在这个节点之前。</p><h3>font</h3><p>我们也可以自己创建环境值来实现对<code>TextFieldWrapper</code>的配置。比如，SwiftUI提供的<code>font</code>环境值的类型为<code>Font</code>，本例中我们将创建一个针对<code>UIFont</code>的环境值设定。</p><p>创建环境值<code>myFont</code>：</p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">MyFontKey</span>:<span class="hljs-title">EnvironmentKey</span></span>{
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">var</span> defaultValue: <span class="hljs-type">UIFont?</span>
+}
+
+<span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">EnvironmentValues</span></span>{
+    <span class="hljs-keyword">var</span> myFont:<span class="hljs-type">UIFont?</span>{
+        <span class="hljs-keyword">get</span>{<span class="hljs-keyword">self</span>[<span class="hljs-type">MyFontKey</span>.<span class="hljs-keyword">self</span>]}
+        <span class="hljs-keyword">set</span>{<span class="hljs-keyword">self</span>[<span class="hljs-type">MyFontKey</span>.<span class="hljs-keyword">self</span>] = newValue}
+    }
+}
+</code></pre><p>在<code>updateUIVIew</code>中添加：</p><pre data-language="swift"><code>uiView.font = context.environment.myFont
+</code></pre><p><code>font</code>方法可以有多种写法：</p><ul><li>同<code>forgroundColor</code>一样的对<code>TextFieldWrapper</code>进行扩展</li></ul><pre data-language="swift"><code>    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">font</span><span class="hljs-params">(<span class="hljs-number">_</span> font:UIFont)</span></span> -&gt; some <span class="hljs-type">View</span>{
+        environment(\.myFont, font)
+    }
+</code></pre><ul><li>对<code>View</code>进行扩展</li></ul><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">View</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">font</span><span class="hljs-params">(<span class="hljs-number">_</span> font:UIFont?)</span></span> -&gt; some <span class="hljs-type">View</span>{
+        environment(\.myFont, font)
+    }
+}
+</code></pre><p>两种方式的链式节点的返回值都不再是<code>TextFieldWrapper</code>，后面应该接针对<code>View</code>的扩展。</p><p>查看<a href="https://gist.github.com/c9602681774540dbca929e21c99827c7.git">源代码</a></p><h3>onCommit</h3><p>在版本2的代码中，我们为<code>TextFieldWrapper</code>添加了<code>onCommit</code>设置，在用户输入<code>return</code>时会触发该段代码。本例中，我们将为<code>onCommit</code>添加一个可修改版本，且不需要通过协调器构造函数传递。</p><p>本例中的技巧在之前都出现过，唯一需要提醒的是在<code>updateUIView</code>中，可以通过</p><pre data-language="swift"><code>context.coordinator.onCommit = onCommit
+context.coordinator.onEditingChanged = onEditingChanged
+</code></pre><p>改变协调器内的变量。这是一种非常有效的在SwiftUI和协调器之间进行沟通的手段。</p><img src="https://cdn.fatbobman.com/image-20210823091321562.png" alt="image-20210823091321562"/><p>查看<a href="https://gist.github.com/716b08616fa6ecbd28589ac94b635706.git">源代码</a></p><h2>避免滥用UIKit包装</h2><p>尽管在SwiftUI中使用UIKit或AppKit并不麻烦，但是当你打算包装一个UIKit控件时（尤其是已有SwiftUI官方原生解决方案），请务必三思。</p><p>苹果对SwiftUI的野心非常大，不仅为开发者带来了声明+响应式的编程体验，同时苹果对SwiftUI在跨设备、跨平台上（苹果生态）也做出了巨大的投入了。</p><p>苹果为每一个原生控件（比如<code>TextField</code>），针对不同的平台（iOS、macOS、tvOS、watchOS）做了大量的优化。这是其他任何人都很难自己完成的。因此，在你打算为了某个特定功能重新包装一个系统控件时，请先考虑以下几点。</p><h3>官方的原生方案</h3><p>SwiftUI这几年发展的很快，每个版本都增加了不少新功能，或许你需要的功能已经被添加。苹果最近两年对SwiftUI的文档支持提高了不少，但还没到令人满意的地步。作为SwiftUI的开发者，我推荐大家最好购买一份javier开发的<a href="https://swiftui-lab.com/companion/">A Companion for SwiftUI</a>。该app提供了远比官方丰富、清晰的SwiftUI API指南。使用该app你会发现原来SwiftUI提供了如此多的功能。</p><h3>用原生方法组合解决</h3><p>在SwiftUI 3.0版本之前，SwiftUI并不提供<code>searchbar</code>，此时会出现两种路线，一种是自己包装一个UIKit的<code>UISearchbar</code>，另外就是通过使用SwiftUI的原生方法来组合一个<code>searchbar</code>。在多数情况下，两种方式都能取得满意的效果。不过用原生方法创建的<code>searchbar</code>在构图上更灵活，同时支持使用<code>LocalizedString</code>作为placeholder。我个人会更倾向于使用组合的方案。</p><blockquote><p>SwiftUI中很多数据类型官方并不提供转换到其他框架类型的方案。比如<code>Color</code>、<code>Font</code>。不过这两个多写点代码还是可以转换的。<code>LocalizedString</code>目前只能通过非正常的手段来转换（使用<code>Mirror</code>）,很难保证可以长久使用该转换方式。</p></blockquote><h3>Introspect for SwiftUI</h3><p>在版本2代码中，我们为<code>TextFieldWrapper</code>添加了<code>clearButtonMode</code>的设置，也是我们唯一增加的目前<code>TextField</code>尚不支持的设定。不过，如果我们仅仅是为了添加这个功能就自己包装<code>UITextField</code>那就大错特错了。</p><p><a href="https://github.com/siteline/SwiftUI-Introspect">Introspect</a>通过自省的方法来尝试查找原生控件背后包装的UIKit（或AppKit）组件。目前官方尚未在SwiftUI中开放的功能多数可以通过此扩展库提供的方法来解决。</p><p>比如：下面的代码将为原生的<code>TextField</code>添加<code>clearButtonMode</code>设置</p><pre data-language="swift"><code>        <span class="hljs-keyword">import</span> Introspect
+        <span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">TextField</span> </span>{
+            <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">clearButtonMode</span><span class="hljs-params">(<span class="hljs-number">_</span> mode:UITextField.ViewMode)</span></span> -&gt; some <span class="hljs-type">View</span>{
+                introspectTextField{ tf <span class="hljs-keyword">in</span>
+                    tf.clearButtonMode = mode
+                }
+            }
+        }
+
+        <span class="hljs-type">TextField</span>(<span class="hljs-string">"name:"</span>,text:$name)
+           .clearButtonMode(.whileEditing)
+</code></pre><h2>总结</h2><p>SwiftUI与UIKit和AppKit之间的互操作性为开发者提供了强大的灵活性。学会使用很容易，但想用好确实有一定的难度。在UIKit视图和SwiftUI视图之间共享可变状态和复杂的交互通常相当复杂，需要我们在这两种框架之间构建各种桥接层。</p><p>本文并没有涉及包装具有复杂逻辑代码的协调器同SwiftUI或Redux模式沟通交互的话题，里面包含的内容过多，或许需要通过另一篇文章来探讨。</p><p>希望本文能对你学习和了解如何将UIKit组件导入SwiftUI提供一点帮助。</p>]]></content:encoded></item><item><guid isPermaLink="true">https://www.fatbobman.com/posts/blogUpgrade</guid><title>博客更新记</title><description>上个周末，我将博客进行了一番装修升级。我对本次更新的效果比较满意，并非博客变得多好，而是通过此次更新，让我对当今的Web技术有了一定的了解。同时在本次更新过程中，无论是调试Swift代码、CSS代码还是Markdown文档，都是在Visual Studio Code中进行的，这也让我对Visual Studio Code有了进一步的认识和掌握。</description><link>https://www.fatbobman.com/posts/blogUpgrade</link><pubDate>Tue, 17 Aug 2021 18:30:00 +0800</pubDate><content:encoded><![CDATA[<p>上个周末，我将本博客进行了一番装修升级。我对本次更新的效果比较满意，并非博客变得多好，而是通过此次更新，让我对当今的Web技术有了一定的了解。同时在本次更新过程中，无论是调试Swift代码、CSS代码还是Markdown文档，都是在Visual Studio Code中进行的，这也让我对Visual Studio Code有了进一步的认识和掌握。</p><p>通过本文将这几天更新过程记录下来。</p><blockquote><p>作为一个使用CSS、javascript仅几天的人来说，本文的内容可能并不正确或相当偏颇，望见谅。</p></blockquote><h2>本次更新目标</h2><p>在完全停止写博客和写代码超过15年后，2020年我重新创建了自己的个人博客。目的同之前的博客一样，记录并分享自己的编程学习心得、体会、经验和教训。</p><p>本博客的主题是记录有关Swift学习方面的内容，因此在使用了一段时间的WordPress、Hexo后，我找到了一个由Swift编写的静态站点生成器<a href="https://github.com/JohnSundell/Publish">Publish</a>，并用它完成了博客的第一次重大调整。</p><blockquote><p>如果对Publish感兴趣，可以阅读我写的几篇Publsih的介绍文章。用<a href="https://www.fatbobman.com/posts/publish-1/">Publish创建博客——入门</a>，<a href="https://www.fatbobman.com/posts/publish-2/">主题开发</a>，<a href="https://www.fatbobman.com/posts/publish-3/">插件开发</a>。</p></blockquote><p>当时我对Swift的掌握很一般（现在也很一般，不过比当时强些），因此上次博客的更新过程跌跌绊绊，很多预期的功能并没有实现。随着博文的增多，觉得有必要对博客进行再度更新了。</p><p>本次更有以下几个主要目标：</p><ul><li>添加评论功能</li><li>调整版式，提高对移动设备的适配</li><li>增加TOC（文章目录），方便长文章的阅读</li></ul><p>尽管最终的结果基本达到了预期，但我还是将本次更新的难度想的简单了。</p><h2>今时不同往日</h2><p>从2005年开始我就没有多余的精力投入编程这个业余爱好了。在此之前我自认对Web技术还有一定的了解，使用过HTML、PHP、Python（用了一段时间的Django），不过真当我进行此次更新时，才发现时代完全变了。</p><p>Publish虽然可以帮助我完成内容管理、Markdown转换、大的布局构建等工作，但如果没有CSS、Javascript的基础，想实现复杂版式、动态功能几乎寸步难行。</p><p>本着临时抱佛脚的态度，用了点时间大致接触了点CSS、Javascript的知识。很短的时间后我就清除地认识到，它们不是我短时间可以掌握的——已经发展的太庞大了。</p><p>CSS和Javascript就像两个雪球一样，随着互联网的高速发展极速膨胀。仅从我的初步观感来看，它们的技术基础已经不适应当今的需要了。有什么需求，就添加什么功能，难度不算高，但内容非常多，完全是两个大杂烩。</p><p>好在，如今网络上分享知识的朋友越来越多，多花点时间查找还是能找到所需的资料和解决方案。</p><h2>添加评论</h2><p>这个是最先解决也是最容易的。</p><p>作为静态站点，评论系统选择不是特别多。排除掉国内外商业机构提供的静态评论系统外，最终选择了基于Github Issue的解决方案。</p><p>一开始试用了<a href="https://github.com/imsun/gitment">gitment</a>，不过总是出现授权错误，无法加载评论区代码，最后采用了<a href="https://github.com/gitalk/gitalk">gitalk</a>，几天的使用下来，感觉还是不错的。唯一遗憾的是，官方的js没有汉化方案，有时间再调整吧。</p><p>gittalk的使用非常简单，在GitHub的OAuth Apps创建了ClientID后，经过简单配置就可以将其添加到博客代码中。</p><p>对于像gittalk这样只需要少量js代码的应用来说，在Publish中，可以直接使用.raw将其包装进Swift代码中。例如：</p><pre data-language="swift"><code>           .script(
                 .raw(
                     <span class="hljs-string">"""
                     $(document).ready(function(){
@@ -405,8 +654,8 @@ userDefaults.<span class="hljs-keyword">set</span>(<span class="hljs-string">"he
 <span class="hljs-keyword">init</span>(inMemory: <span class="hljs-type">Bool</span> = <span class="hljs-literal">false</span>) {
   ....
   <span class="hljs-comment">// 标记当前上下文的author名称</span>
-  container.viewContext.transactionAuthor = <span class="hljs-type">AppActor</span>.mainApp.rawValue
-	persistentHistoryTrackingManager = <span class="hljs-type">PersistentHistoryTrackingManager</span>(
+    container.viewContext.transactionAuthor = <span class="hljs-type">AppActor</span>.mainApp.rawValue
+    persistentHistoryTrackingManager = <span class="hljs-type">PersistentHistoryTrackingManager</span>(
                         container: container,
                         currentActor: <span class="hljs-type">AppActor</span>.mainApp <span class="hljs-comment">//当前的成员</span>
    )
@@ -604,7 +853,7 @@ backgroundContext.name = <span class="hljs-string">"batchContext"</span>
 }
 </code></pre><p>之所以在我在fetcher和cleaner中设置了如此详尽的predicate，是因为我自己是在<code>PersistentCloudKitContainer</code>中使用Persistent History Tracking功能的。Cloudkit同步会产生大量的Transaction，因此需要更精准的对操作对象进行过滤。</p><p><strong>CoreData会自动处理和清除CloudKit同步产生的Transaction，但是如果我们不小心删除了尚没被CoreData处理的CloudKit Transaction，可能会导致数据库同步错误，CoreData会清空当前的全部数据，尝试从远程重新加载数据。</strong></p><p><strong>因此，如果你是在<code>PersistentCloudKitContainer上</code>使用Persistent History Tracking，请务必仅对App Group成员产生的Transaction做清除操作。</strong></p><p>如果仅是在<code>PersistentContainer</code>上使用Persistent History Tracking，fetcher和cleaner中都可以不用过滤的如此彻底。</p><p>在创建了<code>PersistentHistoryCleaner</code>后，我们可以根据自己的实际情况选择调用时机。</p><p>如果采用<code>PersistentContainer</code>，可以尝试比较积极的清除策略。在<code>PersistentHistoryTrackingManager</code>中添加如下代码：</p><pre data-language="swift"><code>    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">processor</span><span class="hljs-params">()</span></span> {
         backgroundContext.performAndWait {
-					...
+            ...
         }
 
         <span class="hljs-keyword">let</span> cleaner = <span class="hljs-type">PersistentHistoryCleaner</span>(container: container)
