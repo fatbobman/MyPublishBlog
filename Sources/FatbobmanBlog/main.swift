@@ -55,7 +55,7 @@ try FatbobmanBlog().publish(
         .generateHTML(withTheme: .fatTheme),
         //        .installPlugin(.rssSetting(including:[.posts,.project])),
         .makeSearchIndex(includeCode: false),
-        .generateRSSFeed(
+        .generateShortRSSFeed(
             including: [.posts],
             itemPredicate: nil
         ),

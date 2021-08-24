@@ -130,7 +130,6 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                             ),
                             .leftContext(
                                 .shareContainer(title: item.title, url: context.site.url.appendingPathComponent(item.path.string).absoluteString),
-                                // .twitterIntent(title: item.title, url: context.site.url.appendingPathComponent(item.path.string).absoluteString),
                                 .article(
                                     .div(.h1(.text(item.title))),
                                     .div(
@@ -138,6 +137,7 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                                         .div(.class("content"), .contentBody(item.body))
                                     )
                                 ),
+                                // .shareContainerForMobile(title: item.title, url: context.site.url.appendingPathComponent(item.path.string).absoluteString),
                                 .itemNavigator(previousItem: previous, nextItem: next),
                                 .gitment(topicID: item.title)
                             ),
