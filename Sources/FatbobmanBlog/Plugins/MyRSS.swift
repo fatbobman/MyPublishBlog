@@ -183,7 +183,7 @@ extension Node where Context: RSSItemContext {
             html.replaceSubrange(range, with: prefix + url.absoluteString + "\"")
         }
 
-        html.append(contentsOf: "<br><br><h3><a href=\(baseURL)/\(item.path)> 点击访问肘子的Swift记事本查看全文</a></h3>")
+        html.append(contentsOf: "<br><br><h3><a href=\(baseURL)/\(item.path)>查看全文</a></h3>")
 
         return content(html)
     }
