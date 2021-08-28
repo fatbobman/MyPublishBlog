@@ -55,7 +55,7 @@ title: Core Data with CloudKit (一) —— 基础
 
 `CloudKit`的数据类型、内在逻辑和`Core Data`有很大的不同，需要做一些妥协或处理才能将两者的数据对象进行转换。事实上，当`CloudKit`一经推出，开发者就强烈希望两者之间能够进行便捷的转换。在推出`Core Data with CloudKit`之前，已经有第三方的开发者提供了将`Core Data`或其他数据的对象（比如`realm`）同步到`CloudKit`的解决方案，这些方案中的大多数目前仍在提供支持。
 
-依赖于之前推出的[持久化历史追踪](https://www.fatbobman.com/posts/persistentHistoryTracking/)功能，苹果终于在2019年提供了自己的解决方案`Core Data with CloudKit`。
+依赖于之前推出的[持久化历史追踪](/posts/persistentHistoryTracking/)功能，苹果终于在2019年提供了自己的解决方案`Core Data with CloudKit`。
 
 ## Core Data对象 vs CloudKit对象 ##
 
@@ -69,7 +69,7 @@ title: Core Data with CloudKit (一) —— 基础
 
 * **NSPersistentStore vs CKDatabase/CkRecordZone**
 
-  `NSPersistentStore`是所有 `Core Data` 持久存储的抽象基类，支持四种持久化的类型（`SQLite`、`Binary`、`XML` 和 `In-Memory`）。在一个`NSPersistentContainer`中，通过声明多个的`NSPersistentStoreDescription`，可以持有多个`NSPersistentStore实例`（可以是不同的类型）。`NSPersistentStore`没有用户鉴权的概念，但可以设置只读或读写两种模式。由于`Core Data with CloudKit`需要[持久化历史追踪](https://www.fatbobman.com/posts/persistentHistoryTracking/)的支持，因此只能同步将`SQLite`作为存储类型的`NSPersistentStore`，在设备上，该`NSPersistentStore的实例`将指向一个`SQLite数据库文件`。
+  `NSPersistentStore`是所有 `Core Data` 持久存储的抽象基类，支持四种持久化的类型（`SQLite`、`Binary`、`XML` 和 `In-Memory`）。在一个`NSPersistentContainer`中，通过声明多个的`NSPersistentStoreDescription`，可以持有多个`NSPersistentStore实例`（可以是不同的类型）。`NSPersistentStore`没有用户鉴权的概念，但可以设置只读或读写两种模式。由于`Core Data with CloudKit`需要[持久化历史追踪](/posts/persistentHistoryTracking/)的支持，因此只能同步将`SQLite`作为存储类型的`NSPersistentStore`，在设备上，该`NSPersistentStore的实例`将指向一个`SQLite数据库文件`。
 
   在`CloudKit`上，结构化的数据存储只有一种类型，但采用了**两个维度**对数据进行了区分。
 

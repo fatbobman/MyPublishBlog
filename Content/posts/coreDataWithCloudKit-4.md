@@ -30,13 +30,13 @@ title: Core Data with CloudKit（四）—— 调试、测试、迁移及其他
 
 * **持久化历史跟踪信息**
 
-  `NSPersistentCloudKitContainer`使用持久化历史跟踪来管理导入导出事务，在数据同步信息的左右经常会伴随包含`NSPersistentHistoryToken`之类的提示。另外类似`Ignoring remote change notification because the exporter has already caught up to this transaction: 11 / 11 - <NSSQLCore: 0x7ff73e4053b0>`的信息也是持久化历史跟踪产生的，容易让人误以为总有事务没有处理。关于`Persistent History Tracking`可以阅读我另一篇文章[在CoreData中使用持久化历史跟踪](https://www.fatbobman.com/posts/persistentHistoryTracking/)。
+  `NSPersistentCloudKitContainer`使用持久化历史跟踪来管理导入导出事务，在数据同步信息的左右经常会伴随包含`NSPersistentHistoryToken`之类的提示。另外类似`Ignoring remote change notification because the exporter has already caught up to this transaction: 11 / 11 - <NSSQLCore: 0x7ff73e4053b0>`的信息也是持久化历史跟踪产生的，容易让人误以为总有事务没有处理。关于`Persistent History Tracking`可以阅读我另一篇文章[在CoreData中使用持久化历史跟踪](/posts/persistentHistoryTracking/)。
 
 ### 可能的不正常情况的信息 ###
 
 * **初始化错误**
 
-  比较常见的有，无法创建或读取`sqlite`文件产生的本地`url`错误以及`CKContainerID`权限问题。如果`url`指向`appGroupContainer`，一定要确认`appGroupID`正确，且`app`已获得`group`权限。`CKContainerID`权限问题通常使用[之前文章](https://www.fatbobman.com/posts/coreDataWithCloudKit-2/)中提到的重置`Certificates,Identifiers&Profiles`中的配置来解决。
+  比较常见的有，无法创建或读取`sqlite`文件产生的本地`url`错误以及`CKContainerID`权限问题。如果`url`指向`appGroupContainer`，一定要确认`appGroupID`正确，且`app`已获得`group`权限。`CKContainerID`权限问题通常使用[之前文章](/posts/coreDataWithCloudKit-2/)中提到的重置`Certificates,Identifiers&Profiles`中的配置来解决。
 
 * **模型迁移错误**
 
@@ -192,7 +192,7 @@ var body:some View{
 
 * **确认数据集是否一定需要被同步**
 
-  如无需同步可以考虑采用[同步本地数据库到iCloud私有数据库](https://www.fatbobman.com/posts/coreDataWithCloudKit-2/)一文中，有选择的同步数据解决方案。
+  如无需同步可以考虑采用[同步本地数据库到iCloud私有数据库](/posts/coreDataWithCloudKit-2/)一文中，有选择的同步数据解决方案。
 
 * **如数据集必须要同步**
 
@@ -246,7 +246,7 @@ func migrateStore() {
 
 ## 更新数据模型 ##
 
-在[CloudKit仪表台](https://www.fatbobman.com/posts/coreDataWithCloudKit-3/)一文，我们已经探讨过`CloudKit`的两种环境设置。一旦将`Schema`部署到生产环境，开发者便无法对记录类型和字段进行重命名或者删除。**必须仔细规划你的应用程序，保证其在对数据模型进行更新时仍做到向前兼容**。
+在[CloudKit仪表台](/posts/coreDataWithCloudKit-3/)一文，我们已经探讨过`CloudKit`的两种环境设置。一旦将`Schema`部署到生产环境，开发者便无法对记录类型和字段进行重命名或者删除。**必须仔细规划你的应用程序，保证其在对数据模型进行更新时仍做到向前兼容**。
 
 不可以随心所欲地修改数据模型，对实体、属性尽量做到：只加、不减、不改。
 

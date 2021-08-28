@@ -41,7 +41,7 @@ title: ObservableObject研究——想说爱你不容易
 
 后两项是利用SwiftUI的特性，也可以不采用，完全采用单向数据流的方式
 
-基于以上方法，在SwiftUI中进行单一数据源开发是非常便利的，在多数情况下执行效率、响应速度都是有基本保证的。不过就像我在上一篇文章 [@State研究](https://www.fatbobman.com/posts/swiftUI-state/) 中提到过的，**当随着动态数据量的增大、与Store保有依赖关系的View数量提高到一定程度后，整个app的响应效率便会急剧恶化。**
+基于以上方法，在SwiftUI中进行单一数据源开发是非常便利的，在多数情况下执行效率、响应速度都是有基本保证的。不过就像我在上一篇文章 [@State研究](/posts/swiftUI-state/) 中提到过的，**当随着动态数据量的增大、与Store保有依赖关系的View数量提高到一定程度后，整个app的响应效率便会急剧恶化。**
 
 恶化的原因主要有以下几点：
 
@@ -53,7 +53,7 @@ title: ObservableObject研究——想说爱你不容易
 
 ## 对于遵循ObservableObject对象的依赖注入时机 ##
 
-在 [@State研究](https://www.fatbobman.com/posts/swiftUI-state/) 中的 **什么时候建立的依赖？**章节中，我们通过了一段代码进行过@State和@ObservedObject对于依赖注入时机的推测。结果就是通过使用@ObservedObject或@EnvironmentObject进行的依赖注入，编译器没有办法根据当前View的具体内容来进行更精确的判断，只要你的View中进行了声明，依赖关系变建立了。
+在 [@State研究](/posts/swiftUI-state/) 中的 **什么时候建立的依赖？**章节中，我们通过了一段代码进行过@State和@ObservedObject对于依赖注入时机的推测。结果就是通过使用@ObservedObject或@EnvironmentObject进行的依赖注入，编译器没有办法根据当前View的具体内容来进行更精确的判断，只要你的View中进行了声明，依赖关系变建立了。
 
 ```swift
 struct MainView: View {
@@ -196,7 +196,7 @@ struct OtherView:View{
 在区域范围内来创建被维持一个小的状态，主要可以使用以下几种手段：
 
 * 善用@State
-  在 [@State研究](https://www.fatbobman.com/posts/swiftUI-state/) 这篇文章中,我们讨论了SwiftUI对于@State的优化问题。如果设计合理，我们可以将无关大局的信息，保存在局部View。同时通过对@State的二度包装，我们同样可以完成所需要的副作用。该View的子View如果使用了@Binding，也只对局部的View树产生影响。
+  在 [@State研究](/posts/swiftUI-state/) 这篇文章中,我们讨论了SwiftUI对于@State的优化问题。如果设计合理，我们可以将无关大局的信息，保存在局部View。同时通过对@State的二度包装，我们同样可以完成所需要的副作用。该View的子View如果使用了@Binding，也只对局部的View树产生影响。
 
   另外也可以将常用的View修饰通过ViewModifier进行包装。ViewModifier可以维持自己的@State，可以自行管理状态。
 
@@ -413,7 +413,7 @@ extension CurrentValueSubject{
 TextField("studentName:",text: store.state.student.binding(for: \.name))
 ```
 
-7、对于更复杂的State元素设计的Binding支持。如果你却有必要在State中创建以上Binding方式无法支持的格式可以通过使用我另一篇文章中 [@State研究](https://www.fatbobman.com/posts/swiftUI-state/)最后创建的增强型@MyState来完成特殊的需要，你对本地的 studentAge做的任何改动都将自动的反馈到State中
+7、对于更复杂的State元素设计的Binding支持。如果你却有必要在State中创建以上Binding方式无法支持的格式可以通过使用我另一篇文章中 [@State研究](/posts/swiftUI-state/)最后创建的增强型@MyState来完成特殊的需要，你对本地的 studentAge做的任何改动都将自动的反馈到State中
 
 ```swift
 struct ContentView:View{

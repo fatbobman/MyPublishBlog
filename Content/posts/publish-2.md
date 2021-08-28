@@ -205,7 +205,7 @@ Plot还支持生成RSS feeds，podcasting，site maps等。Publish中对应的�
 
 ## Publish 主题 ##
 
-阅读下面内容前，最好已阅读[用Publish创建博客（一）——入门](https://www.fatbobman.com/posts/publish-1/)，。
+阅读下面内容前，最好已阅读[用Publish创建博客（一）——入门](/posts/publish-1/)，。
 
 文中提到范例模板可以在[GIthub](https://github.com/fatbobman/PublishThemeForFatbobmanBlog)处下载。
 
@@ -383,7 +383,7 @@ func makeSectionHTML(for section: Section<Site>,
 
 一开始完全重建所有的主题代码是不太现实的，所以我推荐先从Publish自带的默认主题`foundation`入手。
 
-完成[Publish创建博客（一）——入门](https://www.fatbobman.com/posts/publish-1/)中的安装工作
+完成[Publish创建博客（一）——入门](/posts/publish-1/)中的安装工作
 
 修改`main.swift`
 

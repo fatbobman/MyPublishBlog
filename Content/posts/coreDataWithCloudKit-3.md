@@ -34,7 +34,7 @@ title: Core Data with CloudKit（三）——CloudKit仪表台
 
 ![image-20210808163319683](https://cdn.fatbobman.com/image-20210808163319683-8411600.png)
 
-在[Core Data with CloudKit (一) —— 基础](https://www.fatbobman.com/posts/coreDataWithCloudKit-1/)中已经对`CKContainer`、`CKDababase`、`CKZone`、`CKSubscription`、`CKRecord`等基础对象做了简单的说明，本文还将介绍`CloudKit`的其他一些对象和功能。
+在[Core Data with CloudKit (一) —— 基础](/posts/coreDataWithCloudKit-1/)中已经对`CKContainer`、`CKDababase`、`CKZone`、`CKSubscription`、`CKRecord`等基础对象做了简单的说明，本文还将介绍`CloudKit`的其他一些对象和功能。
 
 ### 环境 ###
 
@@ -122,7 +122,7 @@ title: Core Data with CloudKit（三）——CloudKit仪表台
 
 ![image-20210809073043092](https://cdn.fatbobman.com/image-20210809073043092-8465444.png)
 
-在[基础篇](https://www.fatbobman.com/posts/coreDataWithCloudKit-1/)中曾提到`Entity`相较`Record Type`拥有更多的配置信息，但`Record Type`也有一个`Enitity`没有的特性——元数据。
+在[基础篇](/posts/coreDataWithCloudKit-1/)中曾提到`Entity`相较`Record Type`拥有更多的配置信息，但`Record Type`也有一个`Enitity`没有的特性——元数据。
 
 ![image-20210809075124786](https://cdn.fatbobman.com/image-20210809075124786-8466685.png)
 
@@ -160,7 +160,7 @@ title: Core Data with CloudKit（三）——CloudKit仪表台
 
 ![image-20210809104402659](https://cdn.fatbobman.com/image-20210809104402659-8477043.png)
 
-> 上图是我们在[同步本地数据库到iCloud私有数据库](https://www.fatbobman.com/posts/coreDataWithCloudKit-2/)中模版项目`Item`在`CloudKit`对应的`Record Type`。`CloudKit`会自动为托管对象实体的每个属性创字段，将属性名称映射到了具有`CD_[attribute.name]`键名的字段。该字段的类型在`Core Data`和`CloudKit`之间可能也会有所不同。`Record Type`名称为`CD_[entity]`。一切的操作都是由系统自动完成的，我们无需干预。另外，还会为`Enitity`生成一个`CD_entityName`的字段，内容为`Entity`的类映射名。
+> 上图是我们在[同步本地数据库到iCloud私有数据库](/posts/coreDataWithCloudKit-2/)中模版项目`Item`在`CloudKit`对应的`Record Type`。`CloudKit`会自动为托管对象实体的每个属性创字段，将属性名称映射到了具有`CD_[attribute.name]`键名的字段。该字段的类型在`Core Data`和`CloudKit`之间可能也会有所不同。`Record Type`名称为`CD_[entity]`。一切的操作都是由系统自动完成的，我们无需干预。另外，还会为`Enitity`生成一个`CD_entityName`的字段，内容为`Entity`的类映射名。
 
 这些以`CD_`为前缀的字符串，在数据同步过程中将不断出现在控制台上，了解了它的构成对调试代码有一定帮助。
 

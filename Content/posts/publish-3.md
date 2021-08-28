@@ -4,13 +4,13 @@ description: 我们不仅可以利用Publish内置的接口来开发插件进行
 tags: Swift,Publish
 title: 用Publish创建博客（三）——插件开发
 ---
-> 我们不仅可以利用Publish内置的接口来开发插件进行扩展，同时还可以使用Publish套件中其他的优秀库（Ink、Plot、Sweep、Files、ShellOut等）来完成更多的创意。本文将通过几个实例（添加标签、增加属性、用代码生成内容、全文搜索、命令行部署）在展示不同扩展手段的同时向大家介绍Publish套件中其他的优秀成员。在阅读本文前，最好能先阅读[用Publish创建博客（一）——入门](https://www.fatbobman.com/posts/publish-1/)、[用Publish创建博客（二）——主题开发](https://www.fatbobman.com/posts/publish-2/)。对Publish有个基本了解。本文篇幅较长，你可以选择自己感兴趣的实战内容阅读。
+> 我们不仅可以利用Publish内置的接口来开发插件进行扩展，同时还可以使用Publish套件中其他的优秀库（Ink、Plot、Sweep、Files、ShellOut等）来完成更多的创意。本文将通过几个实例（添加标签、增加属性、用代码生成内容、全文搜索、命令行部署）在展示不同扩展手段的同时向大家介绍Publish套件中其他的优秀成员。在阅读本文前，最好能先阅读[用Publish创建博客（一）——入门](/posts/publish-1/)、[用Publish创建博客（二）——主题开发](/posts/publish-2/)。对Publish有个基本了解。本文篇幅较长，你可以选择自己感兴趣的实战内容阅读。
 
 ## 基础 ##
 
 ### PublishingContext ####
 
-在[用Publish创建博客（一）——入门](https://www.fatbobman.com/posts/publish-1/)中我们介绍过Publish有两个Content概念。其中`PublishingContext`作为根容器包含了你网站项目的全部信息（`Site`、`Section`、`Item`、`Page`等）。在对Publish进行的大多数扩展开发时，都需要和`PublishingContext`打交道。不仅通过它来获取数据，而且如果要对现有数据进行改动或者添加新的`Item`、`Page`时(在`Content`中采用不创建`markdown`文件的方式)也必须要调用其提供的方法。比如`mutateAllSections`、`addItem`等。
+在[用Publish创建博客（一）——入门](/posts/publish-1/)中我们介绍过Publish有两个Content概念。其中`PublishingContext`作为根容器包含了你网站项目的全部信息（`Site`、`Section`、`Item`、`Page`等）。在对Publish进行的大多数扩展开发时，都需要和`PublishingContext`打交道。不仅通过它来获取数据，而且如果要对现有数据进行改动或者添加新的`Item`、`Page`时(在`Content`中采用不创建`markdown`文件的方式)也必须要调用其提供的方法。比如`mutateAllSections`、`addItem`等。
 
 ### Pipeline中的顺序 ###
 
@@ -99,7 +99,7 @@ extension PublishingStep where Site == Myblog {
 
 ### 等效的Plugin ###
 
-在[用Publish创建博客（一）——入门](https://www.fatbobman.com/posts/publish-1/)中提过`Step`和`Plugin`在作用上是等效的。上面的代码用`Plugin`的方式编写是下面的样子：
+在[用Publish创建博客（一）——入门](/posts/publish-1/)中提过`Step`和`Plugin`在作用上是等效的。上面的代码用`Plugin`的方式编写是下面的样子：
 
 ```swift
 extension Plugin where Site == Myblog{
@@ -277,7 +277,7 @@ extension Plugin{
 
 ## 实战3：将文章按月份汇总 ##
 
-在[Publish创建博客（二）——主题开发](https://www.fatbobman.com/posts/publish-2/)中我们讨论过目前Publish的主题支持的六种页面，其中有对`Item`以及`tag`的汇总页面。本例演示一下如何用代码创建主题不支持的其他页面类型。
+在[Publish创建博客（二）——主题开发](/posts/publish-2/)中我们讨论过目前Publish的主题支持的六种页面，其中有对`Item`以及`tag`的汇总页面。本例演示一下如何用代码创建主题不支持的其他页面类型。
 
 本例结束时，我们将让Publish能够自动生成如下的页面：
 
@@ -485,7 +485,7 @@ extension Node where Context == HTML.BodyContext {
 }
 ```
 
-本例中,我将搜索功能设置在标签列表的页面中（更多信息查看[主题开发](https://www.fatbobman.com/posts/publish-2/)），因此在`makeTagListHTML`中将上面两个`Node`放到自己认为合适的地方。
+本例中,我将搜索功能设置在标签列表的页面中（更多信息查看[主题开发](/posts/publish-2/)），因此在`makeTagListHTML`中将上面两个`Node`放到自己认为合适的地方。
 
 由于搜索用的javascript需要用到`jQuery`，所以在`head`中添加了jQuery的引用（通过覆写了`head`，当前只为`makeTagListHTML`添加了引用）。
 

@@ -19,7 +19,7 @@ Swift已经准备在Linux有更多的表现。
 
 ## 写本文的原因 ##
 
-前些日子写了篇[用Publish创建博客（一）——入门](https://www.fatbobman.com/posts/publish-1/)（一个用Swift编写的优秀的静态网站生成器）的介绍，期间有网友问我是否可以在Linux上使用，我回答不成问题。但转过头来思考，虽然`Publish`完美地支持Linux，但开发者能否像在mac上一样方便的进行开发调试呢？
+前些日子写了篇[用Publish创建博客（一）——入门](/posts/publish-1/)（一个用Swift编写的优秀的静态网站生成器）的介绍，期间有网友问我是否可以在Linux上使用，我回答不成问题。但转过头来思考，虽然`Publish`完美地支持Linux，但开发者能否像在mac上一样方便的进行开发调试呢？
 
 之前使用`Vapor`的时候，曾通过`Docker`在Ubuntu上安装过Swift，不过代码是在mac上调试的。我也十分好奇，在2021年Swift到底在Linux下的开发环境如何？
 

@@ -38,7 +38,7 @@ image: images/coreDataWithCloudKit-5.jpg
 
 ## 一样的名词、不一样的含义 ##
 
-在[Core Data with CloudKit(二)](https://www.fatbobman.com/posts/coreDataWithCloudKit-2/)中，我们介绍了如何同步本地数据库到`iCloud`私有数据库，本篇我们谈的是如果将共享数据库同步到本地。尽管两篇文章都在聊关于**同步**的话题，但这**两个同步的内在含义和逻辑是不一样的**。
+在[Core Data with CloudKit(二)](/posts/coreDataWithCloudKit-2/)中，我们介绍了如何同步本地数据库到`iCloud`私有数据库，本篇我们谈的是如果将共享数据库同步到本地。尽管两篇文章都在聊关于**同步**的话题，但这**两个同步的内在含义和逻辑是不一样的**。
 
 **同步本地数据到私有数据库**，本质上讲仍是一个标准的`Core Data`项目，开发者从模型设计到代码开发，同开发【仅支持本地持久化数据库的项目】没有不同。`CloudtKit`仅起到一个将数据同步到用户其他设备的桥梁作用。在绝大多数的情况下，开发者在使用托管对象时可以完全不考虑私有数据库以及`CKRecord`的存在。
 
@@ -56,7 +56,7 @@ image: images/coreDataWithCloudKit-5.jpg
 
 ![image-20210812153836921](https://cdn.fatbobman.com/image-20210812153836921-8753918.png)
 
-在[iCloud仪表台](https://www.fatbobman.com/posts/coreDataWithCloudKit-3/)一文中，我们介绍了安全角色的概念。系统为公共数据库创建了3个预置角色：`World`、`Authenticated`以及`Creator`。在公共数据库中，鉴权时需要考虑用户是否已登录`iCloud`账户、是否为数据记录的创建者等多种因素。
+在[iCloud仪表台](/posts/coreDataWithCloudKit-3/)一文中，我们介绍了安全角色的概念。系统为公共数据库创建了3个预置角色：`World`、`Authenticated`以及`Creator`。在公共数据库中，鉴权时需要考虑用户是否已登录`iCloud`账户、是否为数据记录的创建者等多种因素。
 
 ![image-20210812154950463](https://cdn.fatbobman.com/image-20210812154950463-8754592.png)
 
@@ -108,7 +108,7 @@ if container.canUpdateRecord(forManagedObjectWith:item.objectID) {
 
 从`import`（将网络数据的更改同步至本地）角度来将，私有数据库和公共数据库的机制则完全不同。
 
-在[基础](https://www.fatbobman.com/posts/coreDataWithCloudKit-1/)和[CloudKit仪表台](https://www.fatbobman.com/posts/coreDataWithCloudKit-3/)两篇文章，我们已经介绍了私有数据库的同步机制：
+在[基础](/posts/coreDataWithCloudKit-1/)和[CloudKit仪表台](/posts/coreDataWithCloudKit-3/)两篇文章，我们已经介绍了私有数据库的同步机制：
 
 * 客户端在服务器订阅`CKDatabaseSubscription`
 * 服务器端在私有数据库自定义`Zone`的内容发生变化后，向客户端推送静默远程提醒
@@ -209,7 +209,7 @@ private var items: FetchedResults<Item>
 
 ## 同步公共数据库 ##
 
-本节大量涉及了[Core Data with CloudKit（二）——同步本地数据库到iCloud私有数据库](https://www.fatbobman.com/posts/coreDataWithCloudKit-2/)和[Core Data with CloudKit（三）——CloudKit仪表台](https://www.fatbobman.com/posts/coreDataWithCloudKit-3/)中的知识，请阅读上述两篇文章后再继续。
+本节大量涉及了[Core Data with CloudKit（二）——同步本地数据库到iCloud私有数据库](/posts/coreDataWithCloudKit-2/)和[Core Data with CloudKit（三）——CloudKit仪表台](/posts/coreDataWithCloudKit-3/)中的知识，请阅读上述两篇文章后再继续。
 
 ### 项目配置 ###
 
@@ -243,7 +243,7 @@ publicDesc.cloudKitContainerOptions?.databaseScope = .public
 
 就这？
 
-是的，就这。其他配置都和同步私有数据库一样。将`Descriptioin`添加到`persistentStoreDescriptions`，配置上下文，有需要的话配置[Persistent History Tracking](https://www.fatbobman.com/posts/persistentHistoryTracking/)。
+是的，就这。其他配置都和同步私有数据库一样。将`Descriptioin`添加到`persistentStoreDescriptions`，配置上下文，有需要的话配置[Persistent History Tracking](/posts/persistentHistoryTracking/)。
 
 ### 配置仪表台 ###
 

@@ -147,7 +147,7 @@ function(){
     @<span class="hljs-type">Published</span> <span class="hljs-keyword">var</span> number = <span class="hljs-number">0</span>
     @<span class="hljs-type">Published</span> <span class="hljs-keyword">var</span> scene = <span class="hljs-number">0</span>
 }
-</code></pre><h3>跨平台代码</h3><p>在<a href="https://zhuanlan.zhihu.com/p/152624613">上篇文章</a>我们介绍了新的@UIApplicationDelegateAdaptor的使用方法，我们也可以直接创建一个支持Delegate的store。</p><pre data-language="swift"><code><span class="hljs-keyword">import</span> SwiftUI
+</code></pre><h3>跨平台代码</h3><p>在<a href="/posts/swiftui2-new-feature-1/">上篇文章</a>我们介绍了新的@UIApplicationDelegateAdaptor的使用方法，我们也可以直接创建一个支持Delegate的store。</p><pre data-language="swift"><code><span class="hljs-keyword">import</span> SwiftUI
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Store</span>:<span class="hljs-title">NSObject</span>,<span class="hljs-title">ObservableObject</span></span>{
     @<span class="hljs-type">Published</span> <span class="hljs-keyword">var</span> <span class="hljs-built_in">count</span> = <span class="hljs-number">0</span>

@@ -16,7 +16,7 @@ title: 博客更新记
 
 本博客的主题是记录有关Swift学习方面的内容，因此在使用了一段时间的WordPress、Hexo后，我找到了一个由Swift编写的静态站点生成器[Publish](https://github.com/JohnSundell/Publish)，并用它完成了博客的第一次重大调整。
 
-> 如果对Publish感兴趣，可以阅读我写的几篇Publsih的介绍文章。用[Publish创建博客——入门](https://www.fatbobman.com/posts/publish-1/)，[主题开发](https://www.fatbobman.com/posts/publish-2/)，[插件开发](https://www.fatbobman.com/posts/publish-3/)。
+> 如果对Publish感兴趣，可以阅读我写的几篇Publsih的介绍文章。用[Publish创建博客——入门](/posts/publish-1/)，[主题开发](/posts/publish-2/)，[插件开发](/posts/publish-3/)。
 
 当时我对Swift的掌握很一般（现在也很一般，不过比当时强些），因此上次博客的更新过程跌跌绊绊，很多预期的功能并没有实现。随着博文的增多，觉得有必要对博客进行再度更新了。
 
@@ -112,7 +112,7 @@ Javascript在浏览器中的运行效率远超我的预期，本来我打算更�
 
 VSCode对于CSS和Javascript的支持好于Xcode是理所当然的。在此次更新过程中，VSCode在Swift开发上的表现还是让我比较吃惊的。
 
-在完成了[在Linux系统上搭建Swift开发调试环境](https://www.fatbobman.com/posts/swift-in-linux/)一文后，我很少有机会长时间的在VSCode中开发Swift代码。除了在调试方面差距较大外，用VSCode来开发Swift代码的部分体验竟然好于Xcode，尤其在Format和lint的集成度方面完爆Xcode。真希望Xcode也能更加开放自己的插件API，提高插件的集成度。
+在完成了[在Linux系统上搭建Swift开发调试环境](/posts/swift-in-linux/)一文后，我很少有机会长时间的在VSCode中开发Swift代码。除了在调试方面差距较大外，用VSCode来开发Swift代码的部分体验竟然好于Xcode，尤其在Format和lint的集成度方面完爆Xcode。真希望Xcode也能更加开放自己的插件API，提高插件的集成度。
 
 ## 后续 ##
 

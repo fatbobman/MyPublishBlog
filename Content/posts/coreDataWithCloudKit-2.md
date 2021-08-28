@@ -12,7 +12,7 @@ title: Core Data with CloudKit（二）——同步本地数据库到iCloud私�
 * 在现有项目`Core Date`中添加`Host in CloudKit`支持
 * 有选择的同步数据
 
-> 本文使用的开发环境为`Xcode 12.5`。关于私有数据库的概念，请参阅[Core Data with CloudKit (一) —— 基础](https://www.fatbobman.com/posts/coreDataWithCloudKit-1/)。如想实际操作本文内容，需要拥有[Apple Developer Program](https://developer.apple.com/programs/)账号。
+> 本文使用的开发环境为`Xcode 12.5`。关于私有数据库的概念，请参阅[Core Data with CloudKit (一) —— 基础](/posts/coreDataWithCloudKit-1/)。如想实际操作本文内容，需要拥有[Apple Developer Program](https://developer.apple.com/programs/)账号。
 
 ## 快速指南 ##
 
@@ -179,7 +179,7 @@ do {
 
 ## 创建可同步Model的注意事项 ##
 
-要在`Core Data`和`CloudKit`数据库之间完美地传递记录，最好对双方的数据结构类型有一定的了解，具体请参阅[Core Data with CloudKit (一) —— 基础](https://www.fatbobman.com/posts/coreDataWithCloudKit-1/)。
+要在`Core Data`和`CloudKit`数据库之间完美地传递记录，最好对双方的数据结构类型有一定的了解，具体请参阅[Core Data with CloudKit (一) —— 基础](/posts/coreDataWithCloudKit-1/)。
 
 `CloudKit Schema`并不支持`Core Data Model`的所有功能、配置，因此在设计可同步的`Core Data`项目时，请注意以下限制，并确保你创建了一个兼容的数据模型。
 
@@ -326,7 +326,7 @@ container.persistentStoreDescriptions = [cloudDesc,localDesc]
 
 *我目前没有找到任何资料解释为什么协调器可以合并查询多个`Store`中的**同一个**`Entity`，但在实际使用中确实可以实现预期中的结果。*
 
-以上方案需要使用`Persistent History Tracking`，更多资料可以查看我的另一篇文章[【在CoreData中使用持久化历史跟踪】](https://www.fatbobman.com/posts/persistentHistoryTracking/)。
+以上方案需要使用`Persistent History Tracking`，更多资料可以查看我的另一篇文章[【在CoreData中使用持久化历史跟踪】](/posts/persistentHistoryTracking/)。
 
 ## 总结 ##
 
