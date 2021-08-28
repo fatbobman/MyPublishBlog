@@ -38,7 +38,7 @@ SwiftUI的视图，本身没有清晰（可适当描述）的生命周期，它�
 
 `UIViewrepresentable`的协议并不复杂，只包含：`makeUIView`、`updateUIView`、`dismantleUIView`和`makeCoordinator`四个方法。`makeUIView`和`updateUIView`为必须提供实现的方法。
 
-`UIViewRepresentable`本身遵守`View`协议，因此SwiftUI会将任何符合该协议的结构体都当作一般的SwiftUI视图来对待。当由于`UIViewRepresentable`的特殊的用途，其内部的生命周期又同标准的SwiftUI视图有所不同。
+`UIViewRepresentable`本身遵守`View`协议，因此SwiftUI会将任何符合该协议的结构体都当作一般的SwiftUI视图来对待。不过由于`UIViewRepresentable`的特殊的用途，其内部的生命周期又同标准的SwiftUI视图有所不同。
 
 ![UIViewRepresentableLifeCycle](https://cdn.fatbobman.com/UIViewRepresentableLifeCycle-9614888.png)
 
@@ -98,11 +98,11 @@ public protocol UIViewRepresentable : View where Self.Body == Never
 
 ### 协调器 ###
 
-苹果框架很喜欢适用协调器（Coordinator）这个名词，UIKit开发中有协调器设计模式、Core Data中有持久化存储协调器。在`UIViewRepresentable`中协调器同它们的概念完全不同，主要起到以下几个方面的作用：
+苹果框架很喜欢使用协调器（Coordinator）这个名词，UIKit开发中有协调器设计模式、Core Data中有持久化存储协调器。在`UIViewRepresentable`中协调器同它们的概念完全不同，主要起到以下几个方面的作用：
 
 * 实现UIKit视图的代理
 
-  UIKit组件通常依赖代理（delegate）来实现一些功能，“代理”时响应其他地方发生的事件的对象。例如，UIKit让我们讲一个代理对象附加到`Text field`视图上，当用户输入任时，当用户按下`return`键时，该代理对象中对应的方法将被调用。通过将协调器声明为UIKit视图对应的代理对象，我们就可以在其中实现所需的代理方法。
+  UIKit组件通常依赖代理（delegate）来实现一些功能，“代理”是响应其他地方发生的事件的对象。例如，UIKit中我们将一个代理对象附加到`Text field`视图上，当用户输入时，当用户按下`return`键时，该代理对象中对应的方法将被调用。通过将协调器声明为UIKit视图对应的代理对象，我们就可以在其中实现所需的代理方法。
 
 * 同SwiftUI框架保持沟通
 
@@ -118,7 +118,7 @@ public protocol UIViewRepresentable : View where Self.Body == Never
 
 ### 版本1.0 ###
 
-在第一个版本中，我们的要实现一个类似如下原生代码的功能：
+在第一个版本中，我们要实现一个类似如下原生代码的功能：
 
 ```swift
 TextField("name:",text:$name)
