@@ -19,7 +19,7 @@ function(){
 },
 function(){
     $('.actionButton .donateQcode').css('display','none');
-})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>聊一下SwiftUI中的List和ForEach</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag tagdate">发布于2020年08月24日</li></ul><div class="content"><p>在SwiftUI中使用List可以非常方便快速的制作各种列表.List其实就是对UITableView进行的封装(更多List的具体用法请参阅<a href="https://zhuanlan.zhihu.com/p/110749923">List基本用法</a>).</p><p>在List中添加动态内容,我们可以使用两种方式</p><h3>直接使用List自己提供的动态内容构造方法</h3><pre data-language="swift"><code>  <span class="hljs-type">List</span>(<span class="hljs-number">0</span>..&lt;<span class="hljs-number">100</span>){ i <span class="hljs-keyword">in</span>
+})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>聊一下SwiftUI中的List和ForEach</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag tagdate">发布于2020年08月24日</li></ul><div class="content"><p>在SwiftUI中使用List可以非常方便快速的制作各种列表.List其实就是对UITableView进行的封装(更多List的具体用法请参阅<a href="https://zhuanlan.zhihu.com/p/110749923" target="_blank">List基本用法</a>).</p><p>在List中添加动态内容,我们可以使用两种方式</p><h3>直接使用List自己提供的动态内容构造方法</h3><pre data-language="swift"><code>  <span class="hljs-type">List</span>(<span class="hljs-number">0</span>..&lt;<span class="hljs-number">100</span>){ i <span class="hljs-keyword">in</span>
     <span class="hljs-type">Text</span>(<span class="hljs-string">"id:\(id)"</span>)
   }
 </code></pre><h3>在List中使用ForEach</h3><pre data-language="swift"><code>  <span class="hljs-type">List</span>{
@@ -96,7 +96,7 @@ function(){
           .listRowInsets(<span class="hljs-type">EdgeInsets</span>())
           .swipeCell(cellPosition: .both, leftSlot: slot1, rightSlot: slot1)
     }
-</code></pre><video src="https://cdn.fatbobman.com/swiftui-list-foreach-10000withoutForEach.mp4" controls = "controls"></video><p>熟悉的丝滑又回来了.</p><p><strong>ForEach要预先处理所有数据,提前准备View.并且初始化后,并不自动释放这些View(即使不可见)!</strong>具体可以使用上面的测试代码通过Debug来分析.</p><p>不流畅的原因已经找到了,不过由于List处理的数据源并不能设置listRowInsets,尤其在iOS14下,苹果非常奇怪的屏蔽了不少通过UITableView来设置List的属性的途径,所以为了既能保证性能,又能保证显示需求,只好通过自己包装UITableView来同时满足上述两个条件.</p><p>好在我一直使用<a href="https://github.com/SwiftUIX/SwiftUIX">SwiftUIX</a>这个第三方库,节省了自己写封装代码的时间.将代码做了进一步调整,当前的问题得以解决.</p><pre data-language="swift"><code> <span class="hljs-type">CocoaList</span>(item){ i <span class="hljs-keyword">in</span>
+</code></pre><video src="https://cdn.fatbobman.com/swiftui-list-foreach-10000withoutForEach.mp4" controls = "controls"></video><p>熟悉的丝滑又回来了.</p><p><strong>ForEach要预先处理所有数据,提前准备View.并且初始化后,并不自动释放这些View(即使不可见)!</strong>具体可以使用上面的测试代码通过Debug来分析.</p><p>不流畅的原因已经找到了,不过由于List处理的数据源并不能设置listRowInsets,尤其在iOS14下,苹果非常奇怪的屏蔽了不少通过UITableView来设置List的属性的途径,所以为了既能保证性能,又能保证显示需求,只好通过自己包装UITableView来同时满足上述两个条件.</p><p>好在我一直使用<a href="https://github.com/SwiftUIX/SwiftUIX" target="_blank">SwiftUIX</a>这个第三方库,节省了自己写封装代码的时间.将代码做了进一步调整,当前的问题得以解决.</p><pre data-language="swift"><code> <span class="hljs-type">CocoaList</span>(item){ i <span class="hljs-keyword">in</span>
            <span class="hljs-type">Cell</span>(id: i)
            .frame(height:<span class="hljs-number">100</span>)
            .listRowInsets(<span class="hljs-type">EdgeInsets</span>())
@@ -120,7 +120,7 @@ language: navigator.userLanguage
 
 gitalk.render('gitalk-container');
 
-</script></div>    <script src="https://fatbobman.com/images/toc.js"></script></div></div><footer><p>Copyright &copy; 徐杨 2021 <a href="http://beian.miit.gov.cn">辽ICP备20006550</a></p><p>Generated using <a href="https://github.com/johnsundell/publish">Publish</a></p><ul class="icon"><li><a href="https://twitter.com/fatbobman"><img class="twitter" src="/images/twitter.svg"/></a></li><li><a href="https://github.com/fatbobman/"><img src="/images/github.svg"/></a></li><li><a href="https://www.zhihu.com/people/fatbobman3000"><img src="/images/zhihu.svg"/></a></li><li><a href="/feed.rss"><img src="/images/rss.svg"/></a></li></ul><script>
+</script></div>    <script src="https://fatbobman.com/images/toc.js"></script></div></div><footer><p>Copyright &copy; 徐杨 2021 <a href="http://beian.miit.gov.cn">辽ICP备20006550</a></p><p>Generated using <a href="https://github.com/johnsundell/publish" target="_blank">Publish</a></p><ul class="icon"><li><a href="https://twitter.com/fatbobman" target="_blank"><img class="twitter" src="/images/twitter.svg"/></a></li><li><a href="https://github.com/fatbobman/" target="_blank"><img src="/images/github.svg"/></a></li><li><a href="https://www.zhihu.com/people/fatbobman3000" target="_blank"><img src="/images/zhihu.svg"/></a></li><li><a href="/feed.rss"><img src="/images/rss.svg"/></a></li></ul><script>
     // dynamic User by Hux
     var _gaId = 'UA-165296388-1';
     var _gaDomain = 'fatbobman.com';

@@ -456,7 +456,9 @@ extension Node where Context == HTML.BodyContext {
             ),
             .p(
                 .text("Generated using "),
-                .a(.text("Publish"), .href("https://github.com/johnsundell/publish"))
+                .a(.text("Publish"), .href("https://github.com/johnsundell/publish"),
+                   .target(.blank)
+                  )
             ),
             .ul(
                 .class("icon"),
@@ -464,21 +466,24 @@ extension Node where Context == HTML.BodyContext {
                     .a(
                         //                    .text("Twitter"),
                         .img(.class("twitter"), .src("/images/twitter.svg")),
-                        .href("https://twitter.com/fatbobman")
+                        .href("https://twitter.com/fatbobman"),
+                        .target(.blank)
                     )
                 ),
                 .li(
                     .a(
                         // .text("Github"),
                         .img(.src("/images/github.svg")),
-                        .href("https://github.com/fatbobman/")
+                        .href("https://github.com/fatbobman/"),
+                        .target(.blank)
                     )
                 ),
                 .li(
                     .a(
                         //                        .text("知乎"),
                         .img(.src("/images/zhihu.svg")),
-                        .href("https://www.zhihu.com/people/fatbobman3000")
+                        .href("https://www.zhihu.com/people/fatbobman3000"),
+                        .target(.blank)
                     )
                 ),
                 .li(
