@@ -33,7 +33,7 @@ title: Core Data with CloudKit (一) —— 基础
 
   一方面苹果通过沙盒容器、数据库区隔、加密字段、鉴权等多种技术手段保证了用户的数据安全。另一方面，鉴于苹果长期以来在用户中树立的隐私捍卫者的形象，使用`Core Dat with CloudKit`可以让用户对你的应用程序增加更多的信任。
 
-  事实上，正是在WWDC2019年看到这个功能后，我才有了开发[【健康笔记】](https://www.fatbobman.com/project/healthnotes/)的原动力——既保证数据隐私又能长久的保存数据。
+  事实上，正是在WWDC2019年看到这个功能后，我才有了开发[【健康笔记】](/healthnotes/)的原动力——既保证数据隐私又能长久的保存数据。
 
 * **集成度高、用户感知好**
 
@@ -156,4 +156,4 @@ title: Core Data with CloudKit (一) —— 基础
 
 本文中，我们简单介绍了关于`Core Data`、`CloudKit`以及`Core Data with CloudKit`的一点基础知识。在下一篇文章中我们将探讨如何使用`Core Data with CloudKit`实现**本地数据库和私有数据库的同步**。
 
-PS：介绍如何使用NSPersistentContainer的文章并不少，但同其他Core Data的功能一样，用好并不容易。在两年多的使用中，我便碰到不少问题。借着今年打算在[【健康笔记3】](https://www.fatbobman.com/project/healthnotes/)中实现`共享数据库`功能的机会，我最近较系统地重新学习了`Core Data with CloudKit`并对其知识点进行了梳理。希望通过这个系列博文能让更多的开发者了解并使用`Core Data with Cloudkit`功能。
+PS：介绍如何使用NSPersistentContainer的文章并不少，但同其他Core Data的功能一样，用好并不容易。在两年多的使用中，我便碰到不少问题。借着今年打算在[【健康笔记3】](/healthnotes/)中实现`共享数据库`功能的机会，我最近较系统地重新学习了`Core Data with CloudKit`并对其知识点进行了梳理。希望通过这个系列博文能让更多的开发者了解并使用`Core Data with Cloudkit`功能。

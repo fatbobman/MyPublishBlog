@@ -8,7 +8,7 @@ title: 在CoreData中使用持久化历史跟踪
 
 知道持久化历史跟踪功能已经有一段时间了，之前简单地浏览过文档但没有太当回事。一方面关于它的资料不多，学习起来并不容易；另一方面也没有使用它的特别动力。
 
-在计划中的[【健康笔记3】](https://www.fatbobman.com/project/healthnotes/)中，我考虑为App添加Widget或者其他的Extentsion，另外我也打算将WWDC21上介绍的NSCoreDataCoreSpotlightDelegate用到App的新版本中。为此就不得不认真地了解该如何使用持久化历史跟踪功能了。
+在计划中的[【健康笔记3】](/healthnotes/)中，我考虑为App添加Widget或者其他的Extentsion，另外我也打算将WWDC21上介绍的NSCoreDataCoreSpotlightDelegate用到App的新版本中。为此就不得不认真地了解该如何使用持久化历史跟踪功能了。
 
 ## 什么是持久化历史跟踪（Persistent History Tracking） ##
 

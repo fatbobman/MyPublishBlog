@@ -8,7 +8,7 @@ title: @AppStorage研究
 
 在苹果生态的应用中，开发者或多或少都会使用到UserDefaults。我个人习惯将可被用户自定义的配置信息（精度、单位、色彩等）保存在UserDefaults中。随着配置信息的增加，在SwiftUI视图中使用的@AppStorage越来越多。
 
-在[【健康笔记3】](https://www.fatbobman.com/project/healthnotes/)中，我计划开放更多的自定义选项给用户，简单的算下来要有40-50项，在配置视图中更会将所有用到的UserDefaults内容都注入进代码。
+在[【健康笔记3】](/healthnotes/)中，我计划开放更多的自定义选项给用户，简单的算下来要有40-50项，在配置视图中更会将所有用到的UserDefaults内容都注入进代码。
 
 本文探讨的是如何优雅、高效、安全地在SwiftUI中使用@AppStorage，在不借助第三方库的情况下，解决当前@AppStorage使用中出现的痛点：
 
