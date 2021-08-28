@@ -10,7 +10,7 @@ title: SwiftUI 2.0 —— @StateObject 研究
 
 ## 为什么要新增@StateObject ##
 
-在我之前的文章[@State研究](https://zhuanlan.zhihu.com/p/141229504)中我们探讨过@State，通过它，我们可以方便的将值类型数据作为View的Source of truth。在SwiftUI 1.0时代，如果想将引用类型作为source of truth,通常的方法是使用@EnvironmentObject或者 @ObservedObject。
+在我之前的文章[@State研究](https://www.fatbobman.com/posts/swiftUI-state/)中我们探讨过@State，通过它，我们可以方便的将值类型数据作为View的Source of truth。在SwiftUI 1.0时代，如果想将引用类型作为source of truth,通常的方法是使用@EnvironmentObject或者 @ObservedObject。
 
 ```swift
 struct RootView:View{

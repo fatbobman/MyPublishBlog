@@ -102,7 +102,7 @@ struct ContentView:View{
 
 [@StateObject研究](/posts/stateobject/)
 
-[ObservableObject研究——想说爱你不容易](/posts/observableObject-study/)
+[ObservableObject研究——想说爱你不容易](https://www.fatbobman.com/posts/observableObject-study/)
 
 ### 变化 ###
 
@@ -211,7 +211,7 @@ class Store:ObservableObject{
 
 ### 跨平台代码 ###
 
-在[上篇文章](https://zhuanlan.zhihu.com/p/152624613)我们介绍了新的@UIApplicationDelegateAdaptor的使用方法，我们也可以直接创建一个支持Delegate的store。
+在[上篇文章](https://www.fatbobman.com/posts/swiftui2-new-feature-1/)我们介绍了新的@UIApplicationDelegateAdaptor的使用方法，我们也可以直接创建一个支持Delegate的store。
 
 ```swift
 import SwiftUI
@@ -269,6 +269,6 @@ struct AllInOneApp: App {
 
 ## 总结 ##
 
-在[ObservableObject研究——想说爱你不容易](/posts/observableObject-study/)中，我们探讨过SwiftUI更倾向于我们不要创建一个沉重的Singel source of truth,而是将每个功能模块作为独立的状态机（一起组合成一个大的状态app），使用能够对生命周期和作用域更精确可控的手段创建区域性的source of truth。
+在[ObservableObject研究——想说爱你不容易](https://www.fatbobman.com/posts/observableObject-study/)中，我们探讨过SwiftUI更倾向于我们不要创建一个沉重的Singel source of truth,而是将每个功能模块作为独立的状态机（一起组合成一个大的状态app），使用能够对生命周期和作用域更精确可控的手段创建区域性的source of truth。
 
 从SwiftUI第一个版本升级的内容来看，目前SwiftUI仍是这样的思路。

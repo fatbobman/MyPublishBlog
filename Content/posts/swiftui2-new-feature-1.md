@@ -282,7 +282,7 @@ struct ContentView:View{
   监视指定的值，在值改变时执行指定的action。在scenePhase的用法介绍中有使用的范例
 
 * **onCommands**
-  在macOS下设置程序的菜单。具体的使用方法请查看[SwiftUI2.0 —— Commands（macOS菜单）](https://zhuanlan.zhihu.com/p/152127847)
+  在macOS下设置程序的菜单。具体的使用方法请查看[SwiftUI2.0 —— Commands（macOS菜单）](https://www.fatbobman.com/posts/swiftUI2-commands/)
 
 * **defaultAppStorage**
   如果不想使用系统缺省UserDefault.standard，可以自行设置存储位置，使用的几率不高。

@@ -42,6 +42,7 @@ try FatbobmanBlog().publish(
         // 需要注意modifier的添加顺序
         .installPlugin(.highlightJS()), // 语法高亮
         .addModifier(modifier: bilibili, modifierName: "bilibili"), // bilibili视频
+        .addModifier(modifier: hrefOpenNewTab, modifierName: "hrefOpenNewTab"),
         .copyResources(),
         .setSctionTitle(), // 修改section 标题
         .addMarkdownFiles(),

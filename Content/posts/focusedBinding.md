@@ -39,7 +39,7 @@ struct BookCommands: Commands {
 
 在SwiftUI2.0中，苹果引入了@FocusedBinding和@FocusedValue来解决这个问题。通过定义FocusedValueKey，我们可以在任意的视图之间，无需通过Single of truth，便可以直接进行数据共享、修改、绑定。
 
-在[SwiftUI2.0 —— Commands（macOS菜单）](https://zhuanlan.zhihu.com/p/152127847)这篇文章中，我们通过了Single of truth的方式，在App这个层级，使Commnads可以同其他视图进行数据共享。通过WWDC提供的例子，我们可以看出，苹果希望能够提供一种其他的解决方案，完成上述的功能。同样，这种方案也使我们拥有了可以在任意视图（无论是否在同一颗树上，是否有联系）之间进行数据交换。
+在[SwiftUI2.0 —— Commands（macOS菜单）](https://www.fatbobman.com/posts/swiftUI2-commands/)这篇文章中，我们通过了Single of truth的方式，在App这个层级，使Commnads可以同其他视图进行数据共享。通过WWDC提供的例子，我们可以看出，苹果希望能够提供一种其他的解决方案，完成上述的功能。同样，这种方案也使我们拥有了可以在任意视图（无论是否在同一颗树上，是否有联系）之间进行数据交换。
 
 ## 使用方法 ##
 
@@ -132,4 +132,4 @@ FoccusedBinding的引入，进一步完善了SwiftUI不同视图中数据操作�
 
 由于我们可以在任意视图中修改key中的值，一旦滥用，很可能再度陷入代码难以管理的窘境。
 
-对于一些功能很简单，无需使用MVVM逻辑的代码，或者Single of truth过于臃肿（[ObservableObject研究——想说爱你不容易](/posts/observableObject-study/)），可能导致app响应问题的代码，可以考虑使用上述的方案。
+对于一些功能很简单，无需使用MVVM逻辑的代码，或者Single of truth过于臃肿（[ObservableObject研究——想说爱你不容易](https://www.fatbobman.com/posts/observableObject-study/)），可能导致app响应问题的代码，可以考虑使用上述的方案。
