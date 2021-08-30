@@ -307,7 +307,7 @@ struct OtherView:View{
 
   我相信，下一步SwiftUI应该还会提供更多的直接将状态控制在局部的包装器。
 
-#### 第三部 和ObservedObject说再见 ####
+#### 第三步 和ObservedObject说再见 ####
 
 只要我们的View还需要依赖单一数据源的State，前面我们做努力就都付之东流了。但坚持单一数据源的设计思路又是十分明确的。由于任何状态的变化ObservedObject只有通过ObjectWillChangePublisher这一个途径来通知与其依赖的View，因此我们如果要解决这个问题，只能放弃使用ObservedObject，通过自己创建视图和State中每个独立元素的依赖关系，完成我们的优化目的。
 
