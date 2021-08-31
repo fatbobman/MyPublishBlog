@@ -159,7 +159,7 @@ subView
           fetchRequest.wrappedValue
       }
   }
-</code></pre><p>我相信，下一步SwiftUI应该还会提供更多的直接将状态控制在局部的包装器。</p><h4>第三部 和ObservedObject说再见</h4><p>只要我们的View还需要依赖单一数据源的State，前面我们做努力就都付之东流了。但坚持单一数据源的设计思路又是十分明确的。由于任何状态的变化ObservedObject只有通过ObjectWillChangePublisher这一个途径来通知与其依赖的View，因此我们如果要解决这个问题，只能放弃使用ObservedObject，通过自己创建视图和State中每个独立元素的依赖关系，完成我们的优化目的。</p><p>Combine当然是首选。我希望达到的效果如下：</p><ul><li>State仍然以目前的形式保存在Store中，整个程序的结构基本和使用ObservedObject一样</li><li>State中每个元素可以自己通知与其依赖的View而不通过@Published</li><li>每个View可以根据自己的需要同State中的元素建立依赖关系，State中其他无关的变化不会导致其被强制刷新</li><li>State中的数据仍然支持Binding等操作，而且能够支持各种形式的结构设定</li></ul><p>基于以上几点，我最终采用了如下的解决方案：</p><p>1、Store不变，只是去掉了ObservedObject</p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Store</span></span>{
+</code></pre><p>我相信，下一步SwiftUI应该还会提供更多的直接将状态控制在局部的包装器。</p><h4>第三步 和ObservedObject说再见</h4><p>只要我们的View还需要依赖单一数据源的State，前面我们做努力就都付之东流了。但坚持单一数据源的设计思路又是十分明确的。由于任何状态的变化ObservedObject只有通过ObjectWillChangePublisher这一个途径来通知与其依赖的View，因此我们如果要解决这个问题，只能放弃使用ObservedObject，通过自己创建视图和State中每个独立元素的依赖关系，完成我们的优化目的。</p><p>Combine当然是首选。我希望达到的效果如下：</p><ul><li>State仍然以目前的形式保存在Store中，整个程序的结构基本和使用ObservedObject一样</li><li>State中每个元素可以自己通知与其依赖的View而不通过@Published</li><li>每个View可以根据自己的需要同State中的元素建立依赖关系，State中其他无关的变化不会导致其被强制刷新</li><li>State中的数据仍然支持Binding等操作，而且能够支持各种形式的结构设定</li></ul><p>基于以上几点，我最终采用了如下的解决方案：</p><p>1、Store不变，只是去掉了ObservedObject</p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Store</span></span>{
   <span class="hljs-keyword">var</span> state = <span class="hljs-type">AppState</span>()
   ...
 }
