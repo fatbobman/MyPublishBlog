@@ -1,7 +1,7 @@
 ---
 date: 2020-07-08 14:00
 description: 在上篇文章中我们简单了解了App、Scene，以及几个内置Scene的应用。在本文中，我们着重探讨在SwiftUI2.0新的代码结构下如果更高效的组织Data Flow。
-tags: SwiftUI
+tags: SwiftUI,Architecture
 title: SwiftUI2.0 —— App、Scene、新的代码结构（二）
 ---
 

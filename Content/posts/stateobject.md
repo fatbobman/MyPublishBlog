@@ -1,7 +1,7 @@
 ---
 date: 2020-06-26 12:00
 description: WWDC20刚刚结束，在过去的一周，苹果为开发者带来了巨大的惊喜。由于新特性实在太多，需要不少时间来消化，我首先选择自己最感兴趣的内容进行一些简单的研究和探讨。本文首先浅谈一下SwiftUI新提供的属性包装器@StateObject。
-tags: SwiftUI
+tags: SwiftUI,Architecture
 title: SwiftUI 2.0 —— @StateObject 研究
 ---
 

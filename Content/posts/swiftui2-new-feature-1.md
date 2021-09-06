@@ -1,7 +1,7 @@
 ---
 date: 2020-07-08 12:00
 description: 本文简单介绍了SwiftUI2.0中全新提供的App协议、Scene协议，浅谈了在全新的代码结构下如何组织Data Flow，并提供了SwiftUI2.0中预置的Scene的一些使用示例。当前运行环境为 Xcode Version 12.0 beta (12A6159), macOS Big Sur 11.0 Beta版(20A4299v)。
-tags: SwiftUI
+tags: SwiftUI,Architecture
 title: SwiftUI2.0 —— App、Scene、新的代码结构（一）
 ---
 

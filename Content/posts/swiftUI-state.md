@@ -1,7 +1,7 @@
 ---
 date: 2020-05-17 12:00
 description: 本文试图探讨并分析SwiftUI 中 @State的实现方式和运行特征；最后提供了一个有关扩展@State功能的思路及例程。读者需要对SwiftUI的响应式编程有基本概念。
-tags: SwiftUI
+tags: SwiftUI,Architecture
 title: @state研究
 ---
 > 本文试图探讨并分析SwiftUI 中 @State的实现方式和运行特征；最后提供了一个有关扩展@State功能的思路及例程。读者需要对SwiftUI的响应式编程有基本概念。
