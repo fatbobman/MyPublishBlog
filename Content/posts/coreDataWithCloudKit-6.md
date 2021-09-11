@@ -59,7 +59,7 @@ WWDC 2021中CloudKit提供了一种新的共享机制——共享自定义区域
 init(recordZoneID: CKRecordZone.ID)
 ```
 
-此中共享方式更适合数据集较大、关系较复杂的应用场景。Core Data with CloudKit的数据共享就是采用这种共享机制。
+此种共享方式更适合数据集较大、关系较复杂的应用场景。Core Data with CloudKit的数据共享就是采用这种共享机制。
 
 在之前的同步私有数据库中我们介绍过，私有数据库的自定义区域可以创建`CKDatabaseSubscription`，参与者正式通过该订阅来及时获取到共享数据的变化。
 
