@@ -191,7 +191,7 @@ NotificationCenter.default.post(name:.NavigationViewManagerPushView, object: pus
 
 ## DoubleColoumnJustForPadNavigationViewStyle ##
 
-`DoubleColoumnJustForPadNavigationViewStyle`是`DoubleColoumnNavigationViewStyle`的修改版，其目改善iPhone和iPad使用同一套代码时，`DoubleColoumnNavigationViewStyle`在iPhone Max上横屏时的表现同其他iPhone机型不同。
+`DoubleColoumnJustForPadNavigationViewStyle`是`DoubleColoumnNavigationViewStyle`的修改版，其目的是改善当iPhone和iPad使用同一套代码时，`DoubleColoumnNavigationViewStyle`在iPhone Max上横屏时的表现同其他iPhone机型不同。
 
 当iPhone Max横屏时，NavigationView的表现会同iPad一样双列显示，让应用程序在不同iPhone上的表现不一致。
 
