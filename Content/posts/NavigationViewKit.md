@@ -187,7 +187,7 @@ NotificationCenter.default.post(name:.NavigationViewManagerPushView, object: pus
 
 演示：
 
-![backToRootDemo](https://cdn.fatbobman.com/backToRootDemo.gif)
+![pushViewDemo-1925280](https://cdn.fatbobman.com/pushViewDemo-1925280.gif)
 
 ## DoubleColoumnJustForPadNavigationViewStyle ##
 
