@@ -43,4 +43,4 @@ title: 健康笔记
   希望你们将更多的意见和建议更多的反馈给我，帮助健康笔记更好的成长。
 
 点击下方图标下载，或在AppStore中搜索【健康笔记2】
-[![pic](/images/appStoreIcon.png)](https://apps.apple.com/us/app/health-notes-2/id1534513553)
+[![pic](/images/appStoreIcon.png)](https://apps.apple.com/cn/app/health-notes-2/id1534513553)
