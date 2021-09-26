@@ -188,7 +188,7 @@ image: images/localizationApp-1.png
 
 ### 实战3：汉化App的程序名 ###
 
-在Xcode项目中，我们通常会在`Info.plist`文件中对一些特定的系统参数进行配置，比如说`Bundle identifier`、`Bundle name`等。如果需要对其中的一些配置进行本地话处理的话，我们可以使用上文中提到的`InfoPlist.strings`
+在Xcode项目中，我们通常会在`Info.plist`文件中对一些特定的系统参数进行配置，比如说`Bundle identifier`、`Bundle name`等。如果需要对其中的一些配置进行本地化处理的话，我们可以使用上文中提到的`InfoPlist.strings`
 
 使用创建`Localizable.strings`文件同样的步骤，我们创建一个名为`InfoPlist.strings`的字符串文件（不要忘记为创建好的文件进行本地化操作，确认中文、英文都已被勾选）。
 
@@ -255,7 +255,7 @@ Text(LocalizedStringKey(item.drink.name))
 
 > 在某些情况下，我们只能获得`String`类型数据，可能会经常做类似的转换
 
-再次运行，你讲可以看到表格中的饮品名称已经更改为正确的中文显示
+再次运行，你将可以看到表格中的饮品名称已经更改为正确的中文显示
 
 ![image-20210624090150062](https://cdn.fatbobman.com/image-20210624090150062-4496510.png)
 
