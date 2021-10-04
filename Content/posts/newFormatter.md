@@ -138,7 +138,7 @@ image: images/newFormatter.png
 
 旧API中，针对不同的格式化类型，我们需要创建不同的Formatter实例。比如使用NumberFormatter格式化数字、DateFormatter格式化日期。
 
-新API针对每个支持的类型都提供了同一的调用接口，尽量减少代码层面的复杂度
+新API针对每个支持的类型都提供了统一的调用接口，尽量减少代码层面的复杂度
 
 ```swift
 Date.now.formatted()
