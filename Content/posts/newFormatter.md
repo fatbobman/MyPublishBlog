@@ -557,21 +557,33 @@ let colorString = UIColorFormatStyle().alpah(.show).prefix(.none).format(UIColor
 
 ```swift
         if mark == .show {
-            redMark = String(localized: "UIColorRedMark", locale: locale)
-            greenMark = String(localized: "UIColorGreenMark", locale: locale)
-            blueMark = String(localized: "UIColorBlueMark", locale: locale)
-            alphaMark = alpha == .show ? String(localized: "UIColorAlphaMark", locale: locale) : ""
+            redMark = getLocalizedString(.red, locale: locale)
+            greenMark = getLocalizedString(.green, locale: locale)
+            blueMark = getLocalizedString(.blue, locale: locale)
+            alphaMark = alpha == .show ? getLocalizedString(.alpha, locale: locale) : ""
         }
 ```
 
-并在项目中创建`Localizable.strings`文件，添加对应的文字内容：
+在UIColorFormatStyle添加如下代码：
 
 ```swift
-// English
-"UIColorRedMark" = " Red:";
-"UIColorGreenMark" = " Green:";
-"UIColorBlueMark" = " Blue:";
-"UIColorAlphaMark" = " Alpha:";
+enum MarkTag:String{
+        case red
+        case green
+        case blue
+        case alpha
+    }
+
+    static let localeString:[String:String] = [
+        "EN-red":" Red:",
+        "EN-green":" Green:",
+        "EN-blue" : " Blue:",
+        "EN-alpha" : " Alpha:",
+        "ZH-red" : " 红:",
+        "ZH-green" : " 绿:",
+        "ZH-blue" : " 蓝",
+        "ZH-alpha" : " 透明度:"
+    ]
 ```
 
 至此，当系统切换到拥有对应语言包的地区时，Mark将显示对应的内容
@@ -581,10 +593,20 @@ let colorString = UIColorFormatStyle().alpah(.show).prefix(.none).format(UIColor
 # 红:00 绿:00 蓝:FF 透明度:FF
 ```
 
-> 截至本文完成时，`String(localized:String,locale:Locale)`仍有Bug，无法获取到对应的Locale文字。系统的Formatter也有这个问题。正常的情况下，我们可以使用如下代码，在非中文区域获得中文的mark显示
+> ~~截至本文完成时，`String(localized:String,locale:Locale)`仍有Bug，无法获取到对应的Locale文字。系统的Formatter也有这个问题。正常的情况下，我们可以使用如下代码，在非中文区域获得中文的mark显示~~
+>
+> 之前对String新的构造方法理解有误，经过官方的邮件解释，`String(localized:String, locale:Locale)`中的`locale`是用来设置字符串差值中formatter的locale。因此对原有代码进行了修改。
 
 ```swift
 let colorString = UIColorFormatStyle().mark().locale(Locale(identifier: "zh-cn")).format(UIColor.blue)
+```
+
+在SwiftUI中设置
+
+```swift
+// Text将自动调用Formatter的locale方法
+Text(color, format: .uiColor.mark())
+    .environment(\.locale, Locale(identifier: "zh-cn"))
 ```
 
 ### AttributedString支持 ###
@@ -649,10 +671,10 @@ extension UIColorFormatStyle {
             let blueString = AttributedString(localized: "^[\(blue)](colorPart:'blue')", including: \.myApp)
             let alphaString = AttributedString(localized: "^[\(alpha)](colorPart:'alpha')", including: \.myApp)
 
-            let redMarkString = AttributedString(localized: "^[\(redMark)](colorPart:'mark')", locale: locale, including: \.myApp)
-            let greenMarkString = AttributedString(localized: "^[\(greenMark)](colorPart:'mark')", locale: locale, including: \.myApp)
-            let blueMarkString = AttributedString(localized: "^[\(blueMark)](colorPart:'mark')", locale: locale, including: \.myApp)
-            let alphaMarkString = AttributedString(localized: "^[\(alphaMark)](colorPart:'mark')", locale: locale, including: \.myApp)
+            let redMarkString = AttributedString(localized: "^[\(redMark)](colorPart:'mark')",  including: \.myApp)
+            let greenMarkString = AttributedString(localized: "^[\(greenMark)](colorPart:'mark')" ,including: \.myApp)
+            let blueMarkString = AttributedString(localized: "^[\(blueMark)](colorPart:'mark')" ,including: \.myApp)
+            let alphaMarkString = AttributedString(localized: "^[\(alphaMark)](colorPart:'mark')" ,including: \.myApp)
 
             let result = prefixString + redMarkString + redString + greenMarkString + greenString + blueMarkString + blueString + alphaMarkString + alphaString
             return result
