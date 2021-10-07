@@ -208,7 +208,7 @@ let dateString = Date.now.formatted(.iso8601.year().month().day().dateSeparator(
 
 ### 风格转换？ ###
 
-旧API是Objc的产物，它十分高效且好用，但在Swift中使用难免有不协调感。
+旧API是Objectiv-C的产物，它十分高效且好用，但在Swift中使用难免有不协调感。
 
 新API是完全为Swift开发的，它采用了当前流行的声明式的风格。开发者只需要声明需要显示的字段，系统将以合适的格式进行呈现。
 
