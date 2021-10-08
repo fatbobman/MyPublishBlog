@@ -6,6 +6,18 @@ extension Node where Context == HTML.BodyContext {
     // static func tagslist(context: PublishingContext<Website>) -> Node {
 
     // }
+    static func license() -> Node {
+        .div(
+            .class("license"),
+            .text("本博客所有文章除特别声明外，均采用"),
+            .a(
+                .text("CC 4.0许可协议"),
+                .href("https://creativecommons.org/licenses/by-nc-sa/4.0/"),
+                .target(.blank)
+            ),
+            .text("。转载请注明出处和作者。")
+        )
+    }
 
     static func viewContainer(_ nodes: Node...) -> Node {
         .div(
@@ -337,13 +349,13 @@ extension Node where Context == HTML.BodyContext {
         )
     }
 
-    static func support() -> Node{
+    static func support() -> Node {
         let support =
-        """
-        关注微信公共号[肘子的Swift记事本](/support/)或在推特上关注[@fatbobman](https://twitter.com/fatbobman)，永远不会错过新内容！
-        您的[支持和鼓励](/support/)将为我的博客写作增添更多的动力!
-        如果您或身边的朋友有健康数据管理的需求，请使用我开发的app[【健康笔记】](/healthnotes/)，正是因为它我才创建了这个博客。
-        """
+            """
+            关注微信公共号[肘子的Swift记事本](/support/)或在推特上关注[@fatbobman](https://twitter.com/fatbobman)，永远不会错过新内容！
+            您的[支持和鼓励](/support/)将为我的博客写作增添更多的动力!
+            如果您或身边的朋友有健康数据管理的需求，请使用我开发的app[【健康笔记】](/healthnotes/)，正是因为它我才创建了这个博客。
+            """
         return .div(
             .class("supporter"),
             .markdown(support),
@@ -351,7 +363,6 @@ extension Node where Context == HTML.BodyContext {
                 .class("label"),
                 .text("关注")
             )
-
         )
     }
 }

@@ -134,7 +134,8 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                                     .div(.h1(.text(item.title))),
                                     .div(
                                         .tagList(for: item, on: context.site, displayDate: true),
-                                        .div(.class("content"), .contentBody(item.body))
+                                        .div(.class("content"), .contentBody(item.body)),
+                                        .license()
                                     )
                                 ),
                                 // .shareContainerForMobile(title: item.title, url: context.site.url.appendingPathComponent(item.path.string).absoluteString),
