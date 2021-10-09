@@ -6,7 +6,11 @@ title: 聊一下在SwiftUI中使用CoreData
 ---
 
 
-> 本文并非一个教你如何在SwiftUI下使用CoreData的教程。主要探讨的是在我近一年的SwiftUI开发中使用CoreData的教训、经验、心得。
+本文并非一个教你如何在SwiftUI下使用CoreData的教程。主要探讨的是在我近一年的SwiftUI开发中使用CoreData的教训、经验、心得。
+
+```responser
+id:1
+```
 
 ## SwiftUI lifecycle 中如何声明持久化存储和上下文 ##
 

@@ -5,7 +5,11 @@ tags: SwiftUI
 title: @FocusedBinding 浅谈
 ---
 
-> 在苹果WWDC20中视频中出现了下面的代码，介绍了一个新的属性包装器@FocusedBinding。由于仍处于测试阶段，当前的代码并不能被正确的执行。@FocusedBinding的资料苹果披露的也很少，网上也没有相关的信息。出于个人兴趣，我对它进行了简单的研究。尽管@FocusedBinding在目前Xcode Version 12.0 beta 2 (12A6163b)的版本上运行还有很多问题，但我基本上对其有了一定的了解。
+在苹果WWDC20中视频中出现了下面的代码，介绍了一个新的属性包装器@FocusedBinding。由于仍处于测试阶段，当前的代码并不能被正确的执行。@FocusedBinding的资料苹果披露的也很少，网上也没有相关的信息。出于个人兴趣，我对它进行了简单的研究。尽管@FocusedBinding在目前Xcode Version 12.0 beta 2 (12A6163b)的版本上运行还有很多问题，但我基本上对其有了一定的了解。
+
+```responser
+id:1
+```
 
 ```swift
 struct BookCommands: Commands {

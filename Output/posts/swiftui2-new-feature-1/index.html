@@ -27,7 +27,13 @@ function(){
         }
     }
 }
-</code></pre><p>上述代码可以在屏幕上完成Hello world的显示，且能够运行于iOS和macOS平台下。</p><h2>基本概念</h2><h3>App</h3><p>SwiftUI2.0提供的全新协议。通过声明一个符合App协议的结构来创建一个程序，并通过计算属性body来实现程序的内容。</p><ul><li>通过@main(swift5.3 新特性)设定程序的入口，每个项目只能有一个进入点</li><li>管理整个app的生命周期</li></ul><ul><li>在这个作用域下声明的常量、变量其生命周期与整个app是完全一致的。</li></ul><h3>Scene</h3><p>场景是视图（View）层次结构的容器。通过在App实例的body中组合一个或多个符合Scene协议的实例来呈现具体程序。</p><ul><li>生命周期由系统管理</li><li>系统会根据运行平台的不同而调整场景的展示行为（比如相同的代码在iOS和macOS下的呈现不同，或者某些场景仅能运行于特定的平台）</li><li>SwiftUI2.0提供了几个预置的场景，用户也可以自己编写符合Scene协议的场景。上述代码中便是使用的一个预置场景WindowGroup</li></ul><p>通过App和Scene的加入，绝不是仅仅减少代码量这么简单。通过这个明确的层级设定，我们可以更好的掌握在不同作用域下各个部分的生命周期、更精准数据传递、以及更便利的多平台代码共享。本文后面会用具体代码来逐个阐述。</p><p><em>App和Scene都是通过各自的functionBuilder来解析的，也就是说，新的模板从程序的入口开始便是使用DSL来描述的。</em></p><h2>程序系统事件响应</h2><p>由于去除了AppDelegate.swift和SceneDelegate.swift，SwiftUI2.0提供了新的方法来让程序响应系统事件。</p><h3>针对AppDelegate.swift</h3><p>在iOS系统下，通过使用@UIApplicationDelegateAdaptor可以方便的实现之前AppDelegate.swfit中提供的功能：</p><pre data-language="swift"><code>@main
+</code></pre><p>上述代码可以在屏幕上完成Hello world的显示，且能够运行于iOS和macOS平台下。</p><Div id='responser' class = "responser" onclick="window.location='http://www.fatbobman.com/healthnotes/';"><div class = "hstack">
+<img src = "https://cdn.fatbobman.com/healthnotesLogo.svg"></img>
+<div class = "text">
+<p><span class = "title">健康笔记</span>是我开发的一个iOS app，主要服务于有长期健康管理需求的人士。可为全家不同成员创建各自的笔记，允许使用者自定义数据类型以记录各种健康数据。</p>
+</div>
+</div>
+<div class="label">推广</div></Div><h2>基本概念</h2><h3>App</h3><p>SwiftUI2.0提供的全新协议。通过声明一个符合App协议的结构来创建一个程序，并通过计算属性body来实现程序的内容。</p><ul><li>通过@main(swift5.3 新特性)设定程序的入口，每个项目只能有一个进入点</li><li>管理整个app的生命周期</li></ul><ul><li>在这个作用域下声明的常量、变量其生命周期与整个app是完全一致的。</li></ul><h3>Scene</h3><p>场景是视图（View）层次结构的容器。通过在App实例的body中组合一个或多个符合Scene协议的实例来呈现具体程序。</p><ul><li>生命周期由系统管理</li><li>系统会根据运行平台的不同而调整场景的展示行为（比如相同的代码在iOS和macOS下的呈现不同，或者某些场景仅能运行于特定的平台）</li><li>SwiftUI2.0提供了几个预置的场景，用户也可以自己编写符合Scene协议的场景。上述代码中便是使用的一个预置场景WindowGroup</li></ul><p>通过App和Scene的加入，绝不是仅仅减少代码量这么简单。通过这个明确的层级设定，我们可以更好的掌握在不同作用域下各个部分的生命周期、更精准数据传递、以及更便利的多平台代码共享。本文后面会用具体代码来逐个阐述。</p><p><em>App和Scene都是通过各自的functionBuilder来解析的，也就是说，新的模板从程序的入口开始便是使用DSL来描述的。</em></p><h2>程序系统事件响应</h2><p>由于去除了AppDelegate.swift和SceneDelegate.swift，SwiftUI2.0提供了新的方法来让程序响应系统事件。</p><h3>针对AppDelegate.swift</h3><p>在iOS系统下，通过使用@UIApplicationDelegateAdaptor可以方便的实现之前AppDelegate.swfit中提供的功能：</p><pre data-language="swift"><code>@main
 <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">NewAllApp</span>: <span class="hljs-title">App</span> </span>{
    @<span class="hljs-type">UIApplicationDelegateAdaptor</span>(<span class="hljs-type">AppDelegate</span>.<span class="hljs-keyword">self</span>) <span class="hljs-keyword">var</span> appDelegate
     <span class="hljs-keyword">var</span> body: some <span class="hljs-type">Scene</span> {

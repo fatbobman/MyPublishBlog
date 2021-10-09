@@ -9,6 +9,7 @@ import Foundation
 import JavaScriptCore
 import Plot
 import Publish
+import Sweep
 
 /*
  让首页的文章显示出更多的内容(比description更丰富),但又不想显示全部内容
@@ -38,10 +39,25 @@ extension Content.Body {
         jsContent?.evaluateScript(jsForTruncate)
         let testFunction = jsContent?.objectForKeyedSubscript("truncate")
         let result = testFunction?.call(withArguments: [
-            html, words, ["keepImageTag": keepImageTag, "ellipsis": ellipsis],
+            deleteResponser(html), words, ["keepImageTag": keepImageTag, "ellipsis": ellipsis],
         ])
         return result?.toString() ?? ""
     }
+}
+
+// 为RSS生成文本时删除广告
+func deleteResponser(_ html: String) -> String {
+    var html = html
+    var matchers: [String] = []
+    html.scan(using: [
+        Matcher(identifier: "<Div id='responser'", terminator: "</Div>", allowMultipleMatches: true) { matcher, _ in
+            matchers.append("<Div id='responser'" + String(matcher) + "</Div>")
+        },
+    ])
+    for matcher in matchers {
+        html = html.replacingOccurrences(of: matcher, with: "")
+    }
+    return html
 }
 
 let jsForTruncate =

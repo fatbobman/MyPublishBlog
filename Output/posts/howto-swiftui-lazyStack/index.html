@@ -19,7 +19,13 @@ function(){
 },
 function(){
     $('.actionButton .donateQcode').css('display','none');
-})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>HowTo —— SwiftU2.0 LazyVStack,LazyHStack</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag variant-1"><a href="/tags/howto">HowTo</a></li><li class="tag tagdate">发布于2020年07月09日</li></ul><div class="content"><blockquote><p>SwiftUI2.0提供了LazyVStack和LazyHStack，其作用是只有当View在可见区域内才进行渲染，这样可以大大大提高app执行效率。由于VStack或HStack导致的效率问题，在<a href="https://zhuanlan.zhihu.com/p/111151515" target="_blank">SwiftUI List (3) —— List、Form、VStack</a>文章中有简单的比较。</p></blockquote><h2>基本用法</h2><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">LazyStack</span>: <span class="hljs-title">View</span> </span>{
+})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>HowTo —— SwiftU2.0 LazyVStack,LazyHStack</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag variant-1"><a href="/tags/howto">HowTo</a></li><li class="tag tagdate">发布于2020年07月09日</li></ul><div class="content"><p>SwiftUI2.0提供了LazyVStack和LazyHStack，其作用是只有当View在可见区域内才进行渲染，这样可以大大大提高app执行效率。由于VStack或HStack导致的效率问题，在<a href="https://zhuanlan.zhihu.com/p/111151515" target="_blank">SwiftUI List (3) —— List、Form、VStack</a>文章中有简单的比较。</p><Div id='responser' class = "responser" onclick="window.location='http://www.fatbobman.com/healthnotes/';"><div class = "hstack">
+<img src = "https://cdn.fatbobman.com/healthnotesLogo.svg"></img>
+<div class = "text">
+<p><span class = "title">健康笔记</span>是我开发的一个iOS app，主要服务于有长期健康管理需求的人士。可为全家不同成员创建各自的笔记，允许使用者自定义数据类型以记录各种健康数据。</p>
+</div>
+</div>
+<div class="label">推广</div></Div><h2>基本用法</h2><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">LazyStack</span>: <span class="hljs-title">View</span> </span>{
     <span class="hljs-keyword">var</span> body: some <span class="hljs-type">View</span> {
         <span class="hljs-type">ScrollView</span>{
             <span class="hljs-type">LazyVStack</span>{ <span class="hljs-comment">//换成VStack作比较新数据创建的时机</span>

@@ -10,6 +10,10 @@ title: 用SwiftUI实现iOS mail程序的侧滑菜单
 
 SwipeCell 是一个用Swift 5.3开发的 SwiftUI库.目标是为了实现类似iOS Mail程序实现的左右滑动菜单功能. SwipeCell 需要 XCode 12 ,iOS 14
 
+```responser
+id:1
+```
+
 [SwipeCell GitHub](https://github.com/fatbobman/SwipeCell)
 
 <video src="https://cdn.fatbobman.com/SwipeCellDemoVideo.mp4" controls = "controls">你的浏览器不支持本视频</video>

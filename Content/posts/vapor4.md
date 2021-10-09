@@ -10,6 +10,10 @@ title: Vapor4 的安装与配置
 
 Vapor的官方文档实在是有很大的问题，网上的不少心得、教程又有点陈旧（目前版本调整较大）。通过两天的折腾，终于基本上理出了脉络，初步搭建了开发和生产环境。
 
+```responser
+id:1
+```
+
 ## 什么是Vapor ##
 
 [Vapor](https://github.com/vapor/vapor)是一个使用swift语言编写的Web网络框架，它是跨平台的（mac、Linux），用户可以使用swift语言以及其丰富的第三方库来高效的完成多种网络服务。

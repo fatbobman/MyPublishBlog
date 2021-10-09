@@ -6,7 +6,12 @@ title:  如何对iOS应用中的文本进行本地化
 image: images/localizationApp-1.png
 ---
 
-> 当我们使用一个英文app时，很多人第一时间会去查看是否有对应的中文版本。可见，在app中显示让使用者最亲切的语言文本是何等的重要。对于相当数量的app来说，如果能够将UI中显示的文本进行了本地化转换，基本上就完成了app的本地化工作。本文中，我们将探讨iOS开发中，如何实现显示文本的本地化工作。本文的[Demo](https://github.com/fatbobman/LocalizationDemoForBlogPost)采用SwiftUI编写。
+当我们使用一个英文app时，很多人第一时间会去查看是否有对应的中文版本。可见，在app中显示让使用者最亲切的语言文本是何等的重要。对于相当数量的app来说，如果能够将UI中显示的文本进行了本地化转换，基本上就完成了app的本地化工作。本文中，我们将探讨iOS开发中，如何实现显示文本的本地化工作。本文的[Demo](https://github.com/fatbobman/LocalizationDemoForBlogPost)采用SwiftUI编写。
+
+
+```responser
+id:1
+```
 
 ## 文本本地化的原理 ##
 
@@ -306,6 +311,11 @@ order.list.map{NSLocalizedString($0.drink.name, comment: "")}.joined(separator: 
 > **我们难道不能直接当`Drink`的`name`定义为`LocalizedStringKey`类型吗？**
 >
 > 由于`LocalizedStringKey`不支持`Identifiable`,`Hashable`,`Comparable`协议，同时官方也没有提供任何`LocalizedStringKey`转换成`String`的方法。因此，如果我们想将`name`定义成`LocalizedStringKey`类型需要使用一些特殊手段（需通过Mirror，本文就不展开介绍了）。
+
+
+```responser
+id:1
+```
 
 ## 创建字符串字典文件 ##
 

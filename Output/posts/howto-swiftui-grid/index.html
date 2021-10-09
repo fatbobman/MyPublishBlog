@@ -19,7 +19,13 @@ function(){
 },
 function(){
     $('.actionButton .donateQcode').css('display','none');
-})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>HowTO —— SwiftUI2.0 原生的Grid</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag variant-1"><a href="/tags/howto">HowTo</a></li><li class="tag tagdate">发布于2020年07月10日</li></ul><div class="content"><blockquote><p>SwiftUI的第一版中，官方并没有提供UICollectionView的对应功能。开发者需要自行包装或者依赖很多第三方库。SwiftUI2.0中，苹果通过LazyVGrid、LazyHGrid提供了Grid控件。该控件的实现很有SwiftUI的风格，和众多的第三方库有显著的区别。</p></blockquote><h2>基本用法</h2><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">GridTest1</span>: <span class="hljs-title">View</span> </span>{
+})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>HowTO —— SwiftUI2.0 原生的Grid</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag variant-1"><a href="/tags/howto">HowTo</a></li><li class="tag tagdate">发布于2020年07月10日</li></ul><div class="content"><p>SwiftUI的第一版中，官方并没有提供UICollectionView的对应功能。开发者需要自行包装或者依赖很多第三方库。SwiftUI2.0中，苹果通过LazyVGrid、LazyHGrid提供了Grid控件。该控件的实现很有SwiftUI的风格，和众多的第三方库有显著的区别。</p><Div id='responser' class = "responser" onclick="window.location='http://www.fatbobman.com/healthnotes/';"><div class = "hstack">
+<img src = "https://cdn.fatbobman.com/healthnotesLogo.svg"></img>
+<div class = "text">
+<p><span class = "title">健康笔记</span>是我开发的一个iOS app，主要服务于有长期健康管理需求的人士。可为全家不同成员创建各自的笔记，允许使用者自定义数据类型以记录各种健康数据。</p>
+</div>
+</div>
+<div class="label">推广</div></Div><h2>基本用法</h2><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">GridTest1</span>: <span class="hljs-title">View</span> </span>{
     
     <span class="hljs-keyword">let</span> columns = [
         <span class="hljs-type">GridItem</span>(.adaptive(minimum: <span class="hljs-number">50</span>))

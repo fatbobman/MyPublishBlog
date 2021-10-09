@@ -6,7 +6,11 @@ title: HowTO —— SwiftUI2.0 原生的Grid
 ---
 
 
-> SwiftUI的第一版中，官方并没有提供UICollectionView的对应功能。开发者需要自行包装或者依赖很多第三方库。SwiftUI2.0中，苹果通过LazyVGrid、LazyHGrid提供了Grid控件。该控件的实现很有SwiftUI的风格，和众多的第三方库有显著的区别。
+SwiftUI的第一版中，官方并没有提供UICollectionView的对应功能。开发者需要自行包装或者依赖很多第三方库。SwiftUI2.0中，苹果通过LazyVGrid、LazyHGrid提供了Grid控件。该控件的实现很有SwiftUI的风格，和众多的第三方库有显著的区别。
+
+```responser
+id:1
+```
 
 ## 基本用法 ##
 

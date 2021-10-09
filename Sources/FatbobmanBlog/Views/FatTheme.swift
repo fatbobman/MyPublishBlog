@@ -459,8 +459,7 @@ extension Node where Context == HTML.BodyContext {
             .p(
                 .text("Generated using "),
                 .a(.text("Publish"), .href("https://github.com/johnsundell/publish"),
-                   .target(.blank)
-                  )
+                   .target(.blank))
             ),
             .ul(
                 .class("icon"),

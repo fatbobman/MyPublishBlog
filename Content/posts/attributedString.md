@@ -7,6 +7,9 @@ image: images/attributedString.png
 ---
 在WWDC 2021上，苹果为开发者带来了有一个期待已久的功能——AttributedString，这意味着Swift开发人员不再需要使用基于Objective-C的NSAttributedString来创建样式化文本。本文将对其做全面的介绍并演示如何创建自定义属性。
 
+```responser
+id:1
+```
 ## 初步印象 ##
 
 AttributedString是具有单个字符或字符范围的属性的字符串。属性提供了一些特征，如用于显示的视觉风格、用于无障碍引导以及用于在数据源之间进行链接的超链接数据等。
@@ -501,6 +504,11 @@ if let lowBound = multiRunString.characters.firstIndex(of: "r"),
 {
     multiRunString[lowBound...upperBound].foregroundColor = .brown
 }
+```
+
+
+```responser
+id:1
 ```
 
 ## 本地化 ##

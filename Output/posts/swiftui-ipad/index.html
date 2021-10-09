@@ -19,7 +19,13 @@ function(){
 },
 function(){
     $('.actionButton .donateQcode').css('display','none');
-})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>在SwiftUI下对iPad进行适配</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag tagdate">发布于2020年10月29日</li></ul><div class="content"><blockquote><p>SwiftUI创建初衷之一便是可以高效、可靠的适配多个苹果的硬件平台。在健康笔记2.0开发初始，适配iPad便是我本次的设计目标之一。本文并非教程，只是我在进行本次开发中，对于适配iPad的一些教训和心得。</p></blockquote><h2>我是谁</h2><p>app中的代码必须能高效、清晰的了解当前设备的状况，时刻搞清楚我是谁，我在哪，在干啥等等。因此在项目开始之初我便做了不少的准备并创建了一系列的代码。</p><p>比如，当前的运行设备：</p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">Device</span> </span>{
+})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>在SwiftUI下对iPad进行适配</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag tagdate">发布于2020年10月29日</li></ul><div class="content"><p>SwiftUI创建初衷之一便是可以高效、可靠的适配多个苹果的硬件平台。在健康笔记2.0开发初始，适配iPad便是我本次的设计目标之一。本文并非教程，只是我在进行本次开发中，对于适配iPad的一些教训和心得。</p><Div id='responser' class = "responser" onclick="window.location='http://www.fatbobman.com/healthnotes/';"><div class = "hstack">
+<img src = "https://cdn.fatbobman.com/healthnotesLogo.svg"></img>
+<div class = "text">
+<p><span class = "title">健康笔记</span>是我开发的一个iOS app，主要服务于有长期健康管理需求的人士。可为全家不同成员创建各自的笔记，允许使用者自定义数据类型以记录各种健康数据。</p>
+</div>
+</div>
+<div class="label">推广</div></Div><h2>我是谁</h2><p>app中的代码必须能高效、清晰的了解当前设备的状况，时刻搞清楚我是谁，我在哪，在干啥等等。因此在项目开始之初我便做了不少的准备并创建了一系列的代码。</p><p>比如，当前的运行设备：</p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">Device</span> </span>{
     <span class="hljs-comment">//MARK:当前设备类型 iphone ipad mac</span>
     <span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">Devicetype</span></span>{
         <span class="hljs-keyword">case</span> iphone,ipad,mac

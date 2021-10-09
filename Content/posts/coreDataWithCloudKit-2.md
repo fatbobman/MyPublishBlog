@@ -14,6 +14,11 @@ title: Core Data with CloudKit（二）——同步本地数据库到iCloud私�
 
 > 本文使用的开发环境为`Xcode 12.5`。关于私有数据库的概念，请参阅[Core Data with CloudKit (一) —— 基础](/posts/coreDataWithCloudKit-1/)。如想实际操作本文内容，需要拥有[Apple Developer Program](https://developer.apple.com/programs/)账号。
 
+
+```responser
+id:1
+```
+
 ## 快速指南 ##
 
 在应用程序中启用`Core Data with CloudKi`t功能，只需要以下几步：

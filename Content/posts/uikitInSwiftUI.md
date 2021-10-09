@@ -14,6 +14,11 @@ title:  在SwiftUI中使用UIKit视图
 
 > **如果你已经对如何使用`UIViewRepresentable`有所掌握，可以直接从`SwiftUI风格化`部分阅读**
 
+
+```responser
+id:1
+```
+
 ## 基础 ##
 
 在具体演示包装代码之前，我们先介绍一些与在SwiftUI中使用UIKit视图有关的基础知识。
@@ -380,6 +385,11 @@ struct TextFieldWrapperPreview: PreviewProvider {
 查看[源代码](https://gist.github.com/5604d7bee11a44c2cbdcba12cfe1eda0.git)
 
 ![textfieldwrapperdemo2](https://cdn.fatbobman.com/textfieldwrapperdemo2-9639150-9639151.gif)
+
+
+```responser
+id:1
+```
 
 ## SwiftUI 风格化 ##
 

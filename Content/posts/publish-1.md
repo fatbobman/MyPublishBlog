@@ -5,8 +5,13 @@ description: Publish是一款专门为Swift开发者打造的静态网站生成�
 tags: Swift,Publish
 title: 用Publish创建博客（一）——入门
 ---
-> [Publish](https://github.com/JohnSundell/Publish)是一款专门为Swift开发者打造的静态网站生成器。它使用Swift构建整个网站，并支持主题、插件和其他大量的定制选项。
+[Publish](https://github.com/JohnSundell/Publish)是一款专门为Swift开发者打造的静态网站生成器。它使用Swift构建整个网站，并支持主题、插件和其他大量的定制选项。
 > 作为Swift开发者，通过Publish创建站点的开发过程和体验同开发其他程序很类似。
+
+
+```responser
+id:1
+```
 
 ## 开篇 ##
 

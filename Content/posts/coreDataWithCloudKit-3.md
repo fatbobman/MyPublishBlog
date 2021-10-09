@@ -30,6 +30,11 @@ title: Core Data with CloudKit（三）——CloudKit仪表台
 
 > 在绝大多数使用`Core Data with CloudKit`的场景下，我们仅需要使用仪表板中极少数的功能（环境部署），但利用`CloudKit Dashboard`，我们可以更清楚的了解`Core Data`数据同步背后运作的一些机制。
 
+
+```responser
+id:1
+```
+
 ## 数据库（CloudKit Database） ##
 
 ![image-20210808163319683](https://cdn.fatbobman.com/image-20210808163319683-8411600.png)

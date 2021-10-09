@@ -6,9 +6,13 @@ title: HowTo —— SwiftUI2.0 使用ToolBar替代navigationbarItems
 ---
 
 
-> SwiftUI2.0为了实现更好的多平台支持同时需要兼顾1.0版本代码兼容性，提供了一些与已有控件功能上类似但名称和用法全新的控件。比如ToolBar, navigationTitle等。Toolbar可以实现navigationbarItems的全部功能，并新增了在多平台下的适配。采用了全新的语法，代码更易阅读。
+SwiftUI2.0为了实现更好的多平台支持同时需要兼顾1.0版本代码兼容性，提供了一些与已有控件功能上类似但名称和用法全新的控件。比如ToolBar, navigationTitle等。Toolbar可以实现navigationbarItems的全部功能，并新增了在多平台下的适配。采用了全新的语法，代码更易阅读。
 >
 > **在当前的Xcode Version 12.0 beta 2 (12A6163b)版本下，ToolBar在macOS下仍然有非常多的问题。**
+
+```responser
+id:1
+```
 
 ## 基本用法 ##
 

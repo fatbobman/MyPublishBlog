@@ -11,6 +11,10 @@ title:  SwiftUI2.0 —— Commands（macOS菜单）
 
 苹果在SwiftUI2.0中增加了Multiplatform项目模板，使得同一套代码，仅需少量的适配便可以同时满足iOS以及macOS的需要。对于macOS上运行的app,拥有自定义的菜单是一个十分重要的平台特征。对于没有macOS开发经验的我来说，学习如何设计开发菜单变得十分有趣且必要。
 
+```responser
+id:1
+```
+
 ## 基础 ##
 
 在SwiftUI下为app添加菜单十分方便，下面的代码便可以为app添加一个最基础的菜单。

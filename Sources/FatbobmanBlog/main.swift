@@ -43,6 +43,7 @@ try FatbobmanBlog().publish(
         .installPlugin(.highlightJS()), // 语法高亮
         .addModifier(modifier: bilibili, modifierName: "bilibili"), // bilibili视频
         .addModifier(modifier: hrefOpenNewTab, modifierName: "hrefOpenNewTab"),
+        .addModifier(modifier: responser, modifierName: "Responser"),
         .copyResources(),
         .setSctionTitle(), // 修改section 标题
         .addMarkdownFiles(),
@@ -53,13 +54,14 @@ try FatbobmanBlog().publish(
             .colorfulTags(defaultClass: "tag", variantPrefix: "variant", numberOfVariants: 8)
         ), // 给tag多种颜色
         .sortItems(by: \.date, order: .descending), // 对所有文章排序
-        .generateHTML(withTheme: .fatTheme),
-        //        .installPlugin(.rssSetting(including:[.posts,.project])),
-        .makeSearchIndex(includeCode: false),
         .generateShortRSSFeed(
             including: [.posts],
             itemPredicate: nil
         ),
+        .generateHTML(withTheme: .fatTheme),
+        //        .installPlugin(.rssSetting(including:[.posts,.project])),
+
+        .makeSearchIndex(includeCode: false),
         .generateSiteMap(),
         .unwrap(.gitHub("fatbobman/fatbobman.github.io", useSSH: true), PublishingStep.deploy),
         .if(command == "--upload", .uploadToServer()),

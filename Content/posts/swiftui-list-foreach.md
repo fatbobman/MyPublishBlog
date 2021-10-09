@@ -9,6 +9,10 @@ title: 聊一下SwiftUI中的List和ForEach
 
 在List中添加动态内容,我们可以使用两种方式
 
+```responser
+id:1
+```
+
 ### 直接使用List自己提供的动态内容构造方法 ###
 
 ```swift

@@ -6,7 +6,7 @@ title:  如何在SwiftUI中实现interactiveDismissDisabled
 image: images/dismissSheet.gif
 ---
 
-> 本文中我们将探讨如何实现一个SwiftUI 3.0中新增功能——interactiveDismissDisabled的增强版；如何创建更SwiftUI化的功能扩展。
+本文中我们将探讨如何实现一个SwiftUI 3.0中新增功能——interactiveDismissDisabled的增强版；如何创建更SwiftUI化的功能扩展。
 
 ## 需求 ##
 
@@ -62,6 +62,11 @@ struct ExampleView: View {
 在[WWDC 2021 观后感](https://www.fatbobman.com/posts/wwdc2021/)一文中，我们已经探讨过SwiftUI3.0将会影响非常多的第三方开发者编写SwiftUI扩展的思路和实现方式。
 
 尽管`interactiveDismissDisabled`的实现很优雅，但仍未完成[健康笔记](https://www.fatbobman.com/healthnotes/)需要的第二个功能：在用户使用手势取消Sheet时可以获得通知，进而拥有更多的控制能力。因此，我决定使用类似的方式实现它。
+
+
+```responser
+id:1
+```
 
 ## 原理 ##
 

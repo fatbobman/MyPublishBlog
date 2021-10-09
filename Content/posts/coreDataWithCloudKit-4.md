@@ -6,6 +6,11 @@ title: Core Data with CloudKit（四）—— 调试、测试、迁移及其他
 ---
 本文聊一下在开发`Core Data with CloudKit`项目中常见的一些问题，让大家少走弯路、避免踩坑。
 
+
+```responser
+id:1
+```
+
 ## 控制台日志信息 ##
 
 ![log](https://cdn.fatbobman.com/log.gif)

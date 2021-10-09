@@ -14,6 +14,10 @@ image: images/coreDataWithCloudKit-6.png
 
 就像WWDC session [Build apps that share data through CloudKit and Core Data](https://developer.apple.com/videos/play/wwdc2021/10015/)提到的那样，共享数据功能的实现远复杂于同步私有数据库以及同步公共数据库。尽管苹果提供了不少新的API来简化该操作，但想完整的在应用程序中实现该功能仍具有不小的挑战。
 
+```responser
+id:1
+```
+
 ## 基础 ##
 
 > 本节主要介绍的是Core Data with CloudKit下的共享机制，某些地方同原生的CloudKit共享不同。

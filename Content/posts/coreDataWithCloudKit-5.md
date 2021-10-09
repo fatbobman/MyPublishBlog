@@ -8,6 +8,11 @@ image: images/coreDataWithCloudKit-5.jpg
 
 本文将介绍如何通过`Core Data with CloudKit`将公共数据库同步到本地，在本地创建`Core Data`数据库镜像。
 
+
+```responser
+id:1
+```
+
 ## 三种CloudKit数据库 ##
 
 介绍一下`CloudKit`中的三种数据库：

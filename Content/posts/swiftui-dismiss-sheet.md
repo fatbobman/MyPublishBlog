@@ -12,6 +12,10 @@ title: 在SwiftUI中制作可以控制取消手势的Sheet
 
 [如何在SwiftUI中创建一个实时响应的Form](/posts/swiftui-input-form/)
 
+```responser
+id:1
+```
+
 ## 由来 ##
 
 在之前Form的例子中，虽然我们可以根据表单是否进行了修改来对cancel、edit等做出不同的响应，但是我们并没有办法控制用户直接使用手势来取消sheet，为了不让用户绕过程序的判断检查，不得已使用了fullScreenCover来规避手势取消。不过在实际使用中，尽管全屏sheet提供了更多的屏幕可用空间，但还是会给使用者带来了操作逻辑不统一的体验。

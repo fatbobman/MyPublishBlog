@@ -17,6 +17,11 @@ title: 在Linux系统上搭建Swift开发调试环境
 
 Swift已经准备在Linux有更多的表现。
 
+
+```responser
+id:1
+```
+
 ## 写本文的原因 ##
 
 前些日子写了篇[用Publish创建博客（一）——入门](/posts/publish-1/)（一个用Swift编写的优秀的静态网站生成器）的介绍，期间有网友问我是否可以在Linux上使用，我回答不成问题。但转过头来思考，虽然`Publish`完美地支持Linux，但开发者能否像在mac上一样方便的进行开发调试呢？
@@ -215,6 +220,11 @@ $code --install-extension sourcekit-lsp-vscode-dev.vsix
 安装完成后，vscode便可支持代码自动补全、定义跳转等功能。
 
 ![swift_in_linux_lsp_demo](https://cdn.fatbobman.com/swift_in_linux_lsp_demo.gif)
+
+
+```responser
+id:1
+```
 
 ## LLDB ##
 

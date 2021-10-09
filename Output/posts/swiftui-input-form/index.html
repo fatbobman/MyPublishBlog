@@ -19,7 +19,13 @@ function(){
 },
 function(){
     $('.actionButton .donateQcode').css('display','none');
-})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>如何在SwiftUI中创建一个实时响应的Form</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag tagdate">发布于2020年09月04日</li></ul><div class="content"><blockquote><p>我的app健康笔记主要是对数据的收集、管理，所以对于表单的实时检查、响应的要求比较高。因此制作一个对用于输入响应及时、反馈准确的Form十分重要。本文尝试提出一个SwiftUI下的Form开发思路。</p></blockquote><h2>健康笔记1.0的时候</h2><p>在开发健康笔记1.0的使用，当时由于iOS13尚不支持onChange，当时主要使用类似的检查方式：</p><h2>对于简单情况</h2><pre data-language="swift"><code>@<span class="hljs-type">State</span> <span class="hljs-keyword">var</span> name = <span class="hljs-string">""</span>
+})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>如何在SwiftUI中创建一个实时响应的Form</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag tagdate">发布于2020年09月04日</li></ul><div class="content"><p>我的app健康笔记主要是对数据的收集、管理，所以对于表单的实时检查、响应的要求比较高。因此制作一个对用于输入响应及时、反馈准确的Form十分重要。本文尝试提出一个SwiftUI下的Form开发思路。</p><Div id='responser' class = "responser" onclick="window.location='http://www.fatbobman.com/healthnotes/';"><div class = "hstack">
+<img src = "https://cdn.fatbobman.com/healthnotesLogo.svg"></img>
+<div class = "text">
+<p><span class = "title">健康笔记</span>是我开发的一个iOS app，主要服务于有长期健康管理需求的人士。可为全家不同成员创建各自的笔记，允许使用者自定义数据类型以记录各种健康数据。</p>
+</div>
+</div>
+<div class="label">推广</div></Div><h2>健康笔记1.0的时候</h2><p>在开发健康笔记1.0的使用，当时由于iOS13尚不支持onChange，当时主要使用类似的检查方式：</p><h2>对于简单情况</h2><pre data-language="swift"><code>@<span class="hljs-type">State</span> <span class="hljs-keyword">var</span> name = <span class="hljs-string">""</span>
 
 <span class="hljs-type">TextField</span>(<span class="hljs-string">"name"</span>,text:$name)
      .foregroundColor(name.<span class="hljs-built_in">count</span>.isEmpty ? .red : .black)

@@ -13,6 +13,11 @@ title: Core Data with CloudKit (一) —— 基础
 
 我将通过几篇博文介绍`Core Data with CloudKit`的用法、调试技巧、控制台设置并尝试更深入地研究其同步机制。
 
+
+```responser
+id:1
+```
+
 ## Core Data with CloudKit的局限性 ##
 
 * **只能运行在苹果的生态**

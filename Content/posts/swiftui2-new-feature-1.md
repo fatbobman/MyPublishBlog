@@ -24,6 +24,10 @@ struct NewAllApp: App {
 
 上述代码可以在屏幕上完成Hello world的显示，且能够运行于iOS和macOS平台下。
 
+```responser
+id:1
+```
+
 ## 基本概念 ##
 
 ### App ###

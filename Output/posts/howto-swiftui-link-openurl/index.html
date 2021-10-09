@@ -19,7 +19,13 @@ function(){
 },
 function(){
     $('.actionButton .donateQcode').css('display','none');
-})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>HowTo —— SwiftUI2.0 使用Link或openURL打开URL scheme</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag variant-1"><a href="/tags/howto">HowTo</a></li><li class="tag tagdate">发布于2020年07月10日</li></ul><div class="content"><blockquote><p>SwiftUI2.0提供了原生的打开URL scheme的功能，我们可以十分方便的在代码中调用其他的app。</p></blockquote><h2>Link</h2><p>类似于 NavigationLink ,直接打开URL scheme对应的app</p><pre data-language="swift"><code><span class="hljs-type">Link</span>(<span class="hljs-string">"openURL"</span>,destination:safariUrl)
+})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>HowTo —— SwiftUI2.0 使用Link或openURL打开URL scheme</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag variant-1"><a href="/tags/howto">HowTo</a></li><li class="tag tagdate">发布于2020年07月10日</li></ul><div class="content"><p>SwiftUI2.0提供了原生的打开URL scheme的功能，我们可以十分方便的在代码中调用其他的app。</p><Div id='responser' class = "responser" onclick="window.location='http://www.fatbobman.com/healthnotes/';"><div class = "hstack">
+<img src = "https://cdn.fatbobman.com/healthnotesLogo.svg"></img>
+<div class = "text">
+<p><span class = "title">健康笔记</span>是我开发的一个iOS app，主要服务于有长期健康管理需求的人士。可为全家不同成员创建各自的笔记，允许使用者自定义数据类型以记录各种健康数据。</p>
+</div>
+</div>
+<div class="label">推广</div></Div><h2>Link</h2><p>类似于 NavigationLink ,直接打开URL scheme对应的app</p><pre data-language="swift"><code><span class="hljs-type">Link</span>(<span class="hljs-string">"openURL"</span>,destination:safariUrl)
 </code></pre><h2>openURL</h2><p>本次在SwiftUI2.0中，苹果提供了若干个通过Environment注入的调用系统操作的方法。比如 exportFiles,importFiles,openURL等。</p><pre data-language="swift"><code>@<span class="hljs-type">Environment</span>(\.openURL) <span class="hljs-keyword">var</span> openURL
 openURL.callAsFunction(url)
 </code></pre><h2>代码范例</h2><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">URLTest</span>: <span class="hljs-title">View</span> </span>{

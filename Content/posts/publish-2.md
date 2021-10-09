@@ -4,7 +4,12 @@ description: 拥用强大的主题系统是一个静态网站生成器能否成�
 tags: Swift,Publish,Plot
 title: 用Publish创建博客（二）——主题开发
 ---
-> 拥用强大的主题系统是一个静态网站生成器能否成功的重要原因之一。[Publish](https://github.com/JohnSundell/Publish)采用[Plot](https://github.com/JohnSundell/Plot)作为主题的开发工具，让开发者在高效编写主题的同时享受到了Swift的类型安全的优势。本文将从Plot开始介绍，让读者最终学会如何创建Publish主题。
+拥用强大的主题系统是一个静态网站生成器能否成功的重要原因之一。[Publish](https://github.com/JohnSundell/Publish)采用[Plot](https://github.com/JohnSundell/Plot)作为主题的开发工具，让开发者在高效编写主题的同时享受到了Swift的类型安全的优势。本文将从Plot开始介绍，让读者最终学会如何创建Publish主题。
+
+
+```responser
+id:1
+```
 
 ## Plot ##
 

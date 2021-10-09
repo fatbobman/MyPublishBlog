@@ -4,7 +4,11 @@ description: 我们不仅可以利用Publish内置的接口来开发插件进行
 tags: Swift,Publish
 title: 用Publish创建博客（三）——插件开发
 ---
-> 我们不仅可以利用Publish内置的接口来开发插件进行扩展，同时还可以使用Publish套件中其他的优秀库（Ink、Plot、Sweep、Files、ShellOut等）来完成更多的创意。本文将通过几个实例（添加标签、增加属性、用代码生成内容、全文搜索、命令行部署）在展示不同扩展手段的同时向大家介绍Publish套件中其他的优秀成员。在阅读本文前，最好能先阅读[用Publish创建博客（一）——入门](/posts/publish-1/)、[用Publish创建博客（二）——主题开发](/posts/publish-2/)。对Publish有个基本了解。本文篇幅较长，你可以选择自己感兴趣的实战内容阅读。
+我们不仅可以利用Publish内置的接口来开发插件进行扩展，同时还可以使用Publish套件中其他的优秀库（Ink、Plot、Sweep、Files、ShellOut等）来完成更多的创意。本文将通过几个实例（添加标签、增加属性、用代码生成内容、全文搜索、命令行部署）在展示不同扩展手段的同时向大家介绍Publish套件中其他的优秀成员。在阅读本文前，最好能先阅读[用Publish创建博客（一）——入门](/posts/publish-1/)、[用Publish创建博客（二）——主题开发](/posts/publish-2/)。对Publish有个基本了解。本文篇幅较长，你可以选择自己感兴趣的实战内容阅读。
+
+```responser
+id:1
+```
 
 ## 基础 ##
 

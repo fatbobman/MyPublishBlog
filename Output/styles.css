@@ -311,6 +311,16 @@ article h2 {
     border-bottom: 1px solid #ececec;
 }
 
+/* 
+获取第二个h2
+*/
+/*
+article h2:nth-of-type(2)::before{
+    content: "text";
+    color:green
+}
+*/
+
 h1 {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -1557,7 +1567,51 @@ article hr {
     background-color: transparent;
 }
 
+/* 广告 */
+.responser {
+    position: relative;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    border: 2px solid #078076;
+    padding: 15px 20px 15px 20px;
+    /* color: #f2f2f2; */
+    background-color: #eaf3f2;
+    cursor:pointer;
+    z-index: 0;
+}
 
+.responser .hstack {
+    display: flex;
+    flex-direction: row;
+}
+
+.responser img {
+    width: 64px;
+    height: 64px;
+    margin:auto;
+}
+
+.responser .text {
+    margin-left:20px;
+}
+
+.responser .title {
+    font-weight: bold;
+    color: #0269c8;
+}
+
+.responser .label{
+    position:absolute;
+    top: -10px;
+    left: 20px;
+    background-color: #078076;
+    padding: 3px 6px 3px 6px;
+    border-radius: 5px;
+    color: #f2f2f2;
+}
+
+/* 下方的twitter 公共号推广 */
 .supporter {
     position: relative;
     margin-top: 10px;

@@ -5,7 +5,12 @@ tags: SwiftUI,HowTo
 title: HowTo—— Swift2.0在视图中显示地图
 ---
 
-> Swift2.0中，苹果添加了Map，让开发者可以非常容易的在View中添加需要的地图元素。
+Swift2.0中，苹果添加了Map，让开发者可以非常容易的在View中添加需要的地图元素。
+
+```responser
+id:1
+```
+
 
 ```swift
 import SwiftUI

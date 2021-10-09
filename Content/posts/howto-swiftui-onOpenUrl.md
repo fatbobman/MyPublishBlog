@@ -6,7 +6,11 @@ title: HowTo —— 使用onOpenURL处理Universal Links
 ---
 
 
-> SwiftUI2.0由于可以采用新的代码架构（Life Cycle SwiftUI App）来组织app,因此提供了onOpenURL来处理Univeresal Links。不同于在AppDelegate或SceneDelegate中的解决方案，onOpenURL作为一个view modifier，你可以在任意View上注册你的app的URL处理机制。关于如何为自己的app创建URL Scheme，请参阅[苹果的官方文档](https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app)。
+SwiftUI2.0由于可以采用新的代码架构（Life Cycle SwiftUI App）来组织app,因此提供了onOpenURL来处理Univeresal Links。不同于在AppDelegate或SceneDelegate中的解决方案，onOpenURL作为一个view modifier，你可以在任意View上注册你的app的URL处理机制。关于如何为自己的app创建URL Scheme，请参阅[苹果的官方文档](https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app)。
+
+```responser
+id:1
+```
 
 ## 基本用法 ##
 

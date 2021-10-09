@@ -5,7 +5,11 @@ tags: SwiftUI,Architecture
 title: ObservableObject研究——想说爱你不容易
 ---
 
-> 本文主要研究在SwiftUI中，采用单一数据源(Single Source of Truth)的开发模式，ObservableObject是否为最佳选择。是否可以在几乎不改变现有设计思路下进行新的尝试，以提高响应效率。最后提供了一个仍采用单一数据源设计思路但完全弃用ObservableObject的方式。
+本文主要研究在SwiftUI中，采用单一数据源(Single Source of Truth)的开发模式，ObservableObject是否为最佳选择。是否可以在几乎不改变现有设计思路下进行新的尝试，以提高响应效率。最后提供了一个仍采用单一数据源设计思路但完全弃用ObservableObject的方式。
+
+```responser
+id:1
+```
 
 ## 单一数据源 ##
 

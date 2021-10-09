@@ -5,7 +5,11 @@ tags: SwiftUI,HowTo
 title: HowTo —— SwiftUI2.0 使用ProgressView显示进度条
 ---
 
-> SwiftUI2.0 新增了一些便捷的内置控件，比如说Label、ProgressView等。其基本形态都很普通，不过都支持自定义style。官方的意图也比较明显，通过内置控件，规范代码、提高原型编写速度，如需要更精细控制可通过扩展style来完成。
+SwiftUI2.0 新增了一些便捷的内置控件，比如说Label、ProgressView等。其基本形态都很普通，不过都支持自定义style。官方的意图也比较明显，通过内置控件，规范代码、提高原型编写速度，如需要更精细控制可通过扩展style来完成。
+
+```responser
+id:1
+```
 
 ## 经典小菊花 ##
 

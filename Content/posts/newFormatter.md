@@ -10,6 +10,11 @@ image: images/newFormatter.png
 
 > 本文的演示代码可以在[Github](https://github.com/fatbobman/CustomParseableFormatStyleDemo)上下载
 
+
+```responser
+id:1
+```
+
 ## 新旧交替或风格转换 ##
 
 ### 新Formatter API可以做什么 ###
@@ -339,6 +344,11 @@ extension FormatStyle where Self == IntegerFormatStyle<Int> {
 ```
 
 我们最好也为自定义的Formatter提供类似的定义
+
+
+```responser
+id:1
+```
 
 ## 实战 ##
 

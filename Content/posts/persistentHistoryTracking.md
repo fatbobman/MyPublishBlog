@@ -10,6 +10,11 @@ title: 在CoreData中使用持久化历史跟踪
 
 在计划中的[【健康笔记3】](/healthnotes/)中，我考虑为App添加Widget或者其他的Extentsion，另外我也打算将WWDC21上介绍的NSCoreDataCoreSpotlightDelegate用到App的新版本中。为此就不得不认真地了解该如何使用持久化历史跟踪功能了。
 
+
+```responser
+id:1
+```
+
 ## 什么是持久化历史跟踪（Persistent History Tracking） ##
 
 > 使用持久化历史跟踪（Persistent History Tracking）来确定自启用该项功能以来，存储（Store）中发生了哪些更改。 —— 苹果官方文档
@@ -177,6 +182,11 @@ userDefaults.set("hello world", forKey: "shareString")
 ```
 
 Persistent History Tracking功能是在description上设置的，因此如果你的CoreData使用了多个`Configuration`的话，可以只为有需要的`configuration`启用该功能。
+
+
+```responser
+id:1
+```
 
 ## 响应持久化存储跟踪远程通知 ##
 

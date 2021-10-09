@@ -5,7 +5,11 @@ tags: SwiftUI,Architecture
 title: SwiftUI2.0 —— App、Scene、新的代码结构（二）
 ---
 
-> 在[上篇文章](/posts/swiftui2-new-feature-1/)中我们简单了解了App、Scene，以及几个内置Scene的应用。在本文中，我们着重探讨在SwiftUI2.0新的代码结构下如果更高效的组织Data Flow。
+在[上篇文章](/posts/swiftui2-new-feature-1/)中我们简单了解了App、Scene，以及几个内置Scene的应用。在本文中，我们着重探讨在SwiftUI2.0新的代码结构下如果更高效的组织Data Flow。
+
+```responser
+id:1
+```
 
 ## 新特性 ##
 

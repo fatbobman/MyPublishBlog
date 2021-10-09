@@ -19,7 +19,13 @@ function(){
 },
 function(){
     $('.actionButton .donateQcode').css('display','none');
-})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>聊一下SwiftUI中的List和ForEach</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag tagdate">发布于2020年08月24日</li></ul><div class="content"><p>在SwiftUI中使用List可以非常方便快速的制作各种列表.List其实就是对UITableView进行的封装(更多List的具体用法请参阅<a href="https://zhuanlan.zhihu.com/p/110749923" target="_blank">List基本用法</a>).</p><p>在List中添加动态内容,我们可以使用两种方式</p><h3>直接使用List自己提供的动态内容构造方法</h3><pre data-language="swift"><code>  <span class="hljs-type">List</span>(<span class="hljs-number">0</span>..&lt;<span class="hljs-number">100</span>){ i <span class="hljs-keyword">in</span>
+})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>聊一下SwiftUI中的List和ForEach</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag tagdate">发布于2020年08月24日</li></ul><div class="content"><p>在SwiftUI中使用List可以非常方便快速的制作各种列表.List其实就是对UITableView进行的封装(更多List的具体用法请参阅<a href="https://zhuanlan.zhihu.com/p/110749923" target="_blank">List基本用法</a>).</p><p>在List中添加动态内容,我们可以使用两种方式</p><Div id='responser' class = "responser" onclick="window.location='http://www.fatbobman.com/healthnotes/';"><div class = "hstack">
+<img src = "https://cdn.fatbobman.com/healthnotesLogo.svg"></img>
+<div class = "text">
+<p><span class = "title">健康笔记</span>是我开发的一个iOS app，主要服务于有长期健康管理需求的人士。可为全家不同成员创建各自的笔记，允许使用者自定义数据类型以记录各种健康数据。</p>
+</div>
+</div>
+<div class="label">推广</div></Div><h3>直接使用List自己提供的动态内容构造方法</h3><pre data-language="swift"><code>  <span class="hljs-type">List</span>(<span class="hljs-number">0</span>..&lt;<span class="hljs-number">100</span>){ i <span class="hljs-keyword">in</span>
     <span class="hljs-type">Text</span>(<span class="hljs-string">"id:\(id)"</span>)
   }
 </code></pre><h3>在List中使用ForEach</h3><pre data-language="swift"><code>  <span class="hljs-type">List</span>{

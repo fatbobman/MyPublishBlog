@@ -19,7 +19,13 @@ function(){
 },
 function(){
     $('.actionButton .donateQcode').css('display','none');
-})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>Vapor4 的安装与配置</h1></div><div><ul class="tag-list"><li class="tag variant-6"><a href="/tags/vapor">Vapor</a></li><li class="tag tagdate">发布于2020年05月07日</li></ul><div class="content"><blockquote><p>本文介绍了如何在mac 10.5.4和ubuntu 18.04下安装Vapor命令行工具，创建Vapor项目，简单的调试项目以及如何部署到生产环境的过程。文中的运行环境为: Vapor4,Swift5.2,Catalina 10.5.4,Ubuntu18.04</p></blockquote><p>最近新开通了一个云服务器（Linux系统），使用<a href="https://hexo.io/zh-cn/index.html/" target="_blank">Hexo</a>创建了新的博客网页。考虑增加点简单的交互功能，所以需要在服务器端添加逻辑处理能力。由于近半年来基本上都是在使用Swift，所以打算尝试一下Server Side Swift。没有太仔细选择各种框架，看过几个介绍Vapor使用的视频后，感觉不错，便开始尝试安装配置。</p><p>Vapor的官方文档实在是有很大的问题，网上的不少心得、教程又有点陈旧（目前版本调整较大）。通过两天的折腾，终于基本上理出了脉络，初步搭建了开发和生产环境。</p><h2>什么是Vapor</h2><p><a href="https://github.com/vapor/vapor" target="_blank">Vapor</a>是一个使用swift语言编写的Web网络框架，它是跨平台的（mac、Linux），用户可以使用swift语言以及其丰富的第三方库来高效的完成多种网络服务。</p><pre data-language="swift"><code><span class="hljs-keyword">import</span> Vapor
+})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>Vapor4 的安装与配置</h1></div><div><ul class="tag-list"><li class="tag variant-6"><a href="/tags/vapor">Vapor</a></li><li class="tag tagdate">发布于2020年05月07日</li></ul><div class="content"><blockquote><p>本文介绍了如何在mac 10.5.4和ubuntu 18.04下安装Vapor命令行工具，创建Vapor项目，简单的调试项目以及如何部署到生产环境的过程。文中的运行环境为: Vapor4,Swift5.2,Catalina 10.5.4,Ubuntu18.04</p></blockquote><p>最近新开通了一个云服务器（Linux系统），使用<a href="https://hexo.io/zh-cn/index.html/" target="_blank">Hexo</a>创建了新的博客网页。考虑增加点简单的交互功能，所以需要在服务器端添加逻辑处理能力。由于近半年来基本上都是在使用Swift，所以打算尝试一下Server Side Swift。没有太仔细选择各种框架，看过几个介绍Vapor使用的视频后，感觉不错，便开始尝试安装配置。</p><p>Vapor的官方文档实在是有很大的问题，网上的不少心得、教程又有点陈旧（目前版本调整较大）。通过两天的折腾，终于基本上理出了脉络，初步搭建了开发和生产环境。</p><Div id='responser' class = "responser" onclick="window.location='http://www.fatbobman.com/healthnotes/';"><div class = "hstack">
+<img src = "https://cdn.fatbobman.com/healthnotesLogo.svg"></img>
+<div class = "text">
+<p><span class = "title">健康笔记</span>是我开发的一个iOS app，主要服务于有长期健康管理需求的人士。可为全家不同成员创建各自的笔记，允许使用者自定义数据类型以记录各种健康数据。</p>
+</div>
+</div>
+<div class="label">推广</div></Div><h2>什么是Vapor</h2><p><a href="https://github.com/vapor/vapor" target="_blank">Vapor</a>是一个使用swift语言编写的Web网络框架，它是跨平台的（mac、Linux），用户可以使用swift语言以及其丰富的第三方库来高效的完成多种网络服务。</p><pre data-language="swift"><code><span class="hljs-keyword">import</span> Vapor
 
 <span class="hljs-keyword">let</span> app = <span class="hljs-keyword">try</span> <span class="hljs-type">Application</span>()
 <span class="hljs-keyword">let</span> router = <span class="hljs-keyword">try</span> app.make(<span class="hljs-type">Router</span>.<span class="hljs-keyword">self</span>)

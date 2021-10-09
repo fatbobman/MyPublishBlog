@@ -19,7 +19,13 @@ function(){
 },
 function(){
     $('.actionButton .donateQcode').css('display','none');
-})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>聊一下在SwiftUI中使用CoreData</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag variant-1"><a href="/tags/core-data">Core Data</a></li><li class="tag tagdate">发布于2020年10月28日</li></ul><div class="content"><blockquote><p>本文并非一个教你如何在SwiftUI下使用CoreData的教程。主要探讨的是在我近一年的SwiftUI开发中使用CoreData的教训、经验、心得。</p></blockquote><h2>SwiftUI lifecycle 中如何声明持久化存储和上下文</h2><p>在XCode12中，苹果新增了SwiftUI lifecycle，让App完全的SwiftUI化。不过这就需要我们使用新的方法来声明持久化存储和上下文。</p><p>好像是从beta6开始，XCode 12提供了基于SwiftUI lifecycle的CoreData模板</p><pre data-language="swift"><code>@main
+})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>聊一下在SwiftUI中使用CoreData</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag variant-1"><a href="/tags/core-data">Core Data</a></li><li class="tag tagdate">发布于2020年10月28日</li></ul><div class="content"><p>本文并非一个教你如何在SwiftUI下使用CoreData的教程。主要探讨的是在我近一年的SwiftUI开发中使用CoreData的教训、经验、心得。</p><Div id='responser' class = "responser" onclick="window.location='http://www.fatbobman.com/healthnotes/';"><div class = "hstack">
+<img src = "https://cdn.fatbobman.com/healthnotesLogo.svg"></img>
+<div class = "text">
+<p><span class = "title">健康笔记</span>是我开发的一个iOS app，主要服务于有长期健康管理需求的人士。可为全家不同成员创建各自的笔记，允许使用者自定义数据类型以记录各种健康数据。</p>
+</div>
+</div>
+<div class="label">推广</div></Div><h2>SwiftUI lifecycle 中如何声明持久化存储和上下文</h2><p>在XCode12中，苹果新增了SwiftUI lifecycle，让App完全的SwiftUI化。不过这就需要我们使用新的方法来声明持久化存储和上下文。</p><p>好像是从beta6开始，XCode 12提供了基于SwiftUI lifecycle的CoreData模板</p><pre data-language="swift"><code>@main
 <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">CoreDataTestApp</span>: <span class="hljs-title">App</span> </span>{
     <span class="hljs-comment">//持久化声明</span>
     <span class="hljs-keyword">let</span> persistenceController = <span class="hljs-type">PersistenceController</span>.shared

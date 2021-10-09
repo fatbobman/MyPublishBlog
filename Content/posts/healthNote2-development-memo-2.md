@@ -12,6 +12,10 @@ title: 健康笔记2.0开发随笔(二)
 
 尽管叫原型版,但数据流、数据库操作等待基础代码都是要用于正式版中的.
 
+```responser
+id:1
+```
+
 在上周,苹果发布了Xcode12的beta5,其中提供了在SwiftUI lifecycle下的CoreData模版.所用的思路和我现在差不多.都是使用static来保证上下文的唯一性.另外苹果也提供了一个用于preview的思路,创建了一个in-memory 的Sqllite.这个也和我现在的途径差距不大,我现在是直接通过生成Sample NSManageObject给Preview来实现的.反正都是可以在preview中比较好的支持CoreData数据.
 
 preview在Xcode12中得到了很大的加强,崩溃的机率明显下降很多.我目前几乎所有的View都可以完美的preview出来.

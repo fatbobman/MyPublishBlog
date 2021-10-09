@@ -30,7 +30,12 @@ image: images/navigationViewKit.png
 
 > 请访问Github下载[NavigationViewKit](https://github.com/fatbobman/NavigationViewKit)
 
-## NavigationViewManager #
+
+```responser
+id:1
+```
+
+## NavigationViewManager ##
 
 ### 简介 ###
 

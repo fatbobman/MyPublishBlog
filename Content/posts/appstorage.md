@@ -17,6 +17,11 @@ title: @AppStorage研究
 * 声明容易出现拼写错误
 * 大量@AppStorage无法统一注入
 
+
+```responser
+id:1
+```
+
 ## @AppStorage基础指南 ##
 
 @AppStorage是SwiftUI框架提供的一个属性包装器，设计初衷是创建一种在视图中保存和读取UserDefaults变量的快捷方法。@AppStorage在视图中的行为同@State很类似，其值变化时将导致与其依赖的视图无效并进行重新绘制。

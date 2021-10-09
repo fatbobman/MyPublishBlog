@@ -16,6 +16,11 @@ image: images/coreDataInPreview.png
 * 如何在之后的开发中避免类似的崩溃出现
 * 如何在Xcode中安全可靠地预览含有Core Data元素的SwiftUI视图
 
+
+```responser
+id:1
+```
+
 ## 预览 ##
 
 ### 预览是模拟器 ###

@@ -7,6 +7,11 @@ image: images/redux-like_store.png
 ---
 经过两年多的时间，SwiftUI发展到当前的3.0版本，无论SwiftUI的功能还是Swift语言本身在这段时间里都有了巨大的提升。是时候使用Async/Await来重构我的的状态容器代码了。
 
+
+```responser
+id:1
+```
+
 ## SwiftUI的状态容器 ##
 
 我是从王巍的[SwiftUI与Combine编程](https://objccn.io/products/)一书中，第一次接触到`Single souce of truth`式的编程思想。整体来说，同Redux的逻辑基本一致：

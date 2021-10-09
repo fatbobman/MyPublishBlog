@@ -8,6 +8,11 @@ image: images/spotlight.png
 
 本文将讲解如何通过NSCoreDataSpotlightDelegate（WWDC 2021版本）实现将应用程序中的Core Data数据添加到Spotlight索引，方便用户查找并提高App的曝光率。
 
+
+```responser
+id:1
+```
+
 ## 基础 ##
 
 ### Spotlight ###
@@ -149,6 +154,11 @@ CSSearchableIndex.default().deleteSearchableItems(withDomainIdentifiers: ["com.f
                 print(error.localizedDescription)
             }
         }
+```
+
+
+```responser
+id:1
 ```
 
 ## NSCoreDataCoreSpotlightDelegate实现 ##

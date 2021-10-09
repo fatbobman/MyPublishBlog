@@ -13,7 +13,7 @@ tags: first, article
 
 #### 我的日常 ####
 
-> 养花、养鱼、养宠物、爱家人。
+> 养花、养鱼、养宠物、健身。
 
 #### 目前Swift兴趣方向 ####
 
@@ -25,4 +25,4 @@ tags: first, article
 
 > Email: [xuyang@me.com](mailto:xuyang@me.com)
 
-> 微信公共号: 肘子的Swift记事本
+> 公共号: [肘子的Swift记事本](/support/)

@@ -19,7 +19,13 @@ function(){
 },
 function(){
     $('.actionButton .donateQcode').css('display','none');
-})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>SwiftUI2.0 —— Commands（macOS菜单）</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag tagdate">发布于2020年06月27日</li></ul><div class="content"><blockquote><p>本文介绍了SwiftUI 2.0中，如何为macOS平台添加菜单。 当前运行环境为 Xcode Version 12.0 beta (12A6159), macOS Big Sur 11.0 Beta版(20A4299v)。</p></blockquote><p>苹果在SwiftUI2.0中增加了Multiplatform项目模板，使得同一套代码，仅需少量的适配便可以同时满足iOS以及macOS的需要。对于macOS上运行的app,拥有自定义的菜单是一个十分重要的平台特征。对于没有macOS开发经验的我来说，学习如何设计开发菜单变得十分有趣且必要。</p><h2>基础</h2><p>在SwiftUI下为app添加菜单十分方便，下面的代码便可以为app添加一个最基础的菜单。</p><pre data-language="swift"><code>@main
+})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>SwiftUI2.0 —— Commands（macOS菜单）</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag tagdate">发布于2020年06月27日</li></ul><div class="content"><blockquote><p>本文介绍了SwiftUI 2.0中，如何为macOS平台添加菜单。 当前运行环境为 Xcode Version 12.0 beta (12A6159), macOS Big Sur 11.0 Beta版(20A4299v)。</p></blockquote><p>苹果在SwiftUI2.0中增加了Multiplatform项目模板，使得同一套代码，仅需少量的适配便可以同时满足iOS以及macOS的需要。对于macOS上运行的app,拥有自定义的菜单是一个十分重要的平台特征。对于没有macOS开发经验的我来说，学习如何设计开发菜单变得十分有趣且必要。</p><Div id='responser' class = "responser" onclick="window.location='http://www.fatbobman.com/healthnotes/';"><div class = "hstack">
+<img src = "https://cdn.fatbobman.com/healthnotesLogo.svg"></img>
+<div class = "text">
+<p><span class = "title">健康笔记</span>是我开发的一个iOS app，主要服务于有长期健康管理需求的人士。可为全家不同成员创建各自的笔记，允许使用者自定义数据类型以记录各种健康数据。</p>
+</div>
+</div>
+<div class="label">推广</div></Div><h2>基础</h2><p>在SwiftUI下为app添加菜单十分方便，下面的代码便可以为app添加一个最基础的菜单。</p><pre data-language="swift"><code>@main
 <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">CommandExampleApp</span>: <span class="hljs-title">App</span> </span>{
     <span class="hljs-keyword">var</span> body: some <span class="hljs-type">Scene</span> {
         <span class="hljs-type">WindowGroup</span> {

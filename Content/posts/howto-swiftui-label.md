@@ -15,6 +15,10 @@ Label("Hello World",systemImage:"person.badge.plus")
 
 ![image-20200709174029886](https://cdn.fatbobman.com/howto-swiftui-label1.png)
 
+```responser
+id:1
+```
+
 ## 支持自定义标签风格 ##
 
 ```swift

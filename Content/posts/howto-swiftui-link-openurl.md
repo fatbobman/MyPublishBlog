@@ -5,7 +5,11 @@ tags: SwiftUI,HowTo
 title: HowTo —— SwiftUI2.0 使用Link或openURL打开URL scheme
 ---
 
-> SwiftUI2.0提供了原生的打开URL scheme的功能，我们可以十分方便的在代码中调用其他的app。
+SwiftUI2.0提供了原生的打开URL scheme的功能，我们可以十分方便的在代码中调用其他的app。
+
+```responser
+id:1
+```
 
 ## Link ##
 
