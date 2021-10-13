@@ -2,7 +2,7 @@
 date: 2021-08-09 08:50
 description: 本篇文章中，我们将探讨 Core Data with CloudKit 应用中最常见的场景——将本地数据库同步到 iCloud 私有数据库。
 tags: CloudKit,Core Data
-title: Core Data with CloudKit（二）——同步本地数据库到 iCloud 私有数据库
+title: Core Data with CloudKit（二） —— 同步本地数据库到 iCloud 私有数据库
 ---
 
 本篇文章中，我们将探讨`Core Data with CloudKit`应用中最常见的场景——将本地数据库同步到`iCloud`私有数据库。我们将从几个层面逐步展开：

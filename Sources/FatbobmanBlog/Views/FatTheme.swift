@@ -436,7 +436,7 @@ extension Node where Context == HTML.BodyContext {
         repo: 'blogComments',
         owner: 'fatbobman',
         admin: ['fatbobman'],
-        id: '\(topicID)',      // Ensure uniqueness and length less than 50
+        id: '\(topicID)'.split("/").pop().substring(0, 49),      // Ensure uniqueness and length less than 50
         distractionFreeMode: true,  // Facebook-like distraction free mode
         createIssueManually: true,
         language: navigator.userLanguage

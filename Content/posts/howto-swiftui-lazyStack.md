@@ -2,7 +2,7 @@
 date: 2020-07-09 13:05
 description: SwiftUI2.0 提供了 LazyVStack 和 LazyHStack，其作用是只有当 View 在可见区域内才进行渲染，这样可以大大大提高 app 执行效率
 tags: SwiftUI,HowTo
-title: HowTo —— SwiftU2.0 LazyVStack,LazyHStack
+title: HowTo —— SwiftU2.0 LazyVStack LazyHStack
 ---
 
 SwiftUI2.0 提供了 LazyVStack 和 LazyHStack，其作用是只有当 View 在可见区域内才进行渲染，这样可以大大大提高 app 执行效率。由于 VStack 或 HStack 导致的效率问题，在 [SwiftUI List (3) —— List、Form、VStack](https://zhuanlan.zhihu.com/p/111151515) 文章中有简单的比较。

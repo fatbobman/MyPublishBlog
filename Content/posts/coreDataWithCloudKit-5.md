@@ -2,7 +2,7 @@
 date: 2021-08-13 19:22
 description: 本文将介绍如何通过 Core Data with CloudKit 将公共数据库同步到本地，在本地创建 Core Data 数据库镜像。
 tags: CloudKit,Core Data
-title:  Core Data with CloudKit（五）——同步公共数据库
+title:  Core Data with CloudKit（五）—— 同步公共数据库
 image: images/coreDataWithCloudKit-5.jpg
 ---
 
