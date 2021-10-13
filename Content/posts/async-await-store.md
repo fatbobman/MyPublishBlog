@@ -2,7 +2,7 @@
 date: 2021-09-06 11:05
 description: 本文介绍了如何使用 Swift 5.5 版本的 Async/Await 功能重构 SwiftUI 的状态容器代码。
 tags: SwiftUI,Architecture
-title: 用 Async/Await 重建 SwiftUI 的 Redux-like 状态容器
+title: 用 Async-Await 重建 SwiftUI 的 Redux-like 状态容器
 image: images/redux-like_store.png
 ---
 经过两年多的时间，SwiftUI 发展到当前的 3.0 版本，无论 SwiftUI 的功能还是 Swift 语言本身在这段时间里都有了巨大的提升。是时候使用 Async/Await 来重构我的的状态容器代码了。
