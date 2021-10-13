@@ -1,11 +1,11 @@
-<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"/><meta name="og:site_name" content="肘子的Swift记事本"/><link rel="canonical" href="https://www.fatbobman.com/posts/howto-swiftui-grid"/><meta name="twitter:url" content="https://www.fatbobman.com/posts/howto-swiftui-grid"/><meta name="og:url" content="https://www.fatbobman.com/posts/howto-swiftui-grid"/><title>HowTO —— SwiftUI2.0 原生的Grid | 肘子的Swift记事本</title><meta name="twitter:title" content="HowTO —— SwiftUI2.0 原生的Grid | 肘子的Swift记事本"/><meta name="og:title" content="HowTO —— SwiftUI2.0 原生的Grid | 肘子的Swift记事本"/><meta name="description" content="SwiftUI的第一版中，官方并没有提供UICollectionView的对应功能。开发者需要自行包装或者依赖很多第三方库。SwiftUI2.0中，苹果通过LazyVGrid、LazyHGrid提供了Grid控件。该控件的实现很有SwiftUI的风格，和众多的第三方库有显著的区别。"/><meta name="twitter:description" content="SwiftUI的第一版中，官方并没有提供UICollectionView的对应功能。开发者需要自行包装或者依赖很多第三方库。SwiftUI2.0中，苹果通过LazyVGrid、LazyHGrid提供了Grid控件。该控件的实现很有SwiftUI的风格，和众多的第三方库有显著的区别。"/><meta name="og:description" content="SwiftUI的第一版中，官方并没有提供UICollectionView的对应功能。开发者需要自行包装或者依赖很多第三方库。SwiftUI2.0中，苹果通过LazyVGrid、LazyHGrid提供了Grid控件。该控件的实现很有SwiftUI的风格，和众多的第三方库有显著的区别。"/><meta name="twitter:card" content="summary"/><meta name="twitter:site" content="@fatbobman"/><meta name="twitter:creator" content="@fatbobman"/><meta name="referrer" content="no-referrer"/><link rel="stylesheet" href="/styles.css" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="/images/favicon.png" type="image/png"/><link rel="alternate" href="/feed.rss" type="application/rss+xml" title="Subscribe to 肘子的Swift记事本"/><meta name="twitter:image" content="https://www.fatbobman.com/images"/><meta name="og:image" content="https://www.fatbobman.com/images"/><script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script></head><body class="item-page"><header><div class="wrapper"><div class="logo"><a href="/"><img src="/images/title.svg"/></a></div><div><div class="headerIcons"><a class="icon headIconWeixin"><script>    var weixinHeadButton = $('.headIconWeixin');
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"/><meta name="og:site_name" content="肘子的Swift记事本"/><link rel="canonical" href="https://www.fatbobman.com/posts/howto-swiftui-grid"/><meta name="twitter:url" content="https://www.fatbobman.com/posts/howto-swiftui-grid"/><meta name="og:url" content="https://www.fatbobman.com/posts/howto-swiftui-grid"/><title>HowTO —— SwiftUI2.0 原生的 Grid | 肘子的Swift记事本</title><meta name="twitter:title" content="HowTO —— SwiftUI2.0 原生的 Grid | 肘子的Swift记事本"/><meta name="og:title" content="HowTO —— SwiftUI2.0 原生的 Grid | 肘子的Swift记事本"/><meta name="description" content="SwiftUI 的第一版中，官方并没有提供 UICollectionView 的对应功能。开发者需要自行包装或者依赖很多第三方库。SwiftUI2.0 中，苹果通过 LazyVGrid、LazyHGrid 提供了 Grid 控件。该控件的实现很有 SwiftUI 的风格，和众多的第三方库有显著的区别。"/><meta name="twitter:description" content="SwiftUI 的第一版中，官方并没有提供 UICollectionView 的对应功能。开发者需要自行包装或者依赖很多第三方库。SwiftUI2.0 中，苹果通过 LazyVGrid、LazyHGrid 提供了 Grid 控件。该控件的实现很有 SwiftUI 的风格，和众多的第三方库有显著的区别。"/><meta name="og:description" content="SwiftUI 的第一版中，官方并没有提供 UICollectionView 的对应功能。开发者需要自行包装或者依赖很多第三方库。SwiftUI2.0 中，苹果通过 LazyVGrid、LazyHGrid 提供了 Grid 控件。该控件的实现很有 SwiftUI 的风格，和众多的第三方库有显著的区别。"/><meta name="twitter:card" content="summary"/><meta name="twitter:site" content="@fatbobman"/><meta name="twitter:creator" content="@fatbobman"/><meta name="referrer" content="no-referrer"/><link rel="stylesheet" href="/styles.css" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="/images/favicon.png" type="image/png"/><link rel="alternate" href="/feed.rss" type="application/rss+xml" title="Subscribe to 肘子的Swift记事本"/><meta name="twitter:image" content="https://www.fatbobman.com/images"/><meta name="og:image" content="https://www.fatbobman.com/images"/><script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script></head><body class="item-page"><header><div class="wrapper"><div class="logo"><a href="/"><img src="/images/title.svg"/></a></div><div><div class="headerIcons"><a class="icon headIconWeixin"><script>    var weixinHeadButton = $('.headIconWeixin');
     weixinHeadButton.hover(
     function(){
     $('.weixinHeadQcode').css('display','block');
     },
     function(){
     $('.weixinHeadQcode').css('display','none');
-    })</script></a><a class="icon headIconTwitter" href="https://www.twitter.com/fatbobman" target="_blank" rel="noreferrer"></a><a class="icon headIconEmail" href="mailto:xuyang@me.com" target="_blank" rel="noreferrer"></a><a class="icon headIconGithub" href="https://github.com/fatbobman/" target="_blank" rel="noreferrer"></a><a class="icon headIconZhihu" href="https://www.zhihu.com/people/fatbobman3000" target="_blank" rel="noreferrer"></a><a class="icon headIconRss" href="/feed.rss" target="_blank" rel="noreferrer"></a></div></div><nav><ul><li><a href="/">首页</a></li><li><a class="selected" href="/posts">文章</a></li><li><a href="/healthnotes">健康笔记</a></li><li><a href="/about">关于</a></li><li><a href="/tags">搜索</a></li></ul><div class="weixinHeadQcode" onclick="$('.weixinHeadQcode').css('display','none');"></div></nav></div></header><div class="container"><div class="wrapper"><div class="viewContainer"><div class="side-nav"><div class="sidebar"></div></div><div class="leftContent"><div class="post-actions"><div class="actionButton"><div class="actionButton twitter" onclick="window.open('https://twitter.com/intent/tweet?text=HowTO —— SwiftUI2.0 原生的Grid&url=https://www.fatbobman.com/posts/howto-swiftui-grid&via=fatbobman','target','');"></div></div><div class="actionButton"><div class="actionButton weixin"><script>var weixinButton = $('.actionButton .weixin');
+    })</script></a><a class="icon headIconTwitter" href="https://www.twitter.com/fatbobman" target="_blank" rel="noreferrer"></a><a class="icon headIconEmail" href="mailto:xuyang@me.com" target="_blank" rel="noreferrer"></a><a class="icon headIconGithub" href="https://github.com/fatbobman/" target="_blank" rel="noreferrer"></a><a class="icon headIconZhihu" href="https://www.zhihu.com/people/fatbobman3000" target="_blank" rel="noreferrer"></a><a class="icon headIconRss" href="/feed.rss" target="_blank" rel="noreferrer"></a></div></div><nav><ul><li><a href="/">首页</a></li><li><a class="selected" href="/posts">文章</a></li><li><a href="/healthnotes">健康笔记</a></li><li><a href="/about">关于</a></li><li><a href="/tags">搜索</a></li></ul><div class="weixinHeadQcode" onclick="$('.weixinHeadQcode').css('display','none');"></div></nav></div></header><div class="container"><div class="wrapper"><div class="viewContainer"><div class="side-nav"><div class="sidebar"></div></div><div class="leftContent"><div class="post-actions"><div class="actionButton"><div class="actionButton twitter" onclick="window.open('https://twitter.com/intent/tweet?text=HowTO —— SwiftUI2.0 原生的 Grid&url=https://www.fatbobman.com/posts/howto-swiftui-grid&via=fatbobman','target','');"></div></div><div class="actionButton"><div class="actionButton weixin"><script>var weixinButton = $('.actionButton .weixin');
 weixinButton.hover(
 function(){
     $('.actionButton .weixinQcode').css('display','block');
@@ -19,7 +19,7 @@ function(){
 },
 function(){
     $('.actionButton .donateQcode').css('display','none');
-})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>HowTO —— SwiftUI2.0 原生的Grid</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag variant-1"><a href="/tags/howto">HowTo</a></li><li class="tag tagdate">发布于2020年07月10日</li></ul><div class="content"><p>SwiftUI的第一版中，官方并没有提供UICollectionView的对应功能。开发者需要自行包装或者依赖很多第三方库。SwiftUI2.0中，苹果通过LazyVGrid、LazyHGrid提供了Grid控件。该控件的实现很有SwiftUI的风格，和众多的第三方库有显著的区别。</p><Div id='responser' class = "responser" onclick="window.location='http://www.fatbobman.com/healthnotes/';"><div class = "hstack">
+})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>HowTO —— SwiftUI2.0 原生的 Grid</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag variant-1"><a href="/tags/howto">HowTo</a></li><li class="tag tagdate">发布于2020年07月10日</li></ul><div class="content"><p>SwiftUI 的第一版中，官方并没有提供 UICollectionView 的对应功能。开发者需要自行包装或者依赖很多第三方库。SwiftUI2.0 中，苹果通过 LazyVGrid、LazyHGrid 提供了 Grid 控件。该控件的实现很有 SwiftUI 的风格，和众多的第三方库有显著的区别。</p><Div id='responser' class = "responser" onclick="window.location='http://www.fatbobman.com/healthnotes/';"><div class = "hstack">
 <img src = "https://cdn.fatbobman.com/healthnotesLogo.svg"></img>
 <div class = "text">
 <p><span class = "title">健康笔记</span>是我开发的一个iOS app，主要服务于有长期健康管理需求的人士。可为全家不同成员创建各自的笔记，允许使用者自定义数据类型以记录各种健康数据。</p>
@@ -29,9 +29,9 @@ function(){
     
     <span class="hljs-keyword">let</span> columns = [
         <span class="hljs-type">GridItem</span>(.adaptive(minimum: <span class="hljs-number">50</span>))
-        <span class="hljs-comment">//adaptive自适应，在一行或一列中放入尽可能多的Item</span>
-        <span class="hljs-comment">//fixed完全固定的尺寸 GridItem(.fixed(50)), 需显式设置每行或每列中放入的item数量</span>
-        <span class="hljs-comment">//flexible用法类似fixed，不过每个item的尺寸可以弹性调整，同样需要显式设置item数量</span>
+        <span class="hljs-comment">//adaptive 自适应，在一行或一列中放入尽可能多的 Item</span>
+        <span class="hljs-comment">//fixed 完全固定的尺寸 GridItem(.fixed(50)), 需显式设置每行或每列中放入的 item 数量</span>
+        <span class="hljs-comment">//flexible 用法类似 fixed，不过每个 item 的尺寸可以弹性调整，同样需要显式设置 item 数量</span>
         <span class="hljs-comment">//可以混用</span>
     ]
     
@@ -39,9 +39,9 @@ function(){
         <span class="hljs-type">ScrollView</span>{
             <span class="hljs-type">LazyVGrid</span>(columns: columns, <span class="hljs-comment">//行列设置数据</span>
                       alignment: .center,
-                      spacing: <span class="hljs-number">20</span>,  <span class="hljs-comment">//item行或列宽</span>
+                      spacing: <span class="hljs-number">20</span>,  <span class="hljs-comment">//item 行或列宽</span>
                       pinnedViews: [.sectionHeaders] 
-                      <span class="hljs-comment">//如果有section,将header或footer在滚动中固定</span>
+                      <span class="hljs-comment">//如果有 section, 将 header 或 footer 在滚动中固定</span>
             ){
                 <span class="hljs-type">Section</span>(header:<span class="hljs-type">Text</span>(<span class="hljs-string">"Header"</span>)){
                     <span class="hljs-type">ForEach</span>(<span class="hljs-number">0</span>...<span class="hljs-number">1000</span>,id:\.<span class="hljs-keyword">self</span>){ id <span class="hljs-keyword">in</span>
@@ -55,7 +55,7 @@ function(){
         }
     }
 }
-</code></pre><img src="https://cdn.fatbobman.com/howto-swiftui-grid1.png" alt="image-20200709202554829"/><h2>LazyVGrid和LazyHGrid混合使用</h2><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">CombineGrid</span>: <span class="hljs-title">View</span> </span>{
+</code></pre><img src="https://cdn.fatbobman.com/howto-swiftui-grid1.png" alt="image-20200709202554829"/><h2>LazyVGrid 和 LazyHGrid 混合使用</h2><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">CombineGrid</span>: <span class="hljs-title">View</span> </span>{
     
     <span class="hljs-keyword">var</span> body: some <span class="hljs-type">View</span> {
         <span class="hljs-type">ScrollView</span>{
@@ -88,7 +88,7 @@ function(){
             .overlay(<span class="hljs-type">Text</span>(<span class="hljs-string">"\(id)"</span>).foregroundColor(.white))
     }
 }
-</code></pre><img src="https://cdn.fatbobman.com/howto-swiftui-grid2.png" alt="image-20200709205047655"/><blockquote><p><strong>这段代码快速向上滚动时显示正常，如果向上滚动速度较慢，中部的LazyHGrid会显示异常。应该是bug。当前环境Xcode Version 12.0 beta 2 (12A6163b)</strong></p></blockquote><h2>各种参数混合的例子</h2><pre data-language="swift"><code><span class="hljs-keyword">import</span> SwiftUI
+</code></pre><img src="https://cdn.fatbobman.com/howto-swiftui-grid2.png" alt="image-20200709205047655"/><blockquote><p><strong>这段代码快速向上滚动时显示正常，如果向上滚动速度较慢，中部的 LazyHGrid 会显示异常。应该是 bug。当前环境 Xcode Version 12.0 beta 2 (12A6163b)</strong></p></blockquote><h2>各种参数混合的例子</h2><pre data-language="swift"><code><span class="hljs-keyword">import</span> SwiftUI
 
 <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">GridTest</span>: <span class="hljs-title">View</span> </span>{
     @<span class="hljs-type">State</span> <span class="hljs-keyword">var</span> data = (<span class="hljs-number">1</span>...<span class="hljs-number">1000</span>).<span class="hljs-built_in">map</span>{i <span class="hljs-keyword">in</span> <span class="hljs-type">CellView</span>(item:i, width: <span class="hljs-type">CGFloat</span>(<span class="hljs-type">Int</span>.random(<span class="hljs-keyword">in</span>: <span class="hljs-number">30</span>...<span class="hljs-number">100</span>)), height: <span class="hljs-type">CGFloat</span>(<span class="hljs-type">Int</span>.random(<span class="hljs-keyword">in</span>: <span class="hljs-number">40</span>...<span class="hljs-number">80</span>)))}
@@ -98,16 +98,8 @@ function(){
     ]
     <span class="hljs-keyword">let</span> column2 = [
         <span class="hljs-type">GridItem</span>(.flexible()),
-        <span class="hljs-type">GridItem</span>(.flexible()),
-        <span class="hljs-type">GridItem</span>(.flexible()),
-        <span class="hljs-type">GridItem</span>(.flexible()),
-        <span class="hljs-type">GridItem</span>(.flexible()),
     ]
     <span class="hljs-keyword">let</span> column3 = [
-        <span class="hljs-type">GridItem</span>(.fixed(<span class="hljs-number">100</span>)),
-        <span class="hljs-type">GridItem</span>(.fixed(<span class="hljs-number">100</span>)),
-        <span class="hljs-type">GridItem</span>(.fixed(<span class="hljs-number">100</span>)),
-        <span class="hljs-type">GridItem</span>(.fixed(<span class="hljs-number">100</span>)),
         <span class="hljs-type">GridItem</span>(.fixed(<span class="hljs-number">100</span>)),
     ]
     
@@ -177,7 +169,7 @@ function(){
             .overlay(<span class="hljs-type">Text</span>(<span class="hljs-string">"\(item)"</span>).font(.caption2))
     }
 }
-</code></pre><blockquote><p>**由于是Lazy显式，所以如果没有将全部cell滚动显示出来便进行shuffle操作，没有创建的cell将不会以动画的方式进行移动。</p></blockquote><video src="https://cdn.fatbobman.com/howto-swiftui-gridvideo.mov" controls = "controls" >你的浏览器不支持本视频</video><p>目前LazyGrid没有自动避碰的能力，也无法实现Waterfall Grid的效果。</p></div><div class="license">本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC 4.0许可协议</a>。转载请注明出处和作者。</div></div></article><div class="supporter"><p>关注微信公共号<a href="/support/">肘子的Swift记事本</a>或在推特上关注<a href="https://twitter.com/fatbobman">@fatbobman</a>，永远不会错过新内容！ 您的<a href="/support/">支持和鼓励</a>将为我的博客写作增添更多的动力! 如果您或身边的朋友有健康数据管理的需求，请使用我开发的app<a href="/healthnotes/">【健康笔记】</a>，正是因为它我才创建了这个博客。</p><div class="label">关注</div></div><div class="item-navigator"><table><tr><td class="previous-item"><a href="/posts/howto-swiftui-link-openurl">HowTo —— SwiftUI2.0 使用Link或openURL打开URL scheme</a></td><td class="next-item"><a href="/posts/howto-swiftui-label">HowTo —— SwiftUI2.0如何使用Label</a></td></tr></table></div><div id="gitalk-container"></div>
+</code></pre><blockquote><p>**由于是 Lazy 显式，所以如果没有将全部 cell 滚动显示出来便进行 shuffle 操作，没有创建的 cell 将不会以动画的方式进行移动。</p></blockquote><video src="https://cdn.fatbobman.com/howto-swiftui-gridvideo.mov" controls = "controls" >你的浏览器不支持本视频</video><p>目前 LazyGrid 没有自动避碰的能力，也无法实现 Waterfall Grid 的效果。</p></div><div class="license">本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC 4.0许可协议</a>。转载请注明出处和作者。</div></div></article><div class="supporter"><p>关注微信公共号<a href="/support/">肘子的Swift记事本</a>或在推特上关注<a href="https://twitter.com/fatbobman">@fatbobman</a>，永远不会错过新内容！ 您的<a href="/support/">支持和鼓励</a>将为我的博客写作增添更多的动力! 如果您或身边的朋友有健康数据管理的需求，请使用我开发的app<a href="/healthnotes/">【健康笔记】</a>，正是因为它我才创建了这个博客。</p><div class="label">关注</div></div><div class="item-navigator"><table><tr><td class="previous-item"><a href="/posts/howto-swiftui-link-openurl">HowTo —— SwiftUI2.0 使用 Link 或 openURL 打开 URL scheme</a></td><td class="next-item"><a href="/posts/howto-swiftui-label">HowTo —— SwiftUI2.0 如何使用 Label</a></td></tr></table></div><div id="gitalk-container"></div>
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <script type="text/javascript">
@@ -187,7 +179,7 @@ clientSecret: '0ac2907be08248a1fcb5312e27480ad535c682e5',
 repo: 'blogComments',
 owner: 'fatbobman',
 admin: ['fatbobman'],
-id: 'HowTO —— SwiftUI2.0 原生的Grid',      // Ensure uniqueness and length less than 50
+id: 'HowTO —— SwiftUI2.0 原生的 Grid',      // Ensure uniqueness and length less than 50
 distractionFreeMode: true,  // Facebook-like distraction free mode
 createIssueManually: true,
 language: navigator.userLanguage

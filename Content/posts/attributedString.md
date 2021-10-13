@@ -1,18 +1,18 @@
 ---
 date: 2021-10-08 08:20
-description: 在WWDC 2021上，苹果为开发者带来了有一个期待已久的功能——AttributedString，这意味着Swift开发人员不再需要使用基于Objective-C的NSAttributedString来创建样式化文本。本文将对其做全面的介绍并演示如何创建自定义属性。
+description: 在 WWDC 2021 上，苹果为开发者带来了有一个期待已久的功能——AttributedString，这意味着 Swift 开发人员不再需要使用基于 Objective-C 的 NSAttributedString 来创建样式化文本。本文将对其做全面的介绍并演示如何创建自定义属性。
 tags: SwiftUI,Foundation
 title:  AttributedString——不仅仅让文字更漂亮
 image: images/attributedString.png
 ---
-在WWDC 2021上，苹果为开发者带来了有一个期待已久的功能——AttributedString，这意味着Swift开发人员不再需要使用基于Objective-C的NSAttributedString来创建样式化文本。本文将对其做全面的介绍并演示如何创建自定义属性。
+在 WWDC 2021 上，苹果为开发者带来了有一个期待已久的功能——AttributedString，这意味着 Swift 开发人员不再需要使用基于 Objective-C 的 NSAttributedString 来创建样式化文本。本文将对其做全面的介绍并演示如何创建自定义属性。
 
 ```responser
 id:1
 ```
 ## 初步印象 ##
 
-AttributedString是具有单个字符或字符范围的属性的字符串。属性提供了一些特征，如用于显示的视觉风格、用于无障碍引导以及用于在数据源之间进行链接的超链接数据等。
+AttributedString 是具有单个字符或字符范围的属性的字符串。属性提供了一些特征，如用于显示的视觉风格、用于无障碍引导以及用于在数据源之间进行链接的超链接数据等。
 
 下面的代码将生成一个包含粗体以及超链接的属性字符串。
 
@@ -26,13 +26,13 @@ attributedString[blog].link = URL(string: "https://www.fatbobman.com")! // 设�
 
 ![image-20211007165456612](https://cdn.fatbobman.com/image-20211007165456612.png)
 
-在WWDC 2021之前，SwiftUI没有提供对属性字符串的支持，如果我们希望显示具有丰富样式的文本，通常会采用以下三种方式：
+在 WWDC 2021 之前，SwiftUI 没有提供对属性字符串的支持，如果我们希望显示具有丰富样式的文本，通常会采用以下三种方式：
 
-* 将UIKit或AppKit控件包装成SwiftUI控件，在其中显示NSAttributedString
-* 通过代码将NSAttributedString转换成对应的SwiftUI布局代码
-* 使用SwiftUI的原生控件组合显示
+* 将 UIKit 或 AppKit 控件包装成 SwiftUI 控件，在其中显示 NSAttributedString
+* 通过代码将 NSAttributedString 转换成对应的 SwiftUI 布局代码
+* 使用 SwiftUI 的原生控件组合显示
 
-下面的文字随着SwiftUI版本的变化，可采取的手段也在不断地增加（不使用NSAttributedString）：
+下面的文字随着 SwiftUI 版本的变化，可采取的手段也在不断地增加（不使用 NSAttributedString）：
 
 ![image-20211006163659029](https://cdn.fatbobman.com/image-20211006163659029.png)
 
@@ -50,7 +50,7 @@ attributedString[blog].link = URL(string: "https://www.fatbobman.com")! // 设�
 
 ***SwiftUI 2.0***
 
-SwiftUI 2.0增强了Text的功能，我们可以将不同的Text通过`+`合并显示
+SwiftUI 2.0 增强了 Text 的功能，我们可以将不同的 Text 通过`+`合并显示
 
 ```swift
     var helloText:Text {
@@ -60,7 +60,7 @@ SwiftUI 2.0增强了Text的功能，我们可以将不同的Text通过`+`合并�
 
 ***SwiftUI 3.0***
 
-除了上述的方法外，Text添加了对AttributedString的原生支持
+除了上述的方法外，Text 添加了对 AttributedString 的原生支持
 
 ```swift
     var helloAttributedString:AttributedString {
@@ -76,15 +76,15 @@ SwiftUI 2.0增强了Text的功能，我们可以将不同的Text通过`+`合并�
     Text(helloAttributedString)
 ```
 
-> 单纯看上面的例子，并不能看到AttributedString有什么优势。相信随着继续阅读本文，你会发现AttributedString可以实现太多以前想做而无法做到的功能和效果。
+> 单纯看上面的例子，并不能看到 AttributedString 有什么优势。相信随着继续阅读本文，你会发现 AttributedString 可以实现太多以前想做而无法做到的功能和效果。
 
 ## AttributedString vs NSAttributedString ##
 
-AttributedString基本上可以看作是NSAttributedString的Swift实现，两者在功能和内在逻辑上差别不大。但由于形成年代、核心代码语言等，两者之间仍有不少的区别。本节将从多个方面对它们进行比较。
+AttributedString 基本上可以看作是 NSAttributedString 的 Swift 实现，两者在功能和内在逻辑上差别不大。但由于形成年代、核心代码语言等，两者之间仍有不少的区别。本节将从多个方面对它们进行比较。
 
 ### 类型 ###
 
-AttributedString是值类型的，这也是它同由Objective-C构建的NSAttributedString（引用类型）之间最大的区别。这意味着它可以通过Swift的值语义，像其他值一样被传递、复制和改变。
+AttributedString 是值类型的，这也是它同由 Objective-C 构建的 NSAttributedString（引用类型）之间最大的区别。这意味着它可以通过 Swift 的值语义，像其他值一样被传递、复制和改变。
 
 NSAttributedString 可变或不可变需不同的定义
 
@@ -104,9 +104,9 @@ hello.append(world)
 
 ### 安全性 ###
 
-在AttributedString中需要使用Swift的点或键语法按名称访问属性，不仅可以保证类型安全，而且可以获得编译时检查的优势。
+在 AttributedString 中需要使用 Swift 的点或键语法按名称访问属性，不仅可以保证类型安全，而且可以获得编译时检查的优势。
 
-AttributedString中基本不采用NSAttributedString如下的属性访问方式，极大的减少出错几率
+AttributedString 中基本不采用 NSAttributedString 如下的属性访问方式，极大的减少出错几率
 
 ```swift
 // 可能出现类型不匹配
@@ -118,15 +118,15 @@ let attributes: [NSAttributedString.Key: Any] = [
 
 ### 本地化支持 ###
 
-Attributed提供了原生的本地化字符串支持，并可为本地化字符串添加了特定属性。
+Attributed 提供了原生的本地化字符串支持，并可为本地化字符串添加了特定属性。
 
 ```swift
 var localizableString = AttributedString(localized: "Hello \(Date.now,format: .dateTime) world",locale: Locale(identifier: "zh-cn"),option:.applyReplacementIndexAttribute)
 ```
 
-### Formatter支持 ###
+### Formatter 支持 ###
 
-同为WWDC 2021中推出的新Formatter API全面支持了AttributedString类型的格式化输出。我们可以轻松实现过去无法完成的工作。
+同为 WWDC 2021 中推出的新 Formatter API 全面支持了 AttributedString 类型的格式化输出。我们可以轻松实现过去无法完成的工作。
 
 ```swift
 var dateString: AttributedString {
@@ -149,21 +149,21 @@ Text(dateString)
 
 ![image-20211006183053713](https://cdn.fatbobman.com/image-20211006183053713.png)
 
-> 更多关于新Formatter API同AttributedString配合范例，请参阅[WWDC 2021新Formatter API：新老比较及如何自定义](https://www.fatbobman.com/posts/newFormatter/)
+> 更多关于新 Formatter API 同 AttributedString 配合范例，请参阅 [WWDC 2021 新 Formatter API：新老比较及如何自定义](https://www.fatbobman.com/posts/newFormatter/)
 
-### SwiftUI集成 ###
+### SwiftUI 集成 ###
 
-SwiftUI的Text组件提供了对AttributedString的原生支持，改善了一个SwiftUI的长期痛点（不过TextField、TextEdit仍不支持）。
+SwiftUI 的 Text 组件提供了对 AttributedString 的原生支持，改善了一个 SwiftUI 的长期痛点（不过 TextField、TextEdit 仍不支持）。
 
-AttributedString同时提供了SwiftUI、UIKit、AppKit三种框架的可用属性。UIKit或AppKit的控件同样可以渲染AttributedString（需经过转换）。
+AttributedString 同时提供了 SwiftUI、UIKit、AppKit 三种框架的可用属性。UIKit 或 AppKit 的控件同样可以渲染 AttributedString（需经过转换）。
 
 ### 支持的文件格式 ###
 
-AttributedString目前仅具备对Markdown格式文本进行解析的能力。同NSAttributedString支持Markdown、rtf、doc、HTML相比仍有很大差距。
+AttributedString 目前仅具备对 Markdown 格式文本进行解析的能力。同 NSAttributedString 支持 Markdown、rtf、doc、HTML 相比仍有很大差距。
 
 ### 转换 ###
 
-苹果为AttributedString和NSAttributedString提供了相互转换的能力。
+苹果为 AttributedString 和 NSAttributedString 提供了相互转换的能力。
 
 ```swift
 // AttributedString -> NSAttributedString
@@ -178,16 +178,16 @@ let nsString1 = NSAttributedString(attString)
 
 开发者可以充分利用两者各自的优势进行开发。比如：
 
-* 用NSAttributedString解析HTML，然后转换成AttributedString调用
-* 用AttributedString创建类型安全的字符串，在显示时转换成NSAttributedString
+* 用 NSAttributedString 解析 HTML，然后转换成 AttributedString 调用
+* 用 AttributedString 创建类型安全的字符串，在显示时转换成 NSAttributedString
 
 ## 基础 ##
 
-本节中，我们将对AttributedString中的一些重要概念做介绍，并通过代码片段展示AttributedString更多的用法。
+本节中，我们将对 AttributedString 中的一些重要概念做介绍，并通过代码片段展示 AttributedString 更多的用法。
 
 ### AttributedStringKey ###
 
-AttributedStringKey定义了AttributedString属性名称和类型。通过点语法或KeyPath，在保证类型安全的前提进行快捷访问。
+AttributedStringKey 定义了 AttributedString 属性名称和类型。通过点语法或 KeyPath，在保证类型安全的前提进行快捷访问。
 
 ```swift
 var string = AttributedString("hello world")
@@ -195,7 +195,7 @@ var string = AttributedString("hello world")
 string.font = .callout
 let font = string.font 
 
-// 使用KeyPath
+// 使用 KeyPath
 let font = string[keyPath:\.font] 
 ```
 
@@ -210,11 +210,11 @@ enum OutlineColorAttribute : AttributedStringKey {
 string.outlineColor = .blue
 ```
 
-> 我们可以使用点语法或KeyPath对 AttributedString、AttributedSubString、AttributeContainer以及AttributedString.Runs.Run的属性进行访问。更多用法参照本文其他的代码片段。
+> 我们可以使用点语法或 KeyPath 对 AttributedString、AttributedSubString、AttributeContainer 以及 AttributedString.Runs.Run 的属性进行访问。更多用法参照本文其他的代码片段。
 
 ### AttributeContainer ###
 
-AttributeContainer是属性容器。通过配置container，我们可以一次性地为属性字符串（或片段）设置、替换、合并大量的属性。
+AttributeContainer 是属性容器。通过配置 container，我们可以一次性地为属性字符串（或片段）设置、替换、合并大量的属性。
 
 ***设置属性***
 
@@ -226,9 +226,9 @@ var container = AttributeContainer()
 container.inlinePresentationIntent = .strikethrough
 container.font = .caption
 container.backgroundColor = .pink
-container.foregroundColor = .green //将覆盖原来的red
+container.foregroundColor = .green //将覆盖原来的 red
 
-attributedString.setAttributes(container) // attributdString此时拥有四个属性内容
+attributedString.setAttributes(container) // attributdString 此时拥有四个属性内容
 ```
 
 ***替换属性***
@@ -240,7 +240,7 @@ container.font = .caption
 container.backgroundColor = .pink
 container.foregroundColor = .green
 attributedString.setAttributes(container)
-// 此时attributedString有四个属性内容 font、backgroundColor、foregroundColor、inlinePresentationIntent
+// 此时 attributedString 有四个属性内容 font、backgroundColor、foregroundColor、inlinePresentationIntent
 
 // 被替换的属性
 var container1 = AttributeContainer()
@@ -251,9 +251,9 @@ container1.font = .caption
 var container2 = AttributeContainer()
 container2.link = URL(string: "https://www.swift.org")
 
-// 被替换属性contianer1的属性键值内容全部符合才可替换，比如continaer1的foregroundColor为.red将不进行替换
+// 被替换属性 contianer1 的属性键值内容全部符合才可替换，比如 continaer1 的 foregroundColor 为。red 将不进行替换
 attributedString.replaceAttributes(container1, with: container2)
-// 替换后attributedString有三个属性内容 backgroundColor、inlinePresentationIntent、link
+// 替换后 attributedString 有三个属性内容 backgroundColor、inlinePresentationIntent、link
 ```
 
 ***合并属性***
@@ -265,84 +265,84 @@ container.font = .caption
 container.backgroundColor = .pink
 container.foregroundColor = .green
 attributedString.setAttributes(container)
-// 此时attributedString有四个属性内容 font、backgroundColor、foregroundColor、inlinePresentationIntent
+// 此时 attributedString 有四个属性内容 font、backgroundColor、foregroundColor、inlinePresentationIntent
 
 var container2 = AttributeContainer()
 container2.foregroundColor = .red
 container2.link = URL(string: "www.swift.org")
 
 attributedString.mergeAttributes(container2,mergePolicy: .keepNew)
-// 合并后attributedString有五个属性 ，font、backgroundColor、foregroundColor、inlinePresentationIntent及link 
-// foreground为.red
-// 属性冲突时，通过mergePolicy选择合并策略 .keepNew(默认) 或 .keepCurrent
+// 合并后 attributedString 有五个属性 ，font、backgroundColor、foregroundColor、inlinePresentationIntent 及 link 
+// foreground 为。red
+// 属性冲突时，通过 mergePolicy 选择合并策略 .keepNew（默认） 或 .keepCurrent
 ```
 
 ### AttributeScope ###
 
 属性范围是系统框架定义的属性集合，将适合某个特定域中的属性定义在一个范围内，一方面便于管理，另一方面也解决了不同框架下相同属性名称对应类型不一致的问题。
 
-目前，AttributedString提供了5个预置的Scope，分别为
+目前，AttributedString 提供了 5 个预置的 Scope，分别为
 
 * foundation
 
-  包含有关Formatter、Markdown、URL以及语言变形方面的属性
+  包含有关 Formatter、Markdown、URL 以及语言变形方面的属性
 
 * swiftUI
 
-  可以在SwiftUI下被渲染的属性，例如foregroundColor、backgroundColor、font等。目前支持的属性明显少于uiKit和appKit。估计待日后SwiftUI提供更多的显示支持后会逐步补上其他暂不支持的属性。
+  可以在 SwiftUI 下被渲染的属性，例如 foregroundColor、backgroundColor、font 等。目前支持的属性明显少于 uiKit 和 appKit。估计待日后 SwiftUI 提供更多的显示支持后会逐步补上其他暂不支持的属性。
 
 * uiKit
 
-  可以在UIKit下被渲染的属性。
+  可以在 UIKit 下被渲染的属性。
 
 * appKit
 
-  可以在AppKit下被渲染的属性
+  可以在 AppKit 下被渲染的属性
 
 * accessibility
 
   适用于无障碍的属性，用于提高引导访问的可用性。
 
-在swiftUI、uiKit和appKit三个scope中存在很多的同名属性（比如foregroundColor），在访问时需注意以下几点：
+在 swiftUI、uiKit 和 appKit 三个 scope 中存在很多的同名属性（比如 foregroundColor），在访问时需注意以下几点：
 
-* 当Xcode无法正确推断该适用哪个Scope中的属性时，请显式标明对应的AttributeScope
+* 当 Xcode 无法正确推断该适用哪个 Scope 中的属性时，请显式标明对应的 AttributeScope
 
 ```swift
 uiKitString.uiKit.foregroundColor = .red //UIColor
 appKitString.appKit.backgroundColor = .yellow //NSColor
 ```
 
-* 三个框架的同名属性并不能互转，如想字符串同时支持多框架显示（代码复用），请分别为不同Scope的同名属性赋值
+* 三个框架的同名属性并不能互转，如想字符串同时支持多框架显示（代码复用），请分别为不同 Scope 的同名属性赋值
 
 ```swift
 attributedString.swiftUI.foregroundColor = .red
 attributedString.uiKit.foregroundColor = .red
 attributedString.appKit.foregroundColor = .red
 
-// 转换成NSAttributedString，可以只转换指定的Scope属性
+// 转换成 NSAttributedString，可以只转换指定的 Scope 属性
 let nsString = try! NSAttributedString(attributedString, including: \.uiKit)
 ```
 
-* 为了提高兼容性，部分功能相同的属性，可以在foundation中设置。
+* 为了提高兼容性，部分功能相同的属性，可以在 foundation 中设置。
 
 ```swift
 attributedString.inlinePresentationIntent = .stronglyEmphasized //相当于 bold
 ```
 
-* swiftUI、uiKit和appKit三个Scope在定义时，都已经分别包含了foundation和accessibility。因此在转换时即使只指定单一框架，foundation和accessibility的属性也均可正常转换。我们在自定义Scope时，最好也遵守该原则。
+* swiftUI、uiKit 和 appKit 三个 Scope 在定义时，都已经分别包含了 foundation 和 accessibility。因此在转换时即使只指定单一框架，foundation 和 accessibility 的属性也均可正常转换。我们在自定义 Scope 时，最好也遵守该原则。
 
 ```swift
 let nsString = try! NSAttributedString(attributedString, including: \.appKit)
-// attributedString中属于foundation和accessibility的属性也将一并被转换
+// attributedString 中属于 foundation 和 accessibility 的属性也将一并被转换
 ```
 
 ### 视图 ###
 
-在属性字符串中，属性和文本可以被独立访问，AttributedString提供了三种视图方便开发者从另一个维度访问所需的内容。
+在属性字符串中，属性和文本可以被独立访问，AttributedString 提供了三种视图方便开发者从另一个维度访问所需的内容。
 
-#### Character和unicodeScalar视图 ####
+#### Character 和 unicodeScalar 视图 ####
 
-这两个视图提供了类似NSAttributedString的string属性的功能，让开发者可以在纯文本的维度操作数据。两个视图的唯一区别是类型不同，简单来说，你可以把ChareacterView看作是Charecter集合，而UnicodeScalarView看作是Unicode标量合集。
+这两个视图提供了类似 NSAttributedString 的 string 属性的功能，让开发者可以在纯文本的维度操作数据。两个视图的唯一区别是类型不同，简单来说，你可以把 ChareacterView 看作是 Charecter 集合，而 UnicodeScalarView 看作是 Unicode 标量合集。
 
 字符串长度
 
@@ -351,7 +351,7 @@ var attributedString = AttributedString("Swift")
 attributedString.characters.count // 5
 ```
 
-长度2
+长度 2
 
 ```swift
 let attributedString = AttributedString("hello 👩🏽‍🦳")
@@ -371,14 +371,14 @@ String(attributedString.characters) // "Swift"
 var attributedString = AttributedString("hello world")
 let range = attributedString.range(of: "hello")!
 attributedString.characters.replaceSubrange(range, with: "good")
-// good world ,替换后的good仍会保留hello所在位置的所有属性
+// good world , 替换后的 good 仍会保留 hello 所在位置的所有属性
 ```
 
-#### Runs视图 ####
+#### Runs 视图 ####
 
-AttributedString的属性视图。每个Run对应一个属性完全一致的字符串片段。用for-in语法来迭代AttributedString的runs属性。
+AttributedString 的属性视图。每个 Run 对应一个属性完全一致的字符串片段。用 for-in 语法来迭代 AttributedString 的 runs 属性。
 
-***只有一个Run***
+***只有一个 Run***
 
 整个属性字符串中所有的字符属性都一致
 
@@ -389,9 +389,9 @@ print(attributedString)
 print(attributedString.runs.count) // 1
 ```
 
-***两个Run***
+***两个 Run***
 
-属性字符串`coreData`，`Core`和` Data`两个片段的属性不相同，因此产生了两个Run
+属性字符串`coreData`，`Core`和` Data`两个片段的属性不相同，因此产生了两个 Run
 
 ```swift
 var coreData = AttributedString("Core")
@@ -410,7 +410,7 @@ for run in coreData.runs { //runs.count = 2
 // Data {}
 ```
 
-***多个Run***
+***多个 Run***
 
 ```swift
 var multiRunString = AttributedString("The attributed runs of the attributed string, as a view into the underlying string.")
@@ -427,10 +427,10 @@ for run in multiRunString.runs {
 
 最终结果：The **ATTRIBUTED** runs of the **ATTRIBUTED** string, as a view into the underlying string.
 
-***利用Run的range进行属性设置***
+***利用 Run 的 range 进行属性设置***
 
 ```swift
-// 继续使用上文的multiRunString
+// 继续使用上文的 multiRunString
 // 将所有非强调字符设置为黄色
 for run in multiRunString.runs {
     guard run.inlinePresentationIntent != .stronglyEmphasized else {continue}
@@ -438,7 +438,7 @@ for run in multiRunString.runs {
 }
 ```
 
-***通过Runs获取指定的属性***
+***通过 Runs 获取指定的属性***
 
 ```swift
 // 将颜色为黄色且为粗体的文字改成红色
@@ -449,7 +449,7 @@ for (color,intent,range) in multiRunString.runs[\.foregroundColor,\.inlinePresen
 }
 ```
 
-***通过Run的attributes收集所有使用到的属性***
+***通过 Run 的 attributes 收集所有使用到的属性***
 
 ```swift
 var totalKeysContainer = AttributeContainer()
@@ -459,9 +459,9 @@ for run in multiRunString.runs{
 }
 ```
 
-> 使用Runs视图可以方便的从众多属性中获取到需要的信息
+> 使用 Runs 视图可以方便的从众多属性中获取到需要的信息
 
-***不使用Runs视图，达到类似的效果***
+***不使用 Runs 视图，达到类似的效果***
 
 ```swift
 multiRunString.transformingAttributes(\.foregroundColor,\.font){ color,font in
@@ -471,31 +471,31 @@ multiRunString.transformingAttributes(\.foregroundColor,\.font){ color,font in
 }
 ```
 
-> 尽管没有直接调用Runs视图，不过transformingAttributes闭包的调用时机同Runs的时机是一致的。transformingAttributes最多支持获取5个属性。
+> 尽管没有直接调用 Runs 视图，不过 transformingAttributes 闭包的调用时机同 Runs 的时机是一致的。transformingAttributes 最多支持获取 5 个属性。
 
 ### Range ###
 
-在本文之前的代码中，已经多次使用过Range来对属性字符串的内容进行访问或修改。
+在本文之前的代码中，已经多次使用过 Range 来对属性字符串的内容进行访问或修改。
 
 对属性字符串中局部内容的属性进行修改可以使用两种方式：
 
-* 通过Range
-* 通过AttributedContainer
+* 通过 Range
+* 通过 AttributedContainer
 
-***通过关键字获取Range***
+***通过关键字获取 Range***
 
 ```swift
-// 从属性字符串的结尾向前查找，返回第一个满足关键字的range(忽略大小写)
+// 从属性字符串的结尾向前查找，返回第一个满足关键字的 range（忽略大小写）
 if let range = multiRunString.range(of: "Attributed", options: [.backwards, .caseInsensitive]) {
     multiRunString[range].link = URL(string: "https://www.apple.com")
 }
 ```
 
-***使用Runs或transformingAttributes获取Range***
+***使用 Runs 或 transformingAttributes 获取 Range***
 
 之前的例子中已反复使用
 
-***通过本文视图获取Range***
+***通过本文视图获取 Range***
 
 ```swift
 if let lowBound = multiRunString.characters.firstIndex(of: "r"),
@@ -505,7 +505,6 @@ if let lowBound = multiRunString.characters.firstIndex(of: "r"),
     multiRunString[lowBound...upperBound].foregroundColor = .brown
 }
 ```
-
 
 ```responser
 id:1
@@ -526,7 +525,7 @@ let attributedString = AttributedString(localized: "hello")
 
 在英文和中文环境中，将分别显示为`hello` 和 `你好`
 
-> 目前本地化的AttributedString只能显示为当前系统设置的语言，并不能指定成某个特定的语言
+> 目前本地化的 AttributedString 只能显示为当前系统设置的语言，并不能指定成某个特定的语言
 
 ```swift
 var hello = AttributedString(localized: "hello")
@@ -535,11 +534,11 @@ if let range = hello.range(of: "h") {
 }
 ```
 
-本地化字符串的文字内容将随系统语言而变化，上面的代码在中文环境下将无法获取到range。需针对不同的语言做调整。
+本地化字符串的文字内容将随系统语言而变化，上面的代码在中文环境下将无法获取到 range。需针对不同的语言做调整。
 
 ### replacementIndex ###
 
-可以为本地化字符串的插值内容设定index（通过`applyReplacementIndexAttribute`）,方便在本地化内容中查找
+可以为本地化字符串的插值内容设定 index（通过`applyReplacementIndexAttribute`）, 方便在本地化内容中查找
 
 ```swift
 // Localizable Chinese
@@ -547,7 +546,7 @@ if let range = hello.range(of: "h") {
 // Localizable English
 "world %@ %@" = "world %@ %@";
 
-var world = AttributedString(localized: "world \("👍") \("🥩")",options: .applyReplacementIndexAttribute) // 创建属性字符串时，将按照插值顺序设定index ，👍 index == 1 🥩 index == 2
+var world = AttributedString(localized: "world \("👍") \("🥩")",options: .applyReplacementIndexAttribute) // 创建属性字符串时，将按照插值顺序设定 index ，👍 index == 1 🥩 index == 2
 
 for (index,range) in world.runs[\.replacementIndex] {
     switch index {
@@ -568,14 +567,14 @@ for (index,range) in world.runs[\.replacementIndex] {
 
 ![image-20211007083115822](https://cdn.fatbobman.com/image-20211007083115822.png)
 
-### 使用locale设定字符串插值中的Formatter ###
+### 使用 locale 设定字符串插值中的 Formatter ###
 
 ```swift
  AttributedString(localized: "\(Date.now, format: Date.FormatStyle(date: .long))", locale: Locale(identifier: "zh-cn"))
-// 即使在英文环境中也会显示 2021年10月7日
+// 即使在英文环境中也会显示 2021 年 10 月 7 日
 ```
 
-### 用Formatter生成属性字符串 ###
+### 用 Formatter 生成属性字符串 ###
 
 ```swift
         var dateString = Date.now.formatted(.dateTime.year().month().day().attributed)
@@ -595,9 +594,9 @@ for (index,range) in world.runs[\.replacementIndex] {
 
 ![image-20211007084630319](https://cdn.fatbobman.com/image-20211007084630319.png)
 
-### Markdown符号 ###
+### Markdown 符号 ###
 
-从SwiftUI 3.0开始，Text已经对部分Markdown标签提供了支持。在本地化的属性字符串中，也提供了类似的功能，并且会在字符串中设置对应的属性。提供了更高的灵活性。
+从 SwiftUI 3.0 开始，Text 已经对部分 Markdown 标签提供了支持。在本地化的属性字符串中，也提供了类似的功能，并且会在字符串中设置对应的属性。提供了更高的灵活性。
 
 ```swift
 var markdownString = AttributedString(localized: "**Hello** ~world~ _!_")
@@ -618,13 +617,13 @@ for (inlineIntent,range) in markdownString.runs[\.inlinePresentationIntent] {
 
 ![image-20211007085859409](https://cdn.fatbobman.com/image-20211007085859409.png)
 
-## Markdown解析 ##
+## Markdown 解析 ##
 
-AttributedString不仅可以在本地化字符串中支持部分的Markdown标签，并且提供了一个完整的Markdown解析器。
+AttributedString 不仅可以在本地化字符串中支持部分的 Markdown 标签，并且提供了一个完整的 Markdown 解析器。
 
-支持从String、Data或URL中解析Markdown文本内容。
+支持从 String、Data 或 URL 中解析 Markdown 文本内容。
 
-比如:
+比如：
 
 ```swift
 let mdString = try! AttributedString(markdown: "# Title\n**hello**\n")
@@ -648,7 +647,7 @@ hello {
 
 * presentationIntent
 
-  段落属性：比如段落、表格、列表等。一个Run中，presentationIntent可能会有多个内容，用component来获取。
+  段落属性：比如段落、表格、列表等。一个 Run 中，presentationIntent 可能会有多个内容，用 component 来获取。
 
 README.md
 
@@ -668,7 +667,7 @@ hello **world**
 | ---- | ---- |
 | 34   | 135  |
 
-[新Formatter介绍](/posts/newFormatter/)
+[新 Formatter 介绍](/posts/newFormatter/)
 ```
 
 解析代码：
@@ -704,7 +703,7 @@ row1 {
 row2 {
     NSPresentationIntent = [tableCell 1 (id 14), tableHeaderRow (id 12), table [Foundation.PresentationIntent.TableColumn(alignment: Foundation.PresentationIntent.TableColumn.Alignment.left), Foundation.PresentationIntent.TableColumn(alignment: Foundation.PresentationIntent.TableColumn.Alignment.left)] (id 11)]
 }
-新Formatter介绍 {
+新 Formatter 介绍 {
     NSPresentationIntent = [paragraph (id 18)]
     NSLink = /posts/newFormatter/ -- https://www.fatbobman.com
 }
@@ -743,40 +742,40 @@ for run in markdownString.runs {
 }
 ```
 
-> SwiftUI并不支持presentationIntent附加信息的渲染。如果想获得理想的显示效果，请自行编写视觉风格设置代码。
+> SwiftUI 并不支持 presentationIntent 附加信息的渲染。如果想获得理想的显示效果，请自行编写视觉风格设置代码。
 
 ## 自定义属性 ##
 
-使用自定义属性，不仅有利于开发者创建更符合自身要求的属性字符串，而且通过在Markdown文本中添加自定义属性信息，进一步降低信息和代码的耦合度，提高灵活度。
+使用自定义属性，不仅有利于开发者创建更符合自身要求的属性字符串，而且通过在 Markdown 文本中添加自定义属性信息，进一步降低信息和代码的耦合度，提高灵活度。
 
 自定义属性的基本流程为：
 
-* 创建自定义AttributedStringKey
+* 创建自定义 AttributedStringKey
 
-  为每个需要添加的属性创建一个符合Attributed协议的数据类型。
+  为每个需要添加的属性创建一个符合 Attributed 协议的数据类型。
 
-* 创建自定义AttributeScope并扩展AttributeScopes
+* 创建自定义 AttributeScope 并扩展 AttributeScopes
 
-  创建自己的Scope，并在其中添加所有的自定义属性。为了方便自定义属性集被用于需要指定Scope的场合，在自定义Scope中推荐嵌套入需要的系统框架Scope（swiftUI、uiKit、appKit）。并在AttributeScopes中添加上自定义的Scope。
+  创建自己的 Scope，并在其中添加所有的自定义属性。为了方便自定义属性集被用于需要指定 Scope 的场合，在自定义 Scope 中推荐嵌套入需要的系统框架 Scope（swiftUI、uiKit、appKit）。并在 AttributeScopes 中添加上自定义的 Scope。
 
-* 扩展AttributeDynamicLookup（支持点语法）
+* 扩展 AttributeDynamicLookup（支持点语法）
 
-  在AttributeDynamicLookup中创建符合自定义Scope的下标方法。为点语法、KeyPath提供动态支持。
+  在 AttributeDynamicLookup 中创建符合自定义 Scope 的下标方法。为点语法、KeyPath 提供动态支持。
 
-### 实例1：创建id属性 ###
+### 实例 1：创建 id 属性 ###
 
-本例中我们将创建一个名称为id的属性。
+本例中我们将创建一个名称为 id 的属性。
 
 ```swift
 struct MyIDKey:AttributedStringKey {
-    typealias Value = Int // 属性内容的类型。类型需要符合Hashable
+    typealias Value = Int // 属性内容的类型。类型需要符合 Hashable
     static var name: String = "id" // 属性字符串内部保存的名称
 }
 
 extension AttributeScopes{
     public struct MyScope:AttributeScope{
         let id:MyIDKey  // 点语法调用的名称
-        let swiftUI:SwiftUIAttributes // 在我的Scope中将系统框架swiftUI也添加进来
+        let swiftUI:SwiftUIAttributes // 在我的 Scope 中将系统框架 swiftUI 也添加进来
     }
 
     var myScope:MyScope.Type{
@@ -798,21 +797,20 @@ var attribtedString = AttributedString("hello world")
 attribtedString.id = 34
 print(attribtedString)
 
-
 // Output
 hello world {
     id = 34
 }
 ```
 
-### 实例2：创建枚举属性，并支持Markdown解析 ###
+### 实例 2：创建枚举属性，并支持 Markdown 解析 ###
 
-如果我们希望自己创建的属性可以在Markdown文本中被解析，需要让自定义的属性符合`CodeableAttributedStringKey`以及`MarkdownDecodableAttributedStringKye`
+如果我们希望自己创建的属性可以在 Markdown 文本中被解析，需要让自定义的属性符合`CodeableAttributedStringKey`以及`MarkdownDecodableAttributedStringKye`
 
 ```swift
 // 自定义属性的数据类型不限，只要满足需要的协议即可
 enum PriorityKey:CodableAttributedStringKey,MarkdownDecodableAttributedStringKey{
-    public enum Priority:String,Codable{ //如需在Markdown中解析，需要将raw类型设置为String,并符合Codable
+    public enum Priority:String,Codable{ //如需在 Markdown 中解析，需要将 raw 类型设置为 String, 并符合 Codable
         case low
         case normal
         case high
@@ -825,7 +823,7 @@ enum PriorityKey:CodableAttributedStringKey,MarkdownDecodableAttributedStringKey
 extension AttributeScopes{
     public struct MyScope:AttributeScope{
         let id:MyIDKey
-        let priority:PriorityKey // 将新创建的Key也添加到自定义的Scope中
+        let priority:PriorityKey // 将新创建的 Key 也添加到自定义的 Scope 中
         let swiftUI:SwiftUIAttributes
     }
 
@@ -835,12 +833,12 @@ extension AttributeScopes{
 }
 ```
 
-> 在Markdown中使用`^[text](属性名称：属性值)`来标记自定义属性
+> 在 Markdown 中使用`^[text](属性名称：属性值)`来标记自定义属性
 
 调用
 
 ```swift
-// 在Markdown文本中解析自定义属性时，需指明Scope。
+// 在 Markdown 文本中解析自定义属性时，需指明 Scope。
 var attributedString = AttributedString(localized: "^[hello world](priority:'low')",including: \.myScope)
 print(attributedString)
 
@@ -851,7 +849,7 @@ hello world {
 }
 ```
 
-### 实例3：创建多参数的属性 ###
+### 实例 3：创建多参数的属性 ###
 
 ```swift
 enum SizeKey:CodableAttributedStringKey,MarkdownDecodableAttributedStringKey{
@@ -864,7 +862,7 @@ enum SizeKey:CodableAttributedStringKey,MarkdownDecodableAttributedStringKey{
     typealias Value = Size
 }
 
-// 在Scope中添加
+// 在 Scope 中添加
 let size:SizeKey
 ```
 
@@ -883,10 +881,10 @@ ello world {
 }
 ```
 
-> 在[WWDC 2021新Formatter API](https://www.fatbobman.com/posts/newFormatter/)一文中，还有在Formatter中使用自定义属性的案例
+> 在 [WWDC 2021 新 Formatter API](https://www.fatbobman.com/posts/newFormatter/) 一文中，还有在 Formatter 中使用自定义属性的案例
 
 ## 总结 ##
 
-在AttributedString之前，多数开发者将属性字符串主要用于文本的显示样式描述，随着可以在Markdown文本中添加自定义属性，相信很快就会有开发者扩展AttributedString的用途，将其应用到更多的场景中。
+在 AttributedString 之前，多数开发者将属性字符串主要用于文本的显示样式描述，随着可以在 Markdown 文本中添加自定义属性，相信很快就会有开发者扩展 AttributedString 的用途，将其应用到更多的场景中。
 
 希望本文能够对你有所帮助。

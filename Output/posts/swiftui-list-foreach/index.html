@@ -1,11 +1,11 @@
-<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"/><meta name="og:site_name" content="肘子的Swift记事本"/><link rel="canonical" href="https://www.fatbobman.com/posts/swiftui-list-foreach"/><meta name="twitter:url" content="https://www.fatbobman.com/posts/swiftui-list-foreach"/><meta name="og:url" content="https://www.fatbobman.com/posts/swiftui-list-foreach"/><title>聊一下SwiftUI中的List和ForEach | 肘子的Swift记事本</title><meta name="twitter:title" content="聊一下SwiftUI中的List和ForEach | 肘子的Swift记事本"/><meta name="og:title" content="聊一下SwiftUI中的List和ForEach | 肘子的Swift记事本"/><meta name="description" content="在SwiftUI中使用List可以非常方便快速的制作各种列表.List其实就是对UITableView进行的封装."/><meta name="twitter:description" content="在SwiftUI中使用List可以非常方便快速的制作各种列表.List其实就是对UITableView进行的封装."/><meta name="og:description" content="在SwiftUI中使用List可以非常方便快速的制作各种列表.List其实就是对UITableView进行的封装."/><meta name="twitter:card" content="summary"/><meta name="twitter:site" content="@fatbobman"/><meta name="twitter:creator" content="@fatbobman"/><meta name="referrer" content="no-referrer"/><link rel="stylesheet" href="/styles.css" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="/images/favicon.png" type="image/png"/><link rel="alternate" href="/feed.rss" type="application/rss+xml" title="Subscribe to 肘子的Swift记事本"/><meta name="twitter:image" content="https://www.fatbobman.com/images"/><meta name="og:image" content="https://www.fatbobman.com/images"/><script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script></head><body class="item-page"><header><div class="wrapper"><div class="logo"><a href="/"><img src="/images/title.svg"/></a></div><div><div class="headerIcons"><a class="icon headIconWeixin"><script>    var weixinHeadButton = $('.headIconWeixin');
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"/><meta name="og:site_name" content="肘子的Swift记事本"/><link rel="canonical" href="https://www.fatbobman.com/posts/swiftui-list-foreach"/><meta name="twitter:url" content="https://www.fatbobman.com/posts/swiftui-list-foreach"/><meta name="og:url" content="https://www.fatbobman.com/posts/swiftui-list-foreach"/><title>聊一下 SwiftUI 中的 List 和 ForEach | 肘子的Swift记事本</title><meta name="twitter:title" content="聊一下 SwiftUI 中的 List 和 ForEach | 肘子的Swift记事本"/><meta name="og:title" content="聊一下 SwiftUI 中的 List 和 ForEach | 肘子的Swift记事本"/><meta name="description" content="在 SwiftUI 中使用 List 可以非常方便快速的制作各种列表。List 其实就是对 UITableView 进行的封装。"/><meta name="twitter:description" content="在 SwiftUI 中使用 List 可以非常方便快速的制作各种列表。List 其实就是对 UITableView 进行的封装。"/><meta name="og:description" content="在 SwiftUI 中使用 List 可以非常方便快速的制作各种列表。List 其实就是对 UITableView 进行的封装。"/><meta name="twitter:card" content="summary"/><meta name="twitter:site" content="@fatbobman"/><meta name="twitter:creator" content="@fatbobman"/><meta name="referrer" content="no-referrer"/><link rel="stylesheet" href="/styles.css" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="/images/favicon.png" type="image/png"/><link rel="alternate" href="/feed.rss" type="application/rss+xml" title="Subscribe to 肘子的Swift记事本"/><meta name="twitter:image" content="https://www.fatbobman.com/images"/><meta name="og:image" content="https://www.fatbobman.com/images"/><script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script></head><body class="item-page"><header><div class="wrapper"><div class="logo"><a href="/"><img src="/images/title.svg"/></a></div><div><div class="headerIcons"><a class="icon headIconWeixin"><script>    var weixinHeadButton = $('.headIconWeixin');
     weixinHeadButton.hover(
     function(){
     $('.weixinHeadQcode').css('display','block');
     },
     function(){
     $('.weixinHeadQcode').css('display','none');
-    })</script></a><a class="icon headIconTwitter" href="https://www.twitter.com/fatbobman" target="_blank" rel="noreferrer"></a><a class="icon headIconEmail" href="mailto:xuyang@me.com" target="_blank" rel="noreferrer"></a><a class="icon headIconGithub" href="https://github.com/fatbobman/" target="_blank" rel="noreferrer"></a><a class="icon headIconZhihu" href="https://www.zhihu.com/people/fatbobman3000" target="_blank" rel="noreferrer"></a><a class="icon headIconRss" href="/feed.rss" target="_blank" rel="noreferrer"></a></div></div><nav><ul><li><a href="/">首页</a></li><li><a class="selected" href="/posts">文章</a></li><li><a href="/healthnotes">健康笔记</a></li><li><a href="/about">关于</a></li><li><a href="/tags">搜索</a></li></ul><div class="weixinHeadQcode" onclick="$('.weixinHeadQcode').css('display','none');"></div></nav></div></header><div class="container"><div class="wrapper"><div class="viewContainer"><div class="side-nav"><div class="sidebar"></div></div><div class="leftContent"><div class="post-actions"><div class="actionButton"><div class="actionButton twitter" onclick="window.open('https://twitter.com/intent/tweet?text=聊一下SwiftUI中的List和ForEach&url=https://www.fatbobman.com/posts/swiftui-list-foreach&via=fatbobman','target','');"></div></div><div class="actionButton"><div class="actionButton weixin"><script>var weixinButton = $('.actionButton .weixin');
+    })</script></a><a class="icon headIconTwitter" href="https://www.twitter.com/fatbobman" target="_blank" rel="noreferrer"></a><a class="icon headIconEmail" href="mailto:xuyang@me.com" target="_blank" rel="noreferrer"></a><a class="icon headIconGithub" href="https://github.com/fatbobman/" target="_blank" rel="noreferrer"></a><a class="icon headIconZhihu" href="https://www.zhihu.com/people/fatbobman3000" target="_blank" rel="noreferrer"></a><a class="icon headIconRss" href="/feed.rss" target="_blank" rel="noreferrer"></a></div></div><nav><ul><li><a href="/">首页</a></li><li><a class="selected" href="/posts">文章</a></li><li><a href="/healthnotes">健康笔记</a></li><li><a href="/about">关于</a></li><li><a href="/tags">搜索</a></li></ul><div class="weixinHeadQcode" onclick="$('.weixinHeadQcode').css('display','none');"></div></nav></div></header><div class="container"><div class="wrapper"><div class="viewContainer"><div class="side-nav"><div class="sidebar"></div></div><div class="leftContent"><div class="post-actions"><div class="actionButton"><div class="actionButton twitter" onclick="window.open('https://twitter.com/intent/tweet?text=聊一下 SwiftUI 中的 List 和 ForEach&url=https://www.fatbobman.com/posts/swiftui-list-foreach&via=fatbobman','target','');"></div></div><div class="actionButton"><div class="actionButton weixin"><script>var weixinButton = $('.actionButton .weixin');
 weixinButton.hover(
 function(){
     $('.actionButton .weixinQcode').css('display','block');
@@ -19,21 +19,21 @@ function(){
 },
 function(){
     $('.actionButton .donateQcode').css('display','none');
-})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>聊一下SwiftUI中的List和ForEach</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag tagdate">发布于2020年08月24日</li></ul><div class="content"><p>在SwiftUI中使用List可以非常方便快速的制作各种列表.List其实就是对UITableView进行的封装(更多List的具体用法请参阅<a href="https://zhuanlan.zhihu.com/p/110749923" target="_blank">List基本用法</a>).</p><p>在List中添加动态内容,我们可以使用两种方式</p><Div id='responser' class = "responser" onclick="window.location='http://www.fatbobman.com/healthnotes/';"><div class = "hstack">
+})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>聊一下 SwiftUI 中的 List 和 ForEach</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag tagdate">发布于2020年08月24日</li></ul><div class="content"><p>在 SwiftUI 中使用 List 可以非常方便快速的制作各种列表。List 其实就是对 UITableView 进行的封装（更多 List 的具体用法请参阅 <a href="https://zhuanlan.zhihu.com/p/110749923" target="_blank">List 基本用法</a>).</p><p>在 List 中添加动态内容，我们可以使用两种方式</p><Div id='responser' class = "responser" onclick="window.location='http://www.fatbobman.com/healthnotes/';"><div class = "hstack">
 <img src = "https://cdn.fatbobman.com/healthnotesLogo.svg"></img>
 <div class = "text">
 <p><span class = "title">健康笔记</span>是我开发的一个iOS app，主要服务于有长期健康管理需求的人士。可为全家不同成员创建各自的笔记，允许使用者自定义数据类型以记录各种健康数据。</p>
 </div>
 </div>
-<div class="label">推广</div></Div><h3>直接使用List自己提供的动态内容构造方法</h3><pre data-language="swift"><code>  <span class="hljs-type">List</span>(<span class="hljs-number">0</span>..&lt;<span class="hljs-number">100</span>){ i <span class="hljs-keyword">in</span>
+<div class="label">推广</div></Div><h3>直接使用 List 自己提供的动态内容构造方法</h3><pre data-language="swift"><code>  <span class="hljs-type">List</span>(<span class="hljs-number">0</span>..&lt;<span class="hljs-number">100</span>){ i <span class="hljs-keyword">in</span>
     <span class="hljs-type">Text</span>(<span class="hljs-string">"id:\(id)"</span>)
   }
-</code></pre><h3>在List中使用ForEach</h3><pre data-language="swift"><code>  <span class="hljs-type">List</span>{
+</code></pre><h3>在 List 中使用 ForEach</h3><pre data-language="swift"><code>  <span class="hljs-type">List</span>{
     <span class="hljs-type">ForEach</span>(<span class="hljs-number">0</span>..&lt;<span class="hljs-number">100</span>){ i <span class="hljs-keyword">in</span>
       <span class="hljs-type">Text</span>(<span class="hljs-string">"id:\(id)"</span>)
     }
   }
-</code></pre><p>在碰到我最近出现的问题之前,我一直以为上述两种用法除了极个别的区别外,基本没有什么不同.</p><p>当时知道的区别:</p><h3>使用ForEach可以在同一List中,添加多个动态源,且可添加静态内容</h3><pre data-language="swift"><code>  <span class="hljs-type">List</span>{
+</code></pre><p>在碰到我最近出现的问题之前，我一直以为上述两种用法除了极个别的区别外，基本没有什么不同。</p><p>当时知道的区别：</p><h3>使用 ForEach 可以在同一 List 中，添加多个动态源，且可添加静态内容</h3><pre data-language="swift"><code>  <span class="hljs-type">List</span>{
     <span class="hljs-type">ForEach</span>(items,id:\.<span class="hljs-keyword">self</span>){ item <span class="hljs-keyword">in</span>
       <span class="hljs-type">Text</span>(item)
     }
@@ -42,26 +42,26 @@ function(){
       <span class="hljs-type">Text</span>(<span class="hljs-string">"id:\(i)"</span>)
     }
   }
-</code></pre><h3>使用ForEach对于动态内容可以控制版式</h3><pre data-language="swift"><code>  <span class="hljs-type">List</span>{
+</code></pre><h3>使用 ForEach 对于动态内容可以控制版式</h3><pre data-language="swift"><code>  <span class="hljs-type">List</span>{
     <span class="hljs-type">ForEach</span>(<span class="hljs-number">0</span>..&lt;<span class="hljs-number">10</span>){ i <span class="hljs-keyword">in</span>
       <span class="hljs-type">Rectangle</span>()
-        .listRowInsets(<span class="hljs-type">EdgeInsets</span>()) <span class="hljs-comment">//可以控制边界insets</span>
+        .listRowInsets(<span class="hljs-type">EdgeInsets</span>()) <span class="hljs-comment">//可以控制边界 insets</span>
     }
   }
   
   <span class="hljs-type">List</span>(<span class="hljs-number">0</span>..&lt;<span class="hljs-number">10</span>){ i <span class="hljs-keyword">in</span>
      <span class="hljs-type">Rectangle</span>()
         .listRowInsets(<span class="hljs-type">EdgeInsets</span>()) 
-        <span class="hljs-comment">// 不可以控制边界insets.   .listRowInsets(EdgeInsets())在List中只对静态内容有效</span>
+        <span class="hljs-comment">// 不可以控制边界 insets.   .listRowInsets(EdgeInsets()) 在 List 中只对静态内容有效</span>
   }
-</code></pre><p>基于以上的区别,我在大多数的时候均采用ForEach在List中装填列表内容,并且都取得了预想的效果.</p><p>但是在最近我在开发一个类似于iOS邮件app的列表时发生了让我无语的状态——列表卡顿到完全无法忍耐.</p><p>通过下面的视频可以看到让我痛苦的app表现</p><video src="https://cdn.fatbobman.com/swiftui-list-foreach-10ForEach.mp4" controls = "controls"></video><p>只有十条记录时的状态.非常丝滑</p><pre data-language="swift"><code> <span class="hljs-type">List</span>{
+</code></pre><p>基于以上的区别，我在大多数的时候均采用 ForEach 在 List 中装填列表内容，并且都取得了预想的效果。</p><p>但是在最近我在开发一个类似于 iOS 邮件 app 的列表时发生了让我无语的状态——列表卡顿到完全无法忍耐。</p><p>通过下面的视频可以看到让我痛苦的 app 表现</p><video src="https://cdn.fatbobman.com/swiftui-list-foreach-10ForEach.mp4" controls = "controls"></video><p>只有十条记录时的状态。非常丝滑</p><pre data-language="swift"><code> <span class="hljs-type">List</span>{
     <span class="hljs-type">ForEach</span>(<span class="hljs-number">0</span>..&lt;<span class="hljs-number">10000</span>){ i <span class="hljs-keyword">in</span>
         <span class="hljs-type">Cell</span>(id: i)
           .listRowInsets(<span class="hljs-type">EdgeInsets</span>())
           .swipeCell(cellPosition: .both, leftSlot: slot1, rightSlot: slot1)
         }
     }
-</code></pre><video src="https://cdn.fatbobman.com/swiftui-list-foreach-10000MyList.mp4" controls = "controls"></video><p>10000条记录的样子</p><p>在10条记录时一切都很完美,但当记录设置为10000条时,完全卡成了ppt的状态.尤其是View初始化便占有了大量的时间.</p><p>起初我认为可能是我写的滑动菜单的问题,但在自己检查代码后排出了这个选项.为了更好的了解在List中Cell的生命周期状态,写了下面的测试代码.</p><pre data-language="swift"><code>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Cell</span>:<span class="hljs-title">View</span></span>{
+</code></pre><video src="https://cdn.fatbobman.com/swiftui-list-foreach-10000MyList.mp4" controls = "controls"></video><p>10000 条记录的样子</p><p>在 10 条记录时一切都很完美，但当记录设置为 10000 条时，完全卡成了 ppt 的状态。尤其是 View 初始化便占有了大量的时间。</p><p>起初我认为可能是我写的滑动菜单的问题，但在自己检查代码后排出了这个选项。为了更好的了解在 List 中 Cell 的生命周期状态，写了下面的测试代码。</p><pre data-language="swift"><code>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Cell</span>:<span class="hljs-title">View</span></span>{
         <span class="hljs-keyword">let</span> id:<span class="hljs-type">Int</span>
         @<span class="hljs-type">StateObject</span> <span class="hljs-keyword">var</span> t = <span class="hljs-type">Test</span>()
         <span class="hljs-keyword">init</span>(id:<span class="hljs-type">Int</span>){
@@ -97,18 +97,18 @@ function(){
     <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Store</span>:<span class="hljs-title">ObservableObject</span></span>{
         @<span class="hljs-type">Published</span> <span class="hljs-keyword">var</span> currentID:<span class="hljs-type">Int</span> = <span class="hljs-number">0</span>
     }
-</code></pre><p>执行后,发现了一个奇怪的现象:<strong>在List中,如果用ForEach处理数据源,所有的数据源的View竟然都要在List创建时进行初始化,这完全违背了tableView的本来意图</strong>.</p><p>将上面的代码的数据源切换到List的方式进行测试</p><pre data-language="swift"><code> <span class="hljs-type">List</span>(<span class="hljs-number">0</span>..&lt;<span class="hljs-number">10000</span>){ i <span class="hljs-keyword">in</span>
+</code></pre><p>执行后，发现了一个奇怪的现象：<strong>在 List 中，如果用 ForEach 处理数据源，所有的数据源的 View 竟然都要在 List 创建时进行初始化，这完全违背了 tableView 的本来意图</strong>.</p><p>将上面的代码的数据源切换到 List 的方式进行测试</p><pre data-language="swift"><code> <span class="hljs-type">List</span>(<span class="hljs-number">0</span>..&lt;<span class="hljs-number">10000</span>){ i <span class="hljs-keyword">in</span>
         <span class="hljs-type">Cell</span>(id: i)
           .listRowInsets(<span class="hljs-type">EdgeInsets</span>())
           .swipeCell(cellPosition: .both, leftSlot: slot1, rightSlot: slot1)
     }
-</code></pre><video src="https://cdn.fatbobman.com/swiftui-list-foreach-10000withoutForEach.mp4" controls = "controls"></video><p>熟悉的丝滑又回来了.</p><p><strong>ForEach要预先处理所有数据,提前准备View.并且初始化后,并不自动释放这些View(即使不可见)!</strong>具体可以使用上面的测试代码通过Debug来分析.</p><p>不流畅的原因已经找到了,不过由于List处理的数据源并不能设置listRowInsets,尤其在iOS14下,苹果非常奇怪的屏蔽了不少通过UITableView来设置List的属性的途径,所以为了既能保证性能,又能保证显示需求,只好通过自己包装UITableView来同时满足上述两个条件.</p><p>好在我一直使用<a href="https://github.com/SwiftUIX/SwiftUIX" target="_blank">SwiftUIX</a>这个第三方库,节省了自己写封装代码的时间.将代码做了进一步调整,当前的问题得以解决.</p><pre data-language="swift"><code> <span class="hljs-type">CocoaList</span>(item){ i <span class="hljs-keyword">in</span>
+</code></pre><video src="https://cdn.fatbobman.com/swiftui-list-foreach-10000withoutForEach.mp4" controls = "controls"></video><p>熟悉的丝滑又回来了。</p><p><strong>ForEach 要预先处理所有数据，提前准备 View. 并且初始化后，并不自动释放这些 View（即使不可见）! </strong>具体可以使用上面的测试代码通过 Debug 来分析。</p><p>不流畅的原因已经找到了，不过由于 List 处理的数据源并不能设置 listRowInsets, 尤其在 iOS14 下，苹果非常奇怪的屏蔽了不少通过 UITableView 来设置 List 的属性的途径，所以为了既能保证性能，又能保证显示需求，只好通过自己包装 UITableView 来同时满足上述两个条件。</p><p>好在我一直使用 <a href="https://github.com/SwiftUIX/SwiftUIX" target="_blank">SwiftUIX</a> 这个第三方库，节省了自己写封装代码的时间。将代码做了进一步调整，当前的问题得以解决。</p><pre data-language="swift"><code> <span class="hljs-type">CocoaList</span>(item){ i <span class="hljs-keyword">in</span>
            <span class="hljs-type">Cell</span>(id: i)
            .frame(height:<span class="hljs-number">100</span>)
            .listRowInsets(<span class="hljs-type">EdgeInsets</span>())
            .swipeCell(cellPosition: .both, leftSlot: slot1, rightSlot: slot1)
        }.edgesIgnoringSafeArea(.all)
-</code></pre><video src="https://cdn.fatbobman.com/swiftui-list-foreach-10000MyList.mp4" controls = "controls"></video><p>通过这次碰到的问题,我知道了可以在什么情况下使用ForEach.通过这篇文章记录下来,希望其他人少走这样的弯路.</p><p><strong>后记:</strong></p><p>我已经向苹果反馈了这个问题,希望他们能够进行调整吧(最近苹果对于开发者的feedback回应还是挺及时的,Xcode12发布后,我提交了5个feedback,已经有4个获得了反馈,3个在最新版得到了解决).</p><p><strong>遗憾:</strong></p><p>目前的解决方案使我失去了使用ScrollViewReader的机会.</p></div><div class="license">本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC 4.0许可协议</a>。转载请注明出处和作者。</div></div></article><div class="supporter"><p>关注微信公共号<a href="/support/">肘子的Swift记事本</a>或在推特上关注<a href="https://twitter.com/fatbobman">@fatbobman</a>，永远不会错过新内容！ 您的<a href="/support/">支持和鼓励</a>将为我的博客写作增添更多的动力! 如果您或身边的朋友有健康数据管理的需求，请使用我开发的app<a href="/healthnotes/">【健康笔记】</a>，正是因为它我才创建了这个博客。</p><div class="label">关注</div></div><div class="item-navigator"><table><tr><td class="previous-item"><a href="/posts/healthNote2-development-memo-2">健康笔记2.0开发随笔(二)</a></td><td class="next-item"><a href="/posts/healthNote2-development-memo-1">健康笔记2.0开发随笔（一）</a></td></tr></table></div><div id="gitalk-container"></div>
+</code></pre><video src="https://cdn.fatbobman.com/swiftui-list-foreach-10000MyList.mp4" controls = "controls"></video><p>通过这次碰到的问题，我知道了可以在什么情况下使用 ForEach. 通过这篇文章记录下来，希望其他人少走这样的弯路。</p><p><strong>后记：</strong></p><p>我已经向苹果反馈了这个问题，希望他们能够进行调整吧（最近苹果对于开发者的 feedback 回应还是挺及时的，Xcode12 发布后，我提交了 5 个 feedback, 已经有 4 个获得了反馈，3 个在最新版得到了解决）.</p><p><strong>遗憾：</strong></p><p>目前的解决方案使我失去了使用 ScrollViewReader 的机会。</p></div><div class="license">本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC 4.0许可协议</a>。转载请注明出处和作者。</div></div></article><div class="supporter"><p>关注微信公共号<a href="/support/">肘子的Swift记事本</a>或在推特上关注<a href="https://twitter.com/fatbobman">@fatbobman</a>，永远不会错过新内容！ 您的<a href="/support/">支持和鼓励</a>将为我的博客写作增添更多的动力! 如果您或身边的朋友有健康数据管理的需求，请使用我开发的app<a href="/healthnotes/">【健康笔记】</a>，正是因为它我才创建了这个博客。</p><div class="label">关注</div></div><div class="item-navigator"><table><tr><td class="previous-item"><a href="/posts/healthNote2-development-memo-2">健康笔记 2.0 开发随笔（二）</a></td><td class="next-item"><a href="/posts/healthNote2-development-memo-1">健康笔记 2.0 开发随笔（一）</a></td></tr></table></div><div id="gitalk-container"></div>
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <script type="text/javascript">
@@ -118,7 +118,7 @@ clientSecret: '0ac2907be08248a1fcb5312e27480ad535c682e5',
 repo: 'blogComments',
 owner: 'fatbobman',
 admin: ['fatbobman'],
-id: '聊一下SwiftUI中的List和ForEach',      // Ensure uniqueness and length less than 50
+id: '聊一下 SwiftUI 中的 List 和 ForEach',      // Ensure uniqueness and length less than 50
 distractionFreeMode: true,  // Facebook-like distraction free mode
 createIssueManually: true,
 language: navigator.userLanguage

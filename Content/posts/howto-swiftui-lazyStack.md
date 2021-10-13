@@ -1,11 +1,11 @@
 ---
 date: 2020-07-09 13:05
-description: SwiftUI2.0提供了LazyVStack和LazyHStack，其作用是只有当View在可见区域内才进行渲染，这样可以大大大提高app执行效率
+description: SwiftUI2.0 提供了 LazyVStack 和 LazyHStack，其作用是只有当 View 在可见区域内才进行渲染，这样可以大大大提高 app 执行效率
 tags: SwiftUI,HowTo
 title: HowTo —— SwiftU2.0 LazyVStack,LazyHStack
 ---
 
-SwiftUI2.0提供了LazyVStack和LazyHStack，其作用是只有当View在可见区域内才进行渲染，这样可以大大大提高app执行效率。由于VStack或HStack导致的效率问题，在[SwiftUI List (3) —— List、Form、VStack](https://zhuanlan.zhihu.com/p/111151515)文章中有简单的比较。
+SwiftUI2.0 提供了 LazyVStack 和 LazyHStack，其作用是只有当 View 在可见区域内才进行渲染，这样可以大大大提高 app 执行效率。由于 VStack 或 HStack 导致的效率问题，在 [SwiftUI List (3) —— List、Form、VStack](https://zhuanlan.zhihu.com/p/111151515) 文章中有简单的比较。
 
 ```responser
 id:1
@@ -17,7 +17,7 @@ id:1
 struct LazyStack: View {
     var body: some View {
         ScrollView{
-            LazyVStack{ //换成VStack作比较新数据创建的时机
+            LazyVStack{ //换成 VStack 作比较新数据创建的时机
                 ForEach(0...1000,id:\.self){ id in
                     Text(LazyItem(id:id).title)
                 }
@@ -38,7 +38,7 @@ struct LazyItem{
 
 ```
 
-## 使用Lazy特性创建不间断的列表显示 ##
+## 使用 Lazy 特性创建不间断的列表显示 ##
 
 ```swift
 import SwiftUI
@@ -49,9 +49,9 @@ struct LazyStack: View {
     var body: some View {
         VStack{
         Text("count:\(list.count)")
-        //数据数量，在LazyVStack下数据在每次刷新后才会增加，在VStack下，数据会一直增加。
+        //数据数量，在 LazyVStack 下数据在每次刷新后才会增加，在 VStack 下，数据会一直增加。
         ScrollView{
-            LazyVStack{ //换成VStack作比较
+            LazyVStack{ //换成 VStack 作比较
                 ForEach(list,id:\.id){ item in
                     Text("id:\(item.number)")
                         .onAppear {
@@ -62,7 +62,6 @@ struct LazyStack: View {
             if loading {
                 ProgressView()
             }
-        }
         }
     }
     
@@ -89,4 +88,4 @@ struct LazyStack: View {
 
 ```
 
-LazyHStack的用法同LazyVStack一样
+LazyHStack 的用法同 LazyVStack 一样

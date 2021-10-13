@@ -1,12 +1,11 @@
 ---
 date: 2020-07-23 13:00
-description: SwiftUI2.0增加了滚动定位功能,已经可以较轻松的适应大多数场景的应用。实现手段完全不同于之前民间的各种解决方案,并不是通过设置具体的offset来进行定位,而是使用id来进行位置标记。
+description: SwiftUI2.0 增加了滚动定位功能，已经可以较轻松的适应大多数场景的应用。实现手段完全不同于之前民间的各种解决方案，并不是通过设置具体的 offset 来进行定位，而是使用 id 来进行位置标记。
 tags: SwiftUI,HowTo
-title: HowTo —— SwiftUI2.0使用ScrollViewReader定位滚动位置
+title: HowTo —— SwiftUI2.0 使用 ScrollViewReader 定位滚动位置
 ---
 
-
-SwiftUI2.0增加了滚动定位功能,已经可以较轻松的适应大多数场景的应用。实现手段完全不同于之前民间的各种解决方案,并不是通过设置具体的offset来进行定位,而是使用id来进行位置标记。
+SwiftUI2.0 增加了滚动定位功能，已经可以较轻松的适应大多数场景的应用。实现手段完全不同于之前民间的各种解决方案，并不是通过设置具体的 offset 来进行定位，而是使用 id 来进行位置标记。
 
 ```responser
 id:1
@@ -18,7 +17,7 @@ id:1
 struct ScrollReaderTest: View {
     var body: some View {
         ScrollView(.horizontal) {
-            //类似GeometryReader的使用方式，设定滚动定位区域
+            //类似 GeometryReader 的使用方式，设定滚动定位区域
             ScrollViewReader{ proxy in
                 Rectangle()
                     .fill(LinearGradient(
@@ -26,9 +25,9 @@ struct ScrollReaderTest: View {
                       startPoint: .leading,
                       endPoint: .trailing))
                     .frame(width: 1000, height: 300, alignment: .center)
-                    .id("rec") //为ScrollView中需要定位的View设置id
+                    .id("rec") //为 ScrollView 中需要定位的 View 设置 id
                     .onAppear {
-                        //滚动到指定id的位置，按照anchor的设置来对齐
+                        //滚动到指定 id 的位置，按照 anchor 的设置来对齐
                         proxy.scrollTo("rec",anchor:.trailing)
                   }
             }

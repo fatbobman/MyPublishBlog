@@ -1,24 +1,23 @@
 ---
 date: 2021-08-05 20:50
-description: 介绍如何使用NSPersistentContainer的文章并不少，但同其他Core Data的功能一样，用好并不容易。在两年多的使用中，我便碰到不少问题。借着今年打算在【健康笔记3】中实现共享数据库功能的机会，我最近较系统地重新学习了Core Data with CloudKit并对其知识点进行了梳理。希望通过这个系列博文能让更多的开发者了解并使用Core Data with Cloudkit功能。
+description: 介绍如何使用 NSPersistentContainer 的文章并不少，但同其他 Core Data 的功能一样，用好并不容易。在两年多的使用中，我便碰到不少问题。借着今年打算在【健康笔记 3】中实现共享数据库功能的机会，我最近较系统地重新学习了 Core Data with CloudKit 并对其知识点进行了梳理。希望通过这个系列博文能让更多的开发者了解并使用 Core Data with Cloudkit 功能。
 tags: CloudKit,Core Data
-title: Core Data with CloudKit (一) —— 基础 
+title: Core Data with CloudKit （一） —— 基础 
 ---
 
-在WWDC 2019上，苹果为`Core Data`带了一项重大的更新——引入了`NSPersistentCloudKitContainer`。这意味着无需编写大量代码，使用`Core Data with CloudKit`可以让用户在他所有的苹果设备上无缝访问应用程序中的数据。
+在 WWDC 2019 上，苹果为`Core Data`带了一项重大的更新——引入了`NSPersistentCloudKitContainer`。这意味着无需编写大量代码，使用`Core Data with CloudKit`可以让用户在他所有的苹果设备上无缝访问应用程序中的数据。
 
-`Core Data`为开发具有结构化数据的应用程序提供了强大的对象图管理功能。CloudKit允许用户在登录其iCloud账户的每台设备上访问他们的数据，同时提供一个始终可用的备份服务。`Core Data with CloudKit`则结合了本地持久化+云备份和网络分发的优点。
+`Core Data`为开发具有结构化数据的应用程序提供了强大的对象图管理功能。CloudKit 允许用户在登录其 iCloud 账户的每台设备上访问他们的数据，同时提供一个始终可用的备份服务。`Core Data with CloudKit`则结合了本地持久化+云备份和网络分发的优点。
 
-2020年、2021年，苹果持续对`Core Data with CloudKit`进行了强化，在最初仅支持私有数据库同步的基础上，添加了公有数据库同步以及共享数据库同步的功能。
+2020 年、2021 年，苹果持续对`Core Data with CloudKit`进行了强化，在最初仅支持私有数据库同步的基础上，添加了公有数据库同步以及共享数据库同步的功能。
 
 我将通过几篇博文介绍`Core Data with CloudKit`的用法、调试技巧、控制台设置并尝试更深入地研究其同步机制。
-
 
 ```responser
 id:1
 ```
 
-## Core Data with CloudKit的局限性 ##
+## Core Data with CloudKit 的局限性 ##
 
 * **只能运行在苹果的生态**
 
@@ -26,19 +25,19 @@ id:1
 
 * **测试门槛较高**
 
-  需要有一个[Apple Developer Program](https://developer.apple.com/programs/)账号才能在开发过程中访问`CloudKit`服务和开发团队的`CKContainer`。另外，在模拟器上的运行效果也远没有在真机上可靠。
+  需要有一个 [Apple Developer Program](https://developer.apple.com/programs/) 账号才能在开发过程中访问`CloudKit`服务和开发团队的`CKContainer`。另外，在模拟器上的运行效果也远没有在真机上可靠。
 
-## Core Data with CloudKit的优点 ##
+## Core Data with CloudKit 的优点 ##
 
 * **几乎免费**
 
-  开发者基本上不需要为网络服务再额外支付费用。私有数据库保存在用户个人的iCloud空间中，公共数据库的容量会随着应用程序使用者的增加而自动提高，最高可增加到1 PB 存储、10 TB 数据库存储，以及每天 200 TB 流量。之所以说几乎免费，毕竟苹果会扣取15-30%的app收益。
+  开发者基本上不需要为网络服务再额外支付费用。私有数据库保存在用户个人的 iCloud 空间中，公共数据库的容量会随着应用程序使用者的增加而自动提高，最高可增加到 1 PB 存储、10 TB 数据库存储，以及每天 200 TB 流量。之所以说几乎免费，毕竟苹果会扣取 15-30%的 app 收益。
 
 * **安全**
 
   一方面苹果通过沙盒容器、数据库区隔、加密字段、鉴权等多种技术手段保证了用户的数据安全。另一方面，鉴于苹果长期以来在用户中树立的隐私捍卫者的形象，使用`Core Dat with CloudKit`可以让用户对你的应用程序增加更多的信任。
 
-  事实上，正是在WWDC2019年看到这个功能后，我才有了开发[【健康笔记】](/healthnotes/)的原动力——既保证数据隐私又能长久的保存数据。
+  事实上，正是在 WWDC2019 年看到这个功能后，我才有了开发 [【健康笔记】](/healthnotes/) 的原动力——既保证数据隐私又能长久的保存数据。
 
 * **集成度高、用户感知好**
 
@@ -46,23 +45,23 @@ id:1
 
 ## Core Data ##
 
-`Core Data`诞生于2005年，它的前身`EOF`在1994年便已经获得的不少用户的认可。经过了多年的演进，`Core Data`已经发展的相当成熟。作为对象图和持久化框架，几乎每个教程都会告诉你，不要把它当作数据库，也不要把它当作`ORM`。
+`Core Data`诞生于 2005 年，它的前身`EOF`在 1994 年便已经获得的不少用户的认可。经过了多年的演进，`Core Data`已经发展的相当成熟。作为对象图和持久化框架，几乎每个教程都会告诉你，不要把它当作数据库，也不要把它当作`ORM`。
 
-`Core Data`的功能包括但不限于：管理序列化版本、管理对象生命周期、对象图管理、SQL隔离、处理变更、持久化数据、数据内存优化以及数据查询等。
+`Core Data`的功能包括但不限于：管理序列化版本、管理对象生命周期、对象图管理、SQL 隔离、处理变更、持久化数据、数据内存优化以及数据查询等。
 
-`Core Data`提供的功能繁多，但对于初学者并不十分友好，拥有陡峭的学习曲线。最近几年苹果也注意到了这个问题，通过添加`PersistentContainer`极大的降低了`Stack`创建的难度；`SwiftUI`及`Core Data模版`的出现让初学者也可以较轻松地在项目中使用其强大的功能了。
+`Core Data`提供的功能繁多，但对于初学者并不十分友好，拥有陡峭的学习曲线。最近几年苹果也注意到了这个问题，通过添加`PersistentContainer`极大的降低了`Stack`创建的难度；`SwiftUI`及`Core Data 模版`的出现让初学者也可以较轻松地在项目中使用其强大的功能了。
 
 ## CloudKit ##
 
-在苹果推出`iCloud`之后的几年中，开发者都无法将自己的应用程序同`iCloud`结合起来。这个问题直到2014年苹果推出了`CloudKit`框架后才得到解决。
+在苹果推出`iCloud`之后的几年中，开发者都无法将自己的应用程序同`iCloud`结合起来。这个问题直到 2014 年苹果推出了`CloudKit`框架后才得到解决。
 
-`CloudKit`是数据库、文件存储、用户认证系统的集合服务，提供了在应用程序和`iCloud容器`之间的移动数据接口。用户可以在多个设备上访问保存在`iCloud`上的数据。
+`CloudKit`是数据库、文件存储、用户认证系统的集合服务，提供了在应用程序和`iCloud 容器`之间的移动数据接口。用户可以在多个设备上访问保存在`iCloud`上的数据。
 
 `CloudKit`的数据类型、内在逻辑和`Core Data`有很大的不同，需要做一些妥协或处理才能将两者的数据对象进行转换。事实上，当`CloudKit`一经推出，开发者就强烈希望两者之间能够进行便捷的转换。在推出`Core Data with CloudKit`之前，已经有第三方的开发者提供了将`Core Data`或其他数据的对象（比如`realm`）同步到`CloudKit`的解决方案，这些方案中的大多数目前仍在提供支持。
 
-依赖于之前推出的[持久化历史追踪](/posts/persistentHistoryTracking/)功能，苹果终于在2019年提供了自己的解决方案`Core Data with CloudKit`。
+依赖于之前推出的 [持久化历史追踪](/posts/persistentHistoryTracking/) 功能，苹果终于在 2019 年提供了自己的解决方案`Core Data with CloudKit`。
 
-## Core Data对象 vs CloudKit对象 ##
+## Core Data 对象 vs CloudKit 对象 ##
 
 两个框架都有各自的基础对象类型，相互之间并不能被一一对应。在此仅对本文涉及的一些基础对象类型做简单的介绍和比较：
 
@@ -70,19 +69,19 @@ id:1
 
   `NSPersistentContainer`通过处理托管对象模型（`NSManagedObjectModel`），对持久性协调器（`NSPersistentStoreCoordinator`）和托管对象上下文（`NSManagedObjectContext`）进行统一的创建和管理。开发者通过代码创建其的实例。
 
-  `CKContainer`则和应用程序的沙盒逻辑类似，在其中可以保存结构化数据、文件等多种资源。每个使用`CloudKit`的应用程序应有一个属于自己的`CKContainer`（通过配置，一个应用程序可以对应多个`CKContainer`，一个`CKContainer` 也可以服务于多个应用程序）。开发者通常不会在代码中直接创建新的`CKConttainer`，一般通过`iCoud控制台`或在`Xcode Target`的`Signing&Capabilities`中创建。
+  `CKContainer`则和应用程序的沙盒逻辑类似，在其中可以保存结构化数据、文件等多种资源。每个使用`CloudKit`的应用程序应有一个属于自己的`CKContainer`（通过配置，一个应用程序可以对应多个`CKContainer`，一个`CKContainer` 也可以服务于多个应用程序）。开发者通常不会在代码中直接创建新的`CKConttainer`，一般通过`iCoud 控制台`或在`Xcode Target`的`Signing&Capabilities`中创建。
 
 * **NSPersistentStore vs CKDatabase/CkRecordZone**
 
-  `NSPersistentStore`是所有 `Core Data` 持久存储的抽象基类，支持四种持久化的类型（`SQLite`、`Binary`、`XML` 和 `In-Memory`）。在一个`NSPersistentContainer`中，通过声明多个的`NSPersistentStoreDescription`，可以持有多个`NSPersistentStore实例`（可以是不同的类型）。`NSPersistentStore`没有用户鉴权的概念，但可以设置只读或读写两种模式。由于`Core Data with CloudKit`需要[持久化历史追踪](/posts/persistentHistoryTracking/)的支持，因此只能同步将`SQLite`作为存储类型的`NSPersistentStore`，在设备上，该`NSPersistentStore的实例`将指向一个`SQLite数据库文件`。
+  `NSPersistentStore`是所有 `Core Data` 持久存储的抽象基类，支持四种持久化的类型（`SQLite`、`Binary`、`XML` 和 `In-Memory`）。在一个`NSPersistentContainer`中，通过声明多个的`NSPersistentStoreDescription`，可以持有多个`NSPersistentStore 实例`（可以是不同的类型）。`NSPersistentStore`没有用户鉴权的概念，但可以设置只读或读写两种模式。由于`Core Data with CloudKit`需要 [持久化历史追踪](/posts/persistentHistoryTracking/) 的支持，因此只能同步将`SQLite`作为存储类型的`NSPersistentStore`，在设备上，该`NSPersistentStore 的实例`将指向一个`SQLite 数据库文件`。
 
   在`CloudKit`上，结构化的数据存储只有一种类型，但采用了**两个维度**对数据进行了区分。
 
-  从用户鉴权角度，`CKDatabase`分别提供了三种形式的数据库：私有数据库、公有数据库、共享数据库。应用程序的使用者（已经登录了`iCloud`账号）只能访问自己的私有数据库，该数据库的数据保存在用户个人的`iCloud`空间中，其他人都不可以对其数据进行操作。在公共数据库中保存的数据可以被任何授权过的应用程序调用，即使app的使用者没有登录`iCloud`账户，应用程序仍然可以读取其中的内容。应用程序的使用者，可以将部分数据共享给其他的同一个`app`的使用者，共享的数据将被放置在共享数据库中，共享者可以设置其他用户对于数据的读写权限。
+  从用户鉴权角度，`CKDatabase`分别提供了三种形式的数据库：私有数据库、公有数据库、共享数据库。应用程序的使用者（已经登录了`iCloud`账号）只能访问自己的私有数据库，该数据库的数据保存在用户个人的`iCloud`空间中，其他人都不可以对其数据进行操作。在公共数据库中保存的数据可以被任何授权过的应用程序调用，即使 app 的使用者没有登录`iCloud`账户，应用程序仍然可以读取其中的内容。应用程序的使用者，可以将部分数据共享给其他的同一个`app`的使用者，共享的数据将被放置在共享数据库中，共享者可以设置其他用户对于数据的读写权限。
 
   数据在`CKDatabase`中也不是以零散的方式放置在一起的，它们被放置在指定的`RecordZone`中。我们可以在私有数据库中创建任意多的`Zone`（公共数据库和共享数据库只支持默认`Zone`）。当`CKContainer`被创建后，每种数据库中都会默认生成一个名为`_defaultZone`的`CKRecordZone`。
 
-  因此，当我们保存数据到CloudKit数据库时，不仅需要指明数据库（私有、公有、共享）类型，同时也需要标明具体的`zoneID`（当保存到`_defaultZone`时无需标记）。
+  因此，当我们保存数据到 CloudKit 数据库时，不仅需要指明数据库（私有、公有、共享）类型，同时也需要标明具体的`zoneID`（当保存到`_defaultZone`时无需标记）。
 
 * **NSManagedObjectModel vs Schema**
 
@@ -114,7 +113,7 @@ id:1
 
   `CloudKit`是云端服务，它要同一`iCloud`账户的不同设备（私有数据库）或者使用不同`iCloud`账号的设备（公共数据库）的数据变化做出相应的反馈。
 
-  开发者通过`CloudKit`在`iCloud`上创建`CKSubscription`,当`CKContainer`中的数据发生变化时，云端服务器会检查该变化是否满足某个`CKSubscription`的触发条件，在条件满足时，对订阅的设备发送远程提醒（`Remote Notification`）。这就是当我们在`Xcode Target`的`Signing&Capabilities`中添加上`CloudKit`功能时，会`Xcode`自动添加`Remote Notification`的原因。
+  开发者通过`CloudKit`在`iCloud`上创建`CKSubscription`, 当`CKContainer`中的数据发生变化时，云端服务器会检查该变化是否满足某个`CKSubscription`的触发条件，在条件满足时，对订阅的设备发送远程提醒（`Remote Notification`）。这就是当我们在`Xcode Target`的`Signing&Capabilities`中添加上`CloudKit`功能时，会`Xcode`自动添加`Remote Notification`的原因。
 
   在实际使用中，需要通过`CKSubscription`的三个子类完成不同的订阅任务：
 
@@ -135,16 +134,16 @@ id:1
 * 初始化：
   1. 创建`CKContainer`
   2. 根据`NSManagedObjectModel`配置`Schema`
-  3. 在私有数据库中创建ID为`com.apple.coredata.cloudkit.zone`的`CKRecordZone`
+  3. 在私有数据库中创建 ID 为`com.apple.coredata.cloudkit.zone`的`CKRecordZone`
   4. 在私有数据库上创建`CKDatabaseSubscription`
 
 * 数据导出（将本地`Core Data`数据导出到云端）
   1. `NSPersistentCloudKitContainer`创建后台任务响应`持久化历史跟踪`的`NSPersistentStoreRemoteChange`通知
   2. 根据`NSPersistentStoreRemoteChange`的`transaction`，将`Core Data`的操作转换成`CloudKit`的操作。比如对于新增数据，将`NSManagedObject`实例转换成`CKRecord`实例。
-  3. 通过`CloudKit`将转换后的`CKRecord`或其他`CloudKit操作`传递给`iCloud`服务器
+  3. 通过`CloudKit`将转换后的`CKRecord`或其他`CloudKit 操作`传递给`iCloud`服务器
 
 * 服务器端
-  1. 按顺序处理从远端设备提交的`CloudKit操作数据`
+  1. 按顺序处理从远端设备提交的`CloudKit 操作数据`
   2. 根据初始化创建的`CKDatabaseSubscription`检查该操作是否导致私有数据库的`com.apple.coredata.cloudkit.zone`中的数据发生变化
   3. 对所有创建`CKDatabaseSubscription`订阅的设备（同一`iCloud`账户）分发远程通知
 
@@ -161,4 +160,4 @@ id:1
 
 本文中，我们简单介绍了关于`Core Data`、`CloudKit`以及`Core Data with CloudKit`的一点基础知识。在下一篇文章中我们将探讨如何使用`Core Data with CloudKit`实现**本地数据库和私有数据库的同步**。
 
-PS：介绍如何使用NSPersistentContainer的文章并不少，但同其他Core Data的功能一样，用好并不容易。在两年多的使用中，我便碰到不少问题。借着今年打算在[【健康笔记3】](/healthnotes/)中实现`共享数据库`功能的机会，我最近较系统地重新学习了`Core Data with CloudKit`并对其知识点进行了梳理。希望通过这个系列博文能让更多的开发者了解并使用`Core Data with Cloudkit`功能。
+PS：介绍如何使用 NSPersistentContainer 的文章并不少，但同其他 Core Data 的功能一样，用好并不容易。在两年多的使用中，我便碰到不少问题。借着今年打算在 [【健康笔记 3】](/healthnotes/) 中实现`共享数据库`功能的机会，我最近较系统地重新学习了`Core Data with CloudKit`并对其知识点进行了梳理。希望通过这个系列博文能让更多的开发者了解并使用`Core Data with Cloudkit`功能。

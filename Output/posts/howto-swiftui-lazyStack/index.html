@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"/><meta name="og:site_name" content="肘子的Swift记事本"/><link rel="canonical" href="https://www.fatbobman.com/posts/howto-swiftui-lazyStack"/><meta name="twitter:url" content="https://www.fatbobman.com/posts/howto-swiftui-lazyStack"/><meta name="og:url" content="https://www.fatbobman.com/posts/howto-swiftui-lazyStack"/><title>HowTo —— SwiftU2.0 LazyVStack,LazyHStack | 肘子的Swift记事本</title><meta name="twitter:title" content="HowTo —— SwiftU2.0 LazyVStack,LazyHStack | 肘子的Swift记事本"/><meta name="og:title" content="HowTo —— SwiftU2.0 LazyVStack,LazyHStack | 肘子的Swift记事本"/><meta name="description" content="SwiftUI2.0提供了LazyVStack和LazyHStack，其作用是只有当View在可见区域内才进行渲染，这样可以大大大提高app执行效率"/><meta name="twitter:description" content="SwiftUI2.0提供了LazyVStack和LazyHStack，其作用是只有当View在可见区域内才进行渲染，这样可以大大大提高app执行效率"/><meta name="og:description" content="SwiftUI2.0提供了LazyVStack和LazyHStack，其作用是只有当View在可见区域内才进行渲染，这样可以大大大提高app执行效率"/><meta name="twitter:card" content="summary"/><meta name="twitter:site" content="@fatbobman"/><meta name="twitter:creator" content="@fatbobman"/><meta name="referrer" content="no-referrer"/><link rel="stylesheet" href="/styles.css" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="/images/favicon.png" type="image/png"/><link rel="alternate" href="/feed.rss" type="application/rss+xml" title="Subscribe to 肘子的Swift记事本"/><meta name="twitter:image" content="https://www.fatbobman.com/images"/><meta name="og:image" content="https://www.fatbobman.com/images"/><script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script></head><body class="item-page"><header><div class="wrapper"><div class="logo"><a href="/"><img src="/images/title.svg"/></a></div><div><div class="headerIcons"><a class="icon headIconWeixin"><script>    var weixinHeadButton = $('.headIconWeixin');
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"/><meta name="og:site_name" content="肘子的Swift记事本"/><link rel="canonical" href="https://www.fatbobman.com/posts/howto-swiftui-lazyStack"/><meta name="twitter:url" content="https://www.fatbobman.com/posts/howto-swiftui-lazyStack"/><meta name="og:url" content="https://www.fatbobman.com/posts/howto-swiftui-lazyStack"/><title>HowTo —— SwiftU2.0 LazyVStack,LazyHStack | 肘子的Swift记事本</title><meta name="twitter:title" content="HowTo —— SwiftU2.0 LazyVStack,LazyHStack | 肘子的Swift记事本"/><meta name="og:title" content="HowTo —— SwiftU2.0 LazyVStack,LazyHStack | 肘子的Swift记事本"/><meta name="description" content="SwiftUI2.0 提供了 LazyVStack 和 LazyHStack，其作用是只有当 View 在可见区域内才进行渲染，这样可以大大大提高 app 执行效率"/><meta name="twitter:description" content="SwiftUI2.0 提供了 LazyVStack 和 LazyHStack，其作用是只有当 View 在可见区域内才进行渲染，这样可以大大大提高 app 执行效率"/><meta name="og:description" content="SwiftUI2.0 提供了 LazyVStack 和 LazyHStack，其作用是只有当 View 在可见区域内才进行渲染，这样可以大大大提高 app 执行效率"/><meta name="twitter:card" content="summary"/><meta name="twitter:site" content="@fatbobman"/><meta name="twitter:creator" content="@fatbobman"/><meta name="referrer" content="no-referrer"/><link rel="stylesheet" href="/styles.css" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="/images/favicon.png" type="image/png"/><link rel="alternate" href="/feed.rss" type="application/rss+xml" title="Subscribe to 肘子的Swift记事本"/><meta name="twitter:image" content="https://www.fatbobman.com/images"/><meta name="og:image" content="https://www.fatbobman.com/images"/><script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script></head><body class="item-page"><header><div class="wrapper"><div class="logo"><a href="/"><img src="/images/title.svg"/></a></div><div><div class="headerIcons"><a class="icon headIconWeixin"><script>    var weixinHeadButton = $('.headIconWeixin');
     weixinHeadButton.hover(
     function(){
     $('.weixinHeadQcode').css('display','block');
@@ -19,7 +19,7 @@ function(){
 },
 function(){
     $('.actionButton .donateQcode').css('display','none');
-})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>HowTo —— SwiftU2.0 LazyVStack,LazyHStack</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag variant-1"><a href="/tags/howto">HowTo</a></li><li class="tag tagdate">发布于2020年07月09日</li></ul><div class="content"><p>SwiftUI2.0提供了LazyVStack和LazyHStack，其作用是只有当View在可见区域内才进行渲染，这样可以大大大提高app执行效率。由于VStack或HStack导致的效率问题，在<a href="https://zhuanlan.zhihu.com/p/111151515" target="_blank">SwiftUI List (3) —— List、Form、VStack</a>文章中有简单的比较。</p><Div id='responser' class = "responser" onclick="window.location='http://www.fatbobman.com/healthnotes/';"><div class = "hstack">
+})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>HowTo —— SwiftU2.0 LazyVStack,LazyHStack</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag variant-1"><a href="/tags/howto">HowTo</a></li><li class="tag tagdate">发布于2020年07月09日</li></ul><div class="content"><p>SwiftUI2.0 提供了 LazyVStack 和 LazyHStack，其作用是只有当 View 在可见区域内才进行渲染，这样可以大大大提高 app 执行效率。由于 VStack 或 HStack 导致的效率问题，在 <a href="https://zhuanlan.zhihu.com/p/111151515" target="_blank">SwiftUI List (3) —— List、Form、VStack</a> 文章中有简单的比较。</p><Div id='responser' class = "responser" onclick="window.location='http://www.fatbobman.com/healthnotes/';"><div class = "hstack">
 <img src = "https://cdn.fatbobman.com/healthnotesLogo.svg"></img>
 <div class = "text">
 <p><span class = "title">健康笔记</span>是我开发的一个iOS app，主要服务于有长期健康管理需求的人士。可为全家不同成员创建各自的笔记，允许使用者自定义数据类型以记录各种健康数据。</p>
@@ -28,7 +28,7 @@ function(){
 <div class="label">推广</div></Div><h2>基本用法</h2><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">LazyStack</span>: <span class="hljs-title">View</span> </span>{
     <span class="hljs-keyword">var</span> body: some <span class="hljs-type">View</span> {
         <span class="hljs-type">ScrollView</span>{
-            <span class="hljs-type">LazyVStack</span>{ <span class="hljs-comment">//换成VStack作比较新数据创建的时机</span>
+            <span class="hljs-type">LazyVStack</span>{ <span class="hljs-comment">//换成 VStack 作比较新数据创建的时机</span>
                 <span class="hljs-type">ForEach</span>(<span class="hljs-number">0</span>...<span class="hljs-number">1000</span>,id:\.<span class="hljs-keyword">self</span>){ id <span class="hljs-keyword">in</span>
                     <span class="hljs-type">Text</span>(<span class="hljs-type">LazyItem</span>(id:id).title)
                 }
@@ -46,7 +46,7 @@ function(){
         <span class="hljs-built_in">print</span>(<span class="hljs-string">"init new object:\(id)"</span>) 
     }
 }
-</code></pre><h2>使用Lazy特性创建不间断的列表显示</h2><pre data-language="swift"><code><span class="hljs-keyword">import</span> SwiftUI
+</code></pre><h2>使用 Lazy 特性创建不间断的列表显示</h2><pre data-language="swift"><code><span class="hljs-keyword">import</span> SwiftUI
 
 <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">LazyStack</span>: <span class="hljs-title">View</span> </span>{
     @<span class="hljs-type">State</span> <span class="hljs-keyword">var</span> list = (<span class="hljs-number">0</span>...<span class="hljs-number">40</span>).<span class="hljs-built_in">map</span>{<span class="hljs-number">_</span> <span class="hljs-keyword">in</span> <span class="hljs-type">Item</span>(number:<span class="hljs-type">Int</span>.random(<span class="hljs-keyword">in</span>: <span class="hljs-number">1000</span>...<span class="hljs-number">5000</span>))}
@@ -54,9 +54,9 @@ function(){
     <span class="hljs-keyword">var</span> body: some <span class="hljs-type">View</span> {
         <span class="hljs-type">VStack</span>{
         <span class="hljs-type">Text</span>(<span class="hljs-string">"count:\(list.count)"</span>)
-        <span class="hljs-comment">//数据数量，在LazyVStack下数据在每次刷新后才会增加，在VStack下，数据会一直增加。</span>
+        <span class="hljs-comment">//数据数量，在 LazyVStack 下数据在每次刷新后才会增加，在 VStack 下，数据会一直增加。</span>
         <span class="hljs-type">ScrollView</span>{
-            <span class="hljs-type">LazyVStack</span>{ <span class="hljs-comment">//换成VStack作比较</span>
+            <span class="hljs-type">LazyVStack</span>{ <span class="hljs-comment">//换成 VStack 作比较</span>
                 <span class="hljs-type">ForEach</span>(list,id:\.id){ item <span class="hljs-keyword">in</span>
                     <span class="hljs-type">Text</span>(<span class="hljs-string">"id:\(item.number)"</span>)
                         .onAppear {
@@ -67,7 +67,6 @@ function(){
             <span class="hljs-keyword">if</span> loading {
                 <span class="hljs-type">ProgressView</span>()
             }
-        }
         }
     }
     
@@ -91,7 +90,7 @@ function(){
     <span class="hljs-keyword">let</span> id = <span class="hljs-type">UUID</span>()
     <span class="hljs-keyword">let</span> number:<span class="hljs-type">Int</span>
 }
-</code></pre><p>LazyHStack的用法同LazyVStack一样</p></div><div class="license">本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC 4.0许可协议</a>。转载请注明出处和作者。</div></div></article><div class="supporter"><p>关注微信公共号<a href="/support/">肘子的Swift记事本</a>或在推特上关注<a href="https://twitter.com/fatbobman">@fatbobman</a>，永远不会错过新内容！ 您的<a href="/support/">支持和鼓励</a>将为我的博客写作增添更多的动力! 如果您或身边的朋友有健康数据管理的需求，请使用我开发的app<a href="/healthnotes/">【健康笔记】</a>，正是因为它我才创建了这个博客。</p><div class="label">关注</div></div><div class="item-navigator"><table><tr><td class="previous-item"><a href="/posts/howto-swiftui-label">HowTo —— SwiftUI2.0如何使用Label</a></td><td class="next-item"><a href="/posts/howto-swiftui-map">HowTo—— Swift2.0在视图中显示地图</a></td></tr></table></div><div id="gitalk-container"></div>
+</code></pre><p>LazyHStack 的用法同 LazyVStack 一样</p></div><div class="license">本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC 4.0许可协议</a>。转载请注明出处和作者。</div></div></article><div class="supporter"><p>关注微信公共号<a href="/support/">肘子的Swift记事本</a>或在推特上关注<a href="https://twitter.com/fatbobman">@fatbobman</a>，永远不会错过新内容！ 您的<a href="/support/">支持和鼓励</a>将为我的博客写作增添更多的动力! 如果您或身边的朋友有健康数据管理的需求，请使用我开发的app<a href="/healthnotes/">【健康笔记】</a>，正是因为它我才创建了这个博客。</p><div class="label">关注</div></div><div class="item-navigator"><table><tr><td class="previous-item"><a href="/posts/howto-swiftui-label">HowTo —— SwiftUI2.0 如何使用 Label</a></td><td class="next-item"><a href="/posts/howto-swiftui-map">HowTo—— Swift2.0 在视图中显示地图</a></td></tr></table></div><div id="gitalk-container"></div>
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <script type="text/javascript">

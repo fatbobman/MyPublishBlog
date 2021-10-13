@@ -1,11 +1,11 @@
 ---
 date: 2020-07-12 13:00
-description: SwiftUI2.0 新增了一些便捷的内置控件，比如说Label、ProgressView等。其基本形态都很普通，不过都支持自定义style。官方的意图也比较明显，通过内置控件，规范代码、提高原型编写速度，如需要更精细控制可通过扩展style来完成。
+description: SwiftUI2.0 新增了一些便捷的内置控件，比如说 Label、ProgressView 等。其基本形态都很普通，不过都支持自定义 style。官方的意图也比较明显，通过内置控件，规范代码、提高原型编写速度，如需要更精细控制可通过扩展 style 来完成。
 tags: SwiftUI,HowTo
-title: HowTo —— SwiftUI2.0 使用ProgressView显示进度条
+title: HowTo —— SwiftUI2.0 使用 ProgressView 显示进度条
 ---
 
-SwiftUI2.0 新增了一些便捷的内置控件，比如说Label、ProgressView等。其基本形态都很普通，不过都支持自定义style。官方的意图也比较明显，通过内置控件，规范代码、提高原型编写速度，如需要更精细控制可通过扩展style来完成。
+SwiftUI2.0 新增了一些便捷的内置控件，比如说 Label、ProgressView 等。其基本形态都很普通，不过都支持自定义 style。官方的意图也比较明显，通过内置控件，规范代码、提高原型编写速度，如需要更精细控制可通过扩展 style 来完成。
 
 ```responser
 id:1
@@ -25,7 +25,7 @@ ProgressView()
 ProgressView("完成量", value: 50, total: 100)
 ```
 
-![截屏2020-07-11 下午4.09.34](https://cdn.fatbobman.com/howto-swiftui-progressView-progress2.png)
+![截屏 2020-07-11 下午 4.09.34](https://cdn.fatbobman.com/howto-swiftui-progressView-progress2.png)
 
 ## 代码示例 ##
 
@@ -40,10 +40,10 @@ struct ProgressTest: View {
             //无法定义颜色
             ProgressView()
             
-            //无法隐藏Label
+            //无法隐藏 Label
             ProgressView("完成量", value: value, total: 100)
                 .accentColor(.red)
-            //自定义Style
+            //自定义 Style
             ProgressView("工程进度",value: value, total: 100)
                 .progressViewStyle(MyProgressViewStyle())
         }

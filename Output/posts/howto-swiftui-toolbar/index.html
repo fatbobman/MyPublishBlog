@@ -1,11 +1,11 @@
-<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"/><meta name="og:site_name" content="肘子的Swift记事本"/><link rel="canonical" href="https://www.fatbobman.com/posts/howto-swiftui-toolbar"/><meta name="twitter:url" content="https://www.fatbobman.com/posts/howto-swiftui-toolbar"/><meta name="og:url" content="https://www.fatbobman.com/posts/howto-swiftui-toolbar"/><title>HowTo —— SwiftUI2.0 使用ToolBar替代navigationbarItems | 肘子的Swift记事本</title><meta name="twitter:title" content="HowTo —— SwiftUI2.0 使用ToolBar替代navigationbarItems | 肘子的Swift记事本"/><meta name="og:title" content="HowTo —— SwiftUI2.0 使用ToolBar替代navigationbarItems | 肘子的Swift记事本"/><meta name="description" content="SwiftUI2.0为了实现更好的多平台支持同时需要兼顾1.0版本代码兼容性，提供了一些与已有控件功能上类似但名称和用法全新的控件。比如ToolBar, navigationTitle等。Toolbar可以实现navigationbarItems的全部功能，并新增了在多平台下的适配。采用了全新的语法，代码更易阅读。"/><meta name="twitter:description" content="SwiftUI2.0为了实现更好的多平台支持同时需要兼顾1.0版本代码兼容性，提供了一些与已有控件功能上类似但名称和用法全新的控件。比如ToolBar, navigationTitle等。Toolbar可以实现navigationbarItems的全部功能，并新增了在多平台下的适配。采用了全新的语法，代码更易阅读。"/><meta name="og:description" content="SwiftUI2.0为了实现更好的多平台支持同时需要兼顾1.0版本代码兼容性，提供了一些与已有控件功能上类似但名称和用法全新的控件。比如ToolBar, navigationTitle等。Toolbar可以实现navigationbarItems的全部功能，并新增了在多平台下的适配。采用了全新的语法，代码更易阅读。"/><meta name="twitter:card" content="summary"/><meta name="twitter:site" content="@fatbobman"/><meta name="twitter:creator" content="@fatbobman"/><meta name="referrer" content="no-referrer"/><link rel="stylesheet" href="/styles.css" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="/images/favicon.png" type="image/png"/><link rel="alternate" href="/feed.rss" type="application/rss+xml" title="Subscribe to 肘子的Swift记事本"/><meta name="twitter:image" content="https://www.fatbobman.com/images"/><meta name="og:image" content="https://www.fatbobman.com/images"/><script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script></head><body class="item-page"><header><div class="wrapper"><div class="logo"><a href="/"><img src="/images/title.svg"/></a></div><div><div class="headerIcons"><a class="icon headIconWeixin"><script>    var weixinHeadButton = $('.headIconWeixin');
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"/><meta name="og:site_name" content="肘子的Swift记事本"/><link rel="canonical" href="https://www.fatbobman.com/posts/howto-swiftui-toolbar"/><meta name="twitter:url" content="https://www.fatbobman.com/posts/howto-swiftui-toolbar"/><meta name="og:url" content="https://www.fatbobman.com/posts/howto-swiftui-toolbar"/><title>HowTo —— SwiftUI2.0 使用 ToolBar 替代 navigationbarItems | 肘子的Swift记事本</title><meta name="twitter:title" content="HowTo —— SwiftUI2.0 使用 ToolBar 替代 navigationbarItems | 肘子的Swift记事本"/><meta name="og:title" content="HowTo —— SwiftUI2.0 使用 ToolBar 替代 navigationbarItems | 肘子的Swift记事本"/><meta name="description" content="SwiftUI2.0 为了实现更好的多平台支持同时需要兼顾 1.0 版本代码兼容性，提供了一些与已有控件功能上类似但名称和用法全新的控件。比如 ToolBar, navigationTitle 等。Toolbar 可以实现 navigationbarItems 的全部功能，并新增了在多平台下的适配。采用了全新的语法，代码更易阅读。"/><meta name="twitter:description" content="SwiftUI2.0 为了实现更好的多平台支持同时需要兼顾 1.0 版本代码兼容性，提供了一些与已有控件功能上类似但名称和用法全新的控件。比如 ToolBar, navigationTitle 等。Toolbar 可以实现 navigationbarItems 的全部功能，并新增了在多平台下的适配。采用了全新的语法，代码更易阅读。"/><meta name="og:description" content="SwiftUI2.0 为了实现更好的多平台支持同时需要兼顾 1.0 版本代码兼容性，提供了一些与已有控件功能上类似但名称和用法全新的控件。比如 ToolBar, navigationTitle 等。Toolbar 可以实现 navigationbarItems 的全部功能，并新增了在多平台下的适配。采用了全新的语法，代码更易阅读。"/><meta name="twitter:card" content="summary"/><meta name="twitter:site" content="@fatbobman"/><meta name="twitter:creator" content="@fatbobman"/><meta name="referrer" content="no-referrer"/><link rel="stylesheet" href="/styles.css" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="/images/favicon.png" type="image/png"/><link rel="alternate" href="/feed.rss" type="application/rss+xml" title="Subscribe to 肘子的Swift记事本"/><meta name="twitter:image" content="https://www.fatbobman.com/images"/><meta name="og:image" content="https://www.fatbobman.com/images"/><script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script></head><body class="item-page"><header><div class="wrapper"><div class="logo"><a href="/"><img src="/images/title.svg"/></a></div><div><div class="headerIcons"><a class="icon headIconWeixin"><script>    var weixinHeadButton = $('.headIconWeixin');
     weixinHeadButton.hover(
     function(){
     $('.weixinHeadQcode').css('display','block');
     },
     function(){
     $('.weixinHeadQcode').css('display','none');
-    })</script></a><a class="icon headIconTwitter" href="https://www.twitter.com/fatbobman" target="_blank" rel="noreferrer"></a><a class="icon headIconEmail" href="mailto:xuyang@me.com" target="_blank" rel="noreferrer"></a><a class="icon headIconGithub" href="https://github.com/fatbobman/" target="_blank" rel="noreferrer"></a><a class="icon headIconZhihu" href="https://www.zhihu.com/people/fatbobman3000" target="_blank" rel="noreferrer"></a><a class="icon headIconRss" href="/feed.rss" target="_blank" rel="noreferrer"></a></div></div><nav><ul><li><a href="/">首页</a></li><li><a class="selected" href="/posts">文章</a></li><li><a href="/healthnotes">健康笔记</a></li><li><a href="/about">关于</a></li><li><a href="/tags">搜索</a></li></ul><div class="weixinHeadQcode" onclick="$('.weixinHeadQcode').css('display','none');"></div></nav></div></header><div class="container"><div class="wrapper"><div class="viewContainer"><div class="side-nav"><div class="sidebar"></div></div><div class="leftContent"><div class="post-actions"><div class="actionButton"><div class="actionButton twitter" onclick="window.open('https://twitter.com/intent/tweet?text=HowTo —— SwiftUI2.0 使用ToolBar替代navigationbarItems&url=https://www.fatbobman.com/posts/howto-swiftui-toolbar&via=fatbobman','target','');"></div></div><div class="actionButton"><div class="actionButton weixin"><script>var weixinButton = $('.actionButton .weixin');
+    })</script></a><a class="icon headIconTwitter" href="https://www.twitter.com/fatbobman" target="_blank" rel="noreferrer"></a><a class="icon headIconEmail" href="mailto:xuyang@me.com" target="_blank" rel="noreferrer"></a><a class="icon headIconGithub" href="https://github.com/fatbobman/" target="_blank" rel="noreferrer"></a><a class="icon headIconZhihu" href="https://www.zhihu.com/people/fatbobman3000" target="_blank" rel="noreferrer"></a><a class="icon headIconRss" href="/feed.rss" target="_blank" rel="noreferrer"></a></div></div><nav><ul><li><a href="/">首页</a></li><li><a class="selected" href="/posts">文章</a></li><li><a href="/healthnotes">健康笔记</a></li><li><a href="/about">关于</a></li><li><a href="/tags">搜索</a></li></ul><div class="weixinHeadQcode" onclick="$('.weixinHeadQcode').css('display','none');"></div></nav></div></header><div class="container"><div class="wrapper"><div class="viewContainer"><div class="side-nav"><div class="sidebar"></div></div><div class="leftContent"><div class="post-actions"><div class="actionButton"><div class="actionButton twitter" onclick="window.open('https://twitter.com/intent/tweet?text=HowTo —— SwiftUI2.0 使用 ToolBar 替代 navigationbarItems&url=https://www.fatbobman.com/posts/howto-swiftui-toolbar&via=fatbobman','target','');"></div></div><div class="actionButton"><div class="actionButton weixin"><script>var weixinButton = $('.actionButton .weixin');
 weixinButton.hover(
 function(){
     $('.actionButton .weixinQcode').css('display','block');
@@ -19,7 +19,7 @@ function(){
 },
 function(){
     $('.actionButton .donateQcode').css('display','none');
-})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>HowTo —— SwiftUI2.0 使用ToolBar替代navigationbarItems</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag variant-1"><a href="/tags/howto">HowTo</a></li><li class="tag tagdate">发布于2020年07月10日</li></ul><div class="content"><p>SwiftUI2.0为了实现更好的多平台支持同时需要兼顾1.0版本代码兼容性，提供了一些与已有控件功能上类似但名称和用法全新的控件。比如ToolBar, navigationTitle等。Toolbar可以实现navigationbarItems的全部功能，并新增了在多平台下的适配。采用了全新的语法，代码更易阅读。 &gt; &gt; <strong>在当前的Xcode Version 12.0 beta 2 (12A6163b)版本下，ToolBar在macOS下仍然有非常多的问题。</strong></p><Div id='responser' class = "responser" onclick="window.location='http://www.fatbobman.com/healthnotes/';"><div class = "hstack">
+})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>HowTo —— SwiftUI2.0 使用 ToolBar 替代 navigationbarItems</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag variant-1"><a href="/tags/howto">HowTo</a></li><li class="tag tagdate">发布于2020年07月10日</li></ul><div class="content"><p>SwiftUI2.0 为了实现更好的多平台支持同时需要兼顾 1.0 版本代码兼容性，提供了一些与已有控件功能上类似但名称和用法全新的控件。比如 ToolBar, navigationTitle 等。Toolbar 可以实现 navigationbarItems 的全部功能，并新增了在多平台下的适配。采用了全新的语法，代码更易阅读。 &gt; &gt; <strong>在当前的 Xcode Version 12.0 beta 2 (12A6163b) 版本下，ToolBar 在 macOS 下仍然有非常多的问题。</strong></p><Div id='responser' class = "responser" onclick="window.location='http://www.fatbobman.com/healthnotes/';"><div class = "hstack">
 <img src = "https://cdn.fatbobman.com/healthnotesLogo.svg"></img>
 <div class = "text">
 <p><span class = "title">健康笔记</span>是我开发的一个iOS app，主要服务于有长期健康管理需求的人士。可为全家不同成员创建各自的笔记，允许使用者自定义数据类型以记录各种健康数据。</p>
@@ -40,7 +40,7 @@ function(){
                         
                     }
                 }
-                <span class="hljs-comment">//placement设置放置位置，ToolBarItem中的View解析不会完全和预期一致，不知道是特别限制还是bug.比如说无法显示多彩符号，无法使用Spacer等。</span>
+                <span class="hljs-comment">//placement 设置放置位置，ToolBarItem 中的 View 解析不会完全和预期一致，不知道是特别限制还是 bug. 比如说无法显示多彩符号，无法使用 Spacer 等。</span>
                 <span class="hljs-type">ToolbarItem</span>(placement: .bottomBar){
                     <span class="hljs-type">HStack</span>(spacing:<span class="hljs-number">100</span>){
                         <span class="hljs-type">Button</span>(action:{<span class="hljs-built_in">print</span>(<span class="hljs-string">"lt"</span>)}){
@@ -60,7 +60,7 @@ function(){
         }
     }
 }
-</code></pre><img src="https://cdn.fatbobman.com/howto-swiftui-toolbar-toolbar1.png width=300" alt="截屏2020-07-10 上午9.01.52"/><h2>多平台适配</h2><p>为了能够更好的适配多平台，placment提供了automatic这样的多平台自适应选项。placement有些值全平台可用，有些只支持部分平台，还有一部分的可在多平台运行不过只能在部分平台正确显示。</p><pre data-language="swift"><code><span class="hljs-keyword">import</span> SwiftUI
+</code></pre><img src="https://cdn.fatbobman.com/howto-swiftui-toolbar-toolbar1.png width=300" alt="截屏 2020-07-10 上午 9.01.52"/><h2>多平台适配</h2><p>为了能够更好的适配多平台，placment 提供了 automatic 这样的多平台自适应选项。placement 有些值全平台可用，有些只支持部分平台，还有一部分的可在多平台运行不过只能在部分平台正确显示。</p><pre data-language="swift"><code><span class="hljs-keyword">import</span> SwiftUI
 
 <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">ToolBarTest</span>: <span class="hljs-title">View</span> </span>{
     @<span class="hljs-type">State</span> <span class="hljs-keyword">var</span> placementSelection:<span class="hljs-type">Placement</span> = .automatic
@@ -82,24 +82,24 @@ function(){
                     <span class="hljs-keyword">case</span> .automatic:
                         placement = .automatic
                     <span class="hljs-keyword">case</span> .principal:
-                        placement = .principal <span class="hljs-comment">//iOS不显示</span>
+                        placement = .principal <span class="hljs-comment">//iOS 不显示</span>
                     <span class="hljs-keyword">case</span> .navigation:
                         placement = .navigation
                     <span class="hljs-keyword">case</span> .primaryAction:
                         placement = .primaryAction
                     <span class="hljs-keyword">case</span> .status:
-                        placement = .status <span class="hljs-comment">//iOS不显示</span>
+                        placement = .status <span class="hljs-comment">//iOS 不显示</span>
                     <span class="hljs-keyword">case</span> .confirmationAction:
-                        placement = .confirmationAction <span class="hljs-comment">//iOS不显示</span>
+                        placement = .confirmationAction <span class="hljs-comment">//iOS 不显示</span>
                     <span class="hljs-keyword">case</span> .cancellationAction:
-                        placement = .cancellationAction <span class="hljs-comment">//iOS不显示</span>
+                        placement = .cancellationAction <span class="hljs-comment">//iOS 不显示</span>
                     <span class="hljs-keyword">case</span> .destructiveAction:
-                        placement = .destructiveAction <span class="hljs-comment">//iOS不显示</span>
+                        placement = .destructiveAction <span class="hljs-comment">//iOS 不显示</span>
                     #<span class="hljs-keyword">if</span> os(iOS)
                     <span class="hljs-keyword">case</span> .bottomBar:
                         placement = .bottomBar
-                    <span class="hljs-comment">//不知道为什么有bug,设置后不显示</span>
-                    <span class="hljs-comment">//ToolbarItem(placement:.bottomBar)可以显示</span>
+                    <span class="hljs-comment">//不知道为什么有 bug, 设置后不显示</span>
+                    <span class="hljs-comment">//ToolbarItem(placement:.bottomBar) 可以显示</span>
                     <span class="hljs-keyword">case</span> .navigationBarLeading:
                         placement = .navigationBarLeading
                     <span class="hljs-keyword">case</span> .navigationBarTrailing:
@@ -107,8 +107,8 @@ function(){
                     #endif
                     }
                 }
-                <span class="hljs-comment">//在macOS下如果需要显式设置是否显示ToolBar,需要设置id,iOS下可以不用设置</span>
-                <span class="hljs-comment">//当前在macOS下,如果不显式关闭可能导致不同View的ToolBar混合到了一起,或者重复出现.不知道是否是bug还是设计逻辑</span>
+                <span class="hljs-comment">//在 macOS 下如果需要显式设置是否显示 ToolBar, 需要设置 id,iOS 下可以不用设置</span>
+                <span class="hljs-comment">//当前在 macOS 下，如果不显式关闭可能导致不同 View 的 ToolBar 混合到了一起，或者重复出现。不知道是否是 bug 还是设计逻辑</span>
                 .toolbar(id:<span class="hljs-string">"ToolBar"</span>) {
                     <span class="hljs-type">ToolbarItem</span>(id:<span class="hljs-string">"1"</span>,placement:placement,showsByDefault:show) {
                         <span class="hljs-type">Button</span>(<span class="hljs-string">"确定"</span>){
@@ -116,10 +116,10 @@ function(){
                         }
                     }
                 }
-                .navigationTitle(<span class="hljs-string">"Toolbar演示"</span>)
+                .navigationTitle(<span class="hljs-string">"Toolbar 演示"</span>)
                 
                 #<span class="hljs-keyword">if</span> os(macOS)
-                <span class="hljs-type">Toggle</span>(<span class="hljs-string">"显示ToolBar"</span>,isOn:$show)
+                <span class="hljs-type">Toggle</span>(<span class="hljs-string">"显示 ToolBar"</span>,isOn:$show)
                 <span class="hljs-type">Spacer</span>()
                 #endif
             } .frame(maxWidth:.infinity,maxHeight: .infinity)
@@ -136,7 +136,7 @@ function(){
     <span class="hljs-keyword">case</span> navigationBarLeading,navigationBarTrailing,bottomBar
     #endif
 }
-</code></pre><video src="https://cdn.fatbobman.com/howto-swiftui-toolbar-video.mp4" controls = "controls">你的浏览器不支持本视频</video><blockquote><p>macOS下不同placement的演示</p></blockquote><p><strong>遗憾</strong></p><p>macOS目前bug较多，ToolBarItem对于View的解析还不完整，ToolBarContentBuilder不支持逻辑判断。</p></div><div class="license">本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC 4.0许可协议</a>。转载请注明出处和作者。</div></div></article><div class="supporter"><p>关注微信公共号<a href="/support/">肘子的Swift记事本</a>或在推特上关注<a href="https://twitter.com/fatbobman">@fatbobman</a>，永远不会错过新内容！ 您的<a href="/support/">支持和鼓励</a>将为我的博客写作增添更多的动力! 如果您或身边的朋友有健康数据管理的需求，请使用我开发的app<a href="/healthnotes/">【健康笔记】</a>，正是因为它我才创建了这个博客。</p><div class="label">关注</div></div><div class="item-navigator"><table><tr><td class="previous-item"><a href="/posts/howto-swiftui-onOpenUrl">HowTo —— 使用onOpenURL处理Universal Links</a></td><td class="next-item"><a href="/posts/howto-swiftui-link-openurl">HowTo —— SwiftUI2.0 使用Link或openURL打开URL scheme</a></td></tr></table></div><div id="gitalk-container"></div>
+</code></pre><video src="https://cdn.fatbobman.com/howto-swiftui-toolbar-video.mp4" controls = "controls">你的浏览器不支持本视频</video><blockquote><p>macOS 下不同 placement 的演示</p></blockquote><p><strong>遗憾</strong></p><p>macOS 目前 bug 较多，ToolBarItem 对于 View 的解析还不完整，ToolBarContentBuilder 不支持逻辑判断。</p></div><div class="license">本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC 4.0许可协议</a>。转载请注明出处和作者。</div></div></article><div class="supporter"><p>关注微信公共号<a href="/support/">肘子的Swift记事本</a>或在推特上关注<a href="https://twitter.com/fatbobman">@fatbobman</a>，永远不会错过新内容！ 您的<a href="/support/">支持和鼓励</a>将为我的博客写作增添更多的动力! 如果您或身边的朋友有健康数据管理的需求，请使用我开发的app<a href="/healthnotes/">【健康笔记】</a>，正是因为它我才创建了这个博客。</p><div class="label">关注</div></div><div class="item-navigator"><table><tr><td class="previous-item"><a href="/posts/howto-swiftui-onOpenUrl">HowTo —— 使用 onOpenURL 处理 Universal Links</a></td><td class="next-item"><a href="/posts/howto-swiftui-link-openurl">HowTo —— SwiftUI2.0 使用 Link 或 openURL 打开 URL scheme</a></td></tr></table></div><div id="gitalk-container"></div>
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <script type="text/javascript">
@@ -146,7 +146,7 @@ clientSecret: '0ac2907be08248a1fcb5312e27480ad535c682e5',
 repo: 'blogComments',
 owner: 'fatbobman',
 admin: ['fatbobman'],
-id: 'HowTo —— SwiftUI2.0 使用ToolBar替代navigationbarItems',      // Ensure uniqueness and length less than 50
+id: 'HowTo —— SwiftUI2.0 使用 ToolBar 替代 navigationbarItems',      // Ensure uniqueness and length less than 50
 distractionFreeMode: true,  // Facebook-like distraction free mode
 createIssueManually: true,
 language: navigator.userLanguage

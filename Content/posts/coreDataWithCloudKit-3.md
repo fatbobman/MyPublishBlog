@@ -1,18 +1,18 @@
 ---
 date: 2021-08-09 17:30
-description: 本篇文章中，我们将一起研究CloudKit仪表台。
+description: 本篇文章中，我们将一起研究 CloudKit 仪表台。
 tags: CloudKit,Core Data
-title: Core Data with CloudKit（三）——CloudKit仪表台
+title: Core Data with CloudKit（三）——CloudKit 仪表台
 ---
 本篇文章中，我们将一起研究`CloudKit`仪表台。
 
 ## 初识仪表台 ##
 
-使用`CloudKit Dashboard`需要开发者拥有[Apple Developer Program](https://developer.apple.com/programs/)账号，访问[https://icloud.developer.apple.com](https://icloud.developer.apple.com)即可使用。
+使用`CloudKit Dashboard`需要开发者拥有 [Apple Developer Program](https://developer.apple.com/programs/) 账号，访问 [https://icloud.developer.apple.com](https://icloud.developer.apple.com) 即可使用。
 
 ![image-20210808161150623](https://cdn.fatbobman.com/image-20210808161150623-8410311.png)
 
-最近两年苹果对`CloudKit仪表台`的布局做过较大的调整，上面的截图是2021年中时的样子。
+最近两年苹果对`CloudKit 仪表台`的布局做过较大的调整，上面的截图是 2021 年中时的样子。
 
 仪表台主要分为三个部分：
 
@@ -30,7 +30,6 @@ title: Core Data with CloudKit（三）——CloudKit仪表台
 
 > 在绝大多数使用`Core Data with CloudKit`的场景下，我们仅需要使用仪表板中极少数的功能（环境部署），但利用`CloudKit Dashboard`，我们可以更清楚的了解`Core Data`数据同步背后运作的一些机制。
 
-
 ```responser
 id:1
 ```
@@ -39,7 +38,7 @@ id:1
 
 ![image-20210808163319683](https://cdn.fatbobman.com/image-20210808163319683-8411600.png)
 
-在[Core Data with CloudKit (一) —— 基础](/posts/coreDataWithCloudKit-1/)中已经对`CKContainer`、`CKDababase`、`CKZone`、`CKSubscription`、`CKRecord`等基础对象做了简单的说明，本文还将介绍`CloudKit`的其他一些对象和功能。
+在 [Core Data with CloudKit （一） —— 基础](/posts/coreDataWithCloudKit-1/) 中已经对`CKContainer`、`CKDababase`、`CKZone`、`CKSubscription`、`CKRecord`等基础对象做了简单的说明，本文还将介绍`CloudKit`的其他一些对象和功能。
 
 ### 环境 ###
 
@@ -47,7 +46,7 @@ id:1
 
 * 开发环境
 
-  当你的项目仍处于开发阶段时，所有通过`CloudKit`产生的数据都只被保存开发环境中，只有开发团队的成员才能访问该环境中的数据。在开发环境中，你可以随时进行`Schema`结构调整、对`Record Type`的属性进行删除修改等操作。即使这些操作可能会引起不同版本之间数据冲突都没有问题（可以随时重置开发环境）。非常类似`Core Data`的应用程序上线前的状态，即使数据无法正常迁移，只需要删除重装app即可。通过开发环境，开发者可以在向用户提供`CloudKit`服务之前对应用程序进行充分的测试。
+  当你的项目仍处于开发阶段时，所有通过`CloudKit`产生的数据都只被保存开发环境中，只有开发团队的成员才能访问该环境中的数据。在开发环境中，你可以随时进行`Schema`结构调整、对`Record Type`的属性进行删除修改等操作。即使这些操作可能会引起不同版本之间数据冲突都没有问题（可以随时重置开发环境）。非常类似`Core Data`的应用程序上线前的状态，即使数据无法正常迁移，只需要删除重装 app 即可。通过开发环境，开发者可以在向用户提供`CloudKit`服务之前对应用程序进行充分的测试。
 
 * 生产环境
 
@@ -87,11 +86,11 @@ id:1
 
 权限包括读、写、创建。读权限只允许读取记录，写权限允许读取和写入记录，而创建权限允许读取和写入记录以及创建新纪录。
 
-`CloudKit`包含3个预设角色，分别为World（`_world`）、Authenticated（`_icloud`）和 Creator（`_creator`）。World表示任何人，无论其是否为iCloud用户。Authenticated适用于任何经过验证的iCloud用户。Creator则是作为记录（`Record`）的创建者。
+`CloudKit`包含 3 个预设角色，分别为 World（`_world`）、Authenticated（`_icloud`）和 Creator（`_creator`）。World 表示任何人，无论其是否为 iCloud 用户。Authenticated 适用于任何经过验证的 iCloud 用户。Creator 则是作为记录（`Record`）的创建者。
 
 ![image-20210808210401070](https://cdn.fatbobman.com/image-20210808210401070-8427842.png)
 
-默认的设置为，任何人都可以读取数据，只有经过验证的iCloud用户才可以创建新纪录，记录的创建者可以更新自己的记录。
+默认的设置为，任何人都可以读取数据，只有经过验证的 iCloud 用户才可以创建新纪录，记录的创建者可以更新自己的记录。
 
 ![image-20210809062640040](https://cdn.fatbobman.com/image-20210809062640040-8461601.png)
 
@@ -113,7 +112,7 @@ id:1
 
 ![image-20210809064449042](https://cdn.fatbobman.com/image-20210809064449042-8462689.png)
 
-**只有为`Record Type`的`recordName`创建了`queryable`索引后，才可以在`Records`中浏览该Type的数据。**
+**只有为`Record Type`的`recordName`创建了`queryable`索引后，才可以在`Records`中浏览该 Type 的数据。**
 
 ![image-20210809065509228](https://cdn.fatbobman.com/image-20210809065509228-8463311.png)
 
@@ -127,7 +126,7 @@ id:1
 
 ![image-20210809073043092](https://cdn.fatbobman.com/image-20210809073043092-8465444.png)
 
-在[基础篇](/posts/coreDataWithCloudKit-1/)中曾提到`Entity`相较`Record Type`拥有更多的配置信息，但`Record Type`也有一个`Enitity`没有的特性——元数据。
+在 [基础篇](/posts/coreDataWithCloudKit-1/) 中曾提到`Entity`相较`Record Type`拥有更多的配置信息，但`Record Type`也有一个`Enitity`没有的特性——元数据。
 
 ![image-20210809075124786](https://cdn.fatbobman.com/image-20210809075124786-8466685.png)
 
@@ -147,7 +146,7 @@ id:1
 
 * modifiedTimestamp
 
-  `CloudKi`t更新记录的最近时间
+  `CloudKi`t 更新记录的最近时间
 
 * modifiedUserRecordName
 
@@ -165,13 +164,13 @@ id:1
 
 ![image-20210809104402659](https://cdn.fatbobman.com/image-20210809104402659-8477043.png)
 
-> 上图是我们在[同步本地数据库到iCloud私有数据库](/posts/coreDataWithCloudKit-2/)中模版项目`Item`在`CloudKit`对应的`Record Type`。`CloudKit`会自动为托管对象实体的每个属性创字段，将属性名称映射到了具有`CD_[attribute.name]`键名的字段。该字段的类型在`Core Data`和`CloudKit`之间可能也会有所不同。`Record Type`名称为`CD_[entity]`。一切的操作都是由系统自动完成的，我们无需干预。另外，还会为`Enitity`生成一个`CD_entityName`的字段，内容为`Entity`的类映射名。
+> 上图是我们在 [同步本地数据库到 iCloud 私有数据库](/posts/coreDataWithCloudKit-2/) 中模版项目`Item`在`CloudKit`对应的`Record Type`。`CloudKit`会自动为托管对象实体的每个属性创字段，将属性名称映射到了具有`CD_[attribute.name]`键名的字段。该字段的类型在`Core Data`和`CloudKit`之间可能也会有所不同。`Record Type`名称为`CD_[entity]`。一切的操作都是由系统自动完成的，我们无需干预。另外，还会为`Enitity`生成一个`CD_entityName`的字段，内容为`Entity`的类映射名。
 
 这些以`CD_`为前缀的字符串，在数据同步过程中将不断出现在控制台上，了解了它的构成对调试代码有一定帮助。
 
 `Record Type`部署到生产环境后，字段不可以删除，字段名称也不可以修改。因此一些`Core Data`中的操作在`Core Data with CloudKit`中是不允许的。
 
-**不要对已经上线的应用程序数据模型的`Entity`进行更名，也不要对`Attribute`更名，即使使用Mapping Model、Renaming ID都是不行的。在开发阶段如果需要更名的话，可能需要删除app重装并重置`CloudKit`的开发环境。**
+**不要对已经上线的应用程序数据模型的`Entity`进行更名，也不要对`Attribute`更名，即使使用 Mapping Model、Renaming ID 都是不行的。在开发阶段如果需要更名的话，可能需要删除 app 重装并重置`CloudKit`的开发环境。**
 
 ### Zones ###
 
@@ -203,7 +202,7 @@ let newStudent = CKRecord(recordType: "Student",
 
 * ATOMIC
 
-  当CloudKit无法更新`Zone`中的一个或多个记录时，如果值为`true`则整个操作失败
+  当 CloudKit 无法更新`Zone`中的一个或多个记录时，如果值为`true`则整个操作失败
 
 ### Records ###
 
@@ -241,7 +240,7 @@ func getLastUserID(_ object:Item?) -> CKRecord.ID? {
 
 浏览在容器上注册的`CKSubscription`。
 
-CKSubscription是通过代码创建的，在仪表盘上只可以查看或删除。
+CKSubscription 是通过代码创建的，在仪表盘上只可以查看或删除。
 
 比如下面的代码将创建一个`CKQuerySubscription`
 
@@ -275,25 +274,25 @@ CKSubscription是通过代码创建的，在仪表盘上只可以查看或删除
 
 ### Tokens&Keys ###
 
-设置容器的API令牌。
+设置容器的 API 令牌。
 
 ![image-20210809152554058](https://cdn.fatbobman.com/image-20210809152554058-8493955.png)
 
-除了可以通过代码和`CloudKit`仪表台对数据进行操作外，苹果还提供了从网络或其他平台访问`iCloud`数据的手段。在获取令牌后，开发者还可以通过使用 [CloudKit JS](https://developer.apple.com/documentation/cloudkitjs)或 [CloudKit Web 服务](https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/)与数据进行交互。
+除了可以通过代码和`CloudKit`仪表台对数据进行操作外，苹果还提供了从网络或其他平台访问`iCloud`数据的手段。在获取令牌后，开发者还可以通过使用 [CloudKit JS](https://developer.apple.com/documentation/cloudkitjs) 或 [CloudKit Web 服务](https://developer.apple.com/library/archive/documentation/DataManagement/Conceptual/CloudKitWebServicesReference/) 与数据进行交互。
 
-已有开发者利用以上服务，开发出可在其他平台访问iCloud数据的第三方库，比如[DroidNubeKit](https://github.com/jaumecornado/DroidNubeKit)（在安卓上访问`CloudKit`）。
+已有开发者利用以上服务，开发出可在其他平台访问 iCloud 数据的第三方库，比如 [DroidNubeKit](https://github.com/jaumecornado/DroidNubeKit)（在安卓上访问`CloudKit`）。
 
 > 对于`Core Data`的网络镜像数据，除非你的数据模型足够简单，否则不推荐做这种尝试。`CloudKit Web`服务更适合直接通过`Cloudkit`创建的数据记录。
 
 ### Sharing Fallbackd ###
 
-为低版本操作系统（低于iOS 10、macOS Sierra）提供数据记录共享回调支持。
+为低版本操作系统（低于 iOS 10、macOS Sierra）提供数据记录共享回调支持。
 
 ## 遥测（Telemetry） ##
 
 ![image-20210809161022705](https://cdn.fatbobman.com/image-20210809161022705-8496624.png)
 
-通过查看Telemetry的指标，方便你在开发或更新应用程序时可视化性能。包括请求数量、错误数量、推送数量、服务器延迟以及平均请求大小等等。通过设定范围，仅显示与你相关的数据，帮助你更好地了解应用程序的流量配置及使用趋势。
+通过查看 Telemetry 的指标，方便你在开发或更新应用程序时可视化性能。包括请求数量、错误数量、推送数量、服务器延迟以及平均请求大小等等。通过设定范围，仅显示与你相关的数据，帮助你更好地了解应用程序的流量配置及使用趋势。
 
 ## 日志（Logs） ##
 

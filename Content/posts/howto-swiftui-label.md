@@ -1,11 +1,11 @@
 ---
 date: 2020-07-09 13:05
-description: SwiftUI2.0中新增了Label控件，方便我们添加由图片和文字组成的标签.
+description: SwiftUI2.0 中新增了 Label 控件，方便我们添加由图片和文字组成的标签。
 tags: SwiftUI,HowTo
-title: HowTo —— SwiftUI2.0如何使用Label
+title: HowTo —— SwiftUI2.0 如何使用 Label
 ---
 
-> SwiftUI2.0中新增了Label控件，方便我们添加由图片和文字组成的标签
+> SwiftUI2.0 中新增了 Label 控件，方便我们添加由图片和文字组成的标签
 
 ## 基本用法 ##
 
@@ -38,10 +38,10 @@ struct MyLabelStyle:LabelStyle{
     let color:Color
     func makeBody(configuration: Self.Configuration) -> some View{
        HStack{
-            configuration.icon //View,不能精细控制
+            configuration.icon //View, 不能精细控制
                 .font(.title)
                 .foregroundColor(color) //颜色是叠加上去的，并不能准确显示
-            configuration.title  //View,不能精细控制
+            configuration.title  //View, 不能精细控制
                 .foregroundColor(.blue)
             Spacer()
         }.padding(.all, 10)
@@ -69,9 +69,9 @@ struct LabelItem:Identifiable{
 
 ![image-20200709175339008](https://cdn.fatbobman.com/howto-swiftui-label2.png)
 
-## 使用自己的Label控件，更多控制力 ##
+## 使用自己的 Label 控件，更多控制力 ##
 
-Label能够提高开发效率，不过并不能精细控制，下面代码使用自定义MyLabel，可以支持SF2.0提供的彩色符号。
+Label 能够提高开发效率，不过并不能精细控制，下面代码使用自定义 MyLabel，可以支持 SF2.0 提供的彩色符号。
 
 ```swift
 import SwiftUI
@@ -86,7 +86,6 @@ struct LabelTest: View {
                       systemImage:label.image,
                       color:label.color,
                       multiColor:multiColor)
-        }
         }
     }
 }

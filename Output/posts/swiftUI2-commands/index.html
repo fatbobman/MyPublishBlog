@@ -1,11 +1,11 @@
-<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"/><meta name="og:site_name" content="肘子的Swift记事本"/><link rel="canonical" href="https://www.fatbobman.com/posts/swiftUI2-commands"/><meta name="twitter:url" content="https://www.fatbobman.com/posts/swiftUI2-commands"/><meta name="og:url" content="https://www.fatbobman.com/posts/swiftUI2-commands"/><title>SwiftUI2.0 —— Commands（macOS菜单） | 肘子的Swift记事本</title><meta name="twitter:title" content="SwiftUI2.0 —— Commands（macOS菜单） | 肘子的Swift记事本"/><meta name="og:title" content="SwiftUI2.0 —— Commands（macOS菜单） | 肘子的Swift记事本"/><meta name="description" content="本文介绍了SwiftUI 2.0中，如何为macOS平台添加菜单。苹果在SwiftUI2.0中增加了Multiplatform项目模板，使得同一套代码，仅需少量的适配便可以同时满足iOS以及macOS的需要。对于macOS上运行的app,拥有自定义的菜单是一个十分重要的平台特征。对于没有macOS开发经验的我来说，学习如何设计开发菜单变得十分有趣且必要。"/><meta name="twitter:description" content="本文介绍了SwiftUI 2.0中，如何为macOS平台添加菜单。苹果在SwiftUI2.0中增加了Multiplatform项目模板，使得同一套代码，仅需少量的适配便可以同时满足iOS以及macOS的需要。对于macOS上运行的app,拥有自定义的菜单是一个十分重要的平台特征。对于没有macOS开发经验的我来说，学习如何设计开发菜单变得十分有趣且必要。"/><meta name="og:description" content="本文介绍了SwiftUI 2.0中，如何为macOS平台添加菜单。苹果在SwiftUI2.0中增加了Multiplatform项目模板，使得同一套代码，仅需少量的适配便可以同时满足iOS以及macOS的需要。对于macOS上运行的app,拥有自定义的菜单是一个十分重要的平台特征。对于没有macOS开发经验的我来说，学习如何设计开发菜单变得十分有趣且必要。"/><meta name="twitter:card" content="summary"/><meta name="twitter:site" content="@fatbobman"/><meta name="twitter:creator" content="@fatbobman"/><meta name="referrer" content="no-referrer"/><link rel="stylesheet" href="/styles.css" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="/images/favicon.png" type="image/png"/><link rel="alternate" href="/feed.rss" type="application/rss+xml" title="Subscribe to 肘子的Swift记事本"/><meta name="twitter:image" content="https://www.fatbobman.com/images"/><meta name="og:image" content="https://www.fatbobman.com/images"/><script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script></head><body class="item-page"><header><div class="wrapper"><div class="logo"><a href="/"><img src="/images/title.svg"/></a></div><div><div class="headerIcons"><a class="icon headIconWeixin"><script>    var weixinHeadButton = $('.headIconWeixin');
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"/><meta name="og:site_name" content="肘子的Swift记事本"/><link rel="canonical" href="https://www.fatbobman.com/posts/swiftUI2-commands"/><meta name="twitter:url" content="https://www.fatbobman.com/posts/swiftUI2-commands"/><meta name="og:url" content="https://www.fatbobman.com/posts/swiftUI2-commands"/><title>SwiftUI2.0 —— Commands（macOS 菜单） | 肘子的Swift记事本</title><meta name="twitter:title" content="SwiftUI2.0 —— Commands（macOS 菜单） | 肘子的Swift记事本"/><meta name="og:title" content="SwiftUI2.0 —— Commands（macOS 菜单） | 肘子的Swift记事本"/><meta name="description" content="本文介绍了 SwiftUI 2.0 中，如何为 macOS 平台添加菜单。苹果在 SwiftUI2.0 中增加了 Multiplatform 项目模板，使得同一套代码，仅需少量的适配便可以同时满足 iOS 以及 macOS 的需要。对于 macOS 上运行的 app, 拥有自定义的菜单是一个十分重要的平台特征。对于没有 macOS 开发经验的我来说，学习如何设计开发菜单变得十分有趣且必要。"/><meta name="twitter:description" content="本文介绍了 SwiftUI 2.0 中，如何为 macOS 平台添加菜单。苹果在 SwiftUI2.0 中增加了 Multiplatform 项目模板，使得同一套代码，仅需少量的适配便可以同时满足 iOS 以及 macOS 的需要。对于 macOS 上运行的 app, 拥有自定义的菜单是一个十分重要的平台特征。对于没有 macOS 开发经验的我来说，学习如何设计开发菜单变得十分有趣且必要。"/><meta name="og:description" content="本文介绍了 SwiftUI 2.0 中，如何为 macOS 平台添加菜单。苹果在 SwiftUI2.0 中增加了 Multiplatform 项目模板，使得同一套代码，仅需少量的适配便可以同时满足 iOS 以及 macOS 的需要。对于 macOS 上运行的 app, 拥有自定义的菜单是一个十分重要的平台特征。对于没有 macOS 开发经验的我来说，学习如何设计开发菜单变得十分有趣且必要。"/><meta name="twitter:card" content="summary"/><meta name="twitter:site" content="@fatbobman"/><meta name="twitter:creator" content="@fatbobman"/><meta name="referrer" content="no-referrer"/><link rel="stylesheet" href="/styles.css" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="/images/favicon.png" type="image/png"/><link rel="alternate" href="/feed.rss" type="application/rss+xml" title="Subscribe to 肘子的Swift记事本"/><meta name="twitter:image" content="https://www.fatbobman.com/images"/><meta name="og:image" content="https://www.fatbobman.com/images"/><script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script></head><body class="item-page"><header><div class="wrapper"><div class="logo"><a href="/"><img src="/images/title.svg"/></a></div><div><div class="headerIcons"><a class="icon headIconWeixin"><script>    var weixinHeadButton = $('.headIconWeixin');
     weixinHeadButton.hover(
     function(){
     $('.weixinHeadQcode').css('display','block');
     },
     function(){
     $('.weixinHeadQcode').css('display','none');
-    })</script></a><a class="icon headIconTwitter" href="https://www.twitter.com/fatbobman" target="_blank" rel="noreferrer"></a><a class="icon headIconEmail" href="mailto:xuyang@me.com" target="_blank" rel="noreferrer"></a><a class="icon headIconGithub" href="https://github.com/fatbobman/" target="_blank" rel="noreferrer"></a><a class="icon headIconZhihu" href="https://www.zhihu.com/people/fatbobman3000" target="_blank" rel="noreferrer"></a><a class="icon headIconRss" href="/feed.rss" target="_blank" rel="noreferrer"></a></div></div><nav><ul><li><a href="/">首页</a></li><li><a class="selected" href="/posts">文章</a></li><li><a href="/healthnotes">健康笔记</a></li><li><a href="/about">关于</a></li><li><a href="/tags">搜索</a></li></ul><div class="weixinHeadQcode" onclick="$('.weixinHeadQcode').css('display','none');"></div></nav></div></header><div class="container"><div class="wrapper"><div class="viewContainer"><div class="side-nav"><div class="sidebar"></div></div><div class="leftContent"><div class="post-actions"><div class="actionButton"><div class="actionButton twitter" onclick="window.open('https://twitter.com/intent/tweet?text=SwiftUI2.0 —— Commands（macOS菜单）&url=https://www.fatbobman.com/posts/swiftUI2-commands&via=fatbobman','target','');"></div></div><div class="actionButton"><div class="actionButton weixin"><script>var weixinButton = $('.actionButton .weixin');
+    })</script></a><a class="icon headIconTwitter" href="https://www.twitter.com/fatbobman" target="_blank" rel="noreferrer"></a><a class="icon headIconEmail" href="mailto:xuyang@me.com" target="_blank" rel="noreferrer"></a><a class="icon headIconGithub" href="https://github.com/fatbobman/" target="_blank" rel="noreferrer"></a><a class="icon headIconZhihu" href="https://www.zhihu.com/people/fatbobman3000" target="_blank" rel="noreferrer"></a><a class="icon headIconRss" href="/feed.rss" target="_blank" rel="noreferrer"></a></div></div><nav><ul><li><a href="/">首页</a></li><li><a class="selected" href="/posts">文章</a></li><li><a href="/healthnotes">健康笔记</a></li><li><a href="/about">关于</a></li><li><a href="/tags">搜索</a></li></ul><div class="weixinHeadQcode" onclick="$('.weixinHeadQcode').css('display','none');"></div></nav></div></header><div class="container"><div class="wrapper"><div class="viewContainer"><div class="side-nav"><div class="sidebar"></div></div><div class="leftContent"><div class="post-actions"><div class="actionButton"><div class="actionButton twitter" onclick="window.open('https://twitter.com/intent/tweet?text=SwiftUI2.0 —— Commands（macOS 菜单）&url=https://www.fatbobman.com/posts/swiftUI2-commands&via=fatbobman','target','');"></div></div><div class="actionButton"><div class="actionButton weixin"><script>var weixinButton = $('.actionButton .weixin');
 weixinButton.hover(
 function(){
     $('.actionButton .weixinQcode').css('display','block');
@@ -19,13 +19,13 @@ function(){
 },
 function(){
     $('.actionButton .donateQcode').css('display','none');
-})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>SwiftUI2.0 —— Commands（macOS菜单）</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag tagdate">发布于2020年06月27日</li></ul><div class="content"><blockquote><p>本文介绍了SwiftUI 2.0中，如何为macOS平台添加菜单。 当前运行环境为 Xcode Version 12.0 beta (12A6159), macOS Big Sur 11.0 Beta版(20A4299v)。</p></blockquote><p>苹果在SwiftUI2.0中增加了Multiplatform项目模板，使得同一套代码，仅需少量的适配便可以同时满足iOS以及macOS的需要。对于macOS上运行的app,拥有自定义的菜单是一个十分重要的平台特征。对于没有macOS开发经验的我来说，学习如何设计开发菜单变得十分有趣且必要。</p><Div id='responser' class = "responser" onclick="window.location='http://www.fatbobman.com/healthnotes/';"><div class = "hstack">
+})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>SwiftUI2.0 —— Commands（macOS 菜单）</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag tagdate">发布于2020年06月27日</li></ul><div class="content"><blockquote><p>本文介绍了 SwiftUI 2.0 中，如何为 macOS 平台添加菜单。 当前运行环境为 Xcode Version 12.0 beta (12A6159), macOS Big Sur 11.0 Beta 版 (20A4299v)。</p></blockquote><p>苹果在 SwiftUI2.0 中增加了 Multiplatform 项目模板，使得同一套代码，仅需少量的适配便可以同时满足 iOS 以及 macOS 的需要。对于 macOS 上运行的 app, 拥有自定义的菜单是一个十分重要的平台特征。对于没有 macOS 开发经验的我来说，学习如何设计开发菜单变得十分有趣且必要。</p><Div id='responser' class = "responser" onclick="window.location='http://www.fatbobman.com/healthnotes/';"><div class = "hstack">
 <img src = "https://cdn.fatbobman.com/healthnotesLogo.svg"></img>
 <div class = "text">
 <p><span class = "title">健康笔记</span>是我开发的一个iOS app，主要服务于有长期健康管理需求的人士。可为全家不同成员创建各自的笔记，允许使用者自定义数据类型以记录各种健康数据。</p>
 </div>
 </div>
-<div class="label">推广</div></Div><h2>基础</h2><p>在SwiftUI下为app添加菜单十分方便，下面的代码便可以为app添加一个最基础的菜单。</p><pre data-language="swift"><code>@main
+<div class="label">推广</div></Div><h2>基础</h2><p>在 SwiftUI 下为 app 添加菜单十分方便，下面的代码便可以为 app 添加一个最基础的菜单。</p><pre data-language="swift"><code>@main
 <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">CommandExampleApp</span>: <span class="hljs-title">App</span> </span>{
     <span class="hljs-keyword">var</span> body: some <span class="hljs-type">Scene</span> {
         <span class="hljs-type">WindowGroup</span> {
@@ -46,10 +46,10 @@ function(){
         }
     }
 }
-</code></pre><p>通过创建一个符合Commands协议的结构来描述你要在app中添加的自定义菜单项</p><img src="https://cdn.fatbobman.com/swiftui2-commands-test1.png" alt="test1"/><h2>几个概念</h2><ul><li>@CommandBuilder</li></ul><p>SwiftUI2.0中，苹果为我来带来了很多新的function builder。Menu中的body，其实就是一个@CommandsBuilder。我们可以通过使用内置的语句通过DSL的方式，方便的定义自己所需的菜单。DSL的好处是简单明了，不过功能也有所限定，目前@CommandsBuilder支持的方法比较少，并不支持逻辑判断。</p><pre data-language="swift"><code>  <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">MyCommand</span>:<span class="hljs-title">Commands</span></span>{
-      <span class="hljs-comment">//如果需要多个菜单列，需在body前显式注明@CommandsBuilder，或者使用Group，这一方法，同样使用与其他functionBuilder的描述。</span>
+</code></pre><p>通过创建一个符合 Commands 协议的结构来描述你要在 app 中添加的自定义菜单项</p><img src="https://cdn.fatbobman.com/swiftui2-commands-test1.png" alt="test1"/><h2>几个概念</h2><ul><li>@CommandBuilder</li></ul><p>SwiftUI2.0 中，苹果为我来带来了很多新的 function builder。Menu 中的 body，其实就是一个@CommandsBuilder。我们可以通过使用内置的语句通过 DSL 的方式，方便的定义自己所需的菜单。DSL 的好处是简单明了，不过功能也有所限定，目前@CommandsBuilder 支持的方法比较少，并不支持逻辑判断。</p><pre data-language="swift"><code>  <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">MyCommand</span>:<span class="hljs-title">Commands</span></span>{
+      <span class="hljs-comment">//如果需要多个菜单列，需在 body 前显式注明@CommandsBuilder，或者使用 Group，这一方法，同样使用与其他 functionBuilder 的描述。</span>
       @<span class="hljs-type">CommandsBuilder</span> <span class="hljs-keyword">var</span> body: some <span class="hljs-type">Commands</span>{
-          <span class="hljs-comment">//每个CommandMenu都是一个菜单列</span>
+          <span class="hljs-comment">//每个 CommandMenu 都是一个菜单列</span>
           <span class="hljs-type">CommandMenu</span>(<span class="hljs-string">"Menu1"</span>){
               <span class="hljs-type">Button</span>(<span class="hljs-string">"Test1"</span>){
                 <span class="hljs-built_in">print</span>(<span class="hljs-string">"test2"</span>)
@@ -72,7 +72,7 @@ function(){
   
   }
   
-</code></pre><ul><li>CommandMenu</li></ul><p>CommandMenu是一个菜单列，在同一个CommandMenu中，你可以定义多个Button。CommandMenu中的Content是符合View协议的，也就是说，View中不少手段、控件都可以被用来描述菜单的具体呈现。我们可以像编写View一样来编写菜单（比如设置字体、颜色、循环、判断等等）。</p><pre data-language="swift"><code>  <span class="hljs-type">CommandMenu</span>(<span class="hljs-string">"Menu"</span>){
+</code></pre><ul><li>CommandMenu</li></ul><p>CommandMenu 是一个菜单列，在同一个 CommandMenu 中，你可以定义多个 Button。CommandMenu 中的 Content 是符合 View 协议的，也就是说，View 中不少手段、控件都可以被用来描述菜单的具体呈现。我们可以像编写 View 一样来编写菜单（比如设置字体、颜色、循环、判断等等）。</p><pre data-language="swift"><code>  <span class="hljs-type">CommandMenu</span>(<span class="hljs-string">"Menu"</span>){
     <span class="hljs-type">Button</span>(<span class="hljs-string">"test1"</span>){}
     <span class="hljs-type">Divider</span>()
     <span class="hljs-type">Button</span>(action:{}){<span class="hljs-type">Text</span>(<span class="hljs-string">"test2"</span>).foregroundColor(.red)}
@@ -82,7 +82,6 @@ function(){
           <span class="hljs-type">Text</span>(<span class="hljs-string">"🎱"</span>).foregroundColor(.blue)
           <span class="hljs-type">Divider</span>().padding(.leading,<span class="hljs-number">10</span>)
           <span class="hljs-type">Text</span>(<span class="hljs-string">"Button"</span>)
-      }
       }
 </code></pre><ul><li>MenuButton</li></ul><p>子菜单的实现方法。</p><pre data-language="swift"><code>  <span class="hljs-type">CommandMenu</span>(<span class="hljs-string">"Test"</span>){
              <span class="hljs-type">Button</span>(action:{test1()}){
@@ -103,7 +102,7 @@ function(){
               }
               #endif
           }
-</code></pre><ul><li>.commands</li></ul><p>Scene的方法，为场景添加菜单。commands中允许添加多个符合Commands协议的菜单定义。所有定义的菜单都会一并显示。</p><pre data-language="swift"><code>          <span class="hljs-type">WindowGroup</span> {
+</code></pre><ul><li>.commands</li></ul><p>Scene 的方法，为场景添加菜单。commands 中允许添加多个符合 Commands 协议的菜单定义。所有定义的菜单都会一并显示。</p><pre data-language="swift"><code>          <span class="hljs-type">WindowGroup</span> {
               <span class="hljs-type">RootView</span>()
                   .environmentObject(store)
           }
@@ -111,7 +110,7 @@ function(){
               <span class="hljs-type">OtherMenu</span>()
               <span class="hljs-type">Menu</span>()
           }
-</code></pre><ul><li>keyboardShortcut</li></ul><p>为菜单上的选项添加快捷键。通过modifiers设置需要配合的按键，.help为选项添加悬停帮助</p><pre data-language="swift"><code>  <span class="hljs-type">Button</span>(action:{test1()})
+</code></pre><ul><li>keyboardShortcut</li></ul><p>为菜单上的选项添加快捷键。通过 modifiers 设置需要配合的按键，.help 为选项添加悬停帮助</p><pre data-language="swift"><code>  <span class="hljs-type">Button</span>(action:{test1()})
          {
             <span class="hljs-type">Text</span>(<span class="hljs-string">"test1"</span>).foregroundColor(.black)
           }
@@ -120,11 +119,11 @@ function(){
                   
   <span class="hljs-type">Button</span>(<span class="hljs-string">"test2"</span>, action: test2)
            .keyboardShortcut(<span class="hljs-string">"2"</span>, modifiers: .command)
-</code></pre><ul><li>CommandGroup</li></ul><p>在系统提供的默认菜单选项上添加自定义功能。通过replacing,before,after来决定是替换原选项还是设置在指定选项位置之后或之前。</p><pre data-language="swift"><code>  <span class="hljs-comment">//在系统预置的帮助菜单栏下，添加一个自己的选项</span>
+</code></pre><ul><li>CommandGroup</li></ul><p>在系统提供的默认菜单选项上添加自定义功能。通过 replacing,before,after 来决定是替换原选项还是设置在指定选项位置之后或之前。</p><pre data-language="swift"><code>  <span class="hljs-comment">//在系统预置的帮助菜单栏下，添加一个自己的选项</span>
   <span class="hljs-type">CommandGroup</span>(replacing: <span class="hljs-type">CommandGroupPlacement</span>.appInfo, addition: {<span class="hljs-type">Button</span>(<span class="hljs-string">"replace"</span>){}})
   <span class="hljs-type">CommandGroup</span>(before: <span class="hljs-type">CommandGroupPlacement</span>.help, addition: {<span class="hljs-type">Button</span>(<span class="hljs-string">"before"</span>){}})
   <span class="hljs-type">CommandGroup</span>(after: <span class="hljs-type">CommandGroupPlacement</span>.newItem, addition: {<span class="hljs-type">Button</span>(<span class="hljs-string">"after"</span>){}})
-</code></pre><h2>例子</h2><p>这里简单的例程展示了如何在menu如何通过调用store来影响app的行为。并做了简单的多平台适配。在macOS平台下，通过选择子菜单中不同的选项来影响显示文本。在iOS下通过picker来实现。</p><p><a href="https://github.com/fatbobman/CommandExample" target="_blank">可在此处下载完成代码</a></p><pre data-language="swift"><code>@main
+</code></pre><h2>例子</h2><p>这里简单的例程展示了如何在 menu 如何通过调用 store 来影响 app 的行为。并做了简单的多平台适配。在 macOS 平台下，通过选择子菜单中不同的选项来影响显示文本。在 iOS 下通过 picker 来实现。</p><p><a href="https://github.com/fatbobman/CommandExample" target="_blank">可在此处下载完成代码</a></p><pre data-language="swift"><code>@main
 <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">CommandExampleApp</span>: <span class="hljs-title">App</span> </span>{
     @<span class="hljs-type">StateObject</span> <span class="hljs-keyword">var</span> store = <span class="hljs-type">Store</span>()
     <span class="hljs-keyword">var</span> body: some <span class="hljs-type">Scene</span> {
@@ -171,7 +170,6 @@ function(){
             <span class="hljs-type">Button</span>(<span class="hljs-string">"other"</span>){
                 <span class="hljs-built_in">print</span>(<span class="hljs-string">"other command"</span>)
             }
-            
             
             <span class="hljs-type">ForEach</span>(<span class="hljs-number">0</span>..&lt;<span class="hljs-number">3</span>){ i <span class="hljs-keyword">in</span>
                 <span class="hljs-type">Button</span>(<span class="hljs-string">"button\(i)"</span>){
@@ -228,7 +226,6 @@ function(){
     }
 }
 
-
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Store</span>:<span class="hljs-title">ObservableObject</span></span>{
     <span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">Selection</span></span>{
         <span class="hljs-keyword">case</span> one,two,three
@@ -239,7 +236,7 @@ function(){
         <span class="hljs-keyword">self</span>.selection = selection
     }
 }
-</code></pre><h2>补充（打开新窗口）</h2><p>我尝试在菜单按钮中打开新的View，不过并没有找到原生的SwiftUI式的方法。我更希望@SceneBuilder能够支持逻辑判断，这样可以任意在WindowGroup组织我想显示的View了。</p><pre data-language="swift"><code><span class="hljs-comment">//打开新的View</span>
+</code></pre><h2>补充（打开新窗口）</h2><p>我尝试在菜单按钮中打开新的 View，不过并没有找到原生的 SwiftUI 式的方法。我更希望@SceneBuilder 能够支持逻辑判断，这样可以任意在 WindowGroup 组织我想显示的 View 了。</p><pre data-language="swift"><code><span class="hljs-comment">//打开新的 View</span>
 <span class="hljs-type">Button</span>(<span class="hljs-string">"other window"</span>){
     <span class="hljs-built_in">print</span>(<span class="hljs-string">"other command"</span>)
     <span class="hljs-keyword">let</span> contentView =
@@ -271,7 +268,7 @@ function(){
               }
           }
 }
-</code></pre><h2>当前的问题</h2><p>由于目前还处在早期的测试阶段，菜单的实现和功能上还有些不足之处，以下是我现在比较在意的：</p><ul><li>Button文本的缺省颜色和系统的菜单选项颜色不同。需要手工设置</li><li>ShortCut的颜色和系统菜单的颜色不同</li><li>Divider的颜色和系统菜单不同</li><li>MenuButton在多平台开发时，必须添加编译注释。而其他比如创建Commands，.commands等都不需要</li><li>@CommandBuilder和@SceneBuilder目前都不支持判断。因此无法通过程序动态的添加或减少一个菜单列。不过从.command中可以添加多个Commands结构来看，后续应该是有这样的打算的。</li></ul></div><div class="license">本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC 4.0许可协议</a>。转载请注明出处和作者。</div></div></article><div class="supporter"><p>关注微信公共号<a href="/support/">肘子的Swift记事本</a>或在推特上关注<a href="https://twitter.com/fatbobman">@fatbobman</a>，永远不会错过新内容！ 您的<a href="/support/">支持和鼓励</a>将为我的博客写作增添更多的动力! 如果您或身边的朋友有健康数据管理的需求，请使用我开发的app<a href="/healthnotes/">【健康笔记】</a>，正是因为它我才创建了这个博客。</p><div class="label">关注</div></div><div class="item-navigator"><table><tr><td class="previous-item"><a href="/posts/focusedBinding">@FocusedBinding 浅谈</a></td><td class="next-item"><a href="/posts/stateobject">SwiftUI 2.0 —— @StateObject 研究</a></td></tr></table></div><div id="gitalk-container"></div>
+</code></pre><h2>当前的问题</h2><p>由于目前还处在早期的测试阶段，菜单的实现和功能上还有些不足之处，以下是我现在比较在意的：</p><ul><li>Button 文本的缺省颜色和系统的菜单选项颜色不同。需要手工设置</li><li>ShortCut 的颜色和系统菜单的颜色不同</li><li>Divider 的颜色和系统菜单不同</li><li>MenuButton 在多平台开发时，必须添加编译注释。而其他比如创建 Commands，.commands 等都不需要</li><li>@CommandBuilder 和@SceneBuilder 目前都不支持判断。因此无法通过程序动态的添加或减少一个菜单列。不过从。command 中可以添加多个 Commands 结构来看，后续应该是有这样的打算的。</li></ul></div><div class="license">本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC 4.0许可协议</a>。转载请注明出处和作者。</div></div></article><div class="supporter"><p>关注微信公共号<a href="/support/">肘子的Swift记事本</a>或在推特上关注<a href="https://twitter.com/fatbobman">@fatbobman</a>，永远不会错过新内容！ 您的<a href="/support/">支持和鼓励</a>将为我的博客写作增添更多的动力! 如果您或身边的朋友有健康数据管理的需求，请使用我开发的app<a href="/healthnotes/">【健康笔记】</a>，正是因为它我才创建了这个博客。</p><div class="label">关注</div></div><div class="item-navigator"><table><tr><td class="previous-item"><a href="/posts/focusedBinding">@FocusedBinding 浅谈</a></td><td class="next-item"><a href="/posts/stateobject">SwiftUI 2.0 —— @StateObject 研究</a></td></tr></table></div><div id="gitalk-container"></div>
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <script type="text/javascript">
@@ -281,7 +278,7 @@ clientSecret: '0ac2907be08248a1fcb5312e27480ad535c682e5',
 repo: 'blogComments',
 owner: 'fatbobman',
 admin: ['fatbobman'],
-id: 'SwiftUI2.0 —— Commands（macOS菜单）',      // Ensure uniqueness and length less than 50
+id: 'SwiftUI2.0 —— Commands（macOS 菜单）',      // Ensure uniqueness and length less than 50
 distractionFreeMode: true,  // Facebook-like distraction free mode
 createIssueManually: true,
 language: navigator.userLanguage

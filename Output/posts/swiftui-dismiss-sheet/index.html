@@ -1,11 +1,11 @@
-<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"/><meta name="og:site_name" content="肘子的Swift记事本"/><link rel="canonical" href="https://www.fatbobman.com/posts/swiftui-dismiss-sheet"/><meta name="twitter:url" content="https://www.fatbobman.com/posts/swiftui-dismiss-sheet"/><meta name="og:url" content="https://www.fatbobman.com/posts/swiftui-dismiss-sheet"/><title>在SwiftUI中制作可以控制取消手势的Sheet | 肘子的Swift记事本</title><meta name="twitter:title" content="在SwiftUI中制作可以控制取消手势的Sheet | 肘子的Swift记事本"/><meta name="og:title" content="在SwiftUI中制作可以控制取消手势的Sheet | 肘子的Swift记事本"/><meta name="description" content="在前面的两篇文章中，我们探讨了如何制作一个可以判断是否进行了修改的表单，以及如何统一管理app各个层级View的弹出Sheet。今天我们将他们合并在一起，完成整个项目的最终目的——在Sheet中制作一个可以实时响应的表单，并且sheet会感觉表单的情况响应取消手势。"/><meta name="twitter:description" content="在前面的两篇文章中，我们探讨了如何制作一个可以判断是否进行了修改的表单，以及如何统一管理app各个层级View的弹出Sheet。今天我们将他们合并在一起，完成整个项目的最终目的——在Sheet中制作一个可以实时响应的表单，并且sheet会感觉表单的情况响应取消手势。"/><meta name="og:description" content="在前面的两篇文章中，我们探讨了如何制作一个可以判断是否进行了修改的表单，以及如何统一管理app各个层级View的弹出Sheet。今天我们将他们合并在一起，完成整个项目的最终目的——在Sheet中制作一个可以实时响应的表单，并且sheet会感觉表单的情况响应取消手势。"/><meta name="twitter:card" content="summary"/><meta name="twitter:site" content="@fatbobman"/><meta name="twitter:creator" content="@fatbobman"/><meta name="referrer" content="no-referrer"/><link rel="stylesheet" href="/styles.css" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="/images/favicon.png" type="image/png"/><link rel="alternate" href="/feed.rss" type="application/rss+xml" title="Subscribe to 肘子的Swift记事本"/><meta name="twitter:image" content="https://www.fatbobman.com/images"/><meta name="og:image" content="https://www.fatbobman.com/images"/><script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script></head><body class="item-page"><header><div class="wrapper"><div class="logo"><a href="/"><img src="/images/title.svg"/></a></div><div><div class="headerIcons"><a class="icon headIconWeixin"><script>    var weixinHeadButton = $('.headIconWeixin');
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"/><meta name="og:site_name" content="肘子的Swift记事本"/><link rel="canonical" href="https://www.fatbobman.com/posts/swiftui-dismiss-sheet"/><meta name="twitter:url" content="https://www.fatbobman.com/posts/swiftui-dismiss-sheet"/><meta name="og:url" content="https://www.fatbobman.com/posts/swiftui-dismiss-sheet"/><title>在 SwiftUI 中制作可以控制取消手势的 Sheet | 肘子的Swift记事本</title><meta name="twitter:title" content="在 SwiftUI 中制作可以控制取消手势的 Sheet | 肘子的Swift记事本"/><meta name="og:title" content="在 SwiftUI 中制作可以控制取消手势的 Sheet | 肘子的Swift记事本"/><meta name="description" content="在前面的两篇文章中，我们探讨了如何制作一个可以判断是否进行了修改的表单，以及如何统一管理 app 各个层级 View 的弹出 Sheet。今天我们将他们合并在一起，完成整个项目的最终目的——在 Sheet 中制作一个可以实时响应的表单，并且 sheet 会感觉表单的情况响应取消手势。"/><meta name="twitter:description" content="在前面的两篇文章中，我们探讨了如何制作一个可以判断是否进行了修改的表单，以及如何统一管理 app 各个层级 View 的弹出 Sheet。今天我们将他们合并在一起，完成整个项目的最终目的——在 Sheet 中制作一个可以实时响应的表单，并且 sheet 会感觉表单的情况响应取消手势。"/><meta name="og:description" content="在前面的两篇文章中，我们探讨了如何制作一个可以判断是否进行了修改的表单，以及如何统一管理 app 各个层级 View 的弹出 Sheet。今天我们将他们合并在一起，完成整个项目的最终目的——在 Sheet 中制作一个可以实时响应的表单，并且 sheet 会感觉表单的情况响应取消手势。"/><meta name="twitter:card" content="summary"/><meta name="twitter:site" content="@fatbobman"/><meta name="twitter:creator" content="@fatbobman"/><meta name="referrer" content="no-referrer"/><link rel="stylesheet" href="/styles.css" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="/images/favicon.png" type="image/png"/><link rel="alternate" href="/feed.rss" type="application/rss+xml" title="Subscribe to 肘子的Swift记事本"/><meta name="twitter:image" content="https://www.fatbobman.com/images"/><meta name="og:image" content="https://www.fatbobman.com/images"/><script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script></head><body class="item-page"><header><div class="wrapper"><div class="logo"><a href="/"><img src="/images/title.svg"/></a></div><div><div class="headerIcons"><a class="icon headIconWeixin"><script>    var weixinHeadButton = $('.headIconWeixin');
     weixinHeadButton.hover(
     function(){
     $('.weixinHeadQcode').css('display','block');
     },
     function(){
     $('.weixinHeadQcode').css('display','none');
-    })</script></a><a class="icon headIconTwitter" href="https://www.twitter.com/fatbobman" target="_blank" rel="noreferrer"></a><a class="icon headIconEmail" href="mailto:xuyang@me.com" target="_blank" rel="noreferrer"></a><a class="icon headIconGithub" href="https://github.com/fatbobman/" target="_blank" rel="noreferrer"></a><a class="icon headIconZhihu" href="https://www.zhihu.com/people/fatbobman3000" target="_blank" rel="noreferrer"></a><a class="icon headIconRss" href="/feed.rss" target="_blank" rel="noreferrer"></a></div></div><nav><ul><li><a href="/">首页</a></li><li><a class="selected" href="/posts">文章</a></li><li><a href="/healthnotes">健康笔记</a></li><li><a href="/about">关于</a></li><li><a href="/tags">搜索</a></li></ul><div class="weixinHeadQcode" onclick="$('.weixinHeadQcode').css('display','none');"></div></nav></div></header><div class="container"><div class="wrapper"><div class="viewContainer"><div class="side-nav"><div class="sidebar"></div></div><div class="leftContent"><div class="post-actions"><div class="actionButton"><div class="actionButton twitter" onclick="window.open('https://twitter.com/intent/tweet?text=在SwiftUI中制作可以控制取消手势的Sheet&url=https://www.fatbobman.com/posts/swiftui-dismiss-sheet&via=fatbobman','target','');"></div></div><div class="actionButton"><div class="actionButton weixin"><script>var weixinButton = $('.actionButton .weixin');
+    })</script></a><a class="icon headIconTwitter" href="https://www.twitter.com/fatbobman" target="_blank" rel="noreferrer"></a><a class="icon headIconEmail" href="mailto:xuyang@me.com" target="_blank" rel="noreferrer"></a><a class="icon headIconGithub" href="https://github.com/fatbobman/" target="_blank" rel="noreferrer"></a><a class="icon headIconZhihu" href="https://www.zhihu.com/people/fatbobman3000" target="_blank" rel="noreferrer"></a><a class="icon headIconRss" href="/feed.rss" target="_blank" rel="noreferrer"></a></div></div><nav><ul><li><a href="/">首页</a></li><li><a class="selected" href="/posts">文章</a></li><li><a href="/healthnotes">健康笔记</a></li><li><a href="/about">关于</a></li><li><a href="/tags">搜索</a></li></ul><div class="weixinHeadQcode" onclick="$('.weixinHeadQcode').css('display','none');"></div></nav></div></header><div class="container"><div class="wrapper"><div class="viewContainer"><div class="side-nav"><div class="sidebar"></div></div><div class="leftContent"><div class="post-actions"><div class="actionButton"><div class="actionButton twitter" onclick="window.open('https://twitter.com/intent/tweet?text=在 SwiftUI 中制作可以控制取消手势的 Sheet&url=https://www.fatbobman.com/posts/swiftui-dismiss-sheet&via=fatbobman','target','');"></div></div><div class="actionButton"><div class="actionButton weixin"><script>var weixinButton = $('.actionButton .weixin');
 weixinButton.hover(
 function(){
     $('.actionButton .weixinQcode').css('display','block');
@@ -19,18 +19,18 @@ function(){
 },
 function(){
     $('.actionButton .donateQcode').css('display','none');
-})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>在SwiftUI中制作可以控制取消手势的Sheet</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag tagdate">发布于2020年09月17日</li></ul><div class="content"><blockquote><p>在前面的两篇文章中，我们探讨了如何制作一个可以判断是否进行了修改的表单，以及如何统一管理app各个层级View的弹出Sheet。今天我们将他们合并在一起，完成整个项目的最终目的——在Sheet中制作一个可以实时响应的表单，并且sheet会感觉表单的情况响应取消手势。</p></blockquote><p><a href="/posts/swiftui-multiSheet/">在SwiftUI中,根据需求弹出不同的Sheet</a></p><p><a href="/posts/swiftui-input-form/">如何在SwiftUI中创建一个实时响应的Form</a></p><Div id='responser' class = "responser" onclick="window.location='http://www.fatbobman.com/healthnotes/';"><div class = "hstack">
+})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>在 SwiftUI 中制作可以控制取消手势的 Sheet</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag tagdate">发布于2020年09月17日</li></ul><div class="content"><blockquote><p>在前面的两篇文章中，我们探讨了如何制作一个可以判断是否进行了修改的表单，以及如何统一管理 app 各个层级 View 的弹出 Sheet。今天我们将他们合并在一起，完成整个项目的最终目的——在 Sheet 中制作一个可以实时响应的表单，并且 sheet 会感觉表单的情况响应取消手势。</p></blockquote><p><a href="/posts/swiftui-multiSheet/">在 SwiftUI 中，根据需求弹出不同的 Sheet</a></p><p><a href="/posts/swiftui-input-form/">如何在 SwiftUI 中创建一个实时响应的 Form</a></p><Div id='responser' class = "responser" onclick="window.location='http://www.fatbobman.com/healthnotes/';"><div class = "hstack">
 <img src = "https://cdn.fatbobman.com/healthnotesLogo.svg"></img>
 <div class = "text">
 <p><span class = "title">健康笔记</span>是我开发的一个iOS app，主要服务于有长期健康管理需求的人士。可为全家不同成员创建各自的笔记，允许使用者自定义数据类型以记录各种健康数据。</p>
 </div>
 </div>
-<div class="label">推广</div></Div><h2>由来</h2><p>在之前Form的例子中，虽然我们可以根据表单是否进行了修改来对cancel、edit等做出不同的响应，但是我们并没有办法控制用户直接使用手势来取消sheet，为了不让用户绕过程序的判断检查，不得已使用了fullScreenCover来规避手势取消。不过在实际使用中，尽管全屏sheet提供了更多的屏幕可用空间，但还是会给使用者带来了操作逻辑不统一的体验。</p><p>在去年，我使用的解决方案是，屏蔽sheet的拖动手势。</p><pre data-language="swift"><code> .highPriorityGesture(<span class="hljs-type">DragGesture</span>())
-</code></pre><p>这也是没有办法的办法。</p><p>后来，SwiftUI-lab中，Javier提出了他的解决方案<a href="https://swiftui-lab.com/modal-dismiss-gesture/" target="_blank">Dismiss Gesture for SwiftUI Modals</a>。这个方案基本上实现了我想要的全部功能。不过这个方案看起来有些怪异。</p><ol><li>数据和sheet控制混合在一起</li><li>对于sheet的控制过于繁琐，而且不直观</li></ol><p>前段时间<a href="https://gist.github.com/mobilinked/9b6086b3760bcf1e5432932dad0813c0" target="_blank">mobilinked</a>编写了一段用于控制sheet的代码，结构精巧，使用简单。</p><p>本文对于sheet的控制采用了mobilinked的基础代码，并针对Form的响应做出了对应的修改。</p><p>在进行下面的代码说明前，如果你还没有阅读前两篇文章的话，请阅读后再继续。</p><h2>目标</h2><ol><li>表单对输入的内容进行实时检查（是否有错误，是否有空白项）</li><li>表单将根据当前的状态决定是否允许sheet进行手势取消</li><li>当用户进行手势取消时，如果表单已经进行了修改，需要用户二次确认是否取消</li></ol><h2>代码简介</h2><p>由于本文代码中多数部分同Form示例代码类似，所以仅简述一下新增及修改的部分。</p><p>SheetManager</p><pre data-language="swift"><code><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AIOSheetManager</span>:<span class="hljs-title">ObservableObject</span></span>{
+<div class="label">推广</div></Div><h2>由来</h2><p>在之前 Form 的例子中，虽然我们可以根据表单是否进行了修改来对 cancel、edit 等做出不同的响应，但是我们并没有办法控制用户直接使用手势来取消 sheet，为了不让用户绕过程序的判断检查，不得已使用了 fullScreenCover 来规避手势取消。不过在实际使用中，尽管全屏 sheet 提供了更多的屏幕可用空间，但还是会给使用者带来了操作逻辑不统一的体验。</p><p>在去年，我使用的解决方案是，屏蔽 sheet 的拖动手势。</p><pre data-language="swift"><code> .highPriorityGesture(<span class="hljs-type">DragGesture</span>())
+</code></pre><p>这也是没有办法的办法。</p><p>后来，SwiftUI-lab 中，Javier 提出了他的解决方案 <a href="https://swiftui-lab.com/modal-dismiss-gesture/" target="_blank">Dismiss Gesture for SwiftUI Modals</a>。这个方案基本上实现了我想要的全部功能。不过这个方案看起来有些怪异。</p><ol><li>数据和 sheet 控制混合在一起</li><li>对于 sheet 的控制过于繁琐，而且不直观</li></ol><p>前段时间 <a href="https://gist.github.com/mobilinked/9b6086b3760bcf1e5432932dad0813c0" target="_blank">mobilinked</a> 编写了一段用于控制 sheet 的代码，结构精巧，使用简单。</p><p>本文对于 sheet 的控制采用了 mobilinked 的基础代码，并针对 Form 的响应做出了对应的修改。</p><p>在进行下面的代码说明前，如果你还没有阅读前两篇文章的话，请阅读后再继续。</p><h2>目标</h2><ol><li>表单对输入的内容进行实时检查（是否有错误，是否有空白项）</li><li>表单将根据当前的状态决定是否允许 sheet 进行手势取消</li><li>当用户进行手势取消时，如果表单已经进行了修改，需要用户二次确认是否取消</li></ol><h2>代码简介</h2><p>由于本文代码中多数部分同 Form 示例代码类似，所以仅简述一下新增及修改的部分。</p><p>SheetManager</p><pre data-language="swift"><code><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AIOSheetManager</span>:<span class="hljs-title">ObservableObject</span></span>{
     @<span class="hljs-type">Published</span>  <span class="hljs-keyword">var</span> action:<span class="hljs-type">AllInOneSheetAction?</span>
-    <span class="hljs-keyword">var</span> unlock:<span class="hljs-type">Bool</span> = <span class="hljs-literal">false</span> <span class="hljs-comment">//false时无法下滑dismiss,由form程序维护</span>
+    <span class="hljs-keyword">var</span> unlock:<span class="hljs-type">Bool</span> = <span class="hljs-literal">false</span> <span class="hljs-comment">//false 时无法下滑 dismiss, 由 form 程序维护</span>
     <span class="hljs-keyword">var</span> type:<span class="hljs-type">AllInOneSheetType</span> = .sheet <span class="hljs-comment">//sheet or fullScreenCover</span>
-    <span class="hljs-keyword">var</span> dismissControl:<span class="hljs-type">Bool</span> = <span class="hljs-literal">true</span> <span class="hljs-comment">//是否启动dismiss阻止开关,true启动阻止</span>
+    <span class="hljs-keyword">var</span> dismissControl:<span class="hljs-type">Bool</span> = <span class="hljs-literal">true</span> <span class="hljs-comment">//是否启动 dismiss 阻止开关，true 启动阻止</span>
     
     @<span class="hljs-type">Published</span> <span class="hljs-keyword">var</span> showSheet = <span class="hljs-literal">false</span>
     @<span class="hljs-type">Published</span> <span class="hljs-keyword">var</span> showFullCoverScreen = <span class="hljs-literal">false</span>
@@ -43,7 +43,7 @@ function(){
         <span class="hljs-keyword">case</span> sheet
     }
 }
-</code></pre><p>sheet控制代码</p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">MbModalHackView</span>: <span class="hljs-title">UIViewControllerRepresentable</span> </span>{
+</code></pre><p>sheet 控制代码</p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">MbModalHackView</span>: <span class="hljs-title">UIViewControllerRepresentable</span> </span>{
     <span class="hljs-keyword">let</span> manager:<span class="hljs-type">AIOSheetManager</span>
 
     <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">makeUIViewController</span><span class="hljs-params">(context: UIViewControllerRepresentableContext&lt;MbModalHackView&gt;)</span></span> -&gt; <span class="hljs-type">UIViewController</span> {
@@ -77,7 +77,7 @@ function(){
             <span class="hljs-keyword">return</span> manager.unlock
         }
 
-        <span class="hljs-comment">//当阻止取消时,发送用户要求取消sheet命令</span>
+        <span class="hljs-comment">//当阻止取消时，发送用户要求取消 sheet 命令</span>
         <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">presentationControllerDidAttemptToDismiss</span><span class="hljs-params">(<span class="hljs-number">_</span> presentationController: UIPresentationController)</span></span>{
             manager.dismissed.send(<span class="hljs-literal">true</span>)
         }
@@ -150,7 +150,6 @@ function(){
     <span class="hljs-keyword">case</span> edit(student:<span class="hljs-type">Student</span>)
     <span class="hljs-keyword">case</span> new
     
-    
     <span class="hljs-keyword">var</span> id:<span class="hljs-type">UUID</span>{<span class="hljs-type">UUID</span>()}
 }
 
@@ -178,15 +177,14 @@ function(){
 }
 .xsheet()
 
-
 <span class="hljs-type">Button</span>(<span class="hljs-string">"New"</span>){
          sheetManager.type = .sheet  <span class="hljs-comment">//当前支持两种方式 sheet fullScreenCover</span>
          sheetManager.dismissControl = <span class="hljs-literal">true</span> <span class="hljs-comment">//打开控制</span>
-         sheetManager.action = .new   <span class="hljs-comment">//设置统一sheet的action</span>
+         sheetManager.action = .new   <span class="hljs-comment">//设置统一 sheet 的 action</span>
               }
-</code></pre><p>Form代码的修改</p><p>为了让我们的表单代码能够管理sheet，并且可以响应用户的取消手势，对Form代码做了如下的修改：</p><pre data-language="swift"><code>    @<span class="hljs-type">State</span> <span class="hljs-keyword">private</span> <span class="hljs-keyword">var</span> changed = <span class="hljs-literal">false</span>{
+</code></pre><p>Form 代码的修改</p><p>为了让我们的表单代码能够管理 sheet，并且可以响应用户的取消手势，对 Form 代码做了如下的修改：</p><pre data-language="swift"><code>    @<span class="hljs-type">State</span> <span class="hljs-keyword">private</span> <span class="hljs-keyword">var</span> changed = <span class="hljs-literal">false</span>{
         <span class="hljs-keyword">didSet</span>{
-            <span class="hljs-comment">//控制sheet是否允许dismiss</span>
+            <span class="hljs-comment">//控制 sheet 是否允许 dismiss</span>
             <span class="hljs-keyword">if</span> action == .show {
                 sheetManager.unlock = <span class="hljs-literal">true</span>
             }
@@ -199,7 +197,7 @@ function(){
  .onReceive(sheetManager.dismissed){ value <span class="hljs-keyword">in</span>
                 delConfirm.toggle()
             }
-</code></pre><p>详细代码请访问我的<a href="https://github.com/fatbobman/DismissConfirmSheet" target="_blank">github</a></p></div><div class="license">本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC 4.0许可协议</a>。转载请注明出处和作者。</div></div></article><div class="supporter"><p>关注微信公共号<a href="/support/">肘子的Swift记事本</a>或在推特上关注<a href="https://twitter.com/fatbobman">@fatbobman</a>，永远不会错过新内容！ 您的<a href="/support/">支持和鼓励</a>将为我的博客写作增添更多的动力! 如果您或身边的朋友有健康数据管理的需求，请使用我开发的app<a href="/healthnotes/">【健康笔记】</a>，正是因为它我才创建了这个博客。</p><div class="label">关注</div></div><div class="item-navigator"><table><tr><td class="previous-item"><a href="/posts/healthNote2-development-memo-4">健康笔记2.0开发随笔（四）</a></td><td class="next-item"><a href="/posts/healthNote2-development-memo-3">健康笔记2.0开发随笔（三）</a></td></tr></table></div><div id="gitalk-container"></div>
+</code></pre><p>详细代码请访问我的 <a href="https://github.com/fatbobman/DismissConfirmSheet" target="_blank">github</a></p></div><div class="license">本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC 4.0许可协议</a>。转载请注明出处和作者。</div></div></article><div class="supporter"><p>关注微信公共号<a href="/support/">肘子的Swift记事本</a>或在推特上关注<a href="https://twitter.com/fatbobman">@fatbobman</a>，永远不会错过新内容！ 您的<a href="/support/">支持和鼓励</a>将为我的博客写作增添更多的动力! 如果您或身边的朋友有健康数据管理的需求，请使用我开发的app<a href="/healthnotes/">【健康笔记】</a>，正是因为它我才创建了这个博客。</p><div class="label">关注</div></div><div class="item-navigator"><table><tr><td class="previous-item"><a href="/posts/healthNote2-development-memo-4">健康笔记 2.0 开发随笔（四）</a></td><td class="next-item"><a href="/posts/healthNote2-development-memo-3">健康笔记 2.0 开发随笔（三）</a></td></tr></table></div><div id="gitalk-container"></div>
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <script type="text/javascript">
@@ -209,7 +207,7 @@ clientSecret: '0ac2907be08248a1fcb5312e27480ad535c682e5',
 repo: 'blogComments',
 owner: 'fatbobman',
 admin: ['fatbobman'],
-id: '在SwiftUI中制作可以控制取消手势的Sheet',      // Ensure uniqueness and length less than 50
+id: '在 SwiftUI 中制作可以控制取消手势的 Sheet',      // Ensure uniqueness and length less than 50
 distractionFreeMode: true,  // Facebook-like distraction free mode
 createIssueManually: true,
 language: navigator.userLanguage

@@ -1,13 +1,13 @@
 ---
 date: 2020-08-12 16:00
-description: SwiftUI目前可以提供sheet,fullScreenCover,alert,actionsheet等弹出视图用于丰富UI交互。不过种类还是有些单调。为了能够更方便的编写各种弹出式窗口的代码，我写了一个简单的SwiftUI库 —— SwiftUIOverlayContainer。
+description: SwiftUI 目前可以提供 sheet,fullScreenCover,alert,actionsheet 等弹出视图用于丰富 UI 交互。不过种类还是有些单调。为了能够更方便的编写各种弹出式窗口的代码，我写了一个简单的 SwiftUI 库 —— SwiftUIOverlayContainer。
 tags: SwiftUI,Project
-title: SwiftUIOverlayContainer ——可以实现各种自定义样式弹出视图的SwitUI库
+title: SwiftUIOverlayContainer ——可以实现各种自定义样式弹出视图的 SwitUI 库
 ---
 
-> SwiftUI目前可以提供sheet,fullScreenCover,alert,actionsheet等弹出视图用于丰富UI交互。不过种类还是有些单调。为了能够更方便的编写各种弹出式窗口的代码，我写了一个简单的SwiftUI库 —— SwiftUIOverlayContainer。
+> SwiftUI 目前可以提供 sheet,fullScreenCover,alert,actionsheet 等弹出视图用于丰富 UI 交互。不过种类还是有些单调。为了能够更方便的编写各种弹出式窗口的代码，我写了一个简单的 SwiftUI 库 —— SwiftUIOverlayContainer。
 
-SwiftUIOverlayContainer本身并不提供任何预置的视图样式，不过通过它，你有充分的自有度来实现自己需要的视图效果。OverlayContainer的主要目的在于帮助你完成动画、交互、样式定制等基础工作，使开发者能够将时间和精力仅需投入在视图本身的代码上。
+SwiftUIOverlayContainer 本身并不提供任何预置的视图样式，不过通过它，你有充分的自有度来实现自己需要的视图效果。OverlayContainer 的主要目的在于帮助你完成动画、交互、样式定制等基础工作，使开发者能够将时间和精力仅需投入在视图本身的代码上。
 
 ```responser
 id:1
@@ -17,9 +17,9 @@ id:1
 
 <video src="https://cdn.fatbobman.com/swiftui-overlay-demo.mp4" controls = "controls">你的浏览器不支持本视频</video>
 
-库代码已经修改可以直接在xcode11下使用
+库代码已经修改可以直接在 xcode11 下使用
 
-代码思路受到了[PartialSheet](https://link.zhihu.com/?target=https%3A//github.com/AndreaMiotto/PartialSheet)很大的影响,并使用了其部分代码。
+代码思路受到了 [PartialSheet](https://link.zhihu.com/?target=https%3A//github.com/AndreaMiotto/PartialSheet) 很大的影响，并使用了其部分代码。
 
 ## 使用方法
 
@@ -81,9 +81,9 @@ let style2 = OverlayContainerStyle(
                                    animation: .easeInOut ,  //动画曲线
                                    transition:.move(edge:.leading),  //进出动画效果
                                    animatable: true,  //是否显示动画
-                                   autoHide: nil,  //是否自动隐藏,可设置秒数
-                                   enableDrag: true,  //是否允许滑动取消,目前只支持 .leading,.trailing,.bottom,.top
-                                   clickDismiss: true) //是否支持显示后,点击屏幕其他位置取消
+                                   autoHide: nil,  //是否自动隐藏，可设置秒数
+                                   enableDrag: true,  //是否允许滑动取消，目前只支持 .leading,.trailing,.bottom,.top
+                                   clickDismiss: true) //是否支持显示后，点击屏幕其他位置取消
 ```
 
-更多具体应用,请参看 代码DEMO
+更多具体应用，请参看 代码 DEMO

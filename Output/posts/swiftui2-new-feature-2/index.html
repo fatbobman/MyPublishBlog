@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"/><meta name="og:site_name" content="肘子的Swift记事本"/><link rel="canonical" href="https://www.fatbobman.com/posts/swiftui2-new-feature-2"/><meta name="twitter:url" content="https://www.fatbobman.com/posts/swiftui2-new-feature-2"/><meta name="og:url" content="https://www.fatbobman.com/posts/swiftui2-new-feature-2"/><title>SwiftUI2.0 —— App、Scene、新的代码结构（二） | 肘子的Swift记事本</title><meta name="twitter:title" content="SwiftUI2.0 —— App、Scene、新的代码结构（二） | 肘子的Swift记事本"/><meta name="og:title" content="SwiftUI2.0 —— App、Scene、新的代码结构（二） | 肘子的Swift记事本"/><meta name="description" content="在上篇文章中我们简单了解了App、Scene，以及几个内置Scene的应用。在本文中，我们着重探讨在SwiftUI2.0新的代码结构下如果更高效的组织Data Flow。"/><meta name="twitter:description" content="在上篇文章中我们简单了解了App、Scene，以及几个内置Scene的应用。在本文中，我们着重探讨在SwiftUI2.0新的代码结构下如果更高效的组织Data Flow。"/><meta name="og:description" content="在上篇文章中我们简单了解了App、Scene，以及几个内置Scene的应用。在本文中，我们着重探讨在SwiftUI2.0新的代码结构下如果更高效的组织Data Flow。"/><meta name="twitter:card" content="summary"/><meta name="twitter:site" content="@fatbobman"/><meta name="twitter:creator" content="@fatbobman"/><meta name="referrer" content="no-referrer"/><link rel="stylesheet" href="/styles.css" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="/images/favicon.png" type="image/png"/><link rel="alternate" href="/feed.rss" type="application/rss+xml" title="Subscribe to 肘子的Swift记事本"/><meta name="twitter:image" content="https://www.fatbobman.com/images"/><meta name="og:image" content="https://www.fatbobman.com/images"/><script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script></head><body class="item-page"><header><div class="wrapper"><div class="logo"><a href="/"><img src="/images/title.svg"/></a></div><div><div class="headerIcons"><a class="icon headIconWeixin"><script>    var weixinHeadButton = $('.headIconWeixin');
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"/><meta name="og:site_name" content="肘子的Swift记事本"/><link rel="canonical" href="https://www.fatbobman.com/posts/swiftui2-new-feature-2"/><meta name="twitter:url" content="https://www.fatbobman.com/posts/swiftui2-new-feature-2"/><meta name="og:url" content="https://www.fatbobman.com/posts/swiftui2-new-feature-2"/><title>SwiftUI2.0 —— App、Scene、新的代码结构（二） | 肘子的Swift记事本</title><meta name="twitter:title" content="SwiftUI2.0 —— App、Scene、新的代码结构（二） | 肘子的Swift记事本"/><meta name="og:title" content="SwiftUI2.0 —— App、Scene、新的代码结构（二） | 肘子的Swift记事本"/><meta name="description" content="在上篇文章中我们简单了解了 App、Scene，以及几个内置 Scene 的应用。在本文中，我们着重探讨在 SwiftUI2.0 新的代码结构下如果更高效的组织 Data Flow。"/><meta name="twitter:description" content="在上篇文章中我们简单了解了 App、Scene，以及几个内置 Scene 的应用。在本文中，我们着重探讨在 SwiftUI2.0 新的代码结构下如果更高效的组织 Data Flow。"/><meta name="og:description" content="在上篇文章中我们简单了解了 App、Scene，以及几个内置 Scene 的应用。在本文中，我们着重探讨在 SwiftUI2.0 新的代码结构下如果更高效的组织 Data Flow。"/><meta name="twitter:card" content="summary"/><meta name="twitter:site" content="@fatbobman"/><meta name="twitter:creator" content="@fatbobman"/><meta name="referrer" content="no-referrer"/><link rel="stylesheet" href="/styles.css" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="/images/favicon.png" type="image/png"/><link rel="alternate" href="/feed.rss" type="application/rss+xml" title="Subscribe to 肘子的Swift记事本"/><meta name="twitter:image" content="https://www.fatbobman.com/images"/><meta name="og:image" content="https://www.fatbobman.com/images"/><script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script></head><body class="item-page"><header><div class="wrapper"><div class="logo"><a href="/"><img src="/images/title.svg"/></a></div><div><div class="headerIcons"><a class="icon headIconWeixin"><script>    var weixinHeadButton = $('.headIconWeixin');
     weixinHeadButton.hover(
     function(){
     $('.weixinHeadQcode').css('display','block');
@@ -19,13 +19,13 @@ function(){
 },
 function(){
     $('.actionButton .donateQcode').css('display','none');
-})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>SwiftUI2.0 —— App、Scene、新的代码结构（二）</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag variant-0"><a href="/tags/architecture">Architecture</a></li><li class="tag tagdate">发布于2020年07月08日</li></ul><div class="content"><p>在<a href="/posts/swiftui2-new-feature-1/">上篇文章</a>中我们简单了解了App、Scene，以及几个内置Scene的应用。在本文中，我们着重探讨在SwiftUI2.0新的代码结构下如果更高效的组织Data Flow。</p><Div id='responser' class = "responser" onclick="window.location='http://www.fatbobman.com/healthnotes/';"><div class = "hstack">
+})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>SwiftUI2.0 —— App、Scene、新的代码结构（二）</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag variant-0"><a href="/tags/architecture">Architecture</a></li><li class="tag tagdate">发布于2020年07月08日</li></ul><div class="content"><p>在 <a href="/posts/swiftui2-new-feature-1/">上篇文章</a> 中我们简单了解了 App、Scene，以及几个内置 Scene 的应用。在本文中，我们着重探讨在 SwiftUI2.0 新的代码结构下如果更高效的组织 Data Flow。</p><Div id='responser' class = "responser" onclick="window.location='http://www.fatbobman.com/healthnotes/';"><div class = "hstack">
 <img src = "https://cdn.fatbobman.com/healthnotesLogo.svg"></img>
 <div class = "text">
 <p><span class = "title">健康笔记</span>是我开发的一个iOS app，主要服务于有长期健康管理需求的人士。可为全家不同成员创建各自的笔记，允许使用者自定义数据类型以记录各种健康数据。</p>
 </div>
 </div>
-<div class="label">推广</div></Div><h2>新特性</h2><h3>@AppStorage</h3><p>AppStorage是苹果官方提供的用于操作UserDefault的属性包装器。这个功能在Swift提供了propertyWrapper特性后，已经有众多的开发者编写了类似的代码。功能上没有任何特别之处，不过名称对应了新的App协议，让人更容易了解其可适用的周期。</p><ul><li>数据可持久化，app退出后数据仍保留</li><li>仅包装了UserDefault，数据可以UserDefault正常读取</li><li>可保存的数据类型同UserDefault，不适合保存复杂类型数据</li><li>在app的任意View层级都可适用，不过在app层使用并不起作用（不报错）</li></ul><pre data-language="swift"><code>@main
+<div class="label">推广</div></Div><h2>新特性</h2><h3>@AppStorage</h3><p>AppStorage 是苹果官方提供的用于操作 UserDefault 的属性包装器。这个功能在 Swift 提供了 propertyWrapper 特性后，已经有众多的开发者编写了类似的代码。功能上没有任何特别之处，不过名称对应了新的 App 协议，让人更容易了解其可适用的周期。</p><ul><li>数据可持久化，app 退出后数据仍保留</li><li>仅包装了 UserDefault，数据可以 UserDefault 正常读取</li><li>可保存的数据类型同 UserDefault，不适合保存复杂类型数据</li><li>在 app 的任意 View 层级都可适用，不过在 app 层使用并不起作用（不报错）</li></ul><pre data-language="swift"><code>@main
 <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">AppStorageTest</span>: <span class="hljs-title">App</span> </span>{
     <span class="hljs-comment">//不报错，不过不起作用</span>
     <span class="hljs-comment">//@AppStorage("count") var count = 0</span>
@@ -54,7 +54,7 @@ function(){
         <span class="hljs-type">Text</span>(<span class="hljs-string">"Count:\(count)"</span>)
     }
 }
-</code></pre><h3>@SceneStorage</h3><p>使用方法同@AppStorage十分类似，不过其作用域仅限于当前Scene。</p><ul><li>数据作用域仅限于Scene中</li><li>生命周期同Scene一致，当前在PadOS下，如果强制退出一个两分屏显示的app,系统在下次打开app时有时会保留上次的Scene信息。不过，如果如果单独退出一个Scene，数据则失效</li><li>支持的类型基本等同于@AppStorage，适合保存轻量数据</li><li>比较适合保存基于Scene的特质信息，比如TabView的选择，独立布局等数据</li></ul><pre data-language="swift"><code>@main
+</code></pre><h3>@SceneStorage</h3><p>使用方法同@AppStorage 十分类似，不过其作用域仅限于当前 Scene。</p><ul><li>数据作用域仅限于 Scene 中</li><li>生命周期同 Scene 一致，当前在 PadOS 下，如果强制退出一个两分屏显示的 app, 系统在下次打开 app 时有时会保留上次的 Scene 信息。不过，如果如果单独退出一个 Scene，数据则失效</li><li>支持的类型基本等同于@AppStorage，适合保存轻量数据</li><li>比较适合保存基于 Scene 的特质信息，比如 TabView 的选择，独立布局等数据</li></ul><pre data-language="swift"><code>@main
 <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">NewAllApp</span>: <span class="hljs-title">App</span> </span>{
     <span class="hljs-keyword">var</span> body: some <span class="hljs-type">Scene</span> {
         <span class="hljs-type">WindowGroup</span>{
@@ -73,7 +73,7 @@ function(){
         }
     }
 }
-</code></pre><img src="https://cdn.fatbobman.com/swiftui2-new-feature-2-sceneStorage.png" alt="abc"/><p>&gt;<strong><em>上述代码在PadOS下运行正常，不过在macOS下程序会报错。估计应该是bug</em></strong></p><h2>Data Flow</h2><h3>手段</h3><p>苹果在SwiftUI2.0中添加了@AppStorage @SceneStorage @StateObject 等新的属性包装器，我根据自己的理解对目前SwiftUI提供的部分属性包装器做了如下总结：</p><img src="https://cdn.fatbobman.com/swiftui2-new-feature-2-propertyWrapperSheet.png" alt="propertyWrapperSheet"/><p>经过此次升级后，SwiftUI已经大大的完善了各个层级数据的生命周期管理，对不同的类型、不同的场合、不同的用途都提供了解决方案，为编写符合SwiftUI的Data Flow提供了便利，我们可以根据自己的需要选择适合的Source of truth手段。</p><p>想了解其中的更多细节，可以参看我的其他文章：</p><p><a href="/posts/swiftUI-state/">@State 研究</a></p><p><a href="/posts/stateobject/">@StateObject研究</a></p><p><a href="/posts/observableObject-study/">ObservableObject研究——想说爱你不容易</a></p><h3>变化</h3><p>在SwiftUI1.0中，我们通常会在AppDelegate中创建需要生命周期与app一致的数据（比如CoreData的Container），在SceneDelegate中创建Store之类的数据源，并通过.environmentObject注入。不过随着SwiftUI2.0在程序入口方面的变化，以及采取的全新Delegate响应方式，我们可以通过更简洁、清晰的代码完成上述工作。</p><pre data-language="swift"><code>@main
+</code></pre><img src="https://cdn.fatbobman.com/swiftui2-new-feature-2-sceneStorage.png" alt="abc"/><p>&gt;<strong><em>上述代码在 PadOS 下运行正常，不过在 macOS 下程序会报错。估计应该是 bug</em></strong></p><h2>Data Flow</h2><h3>手段</h3><p>苹果在 SwiftUI2.0 中添加了@AppStorage @SceneStorage @StateObject 等新的属性包装器，我根据自己的理解对目前 SwiftUI 提供的部分属性包装器做了如下总结：</p><img src="https://cdn.fatbobman.com/swiftui2-new-feature-2-propertyWrapperSheet.png" alt="propertyWrapperSheet"/><p>经过此次升级后，SwiftUI 已经大大的完善了各个层级数据的生命周期管理，对不同的类型、不同的场合、不同的用途都提供了解决方案，为编写符合 SwiftUI 的 Data Flow 提供了便利，我们可以根据自己的需要选择适合的 Source of truth 手段。</p><p>想了解其中的更多细节，可以参看我的其他文章：</p><p><a href="/posts/swiftUI-state/">@State 研究</a></p><p><a href="/posts/stateobject/">@StateObject 研究</a></p><p><a href="/posts/observableObject-study/">ObservableObject 研究——想说爱你不容易</a></p><h3>变化</h3><p>在 SwiftUI1.0 中，我们通常会在 AppDelegate 中创建需要生命周期与 app 一致的数据（比如 CoreData 的 Container），在 SceneDelegate 中创建 Store 之类的数据源，并通过。environmentObject 注入。不过随着 SwiftUI2.0 在程序入口方面的变化，以及采取的全新 Delegate 响应方式，我们可以通过更简洁、清晰的代码完成上述工作。</p><pre data-language="swift"><code>@main
 <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">NewAllApp</span>: <span class="hljs-title">App</span> </span>{
     @<span class="hljs-type">StateObject</span> <span class="hljs-keyword">var</span> store = <span class="hljs-type">Store</span>()
     <span class="hljs-keyword">var</span> body: some <span class="hljs-type">Scene</span> {
@@ -89,11 +89,11 @@ function(){
 }
 </code></pre><p>上述例子中，将</p><pre data-language="swift"><code>@<span class="hljs-type">StateObject</span> <span class="hljs-keyword">var</span> store = <span class="hljs-type">Store</span>()
 </code></pre><p>换成</p><pre data-language="swift"><code><span class="hljs-keyword">let</span> store = <span class="hljs-type">Store</span>()
-</code></pre><p>目前来说是一样的。</p><p><em>虽然目前SceneBuilder、CommandBuilder对Dynamic update和逻辑判断尚不支持，我相信应该在不久的将来，或许我们就可以使用类似下面的代码来完成很多有趣的工作了,**当前代码无法执行</em>**</p><pre data-language="swift"><code>@main
+</code></pre><p>目前来说是一样的。</p><p><em>虽然目前 SceneBuilder、CommandBuilder 对 Dynamic update 和逻辑判断尚不支持，我相信应该在不久的将来，或许我们就可以使用类似下面的代码来完成很多有趣的工作了，**当前代码无法执行</em>**</p><pre data-language="swift"><code>@main
 <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">NewAllApp</span>: <span class="hljs-title">App</span> </span>{
     @<span class="hljs-type">StateObject</span> <span class="hljs-keyword">var</span> store = <span class="hljs-type">Store</span>()
     @<span class="hljs-type">SceneBuilder</span> <span class="hljs-keyword">var</span> body: some <span class="hljs-type">Scene</span> {
-        <span class="hljs-comment">//@SceneBuilder目前不支持判断，不过将来应该会加上</span>
+        <span class="hljs-comment">//@SceneBuilder 目前不支持判断，不过将来应该会加上</span>
         <span class="hljs-keyword">if</span> store.scene == <span class="hljs-number">0</span> {
         <span class="hljs-type">WindowGroup</span>{
             <span class="hljs-type">ContentView1</span>()
@@ -104,7 +104,7 @@ function(){
         }
         .commands{
             <span class="hljs-type">CommandMenu</span>(<span class="hljs-string">"DynamicButton"</span>){
-                <span class="hljs-comment">//目前无法动态切换内容，怀疑是bug，已反馈</span>
+                <span class="hljs-comment">//目前无法动态切换内容，怀疑是 bug，已反馈</span>
                 <span class="hljs-keyword">switch</span> store.number{
                 <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>:
                     <span class="hljs-type">Button</span>(<span class="hljs-string">"0"</span>){}
@@ -114,7 +114,6 @@ function(){
                     <span class="hljs-type">Button</span>(<span class="hljs-string">"other"</span>){}
                 }
             }
-        }
         }
         <span class="hljs-keyword">else</span> {
          <span class="hljs-type">DocumentGroup</span>(newDocment:<span class="hljs-type">TextFile</span>()){ file <span class="hljs-keyword">in</span>
@@ -132,7 +131,6 @@ function(){
 
     }
 }
-
 
 <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">ContentView1</span>:<span class="hljs-title">View</span></span>{
     @<span class="hljs-type">EnvironmentObject</span> <span class="hljs-keyword">var</span> store:<span class="hljs-type">Store</span>
@@ -153,7 +151,7 @@ function(){
     @<span class="hljs-type">Published</span> <span class="hljs-keyword">var</span> number = <span class="hljs-number">0</span>
     @<span class="hljs-type">Published</span> <span class="hljs-keyword">var</span> scene = <span class="hljs-number">0</span>
 }
-</code></pre><h3>跨平台代码</h3><p>在<a href="/posts/swiftui2-new-feature-1/">上篇文章</a>我们介绍了新的@UIApplicationDelegateAdaptor的使用方法，我们也可以直接创建一个支持Delegate的store。</p><pre data-language="swift"><code><span class="hljs-keyword">import</span> SwiftUI
+</code></pre><h3>跨平台代码</h3><p>在 <a href="/posts/swiftui2-new-feature-1/">上篇文章</a> 我们介绍了新的@UIApplicationDelegateAdaptor 的使用方法，我们也可以直接创建一个支持 Delegate 的 store。</p><pre data-language="swift"><code><span class="hljs-keyword">import</span> SwiftUI
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Store</span>:<span class="hljs-title">NSObject</span>,<span class="hljs-title">ObservableObject</span></span>{
     @<span class="hljs-type">Published</span> <span class="hljs-keyword">var</span> <span class="hljs-built_in">count</span> = <span class="hljs-number">0</span>
@@ -204,7 +202,7 @@ function(){
         #endif
     }
 }
-</code></pre><h2>总结</h2><p>在<a href="/posts/observableObject-study/">ObservableObject研究——想说爱你不容易</a>中，我们探讨过SwiftUI更倾向于我们不要创建一个沉重的Singel source of truth,而是将每个功能模块作为独立的状态机（一起组合成一个大的状态app），使用能够对生命周期和作用域更精确可控的手段创建区域性的source of truth。</p><p>从SwiftUI第一个版本升级的内容来看，目前SwiftUI仍是这样的思路。</p></div><div class="license">本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC 4.0许可协议</a>。转载请注明出处和作者。</div></div></article><div class="supporter"><p>关注微信公共号<a href="/support/">肘子的Swift记事本</a>或在推特上关注<a href="https://twitter.com/fatbobman">@fatbobman</a>，永远不会错过新内容！ 您的<a href="/support/">支持和鼓励</a>将为我的博客写作增添更多的动力! 如果您或身边的朋友有健康数据管理的需求，请使用我开发的app<a href="/healthnotes/">【健康笔记】</a>，正是因为它我才创建了这个博客。</p><div class="label">关注</div></div><div class="item-navigator"><table><tr><td class="previous-item"><a href="/posts/howto-swiftui-map">HowTo—— Swift2.0在视图中显示地图</a></td><td class="next-item"><a href="/posts/swiftui2-new-feature-1">SwiftUI2.0 —— App、Scene、新的代码结构（一）</a></td></tr></table></div><div id="gitalk-container"></div>
+</code></pre><h2>总结</h2><p>在 <a href="/posts/observableObject-study/">ObservableObject 研究——想说爱你不容易</a> 中，我们探讨过 SwiftUI 更倾向于我们不要创建一个沉重的 Singel source of truth, 而是将每个功能模块作为独立的状态机（一起组合成一个大的状态 app），使用能够对生命周期和作用域更精确可控的手段创建区域性的 source of truth。</p><p>从 SwiftUI 第一个版本升级的内容来看，目前 SwiftUI 仍是这样的思路。</p></div><div class="license">本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC 4.0许可协议</a>。转载请注明出处和作者。</div></div></article><div class="supporter"><p>关注微信公共号<a href="/support/">肘子的Swift记事本</a>或在推特上关注<a href="https://twitter.com/fatbobman">@fatbobman</a>，永远不会错过新内容！ 您的<a href="/support/">支持和鼓励</a>将为我的博客写作增添更多的动力! 如果您或身边的朋友有健康数据管理的需求，请使用我开发的app<a href="/healthnotes/">【健康笔记】</a>，正是因为它我才创建了这个博客。</p><div class="label">关注</div></div><div class="item-navigator"><table><tr><td class="previous-item"><a href="/posts/howto-swiftui-map">HowTo—— Swift2.0 在视图中显示地图</a></td><td class="next-item"><a href="/posts/swiftui2-new-feature-1">SwiftUI2.0 —— App、Scene、新的代码结构（一）</a></td></tr></table></div><div id="gitalk-container"></div>
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <script type="text/javascript">

@@ -1,6 +1,6 @@
 ---
 date: 2021-08-13 19:22
-description: 本文将介绍如何通过Core Data with CloudKit将公共数据库同步到本地，在本地创建Core Data数据库镜像。
+description: 本文将介绍如何通过 Core Data with CloudKit 将公共数据库同步到本地，在本地创建 Core Data 数据库镜像。
 tags: CloudKit,Core Data
 title:  Core Data with CloudKit（五）——同步公共数据库
 image: images/coreDataWithCloudKit-5.jpg
@@ -8,12 +8,11 @@ image: images/coreDataWithCloudKit-5.jpg
 
 本文将介绍如何通过`Core Data with CloudKit`将公共数据库同步到本地，在本地创建`Core Data`数据库镜像。
 
-
 ```responser
 id:1
 ```
 
-## 三种CloudKit数据库 ##
+## 三种 CloudKit 数据库 ##
 
 介绍一下`CloudKit`中的三种数据库：
 
@@ -43,7 +42,7 @@ id:1
 
 ## 一样的名词、不一样的含义 ##
 
-在[Core Data with CloudKit(二)](/posts/coreDataWithCloudKit-2/)中，我们介绍了如何同步本地数据库到`iCloud`私有数据库，本篇我们谈的是如果将共享数据库同步到本地。尽管两篇文章都在聊关于**同步**的话题，但这**两个同步的内在含义和逻辑是不一样的**。
+在 [Core Data with CloudKit（二）](/posts/coreDataWithCloudKit-2/) 中，我们介绍了如何同步本地数据库到`iCloud`私有数据库，本篇我们谈的是如果将共享数据库同步到本地。尽管两篇文章都在聊关于**同步**的话题，但这**两个同步的内在含义和逻辑是不一样的**。
 
 **同步本地数据到私有数据库**，本质上讲仍是一个标准的`Core Data`项目，开发者从模型设计到代码开发，同开发【仅支持本地持久化数据库的项目】没有不同。`CloudtKit`仅起到一个将数据同步到用户其他设备的桥梁作用。在绝大多数的情况下，开发者在使用托管对象时可以完全不考虑私有数据库以及`CKRecord`的存在。
 
@@ -61,7 +60,7 @@ id:1
 
 ![image-20210812153836921](https://cdn.fatbobman.com/image-20210812153836921-8753918.png)
 
-在[iCloud仪表台](/posts/coreDataWithCloudKit-3/)一文中，我们介绍了安全角色的概念。系统为公共数据库创建了3个预置角色：`World`、`Authenticated`以及`Creator`。在公共数据库中，鉴权时需要考虑用户是否已登录`iCloud`账户、是否为数据记录的创建者等多种因素。
+在 [iCloud 仪表台](/posts/coreDataWithCloudKit-3/) 一文中，我们介绍了安全角色的概念。系统为公共数据库创建了 3 个预置角色：`World`、`Authenticated`以及`Creator`。在公共数据库中，鉴权时需要考虑用户是否已登录`iCloud`账户、是否为数据记录的创建者等多种因素。
 
 ![image-20210812154950463](https://cdn.fatbobman.com/image-20210812154950463-8754592.png)
 
@@ -85,7 +84,7 @@ if container.canUpdateRecord(forManagedObjectWith:item.objectID) {
 
 * `canUpdateRecord`和`canDeleteRecord`
 
-  获取是否具有修改数据的权限。在以下情况都将返回true：
+  获取是否具有修改数据的权限。在以下情况都将返回 true：
 
   1. `objectID`是临时对象标识符（意味着还没有被持久化）。
   2. 包含托管对象的持久化存储不适用`CloudKit`（不用于同步的本地数据库）。
@@ -113,7 +112,7 @@ if container.canUpdateRecord(forManagedObjectWith:item.objectID) {
 
 从`import`（将网络数据的更改同步至本地）角度来将，私有数据库和公共数据库的机制则完全不同。
 
-在[基础](/posts/coreDataWithCloudKit-1/)和[CloudKit仪表台](/posts/coreDataWithCloudKit-3/)两篇文章，我们已经介绍了私有数据库的同步机制：
+在 [基础](/posts/coreDataWithCloudKit-1/) 和 [CloudKit 仪表台](/posts/coreDataWithCloudKit-3/) 两篇文章，我们已经介绍了私有数据库的同步机制：
 
 * 客户端在服务器订阅`CKDatabaseSubscription`
 * 服务器端在私有数据库自定义`Zone`的内容发生变化后，向客户端推送静默远程提醒
@@ -131,7 +130,7 @@ if container.canUpdateRecord(forManagedObjectWith:item.objectID) {
 
 由于上述原因，`Core Data with CloudKit`只能采用轮询方式（`poll for changes`）来获取公共数据库的变化数据。
 
-当应用程序启动时或每运行30分钟，`NSPersistentCloudKitContainer`都会通过`CKQurey`操作来查询公共数据库的变化并进行获取数据。`import`过程是由客户端发起，服务器端响应。
+当应用程序启动时或每运行 30 分钟，`NSPersistentCloudKitContainer`都会通过`CKQurey`操作来查询公共数据库的变化并进行获取数据。`import`过程是由客户端发起，服务器端响应。
 
 此种同步机制将限制适用场景，**只有即时性不高的数据才适合保存在公共数据库中**。
 
@@ -152,7 +151,7 @@ if container.canUpdateRecord(forManagedObjectWith:item.objectID) {
   我们在设计公共数据库数据模型时，通过添加一个类似墓碑（比如`isDeleted`）的属性，尽可能地避免这种差异。
 
 ```swift
-// "删除"时，将isDelete设置为true
+// "删除"时，将 isDelete 设置为 true
 if container.canUpdateRecord(forManagedObjectWith:item.objectID){
     item.isDeleted = true
     try! viewContext.save()
@@ -176,7 +175,7 @@ private var items: FetchedResults<Item>
 
 私有数据库的数据是保存在用户个人的`iCloud`空间中的，占用的是其个人空间的容量配额。如果该用户的`iCloud`空间满了，数据将不能够继续通过网络在各个设备间进行同步。用户可以通过清理个人空间或选择更大的空间方案来解决这个问题。
 
-公共数据库的数据容量占用的是你的应用程序的空间配额。苹果给每一款支持`CloudKit`的应用都提供了基础的空间容量，限制如下：10GB的`Asset`存储，100MB的数据库，每月2GB数据传输量以及每秒40次的查询请求。空间、流量、请求数都会根据你应用程序的活跃用户数（16月内使用过应用）的提高而提高，至多会增加到10PB、10TB、每天200TB的级别。
+公共数据库的数据容量占用的是你的应用程序的空间配额。苹果给每一款支持`CloudKit`的应用都提供了基础的空间容量，限制如下：10GB 的`Asset`存储，100MB 的数据库，每月 2GB 数据传输量以及每秒 40 次的查询请求。空间、流量、请求数都会根据你应用程序的活跃用户数（16 月内使用过应用）的提高而提高，至多会增加到 10PB、10TB、每天 200TB 的级别。
 
 尽管绝大多数的应用程序都不会超过这些限额，但是作为开发者还是应该尽可能的减少空间的使用量，提高数据响应效率。
 
@@ -186,7 +185,7 @@ private var items: FetchedResults<Item>
 
 我们无法保证清空一定会发生在所有的客户端都已经同步了"删除"状态，在不影响应用程序业务逻辑的情况下，适当允许设备间的数据不一致是可以接受的。
 
-开发者可以根据应用程序的平均使用频率，在客户端对一定时间前"删除"的数据进行清除操作。尽管`Core Data with CloudKit`在本地保存了托管对象对应的`CKRecord`元数据，但没有给开发者提供API。为了删除方便，我们可以在模型中添加"删除"时间属性，配合清除时的查询工作。
+开发者可以根据应用程序的平均使用频率，在客户端对一定时间前"删除"的数据进行清除操作。尽管`Core Data with CloudKit`在本地保存了托管对象对应的`CKRecord`元数据，但没有给开发者提供 API。为了删除方便，我们可以在模型中添加"删除"时间属性，配合清除时的查询工作。
 
 ## 公共数据库的适用场合 ##
 
@@ -214,7 +213,7 @@ private var items: FetchedResults<Item>
 
 ## 同步公共数据库 ##
 
-本节大量涉及了[Core Data with CloudKit（二）——同步本地数据库到iCloud私有数据库](/posts/coreDataWithCloudKit-2/)和[Core Data with CloudKit（三）——CloudKit仪表台](/posts/coreDataWithCloudKit-3/)中的知识，请阅读上述两篇文章后再继续。
+本节大量涉及了 [Core Data with CloudKit（二）——同步本地数据库到 iCloud 私有数据库](/posts/coreDataWithCloudKit-2/) 和 [Core Data with CloudKit（三）——CloudKit 仪表台](/posts/coreDataWithCloudKit-3/) 中的知识，请阅读上述两篇文章后再继续。
 
 ### 项目配置 ###
 
@@ -225,7 +224,7 @@ private var items: FetchedResults<Item>
 
 *如果在项目中仅使用公共数据库，可以不添加`Background Mode`的`Remote notifications`功能*
 
-### 使用NSPersistentCloudKitContainer创建本地镜像 ###
+### 使用 NSPersistentCloudKitContainer 创建本地镜像 ###
 
 * 在`Xcode Data Model Editor`中创建新的`Configuration`，并将你想公开的实体（`Entity`）添加到这个新配置中。
 * 在你的`Core Data Stack`中（比如模版项目的`Persistenc.swift`）添加如下代码：
@@ -233,7 +232,7 @@ private var items: FetchedResults<Item>
 ```swift
 let publicURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("public.sqlite")
 let publicDesc = NSPersistentStoreDescription(url: publicURL)
-publicDesc.configuration = "public" //Configuration名称
+publicDesc.configuration = "public" //Configuration 名称
 publicDesc.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: "your.public.containerID")
 publicDesc.cloudKitContainerOptions?.databaseScope = .public
 ```
@@ -244,11 +243,11 @@ publicDesc.cloudKitContainerOptions?.databaseScope = .public
 publicDesc.cloudKitContainerOptions?.databaseScope = .public
 ```
 
-> `databaseScope`是苹果2020年为`cloudKitContainerOptions`新添加的属性。默认值为`.private`，因此同步私有库时无需设置。
+> `databaseScope`是苹果 2020 年为`cloudKitContainerOptions`新添加的属性。默认值为`.private`，因此同步私有库时无需设置。
 
 就这？
 
-是的，就这。其他配置都和同步私有数据库一样。将`Descriptioin`添加到`persistentStoreDescriptions`，配置上下文，有需要的话配置[Persistent History Tracking](/posts/persistentHistoryTracking/)。
+是的，就这。其他配置都和同步私有数据库一样。将`Descriptioin`添加到`persistentStoreDescriptions`，配置上下文，有需要的话配置 [Persistent History Tracking](/posts/persistentHistoryTracking/)。
 
 ### 配置仪表台 ###
 
@@ -264,11 +263,11 @@ publicDesc.cloudKitContainerOptions?.databaseScope = .public
 
 ## 其他 ##
 
-### 初始化Schema ###
+### 初始化 Schema ###
 
 **按照上文操作，进行至在`CloudKit`仪表台上添加索引时，你会发现没有`Record Type`供你添加索引。这是因为我们并没有在网络数据库端初始化`Schema`。**
 
-在网络端初始化Schema有两种方法：
+在网络端初始化 Schema 有两种方法：
 
 * 创建一个托管对象数据并将其同步到服务器端
 

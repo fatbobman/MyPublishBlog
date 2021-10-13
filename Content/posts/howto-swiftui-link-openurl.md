@@ -1,11 +1,11 @@
 ---
 date: 2020-07-10 13:00
-description: SwiftUI2.0提供了原生的打开URL scheme的功能，我们可以十分方便的在代码中调用其他的app。
+description: SwiftUI2.0 提供了原生的打开 URL scheme 的功能，我们可以十分方便的在代码中调用其他的 app。
 tags: SwiftUI,HowTo
-title: HowTo —— SwiftUI2.0 使用Link或openURL打开URL scheme
+title: HowTo —— SwiftUI2.0 使用 Link 或 openURL 打开 URL scheme
 ---
 
-SwiftUI2.0提供了原生的打开URL scheme的功能，我们可以十分方便的在代码中调用其他的app。
+SwiftUI2.0 提供了原生的打开 URL scheme 的功能，我们可以十分方便的在代码中调用其他的 app。
 
 ```responser
 id:1
@@ -13,7 +13,7 @@ id:1
 
 ## Link ##
 
-类似于 NavigationLink ,直接打开URL scheme对应的app
+类似于 NavigationLink , 直接打开 URL scheme 对应的 app
 
 ```swift
 Link("openURL",destination:safariUrl)
@@ -21,7 +21,7 @@ Link("openURL",destination:safariUrl)
 
 ## openURL ##
 
-本次在SwiftUI2.0中，苹果提供了若干个通过Environment注入的调用系统操作的方法。比如 exportFiles,importFiles,openURL等。
+本次在 SwiftUI2.0 中，苹果提供了若干个通过 Environment 注入的调用系统操作的方法。比如 exportFiles,importFiles,openURL 等。
 
 ```swift
 @Environment(\.openURL) var openURL
@@ -39,7 +39,7 @@ struct URLTest: View {
     
     var body: some View {
         List{
-            Link("使用safari打开网页",destination:safariUrl)
+            Link("使用 safari 打开网页",destination:safariUrl)
             Button("发送邮件"){
                 openURL.callAsFunction(mailUrl){ result in
                     print(result)
@@ -53,7 +53,7 @@ struct URLTest: View {
 }
 ```
 
-> 模拟器仅支持极少数的URL，最好使用真机测试
-> [苹果官方提供的一些URL scheme](https://developer.apple.com/library/archive/featuredarticles/iPhoneURLScheme_Reference/PhoneLinks/PhoneLinks.html#//apple_ref/doc/uid/TP40007899-CH6-SW1)
+> 模拟器仅支持极少数的 URL，最好使用真机测试
+> [苹果官方提供的一些 URL scheme](https://developer.apple.com/library/archive/featuredarticles/iPhoneURLScheme_Reference/PhoneLinks/PhoneLinks.html#//apple_ref/doc/uid/TP40007899-CH6-SW1)
 
 <video src="https://cdn.fatbobman.com/howto-swiftui-openurl-video.mp4" controls = "controls">你的浏览器不支持本视频</video>

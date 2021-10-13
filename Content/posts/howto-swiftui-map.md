@@ -1,16 +1,15 @@
 ---
 date: 2020-07-09 13:00
-description: Swift2.0中，苹果添加了Map，让开发者可以非常容易的在View中添加需要的地图元素。本文简单介绍了其用法
+description: Swift2.0 中，苹果添加了 Map，让开发者可以非常容易的在 View 中添加需要的地图元素。本文简单介绍了其用法
 tags: SwiftUI,HowTo
-title: HowTo—— Swift2.0在视图中显示地图
+title: HowTo—— Swift2.0 在视图中显示地图
 ---
 
-Swift2.0中，苹果添加了Map，让开发者可以非常容易的在View中添加需要的地图元素。
+Swift2.0 中，苹果添加了 Map，让开发者可以非常容易的在 View 中添加需要的地图元素。
 
 ```responser
 id:1
 ```
-
 
 ```swift
 import SwiftUI
@@ -46,9 +45,9 @@ struct MapView: View{
                 userTrackingMode:$trackmode, //是否更新用户位置
                 annotationItems:dots //标记点数据
             ){item in
-                //标记点显示,也可以直接使用内置的MapPin,不过MapPin无法响应用户输入
+                //标记点显示，也可以直接使用内置的 MapPin, 不过 MapPin 无法响应用户输入
                 MapAnnotation(coordinate: item.coordinate  ){
-                    //不知道是否是bug,目前iOS下无法显示Text,maxOS可以显示
+                    //不知道是否是 bug, 目前 iOS 下无法显示 Text,maxOS 可以显示
                     Label(item.title, systemImage: "star.fill")
                         .font(.body)
                         .foregroundColor(item.color)
@@ -62,7 +61,7 @@ struct MapView: View{
     }
 }
 
-//标记点数据,要求符合Identifiable
+//标记点数据，要求符合 Identifiable
 struct MapDot:Identifiable{
     let id = UUID()
     let title:String
@@ -73,13 +72,12 @@ struct MapDot:Identifiable{
 class Store:ObservableObject {
     let manager = CLLocationManager()
     init() {
-        //请求位置访问权限.需要在plist中设置 Privacy - Location When In Use Usage Description
-        //如果不需要显示当前用户位置,则无需申请权限
+        //请求位置访问权限。需要在 plist 中设置 Privacy - Location When In Use Usage Description
+        //如果不需要显示当前用户位置，则无需申请权限
         #if os(iOS)
             manager.requestWhenInUseAuthorization()
         #endif
     }
 }
-
 
 ```

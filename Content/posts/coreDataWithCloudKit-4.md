@@ -1,11 +1,10 @@
 ---
 date: 2021-08-11 07:50
-description: 本文聊一下在开发Core Data with CloudKit项目中常见的一些问题，让大家少走弯路、避免踩坑。
+description: 本文聊一下在开发 Core Data with CloudKit 项目中常见的一些问题，让大家少走弯路、避免踩坑。
 tags: CloudKit,Core Data
 title: Core Data with CloudKit（四）—— 调试、测试、迁移及其他
 ---
 本文聊一下在开发`Core Data with CloudKit`项目中常见的一些问题，让大家少走弯路、避免踩坑。
-
 
 ```responser
 id:1
@@ -35,13 +34,13 @@ id:1
 
 * **持久化历史跟踪信息**
 
-  `NSPersistentCloudKitContainer`使用持久化历史跟踪来管理导入导出事务，在数据同步信息的左右经常会伴随包含`NSPersistentHistoryToken`之类的提示。另外类似`Ignoring remote change notification because the exporter has already caught up to this transaction: 11 / 11 - <NSSQLCore: 0x7ff73e4053b0>`的信息也是持久化历史跟踪产生的，容易让人误以为总有事务没有处理。关于`Persistent History Tracking`可以阅读我另一篇文章[在CoreData中使用持久化历史跟踪](/posts/persistentHistoryTracking/)。
+  `NSPersistentCloudKitContainer`使用持久化历史跟踪来管理导入导出事务，在数据同步信息的左右经常会伴随包含`NSPersistentHistoryToken`之类的提示。另外类似`Ignoring remote change notification because the exporter has already caught up to this transaction: 11 / 11 - <NSSQLCore: 0x7ff73e4053b0>`的信息也是持久化历史跟踪产生的，容易让人误以为总有事务没有处理。关于`Persistent History Tracking`可以阅读我另一篇文章 [在 CoreData 中使用持久化历史跟踪](/posts/persistentHistoryTracking/)。
 
 ### 可能的不正常情况的信息 ###
 
 * **初始化错误**
 
-  比较常见的有，无法创建或读取`sqlite`文件产生的本地`url`错误以及`CKContainerID`权限问题。如果`url`指向`appGroupContainer`，一定要确认`appGroupID`正确，且`app`已获得`group`权限。`CKContainerID`权限问题通常使用[之前文章](/posts/coreDataWithCloudKit-2/)中提到的重置`Certificates,Identifiers&Profiles`中的配置来解决。
+  比较常见的有，无法创建或读取`sqlite`文件产生的本地`url`错误以及`CKContainerID`权限问题。如果`url`指向`appGroupContainer`，一定要确认`appGroupID`正确，且`app`已获得`group`权限。`CKContainerID`权限问题通常使用 [之前文章](/posts/coreDataWithCloudKit-2/) 中提到的重置`Certificates,Identifiers&Profiles`中的配置来解决。
 
 * **模型迁移错误**
 
@@ -51,9 +50,9 @@ id:1
 
   请检查是否设置了正确的合并冲突策略`NSMergeByPropertyObjectTrumpMergePolicy`？是否从`CloudKit`控制台对数据做出了错误的修改？如仍处于开发阶段，可采用和上面一样的方式解决。
 
-* **iCloud账号或网络错误**
+* **iCloud 账号或网络错误**
 
-  `iCloud`没登录，`iCloud`服务器没响应，iCloud账号受限等。以上问题多数都是开发人员这端无法解决的。`NSPersistentCloudKitContainer`会在`iCloud`账户登录后自动恢复同步。在代码中进行账号状态检查，并提醒用户登录账号。
+  `iCloud`没登录，`iCloud`服务器没响应，iCloud 账号受限等。以上问题多数都是开发人员这端无法解决的。`NSPersistentCloudKitContainer`会在`iCloud`账户登录后自动恢复同步。在代码中进行账号状态检查，并提醒用户登录账号。
 
 ## 关闭日志输出 ##
 
@@ -67,7 +66,7 @@ id:1
 
 * **-com.apple.CoreData.CloudKitDebug**
 
-  `CloudKit`调试信息输出级别，从1开始，数字越大信息愈详尽
+  `CloudKit`调试信息输出级别，从 1 开始，数字越大信息愈详尽
 
 * **-com.apple.CoreData.SQLDebug**
 
@@ -160,7 +159,7 @@ if allowCloudKitSync {
 
 在实际的使用中，对用户感知影响最大的是数据导入状态。当用户在新设备上安装了应用程序，并且已经在网络上保存有较多数据时，面对完全没有数据的应用程序用户会感到很茫然。
 
-数据会在应用程序启动后20-30秒开始导入，如果数据量较大，用户很可能会在1-2分钟后才会在UI上看到数据（批量导入通常会在整批数据都导入后才会`merge`到上下文中）。因此为用户提供足够的提示尤为重要。
+数据会在应用程序启动后 20-30 秒开始导入，如果数据量较大，用户很可能会在 1-2 分钟后才会在 UI 上看到数据（批量导入通常会在整批数据都导入后才会`merge`到上下文中）。因此为用户提供足够的提示尤为重要。
 
 在实际使用中，当导入状态结束后，会切换到其他的状态。利用类似如下的代码，尝试给用户提供一点提示。
 
@@ -189,7 +188,7 @@ var body:some View{
 }
 ```
 
-> 当应用程序被切到后台时，同步任务仅能继续执行30秒左右，在切换回前台后数据会继续进行同步。因此当数据较多时，需做好用户的提示工作（比如保持在前台，或让用户继续等待）。
+> 当应用程序被切到后台时，同步任务仅能继续执行 30 秒左右，在切换回前台后数据会继续进行同步。因此当数据较多时，需做好用户的提示工作（比如保持在前台，或让用户继续等待）。
 
 ## 创建默认数据集 ##
 
@@ -197,7 +196,7 @@ var body:some View{
 
 * **确认数据集是否一定需要被同步**
 
-  如无需同步可以考虑采用[同步本地数据库到iCloud私有数据库](/posts/coreDataWithCloudKit-2/)一文中，有选择的同步数据解决方案。
+  如无需同步可以考虑采用 [同步本地数据库到 iCloud 私有数据库](/posts/coreDataWithCloudKit-2/) 一文中，有选择的同步数据解决方案。
 
 * **如数据集必须要同步**
 
@@ -206,11 +205,11 @@ var body:some View{
   2. 也可在应用程序首次运行时，利用`CKQuerySubscription`通过查询特定记录判断网络数据库中是否已有数据（此方法是在前几天和一个网友交流时他采用的方法，不过该网友对返回响应并不满意，用户感知不太好）。
   3. 或许可考虑通过使用`NSUbiquitousKeyValueStore`进行判断。
 
-> 2、3两种方式都需要保证网络及账号状态正常的情况下才能检查，让用户自行判断或许最为简单。
+> 2、3 两种方式都需要保证网络及账号状态正常的情况下才能检查，让用户自行判断或许最为简单。
 
 ## 移动本地数据库 ##
 
-已经在`AppStore`上架的应用程序，在某些情况下有移动本地数据库到其他`URL`的需求。比如，为了让`Widget`也可以访问数据库，我将[健康笔记](https://www.fatbobman.com/project/healthnotes/)的数据库移动到了`appGroupContainerURL`。
+已经在`AppStore`上架的应用程序，在某些情况下有移动本地数据库到其他`URL`的需求。比如，为了让`Widget`也可以访问数据库，我将 [健康笔记](https://www.fatbobman.com/project/healthnotes/) 的数据库移动到了`appGroupContainerURL`。
 
 如果使用`NSPersistentContainer`，可以直接调用`coordinator.migratePersistentStore`即可安全完成数据库文件的位置转移。但如果对`NSPersistentCloudKitContainer`加载的`store`调用此方法，则必须强制退出应用程序后再次进入方可正常使用（虽然数据库文件被转移，但迁移后会告知加载`CloudKit container`错误，无法进行同步。需重启应用程序才能正常同步）。
 
@@ -251,7 +250,7 @@ func migrateStore() {
 
 ## 更新数据模型 ##
 
-在[CloudKit仪表台](/posts/coreDataWithCloudKit-3/)一文，我们已经探讨过`CloudKit`的两种环境设置。一旦将`Schema`部署到生产环境，开发者便无法对记录类型和字段进行重命名或者删除。**必须仔细规划你的应用程序，保证其在对数据模型进行更新时仍做到向前兼容**。
+在 [CloudKit 仪表台](/posts/coreDataWithCloudKit-3/) 一文，我们已经探讨过`CloudKit`的两种环境设置。一旦将`Schema`部署到生产环境，开发者便无法对记录类型和字段进行重命名或者删除。**必须仔细规划你的应用程序，保证其在对数据模型进行更新时仍做到向前兼容**。
 
 不可以随心所欲地修改数据模型，对实体、属性尽量做到：只加、不减、不改。
 
@@ -265,14 +264,14 @@ func migrateStore() {
 
 请确保新增的属性或实体都只服务于新版本的新功能，且即使没有这些数据，新版本程序仍可可正常运行（如此时用户仍使用旧版本更新数据，新添加的实体和属性都不会有内容）。
 
-### 增加version属性 ###
+### 增加 version 属性 ###
 
 这个策略是上一个策略的加强版。通过一开始在实体上添加`version`属性，对实体进行版本控制，通过谓词仅提取与应用程序当前版本兼容的记录。旧版本程序将不会提取新版本创建的数据。
 
 例如，实体`Post`具备`version`属性
 
 ```swift
-// 当前的数据版本.
+// 当前的数据版本。
 let maxCompatibleVersion = 3
 
 context.performAndWait {
@@ -292,7 +291,7 @@ context.performAndWait {
 
 利用`version`属性，应用程序可以很容易知道当前的版本已经不满足数据模型的需要。它可以禁止用户修改数据，并提示用户更新应用程序版本。
 
-### 创建新CKContainer及新的本地存储 ###
+### 创建新 CKContainer 及新的本地存储 ###
 
 如果你的数据模型发生了巨大的变化，采用上述方式已经很难处理，或者上述方式会造成巨大的数据浪费时，可以为应用程序添加一个新的关联容器，并通过代码将原始数据转移到新容器上。
 

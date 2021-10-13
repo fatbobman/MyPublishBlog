@@ -1,15 +1,14 @@
 ---
 date: 2021-10-01 10:00
-description: 本文将通过介绍如何创建符合新API的Formatter，让读者从另一个角度了解新Formatter API的设计机制；并对新旧两款API进行比较。
+description: 本文将通过介绍如何创建符合新 API 的 Formatter，让读者从另一个角度了解新 Formatter API 的设计机制；并对新旧两款 API 进行比较。
 tags: Swift,Foundation
-title:  WWDC 2021新Formatter API：新老比较及如何自定义
+title:  WWDC 2021 新 Formatter API：新老比较及如何自定义
 image: images/newFormatter.png
 ---
 
-在WWDC 2021的[What's in Foundation](https://developer.apple.com/videos/play/wwdc2021/10109/)专题中，苹果隆重介绍了适用于Swift的新Formatter API。网上已经有不少文章对新API的用法进行了说明。本文将通过介绍如何创建符合新API的Formatter，让读者从另一个角度了解新Formatter API的设计机制；并对新旧两款API进行比较。
+在 WWDC 2021 的 [What's in Foundation](https://developer.apple.com/videos/play/wwdc2021/10109/) 专题中，苹果隆重介绍了适用于 Swift 的新 Formatter API。网上已经有不少文章对新 API 的用法进行了说明。本文将通过介绍如何创建符合新 API 的 Formatter，让读者从另一个角度了解新 Formatter API 的设计机制；并对新旧两款 API 进行比较。
 
-> 本文的演示代码可以在[Github](https://github.com/fatbobman/CustomParseableFormatStyleDemo)上下载
-
+> 本文的演示代码可以在 [Github](https://github.com/fatbobman/CustomParseableFormatStyleDemo) 上下载
 
 ```responser
 id:1
@@ -17,21 +16,21 @@ id:1
 
 ## 新旧交替或风格转换 ##
 
-### 新Formatter API可以做什么 ###
+### 新 Formatter API 可以做什么 ###
 
-新Formatter提供了一个便捷的接口，让Swift程序员以更熟悉方式在应用程序中呈现本地化的格式字符串。
+新 Formatter 提供了一个便捷的接口，让 Swift 程序员以更熟悉方式在应用程序中呈现本地化的格式字符串。
 
-### 新API比旧API好吗 ###
+### 新 API 比旧 API 好吗 ###
 
-好和坏都是相对的，对于以Swift开发为主或者只会Swift的程序员（比如我本人），新Formatter不仅学习和使用起来更容易，同时也更适合日益流行的声明式编程风格。不过从整体功能和效率上讲，新Formatter并不具备优势。
+好和坏都是相对的，对于以 Swift 开发为主或者只会 Swift 的程序员（比如我本人），新 Formatter 不仅学习和使用起来更容易，同时也更适合日益流行的声明式编程风格。不过从整体功能和效率上讲，新 Formatter 并不具备优势。
 
-### 新旧API比较 ###
+### 新旧 API 比较 ###
 
 #### 调用方便度 ####
 
-如果说新API相较旧API的最大优势，便是在调用上更符合直觉、更方便了。
+如果说新 API 相较旧 API 的最大优势，便是在调用上更符合直觉、更方便了。
 
-旧API：
+旧 API：
 
 ```swift
       let number = 3.147
@@ -43,7 +42,7 @@ id:1
       // 3.15
 ```
 
-新API：
+新 API：
 
 ```swift
       let number = 3.147
@@ -51,7 +50,7 @@ id:1
       // 3.15
 ```
 
-旧API：
+旧 API：
 
 ```swift
       let numberlist = [3.345,534.3412,4546.4254]
@@ -68,7 +67,7 @@ id:1
       // 3.35, 534.35, and 4,546.43
 ```
 
-新API：
+新 API：
 
 ```swift
         let numString1 = numberlist.formatted(
@@ -80,15 +79,15 @@ id:1
     // 3.35, 534.35, and 4,546.43
 ```
 
-即使你对新API并不很了解，仅凭代码的自动提示你就可以快速组合出想要的格式化结果。
+即使你对新 API 并不很了解，仅凭代码的自动提示你就可以快速组合出想要的格式化结果。
 
 #### 运行效率 ####
 
-在WWDC视频中，苹果几次提及新API对性能的提升。不过苹果并没有告诉你全部的真相。
+在 WWDC 视频中，苹果几次提及新 API 对性能的提升。不过苹果并没有告诉你全部的真相。
 
-从我个人的测试数据来看，新API的效率相较于仅使用一次的Formatter实例来说，提升还是比较明显的（30% —— 300%），不过同可复用的Formatter实例比较，仍有数量级上的差距。
+从我个人的测试数据来看，新 API 的效率相较于仅使用一次的 Formatter 实例来说，提升还是比较明显的（30% —— 300%），不过同可复用的 Formatter 实例比较，仍有数量级上的差距。
 
-旧API，每次都重新创建实例
+旧 API，每次都重新创建实例
 
 ```swift
     func testDateFormatterLong() throws {
@@ -105,7 +104,7 @@ id:1
 // 0.121
 ```
 
-旧API，只创建一次实例
+旧 API，只创建一次实例
 
 ```swift
     func testDateFormatterLongCreateOnce() throws {
@@ -122,7 +121,7 @@ id:1
 // 0.005
 ```
 
-新API
+新 API
 
 ```swift
     func testDateFormatStyleLong() throws {
@@ -135,15 +134,15 @@ id:1
 // 0.085
 ```
 
-使用新API，配置的内容越多，执行所需时间也会相应增长。不过除非是对性能有非常高要求的场景，否则新API的执行效率还是有可以令人满意的。
+使用新 API，配置的内容越多，执行所需时间也会相应增长。不过除非是对性能有非常高要求的场景，否则新 API 的执行效率还是有可以令人满意的。
 
-> 本文的Demo中，附带了部分Unit Test代码，大家可以自行测试。
+> 本文的 Demo 中，附带了部分 Unit Test 代码，大家可以自行测试。
 
 #### 统一性 ###
 
-旧API中，针对不同的格式化类型，我们需要创建不同的Formatter实例。比如使用NumberFormatter格式化数字、DateFormatter格式化日期。
+旧 API 中，针对不同的格式化类型，我们需要创建不同的 Formatter 实例。比如使用 NumberFormatter 格式化数字、DateFormatter 格式化日期。
 
-新API针对每个支持的类型都提供了统一的调用接口，尽量减少代码层面的复杂度
+新 API 针对每个支持的类型都提供了统一的调用接口，尽量减少代码层面的复杂度
 
 ```swift
 Date.now.formatted()
@@ -156,11 +155,11 @@ Date.now.addingTimeInterval(100000).formatted(.relative(presentation: .named))
 
 #### 自定义难度 ####
 
-新API的调用便利性是建立在大量繁杂工作的基础之上的。相较于旧API通过属性直接设置，新API采用函数式编程方式，针对每个属性单独编写设置方法。虽然并不复杂，但工作量明显提高。
+新 API 的调用便利性是建立在大量繁杂工作的基础之上的。相较于旧 API 通过属性直接设置，新 API 采用函数式编程方式，针对每个属性单独编写设置方法。虽然并不复杂，但工作量明显提高。
 
 #### AttributedString ####
 
-新API为每个可转换类型都提供AttributedString格式支持。通过AttribtedString中的Field，可以方便的生成想要的显示样式。
+新 API 为每个可转换类型都提供 AttributedString 格式支持。通过 AttribtedString 中的 Field，可以方便的生成想要的显示样式。
 
 比如：
 
@@ -187,11 +186,11 @@ Text(dateString)
 
 #### 代码出错率 ####
 
-在新API中，一切都是类型安全的，开发者无需反复的查阅文档，你的代码可以享受编译时检查的好处。
+在新 API 中，一切都是类型安全的，开发者无需反复的查阅文档，你的代码可以享受编译时检查的好处。
 
 比如下面的代码
 
-旧API
+旧 API
 
 ```swift
 let dateFormatter:DateFormatter = {
@@ -203,37 +202,37 @@ let dateFormatter:DateFormatter = {
 let dateString = dateFormatter.string(from: Date.now)
 ```
 
-新API
+新 API
 
 ```swift
 let dateString = Date.now.formatted(.iso8601.year().month().day().dateSeparator(.dash).dateTimeSeparator(.space).time(includingFractionalSeconds: false) .timeSeparator(.colon))
 ```
 
-如果单从代码量上来看，在本例中，新API不占据任何优势。不过你无需在yyyy和YYYY或者MM还是mm中犹豫，也不用反复查看[令人头痛的文档](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_symbol_table)，减少了在代码中犯错的可能性。
+如果单从代码量上来看，在本例中，新 API 不占据任何优势。不过你无需在 yyyy 和 YYYY 或者 MM 还是 mm 中犹豫，也不用反复查看 [令人头痛的文档](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_symbol_table)，减少了在代码中犯错的可能性。
 
 ### 风格转换？ ###
 
-旧API是Objectiv-C的产物，它十分高效且好用，但在Swift中使用难免有不协调感。
+旧 API 是 Objectiv-C 的产物，它十分高效且好用，但在 Swift 中使用难免有不协调感。
 
-新API是完全为Swift开发的，它采用了当前流行的声明式的风格。开发者只需要声明需要显示的字段，系统将以合适的格式进行呈现。
+新 API 是完全为 Swift 开发的，它采用了当前流行的声明式的风格。开发者只需要声明需要显示的字段，系统将以合适的格式进行呈现。
 
 两种风格将在苹果的开发生态中长期共存，开发者可以选择适合自己的方式来实现同一个目标。
 
-因此不存在风格转换的问题，苹果只是补交了Swift开发环境上缺失的一部分而已。
+因此不存在风格转换的问题，苹果只是补交了 Swift 开发环境上缺失的一部分而已。
 
 ### 结论 ###
 
-新旧API将长期共存。
+新旧 API 将长期共存。
 
-新API并非用来替换旧的Formatter API，应该算是旧Formatter的Swift实现版本。新API基本涵盖了旧API绝大多数的功能，着重改善了开发者的使用体验。
+新 API 并非用来替换旧的 Formatter API，应该算是旧 Formatter 的 Swift 实现版本。新 API 基本涵盖了旧 API 绝大多数的功能，着重改善了开发者的使用体验。
 
-类似的情况在最近几年中将不断上演，苹果在Swift语言层面基本完善的情况下，将逐步提供其核心框架的Swift版本。本届WWDC上推出的AttributedString也可以佐证这一点。
+类似的情况在最近几年中将不断上演，苹果在 Swift 语言层面基本完善的情况下，将逐步提供其核心框架的 Swift 版本。本届 WWDC 上推出的 AttributedString 也可以佐证这一点。
 
-## 如何自定义新的Formatter ##
+## 如何自定义新的 Formatter ##
 
-### 新老API在自定义方面的不同 ###
+### 新老 API 在自定义方面的不同 ###
 
-旧API是用类实现的，在创建自定义格式化器时，我们需要创建一个Formatter的子类，并至少实现以下两个方法：
+旧 API 是用类实现的，在创建自定义格式化器时，我们需要创建一个 Formatter 的子类，并至少实现以下两个方法：
 
 ```swift
 class MyFormatter:Formatter {
@@ -262,7 +261,7 @@ class MyFormatter:Formatter {
 
 数据的格式转换都是在**一个类**定义中完成的。
 
-新API充分体现了Swift作为面向协议语言的特点，使用两个协议（`FormatStyle`、`ParseStrategy`），分别定义了格式化数据和从格式化转换两个方向的实现。
+新 API 充分体现了 Swift 作为面向协议语言的特点，使用两个协议（`FormatStyle`、`ParseStrategy`），分别定义了格式化数据和从格式化转换两个方向的实现。
 
 ### 新协议 ###
 
@@ -287,11 +286,11 @@ public protocol FormatStyle : Decodable, Encodable, Hashable {
 }
 ```
 
-尽管在导出类型上使用了泛型，不过由于新API着重于格式化（而不是类型转换），因此通常FormatOutpu为`String`或者`AttributedString`。
+尽管在导出类型上使用了泛型，不过由于新 API 着重于格式化（而不是类型转换），因此通常 FormatOutpu 为`String`或者`AttributedString`。
 
-`func format(_ value: Self.FormatInput) -> Self.FormatOutput`是必须实现的方法，`locale`用来为Formatter设置区域信息，其返回值中的`format`方法的输出类型同原结构一致。因此，尽管Formatter会针对不同区域提供不同语言的返回结果，但为了兼容性，返回结果仍为`String`。
+`func format(_ value: Self.FormatInput) -> Self.FormatOutput`是必须实现的方法，`locale`用来为 Formatter 设置区域信息，其返回值中的`format`方法的输出类型同原结构一致。因此，尽管 Formatter 会针对不同区域提供不同语言的返回结果，但为了兼容性，返回结果仍为`String`。
 
-FormatStyle协议同时约定了必须满足Codable和Hashable。
+FormatStyle 协议同时约定了必须满足 Codable 和 Hashable。
 
 #### ParseStrategy ####
 
@@ -311,7 +310,7 @@ public protocol ParseStrategy : Decodable, Encodable, Hashable {
 }
 ```
 
-`parse`的定义可比旧API的`getObjectValue`容易理解多了。
+`parse`的定义可比旧 API 的`getObjectValue`容易理解多了。
 
 #### ParseableFromatStyle ####
 
@@ -327,13 +326,13 @@ public protocol ParseableFormatStyle : FormatStyle {
 }
 ```
 
-> 尽管理论上也可以通过`FormatStyle&ParseStrategy`在一个结构体中实现双向转换，不过官方框架只支持通过`ParseableFromatStyle`协议实现的Formatter。
+> 尽管理论上也可以通过`FormatStyle&ParseStrategy`在一个结构体中实现双向转换，不过官方框架只支持通过`ParseableFromatStyle`协议实现的 Formatter。
 
 ### 其他 ###
 
-尽管`ParseableFromatStyle`协议并没有要求一定要输出AttributedString，不过在官方的新Formatter API中还是为每个类型都提供了AttributedString的输出。
+尽管`ParseableFromatStyle`协议并没有要求一定要输出 AttributedString，不过在官方的新 Formatter API 中还是为每个类型都提供了 AttributedString 的输出。
 
-为了方便Formatter的调用，所有的官方Formatter都使用了Swift 5.5的新功能——在泛型上下文中扩展静态成员查找
+为了方便 Formatter 的调用，所有的官方 Formatter 都使用了 Swift 5.5 的新功能——在泛型上下文中扩展静态成员查找
 
 例如
 
@@ -343,8 +342,7 @@ extension FormatStyle where Self == IntegerFormatStyle<Int> {
 }
 ```
 
-我们最好也为自定义的Formatter提供类似的定义
-
+我们最好也为自定义的 Formatter 提供类似的定义
 
 ```responser
 id:1
@@ -354,16 +352,16 @@ id:1
 
 ### 目标 ###
 
-本节中，我们将用新的协议来实现针对UIColor的Formatter，它将实现如下功能：
+本节中，我们将用新的协议来实现针对 UIColor 的 Formatter，它将实现如下功能：
 
-* 转换成String
+* 转换成 String
 
 ```swift
 UIColor.red.formatted()
 // #FFFFFF
 ```
 
-* 转换成AttributedString
+* 转换成 AttributedString
 
 ```swift
 UIColor.red.formatted(.uiColor.attributed)
@@ -371,7 +369,7 @@ UIColor.red.formatted(.uiColor.attributed)
 
 ![image-20210930171252694](https://cdn.fatbobman.com/image-20210930171252694.png)
 
-* 从String转换成UIColor
+* 从 String 转换成 UIColor
 
 ```swift
 let color = try! UIColor("#FFFFFFCC")
@@ -390,9 +388,9 @@ Text(color, format: .uiColor.alpah().mark().prefix)
 
 ![image-20210930171654956](https://cdn.fatbobman.com/image-20210930171654956.png)
 
-### 实现ParseStrategy ###
+### 实现 ParseStrategy ###
 
-将字符串转换成UIColor。
+将字符串转换成 UIColor。
 
 ```swift
 struct UIColorParseStrategy: ParseStrategy {
@@ -428,9 +426,9 @@ struct UIColorParseStrategy: ParseStrategy {
 }
 ```
 
-在Demo中，我们并没有实现一个要求非常严格的ParseStrategy。任何长度为6或8的十六进制字符串都将被转换成UIColor。
+在 Demo 中，我们并没有实现一个要求非常严格的 ParseStrategy。任何长度为 6 或 8 的十六进制字符串都将被转换成 UIColor。
 
-### 实现ParseableFromatStyle ###
+### 实现 ParseableFromatStyle ###
 
 ```swift
 struct UIColorFormatStyle: ParseableFormatStyle {
@@ -503,11 +501,11 @@ extension UIColorFormatStyle {
 
 ```
 
-在ParseableFromatStyle中，除了实现`format`方法外，我们为不同的配置声明了属性。
+在 ParseableFromatStyle 中，除了实现`format`方法外，我们为不同的配置声明了属性。
 
 > 将`getField`方法声明为结构方法，便于之后的`Attributed`调用
 
-在完成了上述代码后，我们已经可以使用代码在UIColor和String之间进行转换：
+在完成了上述代码后，我们已经可以使用代码在 UIColor 和 String 之间进行转换：
 
 ```swift
 let colorString = UIColorFormatStyle().format(UIColor.blue)
@@ -561,9 +559,9 @@ let colorString = UIColorFormatStyle().alpah(.show).prefix(.none).format(UIColor
 // 0000FFFF
 ```
 
-### localized支持 ###
+### localized 支持 ###
 
-由于`format`的输出类型为String，因此，我们需要在`getField`中将`Mark`转换成对应区域的文字。在`getField`中做如下修改：
+由于`format`的输出类型为 String，因此，我们需要在`getField`中将`Mark`转换成对应区域的文字。在`getField`中做如下修改：
 
 ```swift
         if mark == .show {
@@ -574,7 +572,7 @@ let colorString = UIColorFormatStyle().alpah(.show).prefix(.none).format(UIColor
         }
 ```
 
-在UIColorFormatStyle添加如下代码：
+在 UIColorFormatStyle 添加如下代码：
 
 ```swift
 enum MarkTag:String{
@@ -589,39 +587,39 @@ enum MarkTag:String{
         "EN-green":" Green:",
         "EN-blue" : " Blue:",
         "EN-alpha" : " Alpha:",
-        "ZH-red" : " 红:",
-        "ZH-green" : " 绿:",
+        "ZH-red" : " 红：",
+        "ZH-green" : " 绿：",
         "ZH-blue" : " 蓝",
-        "ZH-alpha" : " 透明度:"
+        "ZH-alpha" : " 透明度："
     ]
 ```
 
-至此，当系统切换到拥有对应语言包的地区时，Mark将显示对应的内容
+至此，当系统切换到拥有对应语言包的地区时，Mark 将显示对应的内容
 
 ```swift
 # Red:00 Green:00 Blue:FF Alpha:FF
-# 红:00 绿:00 蓝:FF 透明度:FF
+# 红：00 绿：00 蓝：FF 透明度：FF
 ```
 
-> ~~截至本文完成时，`String(localized:String,locale:Locale)`仍有Bug，无法获取到对应的Locale文字。系统的Formatter也有这个问题。正常的情况下，我们可以使用如下代码，在非中文区域获得中文的mark显示~~
+> ~~截至本文完成时，`String(localized:String,locale:Locale)`仍有 Bug，无法获取到对应的 Locale 文字。系统的 Formatter 也有这个问题。正常的情况下，我们可以使用如下代码，在非中文区域获得中文的 mark 显示~~
 >
-> 之前对String新的构造方法理解有误，经过官方的邮件解释，`String(localized:String, locale:Locale)`中的`locale`是用来设置字符串差值中formatter的locale。因此对原有代码进行了修改。
+> 之前对 String 新的构造方法理解有误，经过官方的邮件解释，`String(localized:String, locale:Locale)`中的`locale`是用来设置字符串差值中 formatter 的 locale。因此对原有代码进行了修改。
 
 ```swift
 let colorString = UIColorFormatStyle().mark().locale(Locale(identifier: "zh-cn")).format(UIColor.blue)
 ```
 
-在SwiftUI中设置
+在 SwiftUI 中设置
 
 ```swift
-// Text将自动调用Formatter的locale方法
+// Text 将自动调用 Formatter 的 locale 方法
 Text(color, format: .uiColor.mark())
     .environment(\.locale, Locale(identifier: "zh-cn"))
 ```
 
-### AttributedString支持 ###
+### AttributedString 支持 ###
 
-创建自定义Field，便于使用者修改AttributedString不同区域的Style
+创建自定义 Field，便于使用者修改 AttributedString 不同区域的 Style
 
 ```swift
 enum UIColorAttirbute: CodableAttributedStringKey, MarkdownDecodableAttributedStringKey {
@@ -650,9 +648,9 @@ extension AttributeDynamicLookup {
 }
 ```
 
-> 过些日子我会写篇博文介绍AttributedString的用法，以及如何自定义AttributedKey
+> 过些日子我会写篇博文介绍 AttributedString 的用法，以及如何自定义 AttributedKey
 
-由于将UIColor格式化成AttributedString是单向的（无需从AttribuedString转换回UIColor），因此Attributed只需遵循FormatStyle协议
+由于将 UIColor 格式化成 AttributedString 是单向的（无需从 AttribuedString 转换回 UIColor），因此 Attributed 只需遵循 FormatStyle 协议
 
 ```swift
 extension UIColorFormatStyle {
@@ -724,7 +722,7 @@ extension UIColorFormatStyle {
 
 ### 统一性支持 ###
 
-为UIColorFormatStyle添加FormatStyle扩展，方便在Xcode中使用
+为 UIColorFormatStyle 添加 FormatStyle 扩展，方便在 Xcode 中使用
 
 ```swift
 extension FormatStyle where Self == UIColorFormatStyle.Attributed {
@@ -740,7 +738,7 @@ extension FormatStyle where Self == UIColorFormatStyle {
 }
 ```
 
-为UIColor添加便捷构造方法和`formatted`方法，保持同官方Formatter一致的使用体验。
+为 UIColor 添加便捷构造方法和`formatted`方法，保持同官方 Formatter 一致的使用体验。
 
 ```swift
 extension UIColor {
@@ -771,10 +769,10 @@ extension UIColor {
 
 ![uicolorFormatter](https://cdn.fatbobman.com/uicolorFormatter.gif)
 
-可以在[Github](https://github.com/fatbobman/CustomParseableFormatStyleDemo)上下载全部代码。
+可以在 [Github](https://github.com/fatbobman/CustomParseableFormatStyleDemo) 上下载全部代码。
 
 ## 总结 ##
 
-鉴于官方已经提供了大量种类齐全、功能丰富的Formatter，大多数的开发者可能都不会碰到需要自定义Formatter的场景。不过通过对自定义Formatter协议的了解，可以加强我们对原生Formatter的认识，在代码中更好地使用它们。
+鉴于官方已经提供了大量种类齐全、功能丰富的 Formatter，大多数的开发者可能都不会碰到需要自定义 Formatter 的场景。不过通过对自定义 Formatter 协议的了解，可以加强我们对原生 Formatter 的认识，在代码中更好地使用它们。
 
 希望本文能对你有所帮助。

@@ -1,8 +1,8 @@
 ---
 date: 2021-08-09 08:50
-description: 本篇文章中，我们将探讨Core Data with CloudKit应用中最常见的场景——将本地数据库同步到iCloud私有数据库。
+description: 本篇文章中，我们将探讨 Core Data with CloudKit 应用中最常见的场景——将本地数据库同步到 iCloud 私有数据库。
 tags: CloudKit,Core Data
-title: Core Data with CloudKit（二）——同步本地数据库到iCloud私有数据库
+title: Core Data with CloudKit（二）——同步本地数据库到 iCloud 私有数据库
 ---
 
 本篇文章中，我们将探讨`Core Data with CloudKit`应用中最常见的场景——将本地数据库同步到`iCloud`私有数据库。我们将从几个层面逐步展开：
@@ -12,8 +12,7 @@ title: Core Data with CloudKit（二）——同步本地数据库到iCloud私�
 * 在现有项目`Core Date`中添加`Host in CloudKit`支持
 * 有选择的同步数据
 
-> 本文使用的开发环境为`Xcode 12.5`。关于私有数据库的概念，请参阅[Core Data with CloudKit (一) —— 基础](/posts/coreDataWithCloudKit-1/)。如想实际操作本文内容，需要拥有[Apple Developer Program](https://developer.apple.com/programs/)账号。
-
+> 本文使用的开发环境为`Xcode 12.5`。关于私有数据库的概念，请参阅 [Core Data with CloudKit （一） —— 基础](/posts/coreDataWithCloudKit-1/)。如想实际操作本文内容，需要拥有 [Apple Developer Program](https://developer.apple.com/programs/) 账号。
 
 ```responser
 id:1
@@ -21,32 +20,32 @@ id:1
 
 ## 快速指南 ##
 
-在应用程序中启用`Core Data with CloudKi`t功能，只需要以下几步：
+在应用程序中启用`Core Data with CloudKi`t 功能，只需要以下几步：
 
 1. 使用`NSPersistentCloudKitContainer`
-2. 在`项目Target`的`Signing&Capablities`中添加`CloudKit`支持
+2. 在`项目 Target`的`Signing&Capablities`中添加`CloudKit`支持
 3. 为项目创建或指定`CloudKit container`
-4. 在`项目Target`的`Signing&Capablities`中添加`background`支持
+4. 在`项目 Target`的`Signing&Capablities`中添加`background`支持
 5. 配置`NSPersistentStoreDescription`以及`viewContext`
 6. 检查`Data Model`是否满足同步的要求
 
-## 在新项目中直接支持Core Data with CloudKit ##
+## 在新项目中直接支持 Core Data with CloudKit ##
 
-在最近几年苹果不断完善`Xcode`的`Core Data模版`，直接使用自带模版来新建一个支持`Core Data with CloudKit`的项目是最便捷的入手方式。
+在最近几年苹果不断完善`Xcode`的`Core Data 模版`，直接使用自带模版来新建一个支持`Core Data with CloudKit`的项目是最便捷的入手方式。
 
-### 创建新的Xcode项目 ###
+### 创建新的 Xcode 项目 ###
 
 创建新项目，在项目设置界面勾选`Use Core Data`及`Host in CloudKit`（早期版本为`Use CloudKit`），并设置开发团队（`Team`）
 
 ![image-20210806180200853](https://cdn.fatbobman.com/image-20210806180200853-8244122.png)
 
-设定保存地址后，Xcode将使用预置模版为你生成包含`Core Data with CloudKit`支持的项目文档。
+设定保存地址后，Xcode 将使用预置模版为你生成包含`Core Data with CloudKit`支持的项目文档。
 
-> Xcode可能会提醒新项目代码有错误，如果觉得烦只需要Build一下项目即可取消错误提示（生成NSManagoedObject Subclass）
+> Xcode 可能会提醒新项目代码有错误，如果觉得烦只需要 Build 一下项目即可取消错误提示（生成 NSManagoedObject Subclass）
 
 接下来，我们根据**快速指南**逐步操作。
 
-### 设置PersistentCloudKitContainer ###
+### 设置 PersistentCloudKitContainer ###
 
 `Persistence.swift`是官方模版创建的`Core Data Stack`。由于在创建项目的时候已经选择了`Host in CloudKit`，因此模版代码已直接使用`NSPersistentCloudKitContianer`替代`NSPersistentContianer`，无需进行修改。
 
@@ -54,7 +53,7 @@ id:1
 let container: NSPersistentCloudKitContainer
 ```
 
-### 启用CloudKit ####
+### 启用 CloudKit ####
 
 点击项目中对应的`Target`，选择`Signing&Capabilities`。点击`+Capability`查找`icloud`添加`CloudKit`支持。
 
@@ -62,11 +61,11 @@ let container: NSPersistentCloudKitContainer
 
 ![image-20210806185247739](https://cdn.fatbobman.com/image-20210806185247739-8247169.png)
 
-勾选`CloudKit`。点击`+`，输入`CloudKit container`名称。Xcode会在你`CloutKit container`名称的前面自动添加`iCloud.`。`container`的名称通常采用反向域名的方式，无需和项目或`BundleID`一致。*如果没有配置开发者团队，将无法创建`container`。*
+勾选`CloudKit`。点击`+`，输入`CloudKit container`名称。Xcode 会在你`CloutKit container`名称的前面自动添加`iCloud.`。`container`的名称通常采用反向域名的方式，无需和项目或`BundleID`一致。*如果没有配置开发者团队，将无法创建`container`。*
 
 ![image-20210808091434886](https://cdn.fatbobman.com/image-20210808091434886.png)
 
-*在添加了`CloudKit`支持后，Xcode会自动为你添加`Push Notifications`功能，原因我们在上一篇聊过。*
+*在添加了`CloudKit`支持后，Xcode 会自动为你添加`Push Notifications`功能，原因我们在上一篇聊过。*
 
 ### 启用后台通知 ###
 
@@ -76,7 +75,7 @@ let container: NSPersistentCloudKitContainer
 
 此功能让你的应用程序能够响应云端数据内容变化时推送的**静默通知**。
 
-### 配置NSPersistentStoreDescription和viewContext ###
+### 配置 NSPersistentStoreDescription 和 viewContext ###
 
 查看当前项目中的`.xcdatamodeld`文件，`CONFIGURATIONS`中只有一个默认配置`Default`，点击可以看到，右侧的`Used with CloudKit`已经被勾选上了。
 
@@ -103,7 +102,7 @@ do {
 }
 ```
 
-`container.viewContext.automaticallyMergesChangesFromParent = true`让视图上下文自动合并服务器端同步（`import`）来的数据。使用`@FetchRequest`或`NSFetchedResultsController`的视图可以将数据变化及时反应在UI上。
+`container.viewContext.automaticallyMergesChangesFromParent = true`让视图上下文自动合并服务器端同步（`import`）来的数据。使用`@FetchRequest`或`NSFetchedResultsController`的视图可以将数据变化及时反应在 UI 上。
 
 `container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy`设定合并冲突策略。如果不设置该属性，`Core Data`会默认使用`NSErrorMergePolicy`作为冲突解决策略（所有冲突都不处理，直接报错），这会导致`iCloud`的数据无法正确合并到本地数据库。
 
@@ -131,19 +130,19 @@ do {
 
 > 直到`Xcode 13 beta4`苹果仍然没有在预置的`Core Data with CloudKit`模版中添加上下文的设置，这导致使用原版模版导入数据的行为会和预期有出入，对初学者不很友好。
 
-### 检查Data Model是否满足同步的要求 ###
+### 检查 Data Model 是否满足同步的要求 ###
 
-模版项目的Data Model非常简单，只有一个`Entity`且只有一个`Attribute`，当下无需做调整。`Data Model`的同步适用规则会在下个章节详细介绍。
+模版项目的 Data Model 非常简单，只有一个`Entity`且只有一个`Attribute`，当下无需做调整。`Data Model`的同步适用规则会在下个章节详细介绍。
 
 ![image-20210806204211377](https://cdn.fatbobman.com/image-20210806204211377-8253732.png)
 
-### 修改ContentView.swift ###
+### 修改 ContentView.swift ###
 
-> **提醒**：模版生成的ContentView.swift是不完整的，需修改后方能正确显示。
+> **提醒**：模版生成的 ContentView.swift 是不完整的，需修改后方能正确显示。
 
 ```swift
     var body: some View {
-        NavigationView { // 添加NavigationView
+        NavigationView { // 添加 NavigationView
             List {
                 ForEach(items) { item in
                     Text("Item at \(item.timestamp!, formatter: itemFormatter)")
@@ -151,7 +150,7 @@ do {
                 .onDelete(perform: deleteItems)
             }
             .toolbar {
-                HStack { // 添加HStack
+                HStack { // 添加 HStack
                     EditButton()
                     Button(action: addItem) {
                         Label("Add Item", systemImage: "plus")
@@ -162,7 +161,7 @@ do {
     }
 ```
 
-修改后，可以正常显示Toolbar按钮了。
+修改后，可以正常显示 Toolbar 按钮了。
 
 至此，我们已经完成了一个支持`Core Data with CloudKit`的项目了。
 
@@ -174,17 +173,17 @@ do {
 
 ![syncToPrivateDB](https://cdn.fatbobman.com/syncToPrivateDB-8292698.gif)
 
-*视频经过剪辑，数据的同步时间通常为15-20秒左右。*
+*视频经过剪辑，数据的同步时间通常为 15-20 秒左右。*
 
-从模拟器上进行的操作（添加、删除）通常会在15-20秒中左右会反应到实机上；但从实机上进行的操作，则需要将模拟器切换到后台再返回前台才能在模拟器中体现出来（因为模拟器不支持静默通知响应）。如果是在两个模拟器间进行测试，两端都需要做类似操作。
+从模拟器上进行的操作（添加、删除）通常会在 15-20 秒中左右会反应到实机上；但从实机上进行的操作，则需要将模拟器切换到后台再返回前台才能在模拟器中体现出来（因为模拟器不支持静默通知响应）。如果是在两个模拟器间进行测试，两端都需要做类似操作。
 
-苹果文档对同步+分发的时间描述为不超过1分钟，在实际使用中通常都会在10-30秒左右。支持批量数据更新，无需担心大量数据更新的效率问题。
+苹果文档对同步+分发的时间描述为不超过 1 分钟，在实际使用中通常都会在 10-30 秒左右。支持批量数据更新，无需担心大量数据更新的效率问题。
 
 当数据发生变化时，控制台会有大量的调试信息产生，之后会有专文涉及更多关于调试方面的内容。
 
-## 创建可同步Model的注意事项 ##
+## 创建可同步 Model 的注意事项 ##
 
-要在`Core Data`和`CloudKit`数据库之间完美地传递记录，最好对双方的数据结构类型有一定的了解，具体请参阅[Core Data with CloudKit (一) —— 基础](/posts/coreDataWithCloudKit-1/)。
+要在`Core Data`和`CloudKit`数据库之间完美地传递记录，最好对双方的数据结构类型有一定的了解，具体请参阅 [Core Data with CloudKit （一） —— 基础](/posts/coreDataWithCloudKit-1/)。
 
 `CloudKit Schema`并不支持`Core Data Model`的所有功能、配置，因此在设计可同步的`Core Data`项目时，请注意以下限制，并确保你创建了一个兼容的数据模型。
 
@@ -206,18 +205,18 @@ CREATE UNIQUE INDEX Z_Movie_UNIQUE_color_colors ON ZMOVIE (ZCOLOR COLLATE BINARY
 
 ![image-20210807091044353](https://cdn.fatbobman.com/image-20210807091044353-8298645.png)
 
-上图中的属性 `非Optional` 且 `没有Default Value`是不兼容的形式，`Xcode`会报错。
+上图中的属性 `非 Optional` 且 `没有 Default Value`是不兼容的形式，`Xcode`会报错。
 
 * **不支持`Undefined`类型**
 ![image-20210808073123665](https://cdn.fatbobman.com/image-20210808073123665-8379084.png)
 
 ### Relationships ###
 
-* **所有的relationship必须设置为可选（`Optional`）**
-* **所有的relationship必须有逆向（`Invers`）关系**
+* **所有的 relationship 必须设置为可选（`Optional`）**
+* **所有的 relationship 必须有逆向（`Invers`）关系**
 * **不支持`Deny`的删除规则**
 
-`CloudKit`本来也有一种类似于`Core Data`关系类型的对象——`CKReference`。不过该对象最多只能支持对应750条记录，无法满足大多数`Core Data`应用场景的需要，`CloudKit`采用将`Core Data`的关系转换成`Record Name`（`UUID`字符串形式）逐条对应，这导致`CloudKit`可能不会原子化（`atomically`）地保存关系变化，因此对关系的定义做出了较严格的限制。
+`CloudKit`本来也有一种类似于`Core Data`关系类型的对象——`CKReference`。不过该对象最多只能支持对应 750 条记录，无法满足大多数`Core Data`应用场景的需要，`CloudKit`采用将`Core Data`的关系转换成`Record Name`（`UUID`字符串形式）逐条对应，这导致`CloudKit`可能不会原子化（`atomically`）地保存关系变化，因此对关系的定义做出了较严格的限制。
 
 在`Core Data`日常始终中，多数的关系定义还是能满足上述的要求。
 
@@ -231,9 +230,9 @@ CREATE UNIQUE INDEX Z_Movie_UNIQUE_color_colors ON ZMOVIE (ZCOLOR COLLATE BINARY
 
 > 在启用`CloudKit`同步后，如果`Model`不满足同步兼容条件时`Xcode`会报错提醒开发者。在将已有项目更改为支持`Core Data with CloudKit`时，可能需要对代码做出一定的修改。
 
-## 在现有Core Data项目中添加Host in CloudKit支持 ##
+## 在现有 Core Data 项目中添加 Host in CloudKit 支持 ##
 
-有了模版项目的基础，将`Core Data`项目升级为支持`Core Data with CloudKit`也就非常容易了:
+有了模版项目的基础，将`Core Data`项目升级为支持`Core Data with CloudKit`也就非常容易了：
 
 * 使用`NSPersistentCloudKitContainer`替换`NSPersistentContainer`
 * 添加`CloudKit`、`background`功能并添加`CloudKit container`
@@ -255,7 +254,7 @@ CoreData: error: CoreData+CloudKit: -[NSCloudKitMirroringDelegate recoverFromPar
 
 ### 使用自定义的`NSPersistentStoreDescription` ###
 
-  有些开发者喜欢自定义`NSPersistentDescription`（即使只有一个`Configuration`）,这种情况下，需要显式为`NSPersistentDescription`设置`cloudKitContainerOptions`，例如：
+  有些开发者喜欢自定义`NSPersistentDescription`（即使只有一个`Configuration`）, 这种情况下，需要显式为`NSPersistentDescription`设置`cloudKitContainerOptions`，例如：
 
 ```swift
 let cloudStoreDescription = NSPersistentStoreDescription(url: cloudStoreLocation)
@@ -272,11 +271,11 @@ cloudStoreDescription.cloudKitContainerOptions = NSPersistentCloudKitContainerOp
 
 配置`Configuration`非常简单，只需将`Entity`拖入其中即可。
 
-### 在不同的Configuration中放置不同的Enitity ###
+### 在不同的 Configuration 中放置不同的 Enitity ###
 
-假设以下场景，我们有一个`Entity`——`Catch`，用于作为本地数据缓存，其中的数据不需要同步到iCloud上。
+假设以下场景，我们有一个`Entity`——`Catch`，用于作为本地数据缓存，其中的数据不需要同步到 iCloud 上。
 
-> 苹果的官方文档以及其他探讨Configuration的资料基本上都是针对类似上述这种情况
+> 苹果的官方文档以及其他探讨 Configuration 的资料基本上都是针对类似上述这种情况
 
 我们创建两个`Configuration`：
 
@@ -305,7 +304,7 @@ container.persistentStoreDescriptions = [cloudDesc,localDesc]
 
 *我们不可以在跨`Configuration`的`Entity`之间创建`relationship`，如确有需要可以使用`Fetched Preoperties`达到受限的近似效果*
 
-### 在不同的Configuration中放置同一个Entity ###
+### 在不同的 Configuration 中放置同一个 Entity ###
 
 如果想对**同一个`Entity`**的数据进行同步控制（部分同步），可以使用下面的方案。
 
@@ -331,7 +330,7 @@ container.persistentStoreDescriptions = [cloudDesc,localDesc]
 
 *我目前没有找到任何资料解释为什么协调器可以合并查询多个`Store`中的**同一个**`Entity`，但在实际使用中确实可以实现预期中的结果。*
 
-以上方案需要使用`Persistent History Tracking`，更多资料可以查看我的另一篇文章[【在CoreData中使用持久化历史跟踪】](/posts/persistentHistoryTracking/)。
+以上方案需要使用`Persistent History Tracking`，更多资料可以查看我的另一篇文章 [【在 CoreData 中使用持久化历史跟踪】](/posts/persistentHistoryTracking/)。
 
 ## 总结 ##
 
