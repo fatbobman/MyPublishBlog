@@ -313,11 +313,11 @@ extension Node where Context == HTML.BodyContext {
                                     == FatbobmanBlog.SectionID.index,
                                 .href(context.index.path),
                                 else:
-                                        .if(
-                                            section as! FatbobmanBlog.SectionID == FatbobmanBlog.SectionID.healthnotes1,
-                                            .href("/healthnotes"),
-                                            else:.href(context.sections[section].path)
-                                        )
+                                .if(
+                                    section as! FatbobmanBlog.SectionID == FatbobmanBlog.SectionID.healthnotes1,
+                                    .href("https://www.fatbobman.com/healthnotes"),
+                                    else: .href(context.sections[section].path)
+                                )
 
                             ),
                             .text(context.sections[section].title)
