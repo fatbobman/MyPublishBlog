@@ -3,7 +3,7 @@ title: 关注
 date: 2021-08-29 10:10
 description: 关于
 ---
-关注微信公共号肘子的Swift记事本或在推特上关注[@fatbobman](https://twitter.com/fatbobman)，永远不会错过新内容！ 您的支持和鼓励将为我的博客写作增添更多的动力! 
+关注微信公共号肘子的Swift记事本或在推特上关注[@fatbobman](https://twitter.com/fatbobman)，永远不会错过新内容！ 您的支持和鼓励将为我的博客写作增添更多的动力!
 
 如果您或身边的朋友有健康数据管理的需求，请使用我开发的app[【健康笔记】](/healthnotes/)，正是因为它我才创建了这个博客。
 

@@ -7,8 +7,8 @@
 
 import Foundation
 import Ink
-import Sweep
 import Plot
+import Sweep
 
 var responser = Modifier(target: .codeBlocks) { html, markdown in
     guard let content = markdown.firstSubstring(between: .prefix("```responser\n"), and: "\n```") else { return html }
@@ -37,12 +37,10 @@ func getResponser(_ id: String) -> String {
 let responserHealthNotes: String =
     """
     <div class = "hstack">
-    <img src = "https://cdn.fatbobman.com/healthnotesLogo.svg"></img>
+    <img src = "https://cdn.fatbobman.com/healthnotesLogoRespnser.png"></img>
     <div class = "text">
-    <p><span class = "title">健康笔记</span>是我开发的一个iOS app，主要服务于有长期健康管理需求的人士。可为全家不同成员创建各自的笔记，允许使用者自定义数据类型以记录各种健康数据。</p>
+    <p><span class = "title">健康笔记</span>是我开发的一个iOS app，主要服务于有长期健康管理需求的人士。健康笔记提供了强大的自定义数据类型功能，可以满足记录生活中绝大多数的健康项目数据的需要。你可以为每个家庭成员创建各自的健康数据记录笔记，或者针对某个特定项目、特定时期创建对应的笔记。</p>
     </div>
     </div>
     <div class="label">推广</div>
     """
-
-

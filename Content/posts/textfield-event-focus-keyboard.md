@@ -740,7 +740,7 @@ struct HideKeyboardView: View {
 
 在 SwiftUI 3.0 中，我们可以通过`ToolbarItem(placement: .keyboard, content: View)`来自创建键盘的辅助视图（inputAccessoryView）。
 
-通过输入辅助视图，可以解决很多之前难以应对的问题，并未交互提供更多的手段。
+通过输入辅助视图，可以解决很多之前难以应对的问题，并为交互提供更多的手段。
 
 下面的代码将为输入浮点数时添加正负转换以及确认按钮：
 

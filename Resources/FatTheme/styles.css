@@ -1590,6 +1590,7 @@ article hr {
     width: 64px;
     height: 64px;
     margin:auto;
+    border-radius: 8px;
 }
 
 .responser .text {

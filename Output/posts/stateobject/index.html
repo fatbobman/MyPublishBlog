@@ -20,9 +20,9 @@ function(){
 function(){
     $('.actionButton .donateQcode').css('display','none');
 })</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>SwiftUI 2.0 —— @StateObject 研究</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag variant-0"><a href="/tags/architecture">Architecture</a></li><li class="tag tagdate">发布于2020年06月26日</li></ul><div class="content"><p>WWDC20 刚刚结束，在过去的一周，苹果为开发者带来了巨大的惊喜。由于新特性实在太多，需要不少时间来消化，我首先选择自己最感兴趣的内容进行一些简单的研究和探讨。本文首先浅谈一下 SwiftUI 新提供的属性包装器@StateObject。</p><Div id='responser' class = "responser" onclick="window.location='http://www.fatbobman.com/healthnotes/';"><div class = "hstack">
-<img src = "https://cdn.fatbobman.com/healthnotesLogo.svg"></img>
+<img src = "https://cdn.fatbobman.com/healthnotesLogoRespnser.png"></img>
 <div class = "text">
-<p><span class = "title">健康笔记</span>是我开发的一个iOS app，主要服务于有长期健康管理需求的人士。可为全家不同成员创建各自的笔记，允许使用者自定义数据类型以记录各种健康数据。</p>
+<p><span class = "title">健康笔记</span>是我开发的一个iOS app，主要服务于有长期健康管理需求的人士。健康笔记提供了强大的自定义数据类型功能，可以满足记录生活中绝大多数的健康项目数据的需要。你可以为每个家庭成员创建各自的健康数据记录笔记，或者针对某个特定项目、特定时期创建对应的笔记。</p>
 </div>
 </div>
 <div class="label">推广</div></Div><h2>为什么要新增@StateObject</h2><p>在我之前的文章 <a href="/posts/swiftUI-state/">@State 研究</a> 中我们探讨过@State，通过它，我们可以方便的将值类型数据作为 View 的 Source of truth。在 SwiftUI 1.0 时代，如果想将引用类型作为 source of truth, 通常的方法是使用@EnvironmentObject 或者 @ObservedObject。</p><pre data-language="swift"><code><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">RootView</span>:<span class="hljs-title">View</span></span>{

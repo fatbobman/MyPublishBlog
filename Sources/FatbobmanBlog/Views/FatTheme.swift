@@ -172,10 +172,10 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                         selectedSection: FatbobmanBlog.SectionID.about as? Site.SectionID
                     ),
                     else: .if(
-                        page.path == Path("healthnotes"),
+                        page.path == Path("healthnotes1"),
                         .header(
                             for: context,
-                            selectedSection: FatbobmanBlog.SectionID.healthnotes as? Site.SectionID
+                            selectedSection: FatbobmanBlog.SectionID.healthnotes1 as? Site.SectionID
                         ),
                         else: .header(for: context, selectedSection: nil)
                     )
@@ -312,7 +312,13 @@ extension Node where Context == HTML.BodyContext {
                                 section as! FatbobmanBlog.SectionID
                                     == FatbobmanBlog.SectionID.index,
                                 .href(context.index.path),
-                                else: .href(context.sections[section].path)
+                                else:
+                                        .if(
+                                            section as! FatbobmanBlog.SectionID == FatbobmanBlog.SectionID.healthnotes1,
+                                            .href("/healthnotes"),
+                                            else:.href(context.sections[section].path)
+                                        )
+
                             ),
                             .text(context.sections[section].title)
                         )

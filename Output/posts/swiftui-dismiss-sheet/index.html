@@ -20,9 +20,9 @@ function(){
 function(){
     $('.actionButton .donateQcode').css('display','none');
 })</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>在 SwiftUI 中制作可以控制取消手势的 Sheet</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag tagdate">发布于2020年09月17日</li></ul><div class="content"><blockquote><p>在前面的两篇文章中，我们探讨了如何制作一个可以判断是否进行了修改的表单，以及如何统一管理 app 各个层级 View 的弹出 Sheet。今天我们将他们合并在一起，完成整个项目的最终目的——在 Sheet 中制作一个可以实时响应的表单，并且 sheet 会感觉表单的情况响应取消手势。</p></blockquote><p><a href="/posts/swiftui-multiSheet/">在 SwiftUI 中，根据需求弹出不同的 Sheet</a></p><p><a href="/posts/swiftui-input-form/">如何在 SwiftUI 中创建一个实时响应的 Form</a></p><Div id='responser' class = "responser" onclick="window.location='http://www.fatbobman.com/healthnotes/';"><div class = "hstack">
-<img src = "https://cdn.fatbobman.com/healthnotesLogo.svg"></img>
+<img src = "https://cdn.fatbobman.com/healthnotesLogoRespnser.png"></img>
 <div class = "text">
-<p><span class = "title">健康笔记</span>是我开发的一个iOS app，主要服务于有长期健康管理需求的人士。可为全家不同成员创建各自的笔记，允许使用者自定义数据类型以记录各种健康数据。</p>
+<p><span class = "title">健康笔记</span>是我开发的一个iOS app，主要服务于有长期健康管理需求的人士。健康笔记提供了强大的自定义数据类型功能，可以满足记录生活中绝大多数的健康项目数据的需要。你可以为每个家庭成员创建各自的健康数据记录笔记，或者针对某个特定项目、特定时期创建对应的笔记。</p>
 </div>
 </div>
 <div class="label">推广</div></Div><h2>由来</h2><p>在之前 Form 的例子中，虽然我们可以根据表单是否进行了修改来对 cancel、edit 等做出不同的响应，但是我们并没有办法控制用户直接使用手势来取消 sheet，为了不让用户绕过程序的判断检查，不得已使用了 fullScreenCover 来规避手势取消。不过在实际使用中，尽管全屏 sheet 提供了更多的屏幕可用空间，但还是会给使用者带来了操作逻辑不统一的体验。</p><p>在去年，我使用的解决方案是，屏蔽 sheet 的拖动手势。</p><pre data-language="swift"><code> .highPriorityGesture(<span class="hljs-type">DragGesture</span>())
