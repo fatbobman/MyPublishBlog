@@ -19,13 +19,13 @@ id:1
 
 从 iOS 13 开始，苹果在 Core Data 中添加了 Derived（派生属性），它的名称已经表明了该属性的含义—— 该属性的值从一个或多个其他的属性的值派生而来。
 
-通俗的说，就是在创建或修改托管对象实例时，Core Data 将自动为派生属性生成值。值将根据预设的派生表达式（Derived Expression）通过其他的属性值计算而来。
+通俗地说，就是在创建或修改托管对象实例时，Core Data 将自动为派生属性生成值。值将根据预设的派生表达式（Derived Expression）通过其他的属性值计算而来。
 
 ### Derived 属性的功能 ###
 
 下面通过一个具体的例子方便大家理解派生属性的功能。
 
-项目中有两个 Entity，TodoList 和 Item，Todolist 同 Item 是一对多关系（To Many），Item 同 TodoList 之间是一对一关系（To One）
+项目中有两个 Entity，TodoList 和 Item，Todolist 同 Item 是一对多关系（To-many），Item 同 TodoList 之间是一对一关系（To-one）
 
 ![image-20211025175712406](https://cdn.fatbobman.com/image-20211025175712406.png)
 
@@ -67,9 +67,9 @@ let count = todolist.count
 
 * 当前时间
 
-  保存Sqlite更新托管对象对应的数据记录的操作日期。通常用于类似 lastModifiedDate 之类的时间戳。派生表达式为`now()`。
+  保存SQLite更新托管对象对应的数据记录的操作日期。通常用于类似 lastModifiedDate 之类的时间戳。派生表达式为`now()`。
 
-通常我们将 Derived 同 Optinal 配合使用，如果不选取 Optional 则需要做一点特殊处理才能让程序正常执行。在下文的注意事项中有具体说明。
+通常我们将 Derived 同 Optional 配合使用，如果不选取 Optional 则需要做一点特殊处理才能让程序正常执行。在下文的注意事项中有具体说明。
 
 如果手动编写 NSManagedObject 代码，Derived 属性的写法同其他属性也完全一致（仍需在 Data Model Editor 中设置），例如上文中的 count 可以使用如下代码定义：
 
@@ -81,11 +81,11 @@ let count = todolist.count
 
 #### 派生数据的值是谁计算的 ####
 
-派生数据的值是由 Sqlite 直接计算的并更新的。
+派生数据的值是由 SQLite 直接计算并更新的。
 
-Derived 值的计算是 Core Data 中为数不多的几个直接使用 Sqlite 内置机制来完成的操作，并非由 Swift（或 Objective - C） 代码计算而来。
+Derived 值的计算是 Core Data 中为数不多的几个直接使用 SQLite 内置机制来完成的操作，并非由 Swift（或 Objective - C） 代码计算而来。
 
-例如，now() 的表达式，Core Data 在创建数据表时将产生类似如下的 Sql 代码：
+例如，now() 的表达式，Core Data 在创建数据表时将产生类似如下的 SQL代码：
 
 ```sql
 CREATE TRIGGER IF NOT EXISTS Z_DA_ZITEM_Item_update_UPDATE AFTER UPDATE OF Z_OPT ON ZITEM FOR EACH ROW BEGIN UPDATE ZITEM SET ZUPDATE = NSCoreDataNow() WHERE Z_PK = NEW.Z_PK; SELECT NSCoreDataDATriggerUpdatedAffectedObjectValue('ZITEM', Z_ENT, Z_PK, 'update', ZUPDATE) FROM ZITEM WHERE Z_PK = NEW.Z_PK; END'
@@ -97,13 +97,13 @@ CREATE TRIGGER IF NOT EXISTS Z_DA_ZITEM_Item_update_UPDATE AFTER UPDATE OF Z_OPT
 UPDATE ZITEM SET ZCOUNT = (SELECT IFNULL(COUNT(ZITEM), 0) FROM ZATTACHEMENT WHERE ZITEM = ZITEM.Z_PK);
 ```
 
-因此在相同功能的情况下，使用Sql 的效率是高于 Swift（或 Objective - C）的。
+因此在相同功能的情况下，使用SQL的效率是高于 Swift（或 Objective - C）的。
 
 > Core Data 中，通常需要从持久化存储获取结果后，返回到上下文，再经过计算然后持久化。中间有多次的IO过程，影响了效率。
 
 #### 派生数据什么时候更新 ####
 
-因为是由 Sqlte 直接处理的，所以只有在数据持久化时 Sqlite 才会更新对应的派生数据。只在上下文中处理不持久化的话是不会获得正确的派生值的。持久化的行为可以是通过使用代码`viewcontext.save()`，或者通过网络同步等方式激发。
+因为是由 SQLite 直接处理的，所以只有在数据持久化时 SQLite 才会更新对应的派生数据。只在上下文中处理不持久化的话是不会获得正确的派生值的。持久化的行为可以是通过使用代码`viewcontext.save()`，或者通过网络同步等方式激发。
 
 ### Derived 的优缺点 ###
 
@@ -121,7 +121,7 @@ UPDATE ZITEM SET ZCOUNT = (SELECT IFNULL(COUNT(ZITEM), 0) FROM ZATTACHEMENT WHER
 
 * 支持的表达式有限
 
-  Sqlite 能够支持的表达式非常有限，无法满足更复杂的业务需要。
+  SQLite 能够支持的表达式非常有限，无法满足更复杂的业务需要。
 
 * 对于不了解 Derived 的开发者来说，代码更难阅读
 
@@ -169,13 +169,13 @@ Fatal error: Unresolved error Error Domain=NSCocoaErrorDomain Code=1570 "count i
 ```swift
 extension TodoList {
     override func awakeFromInset(){
-        super.awakeFromInser()
+        super.awakeFromInsert()
         setPrimitiveValue(0, forKey: #keyPath(Todolist.count)) 
     }
 }
 ```
 
-设置的 value 可以是任意值（需要符合类型要求），因为在持久化时，Sqlite 将生成新的值覆盖掉我们的初始化值。
+设置的 value 可以是任意值（需要符合类型要求），因为在持久化时，SQLite 将生成新的值覆盖掉我们的初始化值。
 
 ## Transient ##
 
@@ -199,7 +199,7 @@ Transient（瞬态属性）是一种不可持久化的属性。作为托管对�
 
 ```swift
 @objc(Test)
-public class ITEM: NSManagedObject {
+public class Item: NSManagedObject {
   var temp:Int = 0
 }
 

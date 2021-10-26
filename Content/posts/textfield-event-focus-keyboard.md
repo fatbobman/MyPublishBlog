@@ -90,7 +90,7 @@ onSubmit 同样适用于 SecureField。
 
 #### 作用域及嵌套 ####
 
-onSubmit 背后的是通过设置环境值`TriggerSubmitActio`（尚未对开发者开放）来实现的，因此 onSubmit 是有作用域范围的（可在视图树向上传递），且可嵌套。
+onSubmit 背后的是通过设置环境值`TriggerSubmitAction`（尚未对开发者开放）来实现的，因此 onSubmit 是有作用域范围的（可在视图树向上传递），且可嵌套。
 
 ```swift
 struct OnSubmitDemo: View {
@@ -213,7 +213,7 @@ struct OnSubmitForSearchableDemo:View{
 
 ## 焦点 ##
 
-在 iOS 15（Moterey）之前，SwiftUI 没有为 TextField 提供获得焦点的方法（例如：`becomeFirstResponder`），因此在相当长的时间里，开发者只能通过非 SwiftUI 的方式来实现类似的功能。
+在 iOS 15 / macOS Moterey之前，SwiftUI 没有为 TextField 提供获得焦点的方法（例如：`becomeFirstResponder`），因此在相当长的时间里，开发者只能通过非 SwiftUI 的方式来实现类似的功能。
 
 在 SwiftUI 3.0 中，苹果为开发者提供了一个远好于预期的解决方案，同 onSubmit 类似，可以从更高的视图层次来统一对视图中的 TextField 进行焦点的判断和管理。
 
@@ -392,7 +392,7 @@ struct OnFocusDemo:View{
 
 ### 使用快捷键获得焦点 ###
 
-当一个视图中有多个 TextField（包括 SecureField）时，我们可以直接使用`Tab`键按顺序在 TextField 中切换焦点，但 SwiftUI 并没有直接提供使用快捷键让某个 TextField 获得焦点的功能。通过结合`FocusState`和`keyboardShortcut`可以在 iPad 和 MacOS 下获得这种能力。
+当一个视图中有多个 TextField（包括 SecureField）时，我们可以直接使用`Tab`键按顺序在 TextField 中切换焦点，但 SwiftUI 并没有直接提供使用快捷键让某个 TextField 获得焦点的功能。通过结合`FocusState`和`keyboardShortcut`可以在 iPadOS 和 MacOS 下获得这种能力。
 
 创建支持快捷键绑定的`focused`：
 
