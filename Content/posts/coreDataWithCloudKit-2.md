@@ -328,8 +328,6 @@ container.persistentStoreDescriptions = [cloudDesc,localDesc]
 
 * 处理`NSPersistentStoreRemoteChange`通知，将从`localContainer`中写入的数据合并到`container`的`viewContext`中
 
-*我目前没有找到任何资料解释为什么协调器可以合并查询多个`Store`中的**同一个**`Entity`，但在实际使用中确实可以实现预期中的结果。*
-
 以上方案需要使用`Persistent History Tracking`，更多资料可以查看我的另一篇文章 [【在 CoreData 中使用持久化历史跟踪】](/posts/persistentHistoryTracking/)。
 
 ## 总结 ##
