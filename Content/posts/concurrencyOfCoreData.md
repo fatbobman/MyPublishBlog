@@ -56,7 +56,7 @@ persistentContainer.performBackgroundTask{ bgContext in  // 方式二
 
 Core Data 是为多线程开发而设计的。然而，Core Data 框架下的对象并非都是线程安全的。其中，开发者接触最频繁、使用量最大的托管对象上下文（NSManagedObjectContext）和托管对象（NSManagedObject）恰好都不是线程安全的。
 
-因此，在 Core Data 中进行并发编程是，请确保遵守以下规则：
+因此，在 Core Data 中进行并发编程时，请确保遵守以下规则：
 
 * 托管对象上下文在初始化时被绑定到了与之相关的线程（队列）。
 * 从托管对象上下文中检索的托管对象被绑定到了所属上下文所在的队列。
