@@ -20,7 +20,7 @@ id:1
 
 ## 快速指南 ##
 
-在应用程序中启用`Core Data with CloudKi`t 功能，只需要以下几步：
+在应用程序中启用`Core Data with CloudKit` 功能，只需要以下几步：
 
 1. 使用`NSPersistentCloudKitContainer`
 2. 在`项目 Target`的`Signing&Capablities`中添加`CloudKit`支持
