@@ -500,7 +500,7 @@ struct AddSafeAreaDemo: View {
 
 ```swift
 struct ChatBarDemo: View {
-    @State var strings: [Message] = (0...60).map { Message(text: "string\($0)") }
+    @State var messages: [Message] = (0...60).map { Message(text: "message:\($0)") }
     @State var text = ""
     @FocusState var focused: Bool
     @State var bottomTrigger = false
@@ -508,7 +508,7 @@ struct ChatBarDemo: View {
         NavigationView {
             ScrollViewReader { proxy in
                 List {
-                    ForEach(strings, id: \.self) { message in
+                    ForEach(messages) { message in
                         Text(message.text)
                             .id(message.id)
                     }
@@ -526,18 +526,18 @@ struct ChatBarDemo: View {
                                 .padding(.horizontal, 10)
                                 .padding(.top, 10)
                                 .onSubmit {
-                                    addText()
-                                    gotoBottom()
+                                    addMessage()
+                                    scrollToBottom()
                                 }
                                 .onChange(of: focused) { value in
                                     if value {
-                                        gotoBottom()
+                                        scrollToBottom()
                                     }
                                 }
                             // 回复按钮
                             Button("回复") {
-                                addText()
-                                gotoBottom()
+                                addMessage()
+                                scrollToBottom()
                                 focused = false
                             }
                             .buttonStyle(.bordered)
@@ -551,31 +551,31 @@ struct ChatBarDemo: View {
                 }
                 .onChange(of: bottomTrigger) { _ in
                     withAnimation(.spring()) {
-                        if let last = strings.last {
+                        if let last = messages.last {
                             proxy.scrollTo(last.id, anchor: .bottom)
                         }
                     }
                 }
                 .onAppear {
-                    if let last = strings.last {
+                    if let last = messages.last {
                         proxy.scrollTo(last.id, anchor: .bottom)
                     }
                 }
             }
-            .navigationBarTitle("Chat Demo")
+            .navigationBarTitle("SafeArea Chat Demo")
         }
     }
 
-    func gotoBottom() {
+    func scrollToBottom() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
             bottomTrigger.toggle()
         }
     }
 
-    func addText() {
+    func addMessage() {
         if !text.isEmpty {
             withAnimation {
-                strings.append(Message(text: text))
+                messages.append(Message(text: text))
             }
             text = ""
         }
