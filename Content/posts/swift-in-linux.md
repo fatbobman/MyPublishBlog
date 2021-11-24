@@ -122,7 +122,7 @@ Swift Package Manager (SPM) 是苹果推出的用于创建使用 swift 的库和
 
 ```bash
 $cd ~
-$mdkir MyProject
+$mkdir MyProject
 $cd MyProject
 $swift package init --type executable
 Creating executable package: MyProject
@@ -275,7 +275,7 @@ $code .
             "name": "Debug",
             "program": "${workspaceFolder}/.build/debug/MyProject",
             "args": [],
-            "cwd": "${workspaceFolder}"，
+            "cwd": "${workspaceFolder}",
             "preLaunchTask": "swift-build"
         },
         {
@@ -481,7 +481,7 @@ $swiftlint --version
 
 为了让我们构建的开发环境适应多平台，需要启用配置的多平台支持，并且针对不同平台分别设定。
 
-安装`platform-settins`插件
+安装`platform-settings`插件
 
 ![image-20210215091440441](https://cdn.fatbobman.com/swift-in-linux-platform-settings.png)
 
