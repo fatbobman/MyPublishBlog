@@ -1,6 +1,6 @@
 ---
 date: 2021-11-28 08:12
-description: 在 UIKit（AppKit）的世界中，通过框架提供的大量钩子（例如 viewDidLoad、viewWillLayoutSubviews 等），开发者可以将自己的意志注入视图控制器生命周期的各个节点之中，宛如神明。在 SwiftUI 中，系统收回了上述的权利，开发者基本丧失了对视图生命周期的掌控。不少 SwiftUI 开发者都碰到过视图生命周期的行为超出预期的状况（例如视图多次构造、onAppear 无从控制等）。本文将作者对 SwiftUI 视图、SwiftUI 视图生命周期的理解和研究做以介绍，供大家一起探讨。
+description: 本文将作者对 SwiftUI 视图、SwiftUI 视图生命周期的理解和研究做以介绍，供大家一起探讨。在 UIKit（AppKit）的世界中，通过框架提供的大量钩子（例如 viewDidLoad、viewWillLayoutSubviews 等），开发者可以将自己的意志注入视图控制器生命周期的各个节点之中，宛如神明。在 SwiftUI 中，系统收回了上述的权利，开发者基本丧失了对视图生命周期的掌控。不少 SwiftUI 开发者都碰到过视图生命周期的行为超出预期的状况（例如视图多次构造、onAppear 无从控制等）。
 tags: SwiftUI,Architecture
 title: SwiftUI 视图的生命周期研究
 image: images/swiftuiLifeCycle.png
