@@ -285,7 +285,7 @@ task 有两种表现形式，一种与 onAppear 类似，另一种与 onAppear +
 
 ```swift
 .onAppear {
-    Tesk{
+    Task{
         ....
     }
 }

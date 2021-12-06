@@ -85,7 +85,7 @@ AsyncSequence 则缺乏对于数据流的处理地点、频率、并发数量等
 
 在 Combine 中，可以使用两种手段来限制数据的并发处理能力，一种是通过设定 flatMap 的 maxPublishers，另一种则是通过自定义 Subscriber。本方案中，我们将采用 flatMap 的方式来将事件的处理串行化。
 
-在 Combine 中调用异步 API，目前官方提供的方法是将上游数据包装成 Future Publisher，并通过 flatMap 进行切换（对于串行方式，也可以使用 map + switchToLatest）。
+在 Combine 中调用异步 API，目前官方提供的方法是将上游数据包装成 Future Publisher，并通过 flatMap 进行切换。
 
 在方案一中，通过将 flatMap、Deferred（确保只有在订阅后 Future 才执行）、Future 结合到一起，创建一个新的 Operator，以实现我们的需求。
 
@@ -395,7 +395,7 @@ sequence 在实现上和 values 还是有微小的不同的，如果感兴趣的
 ```swift
 let p = publisher
     .print()  // 观察订阅器的请求情况。 values 的实现同方案二一样。
-    .buffer(size: 10, prefetch: .keepFull, whenFull: .dropOldest)
+    // sequence 使用了 AsyncStream 的 buffer，因此无需再设定 buffer
 
 for await value in p.sequence {
     await asyncPrint(value: value)
@@ -403,8 +403,6 @@ for await value in p.sequence {
 ```
 
 ## 总结
-
-本文并非要找寻解决问题的最佳方案，更多的是享受探索解决问题时的乐趣。
 
 在可以预见的未来，苹果一定会为 Combine 和 async/await 提供更多的预置融合手段。或许明后年，前两种方案就可以直接使用官方提供的 API 了。
 
