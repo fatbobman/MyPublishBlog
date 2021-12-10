@@ -8,6 +8,10 @@ image: images/dismissSheet.gif
 
 本文中我们将探讨如何实现一个 SwiftUI 3.0 中新增功能——interactiveDismissDisabled 的增强版；如何创建更 SwiftUI 化的功能扩展。
 
+```responser
+id:1
+```
+
 ## 需求 ##
 
 由于 [健康笔记](https://www.fatbobman.com/healthnotes/) 中数据录入都是在 Sheet 中进行的，为了防止用户在录入过程中由于误操作（使用手势取消 Sheet）丢失数据，因此，从最初的版本开始，我就一直使用各种手段加强对 Sheet 的控制。
