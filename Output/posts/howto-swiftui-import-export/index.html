@@ -19,13 +19,20 @@ function(){
 },
 function(){
     $('.actionButton .donateQcode').css('display','none');
-})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>HowTo —— SwiftUI2.0 文件导入导出</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag variant-2"><a href="/tags/howto">HowTo</a></li><li class="tag tagdate">发布于2020年07月28日</li></ul><div class="content"><p>SwiftUI2.0 中新增了原生的文件导入导出功能。需注意的是对于不同目录下文件的导出行为会有不同，不同平台下对于权限的处理也不同。</p><Div id='responser' class = "responser" onclick="window.location='http://www.fatbobman.com/healthnotes/';"><div class = "hstack">
-<img src = "https://cdn.fatbobman.com/healthnotesLogoRespnser.png"></img>
-<div class = "text">
-<p><span class = "title">健康笔记</span>是我开发的一个iOS app，主要服务于有长期健康管理需求的人士。健康笔记提供了强大的自定义数据类型功能，可以满足记录生活中绝大多数的健康项目数据的需要。你可以为每个家庭成员创建各自的健康数据记录笔记，或者针对某个特定项目、特定时期创建对应的笔记。</p>
-</div>
-</div>
-<div class="label">推广</div></Div><h2>更新</h2><p>目前 SwiftUI 大幅度的修改了导入导出的用法。</p><p>fileImporter fileExporter fileMover 分别对应 导入、导出、移动</p><p>示例如下：</p><pre data-language="swift"><code>  .fileImporter(isPresented: showImport, allowedContentTypes: [.<span class="hljs-built_in">zip</span>], onCompletion: {
+})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>HowTo —— SwiftUI2.0 文件导入导出</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag variant-2"><a href="/tags/howto">HowTo</a></li><li class="tag tagdate">发布于2020年07月28日</li></ul><div class="content"><p>SwiftUI2.0 中新增了原生的文件导入导出功能。需注意的是对于不同目录下文件的导出行为会有不同，不同平台下对于权限的处理也不同。</p><Div id='responser' class = "responser" ><div id='adsBanner'><div class = "hstack"><img src = "https://cdn.fatbobman.com/healthnotesLogoRespnser.png"></img><div class = "text"><p><span class = "title">健康笔记</span>是我开发的一个iOS app，主要服务于有长期健康管理需求的人士。健康笔记提供了强大的自定义数据类型功能，可以满足记录生活中绝大多数的健康项目数据的需要。你可以为每个家庭成员创建各自的健康数据记录笔记，或者针对某个特定项目、特定时期创建对应的笔记。</p></div></div></div><div class='label'>推广</div></Div><script type="text/javascript">
+$(document).ready(function() {
+   var banners = [];
+   var index = 0;
+   banners[0] = ['http://www.fatbobman.com/healthnotes/','<div class = "hstack"><img src = "https://cdn.fatbobman.com/healthnotesLogoRespnser.png"></img><div class = "text"><p><span class = "title">健康笔记</span>是我开发的一个iOS app，主要服务于有长期健康管理需求的人士。健康笔记提供了强大的自定义数据类型功能，可以满足记录生活中绝大多数的健康项目数据的需要。你可以为每个家庭成员创建各自的健康数据记录笔记，或者针对某个特定项目、特定时期创建对应的笔记。</p></div></div>'];
+   banners[1] = ['http://www.fatbobman.com/healthnotes/','<div class = "hstack"><img src = "https://cdn.fatbobman.com/healthnotesLogoRespnser.png"></img><div class = "text"><p><span class = "title">健康笔记</span>是我开发的一个iOS app，主要服务于有长期健康管理需求的人士。健康笔记提供了强大的自定义数据类型功能，可以满足记录生活中绝大多数的健康项目数据的需要。你可以为每个家庭成员创建各自的健康数据记录笔记，或者针对某个特定项目、特定时期创建对应的笔记。</p></div></div>'];
+   banners[2] = ['http://www.fatbobman.com/healthnotes/','<div class = "hstack"><img src = "https://cdn.fatbobman.com/healthnotesLogoRespnser.png"></img><div class = "text"><p><span class = "title">健康笔记</span>是我开发的一个iOS app，主要服务于有长期健康管理需求的人士。健康笔记提供了强大的自定义数据类型功能，可以满足记录生活中绝大多数的健康项目数据的需要。你可以为每个家庭成员创建各自的健康数据记录笔记，或者针对某个特定项目、特定时期创建对应的笔记。</p></div></div>'];
+   index = Math.floor(Math.random() * banners.length);
+   $("#adsBanner").html(banners[index][1]);
+   $("#responser").on("click",function(){
+    window.location.href = banners[index][0]
+});
+  });
+</script><h2>更新</h2><p>目前 SwiftUI 大幅度的修改了导入导出的用法。</p><p>fileImporter fileExporter fileMover 分别对应 导入、导出、移动</p><p>示例如下：</p><pre data-language="swift"><code>  .fileImporter(isPresented: showImport, allowedContentTypes: [.<span class="hljs-built_in">zip</span>], onCompletion: {
             result <span class="hljs-keyword">in</span>
             <span class="hljs-keyword">switch</span> result{
             <span class="hljs-keyword">case</span> .success(<span class="hljs-keyword">let</span> url):

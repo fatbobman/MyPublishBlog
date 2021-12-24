@@ -10,6 +10,18 @@ image: images/coreDataWithCloudKit-6.png
 
 > 本篇是本系列的最后一篇，本文中将涉及大量之前提到的知识，阅读本文前，最好已经阅读过之前的 [文章](https://www.fatbobman.com/tags/cloudkit/)。
 
+[Core Data with CloudKit （一） —— 基础](/posts/coreDataWithCloudKit-1/)
+
+[Core Data with CloudKit（二） —— 同步本地数据库到 iCloud 私有数据库](/posts/coreDataWithCloudKit-2/)
+
+[Core Data with CloudKit（三）—— CloudKit 仪表台](/posts/coreDataWithCloudKit-3/)
+
+[Core Data with CloudKit（四）—— 调试、测试、迁移及其他](/posts/coreDataWithCloudKit-4/)
+
+[Core Data with CloudKit（五）—— 同步公共数据库](/posts/coreDataWithCloudKit-5/)
+
+[Core Data with CloudKit （六） —— 创建与多个 iCloud 用户共享数据的应用](/posts/coreDataWithCloudKit-6/)
+
 相信应该有不少的朋友都使用过 iOS 自带的共享相簿或者共享备忘录功能。这些功能的实现都是基于几年前苹果推出的 CloudKit 共享数据 API。在 WWDC 2021 中，苹果将该功能集成到 Core Data with CloudKit 之中，我们终于可以在使用少量 CloudKit API 的情况下，用 Core Data 的操作方式创建具有同样功能的应用程序了。
 
 就像 WWDC session [Build apps that share data through CloudKit and Core Data](https://developer.apple.com/videos/play/wwdc2021/10015/) 提到的那样，共享数据功能的实现远复杂于同步私有数据库以及同步公共数据库。尽管苹果提供了不少新的 API 来简化该操作，但想完整的在应用程序中实现该功能仍具有不小的挑战。

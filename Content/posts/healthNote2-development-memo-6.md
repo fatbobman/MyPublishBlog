@@ -10,6 +10,18 @@ title: 健康笔记 2.0 开发随笔（六）
 
 向 app store 提交反倒异常顺利，中间只出现了一次反复。苹果要我确认是否会滥用用户的数据，在明确回复不会之后就通过了。想想去年底健康笔记 1.0 的上线反复折腾了我 10 多天。
 
+[Core Data with CloudKit （一） —— 基础](/posts/coreDataWithCloudKit-1/)
+
+[Core Data with CloudKit（二） —— 同步本地数据库到 iCloud 私有数据库](/posts/coreDataWithCloudKit-2/)
+
+[Core Data with CloudKit（三）—— CloudKit 仪表台](/posts/coreDataWithCloudKit-3/)
+
+[Core Data with CloudKit（四）—— 调试、测试、迁移及其他](/posts/coreDataWithCloudKit-4/)
+
+[Core Data with CloudKit（五）—— 同步公共数据库](/posts/coreDataWithCloudKit-5/)
+
+[Core Data with CloudKit （六） —— 创建与多个 iCloud 用户共享数据的应用](/posts/coreDataWithCloudKit-6/)
+
 ```responser
 id:1
 ```

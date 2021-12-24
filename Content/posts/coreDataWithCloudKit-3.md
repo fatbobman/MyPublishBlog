@@ -6,6 +6,18 @@ title: Core Data with CloudKit（三）—— CloudKit 仪表台
 ---
 本篇文章中，我们将一起研究`CloudKit`仪表台。
 
+[Core Data with CloudKit （一） —— 基础](/posts/coreDataWithCloudKit-1/)
+
+[Core Data with CloudKit（二） —— 同步本地数据库到 iCloud 私有数据库](/posts/coreDataWithCloudKit-2/)
+
+[Core Data with CloudKit（三）—— CloudKit 仪表台](/posts/coreDataWithCloudKit-3/)
+
+[Core Data with CloudKit（四）—— 调试、测试、迁移及其他](/posts/coreDataWithCloudKit-4/)
+
+[Core Data with CloudKit（五）—— 同步公共数据库](/posts/coreDataWithCloudKit-5/)
+
+[Core Data with CloudKit （六） —— 创建与多个 iCloud 用户共享数据的应用](/posts/coreDataWithCloudKit-6/)
+
 ## 初识仪表台 ##
 
 使用`CloudKit Dashboard`需要开发者拥有 [Apple Developer Program](https://developer.apple.com/programs/) 账号，访问 [https://icloud.developer.apple.com](https://icloud.developer.apple.com) 即可使用。

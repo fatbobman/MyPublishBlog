@@ -1586,18 +1586,18 @@ article hr {
     flex-direction: row;
 }
 
-.responser img {
+.responser .hstack img {
     width: 64px;
     height: 64px;
     margin:auto;
     border-radius: 8px;
 }
 
-.responser .text {
+.responser .hstack .text {
     margin-left:20px;
 }
 
-.responser .title {
+.responser .hstack .title {
     font-weight: bold;
     color: #0269c8;
 }

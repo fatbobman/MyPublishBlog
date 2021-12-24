@@ -19,13 +19,20 @@ function(){
 },
 function(){
     $('.actionButton .donateQcode').css('display','none');
-})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>SwiftUI2.0 —— Commands（macOS 菜单）</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag tagdate">发布于2020年06月27日</li></ul><div class="content"><blockquote><p>本文介绍了 SwiftUI 2.0 中，如何为 macOS 平台添加菜单。 当前运行环境为 Xcode Version 12.0 beta (12A6159), macOS Big Sur 11.0 Beta 版 (20A4299v)。</p></blockquote><p>苹果在 SwiftUI2.0 中增加了 Multiplatform 项目模板，使得同一套代码，仅需少量的适配便可以同时满足 iOS 以及 macOS 的需要。对于 macOS 上运行的 app, 拥有自定义的菜单是一个十分重要的平台特征。对于没有 macOS 开发经验的我来说，学习如何设计开发菜单变得十分有趣且必要。</p><Div id='responser' class = "responser" onclick="window.location='http://www.fatbobman.com/healthnotes/';"><div class = "hstack">
-<img src = "https://cdn.fatbobman.com/healthnotesLogoRespnser.png"></img>
-<div class = "text">
-<p><span class = "title">健康笔记</span>是我开发的一个iOS app，主要服务于有长期健康管理需求的人士。健康笔记提供了强大的自定义数据类型功能，可以满足记录生活中绝大多数的健康项目数据的需要。你可以为每个家庭成员创建各自的健康数据记录笔记，或者针对某个特定项目、特定时期创建对应的笔记。</p>
-</div>
-</div>
-<div class="label">推广</div></Div><h2>基础</h2><p>在 SwiftUI 下为 app 添加菜单十分方便，下面的代码便可以为 app 添加一个最基础的菜单。</p><pre data-language="swift"><code>@main
+})</script><div class="actionButton donateQcode"></div></div></div></div><article><div><h1>SwiftUI2.0 —— Commands（macOS 菜单）</h1></div><div><ul class="tag-list"><li class="tag variant-5"><a href="/tags/swiftui">SwiftUI</a></li><li class="tag tagdate">发布于2020年06月27日</li></ul><div class="content"><blockquote><p>本文介绍了 SwiftUI 2.0 中，如何为 macOS 平台添加菜单。 当前运行环境为 Xcode Version 12.0 beta (12A6159), macOS Big Sur 11.0 Beta 版 (20A4299v)。</p></blockquote><p>苹果在 SwiftUI2.0 中增加了 Multiplatform 项目模板，使得同一套代码，仅需少量的适配便可以同时满足 iOS 以及 macOS 的需要。对于 macOS 上运行的 app, 拥有自定义的菜单是一个十分重要的平台特征。对于没有 macOS 开发经验的我来说，学习如何设计开发菜单变得十分有趣且必要。</p><Div id='responser' class = "responser" ><div id='adsBanner'><div class = "hstack"><img src = "https://cdn.fatbobman.com/healthnotesLogoRespnser.png"></img><div class = "text"><p><span class = "title">健康笔记</span>是我开发的一个iOS app，主要服务于有长期健康管理需求的人士。健康笔记提供了强大的自定义数据类型功能，可以满足记录生活中绝大多数的健康项目数据的需要。你可以为每个家庭成员创建各自的健康数据记录笔记，或者针对某个特定项目、特定时期创建对应的笔记。</p></div></div></div><div class='label'>推广</div></Div><script type="text/javascript">
+$(document).ready(function() {
+   var banners = [];
+   var index = 0;
+   banners[0] = ['http://www.fatbobman.com/healthnotes/','<div class = "hstack"><img src = "https://cdn.fatbobman.com/healthnotesLogoRespnser.png"></img><div class = "text"><p><span class = "title">健康笔记</span>是我开发的一个iOS app，主要服务于有长期健康管理需求的人士。健康笔记提供了强大的自定义数据类型功能，可以满足记录生活中绝大多数的健康项目数据的需要。你可以为每个家庭成员创建各自的健康数据记录笔记，或者针对某个特定项目、特定时期创建对应的笔记。</p></div></div>'];
+   banners[1] = ['http://www.fatbobman.com/healthnotes/','<div class = "hstack"><img src = "https://cdn.fatbobman.com/healthnotesLogoRespnser.png"></img><div class = "text"><p><span class = "title">健康笔记</span>是我开发的一个iOS app，主要服务于有长期健康管理需求的人士。健康笔记提供了强大的自定义数据类型功能，可以满足记录生活中绝大多数的健康项目数据的需要。你可以为每个家庭成员创建各自的健康数据记录笔记，或者针对某个特定项目、特定时期创建对应的笔记。</p></div></div>'];
+   banners[2] = ['http://www.fatbobman.com/healthnotes/','<div class = "hstack"><img src = "https://cdn.fatbobman.com/healthnotesLogoRespnser.png"></img><div class = "text"><p><span class = "title">健康笔记</span>是我开发的一个iOS app，主要服务于有长期健康管理需求的人士。健康笔记提供了强大的自定义数据类型功能，可以满足记录生活中绝大多数的健康项目数据的需要。你可以为每个家庭成员创建各自的健康数据记录笔记，或者针对某个特定项目、特定时期创建对应的笔记。</p></div></div>'];
+   index = Math.floor(Math.random() * banners.length);
+   $("#adsBanner").html(banners[index][1]);
+   $("#responser").on("click",function(){
+    window.location.href = banners[index][0]
+});
+  });
+</script><h2>基础</h2><p>在 SwiftUI 下为 app 添加菜单十分方便，下面的代码便可以为 app 添加一个最基础的菜单。</p><pre data-language="swift"><code>@main
 <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">CommandExampleApp</span>: <span class="hljs-title">App</span> </span>{
     <span class="hljs-keyword">var</span> body: some <span class="hljs-type">Scene</span> {
         <span class="hljs-type">WindowGroup</span> {

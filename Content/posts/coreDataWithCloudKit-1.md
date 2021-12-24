@@ -13,6 +13,18 @@ title: Core Data with CloudKit （一） —— 基础
 
 我将通过几篇博文介绍`Core Data with CloudKit`的用法、调试技巧、控制台设置并尝试更深入地研究其同步机制。
 
+[Core Data with CloudKit （一） —— 基础](/posts/coreDataWithCloudKit-1/)
+
+[Core Data with CloudKit（二） —— 同步本地数据库到 iCloud 私有数据库](/posts/coreDataWithCloudKit-2/)
+
+[Core Data with CloudKit（三）—— CloudKit 仪表台](/posts/coreDataWithCloudKit-3/)
+
+[Core Data with CloudKit（四）—— 调试、测试、迁移及其他](/posts/coreDataWithCloudKit-4/)
+
+[Core Data with CloudKit（五）—— 同步公共数据库](/posts/coreDataWithCloudKit-5/)
+
+[Core Data with CloudKit （六） —— 创建与多个 iCloud 用户共享数据的应用](/posts/coreDataWithCloudKit-6/)
+
 ```responser
 id:1
 ```
