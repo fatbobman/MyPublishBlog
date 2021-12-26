@@ -1,7 +1,7 @@
 ---
 date: 2021-12-20 08:10
 description: 赶在 2021 年底，苹果终于发布了 Swift Playgrounds 4，作为近年来最具革命性意义的版本，Swift Playgrounds 4 提供了在 iPad 上开发可发行 app 的能力。本文将对 Swift Playground 4 的新功能做以介绍，并探讨将其作为开发工具的可行性。
-tags: SwiftUI, Swift Playgrounds
+tags: SwiftUI, Swift Playgrounds, Playground
 title: Swift Playgrounds 4 娱乐还是生产力
 image: images/swiftPlaygrounds4.png
 ---
@@ -51,7 +51,9 @@ id:1
 
 Swift Playgrounds 采用了一种名为 playgroundbook 的包来管理课件以及开发者自创的代码。开发者很难将其它资源注入其中，限制了在 Swift Playgrounds 中编写代码的灵活性。通过提供 playground 包支持，让开发者以更加熟悉的方式进行工作，汇集并测试灵感，并随时可在 Mac 和 iPad 之间切换。
 
-![image-20211219200148346](https://cdn.fatbobman.com/image-20211219200148346.png)
+点击首页下方的【查看全部】，选择其中的 Xcode Playground。
+
+![image-20211224160807063](https://cdn.fatbobman.com/image-20211224160807063.png)
 
 事实上，在 Swift Playgrounds 的 Playground 模式下，除了无法指定代码的结束位置外，使用体验与 Xcode Playground 已经十分接近。
 
