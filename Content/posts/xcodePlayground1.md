@@ -89,6 +89,8 @@ Playground 并不提供设置断点的功能，但是可以通过指定执行结
 
 在输入新的代码后，可以采用输入 Shift-Return 的方式让 Playground 执行截至本行尚未执行的代码。此种方式在不希望反复执行长耗时代码段的情况下将非常有用（例如机器学习）。
 
+在单步模式下，对于行首为蓝色执行按钮的代码进行修改，无需重置执行。如果修改了已经执行过的代码行（行首显示为灰色），必须重置 Playground （点击代码编辑区域下方的执行按钮）才能反应出你做的更改。
+
 Swift Playgrounds 没有提供设置执行结束位置的功能，但提供了单步执行的设定。点击屏幕下方的仪表按钮，可以设定调试方式。
 
 ![image-20211223180913086](https://cdn.fatbobman.com/image-20211223180913086.png)
@@ -135,27 +137,27 @@ Playground 在 Xcode 中拥有一个独有的显示区域——结果栏，该�
 
 ![image-20211224091811968](https://cdn.fatbobman.com/image-20211224091811968.png)
 
-当鼠标靠近右侧的屏幕图标时，将出现眼睛图标。点击眼睛图标将显示该行代码对应的 QuickLook 内容。点击屏幕图标可以将 QuickLook 内容显示在代码编辑区域中。
+当鼠标靠近右侧的屏幕图标时，将出现眼睛图标。点击眼睛图标将显示该行代码对应的 Quick Look 内容。点击屏幕图标可以将 Quick Look 内容显示在代码编辑区域中（内联显示）。
 
 ![image-20211224091947472](https://cdn.fatbobman.com/image-20211224091947472.png)
 
-QuickLook 的内容可以在最新值、历史记录、图表模式间切换（可切换模式的数量将根据类型的不同而有所变化）。
+Quick Look 的内容可以在最新值、历史记录、图表模式间切换（可切换模式的数量将根据类型的不同而有所变化）。
 
 ![image-20211224092212674](https://cdn.fatbobman.com/image-20211224092212674.png)
 
-Swift Playgrounds 中对于 QuickLook 的操作与 Xcode 类似，并可通过关闭【启用结果】来提高代码的执行效率。
+Swift Playgrounds 中对于 Quick Look 的操作与 Xcode 类似，并可通过关闭【启用结果】来提高代码的执行效率。
 
-### 如何创建自定义 QuickLook
+### 如何创建自定义 Quick Look
 
-苹果已经为不少的系统类型提供了 Playground 下的 QuickLook 支持。通过让其他的系统类型（主要集中于较新的 API）以及我们自定义的类型满足 CustomPlaygroundDisplayConvertible 协议，以提供 QuickLook 支持。
+苹果已经为不少的系统类型提供了 Playground 下的 Quick Look 支持。通过让其他的系统类型（主要集中于较新的 API）以及我们自定义的类型满足 CustomPlaygroundDisplayConvertible 协议，以提供 Quick Look 支持。
 
-比如说，WWDC 2021 上新推出的 [AttributedString](https://www.fatbobman.com/posts/attributedString/) 目前尚不支持 QuickLook ，但通过在 playgroundDescription 中将其转换为 NSAttributedString，就可以直接在 Playground 中显示正确的 QuickLook 了。
+比如说，WWDC 2021 上新推出的 [AttributedString](https://www.fatbobman.com/posts/attributedString/) 目前尚不支持 Quick Look ，但通过在 playgroundDescription 中将其转换为 NSAttributedString，就可以直接在 Playground 中显示正确的 Quick Look 了。
 
-下图为，没有满足 CustomPlaygroundDisplayConvertible 协议的状况。AttributedString 的 QuickLook 为结构体的 Dump 样式。
+下图为，没有满足 CustomPlaygroundDisplayConvertible 协议的状况。AttributedString 的 Quick Look 为结构体的 Dump 样式。
 
 ![image-20211224142839306](https://cdn.fatbobman.com/image-20211224142839306.png)
 
-苹果为 NSAttributedString 提供了正确的 QuickLook 实现，将 AttributedString 转换成 NSAttributedString 以实现更好的显示效果。
+苹果为 NSAttributedString 提供了正确的 Quick Look 实现，将 AttributedString 转换成 NSAttributedString 以实现更好的显示效果。
 
 ```swift
 extension AttributedString: CustomPlaygroundDisplayConvertible {
