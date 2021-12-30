@@ -54,8 +54,12 @@ extension Date {
 
 extension Int {
     var monthAndYear: (year: Int, month: Int) {
-        let month = self % 12
-        let year = self / 12
+        var month = self % 12
+        var year = self / 12
+        if month == 0 {
+            month = 12
+            year -= 1
+        }
         return (year, month)
     }
 }
