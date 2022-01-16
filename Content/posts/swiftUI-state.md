@@ -327,7 +327,7 @@ struct MyState<Value>:DynamicProperty{
     public var wrappedValue: Value {
         get {self._value.wrappedValue}
         nonmutating set {self._value.wrappedValue = newValue}
-    }÷
+    }
     
     public var projectedValue: Binding<Value>{
         Binding<Value>(
