@@ -32,7 +32,7 @@ func getResponser(_ id: String) -> String {
     }
 }
 
-let adsScript:String = """
+let adsScript = """
 <script type="text/javascript">
 $(document).ready(function() {
    var banners = [];
@@ -49,10 +49,10 @@ $(document).ready(function() {
 </script>
 """
 
-// MARK: -广告数据
+// MARK: - 广告数据
 
 // 健康笔记
-let healthAds =
+let healthAds1 =
     """
     <div class = "hstack">
     <img src = "https://cdn.fatbobman.com/healthnotesLogoRespnser.png"></img>
@@ -61,5 +61,11 @@ let healthAds =
     </div>
     </div>
     """.replacingOccurrences(of: "\n", with: "")
-let healthURL = "http://www.fatbobman.com/healthnotes/"
 
+let healthAds =
+    """
+    <div><img src = "https://cdn.fatbobman.com/healthnotesPromotion3.png"></img>
+    </div>
+    """.replacingOccurrences(of: "\n", with: "")
+
+let healthURL = "http://www.fatbobman.com/healthnotes/"

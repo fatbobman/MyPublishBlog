@@ -1574,7 +1574,7 @@ article hr {
     margin-bottom: 30px;
     border-radius: 8px;
     border: 2px solid #078076;
-    padding: 15px 20px 15px 20px;
+    /* padding: 15px 20px 15px 20px; */
     /* color: #f2f2f2; */
     background-color: #eaf3f2;
     cursor:pointer;

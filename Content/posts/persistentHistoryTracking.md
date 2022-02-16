@@ -6,6 +6,8 @@ title: 在 CoreData 中使用持久化历史跟踪
 ---
 ## 前言 ##
 
+> **2022年2月更新**：我已经重写了代码，并将其整理成库 [PersistentHistoryTrackingKit](https://github.com/fatbobman/PersistentHistoryTrackingKit) 以方便大家使用。
+
 知道持久化历史跟踪功能已经有一段时间了，之前简单地浏览过文档但没有太当回事。一方面关于它的资料不多，学习起来并不容易；另一方面也没有使用它的特别动力。
 
 在计划中的 [【健康笔记 3】](/healthnotes/) 中，我考虑为 App 添加 Widget 或者其他的 Extentsion，另外我也打算将 WWDC21 上介绍的 NSCoreDataCoreSpotlightDelegate 用到 App 的新版本中。为此就不得不认真地了解该如何使用持久化历史跟踪功能了。

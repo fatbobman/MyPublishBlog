@@ -18,7 +18,7 @@ extension PublishingStep where Site == FatbobmanBlog {
                 case .index:
                     section.title = "首页"
                 case .posts:
-                    section.title = "文章"
+                    section.title = "全部文章"
                 case .healthnotes1:
                     section.title = "健康笔记"
                 case .about:
