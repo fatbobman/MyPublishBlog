@@ -10,7 +10,7 @@ import Plot
 import Publish
 
 extension Node where Context == HTML.DocumentContext {
-    /// Add an HTML `<head>` tag within the current context, based 
+    /// Add an HTML `<head>` tag within the current context, based
     /// on inferred information from the current location and `Website`
     /// implementation.
     /// - parameter location: The location to generate a `<head>` tag for.
@@ -46,7 +46,7 @@ extension Node where Context == HTML.DocumentContext {
             .meta(.name("twitter:site"), .content("@fatbobman")),
             .meta(.name("twitter:creator"), .content("@fatbobman")),
             .meta(.name("referrer"), .content("no-referrer")),
-            //只有健康笔记弹出smart bar 
+            // 只有健康笔记弹出smart bar
             .if(healthnotes,
                 .meta(.name("apple-itunes-app"), .content("app-id=1534513553"))),
             .forEach(stylesheetPaths) { .stylesheet($0) }, .viewport(.accordingToDevice),
@@ -54,12 +54,25 @@ extension Node where Context == HTML.DocumentContext {
             .unwrap(
                 rssFeedPath) { path in let title = rssFeedTitle ?? "Subscribe to \(site.name)"
                     return .rssFeedLink(path.absoluteString, title: title)
-            },
+                },
             .unwrap(
                 location.imagePath ?? site.imagePath) { path in let url = site.url(for: path)
                     return .socialImageLink(url)
-            },
-            .script(.src("//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"))
+                },
+            .script(.src("//cdn.bootcss.com/jquery/3.2.1/jquery.min.js")),
+            .raw(newGoogleAnalytics)
         )
     }
 }
+
+let newGoogleAnalytics = """
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-95XGB44EJH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-95XGB44EJH');
+</script>
+"""
