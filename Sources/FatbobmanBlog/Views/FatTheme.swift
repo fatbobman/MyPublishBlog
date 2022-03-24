@@ -23,7 +23,7 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
     func makeIndexHTML(for index: Index, context: PublishingContext<Site>) throws -> HTML {
         HTML(
             .lang(context.site.language),
-            .myhead(for: index, on: context.site),
+            .customHeader(for: index, on: context.site),
             .body(
                 .class("index"),
                 .header(
@@ -33,6 +33,10 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                 .container(
                     .wrapper(
                         .viewContainer(
+                            .leftContext(
+                                .itemList(for: context.allItems(sortedBy: \.date, order: .descending), on: context.site, limit: 10),
+                                .sectionHeader(context: context, showTitle: false)
+                            ),
                             .sideNav(
                                 .div(
                                     .class("sideTags"),
@@ -49,11 +53,6 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                                         }
                                     )
                                 )
-                            ),
-                            .leftContext(
-                                // .sectionheader(context: context),
-                                .recentItemList(for: index, context: context, recentPostNumber: 5, words: 300),
-                                .sectionheader(context: context, showTitle: false)
                             )
                         )
                     )
@@ -63,18 +62,23 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
         )
     }
 
+    // 全部文章列表
     func makeSectionHTML(
         for section: Section<Site>,
         context: PublishingContext<Site>
     ) throws -> HTML {
         HTML(
             .lang(context.site.language),
-            .myhead(for: section, on: context.site),
+            .customHeader(for: section, on: context.site),
             .body(
                 .header(for: context, selectedSection: section.id),
                 .container(
                     .wrapper(
                         .viewContainer(
+                            .leftContext(
+                                //                                .itemList(for: section.items, on: context.site)
+                                .archiveView(context: context)
+                            ),
                             .sideNav(
                                 .div(
                                     .class("sideTags"),
@@ -91,9 +95,6 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                                         }
                                     )
                                 )
-                            ),
-                            .leftContext(
-                                .itemList(for: section.items, on: context.site)
                             )
                         )
                     ),
@@ -118,20 +119,22 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
 
         return HTML(
             .lang(context.site.language),
-            .myhead(for: item, on: context.site),
+            .customHeader(for: item, on: context.site),
             .body(
                 .class("item-page"),
                 .header(for: context, selectedSection: item.sectionID),
                 .container(
                     .wrapper(
                         .viewContainer(
-                            .sideNav(
-                                .toc()
-                            ),
                             .leftContext(
                                 .shareContainer(title: item.title, url: context.site.url.appendingPathComponent(item.path.string).absoluteString),
                                 .article(
-                                    .div(.h1(.text(item.title))),
+                                    .div(
+                                        .class("post-title"),
+                                        .h1(
+                                            .text(item.title)
+                                        )
+                                    ),
                                     .div(
                                         .tagList(for: item, on: context.site, displayDate: true),
                                         .div(.class("content"), .contentBody(item.body)),
@@ -139,9 +142,12 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                                     )
                                 ),
                                 // .shareContainerForMobile(title: item.title, url: context.site.url.appendingPathComponent(item.path.string).absoluteString),
-                                .support(),
+//                                .support(),
                                 .itemNavigator(previousItem: previous, nextItem: next),
                                 .gitment(topicID: item.title)
+                            ),
+                            .sideNav(
+                                .toc()
                             ),
                             // 必须在 文档加载后，才能调用script
                             .tocScript()
@@ -157,12 +163,7 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
     func makePageHTML(for page: Page, context: PublishingContext<Site>) throws -> HTML {
         return HTML(
             .lang(context.site.language),
-            .if(
-                page.path == Path("healthnotes"),
-                .myhead(for: page, on: context.site, healthnotes: true),
-                else:
-                .myhead(for: page, on: context.site)
-            ),
+            .customHeader(for: page, on: context.site),
             .body(
                 // 需要特殊处理.在publish中是当做page来显示的.为了nav的选中显示正常
                 .if(
@@ -170,14 +171,6 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                     .header(
                         for: context,
                         selectedSection: FatbobmanBlog.SectionID.about as? Site.SectionID
-                    ),
-                    else: .if(
-                        page.path == Path("healthnotes1"),
-                        .header(
-                            for: context,
-                            selectedSection: FatbobmanBlog.SectionID.healthnotes1 as? Site.SectionID
-                        ),
-                        else: .header(for: context, selectedSection: nil)
                     )
                 ),
 
@@ -197,6 +190,7 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
         )
     }
 
+    // Tag列表
     func makeTagListHTML(for page: TagListPage, context: PublishingContext<Site>) throws -> HTML? {
         return HTML(
             .lang(context.site.language),
@@ -205,22 +199,25 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                 .header(for: context, selectedSection: FatbobmanBlog.SectionID.tags as? Site.SectionID),
                 .container(
                     .wrapper(
-                        .searchInput(),
-                        .ul(
-                            .class("all-tags"),
-                            .forEach(page.tags.sorted()) { tag in
-                                .li(
-                                    .class(tag.colorfiedClass),
-                                    .a(
-                                        .href(context.site.path(for: tag)),
-                                        .text("\(tag.string) (\(tag.count))")
+                        .div(
+                            .class("searchContent"),
+                            .searchInput(),
+                            .ul(
+                                .class("all-tags"),
+                                .forEach(page.tags.sorted()) { tag in
+                                    .li(
+                                        .class(tag.colorfiedClass),
+                                        .a(
+                                            .href(context.site.path(for: tag)),
+                                            .text("\(tag.string) (\(tag.count))")
+                                        )
                                     )
-                                )
-                            }
-                        ),
-                        .searchResult()
-                    ) // ,
-                    // .spacer()
+                                }
+                            ),
+                            .searchResult()
+                        ) // ,
+                        // .spacer()
+                    )
                 ),
                 .footer(for: context.site)
             )
@@ -233,27 +230,28 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
     ) throws -> HTML? {
         HTML(
             .lang(context.site.language),
-            .myhead(for: page, on: context.site),
+            .customHeader(for: page, on: context.site),
             .body(
                 .header(for: context, selectedSection: FatbobmanBlog.SectionID.tags as? Site.SectionID),
                 .container(
                     .wrapper(
                         .div(
-                            .class("tag-detail-container"),
-                            .div(
-                                .class("float-container "),
-                                .div(
-                                    .class("tag-detail-header"),
-                                    // .text("标签: "),
-                                    .span(.class(page.tag.colorfiedClass), .text(page.tag.string)),
-                                    .a(
-                                        .class("browse-all-tag"),
-                                        .text("查看全部标签"),
-                                        .href(context.site.tagListPath)
+                            .class("tagResultContent"),
+                            .ul(
+                                .class("all-tags"),
+                                .forEach(context.allTags.sorted()) { tag in
+                                    .li(
+                                        .class(tag.colorfiedClass),
+                                        .a(
+                                            .href(context.site.path(for: tag)),
+                                            .text("\(tag.string) (\(tag.count))")
+                                        )
                                     )
-                                )
+                                }
                             )
                         ),
+                        .div(
+                        .class("tagResult"),
                         .itemList(
                             for: context.items(
                                 taggedWith: page.tag,
@@ -261,6 +259,7 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                                 order: .descending
                             ),
                             on: context.site
+                        )
                         )
                     ),
                     .tagDetailSpacer()
@@ -314,7 +313,7 @@ extension Node where Context == HTML.BodyContext {
                                 .href(context.index.path),
                                 else:
                                 .if(
-                                    section as! FatbobmanBlog.SectionID == FatbobmanBlog.SectionID.healthnotes1,
+                                    section as! FatbobmanBlog.SectionID == FatbobmanBlog.SectionID.healthNotes,
                                     .href("https://www.fatbobman.com/healthnotes"),
                                     else: .href(context.sections[section].path)
                                 )
@@ -336,10 +335,10 @@ extension Node where Context == HTML.BodyContext {
         )
     }
 
-    fileprivate static func itemList<T: Website>(for items: [Item<T>], on site: T) -> Node {
+    fileprivate static func itemList<T: Website>(for items: [Item<T>], on site: T, limit: Int = .max) -> Node {
         return .ul(
             .class("item-list"),
-            .forEach(items) { item in
+            .forEach(items.prefix(limit)) { item in
                 .li(
                     .article(
                         .h1(.class("itme-list-title"), .a(.href(item.path), .text(item.title))),
@@ -382,7 +381,7 @@ extension Node where Context == HTML.BodyContext {
 
     static func tocScript() -> Node {
         .raw("""
-                <script src="https://fatbobman.com/images/toc.js"></script>
+                <script src="/images/toc.js"></script>
             """
         )
     }
@@ -507,7 +506,7 @@ extension Node where Context == HTML.BodyContext {
     }
 }
 
-let googleAndBaidu: String = """
+let googleAndBaidu = """
 <script>
     // dynamic User by Hux
     var _gaId = 'UA-165296388-1';

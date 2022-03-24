@@ -9,7 +9,7 @@ struct FatbobmanBlog: Website {
         // Add the sections that you want your website to contain here:
         case index
         case posts
-        case healthnotes1
+        case healthNotes
         case about
         case tags
     }
@@ -27,25 +27,17 @@ struct FatbobmanBlog: Website {
     var imagePath: Path? { Path("images") }
 }
 
-var command: String = ""
-
-if CommandLine.arguments.count > 1 {
-    command = CommandLine.arguments[1]
-}
-
-print(command)
-
 // This will generate your website using the built-in Foundation theme:
 try FatbobmanBlog().publish(
     using: [
-        // 使用ink modifier的plugins要在addMarkdonwFiles之前先加入.
+        // 使用ink modifier的plugins要在addMarkdownFiles之前先加入.
         // 需要注意modifier的添加顺序
         .installPlugin(.highlightJS()), // 语法高亮
         .addModifier(modifier: bilibili, modifierName: "bilibili"), // bilibili视频
         .addModifier(modifier: hrefOpenNewTab, modifierName: "hrefOpenNewTab"),
         .addModifier(modifier: responser, modifierName: "Responser"),
         .copyResources(),
-        .setSctionTitle(), // 修改section 标题
+        .setSectionTitle(), // 修改section 标题
         .addMarkdownFiles(),
         .makeDateArchive(),
         .installPlugin(.setDateFormatter()), // 设置时间显示格式
@@ -60,10 +52,8 @@ try FatbobmanBlog().publish(
         ),
         .generateHTML(withTheme: .fatTheme),
         //        .installPlugin(.rssSetting(including:[.posts,.project])),
-
         .makeSearchIndex(includeCode: false),
         .generateSiteMap(),
         .unwrap(.gitHub("fatbobman/fatbobman.github.io", useSSH: true), PublishingStep.deploy),
-        .if(command == "--upload", .uploadToServer()),
     ]
 )

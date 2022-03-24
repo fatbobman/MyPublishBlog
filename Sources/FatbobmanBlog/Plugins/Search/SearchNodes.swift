@@ -84,7 +84,7 @@ public extension Node where Context == HTML.BodyContext {
                             $('.wrapper').height( window.innerHeight - 50 - $('footer').get(0).offsetHeight - $('header').get(0).offsetHeight );
                         }
                         else {
-                            $('.wrapper').height( $('.local-search-result-cls').get(0).offsetHeight + $('.site-search-form').get(0).offsetHeight + $('.all-tags').get(0).offsetHeight );
+                            $('.wrapper').height( $('.local-search-result-cls').get(0).offsetHeight + $('.site-search-form').get(0).offsetHeight + $('.all-tags').get(0).offsetHeight + 20);
                         }
                      }
                     """

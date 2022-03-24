@@ -50,6 +50,12 @@ function initSidebar(sidebarQuery, contentQuery) {
         headers = Array.from(content.querySelectorAll('h' + i++))
     }
     [].unshift.call(headers, content.querySelector('h1'))
+    
+    // 当有h2以下标题时，删除h1
+    if (headers.length > 1) {
+        headers.splice(0,1)
+    }
+    
     if (headers.length) {
         [].forEach.call(headers, function (h) {
             var h1 = makeLink(h, 'a', 'h1-link')
@@ -78,6 +84,7 @@ function initSidebar(sidebarQuery, contentQuery) {
             }
         })
     }
+
     //增加 click 点击处理,使用 scrollIntoView,增加控制滚动的 flag
     var scrollFlag = 0
     var scrollFlagTimer

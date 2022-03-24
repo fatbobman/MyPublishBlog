@@ -86,7 +86,8 @@ extension Node where Context == HTML.BodyContext {
             )
     }
 
-    static func sectionheader<Site: Website>(
+    // 首页下方的 "显示全部文章"
+    static func sectionHeader<Site: Website>(
         context: PublishingContext<Site>,
         showTitle: Bool = true
     ) -> Node {

@@ -60,7 +60,9 @@ extension Node where Context == HTML.DocumentContext {
                     return .socialImageLink(url)
                 },
             .script(.src("//cdn.bootcss.com/jquery/3.2.1/jquery.min.js")),
-            .raw(newGoogleAnalytics)
+            .raw(newGoogleAnalytics),
+            .link(.rel(.stylesheet),
+                  .href("//unpkg.com/heti/umd/heti.min.css"))
         )
     }
 }
