@@ -22,11 +22,11 @@ extension Node where Context == HTML.DocumentContext {
     /// - parameter rssFeedPath: The path to any RSS feed to associate with the
     ///   resulting HTML page. Default: `feed.rss`.
     /// - parameter rssFeedTitle: An optional title for the page's RSS feed.
-    static func myhead<T: Website>(
+    static func customHeader<T: Website>(
         for location: Location, on site: T, titleSeparator: String = " | ",
         stylesheetPaths: [Path] = ["/styles.css"], rssFeedPath: Path? = .defaultForRSSFeed,
         rssFeedTitle: String? = nil,
-        healthnotes: Bool = false
+        healthNotes: Bool = false
     ) -> Node {
         var title = location.title
 
@@ -47,7 +47,7 @@ extension Node where Context == HTML.DocumentContext {
             .meta(.name("twitter:creator"), .content("@fatbobman")),
             .meta(.name("referrer"), .content("no-referrer")),
             // 只有健康笔记弹出smart bar
-            .if(healthnotes,
+            .if(healthNotes,
                 .meta(.name("apple-itunes-app"), .content("app-id=1534513553"))),
             .forEach(stylesheetPaths) { .stylesheet($0) }, .viewport(.accordingToDevice),
             .unwrap(site.favicon) { .favicon($0) },
