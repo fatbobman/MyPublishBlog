@@ -9,6 +9,13 @@ import Foundation
 import Plot
 import Publish
 
+let css: [Path] = [
+    "/styles.css",
+    "/images/css/code.css", // 代码高亮
+    "/images/css/toc.css", // 文章正文 toc
+    "/images/css/search.css"
+]
+
 extension Node where Context == HTML.DocumentContext {
     /// Add an HTML `<head>` tag within the current context, based
     /// on inferred information from the current location and `Website`
@@ -24,7 +31,7 @@ extension Node where Context == HTML.DocumentContext {
     /// - parameter rssFeedTitle: An optional title for the page's RSS feed.
     static func customHeader<T: Website>(
         for location: Location, on site: T, titleSeparator: String = " | ",
-        stylesheetPaths: [Path] = ["/styles.css"], rssFeedPath: Path? = .defaultForRSSFeed,
+        stylesheetPaths: [Path] = css, rssFeedPath: Path? = .defaultForRSSFeed,
         rssFeedTitle: String? = nil,
         healthNotes: Bool = false
     ) -> Node {
@@ -62,7 +69,9 @@ extension Node where Context == HTML.DocumentContext {
             .script(.src("//cdn.bootcss.com/jquery/3.2.1/jquery.min.js")),
             .raw(newGoogleAnalytics),
             .link(.rel(.stylesheet),
-                  .href("//unpkg.com/heti/umd/heti.min.css"))
+                  .href("//unpkg.com/heti/umd/heti.min.css")),
+            // 工具栏颜色
+            .meta(.name("theme-color"), .content("#C62F1C"))
         )
     }
 }

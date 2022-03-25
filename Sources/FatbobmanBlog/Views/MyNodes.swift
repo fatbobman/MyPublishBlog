@@ -111,23 +111,23 @@ extension Node where Context == HTML.BodyContext {
         .div(
             .div(
                 .class("headerIcons"),
-                .a(
-                    .class("icon headIconWeixin"),
-                    .script(
-                        .raw(
-                            """
-                                var weixinHeadButton = $('.headIconWeixin');
-                                weixinHeadButton.hover(
-                                function(){
-                                $('.weixinHeadQcode').css('display','block');
-                                },
-                                function(){
-                                $('.weixinHeadQcode').css('display','none');
-                                })
-                            """
-                        )
-                    )
-                ),
+//                .a(
+//                    .class("icon headIconWeixin"),
+//                    .script(
+//                        .raw(
+//                            """
+//                                var weixinHeadButton = $('.headIconWeixin');
+//                                weixinHeadButton.hover(
+//                                function(){
+//                                $('.weixinHeadQcode').css('display','block');
+//                                },
+//                                function(){
+//                                $('.weixinHeadQcode').css('display','none');
+//                                })
+//                            """
+//                        )
+//                    )
+//                ),
                 .a(
                     .class("icon headIconTwitter"),
                     .href("https://www.twitter.com/fatbobman"),
@@ -169,14 +169,6 @@ extension Node where Context == HTML.BodyContext {
                     .rel(.noreferrer)
                 )
             )
-            // .div(
-            //     .class("weixinHeadQcode"),
-            //     .onclick(
-            //         """
-            //         $('.weixinHeadQcode').css('display','none');
-            //         """
-            //     )
-            // )
         )
     }
 
@@ -192,79 +184,79 @@ extension Node where Context == HTML.BodyContext {
         )
     }
 
-    static func mobileToc(_ nodes: Node...) -> Node {
-        .div(
-            .class("mobileSidenav"),
-            .div(
-                .group(nodes)
-            )
-        )
-    }
-
-    static func shareContainerForMobile(title: String, url: String) -> Node {
-        .div(
-            .class("post-actions-mobile"),
-            .div(
-                .class("actionButton"),
-                .div(
-                    .class("actionButton twitter"),
-                    .onclick("window.open('https://twitter.com/intent/tweet?text=\(title)&url=\(url)&via=fatbobman','target','');")
-                )
-            ),
-            .div(
-                .class("actionButton"),
-                .div(
-                    .class("actionButton weixin"),
-                    .script(
-                        .raw(
-                            """
-                            var weixinButton = $('.actionButton .weixin');
-                            weixinButton.hover(
-                            function(){
-                                $('.actionButton .weixinQcode').css('display','block');
-                            },
-                            function(){
-                                $('.actionButton .weixinQcode').css('display','none');
-                            })
-                            """
-                        )
-                    ),
-                    .div(
-                        .class("actionButton weixinQcode")
-                    )
-                )
-            ),
-            .div(
-                .class("actionButton"),
-                .div(
-                    .class("actionButton comment"),
-                    .onclick("$('html,body').animate({scrollTop: $('#gitalk-container').offset().top }, {duration: 500,easing:'swing'})"
-                    )
-                )
-            ),
-            .div(
-                .class("actionButton"),
-                .div(
-                    .class("actionButton donate"),
-                    .script(
-                        """
-                        var donateButton = $('.actionButton .donate');
-                        donateButton.hover(
-                        function(){
-                            $('.actionButton .donateQcode').css('display','block');
-                        },
-                        function(){
-                            $('.actionButton .donateQcode').css('display','none');
-                        })
-                        """
-                    ),
-                    .div(
-                        .class("actionButton donateQcode")
-                    )
-                )
-            )
-        )
-    }
+//    static func mobileToc(_ nodes: Node...) -> Node {
+//        .div(
+//            .class("mobileSidenav"),
+//            .div(
+//                .group(nodes)
+//            )
+//        )
+//    }
+//
+//    static func shareContainerForMobile(title: String, url: String) -> Node {
+//        .div(
+//            .class("post-actions-mobile"),
+//            .div(
+//                .class("actionButton"),
+//                .div(
+//                    .class("actionButton twitter"),
+//                    .onclick("window.open('https://twitter.com/intent/tweet?text=\(title)&url=\(url)&via=fatbobman','target','');")
+//                )
+//            ),
+//            .div(
+//                .class("actionButton"),
+//                .div(
+//                    .class("actionButton weixin"),
+//                    .script(
+//                        .raw(
+//                            """
+//                            var weixinButton = $('.actionButton .weixin');
+//                            weixinButton.hover(
+//                            function(){
+//                                $('.actionButton .weixinQcode').css('display','block');
+//                            },
+//                            function(){
+//                                $('.actionButton .weixinQcode').css('display','none');
+//                            })
+//                            """
+//                        )
+//                    ),
+//                    .div(
+//                        .class("actionButton weixinQcode")
+//                    )
+//                )
+//            ),
+//            .div(
+//                .class("actionButton"),
+//                .div(
+//                    .class("actionButton comment"),
+//                    .onclick("$('html,body').animate({scrollTop: $('#gitalk-container').offset().top }, {duration: 500,easing:'swing'})"
+//                    )
+//                )
+//            ),
+//            .div(
+//                .class("actionButton"),
+//                .div(
+//                    .class("actionButton donate"),
+//                    .script(
+//                        """
+//                        var donateButton = $('.actionButton .donate');
+//                        donateButton.hover(
+//                        function(){
+//                            $('.actionButton .donateQcode').css('display','block');
+//                        },
+//                        function(){
+//                            $('.actionButton .donateQcode').css('display','none');
+//                        })
+//                        """
+//                    ),
+//                    .div(
+//                        .class("actionButton donateQcode")
+//                    )
+//                )
+//            )
+//        )
+//    }
 
     static func support() -> Node {
         let support =

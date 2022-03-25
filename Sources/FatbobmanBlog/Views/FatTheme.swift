@@ -97,8 +97,9 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                                 )
                             )
                         )
-                    ),
-                    .itemListSpacer()
+                    )
+//                    ,
+//                    .itemListSpacer()
                 ),
                 .footer(for: context.site)
             )
@@ -144,7 +145,7 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                                 // .shareContainerForMobile(title: item.title, url: context.site.url.appendingPathComponent(item.path.string).absoluteString),
 //                                .support(),
                                 .itemNavigator(previousItem: previous, nextItem: next),
-                                .gitment(topicID: item.title)
+                                .gitTalk(topicID: item.title)
                             ),
                             .sideNav(
                                 .toc()
@@ -173,18 +174,17 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                         selectedSection: FatbobmanBlog.SectionID.about as? Site.SectionID
                     )
                 ),
-
-                .div(.class("about"),
-                     .container(
-                         .wrapper(
+                .container(
+                    .wrapper(
+                        .div(.class("about"),
                              .article(
                                  .div(
                                      .class("content"),
                                      .contentBody(page.body)
                                  )
-                             )
-                         )
-                     )),
+                             ))
+                    )
+                ),
                 .footer(for: context.site)
             )
         )
@@ -241,7 +241,7 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                                 .class("all-tags"),
                                 .forEach(context.allTags.sorted()) { tag in
                                     .li(
-                                        .class(tag.colorfiedClass),
+                                        .class(((tag == page.tag) ? "selectedTag " : "") + tag.colorfiedClass),
                                         .a(
                                             .href(context.site.path(for: tag)),
                                             .text("\(tag.string) (\(tag.count))")
@@ -251,15 +251,15 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                             )
                         ),
                         .div(
-                        .class("tagResult"),
-                        .itemList(
-                            for: context.items(
-                                taggedWith: page.tag,
-                                sortedBy: \.date,
-                                order: .descending
-                            ),
-                            on: context.site
-                        )
+                            .class("tagResult"),
+                            .itemList(
+                                for: context.items(
+                                    taggedWith: page.tag,
+                                    sortedBy: \.date,
+                                    order: .descending
+                                ),
+                                on: context.site
+                            )
                         )
                     ),
                     .tagDetailSpacer()
@@ -411,25 +411,7 @@ extension Node where Context == HTML.BodyContext {
         )
     }
 
-    static func gitment(topicID: String) -> Node {
-        // .raw("""
-        //     <div id="gitment"></div>
-        //     <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-        //     <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-        //     <script>
-        //     var gitment = new Gitment({
-        //       id: '\(topicID)', // 可选。默认为 location.href
-        //       owner: 'fatbobman',
-        //       repo: 'blogComments',
-        //       oauth: {
-        //         client_id: 'fcf61195c7f73253dc8b',
-        //         client_secret: '0ac2907be08248a1fcb5312e27480ad535c682e5',
-        //       },
-        //     })
-        //     gitment.render('gitment')
-        //     </script>
-        //     """
-        // )
+    static func gitTalk(topicID: String) -> Node {
         .raw("""
         <div id="gitalk-container"></div>
          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
@@ -444,7 +426,7 @@ extension Node where Context == HTML.BodyContext {
         id: '\(topicID)'.split("/").pop().substring(0, 49),      // Ensure uniqueness and length less than 50
         distractionFreeMode: true,  // Facebook-like distraction free mode
         createIssueManually: true,
-        language: navigator.userLanguage
+        language: 'zh-CN'
         });
 
         gitalk.render('gitalk-container');
