@@ -67,6 +67,7 @@
     --ads-background-color-dark: #133632;
     --ads-content-text-color-light: rgb(127, 140, 141);
     --ads-content-text-color-dark: rgb(127, 140, 141);
+
 }
 
 /* body */
@@ -1948,6 +1949,7 @@ li.selectedTag a {
 
 
 @media (prefers-color-scheme: dark) {
+
     .wrapper {
         background-color: var(--wrapper-background-color-dark);
     }
@@ -2142,6 +2144,7 @@ li.selectedTag a {
     article hr {
         border-color: #3d4045;
     }
+
     
 }
 

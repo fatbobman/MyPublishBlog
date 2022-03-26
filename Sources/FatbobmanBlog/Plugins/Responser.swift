@@ -49,8 +49,18 @@ $(document).ready(function() {
 // 健康笔记
 let healthAds1 =
     """
+    <style>
+    .adsImage {
+       content:url("https://cdn.fatbobman.com/BlogHealthNotesAdsPic.png")
+    }
+    @media (prefers-color-scheme: dark) {
+      .adsImage {
+           content:url("https://cdn.fatbobman.com/BlogHealthNotesAdsDarkPic.png")
+      }
+    }
+    </style>
     <div class = "HStack">
-    <img src = "https://cdn.fatbobman.com/BlogHealthNotesAdsPic.png"></img>
+    <img class = "adsImage"></img>
     <div class = "textContainer">
     <div class = "title">健康笔记 - 全家人的健康助手 </div>
     <div class = "document"><p>健康笔记适用于任何有健康管理需求的人士。提供了强大的自定义数据类型功能，可以记录生活中绝大多数的健康项目数据。你可以为每个家庭成员创建各自的记录笔记，或者针对某个特定项目、特定时期创建对应的笔记。</p>
