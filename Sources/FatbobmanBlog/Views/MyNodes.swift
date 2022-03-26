@@ -7,17 +7,18 @@ extension Node where Context == HTML.BodyContext {
         .div(
             .class("license"),
             .p(
-                .text("本博客所有文章除特别声明外，均采用"),
+                .text("本博客文章采用"),
                 .a(
-                    .text("CC 4.0许可协议"),
+                    .text("CC 4.0 协议"),
                     .href("https://creativecommons.org/licenses/by-nc-sa/4.0/"),
                     .target(.blank)
                 ),
-                .text("。")
-            ),
-            .p(
-                .text("转载请注明出处和作者。")
+                .text("，转载需注明出处和作者。")
             )
+//            ,
+//            .p(
+//                .text("转载请注明出处和作者。")
+//            )
         )
     }
 
@@ -273,5 +274,11 @@ extension Node where Context == HTML.BodyContext {
                 .text("关注")
             )
         )
+    }
+
+    static func newsletter() -> Node {
+        .raw("""
+        <form style="border:1px solid #ccc;padding:3px;text-align:center;" action="https://tinyletter.com/fatbobman" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/fatbobman', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true"><p><label for="tlemail">Enter your email address</label></p><p><input type="text" style="width:140px" name="email" id="tlemail" /></p><input type="hidden" value="1" name="embed"/><input type="submit" value="Subscribe" /><p><a href="https://tinyletter.com" target="_blank">powered by TinyLetter</a></p></form>
+        """)
     }
 }

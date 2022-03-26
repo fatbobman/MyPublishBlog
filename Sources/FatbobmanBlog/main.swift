@@ -22,7 +22,7 @@ struct FatbobmanBlog: Website {
     var url = URL(string: "https://www.fatbobman.com")!
     var name = "肘子的Swift记事本"
     var description =
-        "徐杨的个人博客,Core Data,Swift,Swift UI,Combine,健康笔记,iOS APP,Health Note,HealthNotes"
+        "东坡肘子的博客，记录并分享学习 Swift、SwiftUI、Core Data 以及 Combine 过程中的心得与经验。"
     var language: Language { .chinese }
     var imagePath: Path? { Path("images") }
 }

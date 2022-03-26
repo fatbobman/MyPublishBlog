@@ -49,7 +49,11 @@ extension Node where Context == HTML.DocumentContext {
             .url(site.url(for: location)),
             .title(title),
             .description(description),
-            .twitterCardType(location.imagePath == nil ? .summary : .summaryLargeImage),
+            .if(
+                location.path == "",
+                .twitterCardType(.summaryLargeImage),
+                else: .twitterCardType(location.imagePath == nil ? .summary : .summaryLargeImage)
+            ),
             .meta(.name("twitter:site"), .content("@fatbobman")),
             .meta(.name("twitter:creator"), .content("@fatbobman")),
             .meta(.name("referrer"), .content("no-referrer")),
@@ -66,6 +70,7 @@ extension Node where Context == HTML.DocumentContext {
                 location.imagePath ?? site.imagePath) { path in let url = site.url(for: path)
                     return .socialImageLink(url)
                 },
+            .if(location.path == "",.socialImageLink("https://www.fatbobman.com/images/twitterCardImage.png")),
             .script(.src("//cdn.bootcss.com/jquery/3.2.1/jquery.min.js")),
             .raw(newGoogleAnalytics),
             .link(.rel(.stylesheet),

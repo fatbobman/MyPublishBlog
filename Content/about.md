@@ -1,32 +1,59 @@
 ---
-title: 关于
+title: 关  于
 date: 2021-01-20 13:04
 description: 关于
 tags: first, article
 ---
+## 关于我
 
-![about](/images/about.svg)
+接触电脑很早，始终将其作为兴趣。因健康原因提前过起了退休生活。为了能更好的记录自己的身体数据，在不接触代码十几年后又重新开始学习。目前身体已经恢复，但已习惯了如今的生活节奏。
 
-#### 关于我 ####
+## 关于这个网站
 
-> 用了近40年的电脑，从磁带机用到了现在的固态硬盘，从32KB内存用到了现在的64GB。一直保持着对技术的兴趣，却始终没有进入这个行业。
+记录和分享我在学习 Swift、SwiftUI、CoreDate 以及 Combine 过程中的心得与体会。
 
-#### 关于这个网站 ####
+## 我的日常
 
-> 为了能更好的记录自己的身体数据，在离开代码后十几年后又开始重拾兴趣。为自己以及其他有需要的朋友开发了健康笔记这个app。在此对日常学习、开发过程中的心得进行记录和总结。
+照顾毛孩子、养花、养鱼、健身。
 
-#### 我的日常 ####
+## 我开发的App
 
-> 养花、养鱼、养宠物、健身。
+* [健康笔记](https://www.fatbobman.com/healthnotes/)
 
-#### 目前Swift兴趣方向 ####
+  家庭健康小助手 —— 记录并管理全家人的健康数据。
 
-> SwiftUI，CoreDate，Combine
+## 我的开源项目
 
-#### 联系我 ####
+* [SwipeCell](https://github.com/fatbobman/SwipeCell)
 
-> Twitter: [@fatbobman](https://twitter.com/fatbobman/)
+  SwipeCell 是一个 SwiftUI 库。帮助你实现类似 iOS Mail 左右滑动菜单的功能。
 
-> Email: [xuyang@me.com](mailto:xuyang@me.com)
+* [SwiftUI Overlay Container](https://github.com/fatbobman/SwiftUIOverlayContainer)
 
-> 公共号: [肘子的Swift记事本](/support/)
+  仅需简单配置，SwiftUI Overlay Container 即可帮你完成从视图组织、队列处理、转场、动画、交互到显示样式配置等基础工作，让开发者可以将精力更多地投入到应用程序视图的实现本身。
+
+* [NavigationViewKit](https://github.com/fatbobman/NavigationViewKit)
+
+  NavigationViewKit 是一个 SwiftUI 的 NavigationView 扩展库。提供了返回根视图、可控动画、自定义 NavigationViewStyle 等功能。
+
+* [SheetKit](https://github.com/fatbobman/SheetKit)
+
+  SheetKit 是一个 SwiftUI 模态视图的扩展库。提供了数个用于模态视图的便捷展示、取消的方法，以及几个用于模态视图的 View Extension。
+
+* [PersistentHistoryTrackingKit](https://github.com/fatbobman/PersistentHistoryTrackingKit)
+
+  帮助您轻松处理 Core Data 的持久性历史跟踪。
+
+* [MOCloner](https://github.com/fatbobman/MOCloner)
+
+  MOCloner 是一个很小的库，旨在实现对 NSManagedObject 的可定制深拷贝。支持 one-to-one、one-to-many、many-to-many 等关系方式。除了忠于原始数据的拷贝方式外，还提供了选择性拷贝、拷贝时生成新值等功能。
+
+## 联系我
+
+* Twitter: [@fatbobman](https://twitter.com/fatbobman/)
+
+* Email: [xuyang@me.com](mailto:xuyang@me.com)
+
+* 微信公共号: [肘子的Swift记事本](/support/)
+
+## [请我喝杯咖啡](/support/)

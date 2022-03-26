@@ -172,12 +172,23 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                     .header(
                         for: context,
                         selectedSection: FatbobmanBlog.SectionID.about as? Site.SectionID
+                    ),
+                    else:
+                    .header(
+                        for: context,
+                        selectedSection: nil
                     )
                 ),
                 .container(
                     .wrapper(
                         .div(.class("about"),
                              .article(
+                                 //                                .div(
+//                                    .class("post-title"),
+//                                    .h1(
+//                                       .text(page.title)
+//                                    )
+//                                ),
                                  .div(
                                      .class("content"),
                                      .contentBody(page.body)
@@ -284,7 +295,7 @@ extension Node where Context == HTML.BodyContext {
         return .header(
             .wrapper(
                 // .div(.class("logo"), .a(.href("/"), .h2("肘子的SWIFT记事本"))),
-                .div(.class("logo"), .a(.href("/"), .img(.src("/images/title.svg")))),
+                .div(.class("logo"), .a(.href("/"), .img(.src("/images/title_version2.svg")))),
                 .headerIcons(),
                 .if(sectionIDs.count > 1, nav(for: context, selectedSection: selectedSection))
             )
@@ -440,7 +451,7 @@ extension Node where Context == HTML.BodyContext {
         formatter.dateFormat = "yyyy"
         return .footer(
             .p(
-                .text("Copyright &copy; 徐杨 \(formatter.string(from: Date())) "),
+                .text("Copyright &copy; 东坡肘子 (Fatbobman) \(formatter.string(from: Date())) "),
                 .a(.text("辽ICP备20006550"), .href("http://beian.miit.gov.cn"))
             ),
             .p(
