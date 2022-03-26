@@ -10,7 +10,7 @@ import Plot
 import Publish
 
 let css: [Path] = [
-    "/styles.css",
+    "/images/css/stylesNew.css",
     "/images/css/code.css", // 代码高亮
     "/images/css/toc.css", // 文章正文 toc
     "/images/css/search.css"
@@ -66,11 +66,13 @@ extension Node where Context == HTML.DocumentContext {
                 rssFeedPath) { path in let title = rssFeedTitle ?? "Subscribe to \(site.name)"
                     return .rssFeedLink(path.absoluteString, title: title)
                 },
-            .unwrap(
-                location.imagePath ?? site.imagePath) { path in let url = site.url(for: path)
-                    return .socialImageLink(url)
-                },
-            .if(location.path == "",.socialImageLink("https://www.fatbobman.com/images/twitterCardImage.png")),
+            .if(location.path == "",
+                .socialImageLink("https://www.fatbobman.com/images/twitterCardImage.png"),
+                else:
+                .unwrap(
+                    location.imagePath ?? site.imagePath) { path in let url = site.url(for: path)
+                        return .socialImageLink(url)
+                    }),
             .script(.src("//cdn.bootcss.com/jquery/3.2.1/jquery.min.js")),
             .raw(newGoogleAnalytics),
             .link(.rel(.stylesheet),
