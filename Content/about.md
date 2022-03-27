@@ -56,4 +56,4 @@ tags: first, article
 
 * 微信公共号: [肘子的Swift记事本](/support/)
 
-## [请我喝杯咖啡](/support/)
+## [请我喝杯咖啡 ☕️](/support/)
