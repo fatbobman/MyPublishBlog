@@ -238,36 +238,42 @@ header .logo img {
     background-color: transparent;
     background-repeat: no-repeat;
     background-size: contain;
+    background-position: center;
 }
 
 .headIconTwitter {
     background-image: url('/images/whiteTwitter.svg');
     background-size: 20px 20px;
     background-repeat: no-repeat;
+    background-position: center;
 }
 
 .headIconEmail {
     background-image: url('/images/whiteEmail.svg');
     background-size: 20px 20px;
     background-repeat: no-repeat;
+    background-position: center;
 }
 
 .headIconGithub {
     background-image: url('/images/whiteGithub.svg');
     background-size: 20px 20px;
     background-repeat: no-repeat;
+    background-position: center;
 }
 
 .headIconZhihu {
     background-image: url('/images/whiteZhihu.svg');
     background-size: 20px 20px;
     background-repeat: no-repeat;
+    background-position: center;
 }
 
 .headIconRss {
     background-image: url('/images/whiteRss.svg');
     background-size: 20px 20px;
     background-repeat: no-repeat;
+    background-position: center;
 }
 
 
