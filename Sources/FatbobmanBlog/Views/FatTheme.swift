@@ -422,10 +422,13 @@ extension Node where Context == HTML.BodyContext {
         )
     }
 
+    /*
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+     */
     static func gitTalk(topicID: String) -> Node {
         .raw("""
         <div id="gitalk-container"></div>
-         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+        <link rel="stylesheet" href="/images/css/gitalk.css">
         <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
         <script type="text/javascript">
         var gitalk = new Gitalk({
