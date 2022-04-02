@@ -13,7 +13,8 @@ let css: [Path] = [
     "/images/css/stylesNew.css",
     "/images/css/code.css", // 代码高亮
     "/images/css/toc.css", // 文章正文 toc
-    "/images/css/search.css"
+    "/images/css/search.css",
+    "/images/css/convertkit.css"
 ]
 
 extension Node where Context == HTML.DocumentContext {

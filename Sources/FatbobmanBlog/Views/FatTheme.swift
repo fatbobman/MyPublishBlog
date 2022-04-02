@@ -205,7 +205,8 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
     func makeTagListHTML(for page: TagListPage, context: PublishingContext<Site>) throws -> HTML? {
         return HTML(
             .lang(context.site.language),
-            .searchHead(for: page, on: context.site),
+//            .searchHead(for: page, on: context.site),
+            .customHeader(for: page, on: context.site),
             .body(
                 .header(for: context, selectedSection: FatbobmanBlog.SectionID.tags as? Site.SectionID),
                 .container(
@@ -453,6 +454,7 @@ extension Node where Context == HTML.BodyContext {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy"
         return .footer(
+            .convertKit(),
             .p(
                 .text("Copyright &copy; 东坡肘子 (Fatbobman) \(formatter.string(from: Date())) "),
                 .a(.text("辽ICP备20006550"), .href("http://beian.miit.gov.cn"))
