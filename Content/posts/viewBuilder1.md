@@ -25,7 +25,6 @@ id:1
 * 为什么无论显示与否，视图都会包含所有选择分支的类型信息
 * 为什么绝大多数的官方视图类型的 body 都是 Never
 * ViewModifier 同特定视图类型的 modifier 之间的区别
-* SwiftUI 的隐式标识和显式标识之间的区别
 
 ## 什么是 Result builders
 
