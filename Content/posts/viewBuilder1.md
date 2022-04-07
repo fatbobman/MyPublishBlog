@@ -695,11 +695,11 @@ func test(count: Int) -> AttributedString {
 
 ```swift
 public static func buildLimitedAvailability(_ component: AttributedString) -> AttributedString {
-    .init("")
+    component
 }
 ```
 
-它的逻辑非常简单，利用 `buildLimitedAvailablility` 对不支持的类型、方法等信息进行清除。
+该方法并不会独立存在，它会和 `buildOptional` 或 `buildEither` 一并使用。当 API 可用性检查满足条件后， result builders 会调用该实现。在 SwiftUI 中，为了固定类型，使用了 AnyView 对类型进行了抹除。
 
 使用方法：
 
