@@ -30,11 +30,11 @@ ZStack {
 }
 ```
 
-> 可以在[此处获取本文的全部代码](https://github.com/fatbobman/BlogCodes/tree/main/ZIndexDemo)
+> 可以在 [此处获取本文的全部代码](https://github.com/fatbobman/BlogCodes/tree/main/ZIndexDemo)
 
 ## zIndex 的作用域
 
-* zIndex 值的作用范围被限定在布局容器内
+* zIndex 作用范围被限定在布局容器内
 
   视图的 zIndex 值仅限于在同一个布局容器之间进行比较（ Group 不是布局容器）。处于不同的布局容器或父子容器之间的视图无法直接比较。
 
@@ -151,7 +151,7 @@ struct AnimationWithZIndex: View {
 
 ![zIndexAnimation2022-04-09 17.15.18.2022-04-09 17_17_08](https://cdn.fatbobman.com/zIndexAnimation2022-04-09%2017.15.18.2022-04-09%2017_17_08.gif)
 
-## zIndex是不可动画的
+## zIndex 是不可动画的
 
 同 `offset` 、`rotationEffect` 、`opacity` 等修饰符不同，  zIndex 是不可动画的 （ 其内部对应的 _TraitWritingModifier 并不符合 Animatable 协议）。这意味着即使我们使用例如 `withAnimation` 之类的显式动画手段来改变视图的 zIndex 值，并不会出现预期中的平滑过渡，例如：
 
