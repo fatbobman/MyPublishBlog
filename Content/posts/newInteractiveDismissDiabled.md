@@ -223,4 +223,5 @@ struct SheetView: View {
 
 SwiftUI 已经诞生两年多了，开发者也已经逐渐掌握为 SwiftUI 添加新功能的各种技巧。通过学习和理解原生的 API，可以让我们的实现更加符合 SwiftUI 的风格，整体的代码更加的统一。
 
-希望本文能够对你有所帮助。
+希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/JuVeuXHcAc)或下方的留言板与我进行交流。
+

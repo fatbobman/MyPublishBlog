@@ -453,3 +453,5 @@ app.http.server.configuration.port = Int(port) ?? 8080
 希望本文能够对你开始使用 Vapor4 带来一点帮助。同时也希望 swift 能在更多的平台上有所表现。
 
 swift 已有更多的官方对 window 支持的迹象。
+
+欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/JuVeuXHcAc)或下方的留言板与我进行交流。

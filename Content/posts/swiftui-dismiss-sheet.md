@@ -250,3 +250,5 @@ Form 代码的修改
 ```
 
 详细代码请访问我的 [github](https://github.com/fatbobman/DismissConfirmSheet)
+
+希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/JuVeuXHcAc)或下方的留言板与我进行交流。

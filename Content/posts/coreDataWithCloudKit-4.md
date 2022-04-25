@@ -323,3 +323,5 @@ context.performAndWait {
 本文中的问题，是我在开发过程中碰到并已尝试解决的。其他的开发者还会碰到更多的未知情况，只要能掌握其规律，总是可以找到解决之法。
 
 在下一篇文章中，我们聊一下**同步公共数据库**
+
+希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/JuVeuXHcAc)或下方的留言板与我进行交流。

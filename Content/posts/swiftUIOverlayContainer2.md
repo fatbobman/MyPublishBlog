@@ -366,4 +366,6 @@ dependencies: [
 
 ## 帮助与支持
 
-可以通过创建 Issues 来反馈你的意见或建议。也可以通过 Twitter [@fatbobman](https://twitter.com/fatbobman) 与我联络。
+可以通过创建 Issues 来反馈你的意见或建议。
+
+希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/JuVeuXHcAc)或下方的留言板与我进行交流。

@@ -420,4 +420,5 @@ struct TapWithLocationView: View {
 
 当前 SwiftUI 的手势，暂处于使用门槛低但能力上限不足的状况，仅使用 SwiftUI 的原生手段无法实现非常复杂的手势逻辑。将来找时间我们再通过其它的文章来研究有关手势之间的优先级、使用 GestureMask 选择性失效，以及如何同 UIGestureRecognizer 合作创建复杂手势等议题。
 
-希望本文能够对你有所帮助。
+希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/JuVeuXHcAc)或下方的留言板与我进行交流。
+

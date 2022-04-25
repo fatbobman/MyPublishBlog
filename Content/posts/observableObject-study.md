@@ -502,3 +502,5 @@ public final class MutableHeapWrapper<T> {
 在我做这方面学习的过程中，恰好也发现了另外一位朋友提出了类似的观点，并提出了他的解决方案。由于他之前有 RxSwift 上开发大型项目的经验，他的解决方案使用了快照（SnapShot）的概念。注入方式采用 EnvironmetKey，对于 State 元素的无效修改（比如说和原值相同）做了比较好的过滤。可以到 [他的博客](https://nalexn.github.io/swiftui-observableobject/) 查看该文。
 
 最后希望 Apple 能够在将来提供更原生的方式解决以上问题。
+
+希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/JuVeuXHcAc)或下方的留言板与我进行交流。

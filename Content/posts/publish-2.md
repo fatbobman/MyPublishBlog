@@ -701,3 +701,5 @@ Publish 的`FoundationHTMLFactory`目前仅定义了六个页面种类，如果�
    可能会有冗余动作，并且需要在`FoundationHTMLFactory`内置方法中做一点处理以便和我们新定义的页面做连接。比如，目前`index`，`section list`都不支持分页（只会输出一个 HTML 文件），我们可以在内置的`makeIndex`之后，再重新生成一组分页的`index`，并覆盖掉原来的。
 
 在本篇中，我们介绍了如何使用 [Plot](https://github.com/JohnSundell/Plot)，以及如何在 [Publish](https://github.com/JohnSundell/Publish) 中定制自己的主题。在下一篇文章中，我们要探讨如何在不改动 Publish 核心代码的情况下，增加各种功能的手段（不仅仅是 Plugin）。
+
+希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/JuVeuXHcAc)或下方的留言板与我进行交流。

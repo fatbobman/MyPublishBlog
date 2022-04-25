@@ -298,3 +298,5 @@ struct ContentView:View{
 当前的@AppBuilder 和@SceneBuilder 的功能都十分的基础，不包含任何的逻辑判断功能，因此目前我还没有办法实现根据条件来选择性的展示所需的 Scene。相信苹果应该会在未来增加这样的能力
 
 *本文的代码为了能够在多平台使用，所以增加了不少编译判断，如果你只是在 iOS, 或 macOS 下开发 SwiftUI，则可根据各自平台简化代码。另外 Xcode12 中的代码补全对于 Target 的设定很敏感，如果你发现无法对某些平台的特定语句进行补全，请查看是否将 Scheme 设置到对应的平台。*
+
+希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/JuVeuXHcAc)或下方的留言板与我进行交流。

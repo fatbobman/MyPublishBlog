@@ -887,4 +887,5 @@ ello world {
 
 在 AttributedString 之前，多数开发者将属性字符串主要用于文本的显示样式描述，随着可以在 Markdown 文本中添加自定义属性，相信很快就会有开发者扩展 AttributedString 的用途，将其应用到更多的场景中。
 
-希望本文能够对你有所帮助。
+希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/JuVeuXHcAc)或下方的留言板与我进行交流。
+

@@ -474,4 +474,5 @@ root update
 
 SwiftUI 作为一个年轻的框架，大家对它的了解还不够深入。随着官方文档、WWDC 专题的不断完善，更多隐藏在 SwiftUI 背后的原理和机制将被开发者所认识并掌握。
 
-希望本文能够对你有所帮助。
+希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/JuVeuXHcAc)或下方的留言板与我进行交流。
+

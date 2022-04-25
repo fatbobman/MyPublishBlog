@@ -775,4 +775,4 @@ extension UIColor {
 
 鉴于官方已经提供了大量种类齐全、功能丰富的 Formatter，大多数的开发者可能都不会碰到需要自定义 Formatter 的场景。不过通过对自定义 Formatter 协议的了解，可以加强我们对原生 Formatter 的认识，在代码中更好地使用它们。
 
-希望本文能对你有所帮助。
+希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/JuVeuXHcAc)或下方的留言板与我进行交流。

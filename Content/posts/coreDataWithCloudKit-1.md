@@ -173,3 +173,5 @@ id:1
 本文中，我们简单介绍了关于`Core Data`、`CloudKit`以及`Core Data with CloudKit`的一点基础知识。在下一篇文章中我们将探讨如何使用`Core Data with CloudKit`实现**本地数据库和私有数据库的同步**。
 
 PS：介绍如何使用 NSPersistentContainer 的文章并不少，但同其他 Core Data 的功能一样，用好并不容易。在两年多的使用中，我便碰到不少问题。借着今年打算在 [【健康笔记 3】](/healthnotes/) 中实现`共享数据库`功能的机会，我最近较系统地重新学习了`Core Data with CloudKit`并对其知识点进行了梳理。希望通过这个系列博文能让更多的开发者了解并使用`Core Data with Cloudkit`功能。
+
+希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/JuVeuXHcAc)或下方的留言板与我进行交流。

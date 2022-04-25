@@ -139,4 +139,5 @@ Swift Playgounds 4 在专业开发用途上的一些主要的功能缺失：
 
 Swift Playgrounds 在保留了快乐教育的功能前提下，满足了部分场景下的生产力需求。
 
-希望本文能够对你有所帮助。
+希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/JuVeuXHcAc)或下方的留言板与我进行交流。
+

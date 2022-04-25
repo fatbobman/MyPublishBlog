@@ -623,3 +623,5 @@ struct PersistentTrackBlogApp: App {
 苹果构建了 Persistent History Tracking，让多个成员可以共享单个数据库并保持 UI 的及时更新。无论你是构建一套应用程序，或者是想为你的 App 添加合适的 Extension，亦或仅为了统一的响应批处理操作的数据，持久化历史跟踪都能为你提供良好的帮助。
 
 Persistent History Tracking 尽管可能会造成一点系统负担，不过和它带来的便利性相比是微不足道的。在实际使用中，我基本上感受不到因它而导致的性能损失。
+
+希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/JuVeuXHcAc)或下方的留言板与我进行交流。

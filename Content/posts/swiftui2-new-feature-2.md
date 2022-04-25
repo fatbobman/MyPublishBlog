@@ -274,3 +274,5 @@ struct AllInOneApp: App {
 在 [ObservableObject 研究——想说爱你不容易](/posts/observableObject-study/) 中，我们探讨过 SwiftUI 更倾向于我们不要创建一个沉重的 Singel source of truth, 而是将每个功能模块作为独立的状态机（一起组合成一个大的状态 app），使用能够对生命周期和作用域更精确可控的手段创建区域性的 source of truth。
 
 从 SwiftUI 第一个版本升级的内容来看，目前 SwiftUI 仍是这样的思路。
+
+希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/JuVeuXHcAc)或下方的留言板与我进行交流。

@@ -137,3 +137,5 @@ FoccusedBinding 的引入，进一步完善了 SwiftUI 不同视图中数据操�
 由于我们可以在任意视图中修改 key 中的值，一旦滥用，很可能再度陷入代码难以管理的窘境。
 
 对于一些功能很简单，无需使用 MVVM 逻辑的代码，或者 Single of truth 过于臃肿（[ObservableObject 研究——想说爱你不容易](/posts/observableObject-study/)），可能导致 app 响应问题的代码，可以考虑使用上述的方案。
+
+希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/JuVeuXHcAc)或下方的留言板与我进行交流。

@@ -183,3 +183,5 @@ struct CellView:View,Identifiable{
 <video src="https://cdn.fatbobman.com/howto-swiftui-gridvideo.mov" controls = "controls" >你的浏览器不支持本视频</video>
 
 目前 LazyGrid 没有自动避碰的能力，也无法实现 Waterfall Grid 的效果。
+
+希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/JuVeuXHcAc)或下方的留言板与我进行交流。

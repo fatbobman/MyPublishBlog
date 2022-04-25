@@ -269,3 +269,5 @@ NavigationViewKit 目前功能还比较少，我会根据自己的使用需要�
 如果你在使用中发现问题或者有其他需求，请在 Github 上提交 Issue 或在我的博客中留言。
 
 请访问 Github 下载 [NavigationViewKit](https://github.com/fatbobman/NavigationViewKit)
+
+希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/JuVeuXHcAc)或下方的留言板与我进行交流。

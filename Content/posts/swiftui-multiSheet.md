@@ -188,3 +188,5 @@ enum SheetAction:Identifiable{
 **更新**: 在 iOS14 下，使用 item 来激活 sheet, 在某些特殊场合可能会导致 app（打开 sheet 的情况下）从后台返回时会发生错误甚至崩溃。所以上述代码中对于 sheet 的激活，已经作出了更改。更改后的代码已经统一到了 [在 SwiftUI 中制作可以控制取消手势的 Sheet](/posts/swiftui-dismiss-sheet/)
 
 [可以在此下载项目完整代码](https://github.com/fatbobman/DismissConfirmSheet)
+
+希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/JuVeuXHcAc)或下方的留言板与我进行交流。
