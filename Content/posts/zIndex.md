@@ -7,10 +7,6 @@ image: images/zIndex.png
 ---
 本文将对 SwiftUI 的 zIndex 修饰符做以介绍，包括：使用方法、zIndex 的作用域、通过 zIndex 避免动画异常、为什么 zIndex 需要设置稳定的值以及在多种布局容器内使用 zIndex 等内容。
 
-```responser
-id:1
-```
-
 ## zIndex 修饰符
 
 在 SwiftUI 中，开发者使用 zIndex 修饰符来控制重叠视图间的显示顺序，具有较大 zIndex 值的视图将显示在具有较小 zIndex 值的视图之上。在没有指定 zIndex 值的时候，SwiftUI 默认会给视图一个为 0 的 zIndex 值。
@@ -91,6 +87,10 @@ struct SubView: View {
 执行上面的代码，最终只能看到 `Color` 和 `Group`
 
 ![image-20220409170346551](https://cdn.fatbobman.com/image-20220409170346551.png)
+
+```responser
+id:1
+```
 
 ## 设定 zIndex 避免动画异常
 
