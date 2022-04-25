@@ -443,6 +443,8 @@ $items.wrappedValue.sortDescriptors = [SortDescriptor(\Item.timestamp,order: .re
 * 在列表显示后率先移动到最底端（取消动画）
 * 通过 refreshable 调用下一批数据，并继续逆向添加入数组
 
+用类似的思路，还可以实现向下增量读取或者两端增量读取。
+
 ## 总结
 
 相较于 UIKit ，已经推出了 3 年的 SwiftUI 仍有很多的不足。但回首最初的版本，现在我们已经可以实现太多以前无法想象的功能。期盼 6 月的 WWDC 会带来更多的好消息。
