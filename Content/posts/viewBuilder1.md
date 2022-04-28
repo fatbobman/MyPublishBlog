@@ -1035,5 +1035,5 @@ Result builders 的基本功能非常简单，上文中，我们仅有少量的�
 
 在下篇中，我们将尝试复制一个与 ViewBuilder 基本形态一致的构建器，相信复制的过程能让你对 ViewBuilder 以及 SwiftUI 视图有更深的理解和认识。
 
-希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/JuVeuXHcAc)或下方的留言板与我进行交流。
+希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
 

@@ -175,4 +175,4 @@ id:1
 
 目前的解决方案使我失去了使用 ScrollViewReader 的机会。
 
-希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/JuVeuXHcAc)或下方的留言板与我进行交流。
+希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

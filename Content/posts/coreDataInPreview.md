@@ -463,4 +463,4 @@ lazy var previewInCatch: NSPersistentContainer = {
 
 在我两年的 SwiftUI+Core Data 使用中，痛苦和快乐始终相伴而行。只要始终保持用心、耐心、平常心，再加上一点点运气，总会找到解决问题的方法。
 
-希望本文对你在 SwiftUI 中使用 Core Data 有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/JuVeuXHcAc)或下方的留言板与我进行交流。
+希望本文对你在 SwiftUI 中使用 Core Data 有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

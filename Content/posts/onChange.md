@@ -450,5 +450,5 @@ struct BindingVersion3: View {
 
 onChange 为我们在视图中进行逻辑处理提供了便利，了解它的特点与限制，选择合适的场景使用它。在必要的情况下，将逻辑处理与视图分离，以保证视图的渲染效率。
 
-希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/JuVeuXHcAc)或下方的留言板与我进行交流。
+希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
 

@@ -744,5 +744,5 @@ func foregroundColor(_ color: Color?) -> Text {
 
 result builders 已经推出一段时间了，但一直没有对其进行深入地研究。最初只想通过仿制 ViewBuilder 加深对 result builders 的理解，但没想到此次的仿制过程，让我厘清了不少与 SwiftUI 视图有关的困惑，可谓意外之喜。
 
-希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/JuVeuXHcAc)或下方的留言板与我进行交流。
+希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
 

@@ -270,4 +270,4 @@ SwiftUI 中即使一个不起眼的环节也有不少乐趣值的我们探索。
 
 *如果想实现完美的逐条注入方式（自动补全、编译器检查、不过度依赖）可以通过创建自己的 UserDefaults 响应代码来实现，这已超出了本文对于@AppStorage 的探讨范围。*
 
-希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/JuVeuXHcAc)或下方的留言板与我进行交流。
+希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

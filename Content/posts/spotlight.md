@@ -402,4 +402,4 @@ CSSearchableItemAttributeSet 中的元数据是用来描述记录的，并不适
 
 希望有更多的应用认识到 Spotlight 的重要性，尽早登陆这个设备应用的重要入口。
 
-希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/JuVeuXHcAc)或下方的留言板与我进行交流。
+希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

@@ -407,4 +407,4 @@ Publish 同当前主流的静态网站生成器相比还略有不足，如社区
 
 如果你已经开始感兴趣，马上在 Github 上开通你的 github.io 站点，用 Publish 一键 deploy 属于自己的博客吧。
 
-希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/JuVeuXHcAc)或下方的留言板与我进行交流。
+希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

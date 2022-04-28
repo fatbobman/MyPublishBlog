@@ -332,5 +332,5 @@ inbody 身体水分身高性别男性日期时间透析组成含量细胞hof 分
 
 > 有朋友在看到本文后关心以上功能对程序容量的影响。我的测试程序在使用了 VisionKit、Vision、NaturalLanguage、SwiftUI 框架功能后容量为330KB，对容量的影响可以忽略不计。这也是使用系统API给我们带来的另一大优势。
 
-希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/JuVeuXHcAc)或下方的留言板与我进行交流。
+希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
 

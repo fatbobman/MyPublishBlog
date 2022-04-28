@@ -465,4 +465,4 @@ private func openSharingController(note: Note) {
 
 从开启本系列文章开始，完全没有想到整个过程竟需耗费如此多的时间和精力。不过从整理和写作过程中我也受益颇多，对之前掌握不扎实的知识通过反复的强化加深了认识。
 
-希望本文能够对你有所帮助，也希望能够有更多的开发者可以了解并使用 Core Data & CloudKit。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/JuVeuXHcAc)或下方的留言板与我进行交流
+希望本文能够对你有所帮助，也希望能够有更多的开发者可以了解并使用 Core Data & CloudKit。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流

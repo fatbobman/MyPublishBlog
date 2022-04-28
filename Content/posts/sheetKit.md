@@ -287,4 +287,4 @@ struct SheetView: View {
 
 无论是 [SheetKit](https://github.com/fatbobman/SheetKit) 还是 [NavigationViewKit](https://www.fatbobman.com/posts/NavigationViewKit/) 都是我为开发新版的 [健康笔记](https://www.fatbobman.com/healthnotes/) 准备的扩展库。功能都是以我个人的需求为主。如果有什么其他的功能要求，请通过 [twitter](https://www.twitter.com/fatbobman)、博客留言或者 Issues 等方式告诉我。
 
-希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/JuVeuXHcAc)或下方的留言板与我进行交流。
+希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

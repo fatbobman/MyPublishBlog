@@ -86,4 +86,4 @@ struct MyProgressViewStyle:ProgressViewStyle{
 
 <video src="https://cdn.fatbobman.com/howto-swiftui-progressView-video.mov" controls = "controls">你的浏览器不支持本视频</video>
 
-希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/JuVeuXHcAc)或下方的留言板与我进行交流。
+希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

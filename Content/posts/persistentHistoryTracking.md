@@ -624,4 +624,4 @@ struct PersistentTrackBlogApp: App {
 
 Persistent History Tracking 尽管可能会造成一点系统负担，不过和它带来的便利性相比是微不足道的。在实际使用中，我基本上感受不到因它而导致的性能损失。
 
-希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/JuVeuXHcAc)或下方的留言板与我进行交流。
+希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
