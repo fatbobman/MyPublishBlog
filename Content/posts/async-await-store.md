@@ -211,10 +211,10 @@ final class Store: ObservableObject {
     @discardableResult
     func dispatch(_ action: AppAction) -> Task<Void, Never>? {
         Task {
-            if let task = reduc(state: &state, action: action, environment: environment) {
+            if let task = reducer(state: &state, action: action, environment: environment) {
                 do {
                     let action = try await task.value
-                    send(action)
+                    dispatch(action)
                 } catch {
                     print(error)
                 }
@@ -228,7 +228,7 @@ Reducer：
 
 ```swift
 extension Store {
-    func reduc(state: inout AppState, action: AppAction, environment: Environment) -> Task<AppAction, Error>? {
+    func reducer(state: inout AppState, action: AppAction, environment: Environment) -> Task<AppAction, Error>? {
         switch action {
         case .empty:
             break
