@@ -29,6 +29,10 @@ image: images/blogTools.png
 
 ![image-20220429091230243](https://cdn.fatbobman.com/image-20220429091230243.png)
 
+```responser
+id:1
+```
+
 ## 文本编辑
 
 ### Typora
