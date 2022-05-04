@@ -643,4 +643,4 @@ SwiftUI 与 UIKit 和 AppKit 之间的互操作性为开发者提供了强大的
 
 本文并没有涉及包装具有复杂逻辑代码的协调器同 SwiftUI 或 Redux 模式沟通交互的话题，里面包含的内容过多，或许需要通过另一篇文章来探讨。
 
-希望本文能对你学习和了解如何将 UIKit 组件导入 SwiftUI 提供一点帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
+希望本文能对你学习和了解如何将 UIKit 组件导入 SwiftUI 提供一点帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

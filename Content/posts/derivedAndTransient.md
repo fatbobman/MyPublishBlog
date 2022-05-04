@@ -289,5 +289,5 @@ Core Data 作为一个历史悠久的框架，包含了不少非常有用但不�
 
 想阅读更多关于 Core Data 的文章，请查看我的 [Core Data 专栏](https://www.fatbobman.com/tags/core-data/)。
 
-希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
+希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
 

@@ -226,4 +226,4 @@ struct CountViewState1:View{
 
 苹果使用@StateObject 一方面修复了之前的隐患，同时通过 SwiftUI2.0 众多新特性的引入，进一步完善了 Data Flow 的实现手段。在下一篇文章《SwiftUI2.0 —— 100% SwiftUI app》中，我们来进一步探讨。
 
-希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
+希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

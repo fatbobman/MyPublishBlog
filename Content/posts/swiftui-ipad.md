@@ -254,4 +254,4 @@ List{
 
 总之使用 SwiftUI 适配 iPhone 和 iPad 总体来说还是比较容易的。能否充分利用好各自设备的特点主要还是要在交互逻辑和 UI 设计上多下功夫，代码上的难度不大。
 
-希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
+希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

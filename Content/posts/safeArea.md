@@ -592,4 +592,4 @@ struct Message: Identifiable, Hashable {
 
 在 SwiftUI 中，有不少的功能都属于看一眼就会，但用起来就废的情况。即使表面上平平无奇的功能，仔细深挖仍可获得不少收获。
 
-希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
+希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

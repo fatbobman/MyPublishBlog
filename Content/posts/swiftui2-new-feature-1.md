@@ -299,4 +299,4 @@ struct ContentView:View{
 
 *本文的代码为了能够在多平台使用，所以增加了不少编译判断，如果你只是在 iOS, 或 macOS 下开发 SwiftUI，则可根据各自平台简化代码。另外 Xcode12 中的代码补全对于 Target 的设定很敏感，如果你发现无法对某些平台的特定语句进行补全，请查看是否将 Scheme 设置到对应的平台。*
 
-希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
+希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

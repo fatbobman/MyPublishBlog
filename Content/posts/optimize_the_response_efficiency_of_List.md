@@ -449,4 +449,4 @@ $items.wrappedValue.sortDescriptors = [SortDescriptor(\Item.timestamp,order: .re
 
 相较于 UIKit ，已经推出了 3 年的 SwiftUI 仍有很多的不足。但回首最初的版本，现在我们已经可以实现太多以前无法想象的功能。期盼 6 月的 WWDC 会带来更多的好消息。
 
-希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
+希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

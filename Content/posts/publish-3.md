@@ -562,4 +562,4 @@ try MyBlog().publish(
 
 在使用 Publish 的这些天，让我找到了装修房子的感觉。虽然不一定做的多好，但网站能按自己的想法逐步变化真是乐趣无穷。
 
-希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
+希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

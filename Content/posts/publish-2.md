@@ -702,4 +702,4 @@ Publish 的`FoundationHTMLFactory`目前仅定义了六个页面种类，如果�
 
 在本篇中，我们介绍了如何使用 [Plot](https://github.com/JohnSundell/Plot)，以及如何在 [Publish](https://github.com/JohnSundell/Publish) 中定制自己的主题。在下一篇文章中，我们要探讨如何在不改动 Publish 核心代码的情况下，增加各种功能的手段（不仅仅是 Plugin）。
 
-希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
+希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

@@ -302,5 +302,5 @@ struct NewReduxTest3AppApp: App {
 
 通过此次重建状态容器，让我对 Swift 的 Async/Await 有了更多的了解，也认识到它在现代编程中的重要性。
 
-希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
+希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
 

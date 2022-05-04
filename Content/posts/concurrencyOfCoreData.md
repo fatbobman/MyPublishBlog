@@ -288,5 +288,5 @@ Core Data 预设了四种合并冲突策略，分别为：
 
 Core Data 有一套开发者应严守的规则，违背了它，Core Data 将让你体会深刻的教训。不过一旦掌握了这些规则，曾经的障碍将不再是问题。
 
-希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
+希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
 

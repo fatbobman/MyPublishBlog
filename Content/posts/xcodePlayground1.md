@@ -308,5 +308,5 @@ playgroundSharedDataDirectory 主要用于在 macOS 下保存多个 Playground �
 
 在【玩转 Xcode Playground （下）】中，我们将着重介绍有关 SPM、资源管理、辅助代码、文档标注等方面的内容。
 
-希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
+希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
 

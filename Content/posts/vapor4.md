@@ -454,4 +454,4 @@ app.http.server.configuration.port = Int(port) ?? 8080
 
 swift 已有更多的官方对 window 支持的迹象。
 
-欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
+欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

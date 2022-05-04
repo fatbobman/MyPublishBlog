@@ -563,4 +563,4 @@ $swiftlint --version
 
 ## 结语 ##
 
-希望本文能够帮助更多的朋友在 Linux 上使用 Swift 进行开发。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
+希望本文能够帮助更多的朋友在 Linux 上使用 Swift 进行开发。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

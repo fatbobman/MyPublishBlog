@@ -146,4 +146,4 @@ enum Placement:String,CaseIterable{
 
 macOS 目前 bug 较多，ToolBarItem 对于 View 的解析还不完整，ToolBarContentBuilder 不支持逻辑判断。
 
-希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
+希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

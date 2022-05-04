@@ -80,4 +80,4 @@ enum TabSelection:Hashable{
 
 * 在代码中可以添加多个 onOpenURL，注册在不同的 View 上，当采用 URL 访问时，每个闭包都会响应。这样可以针对不同的 View 做出各自需要的调整。
 
-希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
+希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

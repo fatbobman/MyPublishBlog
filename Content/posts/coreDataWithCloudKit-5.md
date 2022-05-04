@@ -340,4 +340,4 @@ let privateURL = FileManager.default.urls(for: .documentDirectory, in: .userDoma
 
 我将在`Xcode 13`稳定后继续完成本系列的下一篇——同步共享数据库。
 
-希望本文能够对你有所帮助。同时也欢迎你通过[Twitter](https://twitter.com/fatbobman)、[Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
+希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
