@@ -182,9 +182,11 @@ var body:some View{
 
 > 我并不打算将配置数据汇总到一个结构体中并通过支持`RawRepresentable`协议统一保存。除了数据转换导致的性能损失外，另一个重要问题是，如果出现数据丢失的情况，逐条保存的方式还是可以保护绝大多数的用户设定的。
 
-在**基础指南**中，我们提到@AppStorage 在视图中的表现同@State 非常类似；不仅如此，@AppStorage 还有一个官方文档从没提到的神奇特质，**在 ObservableObject 中具有同@Published 一样的特性——其值发生变化时会触发`objectWillChange`**。这个特性只发生在@AppStorage 身上，@State、@SceneStorage 都不具备这个能力。
+在基础指南**中，我们提到@AppStorage 在视图中的表现同@State 非常类似；不仅如此，@AppStorage 还有一个官方文档从没提到的神奇特质，**在 ObservableObject 中具有同@Published 一样的特性——其值发生变化时会触发`objectWillChange`**。这个特性只发生在@AppStorage 身上，@State、@SceneStorage 都不具备这个能力。
 
-*目前我无法从文档或暴露的代码中找到这一特性原因，因此以下的代码并不能获得官方的长期保证*
+~~目前我无法从文档或暴露的代码中找到这一特性原因，因此以下的代码并不能获得官方的长期保证~~
+
+> 2022 年 5 月更新：关于 @AppStorage 和 @Published 调用包裹其的类实例的 objectWillChange 的原理，请参阅[为自定义属性包装类型添加类 @Published 的能力](https://www.fatbobman.com/posts/adding-Published-ability-to-custom-property-wrapper-types/)。
 
 ```swift
 class Defaults: ObservableObject {

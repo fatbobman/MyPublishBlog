@@ -194,53 +194,33 @@ TextField("name",text:defaults.$name)
 
 那么，是否可以沿用这个思路将@CloudStorage 纳入进来呢？
 
-遗憾的是，我至今仍没搞清@AppStorage 是如何从代码层面实现类似@Published 行为的原理。因此，我们只能采用一点相对笨拙的方式来达到目的。
+> 2022 年 5 月更新：我按照 @Published 的实现方式重新修改了 @CloudStorage 。现在 @CloudStorage 的行为已经与 @AppStorage 完全一致了。详细内容请参阅[为自定义属性包装类型添加类 @Published 的能力](https://www.fatbobman.com/posts/adding-Published-ability-to-custom-property-wrapper-types/)。
 
-我对 CloudStrorage 进行了一点修改，在几个数据更改的时机点上添加了通知机制，通过在符合 ObservableObject 的类中，响应该通知并调用`objectWillChange.send()`来模拟@AppStorage 的特性。
+~~遗憾的是，我至今仍没搞清@AppStorage 是如何从代码层面实现类似@Published 行为的原理。因此，我们只能采用一点相对笨拙的方式来达到目的~~。
 
-可以在此下载 [修改后的 CloudStroage 代码](https://github.com/fatbobman/CloudStorage)。
+~~我对 CloudStrorage 进行了一点修改，在几个数据更改的时机点上添加了通知机制，通过在符合 ObservableObject 的类中，响应该通知并调用`objectWillChange.send()`来模拟@AppStorage 的特性。~~
 
-采用类似如下的代码实现统一管理：
+可以在此下载 [修改后的 CloudStorage 代码](https://github.com/fatbobman/CloudStorage)。
 
 ```swift
-import CloudStorage
-final class Storage: ObservableObject {
-    // 只保存在本地，无需同步
-    @AppStorage("name") var name = "fat"
-    
-    // 需要同步的配置
-    @CloudStorage("cloud") var cloud = true
-    @CloudStorage("text") var text = "Hello"
-
-    init() {
-        NotificationCenter.default.addObserver(forName: CloudStorageSync.updateSwiftUIViewForNSUbiquitousKeyValuesStoreChange, object: nil, queue: nil, using: update)
-    }
-
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: CloudStorageSync.updateSwiftUIViewForNSUbiquitousKeyValuesStoreChange, object: nil)
-    }
-
-    // 刷新视图
-    private func update(notification: Notification) {
-        objectWillChange.send()
-    }
+class Settings:ObservableObject {
+       @AppStorage("name") var name = "fat"
+       @AppStorage("age") var age = 5
+       @CloudStorage("readyForAction") var readyForAction = false
+       @CloudStorage("speed") var speed: Double = 0
 }
-```
 
-视图中的代码：
-
-```swift
-struct ContentView: View {
-    @StateObject var storage = Storage()
-
+struct DemoView: View {
+    @StateObject var settings = Settings()
     var body: some View {
-        VStack {
-            TextField("name:", text: $storage.name) // @AppStorage 不限制 Binding 方式 storage.$name 亦可
-            Text(storage.name)
-            Toggle("cloud", isOn: $storage.cloud) // 注意 Binding 的调用方式
-            Text(storage.cloud ? "true" : "false")
-            TextField("text:", text: $storage.text) // 注意 Binding 的调用方式
+        Form {
+            TextField("Name",text: $settings.name)
+            TextField("Age", value: $settings.age, format: .number)
+            Toggle("Ready", isOn: $settings.readyForAction)
+                .toggleStyle(.switch)
+            TextField("Speed",value: $settings.speed,format: .number)
         }
+        .frame(width: 400, height: 400)
     }
 }
 ```
@@ -254,4 +234,3 @@ struct ContentView: View {
 NSUbiquitousKeyValueStore 正如它的名称一样，让 app 的数据无处不在。只需很少的配置就可以为你的 app 添加该项功能，有需求的朋友可以行动起来了！
 
 希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
-
