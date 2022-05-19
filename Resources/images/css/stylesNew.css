@@ -1539,6 +1539,9 @@ li.selectedTag a {
     background-color: var(--ads-background-color-light);
     cursor: pointer;
     z-index: 0;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .responser .adsContent {

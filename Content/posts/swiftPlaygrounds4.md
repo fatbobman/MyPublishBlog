@@ -7,7 +7,7 @@ image: images/swiftPlaygrounds4.png
 ---
 赶在 2021 年底，苹果终于发布了 Swift Playgrounds 4，作为近年来最具革命性意义的版本，Swift Playgrounds 4 提供了在 iPad 上开发可发行 app 的能力。本文将对 Swift Playgrounds 4 的新功能做以介绍，并探讨将其作为开发工具的可行性。
 
-> 本文中的 Swift Playgrounds 4 特指 iPad 版本。MacOS 下的 Swift Playgrounds 4 目前仍采用 3.x 引擎。
+> 本文中的 Swift Playgrounds 4 特指 iPad 版本。~~MacOS 下的 Swift Playgrounds 4 目前仍采用 3.x 引擎。~~ MacOS 下的 Playgrounds 4.1 版本已经换用了同 iPad 版本相同的内核。
 
 ## 关于 Swift Playgrounds
 
@@ -140,4 +140,3 @@ Swift Playgounds 4 在专业开发用途上的一些主要的功能缺失：
 Swift Playgrounds 在保留了快乐教育的功能前提下，满足了部分场景下的生产力需求。
 
 希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
-
