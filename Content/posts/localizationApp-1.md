@@ -616,4 +616,3 @@ Text("**Hello** *\(year)*")
 其他内容，例如：资源本地化、本地化调试、本地化预览、本地化文件编辑、Formatter 深入研究等，今后再一同探讨。
 
 希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
-

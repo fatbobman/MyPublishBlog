@@ -36,6 +36,10 @@ Button("Wikipedia"){
 
 而第二种场景实现起来就相当地麻烦，需要包装 UITextView（ 或 UILabel ）并配合 NSAttributedString 一起来完成，此时 SwiftUI 仅被当作一个布局工具而已。
 
+```responser
+id:1
+```
+
 ## SwiftUI 2.0（ iOS 14、Big sur ）
 
 SwiftUI 2.0 为第一个场景提供了相当完美的原生方案，但仍无法通过原生的方式来处理第二种场景。
