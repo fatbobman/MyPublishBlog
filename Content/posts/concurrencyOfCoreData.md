@@ -253,7 +253,7 @@ func merge(_ notification:Notification) {
 使用 mergePolicy 设定合并冲突策略。如果不设置该属性，Core Data 会默认使用 NSErrorMergePolicy 作为冲突解决策略（所有冲突都不处理，直接报错），这会导致数据无法正确保存到本地数据库。
 
 ```swift
-viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
+viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
 ```
 
 Core Data 预设了四种合并冲突策略，分别为：
@@ -281,7 +281,7 @@ Core Data 预设了四种合并冲突策略，分别为：
 * 数据 B 共有三个属性：name、age、sex
 * 上下文中修改了 name 和 age
 * NSBatchUpdaterequest 中修改了 age 和 sex
-* 当前设置的合并策略为 NSMergeByPropertyStoreTrumpMergePolicy
+* 当前设置的合并策略为 NSMergeByPropertyObjectTrumpMergePolicy
 * 最终的合并结果为 name 和 age 采用了上下文的修改，sex 保持了 NSBatchUpdaterequest 的修改。
 
 ## 总结 ##

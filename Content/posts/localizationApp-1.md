@@ -278,7 +278,7 @@ Button(LocalizedStringKey(drink.name))
 
 修改后的代码可以正常的显示饮料名称的中文了。
 
-> 上面的方法在绝大多数的情况下都是很好的解决问题的手段，但并不适合完全依赖`Export Localizations...`生成用于本地化键值对的项目。目前 Xcode15 并不会输出使用 LocalizdStringKey 构造的文本。
+> 上面的方法在绝大多数的情况下都是很好的解决问题的手段，但并不适合完全依赖`Export Localizations...`生成用于本地化键值对的项目。
 
 为了能够更精确的对本地化后的文本进行排序，我们也可以对`Drink`的比较函数做近一步修改：
 
