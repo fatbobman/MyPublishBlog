@@ -74,10 +74,10 @@ extension Node where Context == HTML.DocumentContext {
                     location.imagePath ?? site.imagePath) { path in let url = site.url(for: path)
                         return .socialImageLink(url)
                     }),
-            .script(.src("//cdn.bootcss.com/jquery/3.2.1/jquery.min.js")),
+            .script(.src("/images/css/jquery.min.js")),
             .raw(newGoogleAnalytics),
             .link(.rel(.stylesheet),
-                  .href("//unpkg.com/heti/umd/heti.min.css")),
+                  .href("/images/css/heti.min.css")),
             // 工具栏颜色
             .meta(.name("theme-color"), .content("#C62F1C"))
         )

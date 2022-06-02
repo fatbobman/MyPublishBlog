@@ -951,7 +951,7 @@ struct Demo: View {
 
 ![id_transition_2022-05-09_16.58.42.2022-05-09 16_59_17](https://cdn.fatbobman.com/id_transition_2022-05-09_16.58.42.2022-05-09%2016_59_17-2086776.gif)
 
-SwiftUI 目前在处理因 `id` 值变化而产生的视图转换的效果一般，仅支持部分的转场效果。
+SwiftUI 目前在处理因 `id` 值变化而产生的视图转换的逻辑不太统一，如发现使用 `animation` 无法激活的转场（ 比如 opacity ），可以尝试使用 `withAnimation`。
 
 > 有关显性标识方面的内容可以参阅 [优化在 SwiftUI List 中显示大数据集的响应效率](https://www.fatbobman.com/posts/optimize_the_response_efficiency_of_List/) 一文
 

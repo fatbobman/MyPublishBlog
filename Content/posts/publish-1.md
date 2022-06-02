@@ -215,7 +215,7 @@ enum SectionID: String, WebsiteSectionID {
 }
 ```
 
-在 [肘子的 Swift 记事本](http://www.fatbobman.com) 中，每个 Section 同时也对应着上方导航区的一个选项。`Section`可以有多种用途，在模板定制章节会做更多探讨。
+在 [肘子的 Swift 记事本](https://www.fatbobman.com) 中，每个 Section 同时也对应着上方导航区的一个选项。`Section`可以有多种用途，在模板定制章节会做更多探讨。
 
 ### Item ###
 

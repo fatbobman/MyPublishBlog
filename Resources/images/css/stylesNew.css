@@ -660,7 +660,7 @@ a.browse-all:hover {
     margin-bottom: 0px;
     margin-top: 0px;
     line-height: 1.6em;
-    font-size: 1.1em;
+    /* font-size: 1.1em; */
 }
 
 .content ol ul,

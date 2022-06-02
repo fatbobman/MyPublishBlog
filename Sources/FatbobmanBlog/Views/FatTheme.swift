@@ -520,22 +520,6 @@ let googleAndBaidu = """
     ga('create', _gaId, _gaDomain);
     ga('send', 'pageview');
 </script>
-
-<!-- Baidu Tongji -->
-
-<script>
-    // dynamic User by Hux
-    var _baId = '14e5d60a3ea6276655f9d14c58b1fcd0';
-
-    // Originial
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?" + _baId;
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-</script>
 """
 
 var formatter: DateFormatter {
@@ -543,3 +527,21 @@ var formatter: DateFormatter {
     formatter.dateFormat = "发布于yyyy年MM月dd日"
     return formatter
 }
+
+/*
+ <!-- Baidu Tongji -->
+
+ <script>
+     // dynamic User by Hux
+     var _baId = '14e5d60a3ea6276655f9d14c58b1fcd0';
+
+     // Originial
+     var _hmt = _hmt || [];
+     (function() {
+       var hm = document.createElement("script");
+       hm.src = "//hm.baidu.com/hm.js?" + _baId;
+       var s = document.getElementsByTagName("script")[0];
+       s.parentNode.insertBefore(hm, s);
+     })();
+ </script>
+ */
