@@ -653,14 +653,22 @@ a.browse-all:hover {
     margin-left: 12px;
 }
 
-.content ol li,
+.content ol li {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    line-height: 1.6em;
+    font-size: 1.1em;
+}
+
 .content ul li {
     margin-left: 20px;
     margin-right: 20px;
     margin-bottom: 0px;
     margin-top: 0px;
     line-height: 1.6em;
-    /* font-size: 1.1em; */
+    font-size: 1em;
 }
 
 .content ol ul,
