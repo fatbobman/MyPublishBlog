@@ -73,7 +73,7 @@ func batchDeleteItem(items:[Item]) async throws -> Bool {
 }
 ```
 
-此种方式适合于数据已被载入内存或需要使用复杂谓词（ 批量操作对谓词有一定限制，后文中有介绍 ）才能进行筛选的数据。需要注意的是，**所有的 NSManagedObjectID 对应的实体（ Entity ）必须一致**，比如本例中均为 Item 。
+此种方式适合于数据或数据 ID 已被载入内存场景。需要注意的是，**所有的 NSManagedObjectID 对应的实体（ Entity ）必须一致**，比如本例中均为 Item 。
 
 批量删除对 Core Data 中的关系提供了有限度的支持，详细内容见下文。
 
@@ -112,7 +112,7 @@ func batchUpdateItem() async throws -> [NSManagedObjectID] {
 * 批量更新无法实现在原值的基础上进行改动的情况，如需实现 `item.count += 1` 仍只能通过传统的手段
 * 无法在批量更新中修改关系属性或关系属性的子属性
 * 如果更新的实体为抽象实体，可以通过 `includesSubentities` 设置更新是否包含子实体
-* 在批量操作中无法使用关键路径连接的方式设置谓词。比如下面的谓词在批量操作中就是非法的（ 假设 Item 有个 attachment 关系，Attachment 有 count 属性 ）：`NSPredicate(format: "attachment.count > 10")` 。
+* 在批量更新操作中无法使用关键路径连接的方式设置谓词（ 批量删除支持关键路径连接 ）。比如下面的谓词在批量操作中就是非法的（ 假设 Item 有个 attachment 关系，Attachment 有 count 属性 ）：`NSPredicate(format: "attachment.count > 10")` 。
 
 ### 批量添加
 
