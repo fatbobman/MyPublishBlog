@@ -1,7 +1,7 @@
 ---
 date: 2021-10-01 10:00
 description: 本文将通过介绍如何创建符合新 API 的 Formatter，让读者从另一个角度了解新 Formatter API 的设计机制；并对新旧两款 API 进行比较。
-tags: Swift,Foundation
+tags: Swift,Foundation,WWDC21
 title:  WWDC 2021 新 Formatter API：新老比较及如何自定义
 image: images/newFormatter.png
 ---

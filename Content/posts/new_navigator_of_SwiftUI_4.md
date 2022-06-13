@@ -1,7 +1,7 @@
 ---
 date: 2022-06-14 08:12
 description: 长久以来，开发者对 SwiftUI 的导航系统颇有微词。受 NavigationView 的能力限制，开发者需要动用各种技巧乃至黑科技才能实现一些本应具备基本功能（例如：返回根视图、向堆栈添加任意视图、返回任意层级视图 、Deep Link 跳转等 ）。SwiftUI 4.0（ iOS 16+ 、macOS 13+ ）对导航系统作出了重大改变，提供了以视图堆栈为管理对象的新 API ，让开发者可以轻松实现编程式导航。本文将对新的导航系统作以介绍。
-tags: SwiftUI
+tags: SwiftUI,WWDC22
 title:  SwiftUI 4.0 的全新导航系统
 image: images/new_navigator_of_SwiftUI_4.png
 ---
