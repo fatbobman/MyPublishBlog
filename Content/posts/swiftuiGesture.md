@@ -47,7 +47,7 @@ SwiftUI 目前提供了 5 种预置手势，分别为点击、长按、拖拽、
 
 SwiftUI 会依据手势的类型提供不同的数据内容。
 
-* 点击：数据类型为 Void
+* 点击：数据类型为 Void（ SwiftUI 4.0 中，数据类型为 CGPoint，指示了在特定坐标空间中的点击位置 ）
 * 长按：数据类型为 Bool，开始按压后提供 true
 * 拖拽：提供了最全面的数据信息，包含当前位置、偏移量、事件时间、预测终点、预测偏移量等内容
 * 缩放：数据类型为 CGFloat，缩放量
@@ -342,6 +342,8 @@ struct PressGestureView: View {
 
 ## 示例三：附带位置信息的点击
 
+> SwiftUI 4.0 提供了新的 Gesture —— SpatialTapGesture , 使用它可以直接获得点击位置。onTapGesture 也获得提升，onChange 和 onEnd 中 value 将表示在特定坐标空间中的点击位置（ CGPoint ）
+
 ### 3.1 目标
 
 实现提供触摸位置信息的点击手势（支持点击次数设定）。本例主要演示 simultaneously 的用法以及如何选择合适的回调时间点（onEnded）。
@@ -421,4 +423,3 @@ struct TapWithLocationView: View {
 当前 SwiftUI 的手势，暂处于使用门槛低但能力上限不足的状况，仅使用 SwiftUI 的原生手段无法实现非常复杂的手势逻辑。将来找时间我们再通过其它的文章来研究有关手势之间的优先级、使用 GestureMask 选择性失效，以及如何同 UIGestureRecognizer 合作创建复杂手势等议题。
 
 希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
-

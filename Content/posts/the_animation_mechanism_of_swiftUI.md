@@ -1007,6 +1007,110 @@ struct Demo: View {
 
 ![animatable_color_of_text_2022-05-05_14.35.19.2022-05-05 14_36_15](https://cdn.fatbobman.com/animatable_color_of_text_2022-05-05_14.35.19.2022-05-05%2014_36_15.gif)
 
+> 2022 年 6 月更新：SwiftUI 4.0 的 Text 通过新增的内容转场，提供了对上述方案的支持
+
+为了区别 SwiftUI 原有的 Transition 概念，SwiftUI 4.0 将这种控件内部的动画转场称之为 content transition（ 内容转场 ）。开发者可以通过 `.contentTransition` 设定内容转场模式：
+
+```swift
+// SwiftUI 4.0 (iOS 16+, macOS 13+)
+struct ContentTransitionDemo: View {
+    @State var change = false
+    var body: some View {
+        VStack{
+            Button("Change"){
+                change.toggle()
+            }
+            .buttonStyle(.bordered)
+            Spacer()
+            Text("Hello, World!")
+                .font(change ? .body : .largeTitle)
+                .foregroundStyle( change ? Color.red.gradient : Color.blue.gradient)
+                .fontWeight(change ? .thin : .heavy)
+                .animation(.easeInOut, value: change)
+        }
+        .frame(height:100)
+    }
+}
+```
+
+![contentTransition_demo1_2022-06-10_09.07.48.2022-06-10 09_08_58](https://cdn.fatbobman.com/contentTransition_demo1_2022-06-10_09.07.48.2022-06-10%2009_08_58.gif)
+
+启用内容转场（ content transition ）仍需遵循 SwiftUI 动画的三要素，必须为动画设置时序曲线函数 。
+
+```swift
+Text("Hello, World!")
+                .font(change ? .body : .largeTitle)
+                .foregroundStyle( change ? Color.red.gradient : Color.blue.gradient)
+                .fontWeight(change ? .thin : .heavy)
+                .animation(.easeInOut, value: change)
+                .contentTransition(.opacity)  // 设置内容转场模式，默认为 interpolate
+```
+
+当前支持的 contentTransition 模式有：
+
+* interpolate （ 默认值 ）
+
+  演示效果如上图。自动绘制插值动画。实现的逻辑和效果基本等同于上文中我们的自定义动画 Text
+
+* opacity
+
+![contentTransition_demo2_2022-06-10_09.18.06.2022-06-10 09_19_47](https://cdn.fatbobman.com/contentTransition_demo2_2022-06-10_09.18.06.2022-06-10%2009_19_47.gif)
+
+* identity
+
+![contentTransition_demo3_2022-06-10_09.25.27.2022-06-10 09_26_04](https://cdn.fatbobman.com/contentTransition_demo3_2022-06-10_09.25.27.2022-06-10%2009_26_04.gif)
+
+也可以通过环境值来完成内容转场模式的设置：
+
+```swift
+            Text("Hello, World!")
+                .font(change ? .body : .largeTitle)
+                .foregroundStyle(change ? Color.red.gradient : Color.blue.gradient)
+                .fontWeight(change ? .thin : .heavy)
+                .animation(.easeInOut, value: change)
+                .environment(\.contentTransition, .opacity)  // 使用环境值设定
+                .environment(\.contentTransitionAddsDrawingGroup, true) // 启用 GPU 加速
+```
+
+如果想让你的自定义组件（ 对 UIKit 或 AppKit 组件的包装 ）也支持内容转场，需要在定义中查看环境值的设定，例如：
+
+```swift
+struct CustomComponent: UIViewRepresentable {
+    @Environment(\.contentTransition) var contentTransition
+    @Environment(\.contentTransitionAddsDrawingGroup) var drawingGroup // 是否启用 GPU 加速渲染模式
+    
+    func makeUIView(context: Context) -> some UIView {
+        switch contentTransition {
+        case .opacity:
+            break
+        case .identity:
+            break
+        case .interpolate:
+            break
+        default:
+            break
+        }
+
+        if drawingGroup {
+
+        }
+        return UIView()
+    }
+
+    func updateUIView(_ uiView: UIViewType, context: Context) {}
+}
+```
+
+所有显式或隐式使用到 Text 的组件均可以从 content transition 中受益，例如：
+
+```swift
+Button("Click Me") {}
+          .font(change ? .body : .largeTitle)
+          .foregroundStyle(change ? Color.red.gradient : Color.blue.gradient)
+          .fontWeight(change ? .thin : .heavy)
+          .animation(.easeInOut, value: change)
+```
+
 ### 控制器的动画问题
 
 相较于控件动画，控制器的动画问题则更加难以解决。NavigationView、TabView、Sheet 等部件完全找不到原生的动画控制解决手段，即使调用 UIKit（ AppKit ） 代码，也只能对动画做细微的调整（比如控制动画开启）。手段与效果均与 SwiftUI 的原生动画能力有巨大的差距。
