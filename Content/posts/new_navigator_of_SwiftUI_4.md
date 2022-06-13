@@ -738,6 +738,29 @@ struct ToolRoleTest: View {
 
 ![image-20220612191040190](https://cdn.fatbobman.com/image-20220612191040190.png)
 
+### 定制 NavigationLink 样式
+
+在之前版本的 SwiftUI 中，NavigationLink 其实一直都是作为一种特殊的 Button 存在的。到了 SwiftUI 4.0 版本后，SwiftUI 已经将其真正的视为了 Button 。
+
+```swift
+NavigationStack {
+    VStack {
+        NavigationLink("Hello world", value: "sub1")
+            .buttonStyle(.bordered)
+            .controlSize(.large)
+        NavigationLink("Goto next", destination: Text("Next"))
+            .buttonStyle(.borderedProminent)
+            .controlSize(.large)
+            .tint(.red)
+    }
+    .navigationDestination(for: String.self){ _ in
+        Text("Sub View")
+    }
+}
+```
+
+![image-20220613220926715](https://cdn.fatbobman.com/image-20220613220926715.png)
+
 ## 总结
 
 SwiftUI 4.0 导航系统的变化如此之大，开发者在惊喜的同时，也要冷静的面对事实。相当一部分开发者由于版本适配的原因并不会使用新的 API ，因此，每个人都需要认真考虑如下问题：
@@ -747,5 +770,7 @@ SwiftUI 4.0 导航系统的变化如此之大，开发者在惊喜的同时，�
 * 如何让新老版本的程序都能享受系统提供的便利
 
 另一方面，新导航系统也向每一个开发者传递了明确的信号，苹果希望应用能够为 iPad 和 macOS 提供更加符合各自设备特点的 UI 界面。这种信号会越来越强，苹果也为此会提供越来越多的 API。
+
+> 目前已经有人实现了 NavigationStack 在低版本 SwiftUI 下的仿制品 —— [NavigationBackport](https://github.com/johnpatrickmorgan/NavigationBackport) ，有兴趣的朋友可以参考作者的实现方式
 
 希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
