@@ -133,7 +133,7 @@ body {
 
 .wrapper {
     background: var(--wrapper-background-color-light);
-    /* max-width: 1400px; */
+    max-width: 960px;
     margin-left: auto;
     margin-right: auto;
     padding: 20px 40px 30px 40px;
