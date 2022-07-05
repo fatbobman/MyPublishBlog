@@ -411,7 +411,7 @@ func explicitAlignment(of guide: VerticalAlignment,  // 查询的对齐指南
 }
 ```
 
-> 由于视图使用 Layout 协议的 explicitAlignment 的默认实现的效果与使用我们自定义的方法效果完全一致，因此可以证明我们之前的猜想是正确的。如果你只想让你的自定义布局容器呈现与 SwiftUI 预置容器一致的对齐指南效果，直接使用 Layout 协议的默认实现即可（ 无需实现 explicitAlignment 方法 ）。
+> 由于视图使用 Layout 协议的 explicitAlignment 方法的默认实现效果与使用我们自定义的方法效果完全一致，因此可以证明我们之前的猜想是正确的。如果你只想让你的自定义布局容器呈现与 SwiftUI 预置容器一致的对齐指南效果，直接使用 Layout 协议的默认实现即可（ 无需实现 explicitAlignment 方法 ）。
 
 即使布局容器通过 explicitAlignment 为对齐指南提供了显式值，开发者仍然可以通过 alignmentGuide 做进一步设置。
 
@@ -622,6 +622,6 @@ _BackgroundLayout {
 
 虽然本文并没有提供具体的对齐使用技巧，但只要你理解并掌握了对齐的两大要点：以什么为对齐指南、对哪些视图进行“对齐”，那么相信一定会减少你在开发中遇到的对齐困扰，并可以通过对齐实现很多以前不容易完成的效果。
 
-如果你想对 Layout 协议做更全面地了解，推荐你观看 ChaoCode 制作的有关 SwiftUI Layout 协议的视频 —— [自订 Layout 排版教学](https://youtu.be/du_Bl7Br9DM) 。
+如果你想对 Layout 协议做更全面地了解，推荐你观看 ChaoCode（ 美眉 up 主）制作的有关 SwiftUI Layout 协议的中文视频 —— [自订 Layout 排版教学](https://youtu.be/du_Bl7Br9DM) 。
 
 希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
