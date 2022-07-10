@@ -379,7 +379,7 @@ Layout 协议提供了两个不同参数类型的 explicitAlignment 方法，分
 // SwiftUI 通过此方法来获取特定的对齐指南的显式值
 func explicitAlignment(of guide: VerticalAlignment,  // 查询的对齐指南
                        in bounds: CGRect, // 自定义容器的 bounds ，该 bounds 的尺寸由 sizeThatFits 方法计算得出，与 placeSubviews 的 bounds 参数一致
-                       proposal: ProposedViewSize,  // 父视图的推荐尺寸
+                       proposal: ProposedViewSize,  // 父视图的建议尺寸
                        subviews: Subviews,  // 容器内的子视图代理
                        cache: inout CacheInfo // 缓存数据，本例中，我们在缓存数据中保存了每个子视图的 viewDimension、虚拟 bounds 能信息
                       ) -> CGFloat? {
@@ -484,7 +484,7 @@ ZStack(alignment: .bottomLeading) {
 通过创建符合 Layout 协议的布局容器可以清楚地展示上述的过程，下面的代码来自本文附带的演示代码 —— 一个 ZStack 的复制品 ：
 
 ```swift
-// 容器的父视图（父容器）通过调用容器的 sizeThatFits 获取容器的理想尺寸，本方法通常会被多次调用，并提供不同的建议尺寸
+// 容器的父视图（父容器）通过调用容器的 sizeThatFits 获取容器的建议尺寸，本方法通常会被多次调用，并提供不同的建议尺寸
 func sizeThatFits(
     proposal: ProposedViewSize, // 容器的父视图（父容器）提供的建议尺寸
     subviews: Subviews, // 当前容器内的所有子视图的代理
@@ -514,12 +514,12 @@ func sizeThatFits(
     return cache.cropBounds.size
 }
 
-// 容器的父视图（父容器）将在需要的时机调用本方法，为本容器的子视图设置渲染位置
+// 容器的父视图（父容器）将在需要的时机调用本方法，为本容器的子视图设置渲染尺寸
 func placeSubviews(
     in bounds: CGRect, // 根据当前容器在 sizeThatFits 提供的尺寸，在真实渲染处创建的 Bounds
     proposal: ProposedViewSize, // 容器的父视图（父容器）提供的建议尺寸
     subviews: Subviews, // 当前容器内的所有子视图的代理
-    cache: inout CacheInfo // 缓存数据，本例中用于保存子视图的返回的理想尺寸，减少调用次数
+    cache: inout CacheInfo // 缓存数据，本例中用于保存子视图的返回的需求尺寸，减少调用次数
 ) {
     // 虚拟画布左上角的偏移值 ( 到 0,0 )
     let offsetX = cache.cropBounds.minX * -1
