@@ -203,7 +203,7 @@ func sizeThatFits(
 
 为子视图提供不同的建议模式的目的是获得在该模式下子视图的需求尺寸，具体使用哪种模式，完全取决于父视图的行为设定。例如：ZStack 会将其父视图提供给它的建议模式直接转发给 ZStack 的子视图，而 VStack、HStack 则会要求子视图返回全部模式下的需求尺寸，以判断子视图是否为动态视图（ 在特定维度可以动态调整尺寸 ）。
 
-在 SwiftUI 中，通过设置或调整建议模式而进行二次布局的场景很多，比较常用的有：frame、fixedSize、ignoresSafeArea、safeAreaInset 等。比如，下面的代码中，frame 便是无视 VStack 提供建议尺寸，强行为 Text 提供了 50 x 50 的建议尺寸。
+在 SwiftUI 中，通过设置或调整建议模式而进行二次布局的场景很多，比较常用的有：frame、fixedSize 等。比如，下面的代码中，frame 便是无视 VStack 提供建议尺寸，强行为 Text 提供了 50 x 50 的建议尺寸。
 
 ```swift
 VStack {
@@ -386,14 +386,6 @@ Text("Hello world")
 ## 尺寸的应用
 
 在上文中，我们已经提及了不少在视图中设置或获取尺寸的工具和手段，现做以下汇总：
-
-* safeAreaInset
-
-  从父视图的建议尺寸中去除掉自定义的安全视图部分，并以该尺寸作为子视图的建议尺寸
-
-* ignoresSafeArea
-
-  将安全区域添加到对子视图的建议尺寸中
 
 * frame(width: 50, height: 50)
 
