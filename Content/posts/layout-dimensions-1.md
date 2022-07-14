@@ -295,6 +295,8 @@ func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout (
 
 在布局的第二阶段，当 SwiftUI 的布局系统调用布局容器（ 符合 Layout 协议 ）的 placeSubviews 方法时，布局容器会将每个子视图放置在给定的屏幕区域（ 尺寸通常与该布局容器的需求尺寸一致 ）中，并为子视图设置布局尺寸。
 
+> 在本文之前的版本中，该尺寸被称为渲染尺寸
+
 ```swift
 // 代码来自 FixedSizeLayout
 func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
