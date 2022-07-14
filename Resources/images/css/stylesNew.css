@@ -1975,6 +1975,10 @@ li.selectedTag a {
 
 @media (prefers-color-scheme: dark) {
 
+    .container {
+        background: var(--wrapper-background-color-dark);
+    }
+
     .wrapper {
         background-color: var(--wrapper-background-color-dark);
     }
