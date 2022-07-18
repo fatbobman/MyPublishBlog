@@ -117,7 +117,7 @@ Text("Hi")
 
 // 可以被视为
 
-_FrameLayou(width: 100,height: 100,alignment: .center) {
+_FrameLayout(width: 100,height: 100,alignment: .center) {
     Text("Hi")
 }
 ```
