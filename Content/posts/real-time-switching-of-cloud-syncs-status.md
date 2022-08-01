@@ -74,7 +74,7 @@ NSPersistentCloudKitContainer 是 NSPersistentContainer 的子类，拥有 NSPer
 
 ### Persistent History Tracking 处理 + 格式转换模块
 
-通过在开启（ 默认 ） Persistent History Tracking 支持，NSPersistentCloudKitContainer 可以获知应用在 SQLite 上的所有操作，然后将数据转换成 CloudKit 对应的格式，并保存在 SQLite 上的特定表中（ ANSCKEXPORT...、ANSCKMIRROREDRELATIONSHIP 等 ），待网络同步模块将其同步（ Export ）到云上。
+通过默认启用 Persistent History Tracking 支持，NSPersistentCloudKitContainer 可以获知应用在 SQLite 上的所有操作，然后将数据转换成 CloudKit 对应的格式，并保存在 SQLite 上的特定表中（ ANSCKEXPORT...、ANSCKMIRROREDRELATIONSHIP 等 ），待网络同步模块将其同步（ Export ）到云上。
 
 同样对于从云上同步（ Import ）过来的数据，该模块会将其转换成 Core Data 对应的格式，并修改在 SQLite 中对应的数据。全部的修改操作将以 NSCloudKitMirroringDelegate.import（ Transaction author ）的身份记录在 Persistent History Tracking 的 Transaction 数据中。
 
@@ -114,7 +114,7 @@ NSPersistentCloudKitContainer 这种模块化的构成方式，为实现实时�
 
 本节将根据演示代码对部分实现细节进行说明
 
-### 多个 container 使用同一个 Data Model
+### 多个 Container 使用同一个 Data Model
 
 在一个应用程序中，Core Data 的 Data Model（ 使用数据模型编辑器创建的模型文件 ）只能被加载一次。因此我们需要在创建 container 前率先加载该文件并创建为 NSManageObjectModel 实例以供多个 container 使用。
 
@@ -305,4 +305,4 @@ func setCloudContainerWhenOtherStatus() {
 
 Persistent History Tracking 现在已经越来越多地出现于各种场合，除了感知 App group 成员间数据变动外，还被应用于 [数据批处理](https://www.fatbobman.com/posts/batchProcessingInCoreData/)、数据云同步、[Spotlight](https://www.fatbobman.com/posts/spotlight/) 等多个环节。建议 Core Data 的使用者应该对其有充分的了解，并尽早将其应用于你的程序之中。
 
-希望本文能够对你有所帮助。
+希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
