@@ -360,4 +360,3 @@ public extension CoreDataStack {
 Core Data Stack 近年来逐渐走过了由难至简，由小至大的历程创建真实的代码并多做练习将有助于对其更好地了解和掌握。
 
 希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
-
