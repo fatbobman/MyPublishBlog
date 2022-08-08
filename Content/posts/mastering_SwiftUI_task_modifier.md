@@ -7,6 +7,10 @@ image: images/mastering_SwiftUI_task_modifier.png
 ---
 随着 Swift 5.5 引入了 async/await 特性，苹果也为 SwiftUI 添加了 task 视图修饰器，以方便开发者在视图中使用基于 async/await 的异步代码。本文将对 task 视图修饰器的特点、用法、注意事项等内容做以介绍，并提供了将其移植到老版本 SwiftUI 的方法。
 
+```responser
+id:1
+```
+
 ## task vs onAppear
 
 SwiftUI 提供了两个版本的 task 修饰器，版本一的作用和调用时机与 onAppear 十分类似：
@@ -372,6 +376,10 @@ class TestObject: ObservableObject {
     }
 }
 
+```
+
+```responser
+id:1
 ```
 
 ## task vs onReceive
