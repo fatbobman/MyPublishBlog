@@ -148,6 +148,8 @@ struct TaskDemo2: View {
 
 ![task_onChange_Recording_iPhone_12_Pro_15.5_2022-08-06_10.50.13.2022-08-06 10_51_57](https://cdn.fatbobman.com/task_onChange_Recording_iPhone_12_Pro_15.5_2022-08-06_10.50.13.2022-08-06%2010_51_57.gif)
 
+> 请阅读 [了解 SwiftUI 的 onChange](https://www.fatbobman.com/posts/onChange/) 一文 ，掌握更多有关 onChang 修饰器的知识
+
 ## task 的生命周期
 
 上文中的两段演示代码，即使算上网络延迟， task 闭包的运行持续时间也不会太长。这并没有充分发挥 task 的优势，因为我们还可以用 task 修饰器创建可以持续运行的异步任务：
@@ -334,7 +336,7 @@ struct TimerView: View {
 
 我们可以通过将异步方法移到视图类型之外来解决这个问题。
 
-SwiftUI 对 @State 做了特别的处理，我们可以在任意线程中对其进行安全地修改。但对于其他符合 DynamicProperty 协议的 Source of Truth （ 将 wrappedValue 和 projectedValue 标注为 @MainActor ），在修改前必须切换到主线程上：
+SwiftUI 对 @State 做了特别的处理，我们可以在任意线程中对其进行安全的修改。但对于其他符合 DynamicProperty 协议的 Source of Truth （ 将 wrappedValue 和 projectedValue 标注为 @MainActor ），在修改前必须切换到主线程上：
 
 ```swift
 struct TimerView: View {
