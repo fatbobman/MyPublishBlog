@@ -9,4 +9,6 @@ description: 关于
 
 ![image-20210829145940078](https://cdn.fatbobman.com/blog_support.png)
 
+<a href = 'https://www.buymeacoffee.com/fatbobman'><img src="https://cdn.fatbobman.com/buyMeACoffee.png"></a>
+
 您的支持和鼓励将为我写作增添更多的动力！
