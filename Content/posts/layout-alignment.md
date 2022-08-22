@@ -139,7 +139,7 @@ Rectangle()
     .fill(.blue.gradient)
     .frame(width: 100, height: 100)
 // 默认的对齐指南值：
-// leading: 0 , HorizontalAlignment.center: 50, trailing: 50
+// leading: 0 , HorizontalAlignment.center: 50, trailing: 100
 // top: 0 , VerticalAlignment.center: 50 , bottom: 100
 // firstTextBaseline : 100 , lastTextBaseline : 100
 ```
