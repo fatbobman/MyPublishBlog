@@ -174,10 +174,19 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                         selectedSection: FatbobmanBlog.SectionID.about as? Site.SectionID
                     ),
                     else:
-                    .header(
+                    .if(
+                        page.path == Path("tips"),
+                        .header(
+                            for: context,
+                            selectedSection: FatbobmanBlog.SectionID.tips as? Site.SectionID
+                        ),
+                       else:
+                       .header(
                         for: context,
                         selectedSection: nil
                     )
+                    )
+                    
                 ),
                 .container(
                     .wrapper(
@@ -318,18 +327,23 @@ extension Node where Context == HTML.BodyContext {
                                     == FatbobmanBlog.SectionID.about,
                                 .class("selected")
                             ),
+                            .if(
+                                section as! FatbobmanBlog.SectionID
+                                    == FatbobmanBlog.SectionID.tips,
+                                .class("selected")
+                            ),
                             .class(section == selectedSection ? "selected" : ""),
                             .if(
                                 section as! FatbobmanBlog.SectionID
                                     == FatbobmanBlog.SectionID.index,
                                 .href(context.index.path),
                                 else:
-                                .if(
-                                    section as! FatbobmanBlog.SectionID == FatbobmanBlog.SectionID.healthNotes,
-                                    .href("https://www.fatbobman.com/healthnotes"),
-                                    else: .href(context.sections[section].path)
-                                )
-
+                                .href(context.sections[section].path)
+                                // .if(
+                                //     section as! FatbobmanBlog.SectionID == FatbobmanBlog.SectionID.healthNotes,
+                                //     .href("https://www.fatbobman.com/tips"),
+                                //     else: .href(context.sections[section].path)
+                                // )
                             ),
                             .text(context.sections[section].title)
                         )

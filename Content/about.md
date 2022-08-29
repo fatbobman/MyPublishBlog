@@ -56,4 +56,4 @@ tags: first, article
 
 * 微信公共号: [肘子的Swift记事本](/support/)
 
-### [请我喝杯咖啡 ☕️](/support/)
+<p><a href="https://www.fatbobman.com/support/"><img src="https://cdn.fatbobman.com/support_fatbobman_button.png" alt="鼓励作者" width="200" height="53"></a></p>

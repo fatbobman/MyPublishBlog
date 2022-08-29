@@ -9,7 +9,7 @@ struct FatbobmanBlog: Website {
         // Add the sections that you want your website to contain here:
         case index
         case posts
-        case healthNotes
+        case tips
         case about
         case tags
     }
