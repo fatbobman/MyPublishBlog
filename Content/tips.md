@@ -40,10 +40,3 @@ tags: tips
 
 * [background 的 ignoresSafeAreaEdges 参数](https://twitter.com/fatbobman/status/1564054945891921921)
 
-* [可以尝试通过创建副本的方式，模拟不同的持续时间效果](https://twitter.com/fatbobman/status/1565139845592203264?s=20&t=Z6cbxsUhLFEO8SG3U5cfKQ)
-
-* [layoutPriority](https://twitter.com/fatbobman/status/1565502516619423745?s=20)
-
-* [onReceive vs task](https://twitter.com/fatbobman/status/1566584396278284289?s=20&t=dV7L3O7f2lORBB07QXyR_w)
-
-* [Xcode Playground 中导入其他 Page 的 Sources 代码](https://twitter.com/fatbobman/status/1565867177705709568?s=20&t=dV7L3O7f2lORBB07QXyR_w)
