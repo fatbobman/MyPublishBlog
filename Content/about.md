@@ -48,6 +48,10 @@ tags: first, article
 
   MOCloner 是一个很小的库，旨在实现对 NSManagedObject 的可定制深拷贝。支持 one-to-one、one-to-many、many-to-many 等关系方式。除了忠于原始数据的拷贝方式外，还提供了选择性拷贝、拷贝时生成新值等功能。
 
+* [IsScrolling](https://github.com/fatbobman/IsScrolling)
+
+  正如名称所示，IsScrolling 提供了一个 ViewModifier ，用来获取 SwiftUI 中 ScrollView 或 List 当前的滚动状态。由于完全采用了 SwiftUI 原生的方式实现此功能，因此 IsScrolling 具备了很好的前后兼容性。
+
 ## 联系我
 
 * Twitter: [@fatbobman](https://twitter.com/fatbobman/)
