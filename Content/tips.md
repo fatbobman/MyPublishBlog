@@ -47,3 +47,17 @@ tags: tips
 * [onReceive vs task](https://twitter.com/fatbobman/status/1566584396278284289?s=20&t=dV7L3O7f2lORBB07QXyR_w)
 
 * [Xcode Playground 中导入其他 Page 的 Sources 代码](https://twitter.com/fatbobman/status/1565867177705709568?s=20&t=dV7L3O7f2lORBB07QXyR_w)
+
+* [如何感知 SwiftUI 的动画进程](https://twitter.com/fatbobman/status/1567310429600243712?s=20&t=sccuIGPKdmP5YrUnVDD2fg)
+
+* [建议为布局容器设置明确的 spacing 值](https://twitter.com/fatbobman/status/1567671558889508864?s=20&t=PaAK1euMQJuVZReKSGIxyA)
+
+* [在 Xcode 中开启 Core Data 的并发调试选项](https://twitter.com/fatbobman/status/1568035483292401665?s=20&t=0y2ZYEngn4U1ftg0qDMsww)
+
+* [onPreferenceChange 失效的问题](https://twitter.com/fatbobman/status/1569863428961075200)
+
+* [如何处理超宽 Text](https://twitter.com/fatbobman/status/1570245821861593090)
+
+* [如何处理可选值视图](https://twitter.com/fatbobman/status/1570939575266312194)
+
+* [根据布局需求，选用正确的视图修饰器](https://twitter.com/fatbobman/status/1571657825549426690)
