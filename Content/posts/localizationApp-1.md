@@ -311,6 +311,47 @@ order.list.map{NSLocalizedString($0.drink.name, comment: "")}.joined(separator: 
 >
 > 由于`LocalizedStringKey`不支持`Identifiable`,`Hashable`,`Comparable`协议，同时官方也没有提供任何`LocalizedStringKey`转换成`String`的方法。因此，如果我们想将`name`定义成`LocalizedStringKey`类型需要使用一些特殊手段（需通过 Mirror，本文就不展开介绍了）。
 
+### 为本地化占位符添加位置索引 ###
+
+在声明本地化字符串时，相同类型的占位符在不同的语言中可能会出现语序不一样的情况。例如下面的日期和地点：
+
+```swift
+// 英文
+Go to the hospital on May 3
+// 中文
+五月三日去医院
+```
+
+可以通过为占位符添加位置索引的方式，方便在不同语言版本的 Localizable.strings 文件中调整语序。例如：
+
+```swift
+// Localizable.strings - en
+"GO %1$@ ON %2$@" = "Go to %1$@ on %2$@";
+"HOSPITAL" = "the hospital";
+
+// Localizable.strings - zh
+"GO %1$@ ON %2$@" = "%2$@去%1$@";
+"HOSPITAL" = "医院";
+```
+
+暂时我们只能通过 `String.localizedStringWithFormat` 方法按照位置索引顺序添加插值内容：
+
+```swift
+var string:String{
+    let formatString = NSLocalizedString("GO %1$@ ON %2$@", comment: "")
+    let location = String(localized: "HOSPITAL", comment: "")
+    return String.localizedStringWithFormat(
+        formatString,
+        location,
+        Date.now.formatted(.dateTime.month().day())
+    )
+}
+
+Text(string)
+```
+
+> 此种方式无法在预览中通过修改环境值实时查看变化（ 在模拟器或实机中均可正确可以 ）
+
 ```responser
 id:1
 ```

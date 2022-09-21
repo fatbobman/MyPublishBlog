@@ -1285,6 +1285,7 @@
 @media (prefers-color-scheme: dark) {
     .gt-container .gt-header-textarea {
         background-color: var(--content-background-color-dark);
+        color: lightgray;
     }
 
     .gt-container .gt-comment-content {
