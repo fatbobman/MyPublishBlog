@@ -61,3 +61,9 @@ tags: tips
 * [如何处理可选值视图](https://twitter.com/fatbobman/status/1570939575266312194)
 
 * [根据布局需求，选用正确的视图修饰器](https://twitter.com/fatbobman/status/1571657825549426690)
+
+* [为本地化占位符添加位置索引](https://twitter.com/fatbobman/status/1572401078368628736)
+
+* [警惕‼️ 滚动 + Lazy + ForEach 中的子视图可能无法保持状态‼️](https://twitter.com/fatbobman/status/1572507700436807683)
+
+* [SwiftUI 4 中，List 子视图中的 task 会出现无法调用的情况](https://twitter.com/fatbobman/status/1574252681467637760)
