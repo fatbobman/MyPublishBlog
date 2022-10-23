@@ -411,6 +411,21 @@ struct SideBarView: View {
 
 无论将 List 放置在 NavigationSplitView 的最左侧一栏（ 双栏模式 ）还是左侧两栏中（ 三栏模式 ），都可以通过 List 的绑定数据进行导航。这是 NavigationSplitView 的独有功能。
 
+> 从 iOS 16.1 开始，开发者可以无需通过 List 的绑定模式来跳转视图了。通过在 NavigationSplitView 侧边栏里放一个.navigationDestination，这样侧边栏里的 NavigationLink 就会取代详细栏的根视图。
+
+```swift
+NavigationSplitView {
+    LazyVStack {
+        NavigationLink("link", value: 213)
+    }
+    .navigationDestination(for: Int.self) { i in
+        Text("The value is \(i)")
+    }
+} detail: {
+    Text("Click an item")
+}
+```
+
 #### 与 NavigationStack 合作
 
 在 SwiftUI 4.0 之前，对于多栏的 NavigationView ，如果我们想在 SideBar 栏内实现堆栈跳转的话，可以使用如下代码：

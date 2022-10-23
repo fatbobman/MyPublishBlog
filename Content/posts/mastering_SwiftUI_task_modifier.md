@@ -423,6 +423,8 @@ extension Notification.Name {
 * 减少视图不必要的刷新（ 避免重复计算 ）
 * 在后台线程响应消息，减少主线程的负荷
 
+> 请注意！task 并不能完全取代 onReceive。对于某些视图（ 在惰性容器中的视图、处在 TabView 中的视图等 ），它们可能会反复满足 onAppear 和 onDisappear 的触发条件（ 滚动出屏幕外、在不同的 Tab 中切换 ）。如此一来，运行在 task 中的 notificationHandler 并不会持续运行。但对于 onRecevie，即使视图触发了 onDisappear ，但只要视图的仍然存续，那么就会持续执行闭包中的操作（ 不会丢失必要的信息 ）。
+
 ## 为老版本的 SwiftUI 添加 task 修饰器
 
 当前，Swift 已经将 async/await 特性向后移植至 iOS 13，但并没有在低版本的 SwiftUI 中提供 task 修饰器（ 原生的 task 修饰器最低要求 iOS 15 ）。

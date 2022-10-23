@@ -2,7 +2,7 @@
 date: 2022-10-24 08:12
 description: Ask Apple 为开发者与苹果工程师创造了在 WWDC 之外进行直接交流的机会。本文对本次活动中与 Core Data 有关的一些问答进行了整理，并添加了一点个人见解。本文为下篇。
 tags: Core Data,Ask Apple 2022
-title: Ask Apple 2022 中与 Core Data 有关的问答（ 下 ）
+title: Ask Apple 2022 中与 Core Data 有关的问答 (下)
 image: images/Core-Data-of-Ask-Apple-2022-2.png
 ---
 Ask Apple 为开发者与苹果工程师创造了在 WWDC 之外进行直接交流的机会。本文对本次活动中与 Core Data 有关的一些问答进行了整理，并添加了一点个人见解。本文为下篇。
@@ -15,7 +15,7 @@ Q：嗨，能否分享除 `.@count` 之外的“派生属性”的更多语法�
 
 A：NSDerivedAttributeDescription 的文档中有一些 [说明](https://developer.apple.com/documentation/coredata/nsderivedattributedescription) 。
 
->派生属性的值是从一个或多个其他的属性的值派生而来。通俗地说，就是在创建或修改托管对象实例时，Core Data 将自动为派生属性生成值。值依据预设的派生表达式（ Derived Expression ）并通过其他的属性值计算而来。详细内容请参阅 [如何在 Core Data 中使用 Derived 和 Transient 属性](https://www.fatbobman.com/posts/derivedAndTransient/) 一文。
+> 派生属性的值是从一个或多个其他的属性的值派生而来。通俗地说，就是在创建或修改托管对象实例时，Core Data 将自动为派生属性生成值。值依据预设的派生表达式（ Derived Expression ）并通过其他的属性值计算而来。详细内容请参阅 [如何在 Core Data 中使用 Derived 和 Transient 属性](https://www.fatbobman.com/posts/derivedAndTransient/) 一文。
 
 ```responser
 id:1
