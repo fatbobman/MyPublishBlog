@@ -94,6 +94,8 @@ id:1
 
 如果你选择学习 100 Days of SwiftUI 教程，建议在学习初期（ 1 - 15 天 ），可以搭配该系列教程一并观看。
 
+> 更新：Jane 在 ChaoCode 上创建了新的系列课程 —— [SwiftUI 新手入门课程](https://www.youtube.com/watch?v=wKx2C-dsnro&list=PLXM8k1EWy5khONZ9M9ytK8mMrcEOXvGsE) ，想学习 SwiftUI 的朋友一定要赶快看看。
+
 ## Kavsoft
 
 ![image-20220919164639228](https://cdn.fatbobman.com/image-20220919164639228.png)
