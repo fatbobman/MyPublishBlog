@@ -88,13 +88,13 @@ id:1
 
 ![image-20220919163439868](https://cdn.fatbobman.com/image-20220919163439868.png)
 
-油管中文女 up 主 Jane 的视频教程（ B 站有搬运 ）。我个人最欣赏的是作者对于视频节奏的把握。
+油管中文女 up 主 Jane 的视频教程（ [Jane 的 B 站频道](https://space.bilibili.com/1911023449) ）。我个人最欣赏的是作者对于视频节奏的把握。
 
 她的频道中有关于 SwiftUI 的视频，但在此我推荐的是她的 [Swift 基础篇和中级篇系列](https://www.youtube.com/watch?v=GIt1BJJNdTI&list=PLXM8k1EWy5kiAD0o69R00b7I62ZVUyfJJ)。这个系列相对比较完整，对于初学者掌握 SwiftUI 也十分必要。
 
 如果你选择学习 100 Days of SwiftUI 教程，建议在学习初期（ 1 - 15 天 ），可以搭配该系列教程一并观看。
 
-> 更新：Jane 在 ChaoCode 上创建了新的系列课程 —— [SwiftUI 新手入门课程](https://www.youtube.com/watch?v=wKx2C-dsnro&list=PLXM8k1EWy5khONZ9M9ytK8mMrcEOXvGsE) ，想学习 SwiftUI 的朋友一定要赶快看看。
+> 更新：Jane 在 ChaoCode 上创建了新的系列课程 —— [SwiftUI 新手入门课程](https://www.bilibili.com/video/BV1TV4y1K7Ew/) ，想学习 SwiftUI 的朋友一定要赶快看看。
 
 ## Kavsoft
 
