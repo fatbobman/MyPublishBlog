@@ -218,7 +218,7 @@ struct ContentView: View {
                 .background(
                     VStack {
                         Button("+") { value += value < 100 ? 1 : 0 }.keyboardShortcut("+",modifiers: [])
-                        Button("+") { value -= value > 1 ? 1 : 0 }.keyboardShortcut("-",modifiers: [])
+                        Button("-") { value -= value > 1 ? 1 : 0 }.keyboardShortcut("-",modifiers: [])
                     }.frame(width: 0).opacity(0)
                 )
         }

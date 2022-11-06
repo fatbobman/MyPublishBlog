@@ -703,7 +703,7 @@ NavigationStack {
 ### 设置 toolbar 的色彩外观（ Color Scheme ）
 
 ```swift
-.toolbarColorScheme(.dark, in: .navigationBar)
+.toolbarColorScheme(.dark, for: .navigationBar)
 ```
 
 ![RocketSim_Screenshot_iPhone_13_Pro_Max_2022-06-12_09.21.29](https://cdn.fatbobman.com/RocketSim_Screenshot_iPhone_13_Pro_Max_2022-06-12_09.21.29.png)
