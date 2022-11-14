@@ -210,7 +210,7 @@ id:1
 
 准确地说，视图值树中的视图，作为一个值在其生命周期中除了生死外，并没有其他的节点。但 onAppear 和 onDisappear 在行为表现上又确实与其有所关联。
 
-需要注意的是，onAppear 和 onDisappear 中闭包的作用范围并非为其包裹的视图，而是其父视图，这点尤为重要！
+需要注意的是，onAppear 和 onDisappear 中闭包的作用范围并非为包裹其的视图，而是其所附属视图，这点尤为重要！
 
 SwiftUI 官方文档对 onAppear 和 onDisappear 的描述是：在此视图出现时执行的操作，在此视图消失时要执行的操作。这种描述与这两个修饰器在大多数场景下的行为很接近。因此，大家通常都会将其视作 UIKit 下的 viewDidAppear 和 viewDidDisappear 的 SwiftUI 版本，认为它们在生命周期中，只会出现一次。但，如果全方位分析它们的触发时机，便会发现它们的行为与描述并不完全相符。比如，在下面的几个场景中，onAppear 和 onDisappear 都将违背大多数认知：
 
