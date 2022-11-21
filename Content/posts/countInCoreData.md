@@ -284,7 +284,7 @@ let year = NSExpression(forKeyPath:\Item.birthOfYear)
 let express = NSExpression(forFunction: "count:", arguments: [year])
 expressDescription.expression = express
 fetchquest.propertiesToFetch = ["birthOfYear",expressDescription]
-let results = (try? viewContext.fetch(fetchquest) as? [[String:Int32]]) ?? []
+let results = (try? viewContext.fetch(fetchquest) as? [[String:Any]]) ?? []
 print(results)
 /*
  CoreData: sql: SELECT t0.ZBIRTHOFYEAR, COUNT( t0.ZBIRTHOFYEAR) FROM ZITEM t0 GROUP BY  t0.ZBIRTHOFYEAR
@@ -322,7 +322,7 @@ fetchquest.propertiesToFetch = ["birthOfYear",expressDescription]
 let countVariableExpr = NSExpression(forVariable: "count")
 // 对 groupby 后的结果再度筛选
 fetchquest.havingPredicate = NSPredicate(format: "%@ > 40",countVariableExpr)
-let results = (try? viewContext.fetch(fetchquest) as? [[String:Int32]]) ?? []
+let results = (try? viewContext.fetch(fetchquest) as? [[String:Any]]) ?? []
 print(results)
 /*
  CoreData: sql: SELECT t0.ZBIRTHOFYEAR, COUNT( t0.ZBIRTHOFYEAR) AS __var0 FROM ZITEM t0 GROUP BY  t0.ZBIRTHOFYEAR HAVING __var0 > ?
