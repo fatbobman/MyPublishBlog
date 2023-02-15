@@ -15,7 +15,7 @@ id:1
 
 ### 功能 ###
 
-在使用 Core Data 的应用程序中，将将管理并持久化应用的模型层视为 Core Data Stack。在 Core Data Stack 中，通过创建并配置 Core Data 提供的一组相互配合的类的实例来为应用程序提供对象图管理、数据持久化等服务。
+在使用 Core Data 的应用程序中，将管理并持久化应用的模型层视为 Core Data Stack。在 Core Data Stack 中，通过创建并配置 Core Data 提供的一组相互配合的类的实例来为应用程序提供对象图管理、数据持久化等服务。
 
 Core Data Stack 对其实例的命名、类型没有具体的要求，你可以根据自己的习惯和需求使用结构、类来创建、组织自己的代码。
 
