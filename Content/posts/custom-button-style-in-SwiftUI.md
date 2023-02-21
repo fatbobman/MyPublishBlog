@@ -201,7 +201,9 @@ HStack {
 
 在 SwiftUI 中，Button 默认的交互行为是在松开按钮的同时执行 Button 指定的操作。并且，在点击按钮后，只要手指（ 鼠标 ）不松开，无论移动到哪里（ 移动到 Button 视图之外 ），松开后仍会执行指定操作。
 
-尽管 Button 的默认手势与 `TapGestur` 单击操作类似，但 Button 的手势是一种不可撤销的操作。而 TapGesture 在不松开手指的情况下，如果移动到可点击区域外，SwiftUI 将不会调用 onEnded 闭包中的操作。
+尽管 Button 的默认手势与 `TapGestur` 单击操作类似，~~但 Button 的手势是一种不可撤销的操作~~。而 TapGesture 在不松开手指的情况下，如果移动到可点击区域外，SwiftUI 将不会调用 onEnded 闭包中的操作。
+
+> 经网友 [@Yoo_Das](https://twitter.com/Yoo_Das) 的反馈，上文中 “Button 的手势是一种不可撤销的操作” 的描述不够准确。Button 的手势可以被视为有条件的可撤销操作。在按下按钮后，当手指移动的距离超出了系统预设的距离余量（ 不清楚明确值 ）后再松开，按钮闭包并不会被调用。
 
 假如，我们想达成与 TapGesture 类似的效果（ 可撤销按钮 ），则可以通过 SwiftUI 提供的另一个协议 PrimitiveButtonStyle 来实现。
 
