@@ -2,7 +2,7 @@
 date: 2023-02-23 08:20
 description: 本文将通过一段可复现的“灵异代码”，对 State 注入优化机制、模态视图（ Sheet、FullScreenCover ）内容的生成时机以及不同上下文（ 相互独立的视图树 ）之间的数据协调等问题进行探讨。
 tags: SwiftUI,小题大做
-title: 一段因 @State 注入机制 Bug 所产生的“灵异代码”
+title: 一段因 @State 注入机制所产生的“灵异代码”
 image: images/bug-code-by-state-inject.png
 ---
 本文将通过一段可复现的“灵异代码”，对 State 注入优化机制、模态视图（ Sheet、FullScreenCover ）内容的生成时机以及不同上下文（ 相互独立的视图树 ）之间的数据协调等问题进行探讨。
@@ -229,9 +229,7 @@ Button("Set n = 2") {
 
 这意味着，相较于在原有视图树上创建分支，在新上下文中重建视图树的开销更大，需要进行的工作也更多。
 
-而 SwiftUI 为了优化效率，通常会对若干操作进行合并，并汇总在 一个 Render Loop 中执行。在合并操作的过程中，如果出现了前后顺序错误的问题，那么就会导致一些奇怪的结果。
-
-根据本文问题代码的表现，我们基本可以推测出，在新建 Sheet 视图树的过程中，SwiftUI 在将原有视图的 State 与 Sheet 视图进行关联时，出现了顺序错乱的问题。在已经完成了对 Sheet 视图（ 对 body 求值 ）的渲染后才进行关联。如此会导致在首次渲染时，获取的未必为最新关联值。
+而 SwiftUI 为了优化效率，通常会对若干操作进行合并。即使为新上下文中的视图进行的关联操作是在视图求值操作之前完成的，但由于 n 的变化与关联操作被集中在一个 Render Loop 中，这样会导致在关联之后并不会强制新关联的视图刷新（ 关联后，值并没有发生变化 ）。
 
 ```responser
 id:1
@@ -253,7 +251,7 @@ id:1
 
   尽管 show 也是通过 State 声明的，但 show 的变化并不会导致 ContextView 重新更新。这是因为在 `.fullScreenCover` 的构造方法中，我们传递的是 show 的 projectedValue（ Binding 类型 ）
 
-* 由于合并操作中执行顺序出现了问题，SwiftUI 在 Sheet 视图完成对 n 的关联前，率先对视图内容进行了求值（ 此时 n 为 1）并根据此值进行了渲染
+* 由于合并操作的原因，在 Sheet 视图关联到 n 后，并不会重新更新
 
 * Sheet 中的 Text 显示 n = 1
 
@@ -266,13 +264,13 @@ id:1
 * 点击 Button 后，由于 n 值发生了变化，ContextView 重新求值（ 重新解析 DSL 代码 ）
 * 在重新求值的过程中，`.fullScreenCover` 的闭包捕获了新的 n 值 （ n = 2 ）
 * 创建 Sheet 视图并渲染
-* 尽管在合并操作中出现先渲染后才关联的问题，但由于 `.fullScreenCover` 闭包已经毕竟捕获了新值，因此 Sheet 的 Text 显示为 n = 2
+* 由于 `.fullScreenCover` 闭包已经毕竟捕获了新值，因此 Sheet 的 Text 显示为 n = 2
 
 也就是说，通过添加 Text，让 ContextView 与 n 创建了关联，在 n 变化后，ContextView 进行了重新求值，从而让 `fullScreenCover` 的闭包捕获了变化后的 n 值，并呈现了预期中的结果。
 
 ## 解决方案
 
-在了解了错误的原因后，解决并避免再次出现类似的奇怪现象已不是难事。
+在了解了“异常”的原因后，解决并避免再次出现类似的奇怪现象已不是难事。
 
 ### 方案一、在 DSL 中进行关联，强制刷新
 
@@ -332,7 +330,7 @@ class VM: ObservableObject {
 
 我们可以将 Binding 类型视作一个对某值的 get 和 set 方法的包装。Sheet 视图在求值时，将通过 Binding 的 get 方法，获得 n 的最新值。
 
-> Binding 中 get 方法对应的是 ContextView 中 n 的原始地址，无需经过为 Sheet 重新注入的过程（ 可以无视顺序错误 ），因此在求值阶段便可以获得最新值
+> Binding 中 get 方法对应的是 ContextView 中 n 的原始地址，无需经过为 Sheet 重新注入的过程，因此在求值阶段便可以获得最新值
 
 ```swift
 struct Solution3: View {

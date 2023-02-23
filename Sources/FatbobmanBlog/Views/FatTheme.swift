@@ -180,13 +180,13 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                             for: context,
                             selectedSection: FatbobmanBlog.SectionID.tips as? Site.SectionID
                         ),
-                       else:
-                       .header(
-                        for: context,
-                        selectedSection: nil
+                        else:
+                        .header(
+                            for: context,
+                            selectedSection: nil
+                        )
                     )
-                    )
-                    
+
                 ),
                 .container(
                     .wrapper(
@@ -533,6 +533,16 @@ let googleAndBaidu = """
 
     ga('create', _gaId, _gaDomain);
     ga('send', 'pageview');
+</script>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?14e5d60a3ea6276655f9d14c58b1fcd0";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
 </script>
 """
 
