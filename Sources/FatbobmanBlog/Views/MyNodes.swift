@@ -16,15 +16,12 @@ extension Node where Context == HTML.BodyContext {
                 .text("，转载需注明出处和作者。")
             ),
             .p(
-                // .raw("""
-                // <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="fatbobman" data-color="#FFDD00" data-emoji=""  data-font="Bree" data-text="请肘子喝杯咖啡       " data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
-                // """)
                 .a(
                     .img(
-                        .src("https://cdn.fatbobman.com/support_fatbobman_button.png"),
+                        .src("https://cdn.fatbobman.com/support_fatbobman_button1.png"),
                         .alt("鼓励作者"),
-                        .width(200),
-                        .height(53)
+                        .width(175),
+                        .height(40)
                     ),
                     .href("https://www.fatbobman.com/support/")
                 )

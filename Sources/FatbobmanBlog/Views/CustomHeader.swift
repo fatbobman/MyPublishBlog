@@ -57,7 +57,7 @@ extension Node where Context == HTML.DocumentContext {
             ),
             .meta(.name("twitter:site"), .content("@fatbobman")),
             .meta(.name("twitter:creator"), .content("@fatbobman")),
-            .meta(.name("referrer"), .content("no-referrer")),
+            // .meta(.name("referrer"), .content("no-referrer")),
             // 只有健康笔记弹出smart bar
             .if(healthNotes,
                 .meta(.name("apple-itunes-app"), .content("app-id=1534513553"))),

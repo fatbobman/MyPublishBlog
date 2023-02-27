@@ -137,6 +137,20 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                                         )
                                     ),
                                     .div(
+                                        .class("license"),
+                                        .p(
+                                            .a(
+                                                .img(
+                                                    .src("https://cdn.fatbobman.com/support_fatbobman_button1.png"),
+                                                    .alt("鼓励作者"),
+                                                    .width(175),
+                                                    .height(40)
+                                                ),
+                                                .href("https://www.fatbobman.com/support/")
+                                            )
+                                        )
+                                    ),
+                                    .div(
                                         .tagList(for: item, on: context.site, displayDate: true),
                                         .div(.class("content"), .contentBody(item.body)),
                                         .license()
