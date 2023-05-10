@@ -486,7 +486,7 @@ extension Node where Context == HTML.BodyContext {
             // .substack(),
             .p(
                 .text("Copyright &copy; 东坡肘子 (Fatbobman) \(formatter.string(from: Date())) "),
-                .a(.text("辽ICP备20006550"), .href("http://beian.miit.gov.cn"))
+                .a(.text("辽ICP备20006550号-1"), .href("https://beian.miit.gov.cn/"))
             ),
             .p(
                 .text("Generated using "),
