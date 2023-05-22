@@ -221,7 +221,7 @@ var body:some View{
 
 ## 移动本地数据库 ##
 
-已经在`AppStore`上架的应用程序，在某些情况下有移动本地数据库到其他`URL`的需求。比如，为了让`Widget`也可以访问数据库，我将 [健康笔记](https://www.fatbobman.com/project/healthnotes/) 的数据库移动到了`appGroupContainerURL`。
+已经在`AppStore`上架的应用程序，在某些情况下有移动本地数据库到其他`URL`的需求。比如，为了让`Widget`也可以访问数据库，我将 [健康笔记](https://www.fatbobman.com/healthnotes/) 的数据库移动到了`appGroupContainerURL`。
 
 如果使用`NSPersistentContainer`，可以直接调用`coordinator.migratePersistentStore`即可安全完成数据库文件的位置转移。但如果对`NSPersistentCloudKitContainer`加载的`store`调用此方法，则必须强制退出应用程序后再次进入方可正常使用（虽然数据库文件被转移，但迁移后会告知加载`CloudKit container`错误，无法进行同步。需重启应用程序才能正常同步）。
 
