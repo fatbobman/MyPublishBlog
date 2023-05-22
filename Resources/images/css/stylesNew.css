@@ -1575,9 +1575,10 @@ li.selectedTag a {
     background-color: var(--ads-border-color-light);
     padding: 3px 6px 3px 6px;
     border-radius: 5px;
-    color: #f2f2f2;
+    color: yellow;
     font-size: 10px;
     font-family: sans-serif;
+
 }
 
 .responser .textContainer {

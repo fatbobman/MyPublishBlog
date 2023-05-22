@@ -14,7 +14,7 @@ var responser = Modifier(target: .codeBlocks) { html, markdown in
     guard let content = markdown.firstSubstring(between: .prefix("```responser\n"), and: "\n```") else { return html }
     var id = "1"
     content.scan(using: [
-        Matcher(identifier: "id: ", terminator: "\n", allowMultipleMatches: false) { match, _ in id = String(match) }
+        Matcher(identifier: "id: ", terminator: "\n", allowMultipleMatches: false) { match, _ in id = String(match) },
     ])
 
     let start = "<Div id = \"responser\" class = \"responser\" ><div class = \"adsContent\">"
@@ -51,19 +51,19 @@ let healthAds1 =
     """
     <style>
     .adsImage {
-       content:url("https://cdn.fatbobman.com/BlogHealthNotesAdsPic.png")
+       content:url("https://cdn.fatbobman.com/healthNotes-ads1.png")
     }
     @media (prefers-color-scheme: dark) {
       .adsImage {
-           content:url("https://cdn.fatbobman.com/BlogHealthNotesAdsDarkPic.png")
+           content:url("https://cdn.fatbobman.com/healthNotes-ads1.png")
       }
     }
     </style>
     <div class = "HStack">
     <img class = "adsImage"></img>
     <div class = "textContainer">
-    <div class = "title">健康笔记 - 全家人的健康助手 </div>
-    <div class = "document"><p>健康笔记适用于任何有健康管理需求的人士。提供了强大的自定义数据类型功能，可以记录生活中绝大多数的健康项目数据。你可以为每个家庭成员创建各自的记录笔记，或者针对某个特定项目、特定时期创建对应的笔记。</p>
+    <div class = "title">健康笔记 - 新生活从记录开始 </div>
+    <div class = "document"><p>健康笔记是一款智能的数据管理和分析工具，让您完全掌控自己和全家人的健康信息。作为慢性病患者，我深知健康管理的重要与难度。创建健康笔记的初心，就是要为您提供一款轻松高效的健康信息记录与分析工具</p>
     </div>
     </div>
     </div>
