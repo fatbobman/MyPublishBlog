@@ -247,9 +247,9 @@ id:1
 * Xcode 生成预览衍生代码文件
 * Xcode 编译整个项目，解析文件、获取预览视图实现、准备依赖的其他资源
 * Xcode 编译预览衍生代码文件，创建动态库
-* Xcode 启动预览线程，在其中加载 _XCPreviewKit 框架和预览衍生文件生成的 dylib
-* XCPreviewKit 框架在预览线程中创建预览窗口
-* Xcode 通过 XPC 发送消息指令， _XCPreviewKit 框架更新预览窗口，并在两个线程建进行交互与同步
+* Xcode 启动预览进程，在其中加载 _XCPreviewKit 框架和预览衍生文件生成的 dylib
+* XCPreviewKit 框架在预览进程中创建预览窗口
+* Xcode 通过 XPC 发送消息指令， _XCPreviewKit 框架更新预览窗口，并在两个进程建进行交互与同步
 * 用户在 Xcode 界面中看到预览效果
 
 ## 从预览的实现中可以得到的部分结论
