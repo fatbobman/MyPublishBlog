@@ -70,6 +70,8 @@ func select(_: ContentView.Item) {
 
 修改后，预览功能可以正常工作了。可惜的是，Toomas Vahter在文章中没有告诉读者崩溃原因。我借用这段代码来与大家一起探究预览功能是如何工作的。
 
+> 感谢 Dennis Nehrenheim 在 Medium 上的告知，这个问题已经在 Xcode 14.3.1 下被解决了。不过，即便如此，并不影响本文对预览原理的解释。
+
 ```responser
 id:1
 ```

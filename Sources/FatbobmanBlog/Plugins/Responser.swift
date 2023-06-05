@@ -62,7 +62,8 @@ let healthAds1 =
     <div class = "HStack">
     <img class = "adsImage"></img>
     <div class = "textContainer">
-    <div class = "title">健康笔记 - 新生活从记录开始 </div>
+    <div class = "title">健康笔记 - 新生活从记录开始</div>
+    <div class = "discount">50% OFF for WWDC23</div>
     <div class = "document"><p>健康笔记是一款智能的数据管理和分析工具，让您完全掌控自己和全家人的健康信息。作为慢性病患者，肘子深知健康管理的重要与难度。创建健康笔记的初心，就是要为您提供一款轻松高效的健康信息记录与分析工具</p>
     </div>
     </div>
@@ -85,6 +86,10 @@ let style =
     }
 
     .responser .title {
+    }
+
+    .responser .discount {
+        color: #FF0000;
     }
 
     .responser .document {
