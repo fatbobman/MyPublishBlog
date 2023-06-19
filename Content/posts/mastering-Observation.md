@@ -47,7 +47,7 @@ class Store: ObservableObject {
 
 ```swift
 @Observable
-class Store: ObservableObject {
+class Store {
     var firstName: String = "Yang"
     var lastName: String = "Xu"
     var fullName: String {
@@ -56,7 +56,7 @@ class Store: ObservableObject {
 
     private var count: Int = 0
 
-		init(firstName: String, lastName: String, count: Int) {
+    init(firstName: String, lastName: String, count: Int) {
         self.firstName = firstName
         self.lastName = lastName
         self.count = count
@@ -91,11 +91,11 @@ id:1
 
 在 Xcode 15 中，在`@Observable` 处点击鼠标右键，选择“Expand Macro”操作。通过这步操作，我们可以看到 `@Observable` 宏为我们生成的代码：
 
-![expend_macro_demo_2023-06-17_16.46.24.2023-06-17_16_47_42](https://cdn.fatbobman.com/expend_macro_demo_2023-06-17_16.46.24.2023-06-17_16_47_42.gif)
+![expend-macro-demo-2_2023-06-19_08.38.08.2023-06-19 08_38_52](https://cdn.fatbobman.com/expend-macro-demo-2_2023-06-19_08.38.08.2023-06-19%2008_38_52.gif)
 
 ```swift
 @Observable
-class Store: ObservableObject {
+class Store {
     @ObservationTracked
     var firstName: String = "Yang" {
         get {
@@ -318,6 +318,10 @@ struct SubView:View {
     }
 }
 ```
+
+## Observation 框架支持低版本的 SwiftUI 吗
+
+不支持。
 
 ## 如何观察可观察对象
 
