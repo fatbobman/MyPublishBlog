@@ -9,8 +9,6 @@ SwiftUI 因其简便的动画 API 与极低的动画设计门槛而广受欢迎�
 
 本文将通过探讨 Transaction 的原理、作用、创建和分发逻辑等内容，告诉读者如何在 SwiftUI 中实现更加精准的动画控制，以及需要注意的其他问题。
 
-> 阅读 [SwiftUI 的动画机制](https://www.fatbobman.com/posts/the_animation_mechanism_of_swiftUI/) 可以了解 SwiftUI 动画的方方面面。
-
 ## Transaction 是什么
 
 - transaction 是一个值，包含了 SwiftUI 在处理当前状态变化时需要了解的上下文，其中最重要的是用于计算插值的动画函数。
@@ -697,6 +695,10 @@ withAniamtion {
 ```
 
 使用后两种方法，开发者将拥有更强的动画控制力。
+
+```responser
+id:1
+```
 
 ## TransactionKey
 
