@@ -4,6 +4,7 @@ description: Core Data 的优势主要体现在对象图管理、数据描述、
 tags: Core Data
 title: 如何在 Core Data 中进行批量操作
 image: images/batchProcessingInCoreData.png
+mediumURL: https://medium.com/p/8a7f7f63a740
 ---
 Core Data 是 Apple 为其生态提供的拥有持久化功能的对象图管理框架。具备稳定（ 广泛应用于苹果的各类系统软件 ）、成熟（ Core Data 发布于 2009 年，其历史可以追溯到上世纪 90 年代 ）、开箱即用（ 内置于整个苹果生态系统 ）等特点。
 

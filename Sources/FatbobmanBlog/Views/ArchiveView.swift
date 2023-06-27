@@ -15,7 +15,7 @@ import Publish
 
 extension Node where Context == HTML.BodyContext {
     static func archiveView<T: Website>(context: PublishingContext<T>) -> Node {
-        func dateArchive<T: Website>(items: [Item<T>]) -> [Int: [Item<T>]] {
+        func dateArchive(items: [Item<T>]) -> [Int: [Item<T>]] {
             let result = Dictionary(grouping: items, by: { $0.date.absoluteMonth })
             return result
         }

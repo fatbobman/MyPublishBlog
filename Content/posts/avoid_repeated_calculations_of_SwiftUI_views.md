@@ -4,6 +4,7 @@ description: 随着近年来有关 SwiftUI 的文章与书籍越来越多，开�
 tags: SwiftUI
 title: 避免 SwiftUI 视图的重复计算
 image: images/avoid_repeated_calculations_of_SwiftUI_views.png
+mediumURL: https://medium.com/p/dcf0a65d3758
 ---
 随着近年来有关 SwiftUI 的文章与书籍越来越多，开发者应该都已经清楚地掌握了 —— “视图是状态的函数” 这一 SwiftUI 的基本概念。每个视图都有与其对应的状态，当状态变化时，SwiftUI 都将重新计算与其对应视图的 body 值。
 

@@ -4,6 +4,7 @@ description: 本文将对 SwiftUI 的 zIndex 修饰符做以介绍，包括：�
 tags: SwiftUI
 title:  在 SwiftUI 中用 zIndex 调整视图显示顺序
 image: images/zIndex.png
+mediumURL: https://medium.com/p/d367ca6d8cf9
 ---
 本文将对 SwiftUI 的 zIndex 修饰符做以介绍，包括：使用方法、zIndex 的作用域、通过 zIndex 避免动画异常、为什么 zIndex 需要设置稳定的值以及在多种布局容器内使用 zIndex 等内容。
 

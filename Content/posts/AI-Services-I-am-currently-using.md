@@ -4,6 +4,7 @@ description: 随着 ChatGPT 的火爆，生活中好像突然之间到处都充�
 tags: 杂谈
 title: 我目前正在使用的 AI 服务
 image: images/AI-Services-I-am-currently-using.png
+mediumURL: https://medium.com/p/72d1d582e939
 ---
 随着 ChatGPT 的火爆，生活中好像突然之间到处都充满了有关人工智能的话题。尽管对新技术、新事物已没有那么的狂热，同时对 AI 也持有谨慎的态度，但并不影响我将一些 AI 服务应用到自己的工作中，丰富自己的工具箱，提高工作效率。
 

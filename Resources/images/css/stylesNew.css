@@ -1198,6 +1198,11 @@ li.selectedTag a {
     background-color: #484781 !important;
 }
 
+.tag.variant-8 {
+    background-color: var(--header-background-color-light) !important;
+    border-radius: 0;
+}
+
 /* Archive 页面  */
 /* .archiveList {
     padding: 20px;
