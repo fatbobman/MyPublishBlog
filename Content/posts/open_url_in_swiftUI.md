@@ -4,6 +4,7 @@ description: 本文将介绍在 SwiftUI 视图中打开 URL 的若干种方式�
 tags: SwiftUI,小题大做
 title: 在 SwiftUI 视图中打开 URL 的若干方法
 image: images/openURLinSwiftUI.png
+mediumURL: https://medium.com/p/fa064c041d64
 ---
 本文将介绍在 SwiftUI 视图中打开 URL 的若干种方式，其他的内容还包括如何自动识别文本中的内容并为其转换为可点击链接，以及如何自定义打开 URL 前后的行为等。
 

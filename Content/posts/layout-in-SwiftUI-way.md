@@ -4,6 +4,7 @@ description: 最近时常有朋友反映，尽管 SwiftUI 的布局系统学习�
 tags: SwiftUI,小题大做,布局
 title: 用 SwiftUI 的方式进行布局
 image: images/layout-in-SwiftUI-way.png
+mediumURL: https://medium.com/p/563704527fd8
 ---
 最近时常有朋友反映，尽管 SwiftUI 的布局系统学习门槛很低，但当真正面对要求较高的设计需求时，好像又无从下手。SwiftUI 真的具备创建复杂用户界面的能力吗？本文将通过用多种手段完成同一需求的方式，展示 SwiftUI 布局系统的强大与灵活，并通过这些示例让开发者对 SwiftUI 的布局逻辑有更多的认识和理解。
 

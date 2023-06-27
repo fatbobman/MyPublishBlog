@@ -4,6 +4,7 @@ description: “对齐”是 SwiftUI 中极为重要的概念，然而相当多�
 tags: SwiftUI,WWDC22,布局
 title: SwiftUI 布局 —— 对齐
 image: images/layout-alignment.png
+mediumURL: https://medium.com/p/c2cc60fa8f3f
 ---
 “对齐”是 SwiftUI 中极为重要的概念，然而相当多的开发者并不能很好地驾驭这个布局利器。在 WWDC 2022 中，苹果为 SwiftUI 增添了 Layout 协议，让我们有了更多的机会了解和验证 SwiftUI 的布局原理。本文将结合 Layout 协议的内容对 SwiftUI 的 “对齐” 进行梳理，希望能让读者对“对齐”有更加清晰地认识和掌握。
 

@@ -3,6 +3,7 @@ date: 2021-08-11 07:50
 description: 本文聊一下在开发 Core Data with CloudKit 项目中常见的一些问题，让大家少走弯路、避免踩坑。
 tags: CloudKit,Core Data
 title: Core Data with CloudKit（四）—— 调试、测试、迁移及其他
+mediumURL: https://medium.com/p/8b525fca0e8f
 ---
 本文聊一下在开发`Core Data with CloudKit`项目中常见的一些问题，让大家少走弯路、避免踩坑。
 

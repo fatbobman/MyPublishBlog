@@ -4,6 +4,7 @@ description: 这几天在医院对身体各方面进行了一次比较全面的�
 tags: 杂谈
 title: 移植五周年
 image: images/5th-Anniversary-of-Kidney-Transplant.png
+mediumURL: https://medium.com/p/f591a741f67b
 ---
 这几天在医院对身体各方面进行了一次比较全面的检查，结果比较令人满意。一转眼，接受肾移植已经 5 周年了，写一篇博文，对这些年的身体以及治疗情况进行了一个汇总。
 

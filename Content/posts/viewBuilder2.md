@@ -4,6 +4,7 @@ description: 在【ViewBuilder 研究（上）—— 掌握 Result builders】�
 tags: SwiftUI
 title: ViewBuilder 研究（下） —— 从模仿中学习
 image: images/viewbuilder_2.png
+mediumURL: https://medium.com/p/7832ab96506b
 ---
 
 在[上篇](https://www.fatbobman.com/posts/viewBuilder1/)中，我们对 result builders 做了较详细的介绍。本篇我们将通过对 ViewBuilder 的仿制，探索更多有关 SwiftUI 视图背后的秘密。

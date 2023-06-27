@@ -4,6 +4,7 @@ description: 本文将对 Xcode Playground 做更进一步的研究，着重于�
 tags: Swift Playgrounds, Playground
 title:  玩转 Xcode Playground（下）
 image: images/playground2.png
+mediumURL: https://medium.com/p/50588791755f
 ---
 在 [上文](https://fatbobman.com/posts/xcodePlayground1/) 中，我们介绍了有关 Xcode Playground 在创建、配置、Quick Look、实时视图等方面的知识。本文将对 Xcode Playground 做更进一步的研究，着重于辅助代码、资源管理、使用 Playground 探索软件包和 Xcode 项目等更有深度内容。
 

@@ -4,6 +4,7 @@ description: 当我们使用一个英文 app 时，很多人第一时间会去�
 tags: 本地化
 title:  如何对 iOS 应用中的文本进行本地化
 image: images/localizationApp-1.png
+mediumURL: https://medium.com/p/63130e7c3cce
 ---
 
 当我们使用一个英文 app 时，很多人第一时间会去查看是否有对应的中文版本。可见，在 app 中显示让使用者最亲切的语言文本是何等的重要。对于相当数量的 app 来说，如果能够将 UI 中显示的文本进行了本地化转换，基本上就完成了 app 的本地化工作。本文中，我们将探讨 iOS 开发中，如何实现显示文本的本地化工作。本文的 [Demo](https://github.com/fatbobman/LocalizationDemoForBlogPost) 采用 SwiftUI 编写。

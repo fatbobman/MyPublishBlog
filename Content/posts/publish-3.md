@@ -3,6 +3,7 @@ date: 2021-02-03 19:58
 description: 我们不仅可以利用 Publish 内置的接口来开发插件进行扩展，同时还可以使用 Publish 套件中其他的优秀库（Ink、Plot、Sweep、Files、ShellOut 等）来完成更多的创意。本文将通过几个实例（添加标签、增加属性、用代码生成内容、全文搜索、命令行部署）在展示不同扩展手段的同时向大家介绍 Publish 套件中其他的优秀成员。
 tags: Swift,Publish
 title: 用 Publish 创建博客（三）——插件开发
+mediumURL: https://medium.com/p/a8a7471c4631
 ---
 我们不仅可以利用 Publish 内置的接口来开发插件进行扩展，同时还可以使用 Publish 套件中其他的优秀库（Ink、Plot、Sweep、Files、ShellOut 等）来完成更多的创意。本文将通过几个实例（添加标签、增加属性、用代码生成内容、全文搜索、命令行部署）在展示不同扩展手段的同时向大家介绍 Publish 套件中其他的优秀成员。在阅读本文前，最好能先阅读 [用 Publish 创建博客（一）——入门](/posts/publish-1/)、[用 Publish 创建博客（二）——主题开发](/posts/publish-2/)。对 Publish 有个基本了解。本文篇幅较长，你可以选择自己感兴趣的实战内容阅读。
 

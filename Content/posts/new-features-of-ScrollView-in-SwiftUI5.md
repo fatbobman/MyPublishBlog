@@ -4,6 +4,7 @@ description: 在 SwiftUI 5.0 中，苹果大幅强化了 ScrollView 功能。新
 tags: SwiftUI,WWDC23
 title: 深入了解 SwiftUI 5 中 ScrollView 的新功能
 image: images/new-features-of-ScrollView-in-SwiftUI5.jpg
+mediumURL: https://medium.com/p/440b9f0e0e09
 ---
 在 SwiftUI 5.0 中，苹果大幅强化了 ScrollView 功能。新增了大量新颖、完善的 API。本文将对这些新功能进行介绍，希望能够让它们更多、更早的帮助到有需要的开发者。
 

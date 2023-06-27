@@ -4,6 +4,7 @@ description: Core Data 是一个具备数据持久化能力的对象图框架。
 tags: Core Data
 title: Core Data 是如何在 SQLite 中保存数据的
 image: images/tablesAndFieldsInCoreData.png
+mediumURL: https://medium.com/p/638d1eb0dad9
 ---
 Core Data 是一个具备数据持久化能力的对象图框架。相同的对象图在不同的持久化存储类型中（ SQLite 、XML）的数据组织结构差别较大。如果你浏览过 Core Data 生成的 SQLite 数据库文件，一定会见过其中包含不少奇怪的表和字段。本文将对这些表和字段进行介绍，或许可以换个角度帮助你解开部分疑惑，例如： Core Data 为什么不需要主键、NSManagedObjectID 是如何构成的 、保存冲突的判断依据是什么。
 

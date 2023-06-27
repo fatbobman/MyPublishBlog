@@ -4,6 +4,7 @@ description: 作为 SwiftUI 最引人注目的功能之一，预览功能吸引�
 tags: SwiftUI
 title: 构建稳定的预览视图 —— SwiftUI 预览的工作原理
 image: images/how-SwiftUI-Preview-works.jpg
+mediumURL: https://medium.com/p/28e5fd4161c3
 ---
 作为 SwiftUI 最引人注目的功能之一，预览功能吸引了不少开发者初次接触 SwiftUI。然而，随着项目规模的增长，越来越多的开发者发现预览功能并不如最初想象的那么易用。由于预览崩溃的次数和场景的增加，一些开发者已经视预览为 SwiftUI 的缺点之一，并对其产生了排斥感。 
 

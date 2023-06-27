@@ -4,6 +4,7 @@ description: 在 WWDC 2023 中，苹果介绍了 Swift 标准库中的新成员�
 tags: SwiftUI,WWDC23
 title: 深度解读 Observation —— SwiftUI 性能提升的新途径 
 image: images/observation-study.jpg
+mediumURL: https://medium.com/p/f299831c664b
 ---
 在 WWDC 2023 中，苹果介绍了 Swift 标准库中的新成员：Observation 框架。它的出现有望缓解开发者长期面临的 SwiftUI 视图无效更新问题。本文将采取问答的方式，全面而详尽地探讨 Observation 框架，内容涉及其产生原因、使用方法、工作原理以及注意事项等。
 

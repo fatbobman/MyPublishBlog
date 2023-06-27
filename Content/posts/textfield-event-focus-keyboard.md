@@ -4,6 +4,7 @@ description: 本文将探讨涉及 SwiftUI TextField 的事件、焦点切换、
 tags: SwiftUI
 title:  SwiftUI TextField 进阶 —— 事件、焦点、键盘
 image: images/textfield-event-focus-keyboard.png
+mediumURL: https://medium.com/p/c99bc9f57c91
 ---
 本文将探讨涉及 SwiftUI TextField 的事件、焦点切换、键盘设置等相关的经验、技巧和注意事项。
 

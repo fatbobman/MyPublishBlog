@@ -4,6 +4,7 @@ description: 本系列将介绍大量有关 Xcode Playground 的使用技巧，�
 tags: Swift Playgrounds, Playground
 title:  玩转 Xcode Playground（上）
 image: images/playground1.png
+mediumURL: https://medium.com/p/d3b3225ffa23
 ---
 在 Swift 语言推出的同一年（2014 年），苹果就在 Xcode 中集成了 Playground 功能。相较标准的 Xcode 项目，Playground 启动更快、使用更轻巧，被广泛应用于 Swift 语言学习、框架 API 测试、快捷数据处理、汇集灵感等众多方面。本系列将介绍大量有关 Xcode Playground 的使用技巧，涉及稳定性、第三方库、资源管理、异步处理、文档标注等等方面，让你玩转 Playground，使其成为你工作学习中的利器。
 

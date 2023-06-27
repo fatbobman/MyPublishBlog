@@ -4,6 +4,7 @@ description: SwiftUI 的 TextField 可能是开发者在应用程序中最常使
 tags: SwiftUI
 title: SwiftUI TextField 进阶——格式与校验
 image: images/textfieldDemo1.gif
+mediumURL: https://medium.com/p/7a783250f2b9
 ---
 SwiftUI 的 TextField 可能是开发者在应用程序中最常使用的文本录入组件了。作为 UITextField（NSTextField）的 SwiftUI 封装，苹果为开发者提供了众多的构造方法和修饰符以提高其使用的便利性、定制性。但 SwiftUI 在封装中也屏蔽了不少的高级接口和功能，增加了开发者实现某些特定需要的复杂性。本文为【SwiftUI 进阶】系列文章中的一篇，在本文中，我将介绍如何在 TextField 中实现如下功能：
 

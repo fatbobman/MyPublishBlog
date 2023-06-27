@@ -4,6 +4,7 @@ description: onAppear（ task ）是 SwiftUI 开发者经常使用的一个修�
 tags: SwiftUI
 title: onAppear 的调用时机
 image: images/onAppear-call-timing.png
+mediumURL: https://medium.com/p/40c406ae783e
 ---
 onAppear（ task ）是 SwiftUI 开发者经常使用的一个修饰符，但一直没有权威的文档明确它的闭包被调用的时机。本文将通过 SwiftUI 4 提供的新 API ，证明 onAppear 的调用时机是在布局之后、渲染之前。
 

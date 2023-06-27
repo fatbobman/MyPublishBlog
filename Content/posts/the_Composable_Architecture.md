@@ -4,6 +4,7 @@ description: 本文将聊聊一个与创建复杂的 SwiftUI 应用很契合的�
 tags: SwiftUI,Architecture
 title: 聊一聊可组装框架（ TCA ）
 image: images/the_Composable_Architecture.png
+mediumURL: https://medium.com/p/3d5dbedc23e
 ---
 本文将聊聊一个与创建复杂的 SwiftUI 应用很契合的框架 ——  The Composable Architecture（ 可组装框架，简称 TCA ）。包括它的特点和优势、最新的进展、使用中的注意事项以及学习路径等问题。
 

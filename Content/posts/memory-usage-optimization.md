@@ -4,6 +4,7 @@ description: 尽管 SwiftUI 的惰性容器以及 Core Data 都有各自的内�
 tags: Core Data,SwiftUI
 title: SwiftUI + Core Data App 的内存占用优化之旅
 image: images/memory-usage-optimization.png
+mediumURL: https://medium.com/p/5842a6832e0b
 ---
 尽管 SwiftUI 的惰性容器以及 Core Data 都有各自的内存占用优化机制，但随着应用视图内容的复杂（ 图文混排 ），越来越多的开发者遇到了内存占用巨大甚至由此导致 App 崩溃的情况。本文将通过对一个演示 App 进行逐步内存优化的方式（ 由原先显示 100 条数据要占用 1.6 GB 内存，优化至显示数百条数据仅需 200 多 MB 内存 ），让读者对 SwiftUI 视图的存续期、惰性视图中子视图的生命周期、托管对象的惰值特性以及持久化存储协调器的行缓存等内容有更多的了解。
 

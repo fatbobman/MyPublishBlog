@@ -4,6 +4,7 @@ description: 不同于众多的内置控件，SwiftUI 没有采用对 UIGestureR
 tags: SwiftUI
 title:  在 SwiftUI 下定制手势
 image: images/swiftuiGesture.png
+mediumURL: https://fatbobman.medium.com/customizing-gestures-in-swiftui-33147fa5bb4f
 ---
 不同于众多的内置控件，SwiftUI 没有采用对 UIGestureRecognizer（或 NSGestureRecognizer）进行包装的形式，而是重构了自己的手势体系。SwiftUI 手势在某种程度上降低了使用门槛，但由于缺乏提供底层数据的 API，严重制约了开发者的深度定制能力。在 SwiftUI 下，我们无法拥有类似构建全新 UIGestureRecongnizer 的能力。所谓的自定义手势，其实只是对系统预置手势的重构而已。本文将通过几个示例，演示如何使用 SwiftUI 提供的原生手段定制所需手势。
 

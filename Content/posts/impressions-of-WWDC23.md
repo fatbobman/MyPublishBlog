@@ -4,6 +4,7 @@ description: WWDC 2023 正在如火如荼地进行。苹果不仅带来了全新
 tags: SwiftUI,Core Data,WWDC23
 title: WWDC 23 ，SwiftUI 5 和 SwiftData 的初印象
 image: images/impressions-of-WWDC23.png
+mediumURL: https://medium.com/p/85d16df77e2c
 ---
 WWDC 2023 正在如火如荼地进行。苹果不仅带来了全新形态的硬件产品，还推出了几个相当震撼的新框架。本文将聊聊我对本届 WWDC 中 SwiftUI 5.0 和 SwiftData 的初步印象。
 

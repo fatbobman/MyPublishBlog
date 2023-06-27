@@ -4,6 +4,7 @@ description: 在 Core Data 中，开发者经常需要面对查询记录数量�
 tags: Core Data,小题大做
 title:  在 Core Data 中查询和使用 count 的若干方法
 image: images/countInCoreData.png
+mediumURL: https://medium.com/p/d638c02567f5
 ---
 在 Core Data 中，开发者经常需要面对查询记录数量（count），使用 count 作为谓词或排序条件等需求。本文将介绍在 Core Data 下查询和使用 count 的多种方法，适用于不同的场景。
 

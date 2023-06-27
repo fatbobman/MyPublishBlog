@@ -4,6 +4,7 @@ description: 在上文中，我列举了一些在 SwiftUI 中使用 Core Data �
 tags: Core Data,SwiftUI
 title: SwiftUI 与 Core Data —— 数据定义
 image: images/modern-Core-Data-Data-definition.png
+mediumURL: https://medium.com/p/12a5cd959b80
 ---
 在上文中，我列举了一些在 SwiftUI 中使用 Core Data 所遇到的困惑及期许。在今后的文章中我们将尝试用新的思路来创建一个 SwiftUI + Core Data 的 app，看看能否避免并改善之前的一些问题。本文将首先探讨如何定义数据。
 

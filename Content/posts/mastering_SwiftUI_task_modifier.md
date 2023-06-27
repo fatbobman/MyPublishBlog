@@ -4,6 +4,7 @@ description: 随着 Swift 5.5 引入了 async/await 特性，苹果也为 SwiftU
 tags: SwiftUI
 title: 掌握 SwiftUI 的 task 修饰器
 image: images/mastering_SwiftUI_task_modifier.png
+mediumURL: https://medium.com/p/5c556a1dd4b2
 ---
 随着 Swift 5.5 引入了 async/await 特性，苹果也为 SwiftUI 添加了 task 视图修饰器，以方便开发者在视图中使用基于 async/await 的异步代码。本文将对 task 视图修饰器的特点、用法、注意事项等内容做以介绍，并提供了将其移植到老版本 SwiftUI 的方法。
 

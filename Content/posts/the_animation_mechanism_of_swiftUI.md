@@ -4,6 +4,7 @@ description: 大多初学者都会在第一时间惊叹于 SwiftUI 轻松实现�
 tags: SwiftUI
 title:  SwiftUI 的动画机制
 image: images/animationMechanismOfSwiftUI.png
+mediumURL: https://medium.com/p/a1adf2b9b417
 ---
 大多初学者都会在第一时间惊叹于 SwiftUI 轻松实现各种动画效果的能力，但经过一段时间的使用后，他们会发现 SwiftUI 的动画并非像表面上看起来那样容易驾驭。开发者经常需要面对：如何动、怎么动、什么能动、为什么不动、为什么这么动、如何不让它动等等困扰。对 SwiftUI 的动画处理逻辑了解的不够深入是造成上述困扰的主要原因。本文将尝试对 SwiftUI 的动画机制做以介绍，以帮助大家更好地学习、掌握 SwiftUI 的动画，制作出满意的交互效果。
 

@@ -4,6 +4,7 @@ description: 赶在 2021 年底，苹果终于发布了 Swift Playgrounds 4，�
 tags: SwiftUI, Swift Playgrounds, Playground
 title: Swift Playgrounds 4 娱乐还是生产力
 image: images/swiftPlaygrounds4.png
+mediumURL: https://medium.com/p/68a7aa355362
 ---
 赶在 2021 年底，苹果终于发布了 Swift Playgrounds 4，作为近年来最具革命性意义的版本，Swift Playgrounds 4 提供了在 iPad 上开发可发行 app 的能力。本文将对 Swift Playgrounds 4 的新功能做以介绍，并探讨将其作为开发工具的可行性。
 

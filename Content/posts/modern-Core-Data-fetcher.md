@@ -4,6 +4,7 @@ description: 本文中我们将探讨在 SwiftUI 视图中批量获取 Core Data
 tags: Core Data,SwiftUI
 title: SwiftUI 与 Core Data —— 数据获取
 image: images/modern-Core-Data-fetcher.png
+mediumURL: https://medium.com/p/c0c7f62aaf53
 ---
 本文中我们将探讨在 SwiftUI 视图中批量获取 Core Data 数据的方式，并尝试创建一个可以使用 mock 数据的 FetchRequest。由于本文会涉及大量 [前文](https://www.fatbobman.com/posts/modern-Core-Data-Data-definition/) 中介绍的技巧和方法，因此最好一并阅读。
 

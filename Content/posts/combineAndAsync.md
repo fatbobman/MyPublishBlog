@@ -4,6 +4,7 @@ description: 本文来聊聊 Combine 和 async/await 它们之间各自的优势
 tags: Combine,Swift,async/await
 title: 聊聊 Combine 和 async/await 之间的合作
 image: images/combineAndAsync.png
+mediumURL: https://medium.com/p/c4e2d6c8bf6c
 ---
 在 Xcode 13.2 中，苹果完成了 async/await 的向前部署（Back-deploying）工作，将最低的系统要求降低到了 iOS 13（macOS Catalina），这一举动鼓舞了越来越多的人开始尝试使用 async/await 进行开发。当大家在接触了异步序列（AsyncSequence）后，会发现它同 Combine 的表现有些接近，尤其结合近两年 Combine 框架几乎没有什么变化，不少人都提出了疑问：苹果是否打算使用 AsyncSequence 和 AsyncStream 替代 Combine。
 

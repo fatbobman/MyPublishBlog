@@ -4,6 +4,7 @@ description: 本文将对 @Published 与符合 ObservableObject 协议的类实�
 tags: SwiftUI,Swift
 title: 为自定义属性包装类型添加类 @Published 的能力
 image: images/addingPublishedAbility.png
+mediumURL: https://medium.com/p/d8af73d605b
 ---
 本文将对 @Published 与符合 ObservableObject 协议的类实例之间的沟通机制做以介绍，并通过三个示例：@MyPublished（ @Published 的仿制版本 ）、@PublishedObject（包装值为引用类型的 @Published 版本）、@CloudStorage（类似 @AppStorage ，但适用于 NSUbiquitousKeyValueStore ），来展示如何为其他的自定义属性包装类型添加可访问包裹其的类实例的属性或方法的能力。
 

@@ -4,6 +4,7 @@ description: Ask Apple 为开发者与苹果工程师创造了在 WWDC 之外进
 tags: SwiftUI,Ask Apple 2022
 title: Ask Apple 2022 与 SwiftUI 有关的问答（下）
 image: images/SwiftUI-of-Ask-Apple-2022-2.png
+mediumURL: https://medium.com/p/75da1de36184
 ---
 Ask Apple 为开发者与苹果工程师创造了在 WWDC 之外进行直接交流的机会。本文对本次活动中与 SwiftUI 有关的一些问答进行了整理，并添加了一点个人见解。本文为下篇。
 

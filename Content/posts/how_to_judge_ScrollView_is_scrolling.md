@@ -4,6 +4,7 @@ description: 判断一个可滚动控件（ ScrollView、List ）是否处于滚
 tags: SwiftUI
 title: 如何判断 ScrollView、List 是否正在滚动中
 image: images/how_to_judge_ScrollView_is_scrolling.png
+mediumURL: https://medium.com/p/905c801c6bbd
 ---
 判断一个可滚动控件（ ScrollView、List ）是否处于滚动状态在某些场景下具有重要的作用。比如在  [SwipeCell](https://github.com/fatbobman/SwipeCell) 中，需要在可滚动组件开始滚动时，自动关闭已经打开的侧滑菜单。遗憾的是，SwiftUI 并没有提供这方面的 API 。本文将介绍几种在 SwiftUI 中获取当前滚动状态的方法，每种方法都有各自的优势和局限性。
 

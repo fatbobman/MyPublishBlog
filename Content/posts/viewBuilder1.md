@@ -4,6 +4,7 @@ description: 作为一个严重依赖 SwiftUI 的开发者，同视图打交道�
 tags: SwiftUI
 title:  ViewBuilder 研究（上）—— 掌握 Result builders
 image: images/viewbuilder_1.png
+mediumURL: https://medium.com/p/65ac4f8dcf0d
 ---
 作为一个严重依赖 SwiftUI 的开发者，同视图打交道是最平常不过的事情了。从第一次接触 SwiftUI 的声明式编程方式开始，我便喜欢上了这种写代码的感觉。但接触地越多，碰到的问题也越多。起初，我单纯地将很多问题称之为灵异现象，认为大概率是由于 SwiftUI 的不成熟导致的。随着不断地学习和探索，发现其中有相当部分的问题还是因为自己的认知不够所导致的，完全可以改善或避免。
 

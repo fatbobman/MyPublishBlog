@@ -4,6 +4,7 @@ description: 将某个视图在父视图中居中显示是一个常见的需求�
 tags: SwiftUI,小题大做
 title: 在 SwiftUI 中实现视图居中的若干种方法
 image: images/centeringInSwiftUI.png
+mediumURL: https://medium.com/p/7845eace7d58
 ---
 将某个视图在父视图中居中显示是一个常见的需求，即使对于 SwiftUI 的初学者来说这也并非难事。在 SwiftUI 中，有很多手段可以达成此目的。本文将介绍其中的一些方法，并对每种方法背后的实现原理、适用场景以及注意事项做以说明。
 

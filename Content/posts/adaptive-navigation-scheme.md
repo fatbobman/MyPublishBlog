@@ -4,6 +4,7 @@ description: 随着苹果对 iPadOS 的不断投入，越来越多的开发者�
 tags: SwiftUI
 title: 在 SwiftUI 中创建自适应的程序化导航方案
 image: images/adaptive-navigation-scheme.png
+mediumURL: https://medium.com/p/c53308545ea9
 ---
 随着苹果对 iPadOS 的不断投入，越来越多的开发者都希望自己的应用能够在 iPad 中有更好的表现。尤其当用户开启了台前调度（ Stage Manager ）功能后，应用对不同视觉大小模式的兼容能力就越发显得重要。本文将就如何创建可自适应不同尺寸模式的程序化导航方案这一内容进行探讨。
 

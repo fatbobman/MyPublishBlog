@@ -4,6 +4,7 @@ description: Table 是 SwiftUI 3.0 中为 macOS 平台提供的表格控件，�
 tags: SwiftUI,WWDC22
 title: 用 Table 在 SwiftUI 下创建表格
 image: images/table_in_SwiftUI.png
+mediumURL: https://medium.com/p/2d70d7d5b895
 ---
 Table 是 SwiftUI 3.0 中为 macOS 平台提供的表格控件，开发者通过它可以快捷地创建可交互的多列表格。在 WWDC 2022 中，Table 被拓展到 iPadOS 平台，让其拥有了更大的施展空间。本文将介绍 Table 的用法、分析 Table 的特点以及如何在其他的平台上实现类似的功能。
 

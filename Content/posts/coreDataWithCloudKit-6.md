@@ -4,6 +4,7 @@ description: 本文中，我们将探讨如何使用 Core Data with CloudKit 创
 tags: CloudKit,Core Data
 title:  Core Data with CloudKit （六） —— 创建与多个 iCloud 用户共享数据的应用
 image: images/coreDataWithCloudKit-6.png
+mediumURL: https://medium.com/p/cc483046de7b
 ---
 
 本文中，我们将探讨如何使用 Core Data with CloudKit 创建与多个 iCloud 用户共享数据的应用。

@@ -4,6 +4,7 @@ description: 本文将通过一段可复现的“灵异代码”，对 State 注
 tags: SwiftUI,小题大做
 title: 一段因 @State 注入机制所产生的“灵异代码”
 image: images/bug-code-by-state-inject.png
+mediumURL: https://medium.com/p/f6e1121e3319
 ---
 本文将通过一段可复现的“灵异代码”，对 State 注入优化机制、模态视图（ Sheet、FullScreenCover ）内容的生成时机以及不同上下文（ 相互独立的视图树 ）之间的数据协调等问题进行探讨。
 

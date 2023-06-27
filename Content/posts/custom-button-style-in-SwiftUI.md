@@ -4,6 +4,7 @@ description: 通过 Style 改变组件的外观或行为是 SwiftUI 提供的一
 tags: SwiftUI
 title:  自定义 Button 的外观和交互行为
 image: images/custom-button-style-in-SwiftUI.png
+mediumURL: https://medium.com/p/a080fb4915c1
 ---
 通过 Style 改变组件的外观或行为是 SwiftUI 提供的一项非常强大的功能。本文将介绍如何通过创建符合 ButtonStyle 或 PrimitiveButtonStyle 协议的实现，自定义 Button 的外观以及交互行为。
 

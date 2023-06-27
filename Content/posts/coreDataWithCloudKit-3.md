@@ -3,6 +3,7 @@ date: 2021-08-09 17:30
 description: 本篇文章中，我们将一起研究 CloudKit 仪表台。
 tags: CloudKit,Core Data
 title: Core Data with CloudKit（三）—— CloudKit 仪表台
+mediumURL: https://medium.com/p/cd6f1c8045c0
 ---
 本篇文章中，我们将一起研究`CloudKit`仪表台。
 

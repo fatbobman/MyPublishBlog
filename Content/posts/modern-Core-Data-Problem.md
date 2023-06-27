@@ -4,6 +4,7 @@ description: 我使用 Core Data 已经有三年的时间了，虽然至今也�
 tags: Core Data,SwiftUI
 title: SwiftUI 与 Core Data —— 问题
 image: images/modern-Core-Data-Problem.png
+mediumURL: https://medium.com/p/89a2f8ef75d
 ---
 我使用 Core Data 已经有三年的时间了，虽然至今也不能算是完全掌握，但基本上可以做到熟练使用，很少会犯原则性的错误了。当前，如何让 Core Data 融入流行的应用架构体系，在 SwiftUI、TCA、Unit Tests、Preview 等环境下更加顺畅地工作已成为我的主要困扰和研究方向。我将通过几篇文章来介绍近半年来在这方面的一些想法、收获、体会及实践，也希望能够与有类似困惑的朋友进行更多的探讨。
 

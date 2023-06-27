@@ -4,6 +4,7 @@ description: SwiftUI 提供了强大的布局能力，不过这些布局操作�
 tags: SwiftUI
 title: 在 SwiftUI 中用 Text 实现图文混排
 image: images/mixing_text_and_graphics_with_Text_in_SwiftUI.png
+mediumURL: https://medium.com/p/7750a6f93fd7
 ---
 SwiftUI 提供了强大的布局能力，不过这些布局操作都是在视图之间进行的。当我们想在 Text 中进行图文混排时，需要采用与视图布局不同的思路与操作方式。本文将首先介绍一些与 Text 有关的知识，并通过一个实际案例，为大家梳理出在 SwiftUI 中用 Text 实现图文混排的思路。
 

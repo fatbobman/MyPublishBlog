@@ -4,6 +4,7 @@ description: 本文将通过介绍如何创建符合新 API 的 Formatter，让�
 tags: Swift,Foundation,WWDC21
 title:  WWDC 2021 新 Formatter API：新老比较及如何自定义
 image: images/newFormatter.png
+mediumURL: https://medium.com/p/761e47affb86
 ---
 
 在 WWDC 2021 的 [What's in Foundation](https://developer.apple.com/videos/play/wwdc2021/10109/) 专题中，苹果隆重介绍了适用于 Swift 的新 Formatter API。网上已经有不少文章对新 API 的用法进行了说明。本文将通过介绍如何创建符合新 API 的 Formatter，让读者从另一个角度了解新 Formatter API 的设计机制；并对新旧两款 API 进行比较。

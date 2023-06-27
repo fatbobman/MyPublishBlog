@@ -4,6 +4,7 @@ description: 上周，我在博客中列出了我对今年 WWDC 中期待看到�
 tags: Core Data,WWDC23
 title: WWDC 2023 我期待 Core Data 带来的新变化
 image: images/What-I-Hope-to-See-for-Core-Data-at-WWDC-2023.jpg
+mediumURL: https://medium.com/p/770fcc3f47ec
 ---
 上周，我在博客中列出了我对今年 WWDC 中期待看到的 SwiftUI 方面的变化。这周，我想继续分享我对 Core Data 的期待。
 

@@ -4,6 +4,7 @@ description: Safe Area（安全区域）是指不与导航栏、标签栏、工�
 tags: SwiftUI
 title:  掌握 SwiftUI 的 Safe Area
 image: images/safeArea.png
+mediumURL: https://medium.com/p/a183b8ad04d0
 ---
 Safe Area（安全区域）是指不与导航栏、标签栏、工具栏或其他视图控制器提供的视图重叠的内容空间。
 

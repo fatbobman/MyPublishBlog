@@ -4,6 +4,7 @@ description: 使用过 Core Data 的开发者，一定会在编辑 Data Model �
 tags: Core Data
 title:  如何在 Core Data 中使用 Derived 和 Transient 属性
 image: images/derivedAndTransient.png
+mediumURL: https://medium.com/p/b1d1c41d1d44
 ---
 ## 前言 ##
 

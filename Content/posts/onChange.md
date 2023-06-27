@@ -4,6 +4,7 @@ description: 从 iOS 14 开始，SwiftUI 为视图提供了 onChange 修饰器�
 tags: SwiftUI
 title: 了解 SwiftUI 的 onChange
 image: images/onChange.png
+mediumURL: https://medium.com/p/3ab4fa8cbbec
 ---
 从 iOS 14 开始，SwiftUI 为视图提供了 onChange 修饰器，通过使用 onChange，我们可以在视图中对特定的值进行观察，并在其更改时触发操作。本文将对 onChange 的特点、用法、注意事项以及替代方案做以介绍。
 

@@ -4,6 +4,7 @@ description: MacBook Pro 14' 已经使用一周了，今天我们来聊聊这次
 tags: 杂谈
 title: MacBook Pro 使用体验
 image: images/experience_of_macbook_pro.png
+mediumURL: https://medium.com/p/b601e18081fe
 ---
 MacBook Pro 14' 已经使用一周了，今天我们来聊聊这次换机的过程以及对新机器的感受。
 

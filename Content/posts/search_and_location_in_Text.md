@@ -4,6 +4,7 @@ description: 前些日子，一位网友在聊天室中就如何通过 Text + At
 tags: SwiftUI
 title: 在 Text 中实现基于关键字的搜索和定位
 image: images/search_and_location_in_Text.png
+mediumURL: https://medium.com/p/92850900e6d7
 ---
 前些日子，一位网友在聊天室中就如下的 [问题](https://discord.com/channels/967978112509935657/967978112509935663/999357869591908382) 与大家进行了交流与探讨 —— 如何通过 Text + AttributedString 实现类似文章关键字检索的功能，并可通过按钮在搜索结果中进行滚动切换？
 

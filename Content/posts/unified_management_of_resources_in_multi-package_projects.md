@@ -4,6 +4,7 @@ description: 随着 SPM（ Swift Package Manager ） 功能的不断完善，越
 tags: SwiftUI,本地化,Foundation,SPM
 title: 在多包项目中统一管理资源
 image: images/unified_management_of_resources_in_multi-package_projects.png
+mediumURL: https://medium.com/p/e884504a8c34
 ---
 随着 SPM（ Swift Package Manager ） 功能的不断完善，越来越多的开发者开始在他的项目中通过创建多个 Package 的方式来分离功能、管理代码。SPM 本身提供了对包中各类资源（ 包括本地化资源 ）的管理能力，但主要局限于在本包中使用这些资源，难以将资源进行共享。在有多个 Target 均需调用同一资源的情况下，原有的方式很难应对。本文将介绍一种在拥有多个 SPM 包的项目中，对资源进行统一管理的方法。
 

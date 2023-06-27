@@ -4,6 +4,7 @@ description: 距离 2023 年的 WWDC 还有约 20 天，每个苹果生态的开
 tags: SwiftUI,WWDC23
 title: WWDC 2023 我期待 SwiftUI 带来的新变化
 image: images/What-I-Hope-to-See-for-SwiftUI-at-WWDC-2023.png
+mediumURL: https://medium.com/p/fcf409e2d874
 ---
 距离 2023 年的 WWDC 还有约 20 天，每个苹果生态的开发者都在期待苹果会在当天带来哪些新东西。在本文中，我将列出个人对于 SwiftUI 的愿望单，期待着看到哪些愿望能够实现。
 

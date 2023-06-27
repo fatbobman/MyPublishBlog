@@ -3,7 +3,8 @@ date: 2023-06-27 08:12
 description: SwiftUI 因其简便的动画 API 与极低的动画设计门槛而广受欢迎。但是，随着应用程序的复杂性增加，开发者会逐渐发现，尽管动画设计变得前所未有的简单，但要实现精确细致的动画控制并非易事。同时，在 SwiftUI 的动画系统中，Transaction 始终有点像谜一样的存在。无论是官方资料还是第三方文章，都很少对其运作机制进行系统的阐述。本文将通过探讨 Transaction 的原理、作用、创建和分发逻辑等内容，告诉读者如何在 SwiftUI 中实现更加精确的动画控制，以及需要注意的其他问题。
 tags: SwiftUI
 title: 掌握 Transaction，实现 SwiftUI 动画的精准控制
-image: images/mastring-transaction.png
+image: images/mastring-transaction.jpg
+mediumURL: https://medium.com/p/7afbf9abdac3
 ---
 SwiftUI 因其简便的动画 API 与极低的动画设计门槛而广受欢迎。但是，随着应用程序复杂性的增加，开发者逐渐发现，尽管动画设计十分简单，但要实现精确细致的动画控制并非易事。同时，在 SwiftUI 的动画系统中，有关 Transaction 的解释很少，无论是官方资料还是第三方文章，都没有对其运作机制进行系统的阐述。
 
@@ -469,7 +470,7 @@ struct CoverImplicitAnimationDemo: View {
 
  `animation` 修饰符会判断 `disablesAnimations` 属性，而 `transaction` 修饰符需要开发者自行决定采用何种逻辑。
 
-## 利用显示动画的 diff 和自动分发 Transaction 的能力
+## 利用显式动画的 diff 和自动分发 Transaction 的能力
 
 大家是否会有些奇怪，为什么“显式动画”要对所有受影响的视图分发 transaction 呢？事实上，这也是在某些情况下，“显式动画”的另一个优势。
 
