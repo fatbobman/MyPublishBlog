@@ -32,15 +32,26 @@ func getResponser(_ id: String) -> String {
     }
 }
 
+// let adsScript = """
+// <script type="text/javascript">
+// $(document).ready(function() {
+//    var banners = [];
+//    var index = 0;
+//    $("#responser").on("click",function(){
+//     window.location.href = "https://www.fatbobman.com/healthnotes/"
+// });
+//   });
+// </script>
+// """
+
 let adsScript = """
 <script type="text/javascript">
-$(document).ready(function() {
-   var banners = [];
-   var index = 0;
-   $("#responser").on("click",function(){
-    window.location.href = "https://apps.apple.com/us/app/health-notes-fresh-start/id1534513553"
-});
+document.querySelectorAll('.responser').forEach(function(div) {
+  div.addEventListener('click', function() {
+    var url = 'https://apps.apple.com/us/app/health-notes-fresh-start/id1534513553'; // 替换为你要访问的特定 URL
+    window.open(url, '_blank');
   });
+});
 </script>
 """
 
