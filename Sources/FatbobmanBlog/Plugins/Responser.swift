@@ -38,7 +38,7 @@ $(document).ready(function() {
    var banners = [];
    var index = 0;
    $("#responser").on("click",function(){
-    window.location.href = "https://www.fatbobman.com/healthnotes/"
+    window.location.href = "https://apps.apple.com/us/app/health-notes-fresh-start/id1534513553"
 });
   });
 </script>
