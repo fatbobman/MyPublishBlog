@@ -2,8 +2,9 @@
 date: 2023-07-04 08:12
 description: 虽然在 WWDC 2023 上，苹果将主要精力放在介绍新的数据框架 SwiftData 上，但作为 SwiftData 的基石，Core Data 也得到了一定程度上的功能增强。本文将介绍今年 Core Data 获得的新功能。
 tags: Core Data,SwiftData,WWDC23
-title: WWDC 2023, Core Data 有哪些新变化
+title: WWDC 2023 Core Data 有哪些新变化
 image: images/what's-new-of-CoreData-in-WWDC23.jpg
+mediumURL: https://medium.com/p/11f49a8e8dad
 ---
 虽然在 WWDC 2023 上，苹果将主要精力放在介绍新的数据框架 SwiftData 上，但作为 SwiftData 的基石，Core Data 也得到了一定程度上的功能增强。本文将介绍今年 Core Data 获得的新功能。
 
@@ -382,7 +383,7 @@ customStage.willMigrateHandler = { migrationManager, currentStage in
 }
 ```
 
-在上述代码中，我们通过调用 willMigrateHandler 闭包，在执行从 V2 版本迁移到 V3 版本的操作前读取了原有数据的 airplane 属性（该属性为 Transformable 类型）。我们使用 airplane 中的数据创建了新的 FlightData 实体（该实体与 Aircraft 是一对一的关系）。
+在上述代码中，通过调用开发者提供的 willMigrateHandler 闭包，在执行从 V2 版本迁移到 V3 版本的操作前读取了原有数据的 airplane 属性（该属性为 Transformable 类型）。我们使用 airplane 中的数据创建了新的 FlightData 实体（该实体与 Aircraft 是一对一的关系）。
 
 SwiftData 中也有类似的对应操作：
 
