@@ -62,6 +62,14 @@ Raywenderlich 的 [SwiftUI Apprentice](https://www.raywenderlich.com/books/swift
 
 > Raywenderlich 与 Hacking with Swift 的免费教程仍附有完整的 Xcode 项目文档，这一点对于初学者特别友好
 
+## Kodeco
+
+> 2023 年 8 月 更新
+
+![image-20230818065923710](https://cdn.fatbobman.com/image-20230818065923710.png)
+
+2022 年底，Raywenderlich 更名为 Kodeco。它在 2023 年 8 月，发布了免费的电子书 [SwiftUI Cookbook](https://www.kodeco.com/books/swiftui-cookbook) 。这本书较为系统的对 SwiftUI 进行了介绍，并提供了丰富的示例代码。
+
 ```responser
 id:1
 ```
