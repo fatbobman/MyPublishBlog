@@ -4,6 +4,7 @@ description: 本文将探讨导致 SwiftUI 预览崩溃的部分原因，如何�
 tags: SwiftUI,Core Data
 title: 如何在 Xcode 下预览含有 Core Data 元素的 SwiftUI 视图
 image: images/coreDataInPreview.png
+mediumURL: https://medium.com/p/b109d60a5ae0
 ---
 
 从 SwiftUI 诞生之日起，预览（Canvas Preview ）一直是个让开发者又爱又恨的功能。当预览正常工作时，它可以极大地提高开发效率；而预览又随时可能因为各种莫名其妙的原因崩溃，不仅影响开发进程，同时又让开发者感到沮丧（很难排查出导致预览崩溃的故障）。

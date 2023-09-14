@@ -10,7 +10,7 @@ tags: first, article
 
 ## 关于这个网站
 
-记录和分享我在学习 Swift、SwiftUI、CoreDate 以及 Combine 过程中的心得与体会。
+记录和分享我在学习 Swift、SwiftUI、CoreDate、SwiftData 以及 Combine 过程中的心得与体会。
 
 ## 我的日常
 
@@ -23,6 +23,10 @@ tags: first, article
   家庭健康小助手 —— 记录并管理全家人的健康数据。
 
 ## 我的开源项目
+
+* [SwiftDataKit](https://github.com/fatbobman/SwiftDataKit)
+
+  SwiftDataKit 是 SwiftData 的扩展库，它使 SwiftData 开发人员可以访问 SwiftData 元素背后对应的Core Data对象。
 
 * [SwipeCell](https://github.com/fatbobman/SwipeCell)
 

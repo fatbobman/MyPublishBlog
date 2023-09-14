@@ -141,7 +141,7 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                                         .p(
                                             .a(
                                                 .img(
-                                                    .src("https://cdn.fatbobman.com/support_fatbobman_button1.png"),
+                                                    .src("https://cdn.fatbobman.com/support-fat-button2.png"),
                                                     .alt("鼓励作者"),
                                                     .width(175),
                                                     .height(40)

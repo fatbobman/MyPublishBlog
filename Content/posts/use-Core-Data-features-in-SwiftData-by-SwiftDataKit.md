@@ -3,7 +3,8 @@ date: 2023-09-07 08:12
 description: 作为 Core Data 的继任者，全新的 SwiftData 框架在 WWDC 2023 上正式发布。SwiftData 预计会在未来很长一段时间内成为苹果生态系统的主要对象图管理和数据持久化解决方案，为开发者提供服务与支持。本文将讨论，在不使用 Core Data 数据栈的情况下，开发者如何在 SwiftData 中调用 Core Data 提供的高级功能，以扩展 SwiftData 目前的能力。
 tags: SwiftData,Core Data
 title: SwiftDataKit：让你在 SwiftData 中使用 Core Data 的高级功能
-image: images/use-Core-Data-features-in-SwiftData-by-SwiftDataKit.jpeg
+image: images/use-Core-Data-features-in-SwiftData-by-SwiftDataKit.jpg
+mediumURL: https://medium.com/p/3fcd5f443c99
 ---
 作为 Core Data 的继任者，全新的 SwiftData 框架在 WWDC 2023 上正式发布。SwiftData 预计会在未来很长一段时间内成为苹果生态系统的主要对象图管理和数据持久化解决方案，为开发者提供服务与支持。本文将讨论，在不使用 Core Data 数据栈的情况下，开发者如何在 SwiftData 中调用 Core Data 提供的高级功能，以扩展 SwiftData 目前的能力。
 

@@ -1610,6 +1610,11 @@ li.selectedTag a {
     color: var(--ads-content-text-color-light);
 }
 
+.responser .documentEN {
+    font-size: 12px;
+    color: var(--ads-content-text-color-light);
+}
+
 .responser .textContainer p {
     text-indent: 0;
     margin-block-start: 5px;
@@ -1866,6 +1871,10 @@ li.selectedTag a {
         font-size: 10px;
     }
 
+    .responser .documentEN {
+        font-size: 10px;
+    }
+
     /* Archive */
     .archiveContent {
         box-shadow: none;
@@ -1966,6 +1975,10 @@ li.selectedTag a {
 
     .responser img {
         display: none;
+    }
+
+    .responser .document {
+        font-size: 12px;
     }
 
     .responser .document {
@@ -2161,6 +2174,10 @@ li.selectedTag a {
     }
 
     .responser .document {
+        color: var(--ads-content-text-color-dark);
+    }
+
+    .responser .documentEN {
         color: var(--ads-content-text-color-dark);
     }
 }
