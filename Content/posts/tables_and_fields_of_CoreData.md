@@ -215,7 +215,7 @@ Core Data 利用了在同一个数据库中仅需依靠 Z_ENT + Z_PK 即可定�
 
   关系两端都添加新的字段，分别为对应数据的 Z_PK 值
 
-* 多对一
+* 多对多
 
   关系两端都不添加新的字段，创建一个表示该多对多关系的新表，并在其中逐行添加关系两侧数据的 Z_PK 值。
 
@@ -319,7 +319,7 @@ try? container.viewContext.setQueryGenerationFrom(.current)
 
 ### 从 SQLite 角度认识持久化历史跟踪
 
-### 创建事务
+#### 创建事务
 
 在持久化历史跟踪中，创建事务的工作是由 Core Data 自动完成的，大概的流程如下：
 
@@ -328,7 +328,7 @@ try? container.viewContext.setQueryGenerationFrom(.current)
 * 获取 Z_ACHANGE 的 Z_MAX
 * 在 Z_ACHANGE 中逐条创建数据操作记录
 
-### 查询事务
+#### 查询事务
 
 因为数据库中只保存了事务创建的时间戳，因此无论采用哪种查询方式（时间 Date、令牌 NSPersistentHistoryToken、事务 NSPersistentHistoryTransaction ）最终都会转换成比较时间戳的方式。
 
@@ -336,11 +336,11 @@ try? container.viewContext.setQueryGenerationFrom(.current)
 * 作者不是当前 App 的作者或其他系统功能作者
 * 获取满足上述条件的全部 Z_CHANGE 记录
 
-### 合并事务
+#### 合并事务
 
 事务中提取的数据操作记录（ Z_ACHANGE ）中包含了完整的操作类型、对应的实例数据位置等信息，按图索骥从数据库中提取实体数据（ Z_PK + Z_ENT ）并将其合并（ 转换成 NSManagedObjectID ）到指定的上下文中。
 
-### 删除事务
+#### 删除事务
 
 * 查询并提取时间戳早于全部作者（ 包含当前应用作者，但不包含系统功能作者 ）的最后查询时间的事务
 * 删除上述事务（ Z_ATRANSACTION ）及其对应的操作数据（ Z_ACHANGE ）。

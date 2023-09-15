@@ -158,8 +158,8 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                                 ),
                                 // .shareContainerForMobile(title: item.title, url: context.site.url.appendingPathComponent(item.path.string).absoluteString),
 //                                .support(),
-                                .itemNavigator(previousItem: previous, nextItem: next),
-                                .gitTalk(topicID: item.title)
+                                .itemNavigator(previousItem: previous, nextItem: next) // ,
+                                // .gitTalk(topicID: item.title)
                             ),
                             .sideNav(
                                 .toc()
