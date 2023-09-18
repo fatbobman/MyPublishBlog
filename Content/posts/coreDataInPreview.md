@@ -458,9 +458,29 @@ lazy var previewInCatch: NSPersistentContainer = {
     }()
 ```
 
-本文的演示代码可以在 [此处下载](https://github.com/fatbobman/CoreDataInPreview)
+### 通过 EntityDescription 直接创建托管对象实例
+
+实际上，在 Core Data 中，我们可以仅依靠从 NSManagedObjectModel 中获取到对应的 EntityDescription，而不需要创建容器或上下文，就可以创建托管对象实例。虽然使用这种方式创建的托管对象实例不对应任何持久化数据，但完全可以用于预览这种场景。
+
+```swift
+extension PersistenceController {
+    static let itemByEntityDescription: Item = {
+        // get Item entity description from Data Model
+        guard let entityDescription = model().entitiesByName["Item"] else {
+            fatalError()
+        }
+        let item = Item(entity: entityDescription, insertInto: nil)
+        item.timestamp = Date.now
+        return item
+    }()
+}
+
+RowView(item: PersistenceController.itemByEntityDescription)
+```
 
 ## 总结 ##
+
+本文的演示代码可以在 [此处下载](https://github.com/fatbobman/CoreDataInPreview)
 
 在我两年的 SwiftUI+Core Data 使用中，痛苦和快乐始终相伴而行。只要始终保持用心、耐心、平常心，再加上一点点运气，总会找到解决问题的方法。
 
