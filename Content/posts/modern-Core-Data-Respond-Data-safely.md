@@ -1,7 +1,7 @@
 ---
 date: 2022-12-13 08:20
 description: 保证应用不因 Core Data 的原因导致意外崩溃是对开发者的起码要求。本文将介绍可能在视图中产生严重错误的原因，如何避免，以及在保证视图对数据变化实时响应的前提下如何为使用者提供更好、更准确的信息。由于本文会涉及大量前文中介绍的技巧和方法，因此最好一并阅读。
-tags: Core Data,SwiftUI
+tags: Core Data,SwiftUI,持久化框架
 title: SwiftUI 与 Core Data —— 安全地响应数据
 image: images/modern-Core-Data-Respond-Data-safely.png
 mediumURL: https://medium.com/p/6147539239e6

@@ -1,7 +1,7 @@
 ---
 date: 2022-12-06 08:20
 description: 本文中我们将探讨在 SwiftUI 视图中批量获取 Core Data 数据的方式，并尝试创建一个可以使用 mock 数据的 FetchRequest。由于本文会涉及大量前文中介绍的技巧和方法，因此最好一并阅读。
-tags: Core Data,SwiftUI
+tags: Core Data,SwiftUI,持久化框架
 title: SwiftUI 与 Core Data —— 数据获取
 image: images/modern-Core-Data-fetcher.png
 mediumURL: https://medium.com/p/c0c7f62aaf53

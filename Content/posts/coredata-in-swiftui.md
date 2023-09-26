@@ -1,7 +1,7 @@
 ---
 date: 2020-10-28 12:00
 description: 本文并非一个教你如何在 SwiftUI 下使用 CoreData 的教程。主要探讨的是在我近一年的 SwiftUI 开发中使用 CoreData 的教训、经验、心得。
-tags: SwiftUI,Core Data
+tags: SwiftUI,Core Data,持久化框架
 title: 聊一下在 SwiftUI 中使用 CoreData
 ---
 

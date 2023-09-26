@@ -1,7 +1,7 @@
 ---
 date: 2022-07-26 08:12
 description: 在 WWDC 2019 上，苹果推出了 Core Data with CloudKit API ，极大地降低了 Core Data 数据的云同步门槛。由于该服务对于开发者来说几乎是免费的，因此在之后的几年中，越来越多的开发者在应用中集成了该服务，并为用户带来了良好的跨设备、跨平台的使用体验。本文将对实时切换 Core Data 云同步状态的实现原理、操作细节以及注意事项进行探讨和说明。
-tags: Core Data,CloudKit
+tags: Core Data,CloudKit,持久化框架
 title: 实时切换 Core Data 的云同步状态
 image: images/real-time-switching-of-cloud-syncs-status.png
 ---

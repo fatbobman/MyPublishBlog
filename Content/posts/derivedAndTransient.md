@@ -1,7 +1,7 @@
 ---
 date: 2021-10-26 07:30
 description: 使用过 Core Data 的开发者，一定会在编辑 Data Model 时看到过右侧的属性面板中的 Derived 和 Transient 两个属性。关于这两个属性的文档不多，大多的开发者并不清楚该如何使用或在何时使用该属性。文本将结合我的使用体验，对 Derived 和 Transient 两个属性的功能、用法、注意事项等内容作以介绍。
-tags: Core Data
+tags: Core Data,持久化框架
 title:  如何在 Core Data 中使用 Derived 和 Transient 属性
 image: images/derivedAndTransient.png
 mediumURL: https://medium.com/p/b1d1c41d1d44

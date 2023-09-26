@@ -1,9 +1,10 @@
 ---
 date: 2021-12-13 08:12
 description: NSUbiquitousKeyValueStore 是苹果官方提供的用于在设备间共享键值数据的解决方案。本文将对其用法做以简单介绍，着重探讨如何便捷地在 SwiftUI 中使用 NSUbiquitousKeyValueStore。
-tags: SwiftUI,Architecture,CloudKit
+tags: SwiftUI,Architecture,CloudKit,持久化框架
 title:  在 SwiftUI 下使用 NSUbiquitousKeyValueStore 同步数据
 image: images/nsubiquitousKeyvalueStore.png
+mediumURL: https://medium.com/p/83263b1373cc
 ---
 NSUbiquitousKeyValueStore 是苹果官方提供的用于在设备间共享键值数据的解决方案。本文将对其用法做以简单介绍，着重探讨如何便捷地在 SwiftUI 中使用 NSUbiquitousKeyValueStore。
 
@@ -200,7 +201,9 @@ TextField("name",text:defaults.$name)
 
 ~~我对 CloudStrorage 进行了一点修改，在几个数据更改的时机点上添加了通知机制，通过在符合 ObservableObject 的类中，响应该通知并调用`objectWillChange.send()`来模拟@AppStorage 的特性。~~
 
-可以在此下载 [修改后的 CloudStorage 代码](https://github.com/fatbobman/CloudStorage)。
+~~可以在此下载 [修改后的 CloudStorage 代码](https://github.com/fatbobman/CloudStorage)。~~
+
+我提交的 PR 已被原作者采纳，可在原作者处下载。
 
 ```swift
 class Settings:ObservableObject {

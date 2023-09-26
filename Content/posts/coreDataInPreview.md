@@ -1,7 +1,7 @@
 ---
 date: 2021-08-28 08:20
 description: 本文将探讨导致 SwiftUI 预览崩溃的部分原因，如何在之后的开发中避免类似的崩溃出现以及如何在 Xcode 中安全可靠地预览含有 Core Data 元素的 SwiftUI 视图
-tags: SwiftUI,Core Data
+tags: SwiftUI,Core Data,持久化框架
 title: 如何在 Xcode 下预览含有 Core Data 元素的 SwiftUI 视图
 image: images/coreDataInPreview.png
 mediumURL: https://medium.com/p/b109d60a5ae0

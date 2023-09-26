@@ -1,7 +1,7 @@
 ---
 date: 2021-09-22 15:00
 description: 本文将讲解如何通过 NSCoreDataSpotlightDelegate（WWDC 2021 版本）实现将应用程序中的 Core Data 数据添加到 Spotlight 索引，方便用户查找并提高 App 的曝光率。
-tags: Core Data,SwiftUI,Spotlight
+tags: Core Data,SwiftUI,Spotlight,持久化框架
 title:  在 Spotlight 中展示应用中的 Core Data 数据
 image: images/spotlight.png
 mediumURL: https://medium.com/p/df4b981f3b02

@@ -1,7 +1,7 @@
 ---
 date: 2022-06-06 08:20
 description: Core Data 的优势主要体现在对象图管理、数据描述、缓存、延迟加载、内存管理等方面，但在对持久化数据的操作性能方面表现一般。事实上，在相当长的时间中，Core Data 的竞品总是喜欢通过各种图表来展现它们在数据操作性能上对 Core Data 的碾压之势。Apple 于数年前起陆续提供了批量更新、批量删除以及批量添加等 API ，在相当程度上改善 Core Data 在处理大量数据时性能劣势。本文将对 Core Data 的批量操作做以介绍，包括：原理、使用方法、高级技巧、 注意事项等内容。
-tags: Core Data
+tags: Core Data,持久化框架
 title: 如何在 Core Data 中进行批量操作
 image: images/batchProcessingInCoreData.png
 mediumURL: https://medium.com/p/8a7f7f63a740

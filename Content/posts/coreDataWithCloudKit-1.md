@@ -1,7 +1,7 @@
 ---
 date: 2021-08-05 20:50
 description: 介绍如何使用 NSPersistentContainer 的文章并不少，但同其他 Core Data 的功能一样，用好并不容易。在两年多的使用中，我便碰到不少问题。借着今年打算在【健康笔记 3】中实现共享数据库功能的机会，我最近较系统地重新学习了 Core Data with CloudKit 并对其知识点进行了梳理。希望通过这个系列博文能让更多的开发者了解并使用 Core Data with Cloudkit 功能。
-tags: CloudKit,Core Data
+tags: CloudKit,Core Data,持久化框架
 title: Core Data with CloudKit （一） —— 基础
 mediumURL: https://medium.com/p/e3ddd6b47c47
 ---

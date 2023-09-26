@@ -1,7 +1,7 @@
 ---
 date: 2021-11-15 08:10
 description: 本文将介绍关于在 Core Data 中对 NSManagedObject 进行深拷贝的技术难点、开发思路，以及我的解决方案——MOCloner。
-tags: Core Data
+tags: Core Data,持久化框架
 title:  如何在 Core Data 中对 NSManagedObject 进行深拷贝
 image: images/mocloner.png
 ---

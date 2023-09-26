@@ -1,7 +1,7 @@
 ---
 date: 2021-07-27 12:00
 description: 本文介绍了 CoreData 的 Persistent History Tracking 功能。详细讲解了从响应、提取、合并到清除的全过程处理方式，并提供了演示代码供读者使用。
-tags: Core Data
+tags: Core Data,持久化框架
 title: 在 CoreData 中使用持久化历史跟踪
 ---
 ## 前言 ##

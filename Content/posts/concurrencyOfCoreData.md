@@ -1,7 +1,7 @@
 ---
 date: 2021-11-05 08:20
 description: Swift 5.5 提供了盼望已久的 async/await 的功能，为多线程开发带来了前所未有的便利。但 Core Data 由于其特有的并发规则，使用不慎容易导致代码陷入不可控状态，因此让不少开发者对在 Core Data 中进行多线程开发产生了望而却步的情绪。本文将对 Core Data 并发编程中几个常见的问题予以提示，以便开发者更好地了解 Core Data 的并发规则，充分享受 Core Data 提供的强大功能。
-tags: Core Data
+tags: Core Data,持久化框架
 title:  关于 Core Data 并发编程的几点提示
 image: images/concurrencyOfCoreData.png
 mediumURL: https://medium.com/p/785d399e6d21

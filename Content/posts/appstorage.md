@@ -1,7 +1,7 @@
 ---
 date: 2021-07-31 18:40
 description: 本文探讨的是如何优雅、高效、安全地在 SwiftUI 中使用@AppStorage，在不借助第三方库的情况下，解决当前@AppStorage 使用中出现的痛点
-tags: SwiftUI,Architecture
+tags: SwiftUI,Architecture,持久化框架
 title: @AppStorage 研究
 mediumURL: https://medium.com/p/682be3258cf2
 ---

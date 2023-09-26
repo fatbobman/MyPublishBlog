@@ -1,7 +1,7 @@
 ---
 date: 2023-07-04 08:12
 description: 虽然在 WWDC 2023 上，苹果将主要精力放在介绍新的数据框架 SwiftData 上，但作为 SwiftData 的基石，Core Data 也得到了一定程度上的功能增强。本文将介绍今年 Core Data 获得的新功能。
-tags: Core Data,SwiftData,WWDC23
+tags: Core Data,SwiftData,WWDC23,持久化框架
 title: WWDC 2023 Core Data 有哪些新变化
 image: images/what's-new-of-CoreData-in-WWDC23.jpg
 mediumURL: https://medium.com/p/11f49a8e8dad
