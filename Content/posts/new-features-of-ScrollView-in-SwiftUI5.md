@@ -221,7 +221,7 @@ ScrollView {
 }
 ```
 
-## scrollPosition(initialAnchor:)
+## defaultScrollAnchor
 
 使用此修饰符可以指定滚动视图内容最初可见部分的锚点。它只影响滚动视图的初始状态，一次性设置。通常用于实现类似初始状态从底部显示的 IM 应用、从 trailing 开始显示数据等情况。通过 UnitPoint 可以同时设置两个轴向的初始位置。
 
@@ -247,7 +247,7 @@ struct ScrollPositionInitialAnchorDemo: View {
                         }
                     }
                 }
-                .scrollPosition(initialAnchor: position.unitPoint)
+                .defaultScrollAnchor(position.unitPoint)
             }
         }
         .padding()
