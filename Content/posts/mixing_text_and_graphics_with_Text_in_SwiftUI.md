@@ -505,4 +505,3 @@ func generateSnapshot(snapshot: Binding<Image>) {
 
 在读完本文后，或许你的第一感受是 SwiftUI 好笨呀，竟然需要如此多的操作才能完成这种简单的需求。但能用现有的方法来解决这类实际问题，何尝又不是一种挑战和乐趣？至少对我如此。
 
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

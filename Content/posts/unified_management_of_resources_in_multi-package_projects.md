@@ -237,8 +237,3 @@ struct ViewAPreview: PreviewProvider {
 
 > 随着时间的推移，每个模块都可以共享、测试和改进。对我来说，这不仅仅是一个小小的变化——这是一个巨大的飞跃。我的项目在每个级别都有所改进——它更稳定、更可测试，甚至更快。这并不是说 Swift Packages 有一个秘密功能可以让你的项目运行得更好。创建 Swift 包的过程迫使您采取良好和健康的步骤来最终改进您的项目，例如测试、API 设计、依赖注入、文档编写等等。一旦我这样做了，我就意识到模块化我的代码，组织起来，并使用 “API 驱动” 的设计是多么重要。 —— 摘自：Mastering Swift Package Manager
 
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ) 或博客的留言板与我进行交流。
-
-> 我正以聊天室、Twitter、博客留言等讨论为灵感，从中选取有代表性的问题和技巧制作成 Tips ，发布在 Twitter 上。每周也会对当周博客上的新文章以及在 Twitter 上发布的 Tips 进行汇总，并通过邮件列表的形式发送给订阅者。
-
-**订阅下方的 [邮件列表](https://artisanal-knitter-2544.ck.page/d3591dd1e7)，可以及时获得每周的 Tips 汇总。**

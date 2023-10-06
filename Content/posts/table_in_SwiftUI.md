@@ -566,4 +566,3 @@ struct TableDemo: View {
 
 如果你想在 SwiftUI 中用更少的代码、更清晰的表达方式创建可交互的表格，不妨试试 Table 。同时也盼望苹果能在接下来的版本中改善 Table 在 Xcode 中的开发效率，并为 Table 添加更多的原生功能。
 
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

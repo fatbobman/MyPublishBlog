@@ -347,4 +347,3 @@ Button("open panel"){
 * MenuButton 在多平台开发时，必须添加编译注释。而其他比如创建 Commands，.commands 等都不需要
 * @CommandBuilder 和@SceneBuilder 目前都不支持判断。因此无法通过程序动态的添加或减少一个菜单列。不过从。command 中可以添加多个 Commands 结构来看，后续应该是有这样的打算的。
 
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

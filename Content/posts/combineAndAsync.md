@@ -407,5 +407,4 @@ for await value in p.sequence {
 
 在可以预见的未来，苹果一定会为 Combine 和 async/await 提供更多的预置融合手段。或许明后年，前两种方案就可以直接使用官方提供的 API 了。
 
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
 

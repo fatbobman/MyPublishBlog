@@ -413,5 +413,4 @@ Core Data 提供了丰富的功能和选项，开发者可以使用它创建大�
 
 对 NSManagedObject 进行深拷贝并非是一个常见的功能需求。但当有了可以轻松完成的解决手段时，或许可以在你的 Core Data 项目中尝试一些新的设计思路。
 
-希望 [MOCloner](https://github.com/fatbobman/MOCloner) 和本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
 

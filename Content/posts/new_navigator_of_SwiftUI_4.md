@@ -789,4 +789,3 @@ SwiftUI 4.0 导航系统的变化如此之大，开发者在惊喜的同时，�
 
 > 目前已经有人实现了 NavigationStack 在低版本 SwiftUI 下的仿制品 —— [NavigationBackport](https://github.com/johnpatrickmorgan/NavigationBackport) ，有兴趣的朋友可以参考作者的实现方式
 
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

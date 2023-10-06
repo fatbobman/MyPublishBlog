@@ -568,4 +568,3 @@ extension Notification.Name {
 
 本文介绍了一些在 SwiftUI 中如何避免造成视图重复计算的技巧，除了从中查找是否有能解决你当前问题的方法外，我更希望大家将关注点集中于这些技巧在背后对应的原理。
 
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

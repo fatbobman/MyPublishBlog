@@ -140,4 +140,3 @@ destructiveDelay 形式的 button，需要在 action 中添加 dismissDestructiv
 
 SwipeCell is available under the [MIT license](https://github.com/fatbobman/SwipeCell/blob/main/LICENSE.md).
 
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

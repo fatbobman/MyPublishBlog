@@ -57,5 +57,3 @@ struct URLTest: View {
 > [苹果官方提供的一些 URL scheme](https://developer.apple.com/library/archive/featuredarticles/iPhoneURLScheme_Reference/PhoneLinks/PhoneLinks.html#//apple_ref/doc/uid/TP40007899-CH6-SW1)
 
 <video src="https://cdn.fatbobman.com/howto-swiftui-openurl-video.mp4" controls = "controls">你的浏览器不支持本视频</video>
-
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

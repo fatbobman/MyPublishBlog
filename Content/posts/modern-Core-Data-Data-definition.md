@@ -408,7 +408,4 @@ struct GroupCellViewPreview: PreviewProvider {
 
 在下篇文章中，我们将介绍如何在视图从 Core Data 中获取数据的操作这一过程中实现与托管环境解耦，创建一个可以接受 Mock 数据的自定义 FetchRequest 类型。
 
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ) 或博客的留言板与我进行交流。
-
-**订阅下方的 [邮件列表](https://artisanal-knitter-2544.ck.page/d3591dd1e7)，可以及时获得每周的 Tips 汇总。**
 

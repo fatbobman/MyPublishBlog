@@ -806,7 +806,3 @@ struct WelcomeView: View {
 ## 最后
 
 本文着重介绍 transaction 的创建和派发机制，对于 transaction 中的其他属性没有进行更多的讨论。无论 SwiftUI 未来为 transaction 添加多少信息，只要我们掌握了其原理，就能实现高效精准的动画。在出现预期之外的动画行为时，开发者也知道该如何调整。
-
-欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ) 或博客的留言板与我进行交流。
-
-**订阅下方的 [邮件列表](https://artisanal-knitter-2544.ck.page/d3591dd1e7)，可以及时获得每周最新文章。**

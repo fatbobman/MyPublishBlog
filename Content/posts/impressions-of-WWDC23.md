@@ -84,7 +84,3 @@ id:1
 在过去几年，苹果推出的新技术层出不穷，开发者要不断学习与适应，这无形中也增加了开发成本与风险。虽然苹果的新技术普遍都具有实用价值，但在追新与稳定之间，开发者也需要慎重地权衡。
 
 不过对于我来说，本次 WWDC 提供了不少学习和写作的素材。在接下来的一段时间里，我将在博客中介绍和探讨 SwiftUI、SwiftData 以及几个我比较感兴趣的新框架 TipKit 和 CKSyncEngine。
-
-欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ) 或博客的留言板与我进行交流。
-
-**订阅下方的 [邮件列表](https://artisanal-knitter-2544.ck.page/d3591dd1e7)，可以及时获得每周最新文章。**

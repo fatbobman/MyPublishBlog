@@ -9,9 +9,12 @@ struct FatbobmanBlog: Website {
         // Add the sections that you want your website to contain here:
         case index
         case posts
-        case tips
-        case about
+//        case tips
+
         case tags
+        case newsletter
+        case medium
+        case about
     }
 
     struct ItemMetadata: WebsiteItemMetadata {

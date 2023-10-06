@@ -82,6 +82,3 @@ Core Data with CloudKit 目前已经是苹果生态的一把利器，基于其�
 
 俗话说，“爱之深责之切”。作为 Core Data 的重度使用者，我衷心希望苹果能够继续发扬这个拥有悠久历史的框架，焕发其第二春。
 
-欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ) 或博客的留言板与我进行交流。
-
-**订阅下方的 [邮件列表](https://artisanal-knitter-2544.ck.page/d3591dd1e7)，可以及时获得每周最新文章。**

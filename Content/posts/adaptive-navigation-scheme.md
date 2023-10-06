@@ -402,8 +402,4 @@ struct SideBarView: View {
 
 一次编写便可对应多种设备，这本就是 SwiftUI 的一个重要特点。尽管仍存在一些不足，但新的导航机制已经在这一方面取得了长足的进步。唯一遗憾的是，仅支持 iOS 16+。
 
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ) 或博客的留言板与我进行交流。
 
-> 我正以聊天室、Twitter、博客留言等讨论为灵感，从中选取有代表性的问题和技巧制作成 Tips ，发布在 Twitter 上。每周也会对当周博客上的新文章以及在 Twitter 上发布的 Tips 进行汇总，并通过邮件列表的形式发送给订阅者。
-
-**订阅下方的 [邮件列表](https://artisanal-knitter-2544.ck.page/d3591dd1e7)，可以及时获得每周的 Tips 汇总。**

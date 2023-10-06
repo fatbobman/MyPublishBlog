@@ -665,6 +665,3 @@ struct B:View {
 
 通过本文的论述，读者应该对 Observation 框架以及该框架如何改善 SwiftUI 的性能有了进一步的认识。尽管 Observation 框架目前与 SwiftUI 紧密绑定，但随着其 API 的丰富，相信它会出现在越来越多的应用场景中，而不仅仅是 SwiftUI。
 
-欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ) 或博客的留言板与我进行交流。
-
-**订阅下方的 [邮件列表](https://artisanal-knitter-2544.ck.page/d3591dd1e7)，可以及时获得每周最新文章。**

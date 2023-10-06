@@ -355,6 +355,3 @@ AttributeGraph 是 SwiftUI 用于维护众多数据源与视图之间依赖关�
 
 今年 SwiftUI 已经进入了第五个年头。随着版本的提高，SwiftUI 的功能也确实得到了相当程度的增加。不过，即使在最新的版本中，在一些对 UIKit（AppKit）进行二次包装的控件中，仍有不少细节处理不到位的问题。希望 SwiftUI 开发组能尽早重视这些问题。
 
-欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ) 或博客的留言板与我进行交流。
-
-**订阅下方的 [邮件列表](https://artisanal-knitter-2544.ck.page/d3591dd1e7)，可以及时获得每周最新文章。**

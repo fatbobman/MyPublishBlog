@@ -508,4 +508,3 @@ struct _MyTaskValueModifier<Value>: ViewModifier where Value: Equatable {
 
 task 修饰器将 async/await 和 SwiftUI 视图的生命周期连接起来，让开发者可以在视图中高效地构建复杂的异步任务。但过度地通过 task 修饰器在视图声明中对副作用进行控制，也会对视图的纯粹度、可测试度、复用性等造成影响。开发者应拿捏好使用的分寸。
 
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

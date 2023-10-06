@@ -169,4 +169,3 @@ macOS 系统的内置应用——预览是我使用率最高的图片编辑工�
 
 工欲善其事，必先利其器。趁手的工具可以帮助使用者做到事半功倍。
 
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

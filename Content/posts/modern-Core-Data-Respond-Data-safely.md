@@ -422,6 +422,3 @@ func _updateTask(_ sourceTask: TodoTask) async {
 
 在下篇文章中，我们将探讨有关模块化开发的问题。如何将具体的托管对象类型以及 Core Data 操作从视图、Features 中解耦出来。
 
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ) 或博客的留言板与我进行交流。
-
-**订阅下方的 [邮件列表](https://artisanal-knitter-2544.ck.page/d3591dd1e7)，可以及时获得每周的 Tips 汇总。**

@@ -402,7 +402,3 @@ struct SettingContainer: View {
 然而，只要了解这些要点的存在，并提前进行规划和准备，适配的过程就会更加顺利。开发者也就能够把更多精力投入到为用户打造不同平台的独特使用体验上。
 
 以上就是今天交流的全部内容，谢谢大家的聆听，希望能对你有所帮助。
-
-欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ) 或博客的留言板与我进行交流。
-
-**订阅下方的 [邮件列表](https://artisanal-knitter-2544.ck.page/d3591dd1e7)，可以及时获得每周最新文章。**

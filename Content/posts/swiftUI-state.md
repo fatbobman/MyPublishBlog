@@ -364,4 +364,3 @@ struct MyState<Value>:DynamicProperty{
 
 在响应式编程开始流行的今天，越来越多的人都在使用单一数据源（Single Souce of Truth）的构架方式进行设计和开发。如何使用@State 这种作用域范围仅限于当前视图的特性？仅从命名来看，苹果给了他最本质的名称——State。State 属于 SwiftUI 架构，ObservableObject 属于 Combine 架构，SwiftUI 明显对于 State 的优化要好于 ObservableObject。如何在满足单一数据源的情况下最大限度享受 SwiftUI 的优化便利？我将在下一篇文章中进行进一步探讨。
 
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

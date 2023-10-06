@@ -63,7 +63,3 @@ id:1
 明年我就到了知天命的年龄，希望能以平和的心态继续积极、健康地生活下去，做一些自己想做并且对社会有意义的事情。
 
 祝大家身体健康。
-
-欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ) 或博客的留言板与我进行交流。
-
-**订阅下方的 [邮件列表](https://artisanal-knitter-2544.ck.page/d3591dd1e7)，可以及时获得每周的 Tips 汇总。**

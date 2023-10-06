@@ -16,15 +16,19 @@ extension PublishingStep where Site == FatbobmanBlog {
             content.mutateAllSections { section in
                 switch section.id {
                 case .index:
-                    section.title = "最近更新"
+                    section.title = "最新"
                 case .posts:
-                    section.title = "全部文章"
-                case .tips:
-                    section.title = "Tips"
+                    section.title = "全部"
+//                case .tips:
+//                    section.title = "Tips"
+                case .tags:
+                    section.title = "分类"
+                case .newsletter:
+                    section.title = "周报"
+                case .medium:
+                    section.title = "English"
                 case .about:
                     section.title = "关于"
-                case .tags:
-                    section.title = "搜索"
                 }
             }
         }

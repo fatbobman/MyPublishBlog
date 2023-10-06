@@ -410,6 +410,3 @@ struct TriggerButton2: PrimitiveButtonStyle {
 
 尽管自定义 Style 的效果显著，但遗憾的是，目前 SwiftUI 仅开放了少数的组件样式协议供开发者自定义使用，并且提供的属性也很有限。希望在未来的版本中，SwiftUI 可以为开发者提供更加强大的自定义组件能力。
 
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ) 或博客的留言板与我进行交流。
-
-**订阅下方的 [邮件列表](https://artisanal-knitter-2544.ck.page/d3591dd1e7)，可以及时获得每周的 Tips 汇总。**

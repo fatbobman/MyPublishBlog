@@ -102,6 +102,3 @@ id:1
 
 对我来说，AI 不是洪水猛兽，也不是能够在短时间内改变人类文明的革命。我不会抗拒它，也不会过分推崇它。同大多新技术一样，数年后回过头来看，它们已彻底融入生活，人们会感叹由技术更新所带来的便利，同时也会唏嘘因变革所带来的时代阵痛。
 
-欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ) 或博客的留言板与我进行交流。
-
-**订阅下方的 [邮件列表](https://artisanal-knitter-2544.ck.page/d3591dd1e7)，可以及时获得每周最新文章。**

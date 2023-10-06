@@ -430,6 +430,3 @@ class ImageHolder: ObservableObject {
 
 SwiftUI 的惰性容器使用起来很方便，并且通过 @FetchRequest 与 Core Data 配合也很方便，这在一定程度上导致开发者有了轻视的心理，认为 SwiftUI + Core Data 会为我们处理一切。但在有些情况下，我们仍然需要通过自己对两者的深入理解对代码进行高度优化才能取得预期的效果。
 
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ) 或博客的留言板与我进行交流。
-
-**订阅下方的 [邮件列表](https://artisanal-knitter-2544.ck.page/d3591dd1e7)，可以及时获得每周的 Tips 汇总。**

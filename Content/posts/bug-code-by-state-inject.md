@@ -405,7 +405,3 @@ struct Solution4: View {
 ## 总结
 
 尽管已经发展到 4.0 版本，但 SwiftUI 仍会出现一些与预期不符的行为。在面对这些“灵异现象”时，如果我们能对其进行更多的研究，那么不仅可以在今后避免类似的问题，而且在分析的过程中，也能对 SwiftUI 的各种运行机制有深入的掌握。
-
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ) 或博客的留言板与我进行交流。
-
-**订阅下方的 [邮件列表](https://artisanal-knitter-2544.ck.page/d3591dd1e7)，可以及时获得每周的 Tips 汇总。**

@@ -305,4 +305,3 @@ func setCloudContainerWhenOtherStatus() {
 
 Persistent History Tracking 现在已经越来越多地出现于各种场合，除了感知 App group 成员间数据变动外，还被应用于 [数据批处理](https://www.fatbobman.com/posts/batchProcessingInCoreData/)、数据云同步、[Spotlight](https://www.fatbobman.com/posts/spotlight/) 等多个环节。建议 Core Data 的使用者应该对其有充分的了解，并尽早将其应用于你的程序之中。
 
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

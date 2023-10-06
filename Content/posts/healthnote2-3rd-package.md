@@ -201,4 +201,3 @@ MarkdownView 的渲染效率一般，但我的显示需求并不大，所以感�
 
 上述的库都被使用在 [健康笔记 2.0](https://apps.apple.com/us/app/health-notes-2/id1534513553) 中。如想查看更多的演示，可以移步
 
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

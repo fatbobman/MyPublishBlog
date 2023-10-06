@@ -69,7 +69,3 @@ id:1
 ## 总结
 
 总体下来，这是一次愉快的更新过程。期待未来它在移动场景下的表现。今年是该多出去走走了。
-
-欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ) 或博客的留言板与我进行交流。
-
-**订阅下方的 [邮件列表](https://artisanal-knitter-2544.ck.page/d3591dd1e7)，可以及时获得每周的 Tips 汇总。**

@@ -348,5 +348,3 @@ container.persistentStoreDescriptions = [cloudDesc,localDesc]
 在本文中，我们探讨了如何实现将本地数据库同步到`iCloud`私有数据库。
 
 下一篇文章让我们一起探讨如何使用`CloudKit`仪表台。从另一个角度认识`Core Data with CloudKit`。
-
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

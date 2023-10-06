@@ -389,4 +389,3 @@ struct ContentView: View {
 
 虽说本文的主要目的是介绍在 SwiftUI 视图中打开 URL 的几种方法，不过读者应该也能从中感受到 SwiftUI 三年来的不断进步，相信不久后的 WWDC 2022 会为开发者带来更多的惊喜。
 
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

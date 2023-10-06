@@ -624,5 +624,3 @@ _BackgroundLayout {
 虽然本文并没有提供具体的对齐使用技巧，但只要你理解并掌握了对齐的两大要点：以什么为对齐指南、对哪些视图进行“对齐”，那么相信一定会减少你在开发中遇到的对齐困扰，并可以通过对齐实现很多以前不容易完成的效果。
 
 如果你想对 Layout 协议做更全面地了解，推荐你观看 Jane（ 美眉 up 主）制作的有关 SwiftUI Layout 协议的中文视频 —— [自订 Layout 排版教学](https://youtu.be/du_Bl7Br9DM) 。
-
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

@@ -466,7 +466,3 @@ struct TripsApp: App {
 ## 最后
 
 作为 SwiftData 的基石，苹果在未来的几年中不论是有意还是无意，仍会持续为 Core Data 添加一些新的 API。考虑到 SwiftData 还需要几年的成熟时间，因此在未来的日子里，许多开发者都需要在一个项目中同时使用 SwiftData 和 Core Data。因此，及时了解 Core Data 的新功能和新动向仍有相当的价值。
-
-欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ) 或博客的留言板与我进行交流。
-
-**订阅下方的 [邮件列表](https://artisanal-knitter-2544.ck.page/d3591dd1e7)，可以及时获得每周最新文章。**

@@ -4,6 +4,7 @@ description: 对每一个使用 Core Data 的开发者来说，用 Xcode 的 Cor
 tags: Core Data,持久化框架
 title: CoreData 探秘 - 从数据模型构建到托管对象实例
 image: images/from-Data-Model-Construction-to-Managed-Object-Instances-in-Core-Data.jpg
+mediumURL: https://medium.com/p/3bc796b27b41
 ---
 对每一个使用 Core Data 的开发者来说，用 Xcode 的 Core Data 模型编辑器构建数据模型、创建容器、加载数据模型并通过托管对象上下文最终创建托管对象实例，这都是十分普通的过程。但你是否好奇过这一切的内部运行机制，Core Data 是如何在幕后辅助我们完成这一切的？本文将深入探究 Core Data 是如何通过数据模型构建出托管对象实例的内部运行机制，读完本文可以让你对 Core Data 的工作流程有更深入的理解，在开发中可以更得心应手。
 
@@ -280,6 +281,3 @@ try? viewContext.save()
 
 在本文中，我们探讨了几种不同的在 Core Data 中构建数据模型和创建托管对象实例的方法，其中一些方法可能并不常见。有些读者可能会对这些方法感到困惑，但即使不了解这些方法，也不会影响我们熟练使用 Core Data。然而，本文创作的目的正是向读者介绍这些非常见的方法，因为在接下来的文章中，我们将探讨 “SwiftData 如何根据模型声明来创建 PersistentModel 实例”。届时，我们将看到 SwiftData 开发团队是如何利用本文介绍的内容和 Swift 的新特性，构建出符合新时代的持久化框架的。
 
-欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ) 或博客的留言板与我进行交流。
-
-**订阅下方的 [邮件列表](https://artisanal-knitter-2544.ck.page/d3591dd1e7)，可以及时获得每周最新文章。**

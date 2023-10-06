@@ -323,4 +323,3 @@ CKSubscription 是通过代码创建的，在仪表盘上只可以查看或删�
 
 下一篇文章，我们将聊一下开发`Core Data with CloudKit`项目经常会碰到的一些情况，比如调试、测试、数据迁移等。
 
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

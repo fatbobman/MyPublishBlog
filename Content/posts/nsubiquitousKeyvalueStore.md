@@ -236,4 +236,3 @@ struct DemoView: View {
 
 NSUbiquitousKeyValueStore 正如它的名称一样，让 app 的数据无处不在。只需很少的配置就可以为你的 app 添加该项功能，有需求的朋友可以行动起来了！
 
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

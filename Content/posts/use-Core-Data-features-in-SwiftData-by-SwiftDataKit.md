@@ -327,6 +327,3 @@ uriRepresentation.persistentIdentifier
 
 PS：SwiftDataKit 目前提供的功能还很有限，欢迎更多的开发者可以参与该项目，让大家能够尽早享受到使用 SwiftData 开发所能带来的爽快感。
 
-欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ) 或博客的留言板与我进行交流。
-
-**订阅下方的 [邮件列表](https://artisanal-knitter-2544.ck.page/d3591dd1e7)，可以及时获得每周最新文章。**

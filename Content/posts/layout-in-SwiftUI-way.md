@@ -489,6 +489,3 @@ struct LayoutProtocolExample: View {
 
 同大多的布局框架一样，最终决定布局能力的上限主要取决于开发者。SwiftUI 为我们提供了众多的布局手段，只有充分地理解并掌握它们，方可从容应对复杂的布局需求。
 
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ) 或博客的留言板与我进行交流。
-
-**订阅下方的 [邮件列表](https://artisanal-knitter-2544.ck.page/d3591dd1e7)，可以及时获得每周的 Tips 汇总。**

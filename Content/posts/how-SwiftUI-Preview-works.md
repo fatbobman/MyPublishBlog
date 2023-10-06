@@ -288,7 +288,3 @@ struct ContentView_Previews: PreviewProvider {
 ## 接下来
 
 在本文中，我们探讨了 Xcode 预览功能的实现原理，并指出其存在一定局限性。在下一篇文章中，我们将从开发者的角度审视预览功能：它的设计目的、最适宜的使用场景以及如何构建稳定高效的预览。
-
-欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ) 或博客的留言板与我进行交流。
-
-**订阅下方的 [邮件列表](https://artisanal-knitter-2544.ck.page/d3591dd1e7)，可以及时获得每周最新文章。**

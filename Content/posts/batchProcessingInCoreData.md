@@ -368,4 +368,3 @@ INSERT INTO ZQUAKE(Z_PK, Z_ENT, Z_OPT, ZCODE, ZMAGNITUDE, ZPLACE, ZTIME) VALUES(
 
 批量操作改善了某些场合下 Core Data 数据操作效率低、内存占用大的问题，使用得当，必将成为开发者的得力工具。
 
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

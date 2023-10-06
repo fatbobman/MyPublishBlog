@@ -136,30 +136,33 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                                             .text(item.title)
                                         )
                                     ),
-                                    .div(
-                                        .class("license"),
-                                        .p(
-                                            .a(
-                                                .img(
-                                                    .src("https://cdn.fatbobman.com/support-fat-button2.png"),
-                                                    .alt("鼓励作者"),
-                                                    .width(175),
-                                                    .height(40)
-                                                ),
-                                                .href("https://www.fatbobman.com/support/")
-                                            )
-                                        )
-                                    ),
+//                                    .div(
+//                                        .class("license"),
+//                                        .p(
+//                                            .a(
+//                                                .img(
+//                                                    .src("https://cdn.fatbobman.com/support-fat-button2.png"),
+//                                                    .alt("鼓励作者"),
+//                                                    .width(175),
+//                                                    .height(40)
+//                                                ),
+//                                                .href("https://www.fatbobman.com/support/")
+//                                            )
+//                                        )
+//                                    ),
                                     .div(
                                         .tagList(for: item, on: context.site, displayDate: true),
-                                        .div(.class("content"), .contentBody(item.body)),
+                                        .div(
+                                            .class("content"),
+                                            .contentBody(item.body)
+                                        ),
                                         .license()
                                     )
                                 ),
                                 // .shareContainerForMobile(title: item.title, url: context.site.url.appendingPathComponent(item.path.string).absoluteString),
 //                                .support(),
-                                .itemNavigator(previousItem: previous, nextItem: next),
-                                .gitTalk(topicID: item.title)
+                                .itemNavigator(previousItem: previous, nextItem: next) // ,
+                                // .gitTalk(topicID: item.title)
                             ),
                             .sideNav(
                                 .toc()
@@ -188,17 +191,21 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
                         selectedSection: FatbobmanBlog.SectionID.about as? Site.SectionID
                     ),
                     else:
-                    .if(
-                        page.path == Path("tips"),
-                        .header(
-                            for: context,
-                            selectedSection: FatbobmanBlog.SectionID.tips as? Site.SectionID
-                        ),
-                        else:
-                        .header(
-                            for: context,
-                            selectedSection: nil
-                        )
+//                    .if(
+//                        page.path == Path("tips"),
+//                        .header(
+//                            for: context,
+//                            selectedSection: FatbobmanBlog.SectionID.tips as? Site.SectionID
+//                        ),
+//                        else:
+//                        .header(
+//                            for: context,
+//                            selectedSection: nil
+//                        )
+//                    )
+                    .header(
+                        for: context,
+                        selectedSection: nil
                     )
 
                 ),
@@ -341,23 +348,28 @@ extension Node where Context == HTML.BodyContext {
                                     == FatbobmanBlog.SectionID.about,
                                 .class("selected")
                             ),
-                            .if(
-                                section as! FatbobmanBlog.SectionID
-                                    == FatbobmanBlog.SectionID.tips,
-                                .class("selected")
-                            ),
+//                            .if(
+//                                section as! FatbobmanBlog.SectionID
+//                                    == FatbobmanBlog.SectionID.tips,
+//                                .class("selected")
+//                            ),
                             .class(section == selectedSection ? "selected" : ""),
                             .if(
                                 section as! FatbobmanBlog.SectionID
                                     == FatbobmanBlog.SectionID.index,
                                 .href(context.index.path),
                                 else:
-                                .href(context.sections[section].path)
-                                // .if(
-                                //     section as! FatbobmanBlog.SectionID == FatbobmanBlog.SectionID.healthNotes,
-                                //     .href("https://www.fatbobman.com/tips"),
-                                //     else: .href(context.sections[section].path)
-                                // )
+//                                .href(context.sections[section].path)
+                                .if(
+                                    section as! FatbobmanBlog.SectionID == FatbobmanBlog.SectionID.medium,
+                                    .href("https://fatbobman.medium.com"),
+                                    else:
+                                    .if(
+                                        section as! FatbobmanBlog.SectionID == FatbobmanBlog.SectionID.newsletter,
+                                        .href("https://fatbobman.substack.com"),
+                                        else: .href(context.sections[section].path)
+                                    )
+                                )
                             ),
                             .text(context.sections[section].title)
                         )
@@ -489,13 +501,21 @@ extension Node where Context == HTML.BodyContext {
         </script>
         """)
     }
+    
+    static func connectMe() -> Node {
+        /*
+        
+         希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
+         */
+        .raw("")
+    }
 
     fileprivate static func footer<T: Website>(for _: T) -> Node {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy"
         return .footer(
-            .convertKit(),
-            // .substack(),
+            //            .convertKit(),
+//            .substack(),
             .p(
                 .text("Copyright &copy; 东坡肘子 (Fatbobman) \(formatter.string(from: Date())) "),
                 .a(.text("辽ICP备20006550号-1"), .href("https://beian.miit.gov.cn/"))

@@ -409,5 +409,3 @@ extension View {
 
 每个开发者都希望为用户提供一个高效、优雅的交互环境。本文仅涉及了 TextField 的部分内容，在【SwiftUI TextField 进阶】的其他篇幅中，我们将探讨更多的技巧和思路，让开发者在 SwiftUI 中创建不一样的文本录入体验。
 
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
-

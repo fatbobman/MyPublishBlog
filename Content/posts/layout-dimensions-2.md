@@ -548,4 +548,3 @@ public extension View {
 
 Layout 协议为我们提供了一个绝佳的可以深入了解 SwiftUI 布局机制的窗口，无论你在未来的工作中是否需要使用 Layout 协议创建自定义布局容器，掌握它都将获得莫大的好处。
 
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

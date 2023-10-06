@@ -353,6 +353,3 @@ List {
 
 在下一篇文章中，我们将探讨如何在 SwiftUI 中安全地响应数据，如何避免因为数据意外丢失而导致的行为异常以及应用崩溃。
 
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ) 或博客的留言板与我进行交流。
-
-**订阅下方的 [邮件列表](https://artisanal-knitter-2544.ck.page/d3591dd1e7)，可以及时获得每周的 Tips 汇总。**

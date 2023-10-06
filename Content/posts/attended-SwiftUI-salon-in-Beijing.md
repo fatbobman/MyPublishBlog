@@ -36,7 +36,3 @@ image: images/attended-SwiftUI-salon-in-Beijing.png
 随着生活秩序回归正轨，今年已有不少苹果生态的开发社区正在准备各种线下活动，例如不久后的 SwiftGG 举办的一起看 WWDC、台湾开发者社群将在 11 月上旬举办的 iPlayground 2023 等。
 
 希望大家能够共同创建一个富有生机的开发者社区，享受交流的乐趣，共同成长。
-
-欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ) 或博客的留言板与我进行交流。
-
-**订阅下方的 [邮件列表](https://artisanal-knitter-2544.ck.page/d3591dd1e7)，可以及时获得每周最新文章。**

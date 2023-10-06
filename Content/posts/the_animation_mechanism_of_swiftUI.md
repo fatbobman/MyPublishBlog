@@ -1132,4 +1132,3 @@ Button("Click Me") {}
 
 SwiftUI 的动画机制设计的还是相当优秀的，相信随着完成度的不断提高，开发者可以用更少的代码获得更加优秀的交互效果。
 
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

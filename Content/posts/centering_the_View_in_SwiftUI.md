@@ -339,8 +339,3 @@ GeometryReader { proxy in
 
 我为本文这种通过多种方法来解决一个问题的方式添加了【小题大做】标签，目前使用该便签的文章还有：[在 Core Data 中查询和使用 count 的若干方法](https://www.fatbobman.com/posts/countInCoreData/)、[在 SwiftUI 视图中打开 URL 的若干方法](https://www.fatbobman.com/posts/open_url_in_swiftUI/) 。
 
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
-
-> 我正以聊天室、Twitter、博客留言等讨论为灵感，从中选取有代表性的问题和技巧制作成 Tips ，发布在 Twitter 上。每周也会对当周博客上的新文章以及在 Twitter 上发布的 Tips 进行汇总，并通过邮件列表的形式发送给订阅者。
-
-**订阅下方的 [邮件列表](https://artisanal-knitter-2544.ck.page/d3591dd1e7)，可以及时获得每周的 Tips 汇总。**

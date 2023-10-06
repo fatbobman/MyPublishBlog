@@ -363,4 +363,3 @@ try? container.viewContext.setQueryGenerationFrom(.current)
 
 撰写本文的主要目的是对我近段时间来的零散研究进行汇总，方便日后查询。因此即便你已经完全掌握了 Core Data 的外部存储结构，但最好还是尽量不要直接对数据库进行操作，苹果可能在任何时刻改变它的底层实现。
 
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。

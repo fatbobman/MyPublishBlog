@@ -521,7 +521,4 @@ struct ScrollTransitionDemo: View {
 
 就我个人而言，在 SwiftUI 5 中，ScrollView 的原生方案已经能够满足大多数需求，因此我们将看到更多人采用 ScrollView + LazyStack 的组合方式。
 
-欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ) 或博客的留言板与我进行交流。
-
-**订阅下方的 [邮件列表](https://artisanal-knitter-2544.ck.page/d3591dd1e7)，可以及时获得每周最新文章。**
 

@@ -99,6 +99,3 @@ id:1
 
 > 由于一直没有为这个系列的文章想好恰当的题目，便暂且临时采用了 “SwiftUI 与 Core Data” 这个名称。如果你有什么好的建议欢迎告诉我。
 
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ) 或博客的留言板与我进行交流。
-
-**订阅下方的 [邮件列表](https://artisanal-knitter-2544.ck.page/d3591dd1e7)，可以及时获得每周的 Tips 汇总。**

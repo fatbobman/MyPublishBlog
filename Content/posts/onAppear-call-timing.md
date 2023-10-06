@@ -205,6 +205,3 @@ if !newWords.isEmpty {
 
 在本文中，我们通过 SwiftUI 4 提供的新工具明确了 onAppear 的调用时机，或许这是新 API 开发时未曾想到的功能应用。
 
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ) 或博客的留言板与我进行交流。
-
-**订阅下方的 [邮件列表](https://artisanal-knitter-2544.ck.page/d3591dd1e7)，可以及时获得每周的 Tips 汇总。**

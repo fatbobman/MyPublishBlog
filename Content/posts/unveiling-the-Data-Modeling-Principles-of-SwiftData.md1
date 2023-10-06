@@ -387,7 +387,3 @@ item.timestamp = date // 通知 timestamp 的订阅者
 本文通过详细剖析一段 SwiftData 简单模型的代码，深入解析了其实现原理，包括模型构建、PersistentModel 实例生成以及属性观察通知机制等。剖析的过程也是熟练运用一个框架的重要途径。
 
 在代码解析的过程中，我们不仅加深了对 SwiftData 框架的认识，也对许多 Swift 语言的新特性有了更直观的了解，可谓一举两得。
-
-欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ) 或博客的留言板与我进行交流。
-
-**订阅下方的 [邮件列表](https://artisanal-knitter-2544.ck.page/d3591dd1e7)，可以及时获得每周最新文章。**

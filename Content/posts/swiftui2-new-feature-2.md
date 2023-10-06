@@ -275,4 +275,3 @@ struct AllInOneApp: App {
 
 从 SwiftUI 第一个版本升级的内容来看，目前 SwiftUI 仍是这样的思路。
 
-希望本文能够对你有所帮助。同时也欢迎你通过 [Twitter](https://twitter.com/fatbobman)、 [Discord 频道](https://discord.gg/ApqXmy5pQJ)或下方的留言板与我进行交流。
