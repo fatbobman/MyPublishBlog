@@ -550,7 +550,7 @@ extension Node where Context == HTML.BodyContext {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy"
         return .footer(
-            .convertKit(),
+            //            .convertKit(),
 //            .substack(),
             .p(
                 .text("Copyright &copy; 东坡肘子 (Fatbobman) \(formatter.string(from: Date())) "),

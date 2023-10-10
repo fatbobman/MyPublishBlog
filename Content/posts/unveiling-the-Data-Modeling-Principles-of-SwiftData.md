@@ -1,5 +1,5 @@
 ---
-date: 2023-10-09 08:12
+date: 2023-10-07 08:12
 description: 在 SwiftData 的数项改进中，用纯代码声明数据模型无疑给 Core Data 开发者留下了深刻印象。本文将深入探讨 SwiftData 是如何通过代码创建数据模型的，使用了哪些新的语言特性，并展示了如何通过声明代码来创建 PersistentModel 实例。
 tags: SwiftData,持久化框架
 title: 揭秘 SwiftData 的数据建模原理
