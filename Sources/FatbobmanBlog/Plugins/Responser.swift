@@ -19,7 +19,7 @@ var responser = Modifier(target: .codeBlocks) { html, markdown in
 
     let start = "<Div id = \"responser\" class = \"responser\" ><div class = \"adsContent\">"
     let end = "</div><div class='label'>推荐</div></Div>"
-    let ads = Int.random(in: 0 ... 4) < 4 ? healthAds1 : healthAds2
+    let ads = healthAds1
     return start + ads + end + adsScript
 }
 

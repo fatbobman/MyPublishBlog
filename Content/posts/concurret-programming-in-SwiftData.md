@@ -4,6 +4,7 @@ description: 在 Core Data 中进行并发编程可能并不困难，但是充�
 tags: SwiftData,持久化框架
 title: SwiftData 中的并发编程
 image: images/concurrent-programming-in-SwiftData.jpg
+mediumURL: https://medium.com/p/c9bf021a4c2d
 ---
 在 Core Data 中进行并发编程可能并不困难，但是充满了陷阱。即使对 Core Data 有充分的经验，稍有疏忽也可能在代码中埋下隐患，从而使应用程序变得不安全。SwiftData 作为 Core Data 的继任者，提供了一种更加优雅、更加安全的并发编程机制。本文将介绍 SwiftData 是如何解决这些问题的，并为开发者提供更好的并发编程体验。
 

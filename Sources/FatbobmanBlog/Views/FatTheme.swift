@@ -551,7 +551,7 @@ extension Node where Context == HTML.BodyContext {
         formatter.dateFormat = "yyyy"
         return .footer(
             //            .convertKit(),
-//            .substack(),
+            .substack(),
             .p(
                 .text("Copyright &copy; 东坡肘子 (Fatbobman) \(formatter.string(from: Date())) "),
                 .a(.text("辽ICP备20006550号-1"), .href("https://beian.miit.gov.cn/"))
