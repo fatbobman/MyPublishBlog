@@ -424,7 +424,7 @@ static var isLoggedIn: Bool = false
 
 `$isLoggedIn` 的类型是 `Tips.Parameter<Bool>`，它提供了对 ParameterRuleTip.isLoggedIn 的值进行持续化的能力。
 
-> TipKit 为 @Parameter 提供了一个 `@Parameter(.transient)` 选项。在开启后，TipKit 将在应用首次启动时，使用 Tip 定义中提供的默认值而不使用持久化的值，这通常被用于多个应用或组件共享同一个 TipKit 数据源的场景。
+> TipKit 为 @Parameter 提供了一个 `@Parameter(.transient)` 选项。在开启后，TipKit 将在应用重启时，使用 Tip 定义中提供的默认值而不使用持久化的值。与 Core Data 或 SwiftData 中的 `transient` 选项性质略有不同，在 TipKit 中，即使开启 `transient` 选项，数据仍会被持久化。这主要是为了方便在使用同一个 TipKit 数据源的不同应用和组件之间保持该参数的动态同步。
 
 ### 创建规则（Rule），根据状态决定是否显示提示（Tip）
 
