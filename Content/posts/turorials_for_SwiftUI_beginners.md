@@ -88,7 +88,7 @@ id:1
 
 ![image-20220919162232057](https://cdn.fatbobman.com/image-20220919162232057.png)
 
-在油管和 B 站上都有频道。他的视频教程 [使用 SwiftUI 开发 iOS App 新手教程](https://www.bilibili.com/video/BV16L411H7xN/?spm_id_from=333.788&vd_source=47c38aa7a1b9837457a41f3f489f9377) 是为初学者准备的，共 29 个视频。虽然每集只有几分钟，但教学的脉络十分清晰。
+在油管和 B 站上都有频道。他的视频教程 [使用 SwiftUI 开发 iOS App 新手教程](https://www.bilibili.com/video/BV16L411H7xN) 是为初学者准备的，共 29 个视频。虽然每集只有几分钟，但教学的脉络十分清晰。
 
 鉴于观看完整教程所需的时间不长，初学者可以在通览全部的视频对 SwiftUI 有个整体了解后，再决定下一步的学习方向和内容。
 
