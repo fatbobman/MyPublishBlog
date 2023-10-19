@@ -4,7 +4,7 @@ description: 在上文中，我们介绍了 TipKit 的基础用法。在本文�
 tags: SwiftUI,TipKit
 title: 掌握 TipKit：进阶
 image: images/mastering-TipKit-advance.jpg
-mediumURL: https://medium.com/p/dcccfdbc9927
+mediumURL: https://medium.com/p/b6927aeeb9b5
 ---
 在上文中，我们介绍了 TipKit 的基础用法。在本文中，我们将讨论一些与 TipKit 相关的进阶问题，例如如何完全自定义 Tip 视图（不使用 TipView 和 popoverTip）、如何在 UIKit 中使用 TipKit，以及 TipKit 如何在不同的应用程序之间共享数据。最后，我们将尝试解答一些与 TipKit 相关的疑惑。
 
