@@ -122,7 +122,7 @@ struct GetSafeArea: View {
 
 ```swift
 extension UIApplication {
-    var keyWindow: UIWindow? {
+    var currentWindow: UIWindow? {
         connectedScenes
             .compactMap {
                 $0 as? UIWindowScene
@@ -138,7 +138,7 @@ extension UIApplication {
 
 private struct SafeAreaInsetsKey: EnvironmentKey {
     static var defaultValue: EdgeInsets {
-        UIApplication.shared.keyWindow?.safeAreaInsets.swiftUiInsets ?? EdgeInsets()
+        UIApplication.shared.currentWindow?.safeAreaInsets.swiftUiInsets ?? EdgeInsets()
     }
 }
 
