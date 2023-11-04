@@ -361,7 +361,7 @@ struct GeometryReaderInScrollView: View {
 
 通过 `aspectRatio` 创建一个符合高宽比的基底视图，然后将 `Image` 放置在 `overlay` 中。此外，由于 `overlay` 支持设置对齐指南，比起 GeometryReader，它可以更方便地调整图片的对齐位置。
 
-另外，GeometryReader 经常用于按照一定比例分配两个视图的空间。对于这类需求，也可以通过其他手段处理（以下代码实现了宽度的 40% 和 60% 的分配）：
+另外，GeometryReader 经常用于按照一定比例分配两个视图的空间。对于这类需求，也可以通过其他手段处理（以下代码实现了宽度的 40% 和 60% 的分配，高度则取决于最高的子视图）：
 
 ```swift
 struct FortyPercent: View {
@@ -390,7 +390,7 @@ struct FortyPercent: View {
 
 ![https://cdn.fatbobman.com/image-20231031103955150.png](https://cdn.fatbobman.com/image-20231031103955150.png)
 
-不过，单纯就按照一定比例将两个视图置于特定空间（ 无视子视图尺寸 ）中这个需求而言，GeometryReader 至今仍是最优解之一（ Gird 的解决方案整体高度由子视图来决定）。
+不过，单纯就按照一定比例将两个视图置于特定空间（ 无视子视图尺寸 ）中这个需求而言，GeometryReader 至今仍是最优解之一。
 
 ```swift
 struct RatioSplitHStack<L, R>: View where L: View, R: View {
