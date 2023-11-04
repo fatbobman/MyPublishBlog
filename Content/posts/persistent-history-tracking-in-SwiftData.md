@@ -4,6 +4,7 @@ description: 在数据库发生变化时 Persistent History Tracking（ 持久�
 tags: SwiftData,持久化框架
 title: 如何通过 Persistent History Tracking 观察 SwiftData 的数据变化
 image: images/persistent-history-tracking-in-SwiftData.jpg
+mediumURL: https://medium.com/p/77ceff2cb689
 ---
 在数据库发生变化时 Persistent History Tracking（ 持久化历史跟踪 ）会向订阅者发送提醒，开发者可以借此机会对同一数据库进行的修改做出响应，包括其他应用、组件（同一个 App Group）和批处理任务。由于 SwiftData 集成了对持久化历史跟踪功能的支持，无需编写额外的代码，订阅通知、合并事务等工作都会由 SwiftData 自动完成。
 
