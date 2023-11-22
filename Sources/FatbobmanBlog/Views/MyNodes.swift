@@ -14,7 +14,7 @@ extension Node where Context == HTML.BodyContext {
                     .target(.blank)
                 ),
                 .text("，转载需注明出处和作者。")
-            )//,
+            ) // ,
 //            .p(
 //                .a(
 //                    .img(
@@ -321,7 +321,7 @@ extension Node where Context == HTML.BodyContext {
             """
         )
     }
-    
+
     static func substack() -> Node {
         .raw(
             """
@@ -333,12 +333,12 @@ extension Node where Context == HTML.BodyContext {
             }
             </style>
             <div class="newsletter-code">
-                <iframe src="https://fatbobman.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
+                <iframe src="https://fatbobman.substack.com/embed" width="480" height="320" style="border:0px solid #EEE; background:red;" frameborder="0" scrolling="no"></iframe>
             </div>
             """
         )
     }
-    
+
     // ConvertKit newsletter
     static func convertKit() -> Node {
         .raw(

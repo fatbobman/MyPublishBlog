@@ -4,6 +4,7 @@ description: GeometryReader 自 SwiftUI 诞生之初就存在，它在许多场�
 tags: SwiftUI
 title: GeometryReader ：好东西还是坏东西？
 image: images/from-Data-Model-Construction-to-Managed-Object-Instances-in-Core-Data.jpg
+mediumURL: https://medium.com/p/1ebd2d5005ec
 ---
 GeometryReader 自 SwiftUI 诞生之初就存在，它在许多场景中扮演着重要的角色。然而，从一开始就有开发者对其持负面态度，认为应尽量避免使用。特别是在最近几次 SwiftUI 更新中新增了一些可以替代 GeometryReader 的 API 后，这种观点进一步加强。本文将对 GeometryReader 的“常见问题”进行剖析，看看它是否真的如此不堪，以及那些被批评为“不符预期”的表现，是否其实是因为开发者的“预期”本身存在问题。
 
@@ -49,10 +50,10 @@ id:1
 如果一开始就把它设计成下面这样的方式，也许就能避免对它的误解和滥用。
 
 ```swift
-@State private proxy:GeometryProxy
+@State private proxy: GeometryProxy
 
 Text("Hello world")
-    .geometryReaer(proxy:$proxy)
+    .geometryReader(proxy: $proxy)
 ```
 
 如果改为基于 View Extension 的方式，我们可以将 geometryReader 的作用描述为：它提供了其所应用的视图的大小、frame 等几何信息，是视图获取**自身**几何信息的有效手段。这种描述可以有效地避免几何信息主要应用于子视图的误解。
@@ -78,7 +79,7 @@ Text("Hello world")
 
 ```swift
 GeometryReader { _ in
-  Rectangle().frame(width:50, height:50)
+  Rectangle().frame(width: 50, height: 50)
   Text("abc").foregroundStyle(.white)
 }
 ```
