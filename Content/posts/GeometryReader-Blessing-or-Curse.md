@@ -187,7 +187,7 @@ struct ImageContainer: View {
 
 在这个演示中，Image 正好满足了之前提出的充满空间且原点对齐的要求，因此直接使用 GeometryReader 作为布局容器是完全没有问题的。
 
-> 本章节包含了许多关于 SwiftUI 的尺寸和布局的知识。如果你对此还不太了解，建议你继续阅读以下文章：[SwiftUI 布局 —— 尺寸（上）](https://www.fatbobman.com/posts/layout-dimensions-1/)、[SwiftUI 布局 —— 尺寸（下）](https://www.fatbobman.com/posts/layout-dimensions-2/)、[SwiftUI 布局 —— 对齐](https://www.fatbobman.com/posts/layout-alignment/)。
+> 本章节包含了许多关于 SwiftUI 的尺寸和布局的知识。如果你对此还不太了解，建议你继续阅读以下文章：[SwiftUI 布局 —— 尺寸（上）](https://fatbobman.com/posts/layout-dimensions-1/)、[SwiftUI 布局 —— 尺寸（下）](https://fatbobman.com/posts/layout-dimensions-2/)、[SwiftUI 布局 —— 对齐](https://fatbobman.com/posts/layout-alignment/)。
 > 
 
 ## 为什么 GeometryReader 无法获取正确的信息
@@ -437,12 +437,12 @@ struct RatioSplitHStackDemo: View {
 
 本章并不是在暗示开发者应避免使用 GeometryReader，而是在提醒开发者，SwiftUI 还有许多其他的布局手段。
 
-> 请阅读 [用 SwiftUI 的方式进行布局](https://www.fatbobman.com/posts/layout-in-SwiftUI-way/) 和 [在 SwiftUI 中实现视图居中的若干种方法](https://www.fatbobman.com/posts/centering_the_View_in_SwiftUI/) 两篇文章，以了解面对同一个需求，SwiftUI 有多种布局手段。
+> 请阅读 [用 SwiftUI 的方式进行布局](https://fatbobman.com/posts/layout-in-SwiftUI-way/) 和 [在 SwiftUI 中实现视图居中的若干种方法](https://fatbobman.com/posts/centering_the_View_in_SwiftUI/) 两篇文章，以了解面对同一个需求，SwiftUI 有多种布局手段。
 > 
 
 ## 里子和面子：不同的尺寸数据
 
-在 SwiftUI 中，有一些 modifier 是在布局之后，在渲染层面对视图进行的调整。在 [SwiftUI 布局 —— 尺寸（ 下 ）](https://www.fatbobman.com/posts/layout-dimensions-2/) 一文中，我们探讨过有关尺寸的“里子和面子”的问题。比如下面的代码：
+在 SwiftUI 中，有一些 modifier 是在布局之后，在渲染层面对视图进行的调整。在 [SwiftUI 布局 —— 尺寸（ 下 ）](https://fatbobman.com/posts/layout-dimensions-2/) 一文中，我们探讨过有关尺寸的“里子和面子”的问题。比如下面的代码：
 
 ```swift
 struct SizeView: View {

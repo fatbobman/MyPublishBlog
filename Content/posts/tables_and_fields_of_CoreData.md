@@ -14,7 +14,7 @@ Core Data 是一个具备数据持久化能力的对象图框架。相同的对�
 
 * 直接获取文件的存储地址
 
-在代码中（ 通常放置在 Core Data Stack 中，更多有关 Stack 的信息，请参阅 [掌握 Core Data Stack](https://www.fatbobman.com/posts/masteringOfCoreDataStack/) ）直接打印持久化存储的保存位置，是最直接、高效的获取手段：
+在代码中（ 通常放置在 Core Data Stack 中，更多有关 Stack 的信息，请参阅 [掌握 Core Data Stack](https://fatbobman.com/posts/masteringOfCoreDataStack/) ）直接打印持久化存储的保存位置，是最直接、高效的获取手段：
 
 ```swift
 container.loadPersistentStores(completionHandler: { _, error in
@@ -45,7 +45,7 @@ if let url = container.persistentStoreCoordinator.persistentStores.first?.url {
 -com.apple.CoreData.CloudKitDebug 1 
 ```
 
-> 更多有关调试参数的内容，请参阅 [Core Data with CloudKit（四）—— 调试、测试、迁移及其他](https://www.fatbobman.com/posts/coreDataWithCloudKit-4/#关闭日志输出)
+> 更多有关调试参数的内容，请参阅 [Core Data with CloudKit（四）—— 调试、测试、迁移及其他](https://fatbobman.com/posts/coreDataWithCloudKit-4/#关闭日志输出)
 
 * 通过断点查找
 
@@ -199,7 +199,7 @@ if let objectID = container.persistentStoreCoordinator.managedObjectID(forURIRep
 }
 ```
 
-> 更多有关从 URL 转换成托管对象的内容请参阅 [在 Spotlight 中展示应用中的 Core Data 数据](https://www.fatbobman.com/posts/spotlight/#onContinueUserActivity)。
+> 更多有关从 URL 转换成托管对象的内容请参阅 [在 Spotlight 中展示应用中的 Core Data 数据](https://fatbobman.com/posts/spotlight/#onContinueUserActivity)。
 
 ### 如何在数据库中标识关系
 

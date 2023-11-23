@@ -9,7 +9,7 @@ mediumURL: https://medium.com/p/cc483046de7b
 
 本文中，我们将探讨如何使用 Core Data with CloudKit 创建与多个 iCloud 用户共享数据的应用。
 
-> 本篇是本系列的最后一篇，本文中将涉及大量之前提到的知识，阅读本文前，最好已经阅读过之前的 [文章](https://www.fatbobman.com/tags/cloudkit/)。
+> 本篇是本系列的最后一篇，本文中将涉及大量之前提到的知识，阅读本文前，最好已经阅读过之前的 [文章](https://fatbobman.com/tags/cloudkit/)。
 
 [Core Data with CloudKit （一） —— 基础](/posts/coreDataWithCloudKit-1/)
 
@@ -318,7 +318,7 @@ CoreDataStack 的设置基本上同前几篇文章中的设置类似，需要注
 
 ### 包装 UICloudSharingController ###
 
-想更多地了解 UIViewControllerRepresentable 的使用方法，请阅读我的另一篇文章 [在 SwiftUI 中使用 UIKit 视图](https://www.fatbobman.com/posts/uikitInSwiftUI/)。
+想更多地了解 UIViewControllerRepresentable 的使用方法，请阅读我的另一篇文章 [在 SwiftUI 中使用 UIKit 视图](https://fatbobman.com/posts/uikitInSwiftUI/)。
 
 对 UICloudShareingController 的包装并不困难，但需要注意以下几点：
 
@@ -462,7 +462,7 @@ private func openSharingController(note: Note) {
 
 ## 总结 ##
 
-尽管仍未完全成熟，但使用 Core Data with CloudKit 来共享数据仍是一个令人惊喜的功能。我对其在 [健康笔记 3](https://www.fatbobman.com/healthnotes/) 中的表现充满了期待和信心。
+尽管仍未完全成熟，但使用 Core Data with CloudKit 来共享数据仍是一个令人惊喜的功能。我对其在 [健康笔记 3](https://fatbobman.com/healthnotes/) 中的表现充满了期待和信心。
 
 从开启本系列文章开始，完全没有想到整个过程竟需耗费如此多的时间和精力。不过从整理和写作过程中我也受益颇多，对之前掌握不扎实的知识通过反复的强化加深了认识。
 

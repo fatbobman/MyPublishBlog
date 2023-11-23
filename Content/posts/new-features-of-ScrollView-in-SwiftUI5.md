@@ -131,7 +131,7 @@ ZStack(alignment: .bottom) {
 
 ![image-20230612112755403](https://cdn.fatbobman.com/image-20230612112755403.png)
 
-> 阅读 [掌握 SwiftUI 的 Safe Area](https://www.fatbobman.com/posts/safeArea/) 一文，了解更多有关安全区域的内容。
+> 阅读 [掌握 SwiftUI 的 Safe Area](https://fatbobman.com/posts/safeArea/) 一文，了解更多有关安全区域的内容。
 
 ## scrollIndicatorsFlash
 
@@ -272,7 +272,7 @@ struct ScrollPositionInitialAnchorDemo: View {
 
 ![scrollPostion_initialAnchor_demo_2023-06-12_14.37.09.2023-06-12 14_37_47](https://cdn.fatbobman.com/scrollPostion_initialAnchor_demo_2023-06-12_14.37.09.2023-06-12%2014_37_47.gif)
 
-> 尽管使用此修饰符实现初始定位十分容易，但当数据集很大时，仍然会有较严重的性能问题。可采用 [优化在 SwiftUI List 中显示大数据集的响应效率](https://www.fatbobman.com/posts/optimize_the_response_efficiency_of_List/) 一文中介绍的方式来解决。
+> 尽管使用此修饰符实现初始定位十分容易，但当数据集很大时，仍然会有较严重的性能问题。可采用 [优化在 SwiftUI List 中显示大数据集的响应效率](https://fatbobman.com/posts/optimize_the_response_efficiency_of_List/) 一文中介绍的方式来解决。
 
 ## scrollPostion(id:)
 
@@ -282,7 +282,7 @@ struct ScrollPositionInitialAnchorDemo: View {
 - 当 ForEach 中的数据源遵循 Identifiable 协议时，无需显式使用 `id` 修饰符设置标识
 - 与 scrollTargetLayout 配合使用，可以获取当前的滚动位置（视图标识）
 - 不支持锚点设定，固定锚点为子视图的 center
-- 正如 [优化在 SwiftUI List 中显示大数据集的响应效率](https://www.fatbobman.com/posts/optimize_the_response_efficiency_of_List/) 一文所提到的，当数据集很大时，也会出现性能问题。
+- 正如 [优化在 SwiftUI List 中显示大数据集的响应效率](https://fatbobman.com/posts/optimize_the_response_efficiency_of_List/) 一文所提到的，当数据集很大时，也会出现性能问题。
 
 ```swift
 struct ScrollPositionIDDemo: View {

@@ -302,7 +302,7 @@ struct SetIdealSize: View {
 
 ![https://cdn.fatbobman.com/set-ideal-size-demo_2023-11-05_16.49.08.2023-11-05%2016_50_09.gif](https://cdn.fatbobman.com/set-ideal-size-demo_2023-11-05_16.49.08.2023-11-05%2016_50_09.gif)
 
-> 如果你想进一步了解更多有关理想尺寸和建议尺寸的内容，请阅读 [SwiftUI 布局 —— 尺寸（ 上 ）](https://www.fatbobman.com/posts/layout-dimensions-1/) 一文。
+> 如果你想进一步了解更多有关理想尺寸和建议尺寸的内容，请阅读 [SwiftUI 布局 —— 尺寸（ 上 ）](https://fatbobman.com/posts/layout-dimensions-1/) 一文。
 > 
 
 ```responser

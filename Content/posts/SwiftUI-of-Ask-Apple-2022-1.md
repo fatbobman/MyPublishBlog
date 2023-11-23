@@ -44,7 +44,7 @@ Q：你好，我的问题是关于 TextField 的。假设我们想创建一个�
 
 A：一般来说，我建议使用 `.safeAreaInset(edge: .bottom)` 来实现底部文本字段。然后根据它的焦点状态来定制它的显示样式。希望这对你的设计有用。
 
-> 自从 SwiftUI 3.0 提供了 safeAreaInset 视图修饰器之后，实现问题中的案例将不再是难事。详情请参阅 [掌握 SwiftUI 的 Safe Area](https://www.fatbobman.com/posts/safeArea/) 一文。
+> 自从 SwiftUI 3.0 提供了 safeAreaInset 视图修饰器之后，实现问题中的案例将不再是难事。详情请参阅 [掌握 SwiftUI 的 Safe Area](https://fatbobman.com/posts/safeArea/) 一文。
 
 ### 在使用 environmentObject 的情况下，如何避免创建实例的视图被重新计算
 
@@ -52,7 +52,7 @@ Q：如何在避免重新计算顶层视图 body 的情况下，在不同子树�
 
 A：EnvironmentObject 是一个很好的工具。如果你不想让父视图也被更新，可以在创建对象时不使用 @StateObject 或 @ObservedObject 。
 
-> 对于苹果工程师给予的建议有一点请注意，那就是如果有在父视图中修改该环境对象实例的需求，须确保父视图不会被反复重构（ SwiftUI 重新创建视图类型的实例 ）。详情请参阅 [StateObject 与 ObservedObject](https://www.fatbobman.com/posts/StateObject_and_ObservedObject/) 。
+> 对于苹果工程师给予的建议有一点请注意，那就是如果有在父视图中修改该环境对象实例的需求，须确保父视图不会被反复重构（ SwiftUI 重新创建视图类型的实例 ）。详情请参阅 [StateObject 与 ObservedObject](https://fatbobman.com/posts/StateObject_and_ObservedObject/) 。
 
 ### NavigationPath
 
@@ -83,7 +83,7 @@ Q：你好！是否有其他方法可以直接根据状态的变化对视图进�
 
 A：你可以通过使用 `.animation(.easeInOut, value: model.state)` ，直接对特定状态的变化进行动画。model.state 的任何变动都将引起动画。
 
-> 通过使用与某个特定状态绑定的 animation 修饰器（ 老版本的 animation 修饰器已被软弃用 ），可以实现更加精确的动画效果。阅读 [SwiftUI 的动画机制](https://www.fatbobman.com/posts/the_animation_mechanism_of_swiftUI/) 一文，了解更多有关动画的内容。
+> 通过使用与某个特定状态绑定的 animation 修饰器（ 老版本的 animation 修饰器已被软弃用 ），可以实现更加精确的动画效果。阅读 [SwiftUI 的动画机制](https://fatbobman.com/posts/the_animation_mechanism_of_swiftUI/) 一文，了解更多有关动画的内容。
 
 ### 自适应高度 Sheet
 
@@ -128,7 +128,7 @@ Q：在我的应用程序中，我在 UIHostingController 中托管了 SwiftUI �
 
 A：当在其他类型的 UIViewControllers 中使用 UIHostingController 时，你可能会通过调用托管控制器的方法来触发视图加载提前发生。对于非惰性视图（如 LazyVStack ），一旦 hosting controller 的视图被初始化，onAppear 将被调用。 对于惰性视图，当在 hosting controller 视图上调用 layoutSubviews 或 sizeThatFits 方法时，会初始化视图。所以，如果你看到视图在你的 UITabBarController 的 init 方法中被初始化，就需要看看在 init 中到底做了什么。可以试着把 init 中的工作转移到 UITabBarController 的 viewDidLoad 中。
 
-> 惰性容器中的视图，会根据其是否出现在可视区域而反复调用 onAppear 和 onDisapper。但 onAppear 和 onDisappear 并非为视图存续期起点和终点。事实上，这些视图（ 惰性容器中的视图 ）一旦被创建，其存续期将持续到惰性容器被销毁为止。请阅读 [SwiftUI 视图的生命周期研究](https://www.fatbobman.com/posts/swiftUILifeCycle/) 了解更多内容。
+> 惰性容器中的视图，会根据其是否出现在可视区域而反复调用 onAppear 和 onDisapper。但 onAppear 和 onDisappear 并非为视图存续期起点和终点。事实上，这些视图（ 惰性容器中的视图 ）一旦被创建，其存续期将持续到惰性容器被销毁为止。请阅读 [SwiftUI 视图的生命周期研究](https://fatbobman.com/posts/swiftUILifeCycle/) 了解更多内容。
 
 ### 通用导航模型
 
@@ -136,7 +136,7 @@ Q：我们正在使用带有路径参数的 NavigationStack，但当用户在 st
 
 A：目前最好的方法是建立一个导航状态模型对象，它持有导航状态的规范表示，它可以为你的正常和紧凑显示提供专门的程序绑定。例如，在你的模型中，有多个路径，每个标签都有一个，但在 split view 中，只投射其中一个路径的细节。使用一个共同的底层数据源，并将其投射到 UI 的需求上，这样就可以对该模型进行单元测试，以确保常规和紧凑的投影是一致的。
 
-> 在 SwiftUI 4 中，紧凑和常规分别对应着 NavigationStack 和 NavigationSplitView 两种不同的控件。两者有着完全不同的驱动模式。开发者目前仍在尝试创建一个可优雅地同时为两种模式提供路径的模型。阅读 [SwiftUI 4.0 的全新导航系统](https://www.fatbobman.com/posts/new_navigator_of_SwiftUI_4/) ，了解它们之间的不同。
+> 在 SwiftUI 4 中，紧凑和常规分别对应着 NavigationStack 和 NavigationSplitView 两种不同的控件。两者有着完全不同的驱动模式。开发者目前仍在尝试创建一个可优雅地同时为两种模式提供路径的模型。阅读 [SwiftUI 4.0 的全新导航系统](https://fatbobman.com/posts/new_navigator_of_SwiftUI_4/) ，了解它们之间的不同。
 
 ### 位置偏移的方法与效率
 
@@ -144,7 +144,7 @@ Q：在非线性位置（ 有 2 个轴 ）渲染带有圆形图像最好方法�
 
 A：只要性能足够好，能够满足你的用例那就是可取的方法。对我来说，这似乎是一个完全合理的实现。如果你遇到了性能问题或者希望大幅扩展你所绘制的图片数量，可以试一下 .drawingGroup 和 Canvas APIs ，它们都可以用于更密集地绘制。
 
-> 在 SwiftUI 中，能够实现偏移的手段有很多，例如：offset、alignmentGuide、padding、position 等。除了使用习惯外，还应考虑偏移后的视图是否需要会对周边的视图产生影响（ 布局层面 ）。详情请阅读 [在 SwiftUI 中实现视图居中的若干种方法](https://www.fatbobman.com/posts/centering_the_View_in_SwiftUI/) 。
+> 在 SwiftUI 中，能够实现偏移的手段有很多，例如：offset、alignmentGuide、padding、position 等。除了使用习惯外，还应考虑偏移后的视图是否需要会对周边的视图产生影响（ 布局层面 ）。详情请阅读 [在 SwiftUI 中实现视图居中的若干种方法](https://fatbobman.com/posts/centering_the_View_in_SwiftUI/) 。
 
 ### NavigationSplitView 的尺寸规则
 
@@ -174,7 +174,7 @@ Q：如果同步操作，`.task` 和 `.onAppear` 之间有什么区别吗？换�
 
 A：onAppear 和 task 都是在我们第一次在视图上运行 body 之前调用的。对于你的用例，它们在行为上是等同的。
 
-> 阅读 [掌握 SwiftUI 的 task 修饰器](https://www.fatbobman.com/posts/mastering_SwiftUI_task_modifier/) 了解更多有关 task 的内容。
+> 阅读 [掌握 SwiftUI 的 task 修饰器](https://fatbobman.com/posts/mastering_SwiftUI_task_modifier/) 了解更多有关 task 的内容。
 
 ### WindowGroup 和 OpenWindowAction
 
@@ -188,7 +188,7 @@ Q：是否有办法在视图中用该视图结构参数初始化一个 @StateObj
 
 A：可以通过在 init 方法中手动初始化 @StateObject 来实现。`self._store = StateObject(wrappedValue: Store(id: id))` 。澄清一下。下划线会让它看起来有点诡异，但访问底层存储并没有错。官方文档主要试图指出人们最常见的用法，这样他们就不会一开始就试图直接初始化他们的属性包装器。顺便提一下，试图通过底层存储来初始化 @State 是我们在过去警告过的事情。不是因为它不能工作，而是因为如果你不深入了解 @State 和身份（ identity ）的工作原理，它的行为就会相当混乱。
 
-> 属性包装器（ property wrapper ）类型在编译的时候，首先会对用户自定义的属性包装类型代码进行转译。有关下划线的含义和用法，请参阅 [为自定义属性包装类型添加类 @Published 的能力](https://www.fatbobman.com/posts/adding-Published-ability-to-custom-property-wrapper-types/) 。
+> 属性包装器（ property wrapper ）类型在编译的时候，首先会对用户自定义的属性包装类型代码进行转译。有关下划线的含义和用法，请参阅 [为自定义属性包装类型添加类 @Published 的能力](https://fatbobman.com/posts/adding-Published-ability-to-custom-property-wrapper-types/) 。
 
 ![image-20221022135326560](https://cdn.fatbobman.com/image-20221022135326560.png)
 
@@ -253,7 +253,7 @@ init(id: UUID) {
 }
 ```
 
-> 开发人员应该是没理解提问者的疑问，给出了同上面 StateObject 一样的回答。提问者应该是想通过在父视图中不断修改 id 的参数值，来重新初始化 State 的值。这就涉及到了所有符合 DynamicProperty 协议的属性包装器的一个特点：在视图的生存期内仅有第一次初始化的实例会与视图创建关联。详细请阅读 [避免 SwiftUI 视图的重复计算](https://www.fatbobman.com/posts/avoid_repeated_calculations_of_SwiftUI_views/) 。从父视图通过环境值进行传递应该可以满足提问者当前的需求：父视图可以传入新值，当前视图也可以在视图范围内改变该值。
+> 开发人员应该是没理解提问者的疑问，给出了同上面 StateObject 一样的回答。提问者应该是想通过在父视图中不断修改 id 的参数值，来重新初始化 State 的值。这就涉及到了所有符合 DynamicProperty 协议的属性包装器的一个特点：在视图的生存期内仅有第一次初始化的实例会与视图创建关联。详细请阅读 [避免 SwiftUI 视图的重复计算](https://fatbobman.com/posts/avoid_repeated_calculations_of_SwiftUI_views/) 。从父视图通过环境值进行传递应该可以满足提问者当前的需求：父视图可以传入新值，当前视图也可以在视图范围内改变该值。
 
 ## 总结
 

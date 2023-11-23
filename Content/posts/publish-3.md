@@ -214,7 +214,7 @@ extension PublishingStep{
 
 ![publish-3-bilibili-videodemo](https://cdn.fatbobman.com/publish-3-bilibili-videodemo.png)
 
-可以直接在 [https://www.fatbobman.com/video/](https://www.fatbobman.com/video/) 查看演示效果。
+可以直接在 [https://fatbobman.com/video/](https://fatbobman.com/video/) 查看演示效果。
 
 上面代码在我提供的 [范例模板](https://github.com/fatbobman/PublishThemeForFatbobmanBlog) 中可以找到
 
@@ -357,7 +357,7 @@ extension Int{
 .makeDateArchive(),
 ```
 
-可以访问 [https://www.fatbobman.com/archive/](https://www.fatbobman.com/archive/) 查看演示。上面的代码可以在 [Github](https://github.com/fatbobman/Archive_Article_By_Month_Publish_Plugin) 下载。
+可以访问 [https://fatbobman.com/archive/](https://fatbobman.com/archive/) 查看演示。上面的代码可以在 [Github](https://github.com/fatbobman/Archive_Article_By_Month_Publish_Plugin) 下载。
 
 ## 实战 4：给 Publish 添加搜索功能 ##
 

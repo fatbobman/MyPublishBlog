@@ -110,7 +110,7 @@ func textBuilder() -> Text {
 }
 ```
 
-> 可以阅读 [掌握 Result builders](https://www.fatbobman.com/posts/viewBuilder1/) 一文，了解更多有关结构构造器方面的内容
+> 可以阅读 [掌握 Result builders](https://fatbobman.com/posts/viewBuilder1/) 一文，了解更多有关结构构造器方面的内容
 
 ## 在 Text 中使用 SF Symbols
 
@@ -210,7 +210,7 @@ Text("欢迎访问 \(logo) ！")
 
 ![image-20220814160547051](https://cdn.fatbobman.com/image-20220814160547051.png)
 
-> 有关 baseline 对齐线方面的内容，请阅读 [SwiftUI 布局 —— 对齐](https://www.fatbobman.com/posts/layout-alignment/) 一文
+> 有关 baseline 对齐线方面的内容，请阅读 [SwiftUI 布局 —— 对齐](https://fatbobman.com/posts/layout-alignment/) 一文
 
 再次强调，我们只能使用不会改变 Text 或 Image 类型的修饰器。例如 frame、scaleEffect、scaleToFit、alignmentGuide 之类会改变类型状态的修饰器将导致无法进行 Text 插值以及加法运算操作！
 
@@ -285,7 +285,7 @@ struct TempView: View {
 
 ![image-20220815082801108](https://cdn.fatbobman.com/image-20220815082801108.png)
 
-* 标签采用了圆角背景，意味着基于 [AttributedString](https://www.fatbobman.com/posts/attributedString/) 的解决方案被排除
+* 标签采用了圆角背景，意味着基于 [AttributedString](https://fatbobman.com/posts/attributedString/) 的解决方案被排除
 * 标签特定的尺寸与内容，意味着基于自定义 SF Symbols 的解决方案被排除
 * 通过在 Text 中添加 Image 进行图文混排，需要考虑如何处理动态类型变化的问题（ 不可能预生成如此多尺寸的图片 ）
 * 是否可以不通过预制标签图片的方式（ 用动态视图 ）来解决当前问题

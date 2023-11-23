@@ -18,7 +18,7 @@ mediumURL: https://medium.com/p/c9bf021a4c2d
 
 对于视图上下文（viewContext）和其中注册的托管对象实例，开发者应该在主线程队列中进行操作。同样，对于私有上下文和其中注册的托管对象，我们应该在私有上下文所创建的串行队列中进行操作。`perform` 方法将保证所有的操作都在正确的队列中进行。
 
-> 阅读 [关于 Core Data 并发编程的几点提示](https://www.fatbobman.com/posts/concurrencyOfCoreData/) 一文，详细了解不同类型的托管对象上下文、串行队列、`perform` 的使用方法以及其他在 Core Data 中进行并发编程的注意事项。
+> 阅读 [关于 Core Data 并发编程的几点提示](https://fatbobman.com/posts/concurrencyOfCoreData/) 一文，详细了解不同类型的托管对象上下文、串行队列、`perform` 的使用方法以及其他在 Core Data 中进行并发编程的注意事项。
 
 从理论上讲，只要我们严格按照上述要求进行编程，就可以在 Core Data 中避免大多数并发问题。因此，开发者经常会编写类似以下的代码：
 
@@ -235,7 +235,7 @@ extension DispatchQueue {
 }
 ```
 
-> [SwiftDataKit](https://www.fatbobman.com/posts/use-Core-Data-features-in-SwiftData-by-SwiftDataKit/) 将让开发者能够访问 SwiftData 元素底层的 Core Data 对象。
+> [SwiftDataKit](https://fatbobman.com/posts/use-Core-Data-features-in-SwiftData-by-SwiftDataKit/) 将让开发者能够访问 SwiftData 元素底层的 Core Data 对象。
 
 在 `checkQueueInfo` 方法中，我们分别获取并打印了当前 actor 的执行序列和托管对象上下文对应的队列的名称。
 
@@ -337,7 +337,7 @@ func updateItemInContextAndRowCache(identifier: PersistentIdentifier,timestamp: 
 
 并非每个开发者都会严格按照 SwiftData 所期望的方式（ModelActor）进行并发编程。在代码逐步复杂后，或许会不小心出现访问或设置其他队列上的 PerisistentModel 属性的情况。根据 Core Data 的经验，在开启调试参数 `com.apple.CoreData.ConcurrencyDebug 1` 的情况下，这种访问将必然导致应用崩溃。
 
-> 更多调试参数，请阅读 [Core Data with CloudKit（四）—— 调试、测试、迁移及其他](https://www.fatbobman.com/posts/coreDataWithCloudKit-4/) 一文。
+> 更多调试参数，请阅读 [Core Data with CloudKit（四）—— 调试、测试、迁移及其他](https://fatbobman.com/posts/coreDataWithCloudKit-4/) 一文。
 
 但是，在 SwiftData 中，尽管我们会收到一些警告信息（`Capture non-sendable`），上述操作并不会出现问题，可以正常进行数据访问和修改。这是为什么呢？
 
@@ -355,7 +355,7 @@ Button("Modify in Wrong Thread") {
 
 ![modify-in-wrong-thread-demo1_2023-10-09_08.43.38.2023-10-09 08_44_44](https://cdn.fatbobman.com/modify-in-wrong-thread-demo1_2023-10-09_08.43.38.2023-10-09%2008_44_44.gif)
 
-如果你看过上一篇文章 [揭秘 SwiftData 的数据建模原理](https://www.fatbobman.com/posts/unveiling-the-Data-Modeling-Principles-of-SwiftData/)，或许会记得其中提到 SwiftData 为 PersistentModel 和 BackingData 提供的 Get 和 Set 方法不仅可以读取和设置属性，还具备队列调度的能力（确保线程安全）。换句话说，即使我们在错误的线程（队列）对属性进行修改，这些方法会自动将操作切换到正确的队列中进行。通过进一步尝试，我们发现这种调度能力至少存在于 BackingData 协议的实现层面。
+如果你看过上一篇文章 [揭秘 SwiftData 的数据建模原理](https://fatbobman.com/posts/unveiling-the-Data-Modeling-Principles-of-SwiftData/)，或许会记得其中提到 SwiftData 为 PersistentModel 和 BackingData 提供的 Get 和 Set 方法不仅可以读取和设置属性，还具备队列调度的能力（确保线程安全）。换句话说，即使我们在错误的线程（队列）对属性进行修改，这些方法会自动将操作切换到正确的队列中进行。通过进一步尝试，我们发现这种调度能力至少存在于 BackingData 协议的实现层面。
 
 ```swift
 Button("Modify in Wrong Thread") {

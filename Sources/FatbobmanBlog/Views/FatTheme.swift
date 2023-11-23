@@ -146,7 +146,7 @@ private struct FatThemeHTMLFactory<Site: Website>: HTMLFactory {
 //                                                    .width(175),
 //                                                    .height(40)
 //                                                ),
-//                                                .href("https://www.fatbobman.com/support/")
+//                                                .href("https://fatbobman.com/support/")
 //                                            )
 //                                        )
 //                                    ),
@@ -538,7 +538,7 @@ extension Node where Context == HTML.BodyContext {
             </style>
             <div class="connectMe">
               如果您发现本文对您有所帮助或者享受阅读，请考虑捐赠以支持我的写作。您的贡献将帮助我继续为您创造有价值的内容。<br><br>
-              通过 <span class="donate"><a href="https://www.fatbobman.com/support/" style="color: inherit; text-decoration: none;">微信</a></span>、 <span class="donate"><a href="https://patreon.com/fatbobman" style="color: inherit; text-decoration: none;">Patreon</a></span>、 <span class="donate"><a href="https://www.buymeacoffee.com/fatbobman" style="color: inherit; text-decoration: none;">Buy Me a Coffee</a></span> 进行捐赠。<br><br>
+              通过 <span class="donate"><a href="https://fatbobman.com/support/" style="color: inherit; text-decoration: none;">微信</a></span>、 <span class="donate"><a href="https://patreon.com/fatbobman" style="color: inherit; text-decoration: none;">Patreon</a></span>、 <span class="donate"><a href="https://www.buymeacoffee.com/fatbobman" style="color: inherit; text-decoration: none;">Buy Me a Coffee</a></span> 进行捐赠。<br><br>
               欢迎通过 <a href="https://twitter.com/fatbobman">Twitter</a>、 <a href="https://discord.gg/ApqXmy5pQJ">Discord 频道</a> 或下方的留言板与我进行交流。
             </div>
 

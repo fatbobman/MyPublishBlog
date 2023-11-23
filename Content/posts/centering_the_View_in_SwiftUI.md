@@ -277,7 +277,7 @@ hello
     .background(.pink)
 ```
 
-> 想了解 frame 的实现原理请阅读 [SwiftUI 布局 —— 尺寸（ 下 ）](https://www.fatbobman.com/posts/layout-dimensions-2/) 一文
+> 想了解 frame 的实现原理请阅读 [SwiftUI 布局 —— 尺寸（ 下 ）](https://fatbobman.com/posts/layout-dimensions-2/) 一文
 
 ### overlay
 
@@ -308,7 +308,7 @@ hello
 
 很遗憾，你将获得与上文中 ZStack 错误用法类似的结果。文字可能会超长，视图无法获得 spacing （ 即使进行了显式设置 ）。
 
-> 请阅读 [SwiftUI 布局 —— 对齐](https://www.fatbobman.com/posts/layout-alignment/) ，了解更多有关 ZStack、overlay、background 的对齐机制
+> 请阅读 [SwiftUI 布局 —— 对齐](https://fatbobman.com/posts/layout-alignment/) ，了解更多有关 ZStack、overlay、background 的对齐机制
 
 ## Geometry
 
@@ -337,5 +337,5 @@ GeometryReader { proxy in
 
 本文选取了一些有代表性的解决方法，随着 SwiftUI 功能的不断增强，会有越来越多的手段可供使用。万变不离其宗，掌握了 SwiftUI 的布局原理，无论需求如何变化都可轻松应对。
 
-我为本文这种通过多种方法来解决一个问题的方式添加了【小题大做】标签，目前使用该便签的文章还有：[在 Core Data 中查询和使用 count 的若干方法](https://www.fatbobman.com/posts/countInCoreData/)、[在 SwiftUI 视图中打开 URL 的若干方法](https://www.fatbobman.com/posts/open_url_in_swiftUI/) 。
+我为本文这种通过多种方法来解决一个问题的方式添加了【小题大做】标签，目前使用该便签的文章还有：[在 Core Data 中查询和使用 count 的若干方法](https://fatbobman.com/posts/countInCoreData/)、[在 SwiftUI 视图中打开 URL 的若干方法](https://fatbobman.com/posts/open_url_in_swiftUI/) 。
 

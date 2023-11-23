@@ -55,8 +55,8 @@ id:1
 
 在 SwiftUI 中，ForEach 是一个经常使用的控件，尤其在 Lazy 容器中。 然而，直到 4.0 版本，它的稳定性和性能仍然无法完全令人满意。例如：
 
-- [在子视图使用的 id 修饰符的情况下，优化机制失效](https://www.fatbobman.com/posts/optimize_the_response_efficiency_of_List/)
-- [内存释放不及时，容易导致应用崩溃](https://www.fatbobman.com/posts/memory-usage-optimization/)
+- [在子视图使用的 id 修饰符的情况下，优化机制失效](https://fatbobman.com/posts/optimize_the_response_efficiency_of_List/)
+- [内存释放不及时，容易导致应用崩溃](https://fatbobman.com/posts/memory-usage-optimization/)
 - [task 修饰器闭包任务无法 100% 调用（ 已在 16.4 修复 ）](https://twitter.com/fatbobman/status/1574252681467637760?s=61&t=ecQh6_M1bDgzJDGbrFupaw)
 - [二级及以下子视图在 onDisappear 后无法保持状态](https://twitter.com/fatbobman/status/1572507700436807683?s=61&t=6wE0YqMg9Y85zDZMQr_ycg)（ 在写本文前两天，收到苹果的回复，证实此为 by Design 的行为 ）
 

@@ -14,9 +14,9 @@ id:1
 
 ## 需求 ##
 
-由于 [健康笔记](https://www.fatbobman.com/healthnotes/) 中数据录入都是在 Sheet 中进行的，为了防止用户在录入过程中由于误操作（使用手势取消 Sheet）丢失数据，因此，从最初的版本开始，我就一直使用各种手段加强对 Sheet 的控制。
+由于 [健康笔记](https://fatbobman.com/healthnotes/) 中数据录入都是在 Sheet 中进行的，为了防止用户在录入过程中由于误操作（使用手势取消 Sheet）丢失数据，因此，从最初的版本开始，我就一直使用各种手段加强对 Sheet 的控制。
 
-去年 9 月，我在文章 [【在 SwiftUI 中制作可以控制取消手势的 Sheet】](https://www.fatbobman.com/posts/swiftui-dismiss-sheet/) 中介绍了 [健康笔记 2.0](https://www.fatbobman.com/healthnotes/) 版本的 Sheet 控制实现方法。目标为：
+去年 9 月，我在文章 [【在 SwiftUI 中制作可以控制取消手势的 Sheet】](https://fatbobman.com/posts/swiftui-dismiss-sheet/) 中介绍了 [健康笔记 2.0](https://fatbobman.com/healthnotes/) 版本的 Sheet 控制实现方法。目标为：
 
 * 通过代码控制是否允许手势取消 Sheet
 * 在用户使用手势取消 Sheet 时可以获得通知，进而拥有更多的控制能力
@@ -27,7 +27,7 @@ id:1
 
 当用户有未保存的数据时，通过手势取消 Sheet 将被阻止，用户需明确选择保存或丢弃数据。
 
-最终的效果已经完全满足了我的要求，不过唯一遗憾的是，使用起来不是那么的直观（具体使用方式请查看 [原文](https://www.fatbobman.com/posts/swiftui-dismiss-sheet/)）。
+最终的效果已经完全满足了我的要求，不过唯一遗憾的是，使用起来不是那么的直观（具体使用方式请查看 [原文](https://fatbobman.com/posts/swiftui-dismiss-sheet/)）。
 
 在今年推出的 SwiftUI 3.0 版本中，苹果添加了一个新的 View 扩展：`interactiveDismissDisabled`，该扩展实现了上面的第一个要求——通过代码控制是否允许手势取消 Sheet。
 
@@ -63,9 +63,9 @@ struct ExampleView: View {
 
 只需在被控制的视图中添加`interactiveDismissDisabled`，不影响其他地方的代码逻辑。这种实现是我所喜欢的，也给了我很大的启发。
 
-在 [WWDC 2021 观后感](https://www.fatbobman.com/posts/wwdc2021/) 一文中，我们已经探讨过 SwiftUI3.0 将会影响非常多的第三方开发者编写 SwiftUI 扩展的思路和实现方式。
+在 [WWDC 2021 观后感](https://fatbobman.com/posts/wwdc2021/) 一文中，我们已经探讨过 SwiftUI3.0 将会影响非常多的第三方开发者编写 SwiftUI 扩展的思路和实现方式。
 
-尽管`interactiveDismissDisabled`的实现很优雅，但仍未完成 [健康笔记](https://www.fatbobman.com/healthnotes/) 需要的第二个功能：在用户使用手势取消 Sheet 时可以获得通知，进而拥有更多的控制能力。因此，我决定使用类似的方式实现它。
+尽管`interactiveDismissDisabled`的实现很优雅，但仍未完成 [健康笔记](https://fatbobman.com/healthnotes/) 需要的第二个功能：在用户使用手势取消 Sheet 时可以获得通知，进而拥有更多的控制能力。因此，我决定使用类似的方式实现它。
 
 ```responser
 id:1
@@ -93,7 +93,7 @@ id:1
 
 创建一个空的 UIView（通过 UIViewRepresentable），在其中查找到持有它的 UIViewController `A`。那么`A`的 presentationController 就是我们需要注入 delegate 的视图控制器。
 
-在之前的 [版本中](https://www.fatbobman.com/posts/swiftui-dismiss-sheet/)，用户使用手势取消时的通知和其他的逻辑是分离的，在使用中不仅繁琐，而且影响代码的观感。本次将一并解决这个问题。
+在之前的 [版本中](https://fatbobman.com/posts/swiftui-dismiss-sheet/)，用户使用手势取消时的通知和其他的逻辑是分离的，在使用中不仅繁琐，而且影响代码的观感。本次将一并解决这个问题。
 
 ## 实现 ##
 

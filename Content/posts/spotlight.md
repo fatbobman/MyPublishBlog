@@ -258,7 +258,7 @@ class CoreDataStack {
 
 对于已经上线的应用程序，在添加了 NSCoreDataCoreSpotlightDelegate 功能后， 首次启动时，Core Data 会自动将满足条件（被标记）的数据添加到 Spotlight 索引中。
 
-> 上述代码中，只开启了持久化历史跟踪，并没有对失效数据进行定期清理，长期运行下去会导致数据膨胀，影响执行效率。如想了解更多有关持久化历史跟踪信息，请阅读 [在 CoreData 中使用持久化历史跟踪](https://www.fatbobman.com/posts/persistentHistoryTracking/)。
+> 上述代码中，只开启了持久化历史跟踪，并没有对失效数据进行定期清理，长期运行下去会导致数据膨胀，影响执行效率。如想了解更多有关持久化历史跟踪信息，请阅读 [在 CoreData 中使用持久化历史跟踪](https://fatbobman.com/posts/persistentHistoryTracking/)。
 
 ### 停止、删除索引 ###
 
@@ -318,7 +318,7 @@ struct CoreSpotlightDelegateDemoApp: App {
 * 通过 objectID 获取到托管对象
 * 根据托管对象，设置应用程序到对应的状态。
 
-> 我个人不太喜欢这种将处理 NSUserActivity 的逻辑嵌入视图代码的做法，如果想在 UIWindowSceneDelegate 中处理 NSUserActivity，请参阅 [Core Data with CloudKit （六） —— 创建与多个 iCloud 用户共享数据的应用](https://www.fatbobman.com/posts/coreDataWithCloudKit-6/) 中关于 UIWindowSceneDelegate 的用法。
+> 我个人不太喜欢这种将处理 NSUserActivity 的逻辑嵌入视图代码的做法，如果想在 UIWindowSceneDelegate 中处理 NSUserActivity，请参阅 [Core Data with CloudKit （六） —— 创建与多个 iCloud 用户共享数据的应用](https://fatbobman.com/posts/coreDataWithCloudKit-6/) 中关于 UIWindowSceneDelegate 的用法。
 
 ### CSSearchQuery ###
 

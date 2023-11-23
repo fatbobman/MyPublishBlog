@@ -23,7 +23,7 @@ extension Node where Context == HTML.BodyContext {
 //                        .width(175),
 //                        .height(40)
 //                    ),
-//                    .href("https://www.fatbobman.com/support/")
+//                    .href("https://fatbobman.com/support/")
 //                )
 //            )
 //            ,

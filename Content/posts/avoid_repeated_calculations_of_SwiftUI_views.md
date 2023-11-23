@@ -126,7 +126,7 @@ struct TestView: View {
 
 由于 SwiftUI 会不定时地创建视图类型的实例（ 非加载视图 ），每次创建的过程都会重新创建一个新的引用对象，因此假设使用上面的代码（ 用 @ObservedObject 创建实例 ），让 @ObservedObject 指向一个不稳定的引用实例时，很容易出现一些怪异的现象。
 
-> 阅读如下的文章，可以帮助你更好地理解本节的内容：[SwiftUI 视图的生命周期研究](https://www.fatbobman.com/posts/swiftUILifeCycle/)、[@state 研究](https://www.fatbobman.com/posts/swiftUI-state/)、[@StateObject 研究](https://www.fatbobman.com/posts/stateobject/)
+> 阅读如下的文章，可以帮助你更好地理解本节的内容：[SwiftUI 视图的生命周期研究](https://fatbobman.com/posts/swiftUILifeCycle/)、[@state 研究](https://fatbobman.com/posts/swiftUI-state/)、[@StateObject 研究](https://fatbobman.com/posts/stateobject/)
 
 ### 避免非必要的声明
 

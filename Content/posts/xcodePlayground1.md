@@ -20,7 +20,7 @@ id:1
 
 `.playgroundbook`是 Swift Playgrounds 特有的包格式，相较`.playground`，它包含了很多独有的功能，这些功能主要用于改善 Swift Playgrounds 在教育和娱乐方面的体验。`.playgroundbook`格式只能在 Swift Playgrounds 上打开。
 
-> 更多关于最新 Swift Playgrounds 4 的介绍请阅读 [Swift Playgrounds 4 娱乐还是生产力](https://www.fatbobman.com/posts/swiftPlaygrounds4/)
+> 更多关于最新 Swift Playgrounds 4 的介绍请阅读 [Swift Playgrounds 4 娱乐还是生产力](https://fatbobman.com/posts/swiftPlaygrounds4/)
 
 本系列介绍的技巧主要针对 Xcode Playground （也就是`.playground`），多数技巧同时适用于 Xcode 和 Swift Playgrounds，仅适用于单独平台的技巧会做出明确地标注。
 
@@ -152,7 +152,7 @@ Swift Playgrounds 中对于 Quick Look 的操作与 Xcode 类似，并可通过�
 
 苹果已经为不少的系统类型提供了 Playground 下的 Quick Look 支持。通过让其他的系统类型（主要集中于较新的 API）以及我们自定义的类型满足 CustomPlaygroundDisplayConvertible 协议，以提供 Quick Look 支持。
 
-比如说，WWDC 2021 上新推出的 [AttributedString](https://www.fatbobman.com/posts/attributedString/) 目前尚不支持 Quick Look ，但通过在 playgroundDescription 中将其转换为 NSAttributedString，就可以直接在 Playground 中显示正确的 Quick Look 了。
+比如说，WWDC 2021 上新推出的 [AttributedString](https://fatbobman.com/posts/attributedString/) 目前尚不支持 Quick Look ，但通过在 playgroundDescription 中将其转换为 NSAttributedString，就可以直接在 Playground 中显示正确的 Quick Look 了。
 
 下图为，没有满足 CustomPlaygroundDisplayConvertible 协议的状况。AttributedString 的 Quick Look 为结构体的 Dump 样式。
 

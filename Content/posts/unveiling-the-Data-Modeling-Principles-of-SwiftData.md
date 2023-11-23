@@ -21,7 +21,7 @@ mediumURL: https://medium.com/p/480c993d2f5c
 
 尽管 SwiftData 是以 Core Data 为基础的，但这并不意味着，在使用 SwiftData 进行开发时，仍需采用与 Core Data 一样的编程原则。由于 SwiftData 结合了众多 Swift 语言的最新特性，因此，在很多场合下，开发者需要用全新的思维来重新设计数据处理逻辑。
 
->  在 [SwiftDataKit：让你在 SwiftData 中使用 Core Data 的高级功能](https://www.fatbobman.com/posts/use-Core-Data-features-in-SwiftData-by-SwiftDataKit/) 一文中，我介绍了如何调用 SwiftData 元素背后对应的 Core Data 对象的技巧。
+>  在 [SwiftDataKit：让你在 SwiftData 中使用 Core Data 的高级功能](https://fatbobman.com/posts/use-Core-Data-features-in-SwiftData-by-SwiftDataKit/) 一文中，我介绍了如何调用 SwiftData 元素背后对应的 Core Data 对象的技巧。
 
 ### SwiftData 与 Swift 语言紧密关联，是 Swift 语言的先导者
 
@@ -141,7 +141,7 @@ extension Item: Observation.Observable {}
 
 在 Core Data 中，开发者可以通过 Xcode 提供的数据模型编辑器生成 XML 格式的 .xcdatamodeld 文件。这个文件保存了用于创建数据模型（NSManagedObjectModel）的描述信息。
 
-> 阅读 [CoreData 探秘 - 从数据模型构建到托管对象实例](https://www.fatbobman.com/posts/from-Data-Model-Construction-to-Managed-Object-Instances-in-Core-Data/) 一文，了解更多信息。
+> 阅读 [CoreData 探秘 - 从数据模型构建到托管对象实例](https://fatbobman.com/posts/from-Data-Model-Construction-to-Managed-Object-Instances-in-Core-Data/) 一文，了解更多信息。
 
 SwiftData 则通过 `Model` 宏，直接将上述描述信息集成在了声明代码的内部。
 
@@ -314,7 +314,7 @@ Init Accessors 作为 Swift 语言的新功能，相较属性包装器（ Proper
 
 与 NSManagedObject 利用 Combine 框架提供的 Publisher 与 SwiftUI 的视图绑定不同，SwiftData 的 PersistentModel 采用了新的 Observation 框架。
 
-> 请阅读 [深度解读 Observation —— SwiftUI 性能提升的新途径](https://www.fatbobman.com/posts/mastering-Observation/) ，了解更多有关 Observation 框架的信息。
+> 请阅读 [深度解读 Observation —— SwiftUI 性能提升的新途径](https://fatbobman.com/posts/mastering-Observation/) ，了解更多有关 Observation 框架的信息。
 
 为了满足 Observation 框架的需求，SwiftData 为模型代码添加了以下内容：
 ```swift

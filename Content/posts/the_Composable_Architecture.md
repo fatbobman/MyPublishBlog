@@ -378,7 +378,7 @@ Reducer Protocol 将带来如下优势：
 
 * **与 SwiftUI 视图类似的定义模式**
 
-  通过使用 [result builder](https://www.fatbobman.com/posts/viewBuilder1/) 重构了 Reducer 的组装机制，开发者将采用与声明 SwiftUI 视图一样的方式来声明 Reducer，更加地简洁和直观。由于调整了 Reducer 组装的构成角度，将从子 Reducer pullback 至父 Reducer 的方式修改为从父 Reducer 上 scope 子 Reducer 的逻辑。不仅更加易懂，而且也避免了一些容易出现的组装错误（ 因父子 Reducer 组装时错误的摆放顺序所导致 ）
+  通过使用 [result builder](https://fatbobman.com/posts/viewBuilder1/) 重构了 Reducer 的组装机制，开发者将采用与声明 SwiftUI 视图一样的方式来声明 Reducer，更加地简洁和直观。由于调整了 Reducer 组装的构成角度，将从子 Reducer pullback 至父 Reducer 的方式修改为从父 Reducer 上 scope 子 Reducer 的逻辑。不仅更加易懂，而且也避免了一些容易出现的组装错误（ 因父子 Reducer 组装时错误的摆放顺序所导致 ）
 
 * **更好的 Reducer 性能**
 

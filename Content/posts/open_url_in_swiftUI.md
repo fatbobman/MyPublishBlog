@@ -8,7 +8,7 @@ mediumURL: https://medium.com/p/fa064c041d64
 ---
 本文将介绍在 SwiftUI 视图中打开 URL 的若干种方式，其他的内容还包括如何自动识别文本中的内容并为其转换为可点击链接，以及如何自定义打开 URL 前后的行为等。
 
-> 本文的范例代码是在 Swift Playgrounds 4.1 （ macOS 版本 ）中完成的，可在 [此处下载](https://github.com/fatbobman/BlogCodes/tree/main/openURLinSwiftUI)。了解更多有关 Swift Playgrounds 的内容，可以参阅 [Swift Playgrounds 4 娱乐还是生产力](https://www.fatbobman.com/posts/swiftPlaygrounds4/) 一文。
+> 本文的范例代码是在 Swift Playgrounds 4.1 （ macOS 版本 ）中完成的，可在 [此处下载](https://github.com/fatbobman/BlogCodes/tree/main/openURLinSwiftUI)。了解更多有关 Swift Playgrounds 的内容，可以参阅 [Swift Playgrounds 4 娱乐还是生产力](https://fatbobman.com/posts/swiftPlaygrounds4/) 一文。
 
 ![image-20220520182722773](https://cdn.fatbobman.com/image-20220520182722773.png)
 
@@ -126,7 +126,7 @@ Text("[Wikipedia](https://www.wikipedia.org) ~~Hi~~ [13900000000](tel://13900000
 ```swift
 let attributedString:AttributedString = {
     var fatbobman = AttributedString("肘子的 Swift 记事本")
-    fatbobman.link = URL(string: "https://www.fatbobman.com")!
+    fatbobman.link = URL(string: "https://fatbobman.com")!
     fatbobman.font = .title
     fatbobman.foregroundColor = .green // link 不为 nil 的 Run，将自动屏蔽自定义的前景色和下划线
     var tel = AttributedString("电话号码")
@@ -142,7 +142,7 @@ Text(attributedString)
 
 ![image-20220520144103395](https://cdn.fatbobman.com/image-20220520144103395.png)
 
-> 更多有关 AttributedString 的内容，请参阅 [AttributedString——不仅仅让文字更漂亮](https://www.fatbobman.com/posts/attributedString/)
+> 更多有关 AttributedString 的内容，请参阅 [AttributedString——不仅仅让文字更漂亮](https://fatbobman.com/posts/attributedString/)
 
 ### Text 用例 4 ：识别字符串中的 URL 信息，并转换成 AttributedString
 
@@ -286,7 +286,7 @@ public struct OpenURLAction {
 比如：
 
 ```swift
-Text("www.fatbobman.com feedback@fatbobman.com 13900000000".toDetectedAttributedString()) // 创建三个链接 https mailto tel
+Text("fatbobman.com feedback@fatbobman.com 13900000000".toDetectedAttributedString()) // 创建三个链接 https mailto tel
     .environment(\.openURL, OpenURLAction { url in
         switch url.scheme {
         case "mailto":
@@ -337,7 +337,7 @@ struct ContentView: View {
     
     let attributedString:AttributedString = {
         var fatbobman = AttributedString("肘子的 Swift 记事本")
-        fatbobman.link = URL(string: "https://www.fatbobman.com")!
+        fatbobman.link = URL(string: "https://fatbobman.com")!
         fatbobman.font = .title
         var tel = AttributedString("电话号码")
         tel.link = URL(string:"tel://13900000000")
@@ -351,7 +351,7 @@ struct ContentView: View {
         Form {
             Section("NSDataDetector + AttributedString"){
                 // 使用 NSDataDetector 进行转换
-                Text("https://www.fatbobman.com 13900000000 feedback@fatbobman.com".toDetectedAttributedString())
+                Text("https://fatbobman.com 13900000000 feedback@fatbobman.com".toDetectedAttributedString())
             }
         }
         .environment(\.openURL, .init(handler: { url in

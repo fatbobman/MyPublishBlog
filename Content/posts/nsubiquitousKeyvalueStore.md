@@ -144,7 +144,7 @@ struct ContentView: View {
 }
 ```
 
-task 中的代码的作用与下方的代码等同，想了解具体的用法，可以参看 [聊聊 Combine 和 async/await 之间的合作](https://www.fatbobman.com/posts/combineAndAsync/) 一文：
+task 中的代码的作用与下方的代码等同，想了解具体的用法，可以参看 [聊聊 Combine 和 async/await 之间的合作](https://fatbobman.com/posts/combineAndAsync/) 一文：
 
 ```swift
 .onReceive(NotificationCenter.default.publisher(for: NSUbiquitousKeyValueStore.didChangeExternallyNotification)) { _ in
@@ -178,7 +178,7 @@ task 中的代码的作用与下方的代码等同，想了解具体的用法，
 
 随着 app 中创建的 UserDefaults、NSUbiquitousKeyValueStore 键值对的不断增加，逐个在视图中引入的方式将让数据变得难以管理。因此需要寻找一种适合 SwiftUI 的方式，将键值对统一配置、集中管理。
 
-在 [@AppStorage 研究](https://www.fatbobman.com/posts/appstorage/) 一文中，我介绍过如何对@AppStorage 进行统一管理、集中注入的方法。例如：
+在 [@AppStorage 研究](https://fatbobman.com/posts/appstorage/) 一文中，我介绍过如何对@AppStorage 进行统一管理、集中注入的方法。例如：
 
 ```swift
 class Defaults: ObservableObject {
@@ -195,7 +195,7 @@ TextField("name",text:defaults.$name)
 
 那么，是否可以沿用这个思路将@CloudStorage 纳入进来呢？
 
-> 2022 年 5 月更新：我按照 @Published 的实现方式重新修改了 @CloudStorage 。现在 @CloudStorage 的行为已经与 @AppStorage 完全一致了。详细内容请参阅[为自定义属性包装类型添加类 @Published 的能力](https://www.fatbobman.com/posts/adding-Published-ability-to-custom-property-wrapper-types/)。
+> 2022 年 5 月更新：我按照 @Published 的实现方式重新修改了 @CloudStorage 。现在 @CloudStorage 的行为已经与 @AppStorage 完全一致了。详细内容请参阅[为自定义属性包装类型添加类 @Published 的能力](https://fatbobman.com/posts/adding-Published-ability-to-custom-property-wrapper-types/)。
 
 ~~遗憾的是，我至今仍没搞清@AppStorage 是如何从代码层面实现类似@Published 行为的原理。因此，我们只能采用一点相对笨拙的方式来达到目的~~。
 

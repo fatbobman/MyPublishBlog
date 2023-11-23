@@ -531,7 +531,7 @@ let a = A()
 a.b.a = 100 // 并不会触发视图更新
 ```
 
-我曾经编写过一个 `@PublishedObject` 属性包装器来解决这个问题。详细信息，请阅读 [为自定义属性包装类型添加类 @Published 的能力](https://www.fatbobman.com/posts/adding-Published-ability-to-custom-property-wrapper-types/) 一文。原理上，`@PublishedObject` 是通过找到外部对象 A（*enclosing instance*）的 `objectWillChange` ，在 B 的属性发生变化时通知 A 的订阅者。也就是说，用了高度耦合的方式才实现了可观察对象的嵌套。
+我曾经编写过一个 `@PublishedObject` 属性包装器来解决这个问题。详细信息，请阅读 [为自定义属性包装类型添加类 @Published 的能力](https://fatbobman.com/posts/adding-Published-ability-to-custom-property-wrapper-types/) 一文。原理上，`@PublishedObject` 是通过找到外部对象 A（*enclosing instance*）的 `objectWillChange` ，在 B 的属性发生变化时通知 A 的订阅者。也就是说，用了高度耦合的方式才实现了可观察对象的嵌套。
 
 然而，通过 Observation 框架创建的可观察对象实现嵌套则会简单得多。通过 `withObservationTracking` 创建观察操作时，每个被读取的可观察属性都会主动地创建与订阅者之间的关联。无论它处在关系链中的任何层级，或以任何形式存在（如数组、字典等），都能被正确地跟踪。
 
@@ -587,7 +587,7 @@ a.b = B()
 
 另外， 我们之前在视图中很多的优化技巧也将发生改变。例如，在使用 ObservableObject 时，我们会通过只引入与当前视图有用的数据，来减少不必要的刷新。
 
-> 更多对视图优化技巧，请阅读 [避免 SwiftUI 视图的重复计算](https://www.fatbobman.com/posts/avoid_repeated_calculations_of_SwiftUI_views/) 一文。
+> 更多对视图优化技巧，请阅读 [避免 SwiftUI 视图的重复计算](https://fatbobman.com/posts/avoid_repeated_calculations_of_SwiftUI_views/) 一文。
 >
 
 ```swift

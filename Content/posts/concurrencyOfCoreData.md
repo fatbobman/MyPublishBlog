@@ -47,7 +47,7 @@ persistentContainer.performBackgroundTask{ bgContext in  // 方式二
 }
 ```
 
-如果该项操作的生命周期长、频次多，通常会采用方式一，创建一个专用于该事务的私有队列（比如 [Persistent History Tracking](https://www.fatbobman.com/posts/persistentHistoryTracking/)）。
+如果该项操作的生命周期长、频次多，通常会采用方式一，创建一个专用于该事务的私有队列（比如 [Persistent History Tracking](https://fatbobman.com/posts/persistentHistoryTracking/)）。
 
 如果该项操作执行频次少，可以使用方式二，临时创建一个私有队列，随用随弃（例如文件导入）。
 
@@ -206,7 +206,7 @@ NSManagedObjectID 作为托管对象的紧凑通用标识符，被广泛使用�
 
 除非在程序运行时，否则不要将其作为托管对象的唯一标识（类似主键的存在），最好还是通过创建自己的 id 属性（例如 UUID）来实现。
 
-如果确有将 ID 归档的需要，可以将 NSManagedObjectID 转换成 URI 表示。具体用例，请参阅 [在 Spotlight 中展示应用中的 Core Data 数据](https://www.fatbobman.com/posts/spotlight/)
+如果确有将 ID 归档的需要，可以将 NSManagedObjectID 转换成 URI 表示。具体用例，请参阅 [在 Spotlight 中展示应用中的 Core Data 数据](https://fatbobman.com/posts/spotlight/)
 
 > 前面例子中使用了 object(with: id) 来获取托管对象，其它通过 NSManagedObjectID 获取托管对象的上下文方法还有 regiesterdObject、existingObject。它们的适用场合均有不同，详情见下表。
 
@@ -234,7 +234,7 @@ func merge(_ notification:Notification) {
 
 在 iOS 10 版本，Core Data 为 NSManagedObjectContext 添加了 automaticallyMergesChangesFromParent 属性。
 
-将上下文的 automaticallyMergesChangesFromParent 属性设置为 true，则该上下文会自动合并其它上下文的更改变化。在 [Core Data with CloudKit（二） —— 同步本地数据库到 iCloud 私有数据库](https://www.fatbobman.com/posts/coreDataWithCloudKit-2/) 中可以看到如何通过 automaticallyMergesChangesFromParent 将网络数据的变化体现在用户界面中。
+将上下文的 automaticallyMergesChangesFromParent 属性设置为 true，则该上下文会自动合并其它上下文的更改变化。在 [Core Data with CloudKit（二） —— 同步本地数据库到 iCloud 私有数据库](https://fatbobman.com/posts/coreDataWithCloudKit-2/) 中可以看到如何通过 automaticallyMergesChangesFromParent 将网络数据的变化体现在用户界面中。
 
 ## 设置正确的合并策略 ##
 

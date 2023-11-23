@@ -169,7 +169,7 @@ NSPersistentCloudContainer 是 NSPersistentContainer 的子类，它在简化传
 
 作为苹果生态优势的集中体现，越来越多应用程序都提供了基于 Core Data with CloudKit 的网络同步功能，为此就需要在 Core Data Stack 中为网络同步进行更多的设定和扩展。
 
-> 更多关于 NSPersistentCloudContainer 的信息，请参阅我关于 [Core Data with CloudKit](https://www.fatbobman.com/tags/cloudkit/) 的系列文章。
+> 更多关于 NSPersistentCloudContainer 的信息，请参阅我关于 [Core Data with CloudKit](https://fatbobman.com/tags/cloudkit/) 的系列文章。
 
 除了在 Core Data Stack 中使用 Core Data 框架提供的网络同步方法和属性外，很多开发者都会在 Core Data Stack 的层面创建适合项目应用的方法。例如，苹果在关于 [数据共享的例程](https://developer.apple.com/documentation/coredata/synchronizing_a_local_store_to_the_cloud) 中，为共享参与者、创建 CKShare、获取 CKShare、数据权限判定等方面在 Core Data Stack 上创建了不少便捷方法。
 
@@ -181,13 +181,13 @@ NSPersistentCloudContainer 是 NSPersistentContainer 的子类，它在简化传
 
 因此，Core Data Stack 中又新增了对于 Persistent History Tracking 的设定和事务处理功能需要。
 
-> 更多关于 Persistent History Tracking 的内容，请参阅我的文章 [在 CoreData 中使用持久化历史跟踪](https://www.fatbobman.com/posts/persistentHistoryTracking/)。
+> 更多关于 Persistent History Tracking 的内容，请参阅我的文章 [在 CoreData 中使用持久化历史跟踪](https://fatbobman.com/posts/persistentHistoryTracking/)。
 
 ### CoreData with CoreSpotlight ###
 
 在 WWDC 2021 上，苹果推出了新版的 NSCoreDataCoreSpotlightDelegate API。该 API 极大地降低了在系统 Spotlight 上维护应用程序中的 Core Data 数据的难度。由于创建 NSCoreDataCoreSpotlightDelegate 需要使用 NSPersistentStoreDescription 和 NSPersistentStoreCoordinator ，因此同样需要在 Core Data Stack 中来完成这些工作。Core Data Stack 的内容和功能也将进一步增多。
 
-> 更多关于 NSCoreDataCoreSpotlightDelegate 的内容，请参阅我的文章 [在 Spotlight 中展示应用中的 Core Data 数据](https://www.fatbobman.com/posts/spotlight/)。
+> 更多关于 NSCoreDataCoreSpotlightDelegate 的内容，请参阅我的文章 [在 Spotlight 中展示应用中的 Core Data 数据](https://fatbobman.com/posts/spotlight/)。
 
 ```responser
 id:1
@@ -238,7 +238,7 @@ id:1
 
 在 Xcode 的模版中，内存模式同非内存模式是无法共存的，这在绝大多数的情况下都是合理的。
 
-在开发中的 [健康笔记 3](https://www.fatbobman.com/healthnotes/) 里，我需要让内存模式同非内存模式共存，也就是在特定的情况下，应用程序中同时会存在两个使用同样托管对象模型的 Container，并可随时切换。为了应对同一个托管对象模型文件只能在应用中被一个实例所持有的问题，可以通过创建一个 NSManagedObjectModel 实例，然后分别用该实例来创建 NSPersistentCloudContainer 的方式予以解决。
+在开发中的 [健康笔记 3](https://fatbobman.com/healthnotes/) 里，我需要让内存模式同非内存模式共存，也就是在特定的情况下，应用程序中同时会存在两个使用同样托管对象模型的 Container，并可随时切换。为了应对同一个托管对象模型文件只能在应用中被一个实例所持有的问题，可以通过创建一个 NSManagedObjectModel 实例，然后分别用该实例来创建 NSPersistentCloudContainer 的方式予以解决。
 
 ```swift
 class CoreDataStack {

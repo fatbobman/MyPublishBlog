@@ -160,7 +160,7 @@ func getStrings() -> String {
 
 ## 范例一：AttributedStringBuilder
 
-本例中，我们将创建一个用于声明 AttributedString 的构建器。对 AttributedString 不太熟悉的朋友，可以阅读我的另一篇博文 [AttributedString——不仅仅让文字更漂亮](https://www.fatbobman.com/posts/attributedString/)。
+本例中，我们将创建一个用于声明 AttributedString 的构建器。对 AttributedString 不太熟悉的朋友，可以阅读我的另一篇博文 [AttributedString——不仅仅让文字更漂亮](https://fatbobman.com/posts/attributedString/)。
 
 > 范例一的完整代码可以在 [此处](https://github.com/fatbobman/BlogCodes/tree/main/AttributedStringBuilder/AttributedStringBuilderDemo.playground) 获取（ Demo1 ）
 

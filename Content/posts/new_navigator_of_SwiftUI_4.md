@@ -496,7 +496,7 @@ struct DetailView: View {
 
 ![image-20220611110657857](https://cdn.fatbobman.com/image-20220611110657857.png)
 
-> 为此，我之前不得已在 iPad 版本的应用程序中，使用 HStack 来避免出现上述问题。详情请参阅 [在 SwiftUI 下对 iPad 进行适配](https://www.fatbobman.com/posts/swiftui-ipad/)
+> 为此，我之前不得已在 iPad 版本的应用程序中，使用 HStack 来避免出现上述问题。详情请参阅 [在 SwiftUI 下对 iPad 进行适配](https://fatbobman.com/posts/swiftui-ipad/)
 
 NavigationSpiteView 已经解决了上述问题，它现在可以同 NavigationStack 进行完美的合作。
 
@@ -592,7 +592,7 @@ struct NavigationSplitViewDoubleColumnView: View {
 
 *上述选项并非适用于所有的平台，例如，在 macOS 上，detalOnly 不会起作用*
 
-> 如果想在 SwiftUI 4.0 之前的版本上使用类似的功能，可以参考我在 [用 NavigationViewKit 增强 SwiftUI 的导航视图](https://www.fatbobman.com/posts/NavigationViewKit/) 一文中的实现方法
+> 如果想在 SwiftUI 4.0 之前的版本上使用类似的功能，可以参考我在 [用 NavigationViewKit 增强 SwiftUI 的导航视图](https://fatbobman.com/posts/NavigationViewKit/) 一文中的实现方法
 
 ## 其他增强
 

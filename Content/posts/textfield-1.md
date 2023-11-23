@@ -22,14 +22,14 @@ id:1
 
 ## 为什么不自己封装新的实现 ##
 
-对于很多从 UIKit 转到 SwiftUI 的开发者，当遇到 SwiftUI 官方 API 功能无法满足某些需求的情况下，非常自然地会想通过 UIViewRepresentable 来封装自己的实现（参阅 [在 SwiftUI 中使用 UIKit 视图](https://www.fatbobman.com/posts/uikitInSwiftUI/) 了解更多内容）。在 SwiftUI 早期，这确实是十分有效的手段。不过随着 SwiftUI 的逐渐成熟，苹果为 SwiftUI 的 API 提供了大量独有功能。如果仅为了某些需求而放弃使用官方的 SwiftUI 方案有些得不偿失。
+对于很多从 UIKit 转到 SwiftUI 的开发者，当遇到 SwiftUI 官方 API 功能无法满足某些需求的情况下，非常自然地会想通过 UIViewRepresentable 来封装自己的实现（参阅 [在 SwiftUI 中使用 UIKit 视图](https://fatbobman.com/posts/uikitInSwiftUI/) 了解更多内容）。在 SwiftUI 早期，这确实是十分有效的手段。不过随着 SwiftUI 的逐渐成熟，苹果为 SwiftUI 的 API 提供了大量独有功能。如果仅为了某些需求而放弃使用官方的 SwiftUI 方案有些得不偿失。
 
 因此，在最近几个月的时间里，我逐渐抛弃了通过自行封装或使用其他第三方扩展库来实现某些需求思路。在为 SwiftUI 增加新功能时，要求自己尽量遵守以下原则：
 
 * 优先考虑能否在 SwiftUI 原生方法中找到解决手段
 * 如确需采用非原生方法，尽量采用非破坏性的实现，新增功能不能以牺牲原有功能为代价（需兼容官方的 SwiftUI 修饰方法）
 
-以上原则，在 [SheetKit——SwiftUI 模态视图扩展库](https://www.fatbobman.com/posts/sheetKit/) 和 [用 NavigationViewKit 增强 SwiftUI 的导航视图](https://www.fatbobman.com/posts/NavigationViewKit/) 中均有体现。
+以上原则，在 [SheetKit——SwiftUI 模态视图扩展库](https://fatbobman.com/posts/sheetKit/) 和 [用 NavigationViewKit 增强 SwiftUI 的导航视图](https://fatbobman.com/posts/NavigationViewKit/) 中均有体现。
 
 ## 如何在 TextField 中实现格式化显示 ##
 
@@ -143,7 +143,7 @@ TextField("inputNumber", value: $number, format: .number)
 
 ### Formatter ###
 
-SwiftUI 的 TextField 目前对新老两种 Formatter 都提供了对应的构造方法。我倾向于使用新的 Formatter API。其为旧 Formatter API 的 Swift 原生实现，提供了更便捷、更安全的的声明方式。关于新 Formatter 的更多资料请阅读 [WWDC 2021 新 Formatter API：新老比较及如何自定义](https://www.fatbobman.com/posts/newFormatter/)。
+SwiftUI 的 TextField 目前对新老两种 Formatter 都提供了对应的构造方法。我倾向于使用新的 Formatter API。其为旧 Formatter API 的 Swift 原生实现，提供了更便捷、更安全的的声明方式。关于新 Formatter 的更多资料请阅读 [WWDC 2021 新 Formatter API：新老比较及如何自定义](https://fatbobman.com/posts/newFormatter/)。
 
 不过，TextField 对新 Formatter 的支持目前仍有部分问题，因此在编写代码时需特别注意。例如
 
@@ -391,7 +391,7 @@ extension View {
 
 * 可选值支持
 
-  方案一采用的 TextField 构造方法（支持 formatter）并不支持可选值类型，必须要提供初始值。不利于判断用户是否录入新的信息（更多的信息可参阅 [如何在 SwiftUI 中创建一个实时响应的 Form](https://www.fatbobman.com/posts/swiftui-input-form/)）。
+  方案一采用的 TextField 构造方法（支持 formatter）并不支持可选值类型，必须要提供初始值。不利于判断用户是否录入新的信息（更多的信息可参阅 [如何在 SwiftUI 中创建一个实时响应的 Form](https://fatbobman.com/posts/swiftui-input-form/)）。
 
   方案二中允许不提供初始值，支持可选值。
 

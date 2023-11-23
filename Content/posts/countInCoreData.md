@@ -28,7 +28,7 @@ print(count)
  */
 ```
 
-> 上文代码中的注释部分，为 Core Data 语句对应的 SQL 命令（使用 `-com.apple.CoreData.SQLDebug 1` 生成）。具体的设置方法，请参阅 [Core Data with CloudKit（四）—— 调试、测试、迁移及其他](https://www.fatbobman.com/posts/coreDataWithCloudKit-4/)
+> 上文代码中的注释部分，为 Core Data 语句对应的 SQL 命令（使用 `-com.apple.CoreData.SQLDebug 1` 生成）。具体的设置方法，请参阅 [Core Data with CloudKit（四）—— 调试、测试、迁移及其他](https://fatbobman.com/posts/coreDataWithCloudKit-4/)
 
 ## 二、使用托管对象上下文的 count 方法查询 count 数据
 
@@ -143,7 +143,7 @@ print(results?.count)
 
 ![derived](https://cdn.fatbobman.com/image-20211025183247335.png)
 
-> 完整的派生属性使用方法，请参阅 [如何在 Core Data 中使用 Derived 和 Transient 属性](https://www.fatbobman.com/posts/derivedAndTransient/)。
+> 完整的派生属性使用方法，请参阅 [如何在 Core Data 中使用 Derived 和 Transient 属性](https://fatbobman.com/posts/derivedAndTransient/)。
 
 ```responser
 id:1

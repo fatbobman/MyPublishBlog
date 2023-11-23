@@ -38,7 +38,7 @@ id:1
 
 在计算好当前需要显示的视图所有的视图值后，SwiftUI 将进入到布局阶段。通过父视图向子视图提供建议尺寸，子视图返回需求尺寸这一过程，最终计算出完整的布局结果。
 
-> 有关布局的流程请阅读 [SwiftUI 布局 —— 尺寸](https://www.fatbobman.com/posts/layout-dimensions-1/) 
+> 有关布局的流程请阅读 [SwiftUI 布局 —— 尺寸](https://fatbobman.com/posts/layout-dimensions-1/) 
 
 ### 渲染
 
@@ -54,7 +54,7 @@ SwiftUI 通过调用更加底层的 API，将视图在屏幕上呈现的过程�
 
 口说无凭，本节我们将用证据来证明上述推断。
 
-> 在写 [SwiftUI 视图的生命周期研究](https://www.fatbobman.com/posts/swiftUILifeCycle/) 一文时，我们只能通过现象来推断 onAppear 的调用时机，随着版本的不断提高，SwiftUI 4 中为我们提供了足够的工具让我们可以获得更加确实的证据。
+> 在写 [SwiftUI 视图的生命周期研究](https://fatbobman.com/posts/swiftUILifeCycle/) 一文时，我们只能通过现象来推断 onAppear 的调用时机，随着版本的不断提高，SwiftUI 4 中为我们提供了足够的工具让我们可以获得更加确实的证据。
 
 ### 判断视图正在求值
 

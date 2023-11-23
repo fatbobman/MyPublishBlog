@@ -5,7 +5,7 @@ tags: SwiftUI,WWDC22,布局
 title: SwiftUI 布局 —— 尺寸（ 下 ）
 image: images/layout-dimensions-2.png
 ---
-在 [上篇](https://www.fatbobman.com/posts/layout-dimensions-1/) 中，我们对 SwiftUI 布局过程中涉及的众多尺寸概念进行了说明。本篇中，我们将通过对视图修饰器 frame 和 offset 的仿制进一步加深对 SwiftUI 布局机制的理解，并通过一些示例展示在布局时需要注意的问题。
+在 [上篇](https://fatbobman.com/posts/layout-dimensions-1/) 中，我们对 SwiftUI 布局过程中涉及的众多尺寸概念进行了说明。本篇中，我们将通过对视图修饰器 frame 和 offset 的仿制进一步加深对 SwiftUI 布局机制的理解，并通过一些示例展示在布局时需要注意的问题。
 
 ```responser
 id:1
@@ -322,7 +322,7 @@ SwiftUI 中有两个版本的 frame，本节我们将仿制 `frame(width: CGFloa
 
 * 预处理子视图
 
-  在 [SwiftUI 布局 —— 对齐](https://www.fatbobman.com/posts/layout-alignment/) 一文中我们已经介绍了“对齐”是发生在容器中子视图之间的行为，因此对于 _FrameLayout 这种开发者只提供一个子视图同时又需要对齐的布局容器，我们需要通过在 modifier 中添加一个 Color.clear 视图来解决对齐对象不足的问题
+  在 [SwiftUI 布局 —— 对齐](https://fatbobman.com/posts/layout-alignment/) 一文中我们已经介绍了“对齐”是发生在容器中子视图之间的行为，因此对于 _FrameLayout 这种开发者只提供一个子视图同时又需要对齐的布局容器，我们需要通过在 modifier 中添加一个 Color.clear 视图来解决对齐对象不足的问题
 
 ```swift
 private struct MyFrameLayout: Layout, ViewModifier {

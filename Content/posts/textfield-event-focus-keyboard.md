@@ -52,7 +52,7 @@ struct OnCommitDemo:View{
 }
 ```
 
-如果你需要在用户输入后对用户的录入内容进行判断，最好结合 onCommit 和 onEdtingChanged 一起来处理。如果想实时的对用户的录入数据进行处理，请参阅 [SwiftUI TextField 进阶——格式与校验](https://www.fatbobman.com/posts/textfield-1/)。
+如果你需要在用户输入后对用户的录入内容进行判断，最好结合 onCommit 和 onEdtingChanged 一起来处理。如果想实时的对用户的录入数据进行处理，请参阅 [SwiftUI TextField 进阶——格式与校验](https://fatbobman.com/posts/textfield-1/)。
 
 onCommit 对 SecureField 同样适用。
 

@@ -197,7 +197,7 @@ import Foundation
 
 //: **Bold** *Italic*
 
-//:[肘子的 Swift 记事本](https://www.fatbobman.com)
+//:[肘子的 Swift 记事本](https://fatbobman.com)
 
 //:![图片，可以设置显示大小](pic.png width="400" height="209")
 

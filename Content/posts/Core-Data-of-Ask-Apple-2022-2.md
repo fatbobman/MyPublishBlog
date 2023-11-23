@@ -16,7 +16,7 @@ Q：嗨，能否分享除 `.@count` 之外的“派生属性”的更多语法�
 
 A：NSDerivedAttributeDescription 的文档中有一些 [说明](https://developer.apple.com/documentation/coredata/nsderivedattributedescription) 。
 
-> 派生属性的值是从一个或多个其他的属性的值派生而来。通俗地说，就是在创建或修改托管对象实例时，Core Data 将自动为派生属性生成值。值依据预设的派生表达式（ Derived Expression ）并通过其他的属性值计算而来。详细内容请参阅 [如何在 Core Data 中使用 Derived 和 Transient 属性](https://www.fatbobman.com/posts/derivedAndTransient/) 一文。
+> 派生属性的值是从一个或多个其他的属性的值派生而来。通俗地说，就是在创建或修改托管对象实例时，Core Data 将自动为派生属性生成值。值依据预设的派生表达式（ Derived Expression ）并通过其他的属性值计算而来。详细内容请参阅 [如何在 Core Data 中使用 Derived 和 Transient 属性](https://fatbobman.com/posts/derivedAndTransient/) 一文。
 
 ```responser
 id:1
@@ -36,7 +36,7 @@ Q：在使用 Spotlight 索引 Core Data 中的内容时，是否可以指定 Sp
 
 A：听起来这是一个有价值的功能建议，鼓励你提交反馈请求！当前，从应用程序中调用 API 是从索引中删除项目的唯一方法。
 
-> 当前 Spotlight 确实无法处理类似的状况。如果用户通过文件系统删除了这些文档（ 不经过应用程序 ），那么除非应用程序可以了解哪个文档被删除了，然后通过 CSSearchableIndex.default().deleteSearchableItems(withDomainIdentifiers:) 删除属于该文档的索引，否则只能等待这些索引到期后自动从 Spotlight 中消失。参阅 [在 Spotlight 中展示应用中的 Core Data 数据](https://www.fatbobman.com/posts/spotlight/) 了解更多内容。
+> 当前 Spotlight 确实无法处理类似的状况。如果用户通过文件系统删除了这些文档（ 不经过应用程序 ），那么除非应用程序可以了解哪个文档被删除了，然后通过 CSSearchableIndex.default().deleteSearchableItems(withDomainIdentifiers:) 删除属于该文档的索引，否则只能等待这些索引到期后自动从 Spotlight 中消失。参阅 [在 Spotlight 中展示应用中的 Core Data 数据](https://fatbobman.com/posts/spotlight/) 了解更多内容。
 
 ### @FetchRequest 的性能如何
 

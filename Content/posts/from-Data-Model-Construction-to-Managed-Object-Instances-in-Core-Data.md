@@ -266,7 +266,7 @@ let item = Item(entity: entityDescription, insertInto: nil)
 
 通过直接从 NSManagedObjectModel 获取对应的 EntityDescription，开发者可以在仅拥有 NSManagedObjectModel 实例的情况下，就具备了创建托管对象实例的条件。这对于某些特定情况下，只需要操作数据模型而无需操作托管对象上下文的场景非常有用。
 
-> 阅读 [如何在 Xcode 下预览含有 Core Data 元素的 SwiftUI 视图](https://www.fatbobman.com/posts/coreDataInPreview/) 一文，查看此种方法在 SwiftUI 预览中的应用。
+> 阅读 [如何在 Xcode 下预览含有 Core Data 元素的 SwiftUI 视图](https://fatbobman.com/posts/coreDataInPreview/) 一文，查看此种方法在 SwiftUI 预览中的应用。
 
 正如前文所提到的，开发者并不一定要创建托管对象子类的实例。通过使用正确的 EntityDescription，我们可以创建 NSManagedObject 实例，在许多场景下可以达到同样的效果。
 

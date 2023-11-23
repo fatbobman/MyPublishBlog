@@ -75,7 +75,7 @@ struct ContentView: View {
 
 在阅读 SwiftUI 布局系列文章时，大家可能会对其中某些称谓产生困惑。一会儿父视图、一会儿布局容器，到底它们之间是什么关系，是不是同一个东西？
 
-在 SwiftUI 中，只有符合 View 协议的 component 才能被 [ViewBuilder](https://www.fatbobman.com/posts/viewBuilder1/) 所处理。因此任何一种布局容器，最终都会被包装并以 View 的形式出现在代码中。
+在 SwiftUI 中，只有符合 View 协议的 component 才能被 [ViewBuilder](https://fatbobman.com/posts/viewBuilder1/) 所处理。因此任何一种布局容器，最终都会被包装并以 View 的形式出现在代码中。
 
 例如，下面是 VStack 的构造函数，content 被传递给了真正的布局容器 _VStackLayout 进行布局：
 
@@ -283,7 +283,7 @@ func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout (
 
 * 布局容器（ ZStack 、HStack、VStack 等）
 
-  需求尺寸为容器内子视图按指定对齐指南对齐摆放后（ 已处理动态尺寸视图 ）的总尺寸，详情请参阅 [SwiftUI 布局 —— 对齐](https://www.fatbobman.com/posts/layout-alignment/)
+  需求尺寸为容器内子视图按指定对齐指南对齐摆放后（ 已处理动态尺寸视图 ）的总尺寸，详情请参阅 [SwiftUI 布局 —— 对齐](https://fatbobman.com/posts/layout-alignment/)
 
 * 其他控件例如 TextField、TextEditor、Picker 等
 

@@ -279,7 +279,7 @@ ScrollView {
 
 #### task
 
-task 有两种表现形式，一种与 onAppear 类似，另一种与 onAppear + onChange 类似（请参阅 [了解 SwiftUI 的 onChange](https://www.fatbobman.com/posts/onChange/)）。
+task 有两种表现形式，一种与 onAppear 类似，另一种与 onAppear + onChange 类似（请参阅 [了解 SwiftUI 的 onChange](https://fatbobman.com/posts/onChange/)）。
 
 同 onAppear 类似的版本，可以将其视为 onAppear 的异步版本。如果任务的执行时间较短，下面的代码也可以实现一样的效果：
 

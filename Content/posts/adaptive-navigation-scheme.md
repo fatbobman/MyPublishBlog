@@ -22,7 +22,7 @@ id:1
 
 ## NavigationStack vs NavigationSplitView
 
-> 本节仅对 NavigationStack 和 NavigationSplitView 之间的状态表述进行说明，想了解两者具体用法，请参阅 [SwiftUI 4.0 的全新导航系统](https://www.fatbobman.com/posts/new_navigator_of_SwiftUI_4/) 一文。
+> 本节仅对 NavigationStack 和 NavigationSplitView 之间的状态表述进行说明，想了解两者具体用法，请参阅 [SwiftUI 4.0 的全新导航系统](https://fatbobman.com/posts/new_navigator_of_SwiftUI_4/) 一文。
 
 与视觉表现一致， NavigationStack 用“栈”作为导航的状态表述。使用数组（ NavigationPath 也是对 Hashable 数组的一种包装 ）作为状态的表现形式。在栈中推送和弹出数据的过程对应了导航容器中添加和移除视图的操作。弹出全部数据相当于返回根视图，推送多个数据相当于一次性添加多个视图并直接跳转到最后数据所代表的视图。需要特别注意的是，在 NavigationStack 中，根视图是直接通过代码声明的，并不存在于“栈”中。
 
@@ -143,7 +143,7 @@ if store.detailID != nil {
 
 尽管 List 使用起来很简单，但也有一些不足之处，其中最重要的是无法自定义选中的状态。那么能否在导航列中使用 VStack 或 LazyVStack 实现程序化导航呢？
 
-在不久前的 [Ask Apple](https://www.fatbobman.com/posts/SwiftUI-of-Ask-Apple-2022-2/) 中，苹果工程师介绍了如下的方法：
+在不久前的 [Ask Apple](https://fatbobman.com/posts/SwiftUI-of-Ask-Apple-2022-2/) 中，苹果工程师介绍了如下的方法：
 
 ![image-20221114135939796](https://cdn.fatbobman.com/image-20221114135939796.png)
 

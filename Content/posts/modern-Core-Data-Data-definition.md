@@ -30,7 +30,7 @@ id:1
 
 ## 先有鸡还是先有蛋
 
-Core Data 通过托管对象的方式来呈现数据（ 定义的工作是在数据模型编辑器中进行的 ）。如此一来，开发者可以用自己熟悉的方式来操作数据而无需了解持久化数据的具体结构和组织方式。遗憾的是，托管对象对于以值类型为主的 SwiftUI 来说并不算友好，因此，不少开发者都会在视图中将托管对象实例转换成一个结构体实例以方便接下来的操作（ [如何在 Xcode 下预览含有 Core Data 元素的 SwiftUI 视图](https://www.fatbobman.com/posts/coreDataInPreview/#为_SwiftUI_预览提供_Core_Data_数据)）。
+Core Data 通过托管对象的方式来呈现数据（ 定义的工作是在数据模型编辑器中进行的 ）。如此一来，开发者可以用自己熟悉的方式来操作数据而无需了解持久化数据的具体结构和组织方式。遗憾的是，托管对象对于以值类型为主的 SwiftUI 来说并不算友好，因此，不少开发者都会在视图中将托管对象实例转换成一个结构体实例以方便接下来的操作（ [如何在 Xcode 下预览含有 Core Data 元素的 SwiftUI 视图](https://fatbobman.com/posts/coreDataInPreview/#为_SwiftUI_预览提供_Core_Data_数据)）。
 
 因此，在传统的 Core Data 应用开发方式中，开发者为了创建上图中 Group Cell 视图，通常需要进行如下的步骤（ 以 Todo 应用中的 Task Group 举例 ）：
 
@@ -198,7 +198,7 @@ public enum WrappedID: Equatable, Identifiable, Sendable, Hashable {
 
 ![image-20221128142739129](https://cdn.fatbobman.com/image-20221128142739129.png)
 
-庆幸的是，NSManagedObjectID 是线程安全的，可以被标注为 Sendable（ [这点已经在 Ask Apple 10 月的问答中得到了官方的确认](https://www.fatbobman.com/posts/Core-Data-of-Ask-Apple-2022/#是否可以使用_@unchecked_Sendable_标注_NSManagedObjectID) ）。添加如下代码即可消除上面的警告：
+庆幸的是，NSManagedObjectID 是线程安全的，可以被标注为 Sendable（ [这点已经在 Ask Apple 10 月的问答中得到了官方的确认](https://fatbobman.com/posts/Core-Data-of-Ask-Apple-2022/#是否可以使用_@unchecked_Sendable_标注_NSManagedObjectID) ）。添加如下代码即可消除上面的警告：
 
 ```swift
 extension NSManagedObjectID: @unchecked Sendable {}

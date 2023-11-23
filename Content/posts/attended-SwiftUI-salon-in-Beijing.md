@@ -25,7 +25,7 @@ image: images/attended-SwiftUI-salon-in-Beijing.png
 
 * 东坡肘子 —— 打造可适配多平台的 SwiftUI 应用
 
-  我通过了一个 Demo 应用（ [电影猎手](https://github.com/fatbobman/MovieHunter) ）探讨了使用 SwiftUI 创建多平台应用时应注意的问题。着重讨论了两个我认为比较重要但又容易忽视的点：兼容性和数据源。可在 [此处](https://www.fatbobman.com/posts/building-multiple-platforms-SwiftUI-App/) 阅读我在本次技术沙龙的交流全内容。
+  我通过了一个 Demo 应用（ [电影猎手](https://github.com/fatbobman/MovieHunter) ）探讨了使用 SwiftUI 创建多平台应用时应注意的问题。着重讨论了两个我认为比较重要但又容易忽视的点：兼容性和数据源。可在 [此处](https://fatbobman.com/posts/building-multiple-platforms-SwiftUI-App/) 阅读我在本次技术沙龙的交流全内容。
 
 * 吴卓强（ Harry ）—— SwiftUI 与 UIKit 的互通技巧
 

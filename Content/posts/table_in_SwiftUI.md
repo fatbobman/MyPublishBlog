@@ -534,7 +534,7 @@ struct TableDemo: View {
 
 或许由于 Table 的 DSL 效率不佳的缘故（ 过多的泛型、过多的构造方法、一个 Table 中有两个 Builder ），当前版本的 Xcode 在处理 Table 代码时相当吃力。
 
-另外，由于 Table DSL 的定义并不完整（ 缺少类似 Group 的容器 ），目前至多只能支持十列数据（ 原因请参阅 [ViewBuilder 研究（下） —— 从模仿中学习](https://www.fatbobman.com/posts/viewBuilder2/#创建更多的_buildBlock) ）。
+另外，由于 Table DSL 的定义并不完整（ 缺少类似 Group 的容器 ），目前至多只能支持十列数据（ 原因请参阅 [ViewBuilder 研究（下） —— 从模仿中学习](https://fatbobman.com/posts/viewBuilder2/#创建更多的_buildBlock) ）。
 
 也许苹果是吸取了 Table DSL 的教训，WWDC 2022 中推出的 SwiftUI Charts（ 也是基于 result builder ）在 Xcode 下的性能表现明显地好于 Table 。
 

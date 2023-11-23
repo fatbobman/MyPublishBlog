@@ -7,7 +7,7 @@ image: images/building-multiple-platforms-SwiftUI-App.png
 mediumURL: https://medium.com/p/964624fa7b2
 
 ---
-本文是笔者参加 2023 年 4 月 20 日 “SwiftUI 技术沙龙（ 北京站 ）” 活动的分享内容。基于记忆整理而成。有关本次活动的情况，可以参阅 [我在北京参加 SwiftUI 技术沙龙](https://www.fatbobman.com/posts/attended-SwiftUI-salon-in-Beijing/) 一文。
+本文是笔者参加 2023 年 4 月 20 日 “SwiftUI 技术沙龙（ 北京站 ）” 活动的分享内容。基于记忆整理而成。有关本次活动的情况，可以参阅 [我在北京参加 SwiftUI 技术沙龙](https://fatbobman.com/posts/attended-SwiftUI-salon-in-Beijing/) 一文。
 
 本次活动采用的是线下交流并辅以 live coding 的形式，因此内容的侧重点以及组织形式与以往的博客文章会有明显的不同。
 

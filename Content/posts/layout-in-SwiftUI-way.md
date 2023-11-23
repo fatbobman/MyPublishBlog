@@ -135,7 +135,7 @@ struct OffsetDemo: View {
 .padding(.bottom, show ? 0 : -greenSize.height)
 ```
 
-> 尽管在本例中，offset 和 padding 的视觉呈现一致，但当需要与其他视图一起进行布局时，两者之间还是有很大的不同。padding 是在布局层面进行的调整，添加 padding 后的视图，同时也会对其他视图的布局产生影响。offset 则是在渲染层面进行的位置调整，即使出现了位置变化，其他视图在布局时，并不会将其位移考虑在其中。有关这方面的内容，请参阅 [SwiftUI 布局 —— 尺寸（ 下 ）](https://www.fatbobman.com/posts/layout-dimensions-2/#面子和里子) 一文中“面子和里子”章节。
+> 尽管在本例中，offset 和 padding 的视觉呈现一致，但当需要与其他视图一起进行布局时，两者之间还是有很大的不同。padding 是在布局层面进行的调整，添加 padding 后的视图，同时也会对其他视图的布局产生影响。offset 则是在渲染层面进行的位置调整，即使出现了位置变化，其他视图在布局时，并不会将其位移考虑在其中。有关这方面的内容，请参阅 [SwiftUI 布局 —— 尺寸（ 下 ）](https://fatbobman.com/posts/layout-dimensions-2/#面子和里子) 一文中“面子和里子”章节。
 
 ![padding-offset](https://cdn.fatbobman.com/image-20230228134936300.png)
 
@@ -173,7 +173,7 @@ struct AlignmentDemo: View {
 
 无论为同一个视图添加多少层 overlay（ 或 background ），它们为子视图所提供的建议尺寸都是一致的（ 与原视图的尺寸一致 ）。在上面的代码中，由于两个视图使用了同样的动画曲线设定，因此，在移动时并不会出现分离的情况。但如果为视图分别设定不同的动画曲线（ 例如：一个 linear、一个 easeIn ），状态切换时便无法保证视图之间的完全紧密。
 
-> 有关建议尺寸、需求尺寸等内容，请参阅 [SwiftUI 布局 —— 尺寸（ 上 ）](https://www.fatbobman.com/posts/layout-dimensions-1/) 一文
+> 有关建议尺寸、需求尺寸等内容，请参阅 [SwiftUI 布局 —— 尺寸（ 上 ）](https://fatbobman.com/posts/layout-dimensions-1/) 一文
 
 ### 三、NameSpace
 
@@ -216,7 +216,7 @@ struct NameSpaceDemo: View {
 
 让视图一、视图二在两个状态下分别使用对应的 ID 位置，即可实现本文需求。
 
-> NameSpace + matchedGeometryEffect 是一个十分强大的组合，尤其擅长面对同时有位置及尺寸变化的场景。不过需要注意的是，NameSpace 只适用于在同一棵视图树中分享数据，如果出现了例如 [一段因 @State 注入机制所产生的“灵异代码”](https://www.fatbobman.com/posts/bug-code-by-state-inject/) 一文中提到了两棵树的情况，则无法实现几何信息的共享。
+> NameSpace + matchedGeometryEffect 是一个十分强大的组合，尤其擅长面对同时有位置及尺寸变化的场景。不过需要注意的是，NameSpace 只适用于在同一棵视图树中分享数据，如果出现了例如 [一段因 @State 注入机制所产生的“灵异代码”](https://fatbobman.com/posts/bug-code-by-state-inject/) 一文中提到了两棵树的情况，则无法实现几何信息的共享。
 
 ### 四、ScrollView
 
@@ -367,9 +367,9 @@ struct TransitionDemo:View {
 
 请注意，转场对动画设定的位置、方式要求很高。稍不注意便会出现转场完全失效或部分失效的情况，例如在本例中，如果在 Button 中（ 切换 show 状态时 ）添加 `withAnimation` 进行显式动画设定，将导致进入转场失效。
 
-转场是 SwiftUI 提供的强大能力之一，可以极大地简化动画实现的难度。我写的视图管理器 [SwiftUI Overlay Container](https://www.fatbobman.com/posts/swiftUIOverlayContainer2/) ，便是建立在对转场功能的充分应用之上。
+转场是 SwiftUI 提供的强大能力之一，可以极大地简化动画实现的难度。我写的视图管理器 [SwiftUI Overlay Container](https://fatbobman.com/posts/swiftUIOverlayContainer2/) ，便是建立在对转场功能的充分应用之上。
 
-> 有关转场动画的更多内容，请参阅 [SwiftUI 的动画机制](https://www.fatbobman.com/posts/the_animation_mechanism_of_swiftUI/) 一文
+> 有关转场动画的更多内容，请参阅 [SwiftUI 的动画机制](https://fatbobman.com/posts/the_animation_mechanism_of_swiftUI/) 一文
 
 ### 八、Layout 协议
 

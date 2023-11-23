@@ -178,7 +178,7 @@ func info() -> some View {
 
 ### List 的效能
 
-List 作为 SwiftUI 对 UITableView （ NSTableView ）的封装，大多数情况下它的性能都比较令人满意。在 [SwiftUI 视图的生命周期研究](https://www.fatbobman.com/posts/swiftUILifeCycle/) 一文中，我对 List 如何对子视图的显示进行优化做了一定的介绍。按照正常的逻辑，当进入列表视图 ListEachRowHasID 后 List 只应该实例化十几个 ItemRow 子视图 （ 按屏幕的显示需要 ），即便使用 scrollTo 滚动到列表底部，List 也会对滚动过程进行显示优化，滚动过程中至多实例化 100 多个 ItemRow 。
+List 作为 SwiftUI 对 UITableView （ NSTableView ）的封装，大多数情况下它的性能都比较令人满意。在 [SwiftUI 视图的生命周期研究](https://fatbobman.com/posts/swiftUILifeCycle/) 一文中，我对 List 如何对子视图的显示进行优化做了一定的介绍。按照正常的逻辑，当进入列表视图 ListEachRowHasID 后 List 只应该实例化十几个 ItemRow 子视图 （ 按屏幕的显示需要 ），即便使用 scrollTo 滚动到列表底部，List 也会对滚动过程进行显示优化，滚动过程中至多实例化 100 多个 ItemRow 。
 
 我们对 ItemRow 进行一定的修改以验证上述假设：
 
@@ -222,7 +222,7 @@ List 将所有数据的 itemRow 都进行了实例化，一共 40000 个。这�
 
 标识（ Identity ）是 SwiftUI 在程序的多次更新中识别相同或不同元素的手段，是 SwiftUI 理解你 app 的关键。标识为随时间推移而变化的视图值提供了一个坚固的锚，它应该是稳定且唯一的。
 
-在 SwiftUI 应用代码中，绝大多数的视图标识都是通过结构性标识 （有关结构性标识的内容可以参阅 [ViewBuilder 研究（下） —— 从模仿中学习](https://www.fatbobman.com/posts/viewBuilder2/)）来实现的 —— 通过视图层次结构（视图树）中的视图类型和具体位置来区分视图。但在某些情况下，我们需要使用显式标识（ Explicit identity ）的方式来帮助 SwiftUI 辨认视图。
+在 SwiftUI 应用代码中，绝大多数的视图标识都是通过结构性标识 （有关结构性标识的内容可以参阅 [ViewBuilder 研究（下） —— 从模仿中学习](https://fatbobman.com/posts/viewBuilder2/)）来实现的 —— 通过视图层次结构（视图树）中的视图类型和具体位置来区分视图。但在某些情况下，我们需要使用显式标识（ Explicit identity ）的方式来帮助 SwiftUI 辨认视图。
 
 在 SwiftUI 中为视图设置显式标识目前有两种方式：
 
@@ -333,7 +333,7 @@ struct BottomCell: View {
 
 目前我们已经可以秒进列表视图，并实现了通过 scrollTo 滚动到指定的位置。
 
-> 由于 id 修饰符并非惰性修饰符（ Inert modifier ），因此我们无法在 ForEach 中仅为列表的头尾数据使用 id 修饰符。如果你尝试通过 if 语句的方式利用判断来添加 id 修饰符，将进一步劣化性能（可在 [ViewBuilder 研究（下） —— 从模仿中学习](https://www.fatbobman.com/posts/viewBuilder2/)）中找到原因 ）。[范例代码](https://github.com/fatbobman/BlogCodes/tree/main/FetchRequestDemo) 中也提供了这种实现方式，大家可以自行比对。
+> 由于 id 修饰符并非惰性修饰符（ Inert modifier ），因此我们无法在 ForEach 中仅为列表的头尾数据使用 id 修饰符。如果你尝试通过 if 语句的方式利用判断来添加 id 修饰符，将进一步劣化性能（可在 [ViewBuilder 研究（下） —— 从模仿中学习](https://fatbobman.com/posts/viewBuilder2/)）中找到原因 ）。[范例代码](https://github.com/fatbobman/BlogCodes/tree/main/FetchRequestDemo) 中也提供了这种实现方式，大家可以自行比对。
 
 ## 新的问题
 

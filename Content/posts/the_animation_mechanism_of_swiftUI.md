@@ -861,7 +861,7 @@ Text("Hello")
 
 ![status_offset_2022-05-09_15.14.12.2022-05-09 15_14_45](https://cdn.fatbobman.com/status_offset_2022-05-09_15.14.12.2022-05-09%2015_14_45.gif)
 
-> 有关视图的结构性标识的内容可以参阅 [ViewBuilder 研究（下） —— 从模仿中学习](https://www.fatbobman.com/posts/viewBuilder2/)
+> 有关视图的结构性标识的内容可以参阅 [ViewBuilder 研究（下） —— 从模仿中学习](https://fatbobman.com/posts/viewBuilder2/)
 
 ### 显式标识
 
@@ -954,7 +954,7 @@ struct Demo: View {
 
 SwiftUI 目前在处理因 `id` 值变化而产生的视图转换的逻辑不太统一，如发现使用 `animation` 无法激活的转场（ 比如 opacity ），可以尝试使用 `withAnimation`。
 
-> 有关显性标识方面的内容可以参阅 [优化在 SwiftUI List 中显示大数据集的响应效率](https://www.fatbobman.com/posts/optimize_the_response_efficiency_of_List/) 一文
+> 有关显性标识方面的内容可以参阅 [优化在 SwiftUI List 中显示大数据集的响应效率](https://fatbobman.com/posts/optimize_the_response_efficiency_of_List/) 一文
 
 ## 遗憾与展望
 
@@ -964,7 +964,7 @@ SwiftUI 目前在处理因 `id` 值变化而产生的视图转换的逻辑不太
 
 SwiftUI 中的不少控件是采用对 UIKit（ AppKit ）控件进行封装实现的，当前的动画处理并不到位。
 
-在 [ViewBuilder 研究（下） —— 从模仿中学习](https://www.fatbobman.com/posts/viewBuilder2/) 一文中，我们展示了 SwiftUI 的 Text 是如何处理它的扩展方法的。尽管 UIViewRepresentableContext 已经为底层控件提供了动画控制所需的 Transaction 信息，但是当前 SwiftUI 的官方控件并没有对此进行响应。譬如说下面的代码是无法实现平滑过渡的。
+在 [ViewBuilder 研究（下） —— 从模仿中学习](https://fatbobman.com/posts/viewBuilder2/) 一文中，我们展示了 SwiftUI 的 Text 是如何处理它的扩展方法的。尽管 UIViewRepresentableContext 已经为底层控件提供了动画控制所需的 Transaction 信息，但是当前 SwiftUI 的官方控件并没有对此进行响应。譬如说下面的代码是无法实现平滑过渡的。
 
 ```swift
 Text("Hello world")

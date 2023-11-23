@@ -12,7 +12,7 @@ image: images/mocloner.png
 
 多年来开发者一直在寻找一种便捷且通用的工具来解决深拷贝的问题，不过直到现在并没有一个被广泛认可的方案。
 
-我在开发 [健康笔记](https://www.fatbobman.com/healthnotes/) 新版本时也碰到了这个问题，需要深拷贝一个结构复杂、关系链牵涉大量数据的托管对象。考虑到以后可能还会遇到类似的情况，我决定编写一段使用简单、适用性广的代码方便自己使用。
+我在开发 [健康笔记](https://fatbobman.com/healthnotes/) 新版本时也碰到了这个问题，需要深拷贝一个结构复杂、关系链牵涉大量数据的托管对象。考虑到以后可能还会遇到类似的情况，我决定编写一段使用简单、适用性广的代码方便自己使用。
 
 本文中将探讨在 Core Data 中对 NSManagedObject 进行深拷贝的技术难点、解决思路，并介绍我写的工具——[MOCloner](https://github.com/fatbobman/MOCloner)。
 
@@ -24,7 +24,7 @@ id:1
 
 ### 复杂的关系结构 ###
 
-下图是 [健康笔记](https://www.fatbobman.com/healthnotes/) 的数据模型图节选。尽管只选取了模型关系的一部分，但实体之间几乎涵盖了所有的关系类型，包含了 one-to-one、one-to-many、many-to-many 等形式。
+下图是 [健康笔记](https://fatbobman.com/healthnotes/) 的数据模型图节选。尽管只选取了模型关系的一部分，但实体之间几乎涵盖了所有的关系类型，包含了 one-to-one、one-to-many、many-to-many 等形式。
 
 每当复制一个 Note 对象，同时会涉及关系链条中数百上千个其它对象。实现对所有数据的快速、准确地深拷贝具有相当挑战性。
 
@@ -62,7 +62,7 @@ id:1
 
 在 Xcode 中使用 Data Model Editor 创建的数据模型，会在编译时转换成 momd 文件并保存在 Bundle 中。在创建 NSPersistentContainer 时，NSManagedObjectModel 将通过该文件将模型定义转换为程序实现。代码通过访问 Core Data 提供的各种 Description 可以获取到所需信息。
 
-开发者最常接触的 Description 可能就是 NSPersistentStoreDescription 了，从中可以获取 Config 或者设置 iCloud options（更多资料请参阅 [掌握 Core Data Stack](https://www.fatbobman.com/posts/masteringOfCoreDataStack/)）。
+开发者最常接触的 Description 可能就是 NSPersistentStoreDescription 了，从中可以获取 Config 或者设置 iCloud options（更多资料请参阅 [掌握 Core Data Stack](https://fatbobman.com/posts/masteringOfCoreDataStack/)）。
 
 其它的的 Description 还包括但不限于：
 

@@ -250,7 +250,7 @@ setPrimitiveValue("hello",forKey:#keyPath(Movie.title))
 
 我也是在不久前，才遇到第一个符合 Transient 特点的应用场景。
 
-在开发 [【健康笔记 3.0】](https://www.fatbobman.com/healthnotes/) 的过程中，我有一处地方需要对一个包含很多关系和记录的托管对象实例进行 Deep Copy（复制其下的全部关系数据），复制后的实例将在复制完成后替换掉原来的实例（为了解决网络数据共享中遇到的特殊需求）。因为使用了@FetchRequest，因此在复制过程中的 1-2 秒钟，UI 列表中会出现两个同样的数据记录，会给使用者带来困惑。
+在开发 [【健康笔记 3.0】](https://fatbobman.com/healthnotes/) 的过程中，我有一处地方需要对一个包含很多关系和记录的托管对象实例进行 Deep Copy（复制其下的全部关系数据），复制后的实例将在复制完成后替换掉原来的实例（为了解决网络数据共享中遇到的特殊需求）。因为使用了@FetchRequest，因此在复制过程中的 1-2 秒钟，UI 列表中会出现两个同样的数据记录，会给使用者带来困惑。
 
 如果使用持久化方案，我可以为该数据创建一个用来表示显示与否的属性，例如 visible。通过在复制操作前后设置该属性并配置 Predicate 来解决列表重复问题。
 
@@ -288,6 +288,6 @@ setPrimitiveValue("hello",forKey:#keyPath(Movie.title))
 
 Core Data 作为一个历史悠久的框架，包含了不少非常有用但不被人熟知的功能。即使只是泛泛了解一下这些功能，不仅可以开阔思路，说不定在某个场合它就会成为解决问题的利器。
 
-想阅读更多关于 Core Data 的文章，请查看我的 [Core Data 专栏](https://www.fatbobman.com/tags/core-data/)。
+想阅读更多关于 Core Data 的文章，请查看我的 [Core Data 专栏](https://fatbobman.com/tags/core-data/)。
 
 

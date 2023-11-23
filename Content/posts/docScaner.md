@@ -6,7 +6,7 @@ title:  用苹果官方 API 实现 iOS 备忘录的扫描文稿功能
 image: images/docScannner.png
 ---
 
-iOS 系统自带的备忘录（Notes）在其质朴名称下提供了众多强大的功能，扫描文稿是我使用较多的功能之一。很早前便想在【[健康笔记](https://www.fatbobman.com/healthnotes/)】之中提供类似的功能，但考虑到其涉及的知识点较多，迟迟没有下手。最近在空闲时，将近年 WWDC 中涉及该功能实现的专题梳理、学习了一遍，受益匪浅。苹果官方早已为我们准备了所需的一切工具。本文将介绍如何通过 VisionKit、Vision、NaturalLanguage、CoreSpotlight 等系统框架实现与备忘录扫描文稿类似的功能。
+iOS 系统自带的备忘录（Notes）在其质朴名称下提供了众多强大的功能，扫描文稿是我使用较多的功能之一。很早前便想在【[健康笔记](https://fatbobman.com/healthnotes/)】之中提供类似的功能，但考虑到其涉及的知识点较多，迟迟没有下手。最近在空闲时，将近年 WWDC 中涉及该功能实现的专题梳理、学习了一遍，受益匪浅。苹果官方早已为我们准备了所需的一切工具。本文将介绍如何通过 VisionKit、Vision、NaturalLanguage、CoreSpotlight 等系统框架实现与备忘录扫描文稿类似的功能。
 
 ```responser
 id:1
@@ -324,7 +324,7 @@ inbody 身体水分身高性别男性日期时间透析组成含量细胞hof 分
 
 除了可以将文本保存在 Core Data 中进行检索外，我们也可以将其添加到系统索引中方便用户使用 Spotlight 进行搜索。
 
-关于如何将数据添加至 Spotlight 以及如何在 app 中调用 Spotlight 进行检索的内容，请参阅我的另一篇文章 [在 Spotlight 中展示应用中的 Core Data 数据](https://www.fatbobman.com/posts/spotlight/)。
+关于如何将数据添加至 Spotlight 以及如何在 app 中调用 Spotlight 进行检索的内容，请参阅我的另一篇文章 [在 Spotlight 中展示应用中的 Core Data 数据](https://fatbobman.com/posts/spotlight/)。
 
 ## 总结 ##
 

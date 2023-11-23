@@ -8,9 +8,9 @@ mediumURL: https://medium.com/p/6147539239e6
 ---
 保证应用不因 Core Data 的原因导致意外崩溃是对开发者的起码要求。本文将介绍可能在视图中产生严重错误的原因，如何避免，以及在保证视图对数据变化实时响应的前提下如何为使用者提供更好、更准确的信息。由于本文会涉及大量前文中介绍的技巧和方法，因此最好一并阅读。
 
-* [SwiftUI 与 Core Data —— 问题](https://www.fatbobman.com/posts/modern-Core-Data-Problem/)
-* [SwiftUI 与 Core Data —— 数据定义](https://www.fatbobman.com/posts/modern-Core-Data-Data-definition/)
-* [SwiftUI 与 Core Data —— 数据获取](https://www.fatbobman.com/posts/modern-Core-Data-fetcher/)
+* [SwiftUI 与 Core Data —— 问题](https://fatbobman.com/posts/modern-Core-Data-Problem/)
+* [SwiftUI 与 Core Data —— 数据定义](https://fatbobman.com/posts/modern-Core-Data-Data-definition/)
+* [SwiftUI 与 Core Data —— 数据获取](https://fatbobman.com/posts/modern-Core-Data-fetcher/)
 
 > 可以在 [此处](https://github.com/fatbobman/Todo) 获取演示项目 Todo 的代码
 
@@ -136,7 +136,7 @@ List {
 Text("Item at \(item.timestamp ?? .now, formatter: itemFormatter)")
 ```
 
-如果使用我们在 [SwiftUI 与 Core Data —— 数据定义](https://www.fatbobman.com/posts/modern-Core-Data-Data-definition/) 一文中讨论的 ConvertibleValueObservableObject 协议呢？在 convertToValueType 中为属性提供备选值，是否可以避免出现崩溃的情况？答案是，原始的版本仍可能会出现问题。
+如果使用我们在 [SwiftUI 与 Core Data —— 数据定义](https://fatbobman.com/posts/modern-Core-Data-Data-definition/) 一文中讨论的 ConvertibleValueObservableObject 协议呢？在 convertToValueType 中为属性提供备选值，是否可以避免出现崩溃的情况？答案是，原始的版本仍可能会出现问题。
 
 数据被删除后，托管对象实例的 manageObjectContext 被设置为 nil 。由于 AnyConvertibleValueObservableObject 符合 ObservableObject 协议，一样会引发 Cell 视图的更新，在新的一轮渲染中，如果我们限定 convertToGroup 将转换过程运行于托管对象上下文所在的线程中，由于无法获取上下文信息，转换将失败。假设我们不限定转换过程运行的线程，备选值的方式对于由视图上下文创建的托管对象实例仍将有效（ 但有可能会出现其它的线程错误 ）。
 

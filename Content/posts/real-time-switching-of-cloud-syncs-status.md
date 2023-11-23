@@ -7,7 +7,7 @@ image: images/real-time-switching-of-cloud-syncs-status.png
 ---
 在 WWDC 2019 上，苹果推出了 Core Data with CloudKit API ，极大地降低了 Core Data 数据的云同步门槛。由于该服务对于开发者来说几乎是免费的，因此在之后的几年中，越来越多的开发者在应用中集成了该服务，并为用户带来了良好的跨设备、跨平台的使用体验。本文将对实时切换 Core Data 云同步状态的实现原理、操作细节以及注意事项进行探讨和说明。
 
-> 如果你对 Core Data with CloudKit 尚不了解，请阅读我写的 [有关 Core Data with CloudKit 的系列文章](https://www.fatbobman.com/posts/coreDataWithCloudKit-1/)
+> 如果你对 Core Data with CloudKit 尚不了解，请阅读我写的 [有关 Core Data with CloudKit 的系列文章](https://fatbobman.com/posts/coreDataWithCloudKit-1/)
 
 ```responser
 id:1
@@ -82,7 +82,7 @@ NSPersistentCloudKitContainer 是 NSPersistentContainer 的子类，拥有 NSPer
 
 通过使用 Persistent History Tracking 这一支持跨进程级别的数据修改提醒机制，让 NSPersistentContainer 与网络同步功能之间形成了解耦。
 
-> 有关 Persistent History Tracking 方面的内容，请参阅 [在 CoreData 中使用持久化历史跟踪](https://www.fatbobman.com/posts/persistentHistoryTracking/) 一文。想了解 Core Data 是如何在 SQLite 上组织数据的，请参阅 [Core Data 是如何在 SQLite 中保存数据的](https://www.fatbobman.com/posts/tables_and_fields_of_CoreData/) 一文
+> 有关 Persistent History Tracking 方面的内容，请参阅 [在 CoreData 中使用持久化历史跟踪](https://fatbobman.com/posts/persistentHistoryTracking/) 一文。想了解 Core Data 是如何在 SQLite 上组织数据的，请参阅 [Core Data 是如何在 SQLite 中保存数据的](https://fatbobman.com/posts/tables_and_fields_of_CoreData/) 一文
 
 ### 网络同步模块
 
@@ -142,7 +142,7 @@ lazy var container: NSPersistentContainer = {
 }()
 ```
 
-> 这种方法在 [掌握 Core Data Stack](https://www.fatbobman.com/posts/masteringOfCoreDataStack/) 一文的内存模式章节中也有应用
+> 这种方法在 [掌握 Core Data Stack](https://fatbobman.com/posts/masteringOfCoreDataStack/) 一文的内存模式章节中也有应用
 
 ### 将 NSPersistentCloudKitContainer 声明为可选值
 
@@ -216,7 +216,7 @@ persistentHistoryKit = .init(container: container,
                              cleanStrategy: .none)
 ```
 
-> 请参阅 [在 CoreData 中使用持久化历史跟踪](https://www.fatbobman.com/posts/persistentHistoryTracking/) 一文了解 Persistent History Tracking 的详细用法。有关 Persistent History Tracking Kit 的内容请参阅其附带的 ReadMe 文档
+> 请参阅 [在 CoreData 中使用持久化历史跟踪](https://fatbobman.com/posts/persistentHistoryTracking/) 一文了解 Persistent History Tracking 的详细用法。有关 Persistent History Tracking Kit 的内容请参阅其附带的 ReadMe 文档
 
 ### 不要清除 Transaction 记录
 
@@ -303,5 +303,5 @@ func setCloudContainerWhenOtherStatus() {
 
 俗话说有得必有失，使用了双 container 以及不清除 transaction 的方式实现对同步状态的实时切换，势必会带来些许的性能损失以及资源占用。不过，如果你的应用确有这方面的需求，这点付出还是非常值得的。
 
-Persistent History Tracking 现在已经越来越多地出现于各种场合，除了感知 App group 成员间数据变动外，还被应用于 [数据批处理](https://www.fatbobman.com/posts/batchProcessingInCoreData/)、数据云同步、[Spotlight](https://www.fatbobman.com/posts/spotlight/) 等多个环节。建议 Core Data 的使用者应该对其有充分的了解，并尽早将其应用于你的程序之中。
+Persistent History Tracking 现在已经越来越多地出现于各种场合，除了感知 App group 成员间数据变动外，还被应用于 [数据批处理](https://fatbobman.com/posts/batchProcessingInCoreData/)、数据云同步、[Spotlight](https://fatbobman.com/posts/spotlight/) 等多个环节。建议 Core Data 的使用者应该对其有充分的了解，并尽早将其应用于你的程序之中。
 

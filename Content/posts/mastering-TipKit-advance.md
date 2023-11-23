@@ -8,7 +8,7 @@ mediumURL: https://medium.com/p/b6927aeeb9b5
 ---
 在上文中，我们介绍了 TipKit 的基础用法。在本文中，我们将讨论一些与 TipKit 相关的进阶问题，例如如何完全自定义 Tip 视图（不使用 TipView 和 popoverTip）、如何在 UIKit 中使用 TipKit，以及 TipKit 如何在不同的应用程序之间共享数据。最后，我们将尝试解答一些与 TipKit 相关的疑惑。
 
-> 如果你对 TipKit 框架还不太了解，请先阅读 [掌握 TipKit：基础](https://www.fatbobman.com/posts/mastering-TipKit-basic/) 这篇文章。
+> 如果你对 TipKit 框架还不太了解，请先阅读 [掌握 TipKit：基础](https://fatbobman.com/posts/mastering-TipKit-basic/) 这篇文章。
 
 ## 透过现象看本质
 
@@ -205,7 +205,7 @@ id:1
 
 打开数据库文件后，我们就能看到熟悉的 Core Data 数据格式的身影。
 
-> 请阅读 [Core Data 是如何在 SQLite 中保存数据的](https://www.fatbobman.com/posts/tables_and_fields_of_CoreData/) 一文，了解 Core Data 的持久化数据格式。
+> 请阅读 [Core Data 是如何在 SQLite 中保存数据的](https://fatbobman.com/posts/tables_and_fields_of_CoreData/) 一文，了解 Core Data 的持久化数据格式。
 
 ![https://cdn.fatbobman.com/image-20231019105146293.png](https://cdn.fatbobman.com/image-20231019105146293.png)
 

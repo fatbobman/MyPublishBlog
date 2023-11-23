@@ -787,7 +787,7 @@ struct WelcomeView: View {
 
 ![transactionKey-demo_2023-06-25_21.07.29.2023-06-25 21_08_28.gif](https://cdn.fatbobman.com/transactionKey-demo_2023-06-25_21.07.29.2023-06-25_21_08_28.gif)
 
-> 请阅读 [深度解读 Observation —— SwiftUI 性能提升的新途径](https://www.fatbobman.com/posts/mastering-Observation/) 一文，了解 `@Observable` 的具体用法。
+> 请阅读 [深度解读 Observation —— SwiftUI 性能提升的新途径](https://fatbobman.com/posts/mastering-Observation/) 一文，了解 `@Observable` 的具体用法。
 > 
 
 ## 实现精准动画的一些建议

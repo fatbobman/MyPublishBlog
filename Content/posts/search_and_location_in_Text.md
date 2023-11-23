@@ -114,7 +114,7 @@ struct TranscriptionRange {
 
 在 Transcription 的显示视图 TranscriptionRow 中，通过 AttributedString 对结果进行高亮显示。
 
-> 请阅读 [AttributedString——不仅仅让文字更漂亮](https://www.fatbobman.com/posts/attributedString/) 了解更多有关 AttributedString 的内容
+> 请阅读 [AttributedString——不仅仅让文字更漂亮](https://fatbobman.com/posts/attributedString/) 了解更多有关 AttributedString 的内容
 
 * 将 `Range<String.Index>` 转换成 `AttributedString.Index`
 
@@ -161,7 +161,7 @@ List(0..<store.transcriptions.count,id:\.self) { index in
 
 因此，在本例中，我们舍弃了通过构造参数为 TranscriptionRow 传递搜索结果的方式，采用了在 TranscriptionRow 中引入符合 DynamicProperty 协议的  Source of Truth 。这样在搜索结果变化时，仅有当前显示的 TranscriptionRow 会重新计算并渲染（ 如果没有添加 id，通过构造参数传递搜索，对改善性能会更有帮助 ）。
 
-> 请阅读 [优化在 SwiftUI List 中显示大数据集的响应效率](https://www.fatbobman.com/posts/optimize_the_response_efficiency_of_List/) 以及 [避免 SwiftUI 视图的重复计算](https://www.fatbobman.com/posts/avoid_repeated_calculations_of_SwiftUI_views/) 两篇文章，了解更多有关性能优化方面的内容
+> 请阅读 [优化在 SwiftUI List 中显示大数据集的响应效率](https://fatbobman.com/posts/optimize_the_response_efficiency_of_List/) 以及 [避免 SwiftUI 视图的重复计算](https://fatbobman.com/posts/avoid_repeated_calculations_of_SwiftUI_views/) 两篇文章，了解更多有关性能优化方面的内容
 
 * 通过 currentPostion 获取需要滚动到的 transcriptionID
 
@@ -209,7 +209,7 @@ func gotoNext() {
 
 ![avoid_scroll_with_compare_2022-08-22_17.28.56.2022-08-22 17_32_23](https://cdn.fatbobman.com/avoid_scroll_with_compare_2022-08-22_17.28.56.2022-08-22%2017_32_23.gif)
 
-> 阅读 [了解 SwiftUI 的 onChange](https://www.fatbobman.com/posts/onChange/) 一文，了解更多有关 onChange 的内容
+> 阅读 [了解 SwiftUI 的 onChange](https://fatbobman.com/posts/onChange/) 一文，了解更多有关 onChange 的内容
 
 ### 搜索关键字改变后有条件重新定位
 
@@ -251,7 +251,7 @@ List(0..<store.transcriptions.count, id: \.self) { index in
 }
 ```
 
-> 在 List 中，每个视图进入显示窗口时都会调用它的 onAppear，每个视图退出显示窗口时都会调用它的 onDisapper。了解更多内容，请阅读 [SwiftUI 视图的生命周期研究](https://www.fatbobman.com/posts/swiftUILifeCycle/) 一文
+> 在 List 中，每个视图进入显示窗口时都会调用它的 onAppear，每个视图退出显示窗口时都会调用它的 onDisapper。了解更多内容，请阅读 [SwiftUI 视图的生命周期研究](https://fatbobman.com/posts/swiftUILifeCycle/) 一文
 
 优先定位于最靠近屏幕中央的搜索结果：
 
@@ -316,7 +316,7 @@ func scrollToPosition(_ position: Int) {
 }
 ```
 
-> 阅读 [在 SwiftUI 视图中打开 URL 的若干方法](https://www.fatbobman.com/posts/open_url_in_swiftUI/) 一文，了解更多有关 OpenURLAction 的内容
+> 阅读 [在 SwiftUI 视图中打开 URL 的若干方法](https://fatbobman.com/posts/open_url_in_swiftUI/) 一文，了解更多有关 OpenURLAction 的内容
 
 ### 创建体验感优秀的搜索条
 
@@ -324,7 +324,7 @@ func scrollToPosition(_ position: Int) {
 
 在没有 safeAreaInset 修饰器的时候，我们通常会用两种方式添加搜索栏 —— 1、通过 VStack 将搜索栏放置在 List 下方，2、使用 overlay 将搜索栏放置在 List 视图的上层。但是如果采用 overlay 的方式，搜索栏将会挡住 List 最下方的记录。使用 safeAreaInset ，我们可以将搜索栏的区域设置为 List 下方的安全区域，这样既可以实现类似 Tab 覆盖 List 的效果，同时也不会遮盖 List 最下方的数据。
 
-> 阅读 [掌握 SwiftUI 的 Safe Area](https://www.fatbobman.com/posts/safeArea/) 一文，了解更多有关 safeAreaInset 修饰器的内容
+> 阅读 [掌握 SwiftUI 的 Safe Area](https://fatbobman.com/posts/safeArea/) 一文，了解更多有关 safeAreaInset 修饰器的内容
 
 ![safeArea_2022-08-22_18.24.59.2022-08-22 18_25_53](https://cdn.fatbobman.com/safeArea_2022-08-22_18.24.59.2022-08-22%2018_25_53.gif)
 
@@ -332,7 +332,7 @@ func scrollToPosition(_ position: Int) {
 
 通过 @FocusState ，让 TextField 在搜索条出现时，自动获得焦点，从而自动开启键盘。
 
-> 阅读 [SwiftUI TextField 进阶 —— 事件、焦点、键盘](https://www.fatbobman.com/posts/textfield-event-focus-keyboard/) 一文，了解更多有关焦点的内容
+> 阅读 [SwiftUI TextField 进阶 —— 事件、焦点、键盘](https://fatbobman.com/posts/textfield-event-focus-keyboard/) 一文，了解更多有关焦点的内容
 
 ```swift
 @FocusState private var focused: Bool
@@ -350,7 +350,7 @@ TextField("查找", text: $store.keyword)
 * 确保搜索操作运行于后台线程
 * 过滤关键字响应，避免因为输入太快导致的无效搜索操作
 
-我们通常会在 Combine 中采用 `.subscribe(on: )` 来设定之后的 operator 操作线程。在范例代码中，我使用了 [聊聊 Combine 和 async/await 之间的合作](https://www.fatbobman.com/posts/combineAndAsync/) 一文中介绍的方法，通过自定义 Publisher ，将 async/await 方法嵌入到 Combine 的操作管道中，以实现同样的效果。
+我们通常会在 Combine 中采用 `.subscribe(on: )` 来设定之后的 operator 操作线程。在范例代码中，我使用了 [聊聊 Combine 和 async/await 之间的合作](https://fatbobman.com/posts/combineAndAsync/) 一文中介绍的方法，通过自定义 Publisher ，将 async/await 方法嵌入到 Combine 的操作管道中，以实现同样的效果。
 
 ```swift
 public extension Publisher {

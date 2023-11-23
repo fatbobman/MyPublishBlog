@@ -5,7 +5,7 @@ tags: SwiftUI
 title:  用 NavigationViewKit 增强 SwiftUI 的导航视图
 image: images/navigationViewKit.png
 ---
-最近一直在为我的 iOS 健康管理 app[健康笔记 3.0](https://www.fatbobman.com/healthnotes/) 做前期的准备工作。
+最近一直在为我的 iOS 健康管理 app[健康笔记 3.0](https://fatbobman.com/healthnotes/) 做前期的准备工作。
 
 由于 SwiftUI 原生提供的导航手段能力有限，因此在之前的版本中，NavigationView 总是使用的不是那么的顺手。有以下几个我不满意的地方：
 
@@ -241,7 +241,7 @@ NavigationView{
 
 ## FixDoubleColumnNavigationViewStyle ##
 
-在 [健康笔记](https://www.fatbobman.com/healthnotes/) 中，我希望 iPad 版本无论在横屏或竖屏时，都始终能够保持两栏显示的状态，且左侧栏不可隐藏。
+在 [健康笔记](https://fatbobman.com/healthnotes/) 中，我希望 iPad 版本无论在横屏或竖屏时，都始终能够保持两栏显示的状态，且左侧栏不可隐藏。
 
 我之前使用了 HStack 套两个 NavigationView 来达到这个效果：
 

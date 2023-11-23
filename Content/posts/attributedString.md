@@ -22,7 +22,7 @@ var attributedString = AttributedString("请访问肘子的博客")
 let zhouzi = attributedString.range(of: "肘子")!  // 获取肘子二字的范围（Range）
 attributedString[zhouzi].inlinePresentationIntent = .stronglyEmphasized // 设置属性——粗体
 let blog = attributedString.range(of: "博客")! 
-attributedString[blog].link = URL(string: "https://www.fatbobman.com")! // 设置属性——超链接
+attributedString[blog].link = URL(string: "https://fatbobman.com")! // 设置属性——超链接
 ```
 
 ![image-20211007165456612](https://cdn.fatbobman.com/image-20211007165456612.png)
@@ -150,7 +150,7 @@ Text(dateString)
 
 ![image-20211006183053713](https://cdn.fatbobman.com/image-20211006183053713.png)
 
-> 更多关于新 Formatter API 同 AttributedString 配合范例，请参阅 [WWDC 2021 新 Formatter API：新老比较及如何自定义](https://www.fatbobman.com/posts/newFormatter/)
+> 更多关于新 Formatter API 同 AttributedString 配合范例，请参阅 [WWDC 2021 新 Formatter API：新老比较及如何自定义](https://fatbobman.com/posts/newFormatter/)
 
 ### SwiftUI 集成 ###
 
@@ -675,7 +675,7 @@ hello **world**
 
 ```swift
 let url = Bundle.main.url(forResource: "README", withExtension: "md")!
-var markdownString = try! AttributedString(contentsOf: url,baseURL: URL(string: "https://www.fatbobman.com"))
+var markdownString = try! AttributedString(contentsOf: url,baseURL: URL(string: "https://fatbobman.com"))
 ```
 
 解析后结果（节选）：
@@ -706,7 +706,7 @@ row2 {
 }
 新 Formatter 介绍 {
     NSPresentationIntent = [paragraph (id 18)]
-    NSLink = /posts/newFormatter/ -- https://www.fatbobman.com
+    NSLink = /posts/newFormatter/ -- https://fatbobman.com
 }
 ```
 
@@ -882,7 +882,7 @@ ello world {
 }
 ```
 
-> 在 [WWDC 2021 新 Formatter API](https://www.fatbobman.com/posts/newFormatter/) 一文中，还有在 Formatter 中使用自定义属性的案例
+> 在 [WWDC 2021 新 Formatter API](https://fatbobman.com/posts/newFormatter/) 一文中，还有在 Formatter 中使用自定义属性的案例
 
 ## 总结 ##
 

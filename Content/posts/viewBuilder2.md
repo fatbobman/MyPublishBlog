@@ -7,7 +7,7 @@ image: images/viewbuilder_2.png
 mediumURL: https://medium.com/p/7832ab96506b
 ---
 
-在[上篇](https://www.fatbobman.com/posts/viewBuilder1/)中，我们对 result builders 做了较详细的介绍。本篇我们将通过对 ViewBuilder 的仿制，探索更多有关 SwiftUI 视图背后的秘密。
+在[上篇](https://fatbobman.com/posts/viewBuilder1/)中，我们对 result builders 做了较详细的介绍。本篇我们将通过对 ViewBuilder 的仿制，探索更多有关 SwiftUI 视图背后的秘密。
 
 ## 视图能够提供的信息
 
@@ -52,7 +52,7 @@ SwiftUI 从加载视图、响应状态到屏幕绘制大概经历如下过程：
 
 ## 仿制 ViewBuilder
 
-ViewBuilder（视图构建器）将帮助开发者以一种简洁、清晰、易读的方式声明视图。对其实现原理尚不清楚朋友请先阅读 [ViewBuilder 研究（上）—— 掌握 Result builders](https://www.fatbobman.com/posts/viewBuilder1/)。
+ViewBuilder（视图构建器）将帮助开发者以一种简洁、清晰、易读的方式声明视图。对其实现原理尚不清楚朋友请先阅读 [ViewBuilder 研究（上）—— 掌握 Result builders](https://fatbobman.com/posts/viewBuilder1/)。
 
 > 本文中仿制的 View协议、ViewBuilder 以及其他内容仅涉及 SwiftUI 框架内容的冰山一角。可在[此处](https://github.com/fatbobman/BlogCodes/tree/main/ViewBuilder/)获得本文的全部代码。
 
@@ -163,7 +163,7 @@ struct ContentView:View {
 
 ### 创建 ViewBuilder
 
-对于一个 result builders 来说，至少应该提供一个 [buildBlock](https://www.fatbobman.com/posts/viewBuilder1/#使用构建器转译_Block) 的实现。
+对于一个 result builders 来说，至少应该提供一个 [buildBlock](https://fatbobman.com/posts/viewBuilder1/#使用构建器转译_Block) 的实现。
 
 ```swift
 @resultBuilder
@@ -348,7 +348,7 @@ id:1
 
 ### 在不同的分支中保存类型信息
 
-在上篇的[添加对多分支选择的支持](https://www.fatbobman.com/posts/viewBuilder1/#添加对多分支选择的支持)一节中， AttributedStringBuilder 在处理选择时，仅需考虑当前的分支而无需考虑另一条未被调用的分支。AttributedStringBuilder 的定义如下：
+在上篇的[添加对多分支选择的支持](https://fatbobman.com/posts/viewBuilder1/#添加对多分支选择的支持)一节中， AttributedStringBuilder 在处理选择时，仅需考虑当前的分支而无需考虑另一条未被调用的分支。AttributedStringBuilder 的定义如下：
 
 ```swift
 // 对条件为真的分支调用 （左侧分支）
@@ -430,7 +430,7 @@ ContentView(selection: 2).body.debug()
 
 ### 不一样的 buildOptional
 
-在仿制 ViewBuilder 的过程中，唯有 [buildOptional](https://www.fatbobman.com/posts/viewBuilder1/#添加选择语句支持（_不带_else_的_if_）) 我无法实现的同 SwiftUI 完全一致。这是因为在 SwiftUI 诞生时，result builders 使用 buildIf 来处理不包含 `else` 的 `if` 语句。尽管当前仍支持 buildIf ，但已经无法像官方的 ViewBuilder 版本那样返回 Optional 类型的数据了。
+在仿制 ViewBuilder 的过程中，唯有 [buildOptional](https://fatbobman.com/posts/viewBuilder1/#添加选择语句支持（_不带_else_的_if_）) 我无法实现的同 SwiftUI 完全一致。这是因为在 SwiftUI 诞生时，result builders 使用 buildIf 来处理不包含 `else` 的 `if` 语句。尽管当前仍支持 buildIf ，但已经无法像官方的 ViewBuilder 版本那样返回 Optional 类型的数据了。
 
 ```swift
 // SwiftUI 的 ViewBuilder 的 buildIf 定义
@@ -489,7 +489,7 @@ struct ContentView: View {
 
 ### 支持 API 可用性检查
 
-result builders 通过 [buildLimitedAvailablility](https://www.fatbobman.com/posts/viewBuilder1/#提高版本兼容性) 提供对 API 可用性检查的支持。它会和 buildOptional 或 buildEither 一并使用，在满足了 API 可用性检查的情况下会调用该实现。
+result builders 通过 [buildLimitedAvailablility](https://fatbobman.com/posts/viewBuilder1/#提高版本兼容性) 提供对 API 可用性检查的支持。它会和 buildOptional 或 buildEither 一并使用，在满足了 API 可用性检查的情况下会调用该实现。
 
 请考虑下面 buildLimitedAvailability 的代码有什么不妥：
 

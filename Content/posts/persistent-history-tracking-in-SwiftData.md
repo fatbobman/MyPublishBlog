@@ -16,7 +16,7 @@ SwiftData 中集成了对持久化历史跟踪的支持，使视图能够及时�
 
 自行响应持久化历史跟踪事务的原因如下：
 
-1. 处理与其他功能的集成：SwiftData 可能无法与某些功能或框架完全集成，例如 [NSCoreDataCoreSpotlightDelegate](https://www.fatbobman.com/posts/spotlight/)，这时需要自行处理事务来调整 Spotlight 中的展示。
+1. 处理与其他功能的集成：SwiftData 可能无法与某些功能或框架完全集成，例如 [NSCoreDataCoreSpotlightDelegate](https://fatbobman.com/posts/spotlight/)，这时需要自行处理事务来调整 Spotlight 中的展示。
 2. 对特定数据变化执行操作：当数据变化时，开发者可能需要执行额外逻辑或操作，自行响应可以仅针对变化的数据执行，从而降低操作成本。
 3. 扩展功能：自行响应可以给开发者更大的灵活性和扩展性，根据需要实现 SwiftData 现在无法完成的功能。
 
@@ -46,7 +46,7 @@ id:1
 
 NSPersistentCloudContainer 会自动合并来自网络的同步事务，开发者无需自行处理。
 
-> 阅读 [在 CoreData 中使用持久化历史跟踪](https://www.fatbobman.com/posts/persistentHistoryTracking/) 一文，了解完整的实现细节。
+> 阅读 [在 CoreData 中使用持久化历史跟踪](https://fatbobman.com/posts/persistentHistoryTracking/) 一文，了解完整的实现细节。
 
 ## Persistent History Tracking 在 SwiftData 中的特别之处
 
@@ -62,7 +62,7 @@ NSPersistentCloudContainer 会自动合并来自网络的同步事务，开发�
 
 5. `NSPersistentHistoryChangeRequest` 中 的`fetchRequest` 为 `nil`：在 SwiftData 中，通过 `fetchHistory` 创建的 `NSPersistentHistoryChangeRequest` 中的 `fetchRequest` 为 `nil`，因此无法通过谓词的方式对事务进行筛选。筛选过程将在内存中进行。
 
-6. 数据信息转换：持久化历史跟踪事务中包含的数据信息为 `NSManagedObjectID`，需要使用 [SwiftDataKit](https://www.fatbobman.com/posts/use-Core-Data-features-in-SwiftData-by-SwiftDataKit/) 将其转换为`PersistentIdentifier`，以便在 SwiftData 中进行进一步处理。
+6. 数据信息转换：持久化历史跟踪事务中包含的数据信息为 `NSManagedObjectID`，需要使用 [SwiftDataKit](https://fatbobman.com/posts/use-Core-Data-features-in-SwiftData-by-SwiftDataKit/) 将其转换为`PersistentIdentifier`，以便在 SwiftData 中进行进一步处理。
 
 在下面的具体实现中会对部分注意事项进行更详细的说明。
 
@@ -139,7 +139,7 @@ id:1
 
 SwiftData 采用了更加安全、优雅的并发编程方式，我们将所有与持久化历史跟踪有关的代码放置到一个 ModelActor 中。
 
-> 阅读 [SwiftData 中的并发编程](https://www.fatbobman.com/posts/concurret-programming-in-SwiftData/) 一文，掌握并发编程的新方法。
+> 阅读 [SwiftData 中的并发编程](https://fatbobman.com/posts/concurret-programming-in-SwiftData/) 一文，掌握并发编程的新方法。
 
 ```swift
 import Foundation

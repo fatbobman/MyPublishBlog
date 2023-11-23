@@ -10,7 +10,7 @@ mediumURL: https://medium.com/p/e884504a8c34
 
 ## 问题
 
-笔者最近正在使用 TCA（ [The Composable Architecture](https://www.fatbobman.com/posts/the_Composable_Architecture/) ）结合 SwiftUI 做一些开发，在 TCA 中，开发者通常会为一个 Feature 创建一个独立的包或在一个统一的包（ 拥有众多的 Target ）中创建一个单独的 Target。Feature 中通常会包含有关 UI 的逻辑处理代码（ Reducer ）、单元测试代码、与该 Feature 相关的视图代码以及预览代码。每个 Feature 基本上可以被视作一个可独立运行的小应用（ 在注入所需的环境后 ）。最终开发者需要通过在 Xcode 项目中导入所需的 Feature 模块，并通过串联代码将完整的 app 组合出来。在这种情况下，几乎每个 Feature 以及 Xcode 项目代码都需要使用到本地化及其他一些共用资源。
+笔者最近正在使用 TCA（ [The Composable Architecture](https://fatbobman.com/posts/the_Composable_Architecture/) ）结合 SwiftUI 做一些开发，在 TCA 中，开发者通常会为一个 Feature 创建一个独立的包或在一个统一的包（ 拥有众多的 Target ）中创建一个单独的 Target。Feature 中通常会包含有关 UI 的逻辑处理代码（ Reducer ）、单元测试代码、与该 Feature 相关的视图代码以及预览代码。每个 Feature 基本上可以被视作一个可独立运行的小应用（ 在注入所需的环境后 ）。最终开发者需要通过在 Xcode 项目中导入所需的 Feature 模块，并通过串联代码将完整的 app 组合出来。在这种情况下，几乎每个 Feature 以及 Xcode 项目代码都需要使用到本地化及其他一些共用资源。
 
 假设将共用资源分别复制到不同模块的 Resource 目录中，那么会造成如下的问题：
 

@@ -10,7 +10,7 @@ mediumURL: https://medium.com/p/3fcd5f443c99
 
 ## SwiftData 当前的困境
 
-与 Core Data 相比，SwiftData 在数据模型声明、类型安全、线程安全、以及与 SwiftUI 整合等多个方面进行了全面提升。其中，它基于 Swift 宏功能的数据模型创建机制、类型安全的谓词系统、依靠 Actor 实现的线程安全以及与 [Observation](https://www.fatbobman.com/posts/mastering-Observation/) 框架的紧密结合，使得 SwiftData 更符合现代编程的需求。
+与 Core Data 相比，SwiftData 在数据模型声明、类型安全、线程安全、以及与 SwiftUI 整合等多个方面进行了全面提升。其中，它基于 Swift 宏功能的数据模型创建机制、类型安全的谓词系统、依靠 Actor 实现的线程安全以及与 [Observation](https://fatbobman.com/posts/mastering-Observation/) 框架的紧密结合，使得 SwiftData 更符合现代编程的需求。
 
 然而，可能是由于准备时间不足，当前版本的 SwiftData 还无法实现 Core Data 中的一些高级功能。这就给想尝试 SwiftData 的开发者带来了一定的困扰。即使，开发者可以接受将项目的最小部署环境设置为最新的系统版本（ iOS 17、macOS 14 等），也难免需要在项目中同步创建一套基于 Core Data 的数据模型和数据栈，以实现 SwiftData 所缺少的功能。
 
@@ -254,7 +254,7 @@ func getCategory(by categoryID:PersistentIdentifier) -> Category? {
 }
 ```
 
-> SwiftData 在多线程开发方面与 Core Data 类似，只是形式不同。阅读 [关于 Core Data 并发编程的几点提示](https://www.fatbobman.com/posts/concurrencyOfCoreData/) 一文，了解 Core Data 在这方面的更多注意事项。
+> SwiftData 在多线程开发方面与 Core Data 类似，只是形式不同。阅读 [关于 Core Data 并发编程的几点提示](https://fatbobman.com/posts/concurrencyOfCoreData/) 一文，了解 Core Data 在这方面的更多注意事项。
 
 ```responser
 id:1

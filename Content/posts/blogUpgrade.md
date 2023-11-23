@@ -82,7 +82,7 @@ gittalk 的使用非常简单，在 GitHub 的 OAuth Apps 创建了 ClientID 后
 
 ![image-20210817160939449](https://cdn.fatbobman.com/image-20210817160939449.png)
 
-修改后的 [结果](https://www.fatbobman.com/tags/)。
+修改后的 [结果](https://fatbobman.com/tags/)。
 
 另外，在 CSS 中如果想实现复杂的版式位置不太直观。尽管提供了不少的`Position`选项，但是想配置成想要的结果需下不少功夫（最主要的原因是我太菜）。
 

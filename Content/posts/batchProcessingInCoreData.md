@@ -57,7 +57,7 @@ func delItemBatch() async throws -> Int {
 * 所有的批量操作请求（ 删除、更新、添加，以及持久化历史跟踪使用的 NSPersistentHistoryChangeRequest ）都是 [NSPersistentStoreRequest](https://developer.apple.com/documentation/coredata/nspersistentstorerequest) 的子类
 * 批量请求通过托管对象上下文发出（  `context.execute(batchDeleteRequest)` ），经由持久化存储协调器直接转发给持久化存储
 * 通过 `resultType` 可以设置批量操作的返回结果类型。共三种：结果状态（ statusOnly ）、记录数量（ count ）、所有记录的 NSManagedObjectID (  objectIDs ) 。如果想在批量操作后在同一段代码中将数据变化合并到视图上下文，需要将结果类型设置为 resultTypeObjectIDs
-* 如果多个持久化存储均包含同一个实体模型，那么可以通过 `affectedStores` 指定仅在某个（ 或某几个 ）持久化存储中进行批量操作。默认值为在所有持久化存储上操作。该属性在所有批量操作（删除、更新、添加）中作用均相同。关于如何让不同的持久化存储拥有同样的实体模型，请参阅 [同步本地数据库到 iCloud 私有数据库中](https://www.fatbobman.com/posts/coreDataWithCloudKit-2/#在不同的_Configuration_中放置同一个_Entity) 的对应章节
+* 如果多个持久化存储均包含同一个实体模型，那么可以通过 `affectedStores` 指定仅在某个（ 或某几个 ）持久化存储中进行批量操作。默认值为在所有持久化存储上操作。该属性在所有批量操作（删除、更新、添加）中作用均相同。关于如何让不同的持久化存储拥有同样的实体模型，请参阅 [同步本地数据库到 iCloud 私有数据库中](https://fatbobman.com/posts/coreDataWithCloudKit-2/#在不同的_Configuration_中放置同一个_Entity) 的对应章节
 
 除了通过 NSFetchRequest 来指定需要删除的数据外，还可以使用 NSBatchDeleteRequest 的另一个构造方法，直接指定需要删除数据的 NSManagedObjectID ：
 
@@ -190,7 +190,7 @@ let batchRequest = NSBatchInsertRequest(entityName: "Item", managedObjectHandler
 
 * 启用持久化历史跟踪功能（ 当前的首选方式 ）
 
-  详细内容请参阅 [在 CoreData 中使用持久化历史跟踪](https://www.fatbobman.com/posts/persistentHistoryTracking/) 。此种方式不仅可以让批量操作的变动在当前的应用中及时体现出来，而且可以让 App Group 的其他成员（ 共享数据库文件 ），也能及时地对数据的变化作出反应
+  详细内容请参阅 [在 CoreData 中使用持久化历史跟踪](https://fatbobman.com/posts/persistentHistoryTracking/) 。此种方式不仅可以让批量操作的变动在当前的应用中及时体现出来，而且可以让 App Group 的其他成员（ 共享数据库文件 ），也能及时地对数据的变化作出反应
 
 * 将合并操作集成在批量操作的代码中
 
@@ -268,7 +268,7 @@ try! context.save()
 19. 持久化存储协调器将请求发送给持久化存储
 20. 持久化存储对请求中的数据与持久化存储行缓存中的数据进行冲突检测。如果发生冲突（ 在我们于上下文更改数据的过程中，行缓存中的数据发生了变动 ）则按照合并策略进行处理
 21. 将 NSSaveChangesRequest 翻译成对应的 SQL 语句发送给 SQLite 数据库（ SQL 语句会根据合并策略的不同而有所变化，在 SQlite 保存过程中还会再进行一次冲突检查 ）
-22. SQLite 执行给定的 SQL 语句（ Core Data 在 SQLite 中对数据的处理也有其独特的地方，详情请阅读 [Core Data 是如何在 SQLite 中保存数据的](https://www.fatbobman.com/posts/tables_and_fields_of_CoreData/) ）
+22. SQLite 执行给定的 SQL 语句（ Core Data 在 SQLite 中对数据的处理也有其独特的地方，详情请阅读 [Core Data 是如何在 SQLite 中保存数据的](https://fatbobman.com/posts/tables_and_fields_of_CoreData/) ）
 23. 在 SQLite  完成更新后，持久化存储会更新它的行缓存，将数据以及数据版本更新到当前状态
 24. 调用所有更新后的 item 实例的 `didSave()` 方法
 25. 抹除更新后的 item 和 托管对象上下文的脏状态
@@ -318,7 +318,7 @@ try! context.save()
 
 因为 Core Data 的唯一约束是依赖 SQLite 的特性实现的，因此批量操作也自然地拥有了这项能力。
 
-假设，应用程序需要定期从服务器上下载一个巨大的 JSON 文件，并将其中的数据保存到数据库中。如果可以确定源数据中的某个属性是唯一的（ 例如 ID、城市名、产品号等等 ），那么可以在数据模型编辑器中将该属性设置为约束属性。当使用批量添加将 JSON 数据保存到数据库时，Core Data 将根据开发者设定的合并策略来进行操作（ 有关合并策略的详细内容，请参阅 [关于 Core Data 并发编程的几点提示](https://www.fatbobman.com/posts/concurrencyOfCoreData/#设置正确的合并策略）的对应章节 )。比如说以新数据为准，或者以数据库中的数据为准。
+假设，应用程序需要定期从服务器上下载一个巨大的 JSON 文件，并将其中的数据保存到数据库中。如果可以确定源数据中的某个属性是唯一的（ 例如 ID、城市名、产品号等等 ），那么可以在数据模型编辑器中将该属性设置为约束属性。当使用批量添加将 JSON 数据保存到数据库时，Core Data 将根据开发者设定的合并策略来进行操作（ 有关合并策略的详细内容，请参阅 [关于 Core Data 并发编程的几点提示](https://fatbobman.com/posts/concurrencyOfCoreData/#设置正确的合并策略）的对应章节 )。比如说以新数据为准，或者以数据库中的数据为准。
 
 Core Data 会根据是否在数据模型中开启了约束已经定义了何种合并策略来创建批量添加操作对应的 SQL 语句。例如下面的情况：
 
@@ -344,7 +344,7 @@ INSERT OR IGNORE INTO ZQUAKEZ_PK, Z_ENT, Z_OPT, ZCODE, ZMAGNITUDE, ZPLACE, ZTIME
 INSERT INTO ZQUAKE(Z_PK, Z_ENT, Z_OPT, ZCODE, ZMAGNITUDE, ZPLACE, ZTIME) VALUES(?, ?, ?, ?, ?, ?, ?) ON CONFLICT(ZCODE) DO UPDATE SET Z_OPT = Z_OPT+1 , ZPLACE = excluded.ZPLACE , ZMAGNITUDE = excluded.ZMAGNITUDE , ZTIME = excluded.ZTIME
 ```
 
-> 注意：创建约束 与 Core Data with CloudKit 功能冲突，了解哪些属性或功能无法在 Core Data with CloudKit 下开启，请参阅 [Core Data with CloudKit（二） —— 同步本地数据库到 iCloud 私有数据库](https://www.fatbobman.com/posts/coreDataWithCloudKit-2/#创建可同步_Model_的注意事项)
+> 注意：创建约束 与 Core Data with CloudKit 功能冲突，了解哪些属性或功能无法在 Core Data with CloudKit 下开启，请参阅 [Core Data with CloudKit（二） —— 同步本地数据库到 iCloud 私有数据库](https://fatbobman.com/posts/coreDataWithCloudKit-2/#创建可同步_Model_的注意事项)
 
 ### 批量删除对 Core Data 关系的有限支持
 

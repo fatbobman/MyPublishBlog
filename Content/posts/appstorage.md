@@ -187,7 +187,7 @@ var body:some View{
 
 ~~目前我无法从文档或暴露的代码中找到这一特性原因，因此以下的代码并不能获得官方的长期保证~~
 
-> 2022 年 5 月更新：关于 @AppStorage 和 @Published 调用包裹其的类实例的 objectWillChange 的原理，请参阅[为自定义属性包装类型添加类 @Published 的能力](https://www.fatbobman.com/posts/adding-Published-ability-to-custom-property-wrapper-types/)。
+> 2022 年 5 月更新：关于 @AppStorage 和 @Published 调用包裹其的类实例的 objectWillChange 的原理，请参阅[为自定义属性包装类型添加类 @Published 的能力](https://fatbobman.com/posts/adding-Published-ability-to-custom-property-wrapper-types/)。
 
 ```swift
 class Defaults: ObservableObject {

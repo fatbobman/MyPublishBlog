@@ -117,7 +117,7 @@ public static subscript<OuterSelf>(
 
 ### 属性包装器的运作原理
 
-考虑到属性包装器中的包装值（ wrappedValue ）众多的变体形式，Swift 社区并没有采用标准的 Swift 协议的方式来定义属性包装器功能，而是让开发者通过声明属性 @propertyWrapper 来自定义属性包装类型。与 [掌握 Result builders](https://www.fatbobman.com/posts/viewBuilder1/) 一文中介绍的 @resultBuilder 类似，编译器在最终编译前，首先会对用户自定义的属性包装类型代码进行转译。
+考虑到属性包装器中的包装值（ wrappedValue ）众多的变体形式，Swift 社区并没有采用标准的 Swift 协议的方式来定义属性包装器功能，而是让开发者通过声明属性 @propertyWrapper 来自定义属性包装类型。与 [掌握 Result builders](https://fatbobman.com/posts/viewBuilder1/) 一文中介绍的 @resultBuilder 类似，编译器在最终编译前，首先会对用户自定义的属性包装类型代码进行转译。
 
 ```swift
 struct Demo {
@@ -418,7 +418,7 @@ struct DemoView: View {
 
 我们可以使用本文介绍的方法为其添加了类似 @Published 的能力。
 
-> 在撰写 [在 SwiftUI 下使用 NSUbiquitousKeyValueStore 同步数据](https://www.fatbobman.com/posts/nsubiquitousKeyvalueStore/) 一文的时候，我尚未掌握本文介绍的方法。当时只能采用一种比较笨拙的手段来与包裹 @CloudStorage 的类实例进行通信。现在我已用本文介绍的方式重新修改了 @CloudStorage 代码。由于 @CloudeStorage 的作者尚未将修改后的代码合并，因此大家目前可以暂时使用我 [修改后的 Fork 版本](https://github.com/fatbobman/CloudStorage)。
+> 在撰写 [在 SwiftUI 下使用 NSUbiquitousKeyValueStore 同步数据](https://fatbobman.com/posts/nsubiquitousKeyvalueStore/) 一文的时候，我尚未掌握本文介绍的方法。当时只能采用一种比较笨拙的手段来与包裹 @CloudStorage 的类实例进行通信。现在我已用本文介绍的方式重新修改了 @CloudStorage 代码。由于 @CloudeStorage 的作者尚未将修改后的代码合并，因此大家目前可以暂时使用我 [修改后的 Fork 版本](https://github.com/fatbobman/CloudStorage)。
 
 代码要点：
 

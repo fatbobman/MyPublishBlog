@@ -109,13 +109,13 @@ Swift 的属性包装器（ Property Wrappers ）在管理属性存储方式的�
 
 ObservedObject 和 StateObject 两者通过满足 DynamicProperty 协议从而实现上面的功能。在 SwiftUI 将视图添加到视图树上时，调用 _makeProperty 方法将需要持有的订阅关系、强引用等信息保存到 SwiftUI 内部的数据池中。
 
-> 请阅读 [避免 SwiftUI 视图的重复计算](https://www.fatbobman.com/posts/avoid_repeated_calculations_of_SwiftUI_views/) 一文，了解更多有关 DynamicProperty 的实现细节
+> 请阅读 [避免 SwiftUI 视图的重复计算](https://fatbobman.com/posts/avoid_repeated_calculations_of_SwiftUI_views/) 一文，了解更多有关 DynamicProperty 的实现细节
 
 ## ObservedObject 偶尔出现灵异现象的原因
 
 如果使用类似 `@ObservedObject var testObject = TestObject()` 这样的代码，有时会出现灵异现象。
 
-> 在 [@StateObject 研究](https://www.fatbobman.com/posts/stateobject/) 一文中，展示了因错误使用 ObservedObject 而引发灵异现象的代码片段
+> 在 [@StateObject 研究](https://fatbobman.com/posts/stateobject/) 一文中，展示了因错误使用 ObservedObject 而引发灵异现象的代码片段
 
 出现这种情况是因为一旦，在视图的存续期中，SwiftUI 创建了新的实例并使用了该实例（ 有些情况下，创建新实例并不一定会使用 ），那么，最初创建的 TestObject 类实例将被释放（ 因为没有强引用 ），ObservedObject 中持有的订阅关系也将无效。
 

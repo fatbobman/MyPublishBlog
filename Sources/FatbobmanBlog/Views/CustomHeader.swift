@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  CustomHeader.swift
 //
 //
 //  Created by Yang Xu on 2021/2/2.
@@ -14,7 +14,7 @@ let css: [Path] = [
     "/images/css/code.css", // 代码高亮
     "/images/css/toc.css", // 文章正文 toc
     "/images/css/search.css",
-    "/images/css/convertkit.css"
+    "/images/css/convertkit.css",
 ]
 
 extension Node where Context == HTML.DocumentContext {
@@ -34,7 +34,7 @@ extension Node where Context == HTML.DocumentContext {
         for location: Location, on site: T, titleSeparator: String = " | ",
         stylesheetPaths: [Path] = css, rssFeedPath: Path? = .defaultForRSSFeed,
         rssFeedTitle: String? = nil,
-        healthNotes: Bool = false
+        healthNotes _: Bool = false
     ) -> Node {
         var title = location.title
 
@@ -63,16 +63,18 @@ extension Node where Context == HTML.DocumentContext {
             .forEach(stylesheetPaths) { .stylesheet($0) }, .viewport(.accordingToDevice),
             .unwrap(site.favicon) { .favicon($0) },
             .unwrap(
-                rssFeedPath) { path in let title = rssFeedTitle ?? "Subscribe to \(site.name)"
-                    return .rssFeedLink(path.absoluteString, title: title)
-                },
+                rssFeedPath)
+            { path in let title = rssFeedTitle ?? "Subscribe to \(site.name)"
+                return .rssFeedLink(path.absoluteString, title: title)
+            },
             .if(location.path == "",
-                .socialImageLink("https://www.fatbobman.com/images/twitterCardImage.png"),
+                .socialImageLink("https://fatbobman.com/images/twitterCardImage.png"),
                 else:
                 .unwrap(
-                    location.imagePath ?? site.imagePath) { path in let url = site.url(for: path)
-                        return .socialImageLink(url)
-                    }),
+                    location.imagePath ?? site.imagePath)
+                { path in let url = site.url(for: path)
+                    return .socialImageLink(url)
+                }),
             .script(.src("/images/css/jquery.min.js")),
             .raw(newGoogleAnalytics),
             .link(.rel(.stylesheet),

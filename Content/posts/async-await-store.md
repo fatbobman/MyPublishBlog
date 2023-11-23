@@ -59,7 +59,7 @@ Reducer 在处理 Action 时，经常会面对带有副作用（side effect）�
 
 ## 1.0 版本 ##
 
-在编写 [健康笔记 1.0](https://www.fatbobman.com/healthnotes/) 时，我采用了 [SwiftUI 与 Combine 编程](https://objccn.io/products/) 一书中提出的解决方式。
+在编写 [健康笔记 1.0](https://fatbobman.com/healthnotes/) 时，我采用了 [SwiftUI 与 Combine 编程](https://objccn.io/products/) 一书中提出的解决方式。
 
 对于副作用采用从 Reducer 中返回 Command 的方式来处理。Command 采用异步操作，将返回结果通过 Combine 回传给 Store。
 
@@ -132,7 +132,7 @@ func reduce(
 
 ## 2.0 版本 ##
 
-通过阅读、学习 Majid 的文章 [Redux-like state container in SwiftUI](https://swiftwithmajid.com/2019/09/18/redux-like-state-container-in-swiftui/)，在 [健康笔记](https://www.fatbobman.com/healthnotes/)2.0 中，我重构了 Store 的代码。
+通过阅读、学习 Majid 的文章 [Redux-like state container in SwiftUI](https://swiftwithmajid.com/2019/09/18/redux-like-state-container-in-swiftui/)，在 [健康笔记](https://fatbobman.com/healthnotes/)2.0 中，我重构了 Store 的代码。
 
 Majid 的实现方式最大的提升在于，大大简化了副作用代码的复杂度，将原本需要在副作用中处理的 Publisher 生命周期管理集中到了 Store 中。并且使用 Combine 提供的线程调度，保证了只在主线程上修改 State。
 

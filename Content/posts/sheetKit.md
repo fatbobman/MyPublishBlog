@@ -18,7 +18,7 @@ image: images/sheetKit.png
 
 * 模态视图的集中管理
 
-  SwiftUI 通常采用`.sheet`来创建模态视图，对于简单的应用来说，这种形式非常直观，但如果应用程序的逻辑比较复杂、需要的模态视图众多，则上述方式就会让代码显得十分混乱，不易整理。因此，在此种情况下，通常我们会将所有的模态视图集中管理起来，统一调用。请参阅我之前的文章——[在 SwiftUI 中，根据需求弹出不同的 Sheet](https://www.fatbobman.com/posts/swiftui-multiSheet/)。
+  SwiftUI 通常采用`.sheet`来创建模态视图，对于简单的应用来说，这种形式非常直观，但如果应用程序的逻辑比较复杂、需要的模态视图众多，则上述方式就会让代码显得十分混乱，不易整理。因此，在此种情况下，通常我们会将所有的模态视图集中管理起来，统一调用。请参阅我之前的文章——[在 SwiftUI 中，根据需求弹出不同的 Sheet](https://fatbobman.com/posts/swiftui-multiSheet/)。
 
 * 新的半高模态视图
 
@@ -202,7 +202,7 @@ SheetKit().dismissAllSheets()
 
 SwiftUI 3.0 的 interactiveDismissDisabled 加强版，在通过代码控制是否允许手势取消的基础上，增加了当用户使用手势取消时可以获得通知的能力。
 
-更多信息请参阅 [如何在 SwiftUI 中实现 interactiveDismissDisabled](https://www.fatbobman.com/posts/newInteractiveDismissDiabled/)
+更多信息请参阅 [如何在 SwiftUI 中实现 interactiveDismissDisabled](https://fatbobman.com/posts/newInteractiveDismissDiabled/)
 
 > SheetKit 中的 interactiveDismissDisabled 为了兼容 bottomSheet 做了一定的改动，具体改动请参见源代码。
 
@@ -285,5 +285,5 @@ struct SheetView: View {
 
 ## 总结 ##
 
-无论是 [SheetKit](https://github.com/fatbobman/SheetKit) 还是 [NavigationViewKit](https://www.fatbobman.com/posts/NavigationViewKit/) 都是我为开发新版的 [健康笔记](https://www.fatbobman.com/healthnotes/) 准备的扩展库。功能都是以我个人的需求为主。如果有什么其他的功能要求，请通过 [twitter](https://www.twitter.com/fatbobman)、博客留言或者 Issues 等方式告诉我。
+无论是 [SheetKit](https://github.com/fatbobman/SheetKit) 还是 [NavigationViewKit](https://fatbobman.com/posts/NavigationViewKit/) 都是我为开发新版的 [健康笔记](https://fatbobman.com/healthnotes/) 准备的扩展库。功能都是以我个人的需求为主。如果有什么其他的功能要求，请通过 [twitter](https://www.twitter.com/fatbobman)、博客留言或者 Issues 等方式告诉我。
 

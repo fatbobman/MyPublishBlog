@@ -12,7 +12,7 @@ mediumURL: https://medium.com/p/72d1d582e939
 
 Github Copilot 在推出时引起了轰动。当时便有人预言程序员这个行业即将灭亡。然而，从当前版本来看，Github Copilot 并没有逾越其副驾驶的身份，成为了不少开发者的好帮手，而不是竞争对手。
 
-尽管 VSCode 对 [Swift](https://www.fatbobman.com/posts/swift-in-linux/) 的支持程度也不错，但对于习惯于使用 Xcode 的我来说，平时应用 Github Copilot 的时间并不多。不过随着 [Copilot for Xcode](https://github.com/intitni/CopilotForXcode) 项目的启动，这种情况发生了明显的改变。
+尽管 VSCode 对 [Swift](https://fatbobman.com/posts/swift-in-linux/) 的支持程度也不错，但对于习惯于使用 Xcode 的我来说，平时应用 Github Copilot 的时间并不多。不过随着 [Copilot for Xcode](https://github.com/intitni/CopilotForXcode) 项目的启动，这种情况发生了明显的改变。
 
 > 有关 Copilot for Xcode 的安装与设置请阅读 [在 Xcode 使用 Copilot 幫忙寫程式](https://medium.com/彼得潘的-swift-ios-app-開發問題解答集/在-xcode-使用-copilot-幫忙寫程式-7e8761a206f4)
 

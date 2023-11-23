@@ -26,7 +26,7 @@ Publish 的开发者 John Sundell 这些年一直致力于发表关于 Swift 的
 
 作为开发者（即使是业余的），总希望对自己的项目有更全面的掌控，因此完全由 Swift 开发的 Publish 就成为了我的首选。
 
-随着使用 Publish 对 [肘子的 Swift 记事本](https://www.fatbobman.com) 重建过程的深入，我感觉自己做出了正确的选择。Publish 让我可以用开发普通 app 的思路和逻辑来创建站点，高效地完成我想要的各种定制和改动。
+随着使用 Publish 对 [肘子的 Swift 记事本](https://fatbobman.com) 重建过程的深入，我感觉自己做出了正确的选择。Publish 让我可以用开发普通 app 的思路和逻辑来创建站点，高效地完成我想要的各种定制和改动。
 
 ### 写本文的原因 ###
 
@@ -216,7 +216,7 @@ enum SectionID: String, WebsiteSectionID {
 }
 ```
 
-在 [肘子的 Swift 记事本](https://www.fatbobman.com) 中，每个 Section 同时也对应着上方导航区的一个选项。`Section`可以有多种用途，在模板定制章节会做更多探讨。
+在 [肘子的 Swift 记事本](https://fatbobman.com) 中，每个 Section 同时也对应着上方导航区的一个选项。`Section`可以有多种用途，在模板定制章节会做更多探讨。
 
 ### Item ###
 

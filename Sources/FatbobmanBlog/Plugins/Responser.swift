@@ -39,7 +39,7 @@ func getResponser(_ id: String) -> String {
 //    var banners = [];
 //    var index = 0;
 //    $("#responser").on("click",function(){
-//     window.location.href = "https://www.fatbobman.com/healthnotes/"
+//     window.location.href = "https://fatbobman.com/healthnotes/"
 // });
 //   });
 // </script>
@@ -110,7 +110,7 @@ let healthAds =
     </div>
     """.replacingOccurrences(of: "\n", with: "")
 
-let healthURL = "https://www.fatbobman.com/healthnotes/"
+let healthURL = "https://fatbobman.com/healthnotes/"
 
 let style =
     """

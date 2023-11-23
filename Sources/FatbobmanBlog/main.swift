@@ -23,7 +23,7 @@ struct FatbobmanBlog: Website {
     }
 
     // Update these properties to configure your website:
-    var url = URL(string: "https://www.fatbobman.com")!
+    var url = URL(string: "https://fatbobman.com")!
     var name = "肘子的Swift记事本"
     var description =
         "东坡肘子的博客，记录并分享学习 Swift、SwiftUI、Core Data 以及 Combine 过程中的心得与经验。"

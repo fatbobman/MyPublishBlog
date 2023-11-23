@@ -6,10 +6,10 @@ title: SwiftUI 与 Core Data —— 数据获取
 image: images/modern-Core-Data-fetcher.png
 mediumURL: https://medium.com/p/c0c7f62aaf53
 ---
-本文中我们将探讨在 SwiftUI 视图中批量获取 Core Data 数据的方式，并尝试创建一个可以使用 mock 数据的 FetchRequest。由于本文会涉及大量 [前文](https://www.fatbobman.com/posts/modern-Core-Data-Data-definition/) 中介绍的技巧和方法，因此最好一并阅读。
+本文中我们将探讨在 SwiftUI 视图中批量获取 Core Data 数据的方式，并尝试创建一个可以使用 mock 数据的 FetchRequest。由于本文会涉及大量 [前文](https://fatbobman.com/posts/modern-Core-Data-Data-definition/) 中介绍的技巧和方法，因此最好一并阅读。
 
-* [SwiftUI 与 Core Data —— 问题](https://www.fatbobman.com/posts/modern-Core-Data-Problem/)
-* [SwiftUI 与 Core Data —— 数据定义](https://www.fatbobman.com/posts/modern-Core-Data-Data-definition/)
+* [SwiftUI 与 Core Data —— 问题](https://fatbobman.com/posts/modern-Core-Data-Problem/)
+* [SwiftUI 与 Core Data —— 数据定义](https://fatbobman.com/posts/modern-Core-Data-Data-definition/)
 
 ## 创建可使用 Mock 数据的 FetchRequest
 
@@ -49,7 +49,7 @@ id:1
 * 创建 NSFetchedResultsController 并获取首批数据的操作是从 onAppear 中发起的，由于 TCA 的 Action 处理机制，数据的首次显示有可感知的延迟（ 效果远不如在视图中通过 FetchRequest 获取 ）
 * 由于 TCA 的 Reducer 无法与视图的存续期自动绑定，上面的可感知延迟在每次触发 onAppear 时都将出现
 
-最终，我决定放下心结，仍然采用在视图中使用类似 @FetchRequest 的方式来获取数据。通过新创建一个可以使用 Mock 数据的 FetchRequest ，实现了 [SwiftUI 与 Core Data —— 问题](https://www.fatbobman.com/posts/modern-Core-Data-Problem/) 一文中提出的可测试、可预览、可模块化的目标。
+最终，我决定放下心结，仍然采用在视图中使用类似 @FetchRequest 的方式来获取数据。通过新创建一个可以使用 Mock 数据的 FetchRequest ，实现了 [SwiftUI 与 Core Data —— 问题](https://fatbobman.com/posts/modern-Core-Data-Problem/) 一文中提出的可测试、可预览、可模块化的目标。
 
 ### NSFetchedResultsController
 

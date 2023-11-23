@@ -26,7 +26,7 @@ public func task(priority: TaskPriority = .userInitiated, _ action: @escaping @S
 
 通过 task 修饰器开发者可以添加在视图“出现之前”的异步操作。
 
-> 用 “出现之前” 来描述 onAppear 或 task 闭包的调用时机属于无奈之举。在不同的上下文中，“出现之前”会有不同的解释。详情请参阅 [SwiftUI 视图的生命周期研究](https://www.fatbobman.com/posts/swiftUILifeCycle/#onAppear_和_onDisappear) 一文中有关 onAppear 和 onDisappear 的章节
+> 用 “出现之前” 来描述 onAppear 或 task 闭包的调用时机属于无奈之举。在不同的上下文中，“出现之前”会有不同的解释。详情请参阅 [SwiftUI 视图的生命周期研究](https://fatbobman.com/posts/swiftUILifeCycle/#onAppear_和_onDisappear) 一文中有关 onAppear 和 onDisappear 的章节
 
 SwiftUI 为了判断视图的状态是否发生了改变，它会在视图的存续期内，反复地生成视图类型实例以达成此目的。因此，开发者应避免将一些会对性能造成影响的操作放置在视图类型的构造函数之中，而是在 onAppear 或 task 中进行该类型的操作。
 
@@ -149,7 +149,7 @@ struct TaskDemo2: View {
 
 ![task_onChange_Recording_iPhone_12_Pro_15.5_2022-08-06_10.50.13.2022-08-06 10_51_57](https://cdn.fatbobman.com/task_onChange_Recording_iPhone_12_Pro_15.5_2022-08-06_10.50.13.2022-08-06%2010_51_57.gif)
 
-> 请阅读 [了解 SwiftUI 的 onChange](https://www.fatbobman.com/posts/onChange/) 一文 ，掌握更多有关 onChang 修饰器的知识
+> 请阅读 [了解 SwiftUI 的 onChange](https://fatbobman.com/posts/onChange/) 一文 ，掌握更多有关 onChang 修饰器的知识
 
 ## task 的生命周期
 
@@ -389,7 +389,7 @@ id:1
 
 通常，我们会用 onReceive 修饰器在视图中响应 Notification Center 的消息。作为一个事件源类型的 Source of Truth，每当接收到一个新的消息时，它都会导致 SwiftUI 对视图的 body 重新求值。
 
-> 请阅读 [避免 SwiftUI 视图的重复计算](https://www.fatbobman.com/posts/avoid_repeated_calculations_of_SwiftUI_views/) 一文，以了解更多有关事件源方面的内容
+> 请阅读 [避免 SwiftUI 视图的重复计算](https://fatbobman.com/posts/avoid_repeated_calculations_of_SwiftUI_views/) 一文，以了解更多有关事件源方面的内容
 
 如果，你想有选择性的处理消息，可以考虑用 task 来代替 onReceive，例如：
 
