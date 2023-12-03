@@ -278,6 +278,26 @@ struct DynamicGridTest2: View {
 }
 ```
 
+### Update：transformEffect(.identity)
+
+在 Reddit 上，[Ne1nLives 给我提供了一个新的解决方案](https://www.reddit.com/r/SwiftUI/comments/1870wct/comment/kbsn6x7/?utm_source=share&utm_medium=web2x&context=3)：在低版本的 SwiftUI 中，可以使用 `transformEffect(.identity)` 来实现与 `geometryGroup` 类似的效果。
+
+```swift
+DynamicGridTest1()
+    .transformEffect(.identity) // keep the original geometry information
+    .frame(width: size.width, height: size.height)
+```
+
+`transformEffect(.identity)` 实际上是对视图施加了一个“无变换”的变换。这样做不会改变视图的视觉表现，但可能会影响其在视图层级中的行为。
+
+举个例子，在本文提供的示例代码中，当应用 `.transformEffect(.identity)` 时，其作用是让子视图的布局和位置在状态变化的第一时间保持不变。这相当于为新创建的视图（ 在状态变化时创建 ）提供了父视图的原始几何信息。由于子视图仍然会根据 transaction 中的信息进行动画，因此，我们会看到其呈现的效果与 `geometryGroup` 几乎一致。
+
+虽然 `.transformEffect(.identity)` 可以在一些特定场景下模拟 `geometryGroup()` 的某些效果，但它不是一个全面的替代方案。
+
+`geometryGroup` 的一个关键功能是创建一个边界，这个边界在父视图和子视图之间隔离了视图的几何属性，如位置和大小。这意味着，通过 `geometryGroup()`，子视图的布局和动画可以独立于父视图进行处理。
+
+因此，`geometryGroup()` 适用于处理更复杂和特定的布局隔离和动画协调场景，而 `.transformEffect(.identity)` 更多是在特定情况下保持子视图布局稳定性的一种策略。
+
 ## 小插曲
 
 在写这篇文章时，我创建了一个更加简单的代码，结果也出现了非预期的呈现。

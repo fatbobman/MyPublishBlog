@@ -2,7 +2,7 @@
 date: 2021-11-02 08:10
 description: 或许觉得比较枯燥，亦或许感觉 Xcode 提供的模版已经满足了使用的需要，很多 Core Data 的使用者并不愿意在 Core Data Stack 的了解和掌握上花费太多的精力。这不仅限制了他们充分使用 Core Data 提供的丰富功能，同时也让开发者在面对异常错误时无所适从。本文将对 Core Data Stack 的功能、组成、配置等做以说明，并结合个人的使用经验聊一下如何设计一个符合当下需求的 Core Data Stack。本文并不会展示一个完整的创建代码，更多是原理、思路和经验的阐述。
 tags: Core Data,持久化框架
-title:  掌握 Core Data Stack
+title:  SwiftUI geometryGroup() 指南：从原理到实践
 image: images/coreDataStack.png
 mediumURL: https://medium.com/p/874b111fd399
 ---
