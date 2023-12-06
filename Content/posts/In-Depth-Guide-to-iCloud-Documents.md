@@ -132,7 +132,7 @@ try! "hello world".write(to: fileURL, atomically: true, encoding: .utf8)
 
 对于 iCloud Document，苹果推荐开发者通过 [NSFileCoordinator](https://developer.apple.com/documentation/foundation/nsfilecoordinator) 的方式对其中的文件进行操作。这是因为除了当前的项目外，其他满足条件的应用和系统应用都可以读写 iCloud Document 目录下的内容。NSFileCoordinator 可以确保文件系统的多个访问请求得到适当的协调，以避免出现数据冲突和数据损坏。
 
-因此，对 iCloud Document 的任何文件操作，都应该通过 `NSFileCoordinator` 进行。
+因此，绝大部分对 iCloud Document 的文件操作，都应该通过 `NSFileCoordinator` 进行。
 
 为了避免影响主线程，通常这些操作是在后台进行的。
 
@@ -405,26 +405,13 @@ struct MetadataItemWrapper: Sendable {
     let fileName: String?
     let fileSize: Int?
     let contentType: String?
-    let isPlaceholder: Bool
-    let isDownloading: Bool
-    let downloadAmount: Double?
     let isDirectory: Bool
-    let isUploaded: Bool
+    let url: URL?
 
     init(metadataItem: NSMetadataItem) {
         fileName = metadataItem.value(forAttribute: NSMetadataItemFSNameKey) as? String
         fileSize = metadataItem.value(forAttribute: NSMetadataItemFSSizeKey) as? Int
         contentType = metadataItem.value(forAttribute: NSMetadataItemContentTypeKey) as? String
-
-        // 是否是占位文件
-        isPlaceholder = metadataItem.value(forAttribute: NSMetadataUbiquitousItemDownloadingStatusKey) as? Bool ?? false
-
-        // 当前下载量
-        downloadAmount = metadataItem.value(forAttribute: NSMetadataUbiquitousItemPercentDownloadedKey) as? Double
-
-        // 是否正在下载
-        let downloadStatus = metadataItem.value(forAttribute: NSMetadataUbiquitousItemIsDownloadingKey) as? String
-        isDownloading = downloadStatus == NSMetadataUbiquitousItemDownloadingStatusCurrent
 
         // 检查是否是目录
         if let contentType = metadataItem.value(forAttribute: NSMetadataItemContentTypeKey) as? String {
@@ -433,10 +420,7 @@ struct MetadataItemWrapper: Sendable {
             isDirectory = false
         }
 
-        // 检查文件是否已经上传成功或已经保存在云端
-        let uploaded = metadataItem.value(forAttribute: NSMetadataUbiquitousItemIsUploadedKey) as? Bool ?? false
-        let uploading = metadataItem.value(forAttribute: NSMetadataUbiquitousItemIsUploadingKey) as? Bool ?? true
-        isUploaded = uploaded && !uploading
+        url = metadataItem.value(forAttribute: NSMetadataItemURLKey) as? URL
     }
 }
 ```
@@ -446,7 +430,7 @@ struct MetadataItemWrapper: Sendable {
 ```swift
 Task {
     let query = ItemQuery()
-    for await items in query.searchMetadataItems().throttle(for: .seconds(1), latest: true) {
+    for await items in query.searchMetadataItems().debounce(for: .seconds(1)) {
         items.forEach{
             print($0.fileName ?? "", $0.isDirectory)
         }
@@ -454,7 +438,7 @@ Task {
 }
 ```
 
-为了避免 `NSMetadataQuery` 的频繁通知，在上面的代码中使用了 [swift-async-algorithms](https://github.com/apple/swift-async-algorithms) 的 `throttle` 方法进行限流。你可以根据自己的需求，用任何熟悉的方式（比如 Combine）来实现上述逻辑。
+为了避免 `NSMetadataQuery` 的频繁通知，在上面的代码中使用了 [swift-async-algorithms](https://github.com/apple/swift-async-algorithms) 的 `debounce` 方法进行限流。你可以根据自己的需求，用任何熟悉的方式（比如 Combine）来实现上述逻辑。
 
 代码的逻辑比较简单：
 
