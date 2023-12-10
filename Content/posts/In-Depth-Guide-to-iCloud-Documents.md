@@ -123,7 +123,7 @@ try! "hello world".write(to: fileURL, atomically: true, encoding: .utf8)
 
 ## 谁可以读写 iCloud Documents 下的内容
 
-- 与使用相同开发者账号和相同 NSUbiquitousContainers 配置的其他应用程序
+- 使用相同开发者账号和相同 NSUbiquitousContainers 配置的其他应用程序
 - 文件应用程序和 Finder（可以读写 Documents 子目录）
 
 ## 如何在 iCloud Documents 中进行文件操作
