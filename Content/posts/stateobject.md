@@ -189,7 +189,7 @@ struct Test3: View {
 
 StateObject 之所以能为实例创建稳定的生命周期，其根本原因是其为实例带来了唯一性：使用 `@StateObject` 标注的对象在视图的整个生命周期中是唯一的。这意味着即使视图重新渲染，对象也不会重新创建。
 
-但这也同时意味着，在某些我们不需要这种唯一性的场景时，ObservedObject 才是正确的选择。
+但这也同时意味着，在某些我们不需要这种唯一性的场景时，`@ObservedObject` 才是正确的选择。
 
 详情请阅读 [StateObject 与 ObservedObject](https://fatbobman.com/posts/StateObject_and_ObservedObject/) 中 “何时选择使用 ObservedObject” 的章节。
 
