@@ -135,6 +135,63 @@ ObservedObject 和 StateObject 两者通过满足 DynamicProperty 协议从而�
 
   无论使用 ObservedObject 还是 StateObject 抑或不添加属性包装器，在视图中声明的类实例，都会随着视图描述实例的创建而一遍遍地被多次创建。不在它的构造方法中引入无关的操作可以极大地减轻系统的负担。对于数据的准备工作，可以使用 onAppear 或 task ，在视图加载时进行。
 
+## 何时选择使用 ObservedObject
+
+虽然本文已经详细探讨了 StateObject 和 ObservedObject 的工作原理，但还未触及一个核心问题：ObservedObject 究竟何时才是最佳选择？在哪些场景下，它的使用才显得尤为重要？
+
+先简化一些复杂的概念，StateObject 的一个显著特点是其实例的唯一性。换句话说，一旦使用了 @StateObject，标注的对象实例在其所属视图的整个生命周期中将保持唯一。这意味着，即便视图本身经历了更新（即视图的构造方法被重新调用），该对象实例也不会重新创建。这正是 ObservedObject 与 StateObject 最关键的区别所在。
+
+而对于 ObservedObject 来说，它的一大特色是**在视图的整个生命周期中，@ObservedObject 可以灵活地切换并关联不同的实例**。例如，在 NavigationSplitView 中，侧边栏（sidebar）可能列出了多个遵循 ObservableObject 协议的不同实例，而详细视图（detail view）则响应这些实例中的一个。通过在侧边栏中选择不同实例，详细视图可以动态地更换其数据源，尽管视图本身得到了更新，但并未重建。
+
+以下代码示例进一步阐释了这一点：
+
+```swift
+class NVStore:ObservableObject {
+    var item:Item?
+    @Published var id = UUID()
+    
+    class Item:ObservableObject {
+        let id:Int
+        init(id: Int) {
+            self.id = id
+        }
+    }
+}
+
+struct NVTest:View {
+    @StateObject var store = NVStore()
+    var body: some View {
+        NavigationSplitView {
+            List(0..<10){ i in
+                Button{
+                    store.item = .init(id: i)
+                    store.id = UUID()
+                } label: {
+                    Text("\(i)")
+                }
+            }
+        } detail: {
+            if let item = store.item {
+                NVDetailView(item: item)
+            }
+        }
+    }
+}
+
+struct NVDetailView:View {
+    @State var id = UUID()
+    @ObservedObject var item:NVStore.Item
+    var body: some View {
+        VStack {
+            Text("\(id)")
+            Text("\(item.id)")
+        }
+    }
+}
+```
+
+这意味着，在处理多对一关系的场景中，选择 ObservedObject 是最恰当且有效的策略。
+
 ## 总结
 
 StateObject 和 ObservedObject 是我们经常会使用的属性包装器，它们都有各自擅长的领域。了解它们内涵不仅有助于选择合适的应用场景，同时也对掌握 SwiftUI 视图的存续机制有所帮助。

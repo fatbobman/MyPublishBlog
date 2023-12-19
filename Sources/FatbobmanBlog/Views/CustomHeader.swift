@@ -76,7 +76,7 @@ extension Node where Context == HTML.DocumentContext {
                     return .socialImageLink(url)
                 }),
             .script(.src("/images/css/jquery.min.js")),
-            .raw(shareThis),
+            // .raw(shareThis),
             .raw(newGoogleAnalytics),
             .link(.rel(.stylesheet),
                   .href("/images/css/heti.min.css")),

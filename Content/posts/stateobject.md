@@ -183,46 +183,16 @@ struct Test3: View {
 
 **三段代码，三种结果，这也就是为什么苹果要新增@StateObject 的原因——让开发者可以明确地了解并掌握实例的生命周期，消除不确定性！**
 
-## ObservedObject 是否还有存在的必要？ ##
+## ObservedObject是否还有存在的必要？ ##
 
-对我个人而言，基本失去了使用其的理由（可用于绑定父视图传递的@StateObject）。
+当然有必要！
 
-尽管或许上面例子的某种特性可能让你觉得 ObservedObject 可以完成某些特殊需求（比如测试 2），但我们无法保证苹果在之后不改变 ObservedObject 的运行机理，从而改变当前的结果。
+StateObject 之所以能为实例创建稳定的生命周期，其根本原因是其为实例带来了唯一性：使用 `@StateObject` 标注的对象在视图的整个生命周期中是唯一的。这意味着即使视图重新渲染，对象也不会重新创建。
 
-我个人还是更推荐将来都使用@StateObject 来消除代码运行的不确定性。
+但这也同时意味着，在某些我们不需要这种唯一性的场景时，ObservedObject 才是正确的选择。
 
-通过下述代码，使用@StateObject 同样可以得到测试 2 中 ObservedObject 的运行效果。
-
-```swift
-struct Test4: View {
-    @State private var showStateObjectSheet = false
-    @StateObject var state = StateObjectClass(type: "stateObject")
-    var body: some View {
-        List{
-            Button("Show StateObject1 Sheet"){
-                showStateObjectSheet.toggle()
-            }
-            .sheet(isPresented: $showStateObjectSheet) {
-                CountViewState1(state: state)
-            }
-        }
-    }
-}
-
-struct CountViewState1:View{
-    @ObservedObject var state:StateObjectClass
-    var body: some View{
-        VStack{
-            Text("@StateObject count :\(state.count)")
-            Button("+1"){
-                state.count += 1
-            }
-        }
-    }
-}
-```
+详情请阅读 [StateObject 与 ObservedObject](https://fatbobman.com/posts/StateObject_and_ObservedObject/) 中 “何时选择使用 ObservedObject” 的章节。
 
 ## Next ##
 
 苹果使用@StateObject 一方面修复了之前的隐患，同时通过 SwiftUI2.0 众多新特性的引入，进一步完善了 Data Flow 的实现手段。在下一篇文章《SwiftUI2.0 —— 100% SwiftUI app》中，我们来进一步探讨。
-
